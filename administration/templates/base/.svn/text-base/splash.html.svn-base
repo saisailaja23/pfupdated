@@ -1,0 +1,18 @@
+<div class="bx-def-bc-margin">
+    __content__
+    <script>
+    var settings = {};
+
+    function splashEnableEditor(oCheckbox) {
+        var sEditorId = 'adm-bs-splash-editor';
+        if ('undefined' == typeof(tinyMCE))
+            return;
+        if($(oCheckbox).is(':checked')) {
+		    new tinymce.Editor(sEditorId, settings, tinymce.EditorManager).render();
+        } else {
+            settings = tinymce.activeEditor['settings'];
+		    tinymce.editors[sEditorId].remove();
+        }
+    }
+    </script>
+</div>

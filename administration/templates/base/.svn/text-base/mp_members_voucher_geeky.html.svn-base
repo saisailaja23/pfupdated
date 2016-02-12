@@ -1,0 +1,37 @@
+
+<div class="adm-mp-members-geeky">
+    <table width="100px" class="adm-mp-members-geeky" cellpadding="4" cellspacing="0">
+        <tr>
+          <!--  <th>&nbsp;</th> -->
+            <th><bx_text:NickName /></th>
+            <th><bx_text:FirstName /></th>
+            <th><bx_text:LastName /></th>
+            <th><bx_text:_adm_txt_mp_agency /></th>
+            <th><bx_text:_adm_txt_mp_registrationdate /></th>
+            <th><bx_text:_adm_txt_mp_email /></th>
+            <th><bx_text:Code /></th>
+            <th><bx_text:Dateofcodeusage /></th>
+            <th><bx_text:_adm_txt_mp_membershipname /></th>
+            <th><bx_text:Status /></th>
+         <!--   <th><bx_text:_adm_txt_mp_last_login /></th>    -->
+        </tr>
+        <bx_repeat:items>
+            <tr>
+              <!--  <td width="30px"><input type="checkbox" class="form_input_checkbox" id="adm-mp-__id__" name="members[]" value="__id__" /></td> -->
+                <td width="*">__username__</a></td>
+               <td width="*">__first_name__</td>
+               <td width="*">__last_name__</td>
+              <td width="*">__agency_name__</td>
+              <td width="105px">__registration__</td>
+               <td width="25%"><div title="__full_email__">__email__</div></td>
+                <td width="150px">__Code__</td>
+                <td width="150px">__dateofcode__</td>
+                <td width="150px">__ml_name__</td>
+                <td width="150px">__status__</td>
+                
+             <!--    <td width="105px">__last_login__</td>     -->
+            </tr>
+        </bx_repeat:items>
+    </table>
+</div>
+__paginate__

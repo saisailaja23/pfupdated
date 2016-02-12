@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<title>Waiting Families | adoption alliance</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style type="text/css">.recentcomments a{display:inline !important;padding:0 !important;margin:0 !important;}</style>
+<link rel="stylesheet" type="text/css" media="screen, print" href="css/style.css" />
+<script type="text/javascript" language="javascript" src="js/scripts.js" ></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+<script type="text/javascript" src="js/animatedcollapse.js"></script>
+<!--live chat -->
+<script type="text/javascript">
+(function() {
+var livechat_params = '';
+
+var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = true;
+var lc_src = ('https:' == document.location.protocol ? 'https://' : 'http://');
+lc_src += 'chat.livechatinc.net/licence/1026499/script.cgi?lang=en&groups=0';
+lc_src += ((livechat_params == '') ? '' : '&params='+encodeURIComponent(encodeURIComponent(livechat_params)));
+lc.src = lc_src;
+var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
+</script>
+<script type="text/javascript">
+function setFPsCookie(c_name,value,exdays)
+{
+var exdate=new Date();
+exdate.setDate(exdate.getDate() + exdays);
+var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+document.cookie=c_name + "=" + c_value;
+if(exdays > 0){
+alert('Family added to favorites');
+}else{
+alert('Family removed from favorites');
+}
+location.reload(true);
+}
+
+function checkForm(frm){
+var destCount = frm.elements['beth[]'].length;
+var destSel   = false;
+for(i = 0; i < destCount; i++){
+if(frm.elements['beth[]'][i].checked){
+destSel = true;
+break;
+}
+}
+
+if(!destSel){
+alert('Please select racial/ethnic background of your child');
+}
+return destSel;
+}
+
+</script>
+<!-- End LiveChat track tag. See also www.livechatinc.com -->
+</head>
+<body id="categories">
+<div id="wrap">
+<div id="top-intro"> </div>
+<!--top-intro -->
+<div id="masthead"><a href="http://www.adoption-alliance.com" title="Adoption Alliance" id="logo"><span>Infant adoption agencies and services in texas, tx | Adoption Alliance</span></a>
+  <div id="livechat"><img src="http://chat.livechatinc.net/licence/1026499/button.cgi?lang=en&amp;groups=0" style="cursor:pointer;cursor:hand" onClick="window.open('http://chat.livechatinc.net/licence/1026499/open_chat.cgi?groups=0'+'&amp;s=1&amp;lang=en&amp;dc='+encodeURIComponent(document.cookie+';l='+document.location+';r='+document.referer+';s='+typeof lc_session),'Czat_1026499','width=220,height=73,resizable=yes,scrollbars=no,status=1');"/></div>
+  <p class="ppc-phone"><span>call now 1800-626-4324, for a personalized adoption plan</span></p>
+</div>
+<!--masterhead -->
+<ul id="nav">
+  <li id="nav-01"><a href="http://www.adoption-alliance.com/birth-parents-main-texas-tx" title=""><span>Birth Parents adoption texas</span></a>
+    <ul>
+      <li><a href="http://www.adoption-alliance.com/birth-parents-main-texas-tx/making-an-adoption-plan" title=""><span>Making an Adoption Plan</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/birth-parents-main-texas-tx/frequently-asked-questions" title=""><span>Frequently Asked Questions</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/birth-parents-main-texas-tx/birth-parent-comments" title=""><span>Birth Parent Comments</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/category/families-in-waiting" title=""><span>Choose Adoptive Parent</span></a></li>
+    </ul>
+  </li>
+  <li id="nav-02"><a href="http://www.adoption-alliance.com/adoptive-parents-main-texas-tx" title=""><span>Adoptive Parents adoption in texas</span></a>
+    <ul>
+      <li><a href="http://www.adoption-alliance.com/adoptive-parents-main-texas-tx/general-overview" title=""><span>General Overview</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/adoptive-parents-main-texas-tx/frequently-asked-questions" title=""><span>Frequently Asked Questions </span></a></li>
+      <li><a href="http://www.adoption-alliance.com/adoptive-parents-main-texas-tx/adoptive-parent-comments" title=""><span>Adoptive Parent Comments </span></a></li>
+    </ul>
+  </li>
+  <li id="nav-03"><a href="http://waiting-aa.cairsolutions.com/" title=""><span>Waiting Families adoption and texas</span></a></li>
+  <li id="nav-04"><a href="http://www.adoption-alliance.com/about-our-agency-texas-tx" title=""><span>Our adoption agency tx</span></a>
+    <ul>
+      <li><a href="http://www.adoption-alliance.com/about-our-agency-texas-tx/about-us" title=""><span>About Us</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/about-our-agency-texas-tx/history-licensing" title=""><span>History &amp; Licensing</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/about-our-agency-texas-tx/our-approach" title=""><span>Unique Approach</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/about-our-agency-texas-tx/our-staff" title=""><span>Our Staff</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/in-the-media-texas-tx" title="In The Media"><span>In The Media</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/about-our-agency-texas-tx/employment-opportunities" title="employment opportunities"><span>Employment Opportunities</span></a></li>
+    </ul>
+  </li>
+  <li id="nav-05"><a href="http://www.adoption-alliance.com/forms-and-documents-texas-tx" title=""><span>Adoption Forms &amp; Documents texas</span></a>
+    <ul>
+      <li><a href="http://www.adoption-alliance.com/forms-and-documents-texas-tx/birth-parent-forms" title=""><span>Birth Parent Forms</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/forms-and-documents-texas-tx/adoptive-parent-forms" title=""><span>Adoptive Parent Forms</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/forms-and-documents-texas-tx/agency-newsletters" title=""><span>Agency Newsletters</span></a></li>
+      <li><a href="http://www.adoption-alliance.com/forms-and-documents-texas-tx/recommended-reading" title=""><span>Recommended Reading</span></a></li>
+    </ul>
+  </li>
+  <li id="nav-06"><a href="http://www.adoption-alliance.com/contact" title=""><span>Contact texas adoption agencies</span></a></li>
+</ul>
+<!-- end #nav -->
+<div id="header-image"> <a rel="nofollow" href="http://www.adoption-alliance.com/birth-parents-main-texas-tx" id="header-pregnant" title=""></a> <a rel="nofollow" href="http://www.adoption-alliance.com/adoptive-parents-main-texas-tx" id="header-adopt" title=""></a> </div>
+<div id="column-left">
+  <h1>
+    Waiting Families </h1>
+  <div class="content">
+    <h2 id="search-index">Please select the racial/ethnic background of your child below:</h2>
+        <form name="search" method="get" action="waitingfamilies.php" onsubmit="return checkForm(this);">
+	 <input type="hidden" value="7" name="max_race_id">
+       <table width="670" border="0" align="left" cellpadding="12" cellspacing="0" class="palatino_font">
+
+
+
+
+         <tr>
+           <td colspan="2" align="left" valign="top" class="line_dot"></td>
+         </tr>
+         <tr>
+           <td colspan="2" align="left" valign="top" class="line_dot"><table width="580" border="0" cellpadding="5" cellspacing="0">
+             <tr>
+               <td width="21"><input type="radio" name="beth[]" value="African American" id="AfricanAmerican" /></td>
+               <td width="388">African American</td>
+               <td width="20"><input type="radio" name="beth[]" value="Asian"  id="Asian" /></td>
+               <td width="449">Asian</td>
+             </tr>
+             <tr>
+               <td><input type="radio" name="beth[]" value="Asian/Hispanic"  id="AsianHispanic" /></td>
+               <td>Asian/Hispanic</td>
+               <td><input type="radio" name="beth[]" value="Caucasian/African American"  id="CaucasianAfricanAmerican" /></td>
+               <td>Caucasian/African American</td>
+             </tr>
+             <tr>
+               <td><input type="radio" name="beth[]" value="Caucasian/Asian" id="CaucasianAsian" /></td>
+               <td>Caucasian/Asian</td>
+               <td><input type="radio" name="beth[]" value="Caucasian/Hispanic" id="CaucasianHispanic" /></td>
+               <td>Caucasian/Hispanic</td>
+             </tr>
+             <tr>
+               <td><input type="radio" name="beth[]" value="Hispanic" id="Hispanic" /></td>
+               <td>Hispanic</td>
+               <td><input type="radio" name="beth[]" value="Hispanic/African American" id="HispanicAfricanAmerican" /></td>
+               <td>Hispanic/African American</td>
+             </tr>
+                 <tr>
+               <td><input type="radio" name="beth[]" value="Caucasian" id="Caucasian" /></td>
+               <td>Caucasian</td>
+               <td><input type="radio" name="beth[]" value="African American/Asian" id="AfricanAmericanAsian" /></td>
+               <td>African American/Asian</td>
+             </tr>
+               <tr>
+               <td><input type="radio" name="beth[]" value="European" id="European" /></td>
+               <td>European</td>
+               <td><input type="radio" name="beth[]" value="Caucasian/Native American" id="CaucasianNativeAmerican" /></td>
+               <td>Caucasian/Native American</td>
+             </tr>
+             <tr>
+               <td><input type="radio" name="beth[]" value="Eastern European/Slavic/Russian" id="EasternEuropeanSlavicRussian" /></td>
+               <td>Eastern European/Slavic/Russian</td>
+               <td><input type="radio" name="beth[]" value="Hispanic or South/Central American" id="HispanicSouthCentralAmerican" /></td>
+               <td>Hispanic or South/Central American</td>
+             </tr>
+               <tr>
+               <td><input type="radio" name="beth[]" value="Jewish" id="Jewish" /></td>
+               <td>Jewish</td>
+               <td><input type="radio" name="beth[]" value="Middle Eastern" id="Middle Eastern" /></td>
+               <td>Middle Eastern</td>
+             </tr>
+              <tr>
+               <td><input type="radio" name="beth[]" value="Mediterranean" id="Mediterranean" /></td>
+               <td>Mediterranean</td>
+               <td><input type="radio" name="beth[]" value="Multi-Racial" id="MultiRacial" /></td>
+               <td>Multi-Racial</td>
+             </tr>
+              <tr>
+               <td><input type="radio" name="beth[]" value="Native American (American Indian)" id="NativeAmericanAmericanIndian" /></td>
+               <td>Native American (American Indian)</td>
+               <td><input type="radio" name="beth[]" value="Pacific Islander" id="Pacific Islander" /></td>
+               <td>Pacific Islander</td>
+             </tr>
+             <tr>
+               <td><input type="radio" name="beth[]" value="Arab" id="Arab" /></td>
+               <td>Arab</td>
+               <td><input type="radio" name="beth[]" value="Other" id="Other" /></td>
+               <td>Other</td>
+             </tr>
+           </table></td>
+         </tr>
+
+
+
+
+
+         <tr>
+           <td height="88" colspan="2" align="left" valign="top"><table width="588" border="0" cellpadding="5" cellspacing="0">
+
+<input type="hidden" value="0" name="pstart">
+<input type="hidden" value="12" name="pend">
+<input type="hidden" value="1" name="page">
+             <tr>
+               <td>&nbsp;</td>
+               <div style="margin-left:225px;margin-top:10px;"> <label>
+			  <!--  <input type="hidden" value="family_profile/browse" name="page"> -->
+                 <input type="submit" name="button" id="button" value="Submit Search" />
+               </label> </div>
+             </tr>
+           </table></td>
+         </tr>
+
+         <tr>
+           <td colspan="2" align="left" valign="top">
+           </td>
+         </tr>
+
+       </table>
+     </form>
+
+  </div>
+  <!--content-->
+  </div>
+<!-- end #column-left -->
+
+<div id="column-right">
+  <div class="content">
+    <h2 class="special">contact us, quik contact form</h2>
+    <p>Have questions about adoption,<strong> &quot;the Adoption Alliance&quot; </strong>can help you? Complete the quick contact form below and one of our staffs will respond in a timely fashion. You can also <strong>call us at  1800-626-4324.</strong></p>
+    <a rel="nofollow" href="http://www.adoption-alliance.com/contact" class="ppc-phone"></a>
+    <!--<iframe src ="https://www.myadoptionportal.com/signupmp.php?pluginoption=userslogin&type=signup&key_id=59" width="350" height="680" frameborder="0" scrolling="no" id ="signupframe" style="overflow:visible;"> -->
+    <p>Your browser does not support iframes.</p>
+    </iframe>
+    <table border="0" id="address">
+      <tr>
+        <td><p><strong>Adoption Alliance</strong><br />
+            7303 Blanco Road<br />
+            San Antonio, Texas 78216</p>
+          <p><strong>Toll Free: </strong><br />
+            1-800-626-4324<br />
+            Tel: (210) 349-3991<br />
+            FAX: (210) 349-8075</p></td>
+        <td><p><strong>Corpus Christi, Texas</strong><br />
+            (361) 884-0057</p>
+          <p><strong>Las Vegas, Nevada</strong><br />
+            (702) 968-1986</p>
+          <p><strong>Reno, Nevada</strong><br />
+            (775) 851-7888</p></td>
+      </tr>
+    </table>
+
+  </div>
+  <!--end content -->
+</div>
+<!-- end #column-right -->
+<div class="clear"></div>
+</div>
+<!-- end #wrap -->
+<div id="footer-wrap">
+  <div id="footer">
+    <div class="left">
+      <p><strong>Mission Statement:</strong><br />
+        The Adoption Alliance, a non-profit adoption agency, was founded on the belief that lives of children can be changed forever through the adoption process. We provide professional adoption services to birth parents and adoptive families by educating and coordinating all aspects of the adoption process. </p>
+
+    </div>
+    <!-- footer-left -->
+    <div class="right">
+      <p><a href="javascript:animatedcollapse.toggle('top-intro')" title="intro"><u>Adoption Alliance</u></a>, 7303 Blanco Road San Antonio, Texas 78216 <br />
+        Toll Free: 1-800-626-4324 | FAX: (210) 349-8075 </p>
+      <p>Copyright &copy; 2009 Adoption Alliance | <a rel="nofollow" href="http://www.ndmr.com" target="_blank">Web Design &amp; Internet Marketing by <strong>New Dimension Marketing &amp; Research</strong></a></p>
+    </div>
+    <!-- footer-right -->
+    <div class="clear"></div>
+  </div>
+  <!-- end #footer -->
+</div>
+</body>
+</html>

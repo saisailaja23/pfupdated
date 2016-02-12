@@ -1,0 +1,436 @@
+* {
+	padding:0px;
+	margin:0px;
+}
+body {
+	color:#313131;
+	font-family:'ArialMT','Arial',sans-serif;
+ 
+	font-size:12px;
+}
+div, img {
+	outline:none;
+	border:none;
+	border-width:0;
+}
+a {
+	text-decoration:none;
+ 
+}
+a:hover {
+	/* color:#666666; */
+}
+ul, ol {
+	list-style:none;
+}
+.clear {
+	height:0;
+	margin:0;
+	padding:0;
+	line-height:0;
+	font-size:0;
+	clear:both;
+}
+.fLeft {
+	float:left;	
+}
+.fRight {
+	float:right;	
+}
+.float_r {float:right;padding:0 5px;}
+.float_l {float:left;padding:0 5px;}
+.align_r {text-align:right;}
+.align_l {text-align:left;}
+.center {text-align:center;}
+#wrapper {
+	width:790px;
+	margin:0px auto;
+
+	padding:5px;
+}
+#topNav {
+	width:750px;
+	margin:auto;
+	padding-top:25px;
+	padding-bottom:25px;
+}
+#topNav ul{
+	
+}
+#topNav ul li{
+	float:left;
+}
+#topNav ul li a{
+	padding: 5px 10px;
+ 
+	font-size:14px;
+}
+#container {
+
+}
+#container p.contentPara{
+    font-family: 'ArialNarrow','Arial Narrow','Arial',sans-serif;
+    font-size: 18px;
+    font-stretch: condensed;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 25px;
+}
+#contentBox {
+	padding: 20px 49px 40px 30px;
+	width: 670px;
+	height: 100%;
+	min-height: 650px;
+
+	line-height: 20px;
+	margin:auto;
+}
+.bannerContainer {
+}
+.bannerBottomImg {
+	background:url(../images/bannerBottomImg.png) no-repeat left bottom;
+	padding-bottom:47px;
+	position:relative;
+}
+.bannerContainer h2 {
+    color: #584D4D;
+    font-family: 'Harrington';
+    font-size: 36px;
+    font-stretch: normal;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    letter-spacing: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 0;
+    opacity: 1;
+    padding-bottom: 0;
+    padding-top: 0;
+    text-align: center;
+    text-decoration: none;
+    text-indent: 0;
+    text-transform: none;
+	position:relative;
+	top:-35px;
+}
+#familyProfile-Table {
+	width: 590px;
+	padding: 0;
+	margin: 20px auto;
+	font: 13px Sylfaen, Georgia, "Times New Roman", Times, serif;
+	background: #eeeeeb;
+	color:#3b5065;
+}
+#familyProfile-Table a {
+	color:#3b5065;
+    border-spacing: 0px;
+}
+
+#contentBox a:hover {
+	color:#000;
+}
+td.profileTable-Name {
+	background: #b4d2d5;
+	width: 35%;
+	padding: 5px;
+}
+td.profileTable-Favorites {
+	width: ;
+	background: #b4d2d5;
+	text-align: right;
+	padding: 5px;
+}
+td.profileTable-Photo {
+	width: 164px;
+}
+td.profileTable-Text {
+	width:590px;
+	background: #eeeeeb;
+	border: none;
+	padding: 5px;
+}
+td.profileTable-Contact{
+background: #d1e0e0;
+padding: 8px 0 8px 10px;
+}
+td.profileTable-Gender{
+background: #d1e0e0;
+}
+
+td.profileTable-Gender span.vprflComplete a {
+color: #fff !important;
+
+margin-left: 15px;
+padding: 10px;
+clear: both;
+}
+.paragraph_style_2 {
+	text-align:center;	
+}
+
+/*NEW STUFF*/
+.yui-b {
+width: 690px;
+padding: 0px 30px 30px 30px;
+margin:auto;
+margin-top:-10px;
+}
+#profileHeading-box {
+background: #b4d2d5;
+color: #335460;
+padding: 25px 49px 30px 30px;
+height: 100%;
+}
+#menuBar {
+background-color: #fff;
+padding:0.3em 0em;
+width: 690px;
+z-index: 1000;
+}
+a.menu {
+font-size: 12px;
+background-color: #fff;
+font-color: #3b5065;
+padding: 0 10px 0 17px;
+font-weight: bold;
+}
+#mainProfile {
+background-color: #eeeeb;
+font: 1.0em Georgia, "Times New Roman", Times, serif;
+}
+td.profileNames {
+border: none;
+color: #385065;
+font-size: 24px;
+font-weight: 550;
+text-align: center;
+padding: 0 10px 5px 5px;
+}
+#introBox-Header {
+
+padding: 4px 0;
+margin: 10px 0 0 0;
+
+}
+#introBox-Header a {
+color: #fff;
+text-align: left;
+padding: 0 7px 0 7px;
+font-size:12px;
+}
+#introBox-Header a:visited {
+color: #fff;
+}
+#introBox {
+background-color: #fff;
+text-align: left;
+padding: 10px;
+}
+#genderBox {
+background-color: #b4d2d5;
+padding: 8px 0;
+margin: 10px 0 0 0;
+color: #385065;
+}
+
+#vprofileBox {
+padding: 8px 0;
+margin: 10px 0 0 0;
+color: #385065;
+}
+/*job etc. titles*/
+.fpsubtitle { 
+font-size: 16px;
+/*text-decoration:underline;*/
+font-weight:bold;
+color: #3B5065;
+padding: 7px 5px 5px 5px;
+border-bottom: 1px solid white;
+}
+/*favorites headers*/
+.fpsubsubtitle {
+font-size: 13px;
+font-weight:bold;
+color: #3B5065;
+line-height: 22px;
+}
+.storyHeaderBar {
+text-align:left;
+font: 18px Georgia, "Times New Roman", Times, serif;
+color: #fff;
+ 
+padding: 7px 0 7px 8px;
+margin: 25px 0 0 0;
+}
+.storyBox {
+background-color: #fff;
+text-align: left;
+padding: 15px;
+height: 100%;
+}
+.imageRight {
+margin: 5px 0px 5px 10px;
+float: right;
+}
+.imageLeft {
+margin: 8px 10px 5px 0px;
+float: left;
+}
+/*photo captions in the story boxes*/
+
+.imagecaption {
+font: 12px Georgia, "Times New Roman", Times, serif;
+color: #385065;
+width: 230px;
+}
+.photo_caption {
+font: 12px Georgia, "Times New Roman", Times, serif;
+color: #385065;
+width: 200px;
+}
+.lettersignature {
+font: 22px Georgia, "Times New Roman", Times, serif;
+font-weight: bold;
+color: #3B5065;
+margin: 15px 0 0 0;
+}		
+.familyNames {
+font: 18px Georgia, "Times New Roman", Times, serif;
+color: #385065;
+margin: 10px 0 0 0;
+}
+.contactForm{
+font: 12px Georgia, "Times New Roman", Times, serif;
+}
+.submitButton {
+font: 12px bold Georgia, "Times New Roman", Times, serif;
+padding: 4px 6px;
+text-align:center;
+margin: 10px 0 0 133px;
+}
+.addFavorite {
+    padding: 10px;
+            float: right;
+            margin: -10px 0 0 155px;
+            position: absolute;
+}
+.nextPrevious, .nextPrevious a {
+color: #385065;
+text-align: right;
+margin: -5px 20px 0 0;
+}
+.fpInfoTable {
+border: 1 px solid ;
+width: 100%;
+font: 1em Georgia, "Times New Roman", Times, serif;
+}
+.fpInfoTable td {border-width:1px;
+border-left-style:solid;
+border-right-style:solid;
+border-top-style:dotted;
+border-bottom-style:solid;
+border-color:#ddd;
+background-color:#eff4f8;
+padding:2px;
+}
+.fpInfoTable .full {
+border-top: none;
+ 
+padding:4px;
+}
+.fpInfoTable th h2{
+color: #FFF;
+font: 15px Georgia, "Times New Roman", Times, serif;
+padding: 6px;
+}
+.fpInfoTable td {
+border-width:1px;
+background-color: #fff;
+ 
+padding:2px;
+font-size: 1em;
+}
+.fpInfoTable .fifty {
+background-color: #b4d2d5;
+border: 1px solid ;
+padding: 3px}
+
+#contentBox2 {
+	padding: 20px 30px 40px 30px;
+	width: auto;
+	height: 100%;
+	min-height: 650px;
+
+	line-height: 20px;
+	margin:auto;
+}
+
+ul.thumb {
+    float: left;
+    list-style: none;
+    margin: 0; padding: 10px;
+    width: 360px;
+}
+ul.thumb li {
+    margin: 0; padding: 5px;
+    float: left;
+    position: relative;  /* Set the absolute positioning base coordinate */
+    width: 110px;
+    height: 110px;
+}
+ul.thumb li img {
+    width: 100px; height: 100px; /* Set the small thumbnail size */
+    -ms-interpolation-mode: bicubic; /* IE Fix for Bicubic Scaling */
+    border: 1px solid #ddd;
+    padding: 5px;
+    background: #f0f0f0;
+    position: absolute;
+    left: 0; top: 0;
+}
+ul.thumb li img.hover {
+    background:url(thumb_bg.png) no-repeat center center;  /* Image used as background on hover effect
+    border: none; /* Get rid of border on hover */
+}
+.one2 {
+    background: url("../images/search.gif") no-repeat scroll 0 0 transparent;
+    border: medium none;
+    font: 13px Sylfaen,Georgia,"Times New Roman",Times,serif;
+    height: 30px;
+    padding: 0 0 0 5px;
+    width: 214px;
+}
+
+p.callToUs {
+    background: url("../images/callToUsBgRepImg.png") repeat-x scroll left top #CADFEE;
+    border: 1px solid #C1D4E5;
+    padding: 10px;
+    position: absolute;
+    right: 300px;
+    top: 760px;
+    width: 192px;
+}
+
+p.callToUs span {
+display: block;
+    font-size: 11px;
+    line-height: 17px;
+    margin-bottom: 13px;
+}
+
+p.callToUs input {
+    width: 40px;
+}
+
+.callBtn {
+    background: url("../images/callBtn.png") no-repeat scroll left top transparent;
+    border: medium none;
+    cursor: pointer;
+    height: 33px;
+    position: absolute;
+    right: 20;
+    text-indent: -999em;
+    top: 49px;
+    width: 33px;
+} 
