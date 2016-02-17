@@ -1,0 +1,17 @@
+.k_cat_filter_row {
+    line-height:24px;
+    position:relative;
+    margin:0px 5px 5px 0;
+    width:150px;
+    float:left;
+}
+
+.k_cat_filter_row > img {
+    position:absolute;
+    top:0px;
+    left:0px;
+}
+
+.k_cat_filter_row > input {
+    margin-left:29px;
+}

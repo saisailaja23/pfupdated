@@ -1,0 +1,132 @@
+.badgeName {
+    font-size:14px;
+    font-weight:bold;
+}
+
+.box_button{
+    color:#999;
+    font-size:12px;
+    font-weight:bold;
+    background-color:#FFCCCC; 
+    padding:2px 5px 2px 5px;
+    border:1px solid #CCCCCC; 
+}
+
+.box_button_selected{
+    color:#000;
+    font-size:12px;
+    font-weight:bold;
+    background-color:#CCCCCC; 
+    padding:2px 5px 2px 5px;
+    border:1px solid #CCCCCC; 
+}
+
+.badge_browse {
+    float:left;
+    margin:5px;
+    padding:5px; 
+	border: 1px dotted #999; 
+}
+
+.notice {
+	color:red;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.modzzz_badge_unit {
+    height: 235px;
+}
+
+.modzzz_badge_unit_admin {
+    position:relative;
+}
+ 
+.badge_unit {
+	padding: 0px;
+	margin: 10px;
+	overflow: hidden;
+	position: relative;
+}
+
+
+
+.badge_unit .thumbnail_block {
+    left:0;
+    position:absolute;
+    top:0;
+}
+
+.badge_unit .cls_res_thumb {
+    float:left;
+}
+ 
+.badge_unit .unit_info {
+    margin-left:48px;
+    min-height:38px;
+}
+ 
+.badge_unit .title {
+    font-size:12px;
+    margin-bottom:-3px;
+    width:85%;
+}
+
+.badge_unit .fr_small_gray_centered {
+    color:#999;
+    height:15px;
+    line-height:15px;
+    font-size:9px;
+    float:left;
+    overflow:hidden;
+    margin-bottom:5px;
+    vertical-align:middle;
+}
+
+.badge_unit .margined {
+    margin-right:5px;
+    line-height:18px;
+}
+
+.badge_unit .margined10 {
+    margin-right:10px;
+}
+
+.badge_unit .actions {
+    font-weight:bold;
+    font-size:12px;
+}
+
+.badge_unit div.votes_small {
+    position:absolute;right:0px;top:0px;width:auto;
+}
+
+.badge_unit .unit_info .browseCheckbox {
+    background-color:#FFCCCC;
+    height:20px;
+    left:1px;
+    float:left;
+    margin-right:5px;
+    top:1px;
+    width:20px;
+}
+
+
+.medium_text
+{
+	font-size:12px; 
+}
+
+.small_text
+{
+	font-size:10px; 
+}
+.gray_text
+{
+	font-size:11px; 
+	color:#CCC; 
+}
+ 
+.member_badge_wrapper {
+	margin-bottom:5px; 
+}

@@ -1,0 +1,32 @@
+<div class="commissions_main">
+<div style="text-align:center">__msg__</div>
+<form id="commissions_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="commissions_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+            <th class="header"><bx_text:_dol_aff_username /></th>
+            <th class="header"><bx_text:_dol_aff_date /></th>
+            <th class="header"><bx_text:_dol_aff_type /></th>
+            <th class="header"><bx_text:_dol_aff_approved /></th>   
+            <th class="header"><bx_text:_dol_aff_amount /></th>  
+            <th class="header"><bx_text:_dol_aff_adm_status /></th> 
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:items>
+            <tr>
+                <td width="30px"><input type="checkbox" class="form_input_checkbox" name="commissions[]" value="__id__" /></td>
+                <td>__user_name__</td>
+                <td>__date__</td>
+                <td>__type__</td>
+                <td>__approved__</td>
+ 				<td class="money">__amount__</td>
+ 				<td>__status__</td>
+            </tr>
+		</bx_repeat:items>
+		<tr><td colspan="7"></td></tr>
+    </table>
+__paginate__
+__controls__
+</form>
+</div>
+

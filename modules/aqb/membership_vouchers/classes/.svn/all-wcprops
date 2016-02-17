@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/classes
+END
+AqbMembershipVouchersTemplate.php
+K 25
+svn:wc:ra_dav:version-url
+V 125
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/classes/AqbMembershipVouchersTemplate.php
+END
+AqbMembershipVouchersConfig.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/classes/AqbMembershipVouchersConfig.php
+END
+AqbMembershipVouchersDb.php
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/classes/AqbMembershipVouchersDb.php
+END
+AqbMembershipVouchersModule.php
+K 25
+svn:wc:ra_dav:version-url
+V 123
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/classes/AqbMembershipVouchersModule.php
+END

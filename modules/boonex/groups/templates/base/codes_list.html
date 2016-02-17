@@ -1,0 +1,38 @@
+<div class="adm-db-content-wrapper">
+<div class="bx_groups_keys_area">
+	<div class="header">
+		<div class="id">
+			ID
+		</div>
+		<div class="title">
+			Title
+		</div>
+		<div class="code">
+			Code
+		</div>
+		<div class="generate">
+			
+		</div>
+        <div class="clear_both">&nbsp;</div>
+	</div>
+	<bx_repeat:entries>
+		<div class="entry">
+			<div class="id">
+				__id__
+			</div>
+			<div class="title">
+				__title__
+			</div>
+			<div class="code">
+				__code__
+			</div>
+			<bx_if:code_link>
+				<div class="generate">
+					<a href="__url__gen_code/__id__">generate code</a>
+				</div>
+			</bx_if:code_link>
+            <div class="clear_both">&nbsp;</div>
+		</div>
+	</bx_repeat:entries>
+</div>
+</div>

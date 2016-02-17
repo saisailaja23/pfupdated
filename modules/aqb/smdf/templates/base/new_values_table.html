@@ -1,0 +1,28 @@
+<form name="custom_values" action="__form_action__" onsubmit="javascript: AqbSMDFPostmoderateCustomValues(this); return false;" method="post">
+<input type="hidden" name="action" value="" id="smdf_action"/>
+<table width="100%" cellpadding="4" class="new_values_table">
+	<tr class="header_row">
+		<td></td>
+		<td><bx_text:_aqb_smdf_parent_list_name /></td>
+		<td><bx_text:_aqb_smdf_parent_list_value /></td>
+		<td><bx_text:_aqb_smdf_list_name /></td>
+		<td><bx_text:_aqb_smdf_new_value /></td>
+	</tr>
+	<bx_repeat:new_values>
+	<tr>
+		<td align="center"><input type="checkbox" name="values[__list_name_es__][__list_value_es__]" onchange="javascript:UpdateSubmit('custom_values')"/></td>
+		<td>__parent_list_name__</td>
+		<td>__parent_list_value__</td>
+		<td>__list_name__</td>
+		<td class="new_value"><input type="text" value="__list_value_es__" name="values_edit[__list_name_es__][__list_value_es__]" /></td>
+	</tr>
+	</bx_repeat:new_values>
+	<tr class="header_row">
+		<td><input type="checkbox" onchange="javascript: setCheckboxes('custom_values', this.checked);"/></td>
+		<td colspan="4">
+			<input type="submit" name="approve" value="<bx_text:_aqb_smdf_approve />" disabled="disabled" onclick="$('#smdf_action').val('approve')"/>&nbsp;&nbsp;
+			<input type="submit" name="remove" value="<bx_text:_aqb_smdf_remove />" disabled="disabled" onclick="$('#smdf_action').val('remove')"/>
+		</td>
+	</tr>
+</table>
+</form>

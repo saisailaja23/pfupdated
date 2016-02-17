@@ -1,0 +1,49 @@
+8
+
+dir
+10070
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/aqb/membership_vouchers/install
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+sql
+dir
+
+installer.php
+file
+
+
+
+
+2011-04-05T10:01:44.000000Z
+1bb7fdee122b1075005338dad3b23309
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+langs
+dir
+
+config.php
+file
+
+
+
+
+2011-04-07T16:47:46.000000Z
+e2ca260c20b3ac1ce092d60ece173545
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+info
+dir
+

@@ -1,0 +1,32 @@
+<div id="upgrade_container">
+	<table class="upgrade" cellspacing="0">
+
+	<bx_repeat:memberships>
+		<bx_if:last>
+          <tr class="__last_tr__">
+        </bx_if:last>
+
+			<td class="mlevel_icon"><img src="__mlevel_icon__" alt="__mlevel_id__" /></td>
+			<td class="mlevel_info">
+				<h3 class="memlevel">
+					<a onclick="javascript:window.open('__explain_url__', '', 'width=660, height=500, menubar=no, status=no, resizable=no, scrollbars=yes, toolbar=no, location=no');" href="javascript:void(0);">
+					__mlevel_name__</a>
+				</h3>
+				<br/><span class="description">__mlevel_desc__</span>
+			</td>					
+			<td>
+				<div class="mlevel_price">
+					__mlevel_price__
+				</div>
+				<div class="mlevel_length">
+					__mlevel_length__
+				</div>			
+				<div class="order_form">				
+					__form_code__
+				</div>
+			</td>
+		</tr>
+		<tr class="last_tr"><td colspan="5"><div id="an_form-__mlevel_id__" style="display:none"></div></td></tr>
+	</bx_repeat:memberships>
+	</table>
+</div>

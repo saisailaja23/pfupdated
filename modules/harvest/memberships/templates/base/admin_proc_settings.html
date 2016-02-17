@@ -1,0 +1,41 @@
+
+    __message__
+
+	<div id="settings_form">
+    	__settings_form__
+	</div>
+	<table class="custom" >
+		<td class="custom_caption">Data return URL:</td>
+		<td class="custom_value" colspan="5"><div id="callback_url">__callback_url__</div></td>	
+	</table>
+	<div style="background-image: url('<bx_url_root />templates/base/images/loading_bg.png');" class="loading" >
+		<img src="<bx_url_root />templates/base/images/loading.gif">
+	</div>
+
+    <script type="text/javascript" language="javascript">
+    <!--
+	$(document).ready(function(){
+		$("select[name=payment_proc]").change(function(){
+			var sel = $("option:selected", this).val();
+			var loading = $('.loading'); 	
+			var parent 	= $('form#settings'); 	
+			$("#button").css('disabled','disabled');
+			loading.css('left', (parent.width() - loading.width())/2);
+	        loading.css('top', (parent.height() - loading.height())/2);
+		    loading.show();
+			if(sel != 'none'){
+				$.post("<bx_url_root />m/memberships/get_processor/", { 
+					processor: sel
+				},
+		   		function(data){
+					loading.hide();
+					$('form#settings').hide();
+					$('form#settings').html(data).fadeIn('slow');
+		  	
+		  	 	});
+			}
+			return false;
+		});
+	});
+    -->
+    </script>

@@ -1,0 +1,25 @@
+<div id="image_banner">
+__form__
+
+<script>
+$("form#create_image_banner").submit(function() {
+	name 	= $('input#image_name').val().length;
+	target 	= $('input#image_target').val().length;
+	image 	= $('input#upload_image').val().length;
+	if(name == 0){
+		alert('Please enter the banner name');
+		return false;
+	}
+	if(target == 0){
+		alert('Please enter the destination URL');
+		return false;
+	}
+	if(image == 0){
+		alert('Please select an image to upload');
+		return false;
+	}
+	return true;
+});
+</script>
+
+

@@ -1,0 +1,149 @@
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base
+END
+admin_menu_item_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_menu_item_form.html
+END
+mb_payment_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/mb_payment_form.html
+END
+authorize_sim.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/authorize_sim.html
+END
+ap_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/ap_form.html
+END
+admin_subs.html
+K 25
+svn:wc:ra_dav:version-url
+V 110
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_subs.html
+END
+admin.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin.html
+END
+avail_memberships.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/avail_memberships.html
+END
+admin_proc_settings.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_proc_settings.html
+END
+authorize_arb_payment.html
+K 25
+svn:wc:ra_dav:version-url
+V 121
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/authorize_arb_payment.html
+END
+back_button.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/back_button.html
+END
+admin_sales_stats.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_sales_stats.html
+END
+current_membership.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/current_membership.html
+END
+authorize_arb.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/authorize_arb.html
+END
+pp_payment_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/pp_payment_form.html
+END
+admin_rules.html
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_rules.html
+END
+badge.html
+K 25
+svn:wc:ra_dav:version-url
+V 105
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/badge.html
+END
+free_form.html
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/free_form.html
+END
+admin_data_forward.html
+K 25
+svn:wc:ra_dav:version-url
+V 118
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_data_forward.html
+END
+admin_user_settings.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_user_settings.html
+END
+admin_mem_setup.html
+K 25
+svn:wc:ra_dav:version-url
+V 115
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_mem_setup.html
+END
+admin_mem_actions.html
+K 25
+svn:wc:ra_dav:version-url
+V 117
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_mem_actions.html
+END
+admin_payments.html
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/admin_payments.html
+END
+an_payment_response.html
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/an_payment_response.html
+END
+access_denied.html
+K 25
+svn:wc:ra_dav:version-url
+V 113
+/svn/phpprojects/!svn/ver/9440/www.parentfinder.com/modules/harvest/memberships/templates/base/access_denied.html
+END

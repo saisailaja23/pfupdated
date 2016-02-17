@@ -1,0 +1,53 @@
+<form class="form_advanced" id="menu_access" onsubmit="saveMenuItem(this); return false;" method="post" action="__action_url__" name="menu_access">
+	<input type="hidden" value="save" name="action" class="form_input_hidden">
+	<input type="hidden" value="__menu_item_id__" name="menu_item" class="form_input_hidden">
+	<div class="form_advanced_wrapper menu_access_wrapper">
+	    <table cellspacing="0" cellpadding="0" class="form_advanced_table"> 
+			<thead>
+			<th class="header" colspan="2">Menu Item:  "__menu_item_name__"</th>
+			</thead>              
+			<tbody>
+	          	<tr>
+	           		<td class="caption">Check to deny access:</td>
+	                <td class="value">
+	                    <div class="clear_both"></div>
+	                    <div class="input_wrapper input_wrapper_checkbox_set">
+	                        <div name="mlevels" class="form_input_checkbox_set">
+
+								<bx_repeat:mlevels>
+									<div class="mlevel_row">
+			                            <input type="checkbox" id="__mlevel_id__" value="__mlevel_id__" name="mlevels[]" class="form_input_checkbox" __checked__>
+										<label for="__mlevel_id__">__mlevel_name__</label> 
+									</div>        
+								</bx_repeat:mlevels>
+	            			</div>
+	                        <div class="input_close input_close_checkbox_set"></div>
+	                    </div>
+	                        
+	                    <div class="clear_both"></div>
+	                </td>
+	            </tr>    
+				<tr><td class="caption">&nbsp;</td>
+					<td>							
+						<input id="checkall" type="checkbox" onclick="$('#menu_access input[name=mlevels[]]:enabled').attr('checked', this.checked);"/>
+						<label for="checkall">Select All</label>      
+					</td>
+				</tr>      
+				<tr>
+	              	<td class="caption">&nbsp;</td>
+	                <td class="value">
+	                    <div class="clear_both"></div>
+	                    <div class="input_wrapper input_wrapper_submit">
+	                        <div class="button_wrapper">
+	                			<input type="submit" value="Save Changes" name="update_menu_access" class="form_input_submit" id="save_menu_access">
+	                			<div class="button_wrapper_close"></div>
+	            			</div>
+	                        <div class="input_close input_close_submit"></div>
+	                    </div>
+	                     <div class="clear_both"></div>
+	                </td>
+	            </tr>
+	        </tbody>
+		</table>
+    </div>
+</form>

@@ -1,0 +1,231 @@
+
+
+div.mbp-cb {
+    clear: both;
+	font-size: 0px;
+}
+div.button_wrapper {
+    margin-right: 10px;
+    position: relative;
+    float: left;    
+}
+
+/*--- 'Current level' Styles ---*/
+div.status_box {
+    width: 450px;
+	margin: 10px auto 10px auto;	
+
+	text-align: center;
+}
+
+/*--- 'Available levels', 'Current Level' Styles ---*/
+div.mbp-current-levels,
+div.mbp-available-levels {
+    margin: 0px 0px 10px 0px;
+}
+div.mbp-level {
+    margin: 10px 10px 0px 10px;
+    padding: 10px;
+
+    position: relative;
+
+    background-color: #f2f2ff;
+}
+ 
+div.mbp-level-price {
+    top: 10px;
+    right: 10px;    
+    height: 16px;
+
+    position: absolute;
+
+    font-weight: bold;
+    font-size: 12px;
+}
+div.mbp-level-price div.image {
+	width: 32px;
+	height: 16px;
+	
+	position: relative;
+	float: left;
+
+	background-repeat: no-repeat;
+    background-position: right center;
+}
+div.mbp-level-price div.text {
+	height: 16px;
+	
+	position: relative;
+	float: left;
+}
+div.mbp-level-price img {
+    width: 16px;
+    height: 16px;
+}
+div.mbp-level-content {
+    min-height: 116px; 
+    padding-left: 5px;
+}
+div.mbp-level-title {
+    font-weight: bold;
+    font-size: 12px;
+}
+div.mbp-level-info {
+    padding-top: 5px;
+}
+div.mbp-level-control {
+    padding-top: 5px;
+}
+
+/ 
+div.mbp-current-level {
+    margin: 0px;
+}
+div.mbp-current-level div.mbp-level {
+    margin: 0px;
+    padding: 10px;
+    
+    position: relative;
+
+    background-color: #ffffff;
+}
+div.mbp-level-description {
+    min-height: 0px;
+    padding: 10px 0px 0px 0px;
+}
+
+.claim_text{
+
+}
+
+.claim_owner{
+	padding-top: 5px; 
+    font-weight:bold; 
+}
+
+.modzzz_listing_unit {
+    height: 235px;
+}
+
+.modzzz_listing_unit_admin {
+    position:relative;
+}
+
+.modzzz_listing_unit .sys_file_search_pic {
+    height: 148px;
+}
+
+.modzzz_listing_unit .sys_file_search_pic img {
+    height: 140px;
+}
+
+
+.listing_unit {
+	padding: 0px;
+	margin: 10px;
+	overflow: hidden; 
+}
+
+.listing_unit .thumbnail_block {
+    left:0;
+    position:absolute;
+    top:0;
+}
+
+.listing_unit .cls_res_thumb {
+    float:left;
+}
+
+.listing_unit .unit_info {
+     min-height:38px;
+}
+
+.listing_unit .title {
+    font-size:12px;
+    margin-bottom:-3px;
+    width:85%;
+}
+
+.listing_unit .fr_small_gray_centered {
+    color:#999;
+    height:15px;
+    line-height:15px;
+    font-size:9px;
+    float:left;
+    overflow:hidden;
+    margin-bottom:5px;
+    vertical-align:middle;
+}
+
+.listing_unit .margined {
+    margin-right:5px;
+    line-height:18px;
+}
+
+.listing_unit .margined10 {
+    margin-right:10px;
+}
+
+.listing_unit .actions {
+    font-weight:bold;
+    font-size:12px;
+}
+
+.listing_unit div.votes_small {
+    position:absolute;right:0px;top:0px;width:auto;
+}
+
+.listing_unit .unit_info .browseCheckbox {
+    background-color:#FFCCCC;
+    height:20px;
+    left:1px;
+    float:left;
+    margin-right:5px;
+    top:1px;
+    width:20px;
+}
+ 
+.modzzz_file_search_pic {
+    width: 148px;
+    height: 110px;
+    border: 1px solid #CCCCCC;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #EDEDED;
+}
+
+.modzzz_file_search_pic img {
+    width: 140px;
+    height: 102px;
+    border: 4px solid white;
+}
+
+.listing_unit .fr_invoice_gray_centered {
+    color:#999;
+    font-size:10px;
+    float:left;
+    overflow:hidden;
+    margin-bottom:5px;
+    vertical-align:middle;
+}
+
+
+.listing_unit .fr_order_gray_centered {
+    color:#999;
+    font-size:10px;
+    float:left;
+    overflow:hidden;
+    margin-bottom:5px;
+    vertical-align:middle;
+}
+
+.listing_unit .unit_info_invoice .title {
+    margin-bottom:5px; 
+}
+
+.listing_unit .unit_info_order .title {
+    margin-bottom:5px; 
+}
+
+ 
+

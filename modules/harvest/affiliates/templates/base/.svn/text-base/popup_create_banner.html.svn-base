@@ -1,0 +1,39 @@
+<div id="text_banner">
+__form__
+	<div id="preview_link">
+		<div id="prev_title"><a href="#"><h3 class="text_banner_title">Preview Title</h3></a></div>
+		<div id="prev_details"></div>
+	</div>
+</div>
+<script type="text/javascript">
+	$('#link_title').keyup(function() {
+		title = $('#link_title').val();
+		$('#prev_title').html('<a href="#"><h3 class="text_banner_title">'+title+'</h3></a>');
+	});
+</script>
+<script type="text/javascript">
+	$('#link_details').keyup(function() {
+		details = $('#link_details').val();
+		$('#prev_details').html('<a href="#"><p class="text_banner_details">'+details+'</p></a>');
+	});
+</script>
+<script>
+$("form#create_text_link").submit(function() {
+	name 	= $('input#link_name').val().length;
+	target 	= $('input#link_target').val().length;
+	title 	= $('input#link_title').val().length;
+	if(name == 0){
+		alert('Please enter the banner name');
+		return false;
+	}
+	if(target == 0){
+		alert('Please enter the destination URL');
+		return false;
+	}
+	if(title == 0){
+		alert('Please enter the Banner Title');
+		return false;
+	}
+	return true;
+});
+</script>

@@ -1,0 +1,46 @@
+8
+
+dir
+10487
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/harvest/pdftemplates/templates/base
+http://192.168.50.15/svn/phpprojects
+
+
+
+2012-01-16T06:24:01.092413Z
+10486
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+images
+dir
+
+css
+dir
+
+admin_campaigns.html
+file
+
+
+
+
+2012-01-12T12:15:32.191784Z
+7d81c30dfacb52470b4903f40be8ba30
+2012-01-16T06:24:01.092413Z
+10486
+phpprojects
+
+admin_create_campaign.html
+file
+
+
+
+
+2011-11-21T09:06:09.010318Z
+c483e486a0c0bf28487baa8d0c2616f5
+2012-01-16T06:24:01.092413Z
+10486
+phpprojects
+

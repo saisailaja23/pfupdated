@@ -1,0 +1,12 @@
+<textarea onClick="SelectAll('__bid__');" id="__bid__" rows="7" cols="75" readonly="readonly" style="overflow:hidden;">
+<div onclick="location.href='__pipe_url__?aid=__aid__&amp;b=__bid__';" style="cursor:pointer;width:__width__;height:__height__;">
+<object width="__width__" height="__height__">
+    <param name="movie" value="__banner_swf__">
+    <param name="menu" value="false"/>
+    <param name="quality" value="medium"/>
+    <param name="wmode" value="Opaque"/>
+    <embed src="__banner_swf__" width="__width__" height="__height__" loop="true" menu="false" swLiveConnect="FALSE" wmode="Opaque" allowscriptaccess="always"></embed>
+  </object>
+</div>
+<img style="border:0" src="__imp_src__?aid=__aid__&amp;b=__bid__" width="1" height="1" alt="" />
+</textarea>

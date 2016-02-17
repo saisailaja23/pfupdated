@@ -1,0 +1,16 @@
+<script language="javascript" type="text/javascript">
+$(document).ready(function(){
+	$('#samplesBlocksArea').parent().prev().css('display', 'none');
+	$('#samplesBlocksArea').parent().css('display', 'none');
+});
+</script>
+
+<div class="adm-db-control-panel" style="padding:10px;">
+    <div class="adm-pb-cp-item-right">
+        <div class="button_wrapper">
+            <input type="button" value="<bx_text:_aqb_pc_apply_to_members />" id="aqb_apply_to_members" class="form_input_submit" onclick="javascript:Profile.applyBlocksSettings('__url__', '<bx_text:_aqb_pc_apply_to_members_confirm />');"/>
+            <div class="button_wrapper_close">&nbsp;</div>
+        </div>
+    </div>
+	<div class="clear_both">&nbsp;</div>
+</div>

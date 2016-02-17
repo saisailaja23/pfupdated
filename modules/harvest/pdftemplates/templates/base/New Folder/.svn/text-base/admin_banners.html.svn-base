@@ -1,0 +1,48 @@
+<div class="banners_main">
+__msg__
+<form id="banners_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="banners_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+            <th class="header"><bx_text:_dol_aff_id /></th>
+            <th class="header"><bx_text:_dol_aff_banner_name /></th>
+            <th class="header"><bx_text:_dol_aff_type_preview /></th>
+            <th class="header"><bx_text:_dol_aff_adm_hidden /></th>
+            <th class="header"><bx_text:_dol_aff_adm_dest_url /></th>
+			<th class="header"><bx_text:_dol_aff_adm_campaign /></th>         
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:banners>
+            <tr>
+                <td width="30px"><input type="checkbox" class="form_input_checkbox" name="banners[]" value="__id__" /></td>
+                <td class="height">__id__</td>
+                <td>__name__</td>
+                <td><a href="#" id="prev_link__id__"><img src="__img_url____type__" height="30" width="30" /></a></td>
+                <td>__hidden__</td>
+                <td>__dest_url__</td>
+ 				<td>__campaign__</td>
+            </tr>
+			<div id="prev__id__" title="__name__" class="preview_div">
+				<bx_if:text><div style="height:100px;width:300px;padding-top:20px;">__banner__</div></bx_if:text>
+				<bx_if:image>__banner__</bx_if:image>
+				<bx_if:flash>__banner__</bx_if:flash>
+			</div>
+			<script>$(function() {$( "#prev__id__" ).dialog({autoOpen: false, width: 'auto'});});$("#prev_link__id__" ).click(function() {$( "#prev__id__" ).dialog( "open" );return false;});</script>
+        </bx_repeat:banners>
+		<tr><td colspan="7"></td></tr>
+    </table>
+</div>
+__paginate__
+__controls__
+</form>
+<script type="text/javascript">
+	$('input[name=adm_banner_del]').click(function(){
+		if(confirm('<bx_text:_dol_aff_banner_confirm_del />')){
+		}else{
+			return false;
+		}
+	});
+</script>
+
+
+

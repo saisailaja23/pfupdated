@@ -1,0 +1,64 @@
+8
+
+dir
+10070
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/aqb/membership_vouchers/classes
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+AqbMembershipVouchersTemplate.php
+file
+
+
+
+
+2011-04-08T10:11:10.000000Z
+d90f6e4f2e6619f3fe4d388600272d76
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+AqbMembershipVouchersConfig.php
+file
+
+
+
+
+2011-04-07T07:43:22.000000Z
+0af821e8a89b837a5ef8a88a4ae0ed91
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+AqbMembershipVouchersDb.php
+file
+
+
+
+
+2011-04-08T10:12:10.000000Z
+d457288a829872e022c5c4adb5e3e5c5
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+
+AqbMembershipVouchersModule.php
+file
+
+
+
+
+2011-04-08T10:06:16.000000Z
+a897806fbd24ae9d5fb666d1689cdc03
+2011-11-20T10:08:30.347022Z
+9436
+phpprojects
+

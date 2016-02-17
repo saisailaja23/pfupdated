@@ -1,0 +1,71 @@
+8
+
+dir
+10070
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/harvest/affiliates/templates/base/images
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+custom_item_bg.gif
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+b1ee99a7c8d8b9cb3db1055aa55ce8f0
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+has-props
+
+icons
+dir
+
+inputbg.png
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+d67ab1305921cc39969314777a43a723
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+has-props
+
+top_item_bg.gif
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+c67eb2a4d75c05f800ea4144eb15a2b1
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+has-props
+
+system_item_bg.gif
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+6d33ca86c2f6dbf512f51be8cb9c0e53
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+has-props
+

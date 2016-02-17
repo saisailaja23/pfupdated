@@ -1,0 +1,50 @@
+<div class="affiliates_main">
+<div style="text-align:center">__msg__</div>
+<form id="affiliates_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="banners_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+            <th class="header"><bx_text:_dol_aff_id /></th>
+            <th class="header"><bx_text:_dol_aff_username /></th>
+            <th class="header"><bx_text:_dol_aff_joined /></th>
+            <th class="header"><bx_text:_dol_aff_email /></th>
+            <th class="header"><bx_text:_dol_aff_adm_status /></th>
+			<th class="header"><bx_text:_dol_aff_commissions /></th>   
+			<th class="header center"><bx_text:_dol_aff_actions /></th>       
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:items>
+            <tr>
+                <td width="30px"><input type="checkbox" class="form_input_checkbox" name="affiliates[]" value="__id__" /></td>
+                <td>__id__</td>
+                <td>__user_name__</td>
+                <td>__date__</td>
+                <td>__email__</td>
+                <td>__status__</td>
+ 				<td class="money">__commissions__</td>
+ 				<td><ul id="affiliate_actions">
+					<li><a href="javascript:showManageCampaignsContent('__id__');" id="manage_campaigns" class="__id__"><bx_text:_dol_aff_manage_campaigns /></a></li>
+					<li><a href="javascript:showAffiliateDetailsContent('__id__');" id="show_details" class="__id__"><bx_text:_dol_aff_but_affiliate_details /></a></li>
+				</td>
+            </tr>
+		</bx_repeat:items>
+		<tr><td colspan="7"></td></tr>
+    </table>
+</div>
+
+__paginate__
+__controls__
+</form>
+<script type="text/javascript">
+	$('input[name=adm_affiliates_del]').click(function(){
+		if(confirm('<bx_text:_dol_aff_affiliate_confirm_del />')){
+		}else{
+			return false;
+		}
+	});
+</script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('table.adm-middle').css('width','1100px');
+	});
+</script>

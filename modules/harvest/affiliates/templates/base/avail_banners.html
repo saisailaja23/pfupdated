@@ -1,0 +1,53 @@
+<div id="avail_banners">
+__message__
+<bx_repeat:items>
+    <table width="100%" id="avail_banners_table" cellpadding="5" cellspacing="0">
+		<tr><th><ul class="banner_info">
+				<li><strong>Banner Name:</strong> __name__</li>
+				<li><strong>Banner Type:</strong> __type__</li>
+			</ul></th>
+			<th class="commission"><strong>Commissions:</strong><br/></th>
+			<th><ul class="banner_info">
+				<bx_if:click><li>__click_amount__ per click</li></bx_if:click>
+				<bx_if:join><li>__join_amount__ per join</li></bx_if:join>
+				<bx_if:membership><li>__membership_display__ membership sale</li></bx_if:membership>
+			</ul></th>
+		</tr>
+		<tr><td colspan="3" class="avail_preview">				
+			<bx_if:text><div style="height:100px;width:300px;padding-top:20px;">__banner__</div></bx_if:text>
+			<bx_if:image>__banner__</bx_if:image>
+			<bx_if:flash>__banner__</bx_if:flash>
+		</td></tr>
+		<tr>
+			<td class="get_code" colspan="5"><div id="getcode__id__">__get_code_button__</div></td>
+		</tr>
+		<tr><td class="get_code" colspan="5">
+			<div id="banner_code__id__" style="display:none">__code__</div>
+		</td></tr>			
+    </table>
+<script> 
+	$('#getcode__id__').click(function(){
+		display = $('#banner_code__id__').css('display');
+		if(display == 'none'){
+			$('#banner_code__id__').css('display','block');
+			$('#banner_code__id__').focus();
+			$('#banner_code__id__').select();
+		}
+		if(display == 'block'){
+			$('#banner_code__id__').css('display','none');
+		}
+	});
+</script>
+<script> 
+	function SelectAll(id){
+	    document.getElementById(id).focus();
+	    document.getElementById(id).select();
+	}
+</script>
+</bx_repeat:items>
+</div>
+
+
+
+
+

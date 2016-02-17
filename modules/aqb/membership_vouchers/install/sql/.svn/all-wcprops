@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 95
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/install/sql
+END
+install.sql
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/install/sql/install.sql
+END
+uninstall.sql
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/phpprojects/!svn/ver/9436/www.parentfinder.com/modules/aqb/membership_vouchers/install/sql/uninstall.sql
+END

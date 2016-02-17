@@ -1,0 +1,159 @@
+#selected{
+	font-weight: bold;
+	border: solid 1px #2F2F2C;
+	background: #DFDFDF;
+	padding: 3px;
+}
+.caption{
+	font-weight: bold;
+}
+.mtools_prgr  td{
+	border: solid 1px #000;
+	padding: 5px;
+	width: 90px;
+	text-align: center;
+}
+.note, .faq_note{
+	padding: 10px;
+	font-size: 13px;
+	font-weight: bold;
+	border: solid 2px #FF0000;
+	background: #FFF100;
+}
+.faq_note{
+	background: none;
+}
+a:focus,a:hover,a:active{
+	font-weight: bold;
+}
+.mqgerror{
+	color: #FF0000;
+	text-transform: none;
+	font-size: 16px;
+}
+.mpages{
+	vertical-align: top;
+}
+.contentWrap {
+	margin: 0 auto;
+	height: auto;
+	overflow: hidden;
+}
+#contentLeft, #contentRight{
+	float: left;
+}
+#contentLeft{
+	margin-left: 5px;
+}
+#contentLeft ul, #contentRight ul{
+	list-style:none inside none;
+	margin:0px;
+	padding:2px;
+}
+#contentLeft li, #contentRight li{
+	padding: 10px;
+	margin-bottom: 3px;
+	background: url("../images/black-bar.gif") no-repeat transparent;
+	color: #FFF;
+	font-size: 12px;
+	font-weight: bold;
+	cursor: move;
+	width: 185px;
+	height: 20px;
+}
+#contentLeft .basics{
+	background: url("../images/purple-bar.gif") no-repeat transparent;
+}
+#contentLeft li a, #contentRight li a{
+	color: #000;
+	text-decoration: none;
+	width: 150px;
+}
+#contentLeft li a:hover, #contentRight li a:hover{
+	text-decoration: underline;
+}
+#contentRight li, #contentLeft .maddme{	
+	background: url("../images/blue-bar.gif") no-repeat transparent;
+	cursor: default;
+}
+#contentLeft #sortme{
+	background:#BFE8FF;
+	padding: 10px;
+}
+#contentLeft .maddme{
+	margin-top: 5px;
+	background: url("../images/green-bar.gif") no-repeat transparent;
+	margin-left: 10px;
+}
+.addme_warning, .star{
+	color:#FF0000;
+	font-weight: bold;
+}
+.goback{	
+	font-weight: bold;
+	font-size: 12px;
+	padding: 5px 5px 5px 10px;
+	background: url("../images/back-bar.gif") no-repeat transparent;
+	margin: 10px 0 5px 5px;
+	width: 100px;
+	height: 20px;
+}
+.goback a{
+	color: #FFF;
+}
+.edits{
+	float: right;
+}
+#tutorial{
+	border: solid 1px #CCC;
+	width: 600px;
+	padding: 5px;
+}
+.tbasics{
+	width: 25px;
+	height: 10px;
+	background: #C26FFF;
+	float: left;
+	margin-right: 10px
+}
+.tnormal{
+	width: 25px;
+	height: 10px;
+	background: #000000;
+	float: left;
+	margin-right: 10px
+}
+.textra{
+	width: 25px;
+	height: 10px;
+	background: #64A4F1;
+	float: left;
+	margin-right: 10px
+}
+.trash{
+	top: 1px;
+	position: relative;
+}
+.mainwarning{
+	border: solid 1px #CCC;
+	padding: 5px;
+	margin: 5px;
+	font-size: 12px;
+	font-weight: bold;
+	background: #FEFFAF;
+}
+#contentLeft li a, #contentRight li a,#contentLeft li a:active, #contentRight li a:active,#contentLeft li a:focus, #contentRight li a:focus, .goback a:focus, .goback a:active{
+	text-decoration: none;
+}
+.edit_icon{
+	position:relative;
+	bottom: 2px;
+}
+.pref_icon, .edit_icon{
+	margin-right: 1px;
+}
+.extra_icon{
+	position:relative;
+	top: 2px;
+	right: 5px;
+}

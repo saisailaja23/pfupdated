@@ -1,0 +1,32 @@
+<div class="payouts_main">
+__post_msg__
+<form id="payouts_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="banners_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+            <th class="header"><bx_text:_dol_aff_aff_id /></th>
+            <th class="header"><bx_text:_dol_aff_username /></th>
+            <th class="header" style="text-align:center"><bx_text:_dol_aff_email /></th>
+			<th class="header"><bx_text:_dol_aff_commissions /></th>         
+			<th class="header"><bx_text:_dol_aff_payout_pref /></th>     
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:items>
+            <tr>
+                <td width="30px"><input type="checkbox" class="form_input_checkbox" name="aid[__aid__]" value="__aid__" />
+				<input type="hidden" name="amount[__aid__]" value="__total_amount__" /></td>
+                <td>__aid__</td>
+                <td>__user_name__</td>
+                <td>__email__</td>
+ 				<td class="money">__commissions__</td>
+ 				<td>__payout_pref__</td>
+            </tr>
+		</bx_repeat:items>
+		<tr><td colspan="7"></td></tr>
+    </table>
+__paginate__
+__controls__
+</form>
+</div>
+
+

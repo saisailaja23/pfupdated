@@ -1,0 +1,28 @@
+<div class="payouts_main">
+__post_msg__
+<form id="payouts_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="payouts_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header"><bx_text:_dol_aff_aff_id /></th>
+            <th class="header"><bx_text:_dol_aff_username /></th>
+            <th class="header"><bx_text:_dol_aff_email /></th>
+            <th class="header"><bx_text:_dol_aff_date_paid /></th>
+			<th class="header"><bx_text:_dol_aff_amount /></th>         
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:items>
+            <tr>
+                <td>__aid__</td>
+                <td>__user_name__</td>
+                <td>__email__</td>
+                <td>__date__</td>
+ 				<td class="money">__total_amount__</td>
+            </tr>
+		</bx_repeat:items>
+		<tr><td colspan="7"></td></tr>
+    </table>
+__paginate__
+</form>
+</div>
+
+

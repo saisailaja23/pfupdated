@@ -1,0 +1,31 @@
+<link href="<bx_url_root />templates/base/css/forms_adv.css" rel="stylesheet" type="text/css" />
+<div class="rules_main">
+
+<form id="rules_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" class="rules_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+			<th class="header">Restricted Membership Levels</th>  
+            <th class="header">Restricted URL</th>           
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:items>
+            <tr>
+                <td width="30px"><input type="checkbox" class="form_input_checkbox" id="__id__" name="rules[]" value="__id__" /></td>
+                <td width="*">__mlevels__</td>
+                <td width="*">__rule_url__</td>             
+            </tr>
+        </bx_repeat:items>
+    </table>
+</div>
+__paginate__
+__controls__
+</form>
+<script type="text/javascript">
+	$('input[name=adm_rules_del]').click(function(){
+		confirm('Are you sure you want to delete rule(s)?');
+	});
+</script>
+
+
+

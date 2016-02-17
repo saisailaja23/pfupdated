@@ -1,0 +1,41 @@
+﻿.form_advanced_table th, .form_advanced_table td {
+	background-color: transparent;
+}
+.container {
+	padding: 0px;
+	margin: 4px;
+}
+.sectiondesc {
+	padding-bottom: 8px;
+	font-weight: bold;
+}
+.dbcsMsgBox {
+	text-align: center;
+}
+.headtext {
+	margin-bottom: 8px;
+	font-weight: bold;
+	margin-top: 10px;
+}
+.choice1 {
+	text-align: center;
+	margin-top: 0px;
+	margin-bottom: 16px;
+}
+.db1 {
+	background-color: #FFFFBF;
+	height: 26px;
+	font-weight: bold;
+}
+.db1 td {
+	padding: 8px;
+	border-bottom: 1px solid #DADADA;
+	text-align: left;
+}
+.db2 {
+	background-color: #E5E5E5;
+	height: 26px;
+}
+.db2 td {
+	text-align: left;
+}

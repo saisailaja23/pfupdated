@@ -1,0 +1,207 @@
+/***************************************************************************
+* 
+*     copyright            : (C) 2009 AQB Soft
+*     website              : http://www.aqbsoft.com
+*      
+* IMPORTANT: This is a commercial product made by AQB Soft. It cannot be modified for other than personal usage.
+* The "personal usage" means the product can be installed and set up for ONE domain name ONLY. 
+* To be able to use this product for another domain names you have to order another copy of this product (license).
+* 
+* This product cannot be redistributed for free or a fee without written permission from AQB Soft.
+* 
+* This notice may not be removed from the source code.
+* 
+***************************************************************************/
+
+table.pc-action-items{
+  border:none;
+}
+
+table.pc-action-items input{
+  float:none;
+  text-transformation: normal;
+}
+.input_wrapper_custom {
+  float:none;	
+}
+
+input.pc-submit-button{
+   width:150px;
+}
+
+.pc-blocks-wrapper{
+	position:relative;
+}
+
+.pc-control-wrapper{
+	padding:9px;
+	position:relative;
+}
+ 
+.pc-order-item-right {
+	float:right;
+	padding:0 10px 0 0;
+}
+
+.pc-links-item-left {
+	float:left;
+	padding-left:10px;
+	position:relative;
+}
+
+.pc-control-links {
+	background-position:0 7px;
+	background-repeat:no-repeat;
+	float:left;
+	height:30px;
+	line-height:30px;
+	overflow:hidden;
+	position:relative;
+	text-indent:20px;
+	width:auto;
+}
+
+.pc-order-item {
+	float:left;
+	line-height:30px;
+	padding:0 0 0 10px;
+	position:relative;
+}
+
+
+table.pc-blocks-table tr{
+   	text-align:left;
+}
+
+.pc-search {
+   width:100%;
+   height:auto;
+   overflow:hidden;
+   display:block;
+   margin-bottom:10px;
+}
+
+.pc-member-section {
+   width:100%;
+   height:auto;
+   border:1px solid #DADADA;
+}
+
+table.pc-blocks-table td{
+   	padding:2px 0;
+}
+
+table.pc-blocks-table th{
+   	padding:2px 0;
+	text-align:center;
+}
+
+tr.pc-active td{
+	 text-align:center;	
+}
+
+div.pc-control-panel {
+	background-color:#EDEDED;
+	font-size:11px;
+	height:30px;
+	line-height:30px;
+}
+
+.pc-top-paginate{
+	position:absolute;
+	top:-30px;
+	width:auto;
+	border:0px solid red;
+	height:30px;
+}
+
+.pc-sort-arrow {
+  position:relative;
+  vertical-align: middle;
+  width:15px;
+  height:15px;
+}
+
+.form_advanced_table  td.caption{
+	white-space:normal;
+}
+
+.pc-buttons-bottom{
+	position:relative;
+	overflow:hidden;
+	width:100%;
+}
+
+.pc-item-number-up {
+	position:absolute;
+	width:auto;
+	border:0px solid red;
+	right:20px;
+	top:-35px;
+}
+
+.pc-item-number-bottom {
+	position:absolute;
+	width:auto;
+	border:0px solid red;
+	right:20px;
+	bottom:-35px;
+}
+
+.pc-item-value {
+	position:relative;
+	width:auto;
+	font-weight:bold;
+	color:navy;
+}
+
+.pc-control-wrapper .form_advanced_table .colspan .input_wrapper{
+	width:100%;
+} 
+
+.pc-control-wrapper .input_wrapper_textarea {
+	width:250px;
+	height:250px;
+}
+
+.pc-control-wrapper .form_input_textarea{
+   height:250px;	
+}
+
+.active a{
+  text-decoration:none;	
+}
+
+.not_active a{
+  color:#999999;
+  text-decoration:none;	
+}
+
+div.pc-mlevels-label, div.pc-mlevels-input, div.pc-mlevels-btn {
+	float:left;
+	margin-left:10px;
+	position:relative;
+}
+
+div.pc-mem-levels-panel{
+	margin-top:10px;
+}
+
+div.pc-db-control-panel{
+	background-color:#EDEDED;
+	font-size:11px;
+	height:30px;
+	line-height:30px;
+}	
+
+#aqb_popup {
+  z-index:1200;	
+}
+
+div.sys-loading {
+	display:none;
+	left:0;
+	position:absolute;
+	top:0;
+	z-index:500;
+}

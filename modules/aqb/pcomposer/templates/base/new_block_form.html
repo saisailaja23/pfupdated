@@ -1,0 +1,10 @@
+<div id="tabs">
+__titles__
+__content__
+</div>
+<script type="text/javascript" language="javascript">
+$("#tabs UL LI A").each(function() {
+    $(this).attr("href", location.href.toString()+$(this).attr("href"));
+});
+$("#tabs").tabs();
+</script>

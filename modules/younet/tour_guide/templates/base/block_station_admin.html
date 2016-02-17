@@ -1,0 +1,38 @@
+<div id="yn_tour_block_station">
+    __unit_stations__
+</div>
+<style type="text/css">
+.yn_station_handle{
+    padding: 5px;
+}
+.yn_station_handle:hover{
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	-moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+	background-color: rgb(255, 255, 255);
+	border-color: #969696;
+	filter: progid:DXImageTransform.Microsoft.Shadow(color='#969696', Direction=135, Strength=2);
+    cursor:move;
+}
+</style>
+<script type="text/javascript" src="__plugin_url__jquery/jquery-ui.js"></script>
+<script type="text/javascript">
+$(document).ready(
+	function() {
+		$("#yn_tour_block_station").sortable(
+		{
+			handle : '.yn_station_handle',
+			update : function() {
+				var order = $('#yn_tour_block_station').sortable('serialize');
+                $.ajax({
+            		type : "POST",
+            		url : "__module_uri__ajax_mode/order_station",
+            		data : "ajaxmode=true" + order,
+                    dataType: 'json',
+            		success : function(msg) {
+            		}
+            	});
+			}
+		});
+});
+</script>

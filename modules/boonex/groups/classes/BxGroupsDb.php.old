@@ -1,0 +1,129 @@
+<?
+/***************************************************************************
+*                            Dolphin Smart Community Builder
+*                              -------------------
+*     begin                : Mon Mar 23 2006
+*     copyright            : (C) 2007 BoonEx Group
+*     website              : http://www.boonex.com
+* This file is part of Dolphin - Smart Community Builder
+*
+* Dolphin is free software; you can redistribute it and/or modify it under
+* the terms of the GNU General Public License as published by the
+* Free Software Foundation; either version 2 of the
+* License, or  any later version.
+*
+* Dolphin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+* without even the implied warranty of  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+* See the GNU General Public License for more details.
+* You should have received a copy of the GNU General Public License along with Dolphin,
+* see license.txt file; if not, write to marketing@boonex.com
+***************************************************************************/
+
+bx_import('BxDolTwigModuleDb');
+
+/*
+ * Groups module Data
+ */
+class BxGroupsDb extends BxDolTwigModuleDb {	
+	var $_sTableCodes;
+	/*
+	 * Constructor.
+	 */
+	function BxGroupsDb(&$oConfig) {
+        parent::BxDolTwigModuleDb($oConfig);
+
+        $this->_sTableMain = 'main';
+        $this->_sTableMediaPrefix = '';
+        $this->_sFieldId = 'id';
+        $this->_sFieldAuthorId = 'author_id';
+        $this->_sFieldUri = 'uri';
+        $this->_sFieldTitle = 'title';
+        $this->_sFieldDescription = 'desc';
+        $this->_sFieldTags = 'tags';
+        $this->_sFieldThumb = 'thumb';
+        $this->_sFieldStatus = 'status';
+        $this->_sFieldFeatured = 'featured';
+        $this->_sFieldCreated = 'created';
+        $this->_sFieldJoinConfirmation = 'join_confirmation';
+        $this->_sFieldFansCount = 'fans_count';
+        $this->_sTableFans = 'fans';
+        $this->_sTableAdmins = 'admins';
+        $this->_sFieldAllowViewTo = 'allow_view_group_to';
+        
+        $this->_sTableCodes = 'codes';
+	}
+
+    function deleteEntryByIdAndOwner ($iId, $iOwner, $isAdmin) {
+        if ($iRet = parent::deleteEntryByIdAndOwner ($iId, $iOwner, $isAdmin)) {
+            $this->query ("DELETE FROM `" . $this->_sPrefix . "fans` WHERE `id_entry` = $iId");
+            $this->query ("DELETE FROM `" . $this->_sPrefix . "admins` WHERE `id_entry` = $iId");
+            $this->deleteEntryMediaAll ($iId, 'images');
+            $this->deleteEntryMediaAll ($iId, 'videos');
+            $this->deleteEntryMediaAll ($iId, 'sounds');
+            $this->deleteEntryMediaAll ($iId, 'files');
+        }
+        return $iRet;
+    }
+    
+    function getCodesList ($sStatus = 'pending', $aPaginate = array()) {
+    	$sStatus = process_db_input($sStatus, BX_TAGS_STRIP);    	
+    	$iNum = $this->getEntriesCountByStatus($sStatus);
+    	$mixedList = false;
+    	if ($iNum > 0) {
+	    	$aLimit = array(
+	    		'page' => isset($aPaginate['page']) && (int)$aPaginate['page'] > 0 ? (int)$aPaginate['page'] : 1,
+	    		'per_page' => isset($aPaginate['per_page']) ? (int)$aPaginate['per_page'] : 10
+	    	);
+	    	
+	    	$sqlLimit = "LIMIT " . ($aLimit['page'] - 1) * $aLimit['per_page'] . ", " . $aLimit['per_page'];    	
+	    	$sqlQuery = "SELECT a.`" . $this->_sFieldId . "`, a.`" . $this->_sFieldTitle . "`,
+	    				b.`code`
+	    				FROM `" . $this->_sPrefix . $this->_sTableMain . "` as a
+	    				LEFT JOIN `" . $this->_sPrefix . $this->_sTableCodes . "` as b
+	    				ON b.`id_entry` = a.`" . $this->_sFieldId . "`
+	    				WHERE a.`" . $this->_sFieldStatus . "` = '$sStatus'
+	    				ORDER BY a.`" . $this->_sFieldCreated . "` DESC
+	    				$sqlLimit";
+	    	$mixedList = $this->getAll($sqlQuery);
+    	}    		
+    	return $mixedList;
+    }
+    
+    function getEntriesCountByStatus ($sStatus = 'pending') {
+    	$sStatus = process_db_input($sStatus, BX_TAGS_STRIP);
+    	$sqlQuery = "SELECT COUNT(*)
+    				FROM `" . $this->_sPrefix . $this->_sTableMain . "`
+    				WHERE `" . $this->_sFieldStatus . "` = '$sStatus'";
+    	return $this->getOne($sqlQuery);
+    }
+    
+    function generateEntryCode ($iEntryId) {
+    	$iEntryId = (int)$iEntryId;
+    	$sCode = md5(microtime());
+    	return $this->res("REPLACE `" . $this->_sPrefix . $this->_sTableCodes . "` SET `code`='$sCode', `id_entry`='$iEntryId'");
+    }
+    
+    function checkCode ($sCode, $iEntryId) {
+    	$iEntryId = (int)$iEntryId;
+    	$sCode = process_db_input($sCode, BX_TAGS_STRIP);
+    	$sqlQuery = "SELECT COUNT(*) FROM `" . $this->_sPrefix . $this->_sTableCodes . "` WHERE `code`='$sCode' AND `id_entry`='$iEntryId'";    	
+    	writeLog($sqlQuery);
+    	$bRes = $this->getOne($sqlQuery) == 1 ? true : false;
+    	return $bRes;
+    }
+    
+    function checkControl ($iMaster, $iDepend) {
+    	$iMaster = (int)$iMaster;
+    	$iDepend = (int)$iDepend;
+    	$sqlQuery = "SELECT COUNT(*)
+    				FROM `" . $this->_sPrefix . $this->_sTableFans . "` as a
+    				LEFT JOIN `" . $this->_sPrefix . $this->_sTableAdmins . "` as b
+    				ON a.`id_entry`=b.`id_entry`
+    				WHERE a.`id_profile`=$iDepend AND b.`id_profile`=$iMaster
+    				";
+    	$bRes = $this->getOne($sqlQuery) == 1 ? true : false;
+    	return $bRes;
+    }
+}
+
+?>

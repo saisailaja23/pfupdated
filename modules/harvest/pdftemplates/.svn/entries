@@ -1,0 +1,70 @@
+8
+
+dir
+9582
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/harvest/affiliates
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+19b7f35c-5c69-4d1e-a880-fa3cfc1a8071
+
+images
+dir
+
+install
+dir
+
+inc
+dir
+
+include.php
+file
+
+
+
+
+2011-11-21T09:06:09.093359Z
+7dc7abaab35b5c9efcf68b4c7debec24
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+
+js
+dir
+
+classes
+dir
+
+templates
+dir
+
+request.php
+file
+
+
+
+
+2011-11-21T09:06:09.095360Z
+b76fbad32c9e01964dd05955f415ebb8
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+

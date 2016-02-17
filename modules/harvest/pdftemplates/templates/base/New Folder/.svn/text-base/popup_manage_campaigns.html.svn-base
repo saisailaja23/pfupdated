@@ -1,0 +1,18 @@
+<div id="man_cam_container">
+	__form__
+</div>
+<script>
+$('#manage_campaigns').submit(function(){
+    var formData = $('form#manage_campaigns').formSerialize();
+    $.post(site_url + 'm/affiliates/ajax?action=save_affiliate_campaigns&aid=__aid__', formData, function(data) {
+     	$('#man_cam_container').fadeOut('fast', function(){
+			$('#man_cam_container').html(data).fadeIn('slow');
+	        setTimeout(function () {
+	            $('#manage_campaigns').dolPopupHide({});
+	        }, 2000);
+
+		});
+    });
+    return false;
+})
+</script>

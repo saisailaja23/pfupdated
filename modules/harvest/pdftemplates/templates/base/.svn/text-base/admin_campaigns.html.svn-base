@@ -1,0 +1,68 @@
+<div class="campaigns_main">
+<form id="campaigns_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="campaigns_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+            <th class="header"><bx_text:_dol_aff_id /></th>
+            <th class="header"><bx_text:_dol_aff_adm_campaign_name /></th>
+            <th class="header"><bx_text:_dol_aff_num_banners /></th>
+            <th class="header"><bx_text:_dol_aff_commissions /></th>
+			<th class="header"></th>               
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:campaigns>
+            <tr>
+                <td class="data" width="30px"><input type="checkbox" class="form_input_checkbox" id="sub__id__" name="campaigns[]" value="__id__" /></td>
+                <td class="height data">__id__</td>
+                <td class="data">__name__</td>
+                <td class="data">__description__</td>
+                <td class="data"><ul id="campaign_commissions">
+                <a href="<bx_url_root />m/pdftemplates/edit_templates?cid=__id__">Edit</a> | <a href="<bx_url_root />PDFTemplates/__id__/preview.pdf" target="_blank"><img src="<bx_url_root />PDFUser/icons/preview.jpg"height="25" width="25" class = "user_pdf_previeww" id="__id__"style="position:relative;left:10px;top:8px;color:#FD7800;cursor:pointer;"  title="Preview Template" alt="Preview Template" /></a></ul></td>
+ 				
+            </tr>
+        </bx_repeat:campaigns>
+		<tr><td colspan="7"></td></tr>
+    </table>
+</div>
+__paginate__
+__controls__
+</form>
+<script type="text/javascript">
+	$('input[name=adm_campaign_del]').click(function(){
+		if(confirm('<bx_text:_dol_aff_campaign_confirm_del />')){
+		}else{
+			return false;
+		}
+	});
+
+</script>
+
+
+<script type="text/javascript">
+$(".user_pdf_preview").bind('click',function() {XpreocessPreview_org($(this));})
+function XpreocessPreview_org(item)
+{
+   
+        //alert(item.attr('id'));
+  
+        //var temp_org_path   = 'PDFTemplates/'+item.attr('id')+'/preview.pdf';localhost/www.parentfinder.com/PDFTemplates/1/
+        var temp_org_path   = 'PDFTemplates/'+item.attr('id')+'/preview.pdf';
+       // alert(temp_org_path);
+        $.ajax({
+            url:temp_org_path,
+            type:'HEAD',
+            error:
+                function(){
+                    alert("Preview file not exists");
+                },
+            success:
+                function(){
+                    window.open(temp_org_path);
+                }
+        });
+
+   
+
+}
+</script>
+

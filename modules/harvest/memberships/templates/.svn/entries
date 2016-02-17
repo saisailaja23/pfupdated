@@ -1,0 +1,19 @@
+8
+
+dir
+10070
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/harvest/memberships/templates
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:10:23.371221Z
+9440
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+base
+dir
+

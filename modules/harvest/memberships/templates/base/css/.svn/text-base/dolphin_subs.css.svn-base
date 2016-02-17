@@ -1,0 +1,152 @@
+/* Membership Page Account Info Block 
+======================================*/
+h3.acc_info_heading{
+	border-bottom:1px solid #333;
+}
+.clear{
+	clear:both!important;
+}
+#main_box{
+	padding:0px 25px;
+}
+.nick_name{
+	font-weight:bold;
+	font-size:16px;
+}
+.member_since span{
+	text-decoration:underline;
+}
+.nick_name,
+.member_since{
+	margin-left:85px;
+	margin-top:10px;
+}
+table#acc_info_table{
+	width:100%;
+}
+
+table#acc_info_table tr.acc_info{
+	border-bottom: 1px solid #333!important;
+	margin:3px 5px;
+}
+
+td.label{
+	width:50%;
+}
+
+td.active{
+	color:#1e7909; 
+}
+td.not-active{
+	color:#A11F1F;
+}
+#authorize_div{
+	padding-top:15px;
+	text-align:center;
+	border-top:1px solid #ccc;
+}
+
+/* Membership Page Membership Levels Block 
+===========================================*/
+input[disabled] {
+	opacity:0.4;
+	filter:alpha(opacity=40);
+}
+#upgrade_container{
+	font-family:Verdana,Arial;	
+}
+
+form{
+	margin:0px;
+	padding:0px;
+}
+h3.memlevel{
+	margin:0px;
+	padding:0px;
+}
+table.upgrade{
+	width:95%;
+	background:transparent;
+	margin:0px auto;
+	padding:0px;
+	border-collapse:collapse;
+}
+table.upgrade tr{
+	border-bottom: 1px solid #e1e1e1;
+}
+
+tr.last_tr{
+	border-bottom:none!important;
+}
+table.upgrade td{
+	padding:10px 0px;
+}
+
+td.mlevel_icon{
+	width:150px;
+	text-align:center!important;
+}
+td.mlevel_icon img{
+	border:1px solid #efefef;
+}
+td.mlevel_info{
+	width:350px;
+}
+span.description{
+	font-weight:normal;
+	font-size:12px;
+}
+div.mlevel_price{
+	font-weight:bold;
+	text-align:center;
+}
+div.mlevel_length{
+	margin-bottom:10px;
+	text-align:center;
+}
+.order_form{
+	text-align:center;
+	width:200px;
+}
+
+/*-- Form Elements --*/
+select#rate_id{
+	font-size:13px;
+	border:1px solid #ccc;
+}
+.inputbox,select.select{
+	font-size:15px;
+	border:1px solid #ccc;
+}
+/* Access Denied Page
+================================================*/
+.redirecting{
+	text-align:center;
+	width:500px;
+	margin:0px auto;
+	padding:10px;
+}
+
+/* Buttons
+================================================*/
+.auth_button{ 
+	border:2px solid #1A1A1A; 
+	color:#fff; 
+	cursor:pointer; 
+	background-color: #0567ad; 
+	background-image: url(images/btn-blue.png); 
+	background-repeat: repeat-x; 
+	background-position: top; 
+	font-family: "Segoe UI", Arial, sans-serif; 
+	font-size: 12px; 
+	font-weight: bold; 
+	padding-top: 2px; 
+	padding-right: 8px; 
+	padding-bottom: 2px; 
+	padding-left: 8px; 
+}
+.auth_button:hover, .auth_button:focus, .auth_button:active { color:#fff; border-color:#272727; background-color: #2a2a2a; background-image: url(images/btn-dark.png)}
+.button-alt{ border:2px solid #272727; color:#fff; cursor:pointer; background-color: #2a2a2a; background-image: url(images/btn-dark.png); background-repeat: repeat-x; background-position: top; font-family: "Segoe UI", Arial, sans-serif; font-size: 12px; font-weight: bold; padding-top: 2px; padding-right: 8px; padding-bottom: 2px; padding-left: 8px;}
+.button-alt:hover{color:#fff; border-color:#1A1A1A; background-color: #0567ad; background-image: url(images/btn-blue.png);}
+
+

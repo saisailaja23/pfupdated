@@ -1,0 +1,102 @@
+﻿.container {
+	padding: 10px;
+	margin: 4px;
+	border: 1px solid #ccc;
+	background: #fff;
+}
+#navPyra {
+	margin: 0px 0px 10px 0px;
+	padding: 0 0 20px 10px;
+	border-bottom: 1px solid #9FB1BC;
+}
+#navPyra li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+	list-style-type: none;
+}
+#navPyra a:link, #navPyra a:visited {
+	float: left;
+	font-size: 10px;
+	line-height: 14px;
+	font-weight: bold;
+	padding: 0 12px 6px 12px;
+	text-decoration: none;
+	color: #708491;
+}
+#navPyra a:link.active, #navPyra a:visited.active, #navPyra a:hover {
+	color: #000;
+	background: url(/modules/deano/block_tools/templates/base/images/pyramid.gif) no-repeat bottom center;
+}
+.sectiondesc {
+	padding-bottom: 6px;
+	font-weight: bold;
+}
+.sectioncontent {
+	padding-top: 6px;
+}
+.boldright {
+	text-align: right;
+	font-weight: bold;
+}
+.boldp {
+	font-weight: bold;
+	padding-top: 4px;
+	padding-bottom: 4px;
+	color: #000000;
+}
+.blockdiv {
+	padding: 4px;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+.PageBlockGreen {
+	padding: 6px;
+	width: 180px;
+	background-color: #DFFFDF;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	text-align: left;
+}
+.PageBlockRed {
+	padding: 6px;
+	width: 180px;
+	background-color: #FFDDDD;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-top: 2px;
+	margin-bottom: 2px;
+	text-align: left;
+}
+.form_input_submit {
+	font-size: 11px;
+}
+.PageBlockGreenI {
+	margin: 2px;
+	padding: 6px;
+	width: 180px;
+	background-color: #DFFFDF;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: left;
+	float: left;
+}
+.PageBlockRedI {
+	margin: 2px;
+	padding: 6px;
+	width: 180px;
+	background-color: #FFDDDD;
+	overflow: hidden;
+	white-space: nowrap;
+	text-align: left;
+	float: left;
+}
+.dblineL {
+	background-color: #9FB1BC;
+	margin-top: 40px;
+	margin-bottom: 10px;
+	height: 1px;
+}

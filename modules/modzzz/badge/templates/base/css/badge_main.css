@@ -1,0 +1,32 @@
+ 
+.container{padding:10px;}
+.select_container{clear:both;float:left;padding:10px 0 10px 0;width:950px;}
+#badge_browse_container{width:100%;height:100%;margin-left:5px;}
+ 
+.browse_select{width:197px;}
+.pagination{float:right;font-weight:bold;clear:right;display:inline;}
+.pagination .small_font{font-weight:normal;}
+.gold_container{margin-top:20px;}
+ 
+.preview{width:200px;padding-top:10px;min-height:99px;text-align:center;color:#7D7D7D;font-weight:bold;}
+.preview p{padding-top:50px;}.clear_keywords{margin:0 0 0 5px;}
+.badge_browse{height:100px;width:90px;padding:4px;margin:4px;float:left;border:1px solid #FFF;text-align:center;}
+.badge_hover{cursor:pointer;border:1px solid #898989;}
+.badge_hover_selected{border:1px solid #898989;background:#F3F3F3;}
+.selected_label{border:1px solid #000;background:#FFFECD;padding:2px;position:absolute;}
+.num_badge{float:left;}
+.num_badge span{display:inline;}
+.num_badge span,.num_badge a{margin:0 .33em 0 .33em;}
+
+.badge_unit {
+	padding: 0px;
+	margin: 10px;
+	overflow: hidden;
+	position: relative;
+}
+ 
+.input_wrapper_custom {
+    float: none; 
+	width:100%;
+	margin-top:3px;
+}

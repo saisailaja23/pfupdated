@@ -1,0 +1,31 @@
+<div id="affiliate_details_container">
+	<div class="change_period">
+		<select id="details_filter">
+			<option value="total" <bx_if:total>__selected__</bx_if:total>>Total</option>
+			<option value="last_seven_days" <bx_if:last_seven_days>__selected__</bx_if:last_seven_days>>Last 7 Days</option>
+			<option value="last_thirty_days" <bx_if:last_thirty_days>__selected__</bx_if:last_thirty_days>>Last 30 Days</option>
+			<option value="this_month" <bx_if:this_month>__selected__</bx_if:this_month>>This Month</option>	
+			<option value="last_month" <bx_if:last_month>__selected__</bx_if:last_month>>Last Month</option>	
+			<option value="this_year" <bx_if:this_year>__selected__</bx_if:this_year>>This Year</option>	
+			<option value="last_year" <bx_if:last_year>__selected__</bx_if:last_year>>Last Year</option>	
+		</select>
+	</div>
+	<table id="main_stats">
+		<tr><th class="first"><bx_text:_dol_aff_statistics /></th><th><bx_text:_dol_aff_raw /></th><th><bx_text:_dol_aff_unique /></th></tr>
+		<tr><td class="first"><bx_text:_dol_aff_impressions /></td><td>__imp_raw__</td><td>__imp_uni__</td></tr>
+		<tr><td class="first"><bx_text:_dol_aff_clicks /></td><td>__cli_raw__</td><td>__cli_uni__</td></tr>
+	</table>
+
+	<table id="second_stats">
+		<tr><th class="first"><bx_text:_dol_aff_commissions /></th><th><bx_text:_dol_aff_total /></th></tr>
+		<tr><td class="first"><bx_text:_dol_aff_trans /></td><td>__com_trans__</td></tr>
+		<tr><td class="first"><bx_text:_dol_aff_money_earned /></td><td>__com_earned__</td></tr>
+	</table>
+</div>
+<script>
+	$('#details_filter').change(function(){
+		var filter = $('select#details_filter').val();		
+		getHtmlData('affiliate_details_container', '__ajax_url__action=show_affiliate_details&aid=__aid__&filter=' + filter, false, 'post');
+		return false;		
+   	});
+</script>

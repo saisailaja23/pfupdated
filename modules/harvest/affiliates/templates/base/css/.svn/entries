@@ -1,0 +1,55 @@
+8
+
+dir
+10070
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/harvest/affiliates/templates/base/css
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+admin.css
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+d1283f6dc193717027c169f8f083e777
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+
+images
+dir
+
+style.css
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+f49f62da3536123e4ee07ae7595ac79d
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+
+jquery-ui-1.7.3.custom.css
+file
+
+
+
+
+2011-02-16T08:52:00.000000Z
+b1e140618cb51ff20288e6389addd3c0
+2011-11-20T10:09:52.006411Z
+9439
+phpprojects
+

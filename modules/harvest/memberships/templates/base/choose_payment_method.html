@@ -1,0 +1,21 @@
+<center><h2 class="checkout_header"><bx_text:_dol_subs_membership_details /></h2></center>
+
+<div class="membership_details">
+    <ul>
+        <li><bx_text:_dol_subs_membership />: __membership_name__<br/></li>
+        <li><bx_text:_dol_subs_adm_mlevel_price />: __membership_price__(__currency__)</li>
+        <li><bx_text:_dol_subs_adm_mlevel_days />: __membership_length__ __membership_unit__</li>
+        <li><bx_text:_dol_subs_type />: __auto__</li>
+    </ul>
+</div>
+<center><h2 class="checkout_header"><bx_text:_dol_subs_choose_payment /></h2></center>
+
+__payment_content__
+		
+<div class="payment_actions">
+	<div class="button_wrapper">
+		<input type="submit" class="form_input_submit bx-btn" onclick="window.location.replace('<bx_url_root />m/memberships/');" value="Cancel" />
+	</div>
+</div>
+<div style="clear:both"></div>
+<br/>

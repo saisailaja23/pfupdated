@@ -1,0 +1,49 @@
+8
+
+dir
+10070
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/modules/harvest/memberships/install
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-20T10:10:23.371221Z
+9440
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+sql
+dir
+
+installer.php
+file
+
+
+
+
+2011-08-04T13:44:00.000000Z
+0ac9c0150138e071c3baa8c1b517a3a4
+2011-11-20T10:10:23.371221Z
+9440
+phpprojects
+
+langs
+dir
+
+config.php
+file
+
+
+
+
+2011-08-04T14:04:00.000000Z
+3859e66c816a6fd282f02e5ffbfb9579
+2011-11-20T10:10:23.371221Z
+9440
+phpprojects
+
+info
+dir
+

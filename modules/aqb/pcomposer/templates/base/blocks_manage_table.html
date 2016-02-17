@@ -1,0 +1,22 @@
+<form class="form_advanced" action="" method="post" enctype="multipart/form-data" id="pc-blocks-form">
+<div class="pc-blocks-table">
+    <table width="auto" class="pc-blocks-table" cellpadding="0" cellspacing="0">
+        <tr height="20px">
+            <th width="20">&nbsp;</th>
+			<th><bx_text:_aqb_pc_admin_manage_username /></th>
+			<th><bx_text:_aqb_pc_admin_block_manage_created /> </th>
+	        <th><bx_text:_aqb_pc_admin_block_manage_title /> </th>
+	     </tr>
+        <bx_repeat:items>
+            <tr class="pc-active">
+				<td width="20"><input type="checkbox" class="form_input_checkbox" id="pc-b-__id__" name="blocks[]" value="__id__" /></td>
+				<td width="150"><a href="__profile_link__">__username__</a></td>
+				<td width="150">__block_created__</td>
+				<td width="150"><a onclick="__action__" href="javascript:void(0);">__block_title__</a></td>
+            </tr>
+        </bx_repeat:items>
+    </table>
+</div>
+__controls__
+</form>
+__paginate__

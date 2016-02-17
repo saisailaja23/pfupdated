@@ -1,0 +1,35 @@
+<script>
+function setTitleText(sText){
+	if(document.getElementById('etext').value == "")
+		document.getElementById('etext').value = sText; 
+}
+
+function emptyTitleText(sText){
+	if(document.getElementById('etext').value == sText)
+		document.getElementById('etext').value = ""; 
+}
+</script>
+
+<form name='createfrm' method=post action='__create_url__'>
+<div class="bx_events_default_padding"> 
+	<div class="answerUnit">   
+		  <textarea id="etext" name="title" rows=1 cols=60 onblur="setTitleText('<bx_text:_bx_events_enter_your_event_name />')" onfocus="emptyTitleText('<bx_text:_bx_events_enter_your_event_name />')"><bx_text:_bx_events_enter_your_event_name /></textarea>
+	</div>
+ 
+	<div>   
+		<div class='actionsContainer'>
+			<div id="block_vote-__id__"  class='actionsBlock'>
+				<div class="button_wrapper" style="width: 150px; margin: 0pt;" onclick="document.createfrm.submit()">
+					<div class="button_wrapper_close"></div>
+					<div class="button_input_wrapper">
+						<button type="button" class="form_input_submit"> 
+							&nbsp;&nbsp;<bx_text:_bx_events_continue />
+						</button> 
+					</div>
+				</div> 
+			</div>
+		</div> 
+	</div> 
+	<div class="clear_both"></div>
+  </div>	
+  </form>

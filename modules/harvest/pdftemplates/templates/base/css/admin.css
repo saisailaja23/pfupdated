@@ -1,0 +1,128 @@
+/** Main Page **/
+.center{
+	text-align:center!important;
+}
+.stats_left_column{
+	width:50%;
+	float:left;
+}
+.stats_right_column{
+	width:50%;
+	float:right;
+}
+.box{
+	padding:5px 15px 25px 15px;
+	margin:5px;
+	line-height:16px;
+}
+td.label{font-weight:bold;width:180px;}
+td.green{font-weight:bold;color: #32a809;}
+td.red{font-weight:bold;color: #c2bb02;}
+td.value{font-weight:bold;color: #121212;}
+
+/** Affiliates Page **/
+
+ul#affiliate_actions{
+	margin:0px;
+	padding:0px;
+}
+.manage_aff{
+	text-align:center;
+	margin-top:15px;
+}
+th.header{
+    background-color:#efefef;
+	text-align:left;
+	padding:13px 0px;
+	border-bottom:1px solid #e1e1e1;
+}
+table#main_stats{
+	width:90%;
+	margin:0px auto;
+	border:1px solid #efefef;
+}
+#affiliate_details_container{
+	font-size:14px;
+}
+.change_period{
+	margin-top:10px;
+	margin-left:25px;
+	margin-bottom:10px;
+}
+table#main_stats th,
+table#second_stats th{
+	text-align:left;
+	background: #efefef;
+	padding:8px;
+}
+table#main_stats td,
+table#second_stats td{
+	padding-left:12px;
+}
+table#second_stats{
+	width:90%;
+	margin:25px auto;
+	border:1px solid #efefef;
+}
+
+/** Campaigns Admin Page **/
+ul#campaign_commissions{
+	list-style:none;
+	margin:0px!important;
+	padding:0px!important;
+}
+table#campaigns_table td.data{
+	border-top:1px solid #e4e4e4;
+	border-bottom:1px solid #e4e4e4;
+}
+td.height{
+	height:50px;
+}
+/** Banners Page **/
+td.banner_types{
+	text-align:center;
+	padding:15px;
+}
+img#previewField{
+	padding:5px;
+	min-height:150px;
+	min-width:150px;
+	border:2px dashed #e4e4e4;
+}
+#preview_link{
+	width:200px;
+	height:65px;
+	border:2px dashed #e4e4e4;
+	padding-left:40px;
+	margin:10px auto;
+}
+#preview_link h3.text_banner_title{
+	margin-bottom:0px!important;
+}
+span.preview{
+	font-weight:normal;
+	font-size:9px;
+	font-color:grey;
+}
+.preview_div{
+	text-align:center;
+	padding-top:15px;
+}
+td.money{
+	font-weight:bold;
+	color:#32a809;
+}
+.invalid{
+	font-size:16px;
+	margin:0px auto;
+	padding:40px;
+}
+.invalid span{
+	background:#FBAF34;
+	font-weight:bold;
+	padding:5px;
+}
+.captionn{
+
+    margin-left:5px;;
+}

@@ -1,0 +1,41 @@
+<div id="stats_main">
+		<div id="stats_tabs">
+			<ul>
+				<li><a href="#sales_tab1">Impressions</a></li>
+				<li><a href="#sales_tab2">Clicks</a></li>
+			</ul>
+			<div id="sales_tab1">
+				<div class="box">
+					<table class="info_table">
+						<tr><td class="label">Impressions:</td><td class="value">__total_imp__</td></tr>
+						<tr><td class="label">Clicks:</td><td class="value">__total_clicks__</td></tr>	
+						<tr><td class="label"># Sales:</td><td class="value">__total_sales__</td></tr>
+						<tr><td class="label">Commissions:</td><td class="value">__total_com__</td></tr>	
+					</table>
+				</div>
+			</div>
+			<div id="sales_tab2">
+				<div class="box">
+					<table class="info_table">
+						<tr><td class="label">Impressions:</td><td class="value">__mth_imp__</td></tr>
+						<tr><td class="label">Clicks:</td><td class="value">__mth_clicks__</td></tr>	
+						<tr><td class="label"># Sales:</td><td class="value">__mth_sales__</td></tr>
+						<tr><td class="label">Commissions:</td><td class="value">__mth_com__</td></tr>	
+					</table>
+				</div>
+			</div>
+		</div>
+</div>
+<div style="clear:both"></div>
+<script>
+	$(function() {
+		$( "#stats_tabs" ).tabs();
+	});
+</script>
+<script type="text/javascript">
+	$('.manage_aff').click(function(){
+		window.location.replace('__affiliates_url__');
+	});
+</script>
+
+

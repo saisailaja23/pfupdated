@@ -1,0 +1,26 @@
+__code__
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$('input#an_payment_btn').click(function(){
+		var cust_id = $('#cust_id').val();
+		var email = $('#email').val();
+		var cc_num = $('#cc_num').val();
+		var cc_expm = $('#cc_expm').val();
+		var cc_expy = $('#cc_expy').val();
+		var cc_csv = $('#cc_csv').val();
+		var fname = $('#fname').val();
+		var lname = $('#lname').val();
+		var cc_address1 = $('#cc_address1').val();
+		var cc_city = $('#cc_city').val();
+		var cc_state = $('#cc_state').val();
+		var cc_country = $('#cc_country').val();
+		var cc_zip = $('#cc_zip').val();
+		var phone = $('#phone').val();
+		bx_loading('an_payment_form', true);
+		$.post('__action_url__', {action:"an_process",cust_id: cust_id,email: email,fname: fname,lname: lname,cc_num: cc_num,cc_expm: cc_expm,cc_expy: cc_expy,cc_csv: cc_csv,cc_address1:cc_address1,cc_city:cc_city,cc_state:cc_state,cc_country:cc_country,cc_zip:cc_zip,phone:phone},function(data){	
+			$('#an_payment_form').html(data).fadeIn('slow');
+		});
+	});
+});
+</script>

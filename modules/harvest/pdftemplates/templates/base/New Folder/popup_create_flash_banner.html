@@ -1,0 +1,26 @@
+<div id="image_banner">
+__form__
+
+<script>
+$("form#create_flash_banner").submit(function() {
+	name 	= $('input#flash_name').val().length;
+	target 	= $('input#flash_target').val().length;
+	flash 	= $('input#upload_flash').val().length;
+	if(name == 0){
+		alert('Please enter the banner name');
+		return false;
+	}
+	if(target == 0){
+		alert('Please enter the destination URL');
+		return false;
+	}
+	if(flash == 0){
+		alert('Please select an SWF file to upload');
+		return false;
+	}
+	return true;
+});
+</script>
+
+
+

@@ -1,0 +1,55 @@
+<?
+/***************************************************************************
+*
+*     copyright            : (C) 2011 AQB Soft
+*     website              : http://www.aqbsoft.com
+*
+* IMPORTANT: This is a commercial product made by AQB Soft. It cannot be modified for other than personal usage.
+* The "personal usage" means the product can be installed and set up for ONE domain name ONLY.
+* To be able to use this product for another domain names you have to order another copy of this product (license).
+*
+* This product cannot be redistributed for free or a fee without written permission from AQB Soft.
+*
+* This notice may not be removed from the source code.
+*
+***************************************************************************/
+
+$aLangContent = array(
+	'_aqb_membership_vouchers' => 'Membership Vouchers',
+	'_aqb_membership_vouchers_codes' => 'Voucher codes',
+	'_aqb_membership_active' => '<span style="color: green;">{0} active</span>',
+	'_aqb_membership_expired' => '<span style="color: red;">{0} expired</span>',
+	'_aqb_membership_pending' => '<span style="color: gray;">{0} pending</span>',
+	'_aqb_membership_code' => 'Code',
+	'_aqb_membership_code_info' => 'Up to 16 characters',
+	'_aqb_membership_code_err1' => 'Code is requred and must be 1-16 characters',
+	'_aqb_membership_code_err2' => 'Such code already exists',
+	'_aqb_membership_discount' => 'Discount',
+	'_aqb_membership_starts' => 'Starts',
+	'_aqb_membership_ends' => 'Ends',
+	'_aqb_membership_discount_free' => 'Free',
+	'_aqb_membership_add' => 'Add',
+	'_aqb_membership_edit' => 'Edit',
+	'_aqb_membership_added' => 'Added',
+	'_aqb_membership_saved' => 'Saved',
+	'_aqb_membership_ends_err1' => 'End date must be a valid future date',
+	'_aqb_membership_ends_err2' => 'End date must be later than Start date',
+	'_aqb_membership_edit' => 'Edit',
+	'_aqb_membership_delete' => 'Delete',
+	'_aqb_membership_sure' => 'Are you sure you want to permanently delete this voucher code?',
+	'_aqb_membership_vouchers_save' => 'Save',
+	'_aqb_membership_vouchers_discount_code' => 'Get a Discount',
+	'_aqb_membership_vouchers_wrong_code' => 'Code verification failed',
+	'_aqb_membership_vouchers_right_code' => 'Code is accepted',
+	'_aqb_membership_vouchers_code_required' => 'Code is required',
+	'_aqb_membership_vouchers_taking_it' => 'I\'m taking it',
+	'_aqb_membership_vouchers_membership_assigned' => 'Membership is assigning...',
+	'_aqb_membership_vouchers_singleuse' => 'Single Use',
+	'_aqb_membership_vouchers_singleuse_info' => 'If checked then a member will be allowed to use this voucher code only once',
+	'_aqb_membership_vouchers_no_pricing_option' => 'No such pricing option available',
+	'_aqb_membership_vouchers_transaction_info' => '(discount {0}% with voucher code {1})',
+	'_aqb_membership_vouchers_used' => 'Used',
+	'_aqb_membership_vouchers_threshold' => 'Available quantity',
+	'_aqb_membership_vouchers_threshold_info' => 'Only this quantity of voucher codes will be available. Leave empty to set unlimited quantity.'
+);
+?>

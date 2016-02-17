@@ -1,0 +1,2 @@
+_Places drawing desc ===> Double click to complete drawing
+_Places map edit desc ===> Click on the map to select position more precise

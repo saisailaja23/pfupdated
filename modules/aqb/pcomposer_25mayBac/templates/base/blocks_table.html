@@ -1,0 +1,30 @@
+<span class="pc-top-paginate">__paginate__</span>
+<div class="pc-blocks-table">
+    <table width="100%" class="pc-blocks-table" cellpadding="0" cellspacing="0">
+        <tr height="20px">
+            <th width="20">&nbsp;</th>
+            <th><a href="javascript:void(0);" __block_id_function__ ><bx_text:_aqb_pc_admin_block_id /> __block_id_arrow__</a></th>
+			<th><a href="javascript:void(0);" __block_title_function__ ><bx_text:_aqb_pc_admin_block_title /> __block_title_arrow__</a></th>
+			<th><a href="javascript:void(0);" __block_type_function__ ><bx_text:_aqb_pc_admin_block_type /> __block_type_arrow__</a></th>
+			<th><a href="javascript:void(0);" __block_created_function__ ><bx_text:_aqb_pc_admin_block_created /> __block_date_arrow__</a></th>
+			<th><a href="javascript:void(0);" __block_approved_function__ ><bx_text:_aqb_pc_admin_block_approved /> __block_approved_arrow__</a></th>
+			<th><a href="javascript:void(0);" __block_shared_function__ ><bx_text:_aqb_pc_admin_block_shared /> __block_shared_arrow__</a></th>
+            <th><a href="javascript:void(0);" __username_function__ ><bx_text:_aqb_pc_admin_username /> __username_arrow__</a></th>
+    		<th><bx_text:_aqb_pc_admin_actions /></th>  	
+	     </tr>
+        <bx_repeat:items>
+            <tr class="pc-active">
+                <td width="20"><input type="checkbox" class="form_input_checkbox" id="pc-b-__id__" name="blocks[]" value="__id__" /></td>
+				<td width="*">__id__</td>
+				<td width="100"><a href="javascript:void(0);" onclick="__edit_pc_block_link__">__block_title__</a></td>
+				<td width="*">__block_type__</td>
+				<td width="*">__block_created__</td>
+				<td width="*">__block_approved__</td>
+				<td width="*">__block_shared__</td>
+				<td width="*"><a href="__edit_pc_page_link__">__username__</a></td>
+ 				<td width="*"><a href="javascript:void(0);" onclick="__edit_block_link__">__edit_block__</a>&nbsp;|&nbsp;<a href="javascript:void(0);" onclick="__view_block_link__">__view_block__</a></td>
+            </tr>
+        </bx_repeat:items>
+    </table>
+</div>
+__paginate__

@@ -1,0 +1,44 @@
+<div class="campaigns_main">
+<form id="campaigns_form" method="post" class="form_advanced" action="" onsubmit="">
+    <table width="100%" id="campaigns_table" cellpadding="5" cellspacing="0">
+        <tr>
+            <th class="header">&nbsp;</th>
+            <th class="header"><bx_text:_dol_aff_id /></th>
+            <th class="header"><bx_text:_dol_aff_adm_campaign_name /></th>
+            <th class="header"><bx_text:_dol_aff_num_banners /></th>
+            <th class="header"><bx_text:_dol_aff_commissions /></th>
+			<th class="header"><bx_text:_dol_aff_adm_status /></th>               
+        </tr>
+		<tr><td colspan="7">__message__</td></tr>
+        <bx_repeat:campaigns>
+            <tr>
+                <td class="data" width="30px"><input type="checkbox" class="form_input_checkbox" id="sub__id__" name="campaigns[]" value="__id__" /></td>
+                <td class="height data">__id__</td>
+                <td class="data">__name__</td>
+                <td class="data"><a href="__base__banners">__banners__</a></td>
+                <td class="data"><ul id="campaign_commissions">
+					<bx_if:click><li>__click_amount__ per click</li></bx_if:click>
+					<bx_if:join><li>__join_amount__ per join</li></bx_if:join>
+					<bx_if:membership><li>__membership_display__ membership sale</li></bx_if:membership>
+				</ul></td>
+ 				<td class="data">__status__</td>
+            </tr>
+        </bx_repeat:campaigns>
+		<tr><td colspan="7"></td></tr>
+    </table>
+</div>
+__paginate__
+__controls__
+</form>
+<script type="text/javascript">
+	$('input[name=adm_campaign_del]').click(function(){
+		if(confirm('<bx_text:_dol_aff_campaign_confirm_del />')){
+		}else{
+			return false;
+		}
+	});
+
+</script>
+
+
+

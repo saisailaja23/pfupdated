@@ -1,0 +1,8 @@
+__form__
+
+<script>
+  	$(document).ready(function(){
+    	var data = "__usernames__".split(",");
+		$("#username").autocomplete(data);
+ 	});
+</script>

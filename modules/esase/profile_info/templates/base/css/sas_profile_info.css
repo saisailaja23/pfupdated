@@ -1,0 +1,14 @@
+div.sas_progres_bar_main {
+	width:100%;
+	background-color:#8EFB8E;
+	border:1px solid #33A051;
+}
+
+div.sas_progres_bar_main div.current_val{
+	background-color:#1C8737;
+	height:10px;
+}
+
+div.sas_progres_link img {
+	vertical-align:sub;
+}

@@ -1,0 +1,23 @@
+.aqb_codes_options td {
+	border: 1px solid #CCCCCC;
+    font-size: 10pt;
+    text-align: right;
+}
+.aqb_header_row td{
+	background-color: #dadada !important;
+    font-size: 10pt;
+    font-weight: bold;
+    text-align: center;
+}
+.ui-datepicker {
+	z-index: 1000;
+}
+.aqb_row_active td{
+	background-color: #DDFFE1 !important;
+}
+.aqb_row_expired td{
+	background-color: #FFDDDD !important;
+}
+.aqb_row_pending td{
+	background-color: #EAEAEA !important;
+}

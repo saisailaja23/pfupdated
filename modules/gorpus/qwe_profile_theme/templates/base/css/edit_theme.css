@@ -1,0 +1,45 @@
+.qwe_profile_theme_css_form .input_wrapper_textarea {
+	width:400px;
+}
+
+.qwe_profile_theme_css_form .form_input_textarea {
+	height:200px;
+}
+
+.qwe_profile_theme_saved_links {
+	text-align:center;
+	margin:10px 0px 20px 0px;
+}
+
+.qwe_profile_theme_gallery {
+	text-align:center;
+}
+
+.qwe_profile_theme_gallery_sub {
+	width:690px;
+	margin:0px auto;
+}
+
+.qwe_profile_theme_gallery_item {
+	float:left;
+	width:150px;
+	height:100px;
+	margin:5px;
+	padding:8px 5px 5px 5px;
+	background-color:#F4F7FA;
+	border:1px solid #BFBFBF;
+	overflow:hidden;
+	cursor:pointer;
+}
+
+.qwe_profile_theme_gallery_item img {
+	cursor:pointer;
+}
+
+.qwe_profile_theme_gallery_title {
+	overflow:hidden;
+	font-weight:bold;
+	font-size:10px;
+	margin-bottom:3px;
+	cursor:pointer;
+}

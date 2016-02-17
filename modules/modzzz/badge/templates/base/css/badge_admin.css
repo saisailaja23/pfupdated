@@ -1,0 +1,40 @@
+#modzzz_badge_admin_listing .block_cont {
+    padding:1px;
+}
+
+table.modzzz_badge_actions {
+    border-collapse:collapse;
+    margin:5px;
+    width:100%;
+}
+
+table.modzzz_badge_actions td {
+    width:33%;
+    text-align:center;
+}
+
+.modzzz_badge_manage_wrapper {
+    padding:0;
+}
+
+.badgeContainer {
+border-bottom:1px solid #CCCCCC;
+border-right:1px solid #CCCCCC;
+float:left;
+margin:7px;
+padding:5px;
+position:relative;
+width:28%;
+}
+.badgeContainer .tickbox{ position:absolute; right:0px; top:0px;}
+.badgeContainer .BadgeName{
+text-align:left;
+padding:2px;
+margin:2px;
+font-weight:bold;
+}
+.wrapBadge{
+background:repeat center center;
+width:120px;
+height:120px;
+}

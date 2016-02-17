@@ -1,0 +1,64 @@
+<div id="stats_main">
+	<div class="stats_left_column">
+		<div id="aff_tabs">
+			<ul>
+				<li><a href="#aff_tab1"><bx_text:_dol_aff_affiliates /></a></li>
+			</ul>
+			<div id="aff_tab1">
+				<div class="box">
+					<table class="info_table">
+						<tr><td class="label"><bx_text:_total_affiliates />:</td><td class="value">__total_aff__</td></tr>
+						<tr><td class="label"><bx_text:_active_affiliates />:</td><td class="green">__active_aff__</td></tr>	
+						<tr><td class="label"><bx_text:_pending_affiliates />:</td><td class="red">__pending_aff__</td></tr>	
+					</table>
+					<div class="manage_aff">
+						<div class="button_wrapper">
+							<input type="submit" value="<bx_text:_manage_affiliates />" name="adm_mlevels_update" class="form_input_submit">
+							<div class="button_wrapper_close"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="stats_right_column">
+		<div id="sales_tabs">
+			<ul>
+				<li><a href="#sales_tab1"><bx_text:_aff_stats_total /></a></li>
+				<li><a href="#sales_tab2"><bx_text:_aff_stats_mth /></a></li>
+			</ul>
+			<div id="sales_tab1">
+				<div class="box">
+					<table class="info_table">
+						<tr><td class="label"><bx_text:_dol_aff_front_impressions />:</td><td class="value">__total_imp__</td></tr>
+						<tr><td class="label"><bx_text:_dol_aff_front_clicks />:</td><td class="value">__total_clicks__</td></tr>	
+						<tr><td class="label"><bx_text:_dol_aff_commissions />:</td><td class="value">__total_com__</td></tr>	
+					</table>
+				</div>
+			</div>
+			<div id="sales_tab2">
+				<div class="box">
+					<table class="info_table">
+						<tr><td class="label"><bx_text:_dol_aff_front_impressions />:</td><td class="value">__mth_imp__</td></tr>
+						<tr><td class="label"><bx_text:_dol_aff_front_clicks />:</td><td class="value">__mth_clicks__</td></tr>	
+						<tr><td class="label"><bx_text:_dol_aff_commissions />:</td><td class="value">__mth_com__</td></tr>	
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div style="clear:both"></div>
+<script>
+	$(function() {
+		$( "#aff_tabs" ).tabs();
+		$( "#sales_tabs" ).tabs();
+	});
+</script>
+<script type="text/javascript">
+	$('.manage_aff').click(function(){
+		window.location.replace('__affiliates_url__');
+	});
+</script>
+
+

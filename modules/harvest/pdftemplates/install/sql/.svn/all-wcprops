@@ -1,0 +1,17 @@
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/phpprojects/!svn/ver/9439/www.parentfinder.com/modules/harvest/affiliates/install/sql
+END
+install.sql
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/phpprojects/!svn/ver/10271/www.parentfinder.com/modules/harvest/affiliates/install/sql/install.sql
+END
+uninstall.sql
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/phpprojects/!svn/ver/9439/www.parentfinder.com/modules/harvest/affiliates/install/sql/uninstall.sql
+END
