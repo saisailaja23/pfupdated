@@ -1,0 +1,59 @@
+satya.kiran@mediaus.com-11-Your Account Password-12-<bx_include_auto:_email_header.html />
+
+<p><b>Dear <RealName></b>,</p>
+
+<p>Your member ID: <b><recipientID></b></p>
+
+<p>Your password: <b><Password></b></p>
+
+<p>You may login here: <a href="<Domain>"><Domain></a></p>
+
+
+<bx_include_auto:_email_footer.html />-51-59-51-Array
+(
+    [Password] => HKLNPA6&
+)
+-16-no-reply@parentfinder.com-1-ParentFinder Adoption-2-From: =?UTF-8?B?UGFyZW50RmluZGVyIEFkb3B0aW9u?= <no-reply@parentfinder.com>-3--fno-reply@parentfinder.com-4-<html><head></head>
+<body bgcolor="#eee" style="margin:0; padding:0;">
+
+<div style="padding:20px; background-color:#eee;">
+
+    <table width="600" border="0" cellspacing="0" cellpadding="0" align="center">
+
+        <tr><td valign="top">
+            
+            <div style="color:#333; padding:20px; border:1px solid #999; background-color:#fff; font:14px Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;">
+                <div style="border-bottom:2px solid #eee; padding-bottom:10px; margin-bottom:20px; font-weight:bold; font-size:22px; color:#999;">ParentFinder Adoption</div>
+
+
+
+<p><b>Dear MarkLetty</b>,</p>
+
+<p>Your member ID: <b>59</b></p>
+
+<p>Your password: <b>HKLNPA6&</b></p>
+
+<p>You may login here: <a href="http://www.parentfinder.com/">http://www.parentfinder.com/</a></p>
+
+
+
+            
+            </div>
+
+        </td></tr>
+
+        <tr><td valign="top">
+                <div style="margin-top:5px; text-align:center; color:#999; font:11px Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;">
+                    To unsubscribe - login to your account, edit your profile and uncheck 'Receive site notifications'.
+                </div>                    
+                <div style="margin-top:5px; text-align:center; color:#999; font:11px Helvetica Neue, Helvetica, Arial, Verdana, sans-serif;">
+                    
+                </div>
+        </td></tr>
+
+    </table>
+
+</div>
+
+</body></html>
+-37-Your Account Password-38--$isDisableAlert is on-Mail output ----1-----

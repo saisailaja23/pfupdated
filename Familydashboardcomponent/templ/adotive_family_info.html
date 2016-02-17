@@ -1,0 +1,12 @@
+<div class='agencyMod'>
+          <div class='meida'>{obj.profile_image}</div>
+          <div class='agencyName'>{obj.profile_firstname}
+             <div class='state'>
+             <div>Memership: {obj.membership_status}</div> 
+            <label><input type='radio' value='{obj.profile_id}' name='{obj.selected_random}' class='active' {obj.selected_active} />ACTIVE</label><br />
+            <label><input type='radio' value='{obj.profile_id}' name='{obj.selected_random}' class='inactive' {obj.selected_inactive} />INACTIVE</label> <br />
+            <label><input type='radio' value='{obj.profile_id}' name='{obj.selected_random}' class='match' {obj.selected_match} />MATCHED</label><br />
+            <label><input type='radio' value='{obj.profile_id}' name='{obj.selected_random}' class='place' {obj.selected_placed} />PLACED</label> <br />
+            </div>
+          </div>
+</div>

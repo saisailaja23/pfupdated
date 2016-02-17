@@ -1,0 +1,32 @@
+a {
+	text-decoration: none; color: #00c000;
+}
+
+a:link {
+	text-decoration:none; color:#00c000;
+}
+
+a:hover {
+	text-decoration:underline; color:#00ff00;
+}
+
+body {
+	background-color: #000000;
+}
+
+.textareax {
+	color: green; text-align: center;
+	background-color: black;
+	border: 1px solid white;
+	overflow:hidden;
+} 
+
+.textareay {
+	color: green;
+	background-color: black;
+	border: 1px solid white;
+} 
+
+.filex {
+	opacity:0;
+}

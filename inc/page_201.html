@@ -1,0 +1,347 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+<!--<script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>-->
+<script type="text/javascript" src="https://dme0ih8comzn4.cloudfront.net/js/feather.js"></script>
+<script type="text/javascript" src="ChangePassword/model/Changepasswordcomponent_Model.js"></script>
+<script type="text/javascript" src="AgencyChangeComponent/model/AgencyChangeComponent_Model.js"></script>
+<script type="text/javascript" src="components/album/js/jwplayer/jwplayer.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="components/album/js/jquery.plugins.js"></script>
+<script src="http://www.appelsiini.net/projects/jeditable/jquery.jeditable.js" type="text/javascript" ></script>
+<script src="http://www.appelsiini.net/projects/jeditable/jquery.jeditable.charcounter.js" type="text/javascript" ></script>
+<script src="http://www.appelsiini.net/projects/jeditable/js/jquery.charcounter.js" type="text/javascript"></script>
+<script type="text/javascript" src="components/album/js/photo-album.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="components/album/js/video-album.js"></script>
+<script type="text/javascript" src="templates/tmpl_par/js/201.js"></script>
+<link rel="stylesheet" type="text/css" href="components/album/css/style.css" />
+<link rel="stylesheet" type="text/css" href="templates/tmpl_par/css/our-family.css" />
+<script type="text/javascript" src="ChangePassword/controller/Changepasswordcomponent.js"></script>
+<script type="text/javascript" src="AgencyChangeComponent/controller/AgencyChangeComponent.js"></script>
+<script type="text/javascript" src="templates/tmpl_par/js/head.core.min.js"></script>
+  <script type="text/javascript" src="uploadComponent/js/model.js"></script>
+  <script type="text/javascript" src="uploadComponent/js/controller.js"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+var flipcounts = __top_flipcount__;
+var ebookcounts = __top_ebookcount__;
+var pdfcounts = __top_pdfcount__;
+window.onload = function() {
+  changePasswordcomponent.start({
+    uid: (new Date()).getTime(),
+    application_path: siteurl + "ChangePassword/",
+    dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+  });
+    AgencyChangeComponent.start({
+    uid: (new Date()).getTime(),
+    application_path: siteurl + "AgencyChangeComponent/",
+    dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+  });
+};
+for(i in $('a')) {
+  if($('a')[i].innerHTML == 'ADOPTIVE COUPLES') {
+    $($('a')[i]).css('background','#019d8c');
+    break;
+  }
+}
+           var featherEditor = new Aviary.Feather({
+               apiKey: '63a6c8ae9d78e698',
+               apiVersion: 3,
+               theme: 'light', // Check out our new 'light' and 'dark' themes!
+               tools: 'all',
+               appendTo: '',
+               onSave: function(imageID, newURL) {
+				alert(newURL);
+				$($('#' + imageID.replace('fake_', '')).find('div')[0]).css('background-image','url('+newURL+'?'+Math.random()+')')
+               },
+               onError: function(errorObj) {
+                   alert(errorObj.message);
+               }
+            });
+</script>
+ <style>
+#PwdForm {
+  display: none;
+  width:100%;
+}
+#PwdFormone {
+  display: none;
+  width:100%;
+}
+/*#FlpBk {
+  display: none;
+  width:100%;
+  padding-bottom: 15px;
+}*/
+#FpBkPdfPf {
+  display: none;
+  width:100%;
+  padding-bottom: 15px;
+}
+.mem25Msg {
+  width: 100%;
+  text-align: center;
+}
+a:visited {
+  color: #f195bf;
+}
+a:hover {
+  color: #a2a4a7;
+}
+#mem_upgrade {
+    display:none;
+}
+</style>
+<div class="clear_both"></div>
+<div class="page201">
+  <div class="pinkIcons_adoptive icoResources_adoptive title">__top_usr_title__</div>
+  <div class="OFDBMod">
+    <h2 class="user-name tealTxt">__top_username__</h2>
+    <!-- <a class="upgradeBtn" href="extra_member.php">UPGRADE MY MEMBERSHIP</a> -->
+      <div class="dash-board-detail">
+ <div style="width:230px;float:left;">
+  <div id="profilepic"></div><div id= "cropavatar" >Click here to Recrop Avatar</div></div>
+  <div class="dash-board-sub">    
+  <div>
+  <div class="user-details">Username</div>
+  <div class="user-detail-value">: __top_NickName__</div>
+  <div style="clear:both"></div>
+  </div> 
+  <div>  
+  <div class="user-details">Membership </div>
+  <div class="user-detail-value">: __top_membership__ <a class="user-detail-anchor" id="mem_upgrade" href="extra_member.php"> (Click here to upgrade)</a></div>
+  <div style="clear:both"></div>
+  </div> 
+  <div>
+  <div class="user-details">Creation Date</div>
+  <div class="user-detail-value">: __top_CreationDate__</div>
+  <div style="clear:both"></div>
+  </div>
+  <div>
+ <div class="user-details">Email on File</div>   
+ <div class="user-detail-value"><a class="user-detail" href=mailto:__top_Email__>: __top_Email__</a></div>
+ <div style="clear:both"></div>
+ </div> 
+ <div>
+ <div class="user-details">Our Page</div>
+ <div class="user-detail-value"><a class="user-detail" href=<bx_url_root />__top_NickName__/about>: <bx_url_root />__top_NickName__/about</a></div>
+<div style="clear:both"></div>
+ </div> 
+ <div>
+  <div class="user-details">Flipbook</div>
+  <div class="user-detail-value">: <img style="margin-bottom:-3px;" src="<bx_url_root />PDFUser/icons/dashcrossmark.png" id="flipchange" alt="default" height="17" width="20"> </div>
+  <div style="clear:both"></div>
+  </div> 
+ <div>
+ <div class="user-details">E-Pub</div>
+ <div class="user-detail-value">: <img style="margin-bottom:-3px;" src="<bx_url_root />PDFUser/icons/dashcrossmark.png" id="ebookchange" alt="default" height="17" width="20"></div>
+<div style="clear:both"></div>
+ </div> 
+ <div>
+ <div class="user-details">Pdf Profile</div>
+ <div class="user-detail-value">: <img style="margin-bottom:-3px;" src="<bx_url_root />PDFUser/icons/dashcrossmark.png" id="pdfchange" alt="default" height="17" width="20"></div>
+<div style="clear:both"></div>
+ </div> 
+  </div>
+  <div style="clear:both"></div>
+  </div>
+    <div class="grid-con">
+    <div class="row">
+      <ul>
+        <li class="edit-profile"><a href="extra_profile_builder_11.php"></a></li> 
+        <li class="view-our-public-profile"><a href="__top_NickName__"></a>
+<!--        <li class="view-our-public-profile"><a href="extra_profile_view_17.php?id=__top_ID__"></a>-->
+        </li>
+        <li class="photos"><a href="" id="photoAlbumLink"></a></li>
+        <li class="videos"><a href="" id="videoAlbumLink"></a></li>
+      </ul>
+      <div id="photoResult"></div>
+      <div id="videoResult"></div>
+    </div>
+    <div class="row middle">
+      <ul>
+        <li class="mail"><a href="mail.php?mode=inbox"></a></li>
+          <!-- <li class="flipbook"><a href="javascript:void(0);" id="flipbook"></a> </li> -->
+        <li class="journal"><a href="blogs/my_page/"></a></li>
+        <li class="pdf-profile"><a href="javascript:void(0);" id="pdfprofile"></a></li>
+          <li class="agency"><a href="extra_agency_view_29.php?ID=__top_AgencyID__"></a></li>
+      </ul>
+      <div  id="FpBkPdfPf">
+        <div class="topbar">    
+          <span id="FbPpClose" class="dashboardClose">â†‘</span>   
+          <h2 id="mem25header"></h2> <h3 id="name"></h3>      
+        </div>
+        <div class="mem25Msg"><div id="mem25msg"></div><div>Please upgrade <u><a href='extra_member.php'>here</a></u></div></div>
+      </div>
+        </div>
+      <div class="row">
+      <ul>
+          
+        <li class="forum"><a href="forum/"></a></li>
+        <li class="alacarte-services"><a href="cart_view_01.php" id="alacarteservices"></a></li>
+        <li class="change-password"><a href="javascript:void(0)" id="Cpwd"></a></li>
+        <li class="changeagency"><a href="javascript:void(0)" id="Cpwdone"></a></li>
+          <!-- <li class="userdocument"><a href="page/uploaddoc"></a></li> -->
+      </ul>
+        <div  id="PwdForm" style="">
+            <div class="topbar"> 		
+            <span id="close">â†‘</span>		
+            <h2>Change Password</h2> <h3 id="name"></h3>      
+        </div>
+        </div>
+    <div  id="PwdFormone" style="">
+        <div class="topbar"> 		
+        <span id="closeone">â†‘</span>		
+        <h2>Change Agency</h2> <h3 id="name"></h3>      
+    </div>
+</div>
+    </div>
+        
+    </div>
+  </div>
+  </div>
+<div class="clear_both"></div>
+<script type="text/javascript">   
+if(flipcounts == 1)
+document.getElementById("flipchange").src = siteurl+"PDFUser/icons/dashsetdefault.jpg";
+if(ebookcounts == 1)
+document.getElementById("ebookchange").src = siteurl+"PDFUser/icons/dashsetdefault.jpg";
+if(pdfcounts > 0)
+document.getElementById("pdfchange").src = siteurl+"PDFUser/icons/dashsetdefault.jpg";
+var mem = __top_membership_ID__;
+var flipcounts = '__flip_count__';
+if(mem != '24') {
+    $('#mem_upgrade').css('display', 'inline');
+}
+// START - Flip book and create pdf profile restriction based on membership
+window.flag = 0;
+$('#flipbook').click(function(e) {
+  if(mem == '25') {
+    e.preventDefault();
+    $('#mem25header').html('Flipbook');
+    $('#mem25msg').html("Your current membership basic doesn't allow you to create flipbooks.");
+    $( "#FpBkPdfPf" ).slideDown( "slow" );
+  }
+/*else if (flipcounts == 1)
+    {
+    e.preventDefault();
+    $('#mem25header').html('Flipbook');
+    $('#mem25msg').html("Your current membership network can create one Flipbook.");
+    $( "#FpBkPdfPf" ).slideDown( "slow" );    
+  }
+ else {
+ if(window.flag == 1)    
+ {
+    e.preventDefault();
+    $('#mem25header').html('Flipbook');
+    $('#mem25msg').html("Your current membership network can create one Flipbook.");
+    $( "#FpBkPdfPf" ).slideDown( "slow" );  
+ }*/
+ else
+ newWin();  
+ //}
+});
+
+$('#pdfprofile').click(function(e) {
+  if(mem == '25') {
+    e.preventDefault();
+    $('#mem25header').html('PDF Profile');
+    $('#mem25msg').html("Your current membership basic doesn't allow you to create pdf profiles.");
+    $( "#FpBkPdfPf" ).slideDown( "slow" );
+//  dhtmlx.message({ type: "alert-error", text: "Your current membership basic doesn't allow you to create pdf profiles."});
+  }
+  else
+    {
+        window.location.href = 'page/userprofile';
+    }
+});
+
+// $( "#FbClose" ).click(function () {
+//   $( "#FlpBk" ).slideUp( "slow" );
+// });
+
+$( "#FbPpClose" ).click(function () {
+  $( "#FpBkPdfPf" ).slideUp( "slow" );
+});
+
+// START - Flip book and create pdf profile restriction based on membership
+
+// START - Photo and video restriction based on membership
+  app201.init(mem);  
+// END - Photo and video restriction based on membership  
+
+//croping for dashboard profile pic
+$(function(){
+  //refresh page after croping
+  
+  $.pic_refresh=function(){
+    // window.location.reload();
+    $("#profilepic").css({
+        "opacity": "0.3",
+        "width": "178px",
+        "height": "148px",
+        "text-align": "center",
+        "line-height": "160px",
+        "position":"relative"
+    }).append('<div id="ref_loader" style="text-align: center; width: 100%; color: #000;position: absolute; top: 0; left: 0;">Loading..<div>');
+      jqxhr();
+  };
+  var jqxhr = function(){
+     $.post( "pic.php", function(response) {
+      if(response != null) {
+          $("#profilepic").html( '<img src="'+response.pic+'"/>' );
+          document.getElementById('cropavatar' ).style.display = 'block';
+          crop_events(response.id);
+          $("#profilepic").attr("style","");
+          if($("#ref_loader").length > 0){
+           $("#profilepic").attr("style","");
+            $("#ref_loader").remove();
+          }
+          
+      }
+        else {
+        $("#profilepic").html( '<img src="'+siteurl+'templates/tmpl_par/images/pf-blank.jpg'+'"/>' );  
+        document.getElementById('cropavatar' ).style.display = 'none';  
+      }
+    });  
+  };
+jqxhr();
+ 
+  function crop_events(id){
+      $("#cropavatar").on("click",function(){
+        var img,server,url;
+        server='modules/boonex/avatar/data/avatarphotos/'+id+".jpg";
+        img='../../modules/boonex/avatar/data/avatarphotos/'+id+".jpg";
+        url ='components/album/pcrop.php?server=' + server + '&img=' + img +'&iframe=crop&width=100%&height=100%&uistr='+(new Date()).getTime();
+        $.fn.prettyPhoto();
+        $.prettyPhoto.open(url);
+      });
+    }
+});
+</script>
+<script type="text/javascript">
+function newWin(obj)
+ {        
+  uploadController.loadValues({
+  window_id       : "uploadProfile", //mandatory
+  win_title       : "",
+  upload_formats  : "pdf",       //mandatory                        //formats as comma seprated
+  uploadURL       : "file_upload.php",      //mandatory                        //the path to the server-side script relative to the index file 
+  SWFURL          : "../../../../../file_upload.php", //mandatory       //the path to the server-side script relative to the client flash script file
+  msgOrAlert      : false,                                               //true for alert and false for message(in poup alert willnot work)
+  autoStart       : true,                                               //true or false(default false)
+  numberOfFiles   : 1,                                                  //default 100
+  clickObj        : obj,               
+  popup           : false,                                          //default window , give true for popup
+  membership      : mem,
+  flipbook      : flipcounts,
+  
+  onCallBack      : onActionPerformed //mandatory
+   });
+  uploadController.initComponent();
+ }
+  
+function onActionPerformed(){
+    window.flag = 1; 
+ }
+ 
+</script>
+<bx_include_auto:_sub_footer.html />

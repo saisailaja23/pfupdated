@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+</head>
+<body>
+
+<script>
+    
+	
+	function userHasCamMic(cam_number,mic_number){
+		//alert("userHasCamMic("+cam_number+","+mic_number+")");
+		//this function is called before camera setup to announce the number of cameras and mics available
+	}
+	
+	function btRecordPressed(){
+		//alert("btRecordPressed");
+		//this function is called whenever the Record button is pressed to start a recording
+	}
+	
+	function btStopRecordingPressed(){
+		//alert("btStopRecordingPressed");
+		//this function is called whenever a recording is stopped
+	}
+	
+	function btPlayPressed(){
+		//alert("btPlayPressed");
+		//this function is called whenever the Play button is pressed to start/resume playback
+	}
+	
+	function btPausePressed(){
+		//alert("btPausePressed");
+		//this function is called whenever the Pause button is pressed during playback
+	}
+	
+	function onUploadDone(streamName,streamDuration,userId){
+		//alert("onUploadDone("+streamName+","+streamDuration+","+userId+")");
+		
+		//this function is called when the video/audio stream has been all sent to the video server and has been saved to the video server HHD, 
+		//on slow client->server connections, because the data can not reach the video server in real time, it is stored in the recorder's buffer until it is sent to the server, you can configure the buffer size in avc_settings.XXX
+		
+		//this function is called with 3 parameters: 
+		//streamName: a string representing the name of the stream recorded on the video server including the .flv extension
+		//userId: the userId sent via flash vars or via the avc_settings.XXX file, the value in the avc_settings.XXX file takes precedence if its not empty
+		//duration of the recorded video/audio file in seconds but acccurate to the millisecond (like this: 4.322)
+	}
+	
+	function onSaveOk(streamName,streamDuration,userId,cameraName,micName){
+		//alert("onSaveOk("+streamName+","+streamDuration+","+userId+","+cameraName+","+micName+")");
+		
+		//the user pressed the [save] button inside the recorder and the save_video_to_db.XXX script returned save=ok
+	}
+	
+	function onSaveFailed(streamName,streamDuration,userId){
+		//alert("onSaveFailed("+streamName+","+streamDuration+","+userId+")");	
+		
+		//the user pressed the [save] button inside the recorder but the save_video_to_db.XXX script returned save=fail
+	}
+	function onSaveJpgOk(streamName,userId){
+		//alert("onSaveJpgOk("+streamName+","+userId+")");
+		
+		//the user pressed the [save] button inside the recorder and the save_video_to_db.XXX script returned save=ok
+	}
+	
+	function onSaveJpgFailed(streamName,userId){
+		//alert("onSaveJpgFailed("+streamName+","+userId+")");
+		
+		//the user pressed the [save] button inside the recorder but the save_video_to_db.XXX script returned save=fail
+	}
+</script>
+
+	<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+			id="VideoRecorder" width="925" height="400"
+			codebase="http://fpdownload.macromedia.com/get/flashplayer/current/swflash.cab">
+			<param name="movie" value="HDFVR/VideoRecorder.swf?userId=XXY&qualityurl=HDFVR/audio_video_quality_profiles/wide/1280x720x30x90.xml" />
+			<param name="quality" value="high" />
+			<param name="bgcolor" value="#ffffff" />
+			<param name="allowScriptAccess" value="sameDomain" />
+			<embed src="HDFVR/VideoRecorder.swf?userId=XXY&qualityurl=HDFVR/audio_video_quality_profiles/wide/1280x720x30x90.xml" quality="high" bgcolor="#ffffff"
+				width="925" height="400" name="VideoRecorder" align="middle"
+				play="true"
+				loop="false"
+				quality="high"
+				allowScriptAccess="sameDomain"
+				type="application/x-shockwave-flash"
+				pluginspage="http://www.adobe.com/go/getflashplayer">
+			</embed>
+	</object>
+</body>
+</html>

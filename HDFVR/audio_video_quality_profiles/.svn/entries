@@ -1,0 +1,79 @@
+8
+
+dir
+5224
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/HDFVR/audio_video_quality_profiles
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-01-18T11:05:37.413181Z
+4357
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+19b7f35c-5c69-4d1e-a880-fa3cfc1a8071
+
+wide
+dir
+
+640x480x30x90.xml
+file
+
+
+
+
+2011-02-22T12:09:36.063386Z
+3b27662793c6a39e82c1644a248d8ab4
+2011-01-18T11:05:37.413181Z
+4357
+phpprojects
+
+400x300x30x90.xml
+file
+
+
+
+
+2011-02-22T12:09:36.063386Z
+1d8a3a77458748672dcfe45bfee32704
+2011-01-18T11:05:37.413181Z
+4357
+phpprojects
+
+readme.txt
+file
+
+
+
+
+2011-02-22T12:09:36.063386Z
+b4172f6ce5876fdeeec946a6ffa40202
+2011-01-18T11:05:37.413181Z
+4357
+phpprojects
+
+320x240x30x90.xml
+file
+
+
+
+
+2011-02-22T12:09:36.078984Z
+5204cbcf84749bc38aba70a2e8c00f10
+2011-01-18T11:05:37.413181Z
+4357
+phpprojects
+

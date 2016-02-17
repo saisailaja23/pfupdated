@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Image Crop</title>
+  
+  
+
+  <script type="text/javascript" src="lib/CAIRS_Framework/CAIRS_fw.js"></script>
+  <script type="text/javascript" src="controller/ImageCrop.js"></script>
+
+  <script type="text/javascript">
+   CAIRS.environment = "dev";
+
+
+  var 
+  site_url=location.protocol+"//"+location.host+"/",
+  application_path=site_url+"ImageCrop/";
+
+  window.onload = function() {
+     ImageCrop.start({
+      application_path: site_url+"ImageCrop/",
+      dhtmlx_codebase_path: site_url+"plugins/dhtmlx/",
+      upload_path:application_path+"uploads/",
+      converted_img_path:application_path+"uploads/avatar/",
+      //physical_site_path:"/var/www/html/pf/",
+      physical_site_path:"D:/xampp/htdocs/www.parentfinder.com.PV.3.0/",
+      avatar_path:site_url+"modules/boonex/avatar/data/avatarphotos/",
+      site_url:site_url
+    });
+  }
+  </script>
+</head>
+
+<body>
+  <div id="vp" rel="prettyPhoto"></div>
+  <a href="#" rel="prettyPhoto"></div>
+</body>
+
+</html>
+</script>
+

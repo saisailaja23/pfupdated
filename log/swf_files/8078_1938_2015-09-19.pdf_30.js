@@ -1,0 +1,1 @@
+[{"number":20,"pages":24,"height":889,"width":1131,"fonts":[],"text":[]},{"number":21,"pages":24,"height":897,"width":1113,"fonts":[],"text":[]},{"number":22,"pages":24,"height":901,"width":1122,"fonts":[],"text":[]},{"number":23,"pages":24,"height":885,"width":1128,"fonts":[],"text":[]},{"number":24,"pages":24,"height":884,"width":1133,"fonts":[],"text":[]}]
