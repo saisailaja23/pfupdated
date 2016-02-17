@@ -1,0 +1,60 @@
+<bx_include_auto:_resp_sub_header.html />
+<script type="text/javascript" src="templates/tmpl_par/js/head.core.min.js"></script>
+<script src="viewourfamilies/js/journalsContent.js?cache=__cache_control__"></script>
+<script type="text/javascript">
+    var siteurl = '<bx_url_root />';
+    var id = '__profile_id__';
+    var loadFrom = '__profile_badge__';
+    var nickName = '__profile_nickname__';
+    var journalId = '__journal_id__';
+</script>
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.0";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<style>
+    div#shareIcon > .btn {
+        padding: 0px;
+        margin-right: 8px;
+    }
+</style>
+
+<!-- Place this tag after the last share tag. -->
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/platform.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
+
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+<div class="clear_both"></div>
+<div class="pageJournals">
+    <div class="container view">
+        <div class="back"></div>
+        <div class="row pf_view_cl020"><!-- row section for data starts-->
+            <div id="pf_journal_id01" class="pf_view_cl01" ><!-- outer data container starts-->
+                <div id="journal" class="ourjournal">
+                    <div class="jorHead" style='float:left'></div>
+                    <!--<div class="jorID" style='float:right'></div>-->
+                    <div style='clear:both'></div>
+                    <div class="jorBody" style='clear:both;'></div>
+                </div>
+                <div id="shareIcon">
+                    <div class="btn"><div class="fb-share-button" data-href="<bx_url_root />/__profile_nickname__/journal/journalname/__journal_id__/__profile_badge__/" data-layout="button"></div></div>
+                    <div class="btn"><div class="g-plus" data-action="share" data-annotation="none"></div></div>
+                    <div class="btn"><a href="<bx_url_root />/__profile_nickname__/journal/journalname/__journal_id__/__profile_badge__/" class="twitter-share-button" data-count="none">Tweet</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_resp_sub_footer.html />

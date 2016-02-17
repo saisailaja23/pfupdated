@@ -1,0 +1,191 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="plugins/tiny_mce4/tinymce.js"></script>
+<script type="text/javascript" src="AgencybuilderComponent/model/AgencybuilderComponent_Model.js"></script>
+<script type="text/javascript" src="AgencybuilderComponent/controller/AgencybuilderComponent.js"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+var ptype = __top_login__
+
+function showDefatulVideo(){ 
+	$('#default_div').html("Loading...");
+	dhtmlxAjax.get(site_url + "components/album/processors/saveDefaultYoutubeLink.php?method=get", function(loader) {
+		var data = JSON.parse(loader.xmlDoc.responseText);
+		if(data.videoUri){
+			var con = '<iframe width="450" height="300" src="https://www.youtube.com/embed/'+data.videoUri+'"></iframe>';
+			$('#default_div').html(con);
+            console.log(con);
+            $('.youtubeDelete').show();
+
+		}else{
+            $('#default_div').html('<img style="width:450px;" src="http://www.parentfinder.com/templates/tmpl_par/images/NO-VIDEOS_icon.png"/>');
+            $('.youtubeDelete').hide();
+        }
+	});
+}
+
+if (ptype == 8) {
+    window.onload = function() {
+        AgencybuilderComponent.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "AgencybuilderComponent/",
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+        });
+	showDefatulVideo();
+    };
+} else {
+
+}
+
+//tinyMCE init
+tinyMCE.init({
+//[START DeeEmm TinyBrowser MOD]
+            file_browser_callback : "tinyBrowser",
+            //[END DeeEmm TinyBrowser MOD]
+            convert_urls : false,
+            mode : "specific_textareas",
+            //theme : "modern",
+            //[START DeeEmm TinyBrowser MOD]
+            file_browser_callback : "imageManager",
+            //[END DeeEmm TinyBrowser MOD]
+            editor_selector :"'group_edit_html', 'story_edit_area', 'classfiedsTextArea', 'blogText', 'comment_textarea', 'form_input_html'",
+
+           theme: 'modern',
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality emoticons template paste textcolor',
+                'image moxiemanager'
+            ],
+            toolbar: 'image insertimage | insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons| styleselect formatselect fontselect fontsizeselect',
+            image_advtab: true,
+
+            entity_encoding : "named",
+            width : 780,
+            paste_use_dialog : false,
+            paste_auto_cleanup_on_paste : true,
+            paste_convert_headers_to_strong : false,
+            paste_strip_class_attributes : "all",
+            paste_remove_spans : false,
+            paste_remove_styles : false,
+            init_instance_callback  :  AgencybuilderComponent.setAgencyDescription
+});
+
+//New control - tinyMCE
+dhtmlXForm.prototype.items.tinyMCE = {			
+
+            // constructor, required
+            render: function(item, data) {				
+
+                    item._type = "tinyMCE";				
+                    var p = document.createElement("DIV");
+                    p.className = "dhxlist_cont";
+                    item.appendChild(p);
+
+                    var t = document.createElement("TEXTAREA");
+                    t.name = item._idd;
+                    t._idd = item._idd;
+                    t.id = item._idd;
+                    t.rows = data.rows;
+                    p.appendChild(t);
+                    var style = "";
+                    if (!isNaN(data.inputWidth)) style += "width:"+parseInt(data.inputWidth)+"px;";
+                    if (!isNaN(data.inputHeight)) style += "height:"+parseInt(data.inputHeight)+"px;";
+
+                    t.style.cssText = style;
+
+                    tinyMCE.execCommand('mceAddEditor', false, item._idd);
+
+                    return this;
+            },
+
+            // setValue and getValue, below basic code, you can add your custom code also
+            setValue: function(item, val) {
+                    item._value = val;
+                    tinyMCE.get(item._idd).setContent(val);
+            },
+            getValue: function(item) {
+                    return  tinyMCE.get(item._idd).getContent();
+            },
+
+            // destructor, required (if you will use unload)
+            destruct: function(item) {
+                    /* your custom code here */
+            },
+            // enable item, mandatory
+            enable: function(item) {
+                item._is_enabled = true;
+                    /* your custom code here */
+            },
+            // disable item, mandatory
+            disable: function(item) {
+                item._is_enabled = false;
+                    /* your custom code here */
+            }
+    };
+
+    // support for set/get form data
+    // in our sample default set/get value used, but you can also use your custom methods
+    dhtmlXForm.prototype.setFormData_tinyMCE = function(name, value) {
+            return this.doWithItem(name, "setValue", value);
+    };
+
+    dhtmlXForm.prototype.getFormData_tinyMCE = function(name) {
+            return this.doWithItem(name, "getValue");
+    };
+ //tinyMCE init
+
+</script>
+
+<div class="clear_both"></div>
+<div class="page115">
+    <div class="grayIcons icoBuilder">AGENCY/ATTORNEY PROFILE BUILDER</div>
+    <div class="resources">
+        <div class="clear_both"></div>
+        <div class="page-left">
+
+            <div class="headerGreen">HOW TO CREATE THE MOST ENGAGING PROFILE</div>
+            <p class="para">
+                To create your profile simply complete your contact information and describe the services offered, and upload a high resolution Agency logo.
+            </p>
+			<div>
+			<div id="link1" style="float:left;">
+			<a class = 'tooltip' title= "content"  href="javascript:void(0)" ><span title=" "><b class="more-link"></b></span></a>
+			
+			</div>
+					  <div style="float:left;">
+         <b>   
+      Need help? Click on the information button for directions and helpful hints<a href ="#" target="_blank"> here</a> 
+    </b>
+	</div>
+	<div class='clear_both'></div>
+</div>
+        </div>
+
+        <div class="page-right">
+            <div class="headerGreen">HOW TO BEST WORK WITH PARENTFINDER</div>
+            <div class="builderVideoBlock">
+                <iframe width="450" height="300" src="http://www.youtube.com/embed/soOyHt4BAqE">
+                </iframe>
+            </div>
+
+
+        </div>
+
+
+        <div class="clear_both"></div>
+
+
+        <div class="profileFieldsMainBlock">
+            <div class="pageColumn5" id="profilebuilder">
+
+
+
+            </div>
+
+        </div>
+
+        <div class="clear_both"></div>
+    </div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

@@ -1,0 +1,13 @@
+@import url(../../base/css/index.css);
+#indexPhoto {
+border:0px solid #FFFFFF;
+cursor:pointer;
+height:290px;
+overflow:hidden;
+padding-top:0px;
+}
+#indexPhotoBorder {
+border:0px solid #CCCCCC;
+margin-bottom:11px;
+position:relative;
+}

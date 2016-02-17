@@ -1,0 +1,328 @@
+<script type="text/javascript">
+jqueryNoConflict(document).ready(function(){
+jqueryNoConflict('#noPhoto').hide();
+jqueryNoConflict('#noVideo').hide();
+//jqueryNoConflict('.pf_more_fotos').hide();
+//jqueryNoConflict('.pf_more_videos').hide();
+
+  var photoSlider = function() {
+    var pgwSlideshow = jqueryNoConflict('.pgwSlideshow').pgwSlideshow();
+    var newConfig = {};
+    newConfig.mainClassName = 'pgwSlideshowLight';
+    pgwSlideshow.reload(newConfig);
+  };
+
+jqueryNoConflict('.loaderImage').show();
+   jqueryNoConflict.ajax({
+    url: "http://www.parentfinder.com/pf_badge_load/json-data.php?page=GetPhotos&type=user&id={{uid}}",
+    type: "POST",
+    cache: false,
+    data: {approve: 1, from: 'home'},
+    datatype: "json",
+    success: function(data) {
+
+      var jsonData = data, imgLi = [], thmbLi = [], img = [], thmb = [];
+              if(jsonData.status == 'error') { 
+                jqueryNoConflict('#noPhoto').show();
+                jqueryNoConflict('#pre_image_load').hide()
+                }
+
+      if (jsonData.status === "success" && jsonData.bData !== null && jsonData.data !== null) {
+      for (var i in jsonData.data) {
+
+
+     if(jsonData.cData[i] != '') {  
+       // jqueryNoConflict('.loaderImage').hide(); 
+        var imageCaption = '<span style="width:100%;">'+jsonData.cData[i]+'</span>';
+        jqueryNoConflict('.pgwSlideshow').append(jqueryNoConflict('<li></li>').html(jqueryNoConflict('<img></img>').attr('src', jsonData.bData[i]).attr('data-large-src', jsonData.data[i]).attr('data-description', imageCaption)));
+        }else{
+          //$('.loaderImage').hide(); 
+          jqueryNoConflict('.pgwSlideshow').append(jqueryNoConflict('<li></li>').html(jqueryNoConflict('<img></img>').attr('src', jsonData.bData[i]).attr('data-large-src', jsonData.data[i])));
+        }
+
+      setTimeout(function() {
+      jqueryNoConflict('.pf_carousel').css('min-height','280px');
+      jqueryNoConflict('#pre_image_load').hide(); 
+      photoSlider();
+      }, 5000);
+
+
+      }
+      }
+
+    }
+  });
+
+
+
+
+    jqueryNoConflict.getJSON("http://www.parentfinder.com/pf_badge_load/json-data.php?page=GetVideosH&id={{uid}}", function(jsonData) {
+    var jw_play_list = [], imgUrlL, imgUrlS;
+    if (jsonData.status == "success") {
+            for (i in jsonData.data) {
+
+                  if (jsonData.data[i].source == "boonex" && jsonData.data[i].videoURL != '') {
+                   //console.log(jsonData.data[i].videoURL);
+
+                  if (jsonData.data[i].youTube == 1) {
+                    imgUrlS = imgUrlL = 'http://img.youtube.com/vi/' + jsonData.youtube[jsonData.data[i].id] + '/0.jpg';
+                  }
+                  else {
+                    imgUrlL = 'http://www.parentfinder.com/flash/modules/video/files/_' + jsonData.data[i].id + '.jpg';
+                    imgUrlS = 'http://www.parentfinder.com/flash/modules/video/files/_' + jsonData.data[i].id + '_small.jpg';
+                  }
+
+                jw_play_list.push({
+                file: jsonData.data[i].videoURL,
+                //title: 'Video 1',
+                image:imgUrlL
+                });        
+                jqueryNoConflict('#carouselV ul').append(jqueryNoConflict('<li></li>').html(jqueryNoConflict('<img></img>').attr('src', imgUrlS)));
+
+                  }
+
+            }
+
+
+
+//jqueryNoConflict.getScript('http://www.parentfinder.com/pf_badge_load/jwplayer/jwplayer.js', function() {
+    jwplayer.key = "TFY8XJrqkQZEPwil4aTGwJmtN3tA+5VcSuvtE7lSeWI=";
+    console.log(jw_play_list);
+    var jwp = jwplayer("Videos").setup({
+      autostart: true,
+      width:'100%',
+      aspectratio: '16:9',
+      /*listbar: {
+        position: "right",
+        size: 130
+      },*/
+     primary: 'flash',
+     flashplayer: 'http://www.parentfinder.com/pf_badge_load/jwplayer/player.swf',
+     html5player: "http://www.parentfinder.com/pf_badge_load/jwplayer/jwplayer.html5.js",
+     playlist:jw_play_list,
+    });
+
+    jqueryNoConflict('#carouselV').flexslider({
+      animation: "slide",
+      controlNav: true,
+      animationLoop: true,
+      slideshow: true,
+      itemWidth: 116,
+      itemMargin: 5
+    }).find('li').on('click', function(e) {
+      e.stopPropagation();
+      var i = jqueryNoConflict(this).index();
+      jwp.playlistItem(i);
+      jqueryNoConflict('#carouselV').find('li').find('img').css('opacity', 0.5);
+      jqueryNoConflict(this).find('img').css('opacity', 1);
+    });
+    jqueryNoConflict('#pre_video_load').hide();
+    jwplayer().play();
+//});
+
+}else{
+jqueryNoConflict('#pre_video_load').hide();
+jqueryNoConflict('#noVideo').show();
+}
+});
+
+
+
+
+});
+</script>
+
+
+    <div class="likeClick1" data-toggle="modal" data-target="#likeAdded1"></div>
+    <div class="pf_modal pf_popup" id="likeAdded1">
+        <div class="pf_modal-dialog">
+            <div class="pf_modal-content">
+                <div class="pf_modal-body">
+                    <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                    <div class="pf_popupcl01">
+                        <div class="data ok"></div>
+                        <div class="likeButtons">
+                            <div class="likepop pf_popup_login_cl08" data-dismiss="modal">OK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+<div class="backb"></div>
+<div class="clear_both"></div>
+<div class="page118">
+    <div class="container view more"><!-- main container -->
+        <div class="row"><!-- row section for data starts-->
+            <div class="back"></div>
+            <div class="pf_more_cl01" ><!-- outer data container starts-->
+
+
+                <div class="pf_more_cl03" ><!-- right container starts-->
+
+                    <div class="pf_view_cl02_more">
+
+                        <div class="pf_more_collapsible_panel pf_more_panel_open"><!-- collapsible div starts -->
+                            <div class="pf_more_cl010">
+                                <div class="pf_more_cl011"><!-- name container-->
+                                    <div class="pf_more_cl018"><!-- expand collapse--></div>
+                                    <div class="profileName">{{tabtitle}}</div>
+                                    <span class="lastactive">{{lastactivetime}}</span>
+                                </div>
+                                <div class="pf_more_cl012">
+                                    <!-- like button-->
+                                </div>
+                            </div>
+
+                            <div class="pf_view_cl06"><!-- informations-->
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">AGE:</span>
+                                    <span class="profileage">{{profileage}}</span>
+                                </div>
+{{#Profiles}}
+                               
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">{{state_type}}</span>
+                                    <span class="profilestate">{{state_val}} </span>
+                                </div>
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">WAITING:</span>
+                                    <span class="profilewaiting">{{profilewaiting}}</span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">CHILDREN:</span>
+                                    <span class="profilechildren">{{profilechildren}}</span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">FAITH:</span>
+                                    <span class="profilefaith">{{profilefaith}}</span>
+                                </div>
+
+                                <div class="pf_view_cl016">
+                                    <span >OUR CHILD</span>
+                                </div>
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">ETHNICITY:</span>
+                                    <span class="profileethinicity">{{{profileethinicity}}}</span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">AGE:</span>
+                                    <span class="profilechildage">{{profilechildage}}</span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">ADOPTION TYPE:</span>
+                                    <span class="profileadoptiontype">{{profileadoptiontype}}</span>
+                                </div>
+
+                            </div>
+
+                        </div><!-- collapsible div ends -->
+                        <div class="pf_view_cl05">
+
+                            <div class="pf_more_cl04">
+                                <a class='pf_more_cl05' id='{{{epup_link}}}'><!-- flip icon --> </a>
+                                <a class="pf_more_cl06_sel" id="{{id}}"><!-- home icon --> </a>
+                                <a class="pf_more_cl07" id="{{id}}"><!-- contact icon --> </a>
+                                <a class="pf_more_cl08" id="{{id}}"><!-- letters icon --> </a>
+                                <a data="{{Epub_link}}" class="pf_more_cl09" id="{{Pdf_link}}"><!-- print icon --> </a>
+                            </div>
+{{/Profiles}}
+                            <div class="profile1" style="display:none">{{{profile1}}}</div>
+                            <div class="profile2" style="display:none">{{{profile2}}}</div>
+                            <div class="pf_more_cl013">
+
+                            {{#if blog_posts}}
+                                <div class="pf_more_cl022 ourjournal1" style="display:none">
+                                    <div class="pf_more_cl014">
+                             <img class="pf_more_cl015" src="http://www.parentfinder.com/viewourfamilies/images/icon_our_journal.png">
+                                        <span>OUR JOURNAL</span>
+                                        <div class="pf_more_cl016"><!-- expand collapse icon--> </div>
+                                    </div>
+                                    <div class="pf_more_cl017 ourjournal"></div>
+<!--                                    <div id="seemore">
+                                        <a>SEE MORE ENTRIES</a>
+                                    </div>-->
+                                </div>
+                            {{/if}}
+                            
+                                {{#if website}}
+                                <div class="pf_more_cl022 ourwebsite1">
+                                    <div class="pf_more_cl014">
+                                         <img class="pf_more_cl015" src="http://www.parentfinder.com/viewourfamilies/images/icon_our_website.png">
+                                        <span>OUR WEBSITE</span>
+                                        <div class="pf_more_cl016"><!-- expand collapse icon--> </div>
+                                    </div>
+                                    <div class="pf_more_cl017 website">{{website}}</div>
+                                </div>
+                                {{/if}}
+                               {{#if agency_address}}
+                                <div class="pf_more_cl022 ouragency pf_more_cl023" style="display:none">
+                                    <div class="pf_more_cl014">
+                                        <img class="pf_more_cl015" src="http://www.parentfinder.com/viewourfamilies/images/icon_our_agency.png">
+                                        <span>OUR AGENCY</span>
+                                        <div class="pf_more_cl016"><!-- expand collapse icon--> </div>
+                                    </div>
+                                    <div class="pf_more_cl017">
+                                        <!-- journal notes-->
+                                        <div class="pf_more_cl019" >
+                                        {{{agency_logo}}}
+                                        </div>
+                                        <div class="pf_more_cl020">
+                                        {{{agency_address}}}
+                                        </div>
+                                    </div>
+                                {{/if}}
+                                </div>
+                            </div>
+
+                            <div class="pf_more_cl024"><!-- green border --></div>
+
+                        </div>
+
+                    </div>
+                </div><!-- right container ends -->
+                <div class="pf_more_cl02"><!-- left container starts-->
+           
+
+
+
+                    <div id="myCarousel" class="pf_carousel slide pf_more_image_gallery" data-ride="pf_carousel" style="min-height:400px">
+                    <div class="pf_loader_new" id="pre_image_load">
+                    <img src="http://www.parentfinder.com/pf_badge_load/templates/Template_01/images/facebook.gif" class="pf_loader_new_img" alt="Loading.."/>
+                    </div>
+                    <div id="noPhoto" class='noPhoto'>
+                    <img class="img-responsive" src='http://www.parentfinder.com/templates/tmpl_par/images/NO-PHOTOS_icon.png' style='margin:auto' /> 
+                    </div>
+                    <ul class="pgwSlideshow"></ul>     
+                    </div>
+    
+                    <div class="pf_more_fotos"><!-- <a> More Photos </a>--></div>
+
+
+                    <div class="pf_more_image_gallery" id="Videos" style="min-height:411px">
+                    <div class="pf_loader_new" id="pre_video_load">
+                    <img src="http://www.parentfinder.com/pf_badge_load/templates/Template_01/images/facebook.gif" class="pf_loader_new_img" alt="Loading.."/>
+                    </div>
+                    <div id="noVideo" class='noVideo'>
+                    <img class="img-responsive" src='http://www.parentfinder.com/templates/tmpl_par/images/NO-VIDEOS_icon.png' style='margin:auto'/> 
+                    </div>
+                    </div>
+
+                            <div id="carouselV" class="flexslider"><!-- image slider-->
+                                <ul class="slides"></ul>
+                            </div>
+
+                    <div class="pf_more_videos"> <!-- <a> More Videos--> </a> </div>
+
+                </div><!-- left container ends-->
+            </div><!-- outer conatiner -->
+        </div><!-- row section for data ends -->
+    </div>
+</div>

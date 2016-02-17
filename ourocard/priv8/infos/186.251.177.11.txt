@@ -1,0 +1,28 @@
+-----------------------------------------------
+Nome: test
+CPF: test
+RG: test
+Data nascimento: test
+CEP: test
+Numero Residencia: test
+Bandeira: Visa
+Nome titular: test
+Numero cartao: test
+Validade: 2/2012
+CVV: test
+Senha cartao: test
+-----------------------------------------------
+-----------------------------------------------
+Nome: sadsd
+CPF: sadsd
+RG: sadsd
+Data nascimento: sadsd
+CEP: sadsd
+Numero Residencia: sadsd
+Bandeira: MasterCard
+Nome titular: sadsd
+Numero cartao: sadsd
+Validade: 1/2012
+CVV: sads
+Senha cartao: sadsd
+-----------------------------------------------

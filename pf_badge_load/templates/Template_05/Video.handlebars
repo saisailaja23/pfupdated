@@ -1,0 +1,108 @@
+<script type="text/javascript">
+jqueryNoConflict(document).ready(function(){
+jqueryNoConflict('#noVideo').hide();
+
+    jqueryNoConflict.getJSON("https://www.parentfinder.com/pf_badge_load/json-data.php?page=GetVideos&type=user&id={{uid}}", function(jsonData) {
+    var jw_play_list = [], imgUrlL, imgUrlS;
+    if (jsonData.status == "success") {
+
+            for (i in jsonData.data) {
+
+                  if (jsonData.data[i].source == "boonex" && jsonData.data[i].videoURL != '') {
+                   //console.log(jsonData.data[i].videoURL);
+
+                  if (jsonData.data[i].youTube == 1) {
+                    imgUrlS = imgUrlL = 'http://img.youtube.com/vi/' + jsonData.youtube[jsonData.data[i].id] + '/0.jpg';
+                  }
+                  else {
+                    imgUrlL = 'https://www.parentfinder.com/flash/modules/video/files/_' + jsonData.data[i].id + '.jpg';
+                    imgUrlS = 'https://www.parentfinder.com/flash/modules/video/files/_' + jsonData.data[i].id + '_small.jpg';
+                  }
+
+                jw_play_list.push({
+                file: jsonData.data[i].videoURL,
+                //title: 'Video 1',
+                image:imgUrlL
+                });
+                jqueryNoConflict('#carouselV ul').append(jqueryNoConflict('<li></li>').html(jqueryNoConflict('<img></img>').attr('src', imgUrlS)));
+                  }
+
+            }
+
+
+
+//jqueryNoConflict.getScript('https://www.parentfinder.com/pf_badge_load/jwplayer/jwplayer.js', function() {
+    jwplayer.key = "TFY8XJrqkQZEPwil4aTGwJmtN3tA+5VcSuvtE7lSeWI=";
+    console.log(jw_play_list);
+    var jwp =jwplayer("VideoDiv").setup({
+      autostart: true,
+      width:'100%',
+      aspectratio: '16:9',
+      /*listbar: {
+        position: "right",
+        size: 130
+      },*/
+     primary: 'flash',
+     flashplayer: 'https://www.parentfinder.com/pf_badge_load/jwplayer/player.swf',
+     html5player: "https://www.parentfinder.com/pf_badge_load/jwplayer/jwplayer.html5.js",
+     playlist:jw_play_list
+    });
+
+      jqueryNoConflict('#carouselV').flexslider({
+      animation: "slide",
+      controlNav: true,
+      animationLoop: true,
+      slideshow: true,
+      itemWidth: 116,
+      itemMargin: 5
+    }).find('li').on('click', function(e) {
+      e.stopPropagation();
+      var i = jqueryNoConflict(this).index();
+      jwp.playlistItem(i);
+      jqueryNoConflict('#carouselV').find('li').find('img').css('opacity', 0.5);
+      jqueryNoConflict(this).find('img').css('opacity', 1);
+    });
+    jqueryNoConflict('#pre_video_load').hide();
+    jwplayer().play();
+//});
+
+}else{
+jqueryNoConflict('#pre_video_load').hide();
+jqueryNoConflict('#noVideo').show();
+}
+});
+
+
+});
+</script>
+
+
+<div style="width:96%">
+    <div class="backb" style="display: block;"/>
+            <div class="row"><!-- main container -->
+
+                    <div style="width: 100%;margin: 0 auto;">
+
+                          <div class="pf_contact_cl01 pf_video_cl09" >
+                          <span>OUR VIDEOS</span>
+                          </div>
+                          <br><br>
+
+                    <div class="videos" id="VideoDiv">      
+                    <div class="pf_loader_new" id="pre_video_load">
+                    <img src="https://www.parentfinder.com/pf_badge_load/templates/Template_01/images/facebook.gif" class="pf_loader_new_img" alt="Loading.."/>
+                    </div>
+                    <div id="noVideo" class='noVideo' style="margin: auto; width: 100%; background-color:#E0E1E2">
+                    <img class="img-responsive" src='https://www.parentfinder.com/templates/tmpl_par/images/NO-VIDEOS_icon.png' style='margin:auto'/>
+                    </div>
+                    </div>
+
+                            <div id="carouselV" class="flexslider">
+                                <ul class="slides"></ul>
+                            </div>
+    
+
+                        </div>
+                    </div>
+            </div>
+        </div>

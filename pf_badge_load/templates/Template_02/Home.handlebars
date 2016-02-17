@@ -1,0 +1,106 @@
+
+        {{debug}}
+
+<script type="text/javascript">
+jqueryNoConflict(document).ready(function(){
+//alert('loading');
+});
+</script>
+          <div class="pf_searchResult pf_searchFamilies" style="display:{{display}};">
+          <p> {{{searchMess}}} </p></div>
+
+          {{#objects}}
+            <div class='{{Class}}' style='height:555px'>
+              <div class='pf_view_cl03'> 
+              <image src="{{Image}}" id={{Id}} />
+              </div>
+              <div class='pf_view_cl04'>
+                        {{{Title}}}
+                          <!--<a  class="pf_view_print" id="{{Id}}"></a> -->
+                        <!--<span style="font-size: 14px !important;">{{{Title}}}</span>-->
+                        <div class="pf_pinkBar"></div>
+                        </div>
+    
+                      <div class="pf_view_cl05">
+                        <div class="pf_view_cl06"><!-- informations-->
+                          <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">AGE:</span>
+                          <span>{{Age}}</span>
+                        </div>
+
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">STATE:</span>
+                          <span>{{State}}</span>
+                        </div>
+
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">CHILDREN:</span>
+                          <span>{{Children}}</span>
+                        </div>
+
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">FAITH:</span>
+                          <span>{{{fullFaiths}}}</span>
+                        </div>
+
+                        <div class="pf_view_cl016">
+                          <span >OUR CHILD</span>
+                        </div>
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">ETHNICITY:</span>
+                          {{#if CE}}
+                          <span>{{CE}}</span>
+                          <a class="pf_view_cl017" style="display:{{CEFV}}"><span data-toggle="modal" href="#more" data="{{CEF}}">....More</span></a>
+                          {{else}}
+                          <span>NONE</span>
+                          {{/if}}
+                         </div>
+
+                        <div class="pf_view_cl014">
+
+                          <span class="pf_view_cl015">AGE:</span>
+                          {{#if ChildAgesS}}
+                          <span>{{{ChildAgesS}}}</span>
+                          <a class="pf_view_cl017"  title-text="{{{ChildAgesS}}}" style="display:{{agesty}}">
+                          <span data-toggle="modal" href="#more" data="{{{ChildAgesL}}}">...More</span></a>
+                          {{else}}
+                          <span>NA</span>
+                          {{/if}}
+
+                          {{#if ChildAgesL}}
+                          <!--<span data-toggle="modal" href="#more" data="{{{ChildAgesL}}}">....More</span></a></span>-->
+                          {{/if}}
+
+                        </div>
+
+                         <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">ADOPTION TYPE:</span>
+                          <span>{{AdptType}}</span>
+                        </div>
+
+                    </div>
+                    {{#if profile_path_status}}
+                        <div class="print_more_home" data-profileId="{{row_agency}}" id="printmore{{row_agency}}">
+                                <p style="margin:10px;height:25px;font-size: 14px;font-weight: bold;"><a class="print_more_atag" href="{{pdf_new_url}}" id="viewHtml" >Single Page Profile</a></p>
+                                <p style="margin:10px;height:25px;font-size: 14px;font-weight: bold"><a class="print_more_atag" href="{{Pdf_link}}" id="viewPdf" target="_blank">Multi Page Profile</a></p>   
+						</div>
+                    {{/if}}
+                    <div class="pf_view_cl07"><!-- links container--> 
+                         
+                          <a  class="pf_view_cl08" id="{{Id}}"><!-- icons-->  </a>
+                          <a  class="pf_view_cl09" id="{{Id}}"> <!-- icons-->  </a>
+                          <a  class="pf_view_cl010" id="{{Id}}"><!-- icons--> </a>
+                          <a  class="pf_view_cl011" id="{{Id}}"><!-- icons--> </a>
+                          <a  class="pf_view_cl012" id="{{Id}}"><!-- icons--> </a>
+						  <!--print icon-->
+						  {{#if profile_path_status}}
+							<a class="pf_view_cl013"  id="pdf_multi_home"></a>
+                          {{else}}  
+							<a class="pf_view_cl013" href="{{pdf_new_url}}"></a>
+							 {{/if}}
+                    </div></div></div>
+          {{/objects}}
+          <!--</div>-->
+
+          
+

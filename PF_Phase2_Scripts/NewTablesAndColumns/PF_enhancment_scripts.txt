@@ -1,0 +1,143 @@
+
+CREATE TABLE family_favourite (
+  ID int(11) NOT NULL AUTO_INCREMENT,
+  favouredby int(11) NOT NULL,
+  favouredfamily int(11) NOT NULL,
+  PRIMARY KEY (ID)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+CREATE TABLE letter (
+  id int(11) NOT NULL AUTO_INCREMENT,
+  label varchar(300) NOT NULL,
+  description text NOT NULL,
+  profile_id int(11) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+CREATE TABLE like_list (
+  id int(10) NOT NULL AUTO_INCREMENT,
+  LikedBy int(10) NOT NULL,
+  AgencyLike int(10) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+CREATE TABLE like_list_family (
+  ID int(10) NOT NULL AUTO_INCREMENT,
+  LikedBy int(10) NOT NULL,
+  FamilyLiked int(10) NOT NULL,
+  PRIMARY KEY (ID)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
+
+CREATE TABLE IF NOT EXISTS `agency_join_request` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `agencyName` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `agencyEmail` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `agencyState` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `fromName` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  `fromEmail` varchar(100) CHARACTER SET latin1 DEFAULT NULL,
+  PRIMARY KEY (`id`)
+)
+
+CREATE TABLE IF NOT EXISTS `cart_list` (
+  `cart_id` int(111) NOT NULL AUTO_INCREMENT,
+  `description` longtext NOT NULL,
+  `itemname` varchar(245) NOT NULL,
+  `cart_url` longtext NOT NULL,
+  `price` varchar(50) NOT NULL,
+  PRIMARY KEY (`cart_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `cart_list`
+--
+
+INSERT INTO `cart_list` (`cart_id`, `description`, `itemname`, `cart_url`, `price`) VALUES
+(1, 'description', 'Name1', 'http://www.google.com', '1'),
+(2, 'description2', 'name2', 'http://www.google.com', '2'),
+(3, 'description3', 'name3', 'http://www.google.com', '3'),
+(4, 'description4', 'name4', 'http://www.google.com', '4');
+
+
+CREATE TABLE IF NOT EXISTS `cart_list_recipte` (
+  `receipt_id` int(111) NOT NULL AUTO_INCREMENT,
+  `user_id` int(111) NOT NULL,
+  `transaction_id` int(111) NOT NULL,
+  `item_id` int(111) NOT NULL,
+  `quantity` int(111) NOT NULL,
+  `transaction_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `transaction_status` varchar(245) NOT NULL,
+  `paid_gateway` varchar(245) NOT NULL,
+  `paid_transavtionid` varchar(245) NOT NULL,
+  `paid_date` varchar(25) NOT NULL,
+  `paid_token` varchar(245) NOT NULL,
+  `currency` varchar(10) NOT NULL,
+  PRIMARY KEY (`receipt_id`)
+) ENGINE=MyISAM DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+CREATE TABLE  `pfcomm7.1.0`.`cart_list_items` (
+`item_id` INT( 111 ) NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`item_cartid` INT( 111 ) NOT NULL ,
+`item_quantity` INT( 111 ) NOT NULL ,
+`item_userid` INT( 111 ) NOT NULL
+) ENGINE = MYISAM ;
+
+
+ALTER TABLE `profiles` ADD `Google` VARCHAR(255) NOT NULL NOT NULL AFTER `maxmatch`, ADD `Blogger` VARCHAR(255) NOT NULL AFTER `Google`, ADD `Pinerest` VARCHAR(255) NOT NULL AFTER `Blogger`, ADD `Age` VARCHAR(255) NOT NULL AFTER `Pinerest`, ADD `waiting` VARCHAR(255) NOT NULL AFTER `Age`, ADD `faith` VARCHAR(255) NOT NULL AFTER `waiting`, ADD `housestyle` VARCHAR(255) NOT NULL AFTER `faith`, ADD `noofbedrooms` VARCHAR(11) NOT NULL AFTER `housestyle`, ADD `noofbathrooms` VARCHAR(11) NOT NULL AFTER `noofbedrooms`, ADD `yardsize` VARCHAR(11) NOT NULL AFTER `noofbathrooms`, ADD `neighbourhoodlike` VARCHAR(255) NOT NULL AFTER `yardsize`, ADD `phonenumber` INT(11) NOT NULL AFTER `neighbourhoodlike`, ADD `agency_letter` TEXT NOT NULL AFTER `phonenumber`, ADD `letter_aboutThem` TEXT NOT NULL AFTER `agency_letter`, ADD `others` TEXT NOT NULL AFTER `letter_aboutThem`, ADD `address1` VARCHAR(500) NOT NULL AFTER `others`, 
+ADD `address2` VARCHAR(500) NOT NULL AFTER `address1`, ADD childrenType varchar(300) NOT NULL AFTER `address2`
+
+
+ALTER TABLE `profiles_draft` ADD `Google` VARCHAR(255) NOT NULL AFTER `maxmatch`, ADD `Blogger` VARCHAR(255) NOT NULL AFTER `Google`, ADD `Pinerest` VARCHAR(255) NOT NULL AFTER `Blogger`, ADD `Age` VARCHAR(255) NOT NULL AFTER `Pinerest`, ADD `waiting` VARCHAR(255) NOT NULL AFTER `Age`, ADD `faith` VARCHAR(255) NOT NULL AFTER `waiting`, ADD `housestyle` VARCHAR(255) NOT NULL AFTER `faith`, ADD `noofbedrooms` VARCHAR(11) NOT NULL AFTER `housestyle`, ADD `noofbathrooms` VARCHAR(11) NOT NULL AFTER `noofbedrooms`, ADD `yardsize` VARCHAR(11) NOT NULL AFTER `noofbathrooms`, ADD `neighbourhoodlike` VARCHAR(255) NOT NULL AFTER `yardsize`, ADD `phonenumber` INT(11) NOT NULL AFTER `neighbourhoodlike`, ADD `agency_letter` TEXT NOT NULL AFTER `phonenumber`, ADD `letter_aboutThem` TEXT NOT NULL AFTER `agency_letter`, ADD `others` TEXT NOT NULL AFTER `letter_aboutThem`, ADD `address1` VARCHAR(500) NOT NULL AFTER `others`, 
+ADD `address2` VARCHAR(500) NOT NULL AFTER `address1`, ADD childrenType varchar(300) NOT NULL AFTER `address2`
+
+
+ALTER TABLE `Profiles` CHANGE `Adoptiontype` `Adoptiontype` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 
+ALTER TABLE `Profiles` CHANGE `phonenumber` `phonenumber` BIGINT( 11 ) NOT NULL
+
+
+ALTER TABLE `Profiles_draft` CHANGE `Adoptiontype` `Adoptiontype` VARCHAR( 255 ) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT 
+ALTER TABLE `Profiles_draft` CHANGE `phonenumber` `phonenumber` BIGINT( 11 ) NOT NULL
+
+
+Drop aqb_pts_profile_types;
+
+
+CREATE TABLE IF NOT EXISTS `aqb_pts_profile_types` (
+  `ID` int(4) NOT NULL,
+  `Name` varchar(128) COLLATE utf8_unicode_ci NOT NULL,
+  `Obsolete` tinyint(4) NOT NULL DEFAULT '0',
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `aqb_pts_profile_types`
+--
+
+INSERT INTO `aqb_pts_profile_types` (`ID`, `Name`, `Obsolete`) VALUES
+(2, 'Adoptive Family', 0),
+(4, 'Birth Mother', 0),
+(8, 'Adoption Agency', 0);
+
+
+
+INSERT INTO `sys_pre_values` (`Key`, `Value`, `Order`, `LKey`, `LKey2`, `LKey3`, `Extra`, `Extra2`, `Extra3`) VALUES
+('Region', 'North-central', 5, 'North-central', '', '', '', '', ''),
+('Region', 'South-central', 4, 'South-central', '', '', '', '', ''),
+('Region', 'Northeast', 3, 'Northeast', '', '', '', '', ''),
+('Region', 'Northwest', 2, 'Northwest', '', '', '', '', ''),
+('Region', 'Southeast', 1, 'Southeast', '', '', '', '', ''),
+('Region', 'Southwest', 0, 'Southwest', '', '', '', '', ''),
+('Region', 'Non US', 6, 'Non US', '', '', '', '', '');
+
+
+Update sys_page_compose SET PageWidth = '1028px' where ID =675
+
+Update sys_page_compose SET PageWidth = '1028px' where ID =676
+
+Update sys_page_compose SET PageWidth = '1028px' where ID =685
+
+
+UPDATE `sys_objects_actions` SET `Icon` = '' WHERE  `sys_objects_actions`.`ID` =324;
+UPDATE `sys_objects_actions` SET `Caption` = '' WHERE  `sys_objects_actions`.`ID` =264;
+
+
+

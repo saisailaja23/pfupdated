@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+<script language="JavaScript">
+ if(/MSIE 7/.test(navigator.appVersion))
+ {
+  alert("You are running an older version of Internet Explorer.FireFox, Safari, Google Chrome, and Internet Explorer 8.0 are recommended browsers. Please upgrade accordingly.");
+ } 
+</script>
+	<title>__page_header__</title>
+	<base href="<bx_url_root />" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta content="" />
+	__page_description__
+	__page_keywords__
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<bx_include_css />
+	<bx_include_js />
+    __dol_images__
+    __dol_lang__
+    __dol_options__
+    <script type="text/javascript" language="javascript">
+		var site_url = '<bx_url_root />';
+        var aUserInfoTimers = new Array();
+		$(document).ready( function() {
+			$( 'div.RSSAggrCont' ).dolRSSFeed();
+		} );
+	</script>
+    <!--[if lt IE 7.]>
+	<script defer type="text/javascript" src="inc/js/pngfix.js"></script>
+	<![endif]-->
+	__extra_js__
+	<bx_injection:injection_head />
+
+    <script language="javascript" type="text/javascript" src="inc/js/user_status.js"></script>
+    <script type="text/javascript">
+        var oBxUserStatus = new BxUserStatus();
+        oBxUserStatus.userStatusInit('<bx_url_root />', __is_profile_page__);
+    </script>
+    <script type="text/javascript">
+  function PrepareRpxQueryBlog(PostCaption,PostLink){
+     var Comment="wants to share a blog : "+"'"+PostCaption+"'"+" on http://parentfinder.com/";;
+     RPXNOW.loadAndRun(['Social'], function () {
+    var activity = new RPXNOW.Social.Activity(
+       "Share your comment",
+       Comment,
+       PostLink);
+       RPXNOW.Social.publishActivity(activity);
+  });
+ }
+ function PrepareRpxQuery(URI,type,AblumId,ObjCnt){
+alert("You can publish photos to only Facebook account and not Twitter. ");
+
+switch (type){
+    case 'photo':
+         var Comment="wants to share an album on http://www.parentfinder.com/";
+         break;
+    case 'blog':
+         //var Comment="wants to share a blog : "+"'"+PostCaption+"'"+" on http://www.parentfinder.com/";
+}
+ RPXNOW.loadAndRun(['Social'], function () {
+    var activity = new RPXNOW.Social.Activity(
+       "Share your comment",
+       Comment,
+       URI);
+
+switch (type){
+    case 'photo':
+         var imgact=new RPXNOW.Social.ImageMediaCollection();
+         var album_objSrc = jQuery('#album_objSrc'+AblumId).val();
+         var album_objHref = jQuery('#album_objHref'+AblumId).val();
+         var AlbumItemSrc = album_objSrc.split("##");
+         var AlbumItemHref = album_objHref.split("##");
+         var i=0;
+         if(ObjCnt>5) ObjCnt=5;
+         for (i=0;i<ObjCnt;i++)
+         {
+          //    alert(AlbumItemSrc[i]+"---"+AlbumItemHref[i]);
+            imgact.addImage(AlbumItemSrc[i],AlbumItemHref[i]);
+         }
+         activity.setMediaItem(imgact);
+
+         break;
+    case 'blog':
+         //var Comment="wants to share a blog : "+"'"+PostCaption+"'"+" on http://mediaus.parentfinder.com/";
+}
+    RPXNOW.Social.publishActivity(activity);
+  });
+}
+function PrepareRpxQueryVideo(thumbURI,videoUri){
+alert("You can publish video only to Facebook account and not Twitter. The video should be published in youtube first to re-publish in Facebook account");
+
+ RPXNOW.loadAndRun(['Social'], function () {
+    var activity = new RPXNOW.Social.Activity(
+       "Share your comment",
+       "wants to share video from http://www.parentfinder.com/",
+       videoUri);
+
+    var vid1=new RPXNOW.Social.FlashMediaItem(videoUri, thumbURI);
+    activity.setMediaItem(vid1);
+    RPXNOW.Social.publishActivity(activity);
+  });
+}
+ </script>
+</head>
+__flush_header__
+<body <bx_injection:injection_body /> >
+    __search_intro__
+    <script type="text/javascript">
+  var rpxJsHost = (("https:" == document.location.protocol) ? "https://" : "http://static.");
+  document.write(unescape("%3Cscript src='" + rpxJsHost + "rpxnow.com/js/lib/rpx.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+
+<script type="text/javascript">
+  RPXNOW.init({appId: 'nidfnhfoadjnllkfikco',
+    xdReceiver: '/rpx_xdcomm.html'});
+</script>
+    <bx_injection:injection_header />
+    <div id="notification_window" class="notifi_window"></div>
+	<div id="FloatDesc" style="position:absolute;display:none;z-index:100;"></div>

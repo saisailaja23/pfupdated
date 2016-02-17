@@ -1,0 +1,221 @@
+----CURL ERROR----
+error setting certificate verify locations:
+  CAfile: /var/www/html/pf/paymentFlow/processors/lib/Authorizenet/lib/ssl/cert.pem
+  CApath: none
+
+
+----Request----
+x_version=3.1&x_delim_char=%2C&x_delim_data=TRUE&x_relay_response=FALSE&x_encap_char=%7C&x_card_num=&x_exp_date=&x_card_code=&x_invoice_num=&x_amount=&x_description=&x_cust_id=&x_customer_ip=119.226.197.134&x_first_name=&x_last_name=&x_address=&x_city=&x_state=&x_zip=&x_country=&x_phone=&x_company=&x_type=AUTH_CAPTURE&x_login=46kC8eDT&x_tran_key=4cLevw28W633hTF5
+----Response----
+
+
+----Response----
+|3|,|2|,|33|,|Credit card number is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|AE8EE06F754A3FF916EB87B94C416510|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|2|,|2|,|27|,|The transaction has been declined because of an AVS mismatch. The address provided does not match billing address of cardholder.|,|03337G|,|N|,|6484973409|,|1410331777550|,|Adoption Portal|,|0.20|,|CC|,|auth_capture|,|6470|,|Jenson|,|George|,|Media Systems Inc|,|1251 n Plum Grove Rd|,|Schaumburg|,|IL|,|60173|,|US|,|(874)822-0321|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|F77C2D1464C90CDD7F8A7C633FFF71D0|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX7152|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|2|,|2|,|27|,|The transaction has been declined because of an AVS mismatch. The address provided does not match billing address of cardholder.|,|04596G|,|N|,|6484984867|,|1410332438517|,|Adoption Portal|,|0.20|,|CC|,|auth_capture|,|6470|,|Jenson|,|George|,|Media Systems Inc|,|4950 Wyndham Creek Ct|,|Fairfax|,|VA|,|22030|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|2F1BCFE5ABD0A0A374A1209B64C4CAF9|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX7152|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|3|,|2|,|33|,|Credit card number is required.|,||,|P|,|0|,||,||,|0.00|,|CC|,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|AE8EE06F754A3FF916EB87B94C416510|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|2|,|2|,|27|,|The transaction has been declined because of an AVS mismatch. The address provided does not match billing address of cardholder.|,|092363|,|S|,|6485020074|,|1410334531637|,|Adoption Portal|,|0.20|,|CC|,|auth_capture|,|6470|,|Joseph|,|Abraham|,||,|102B Ncc Laurel, Near Infopark|,|Ernakulam|,|Kerala|,|68203|,|IN|,|(999)556-4892|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B17E775062377B501B0CDA097D3A8062|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX6475|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|2|,|2|,|27|,|The transaction has been declined because of an AVS mismatch. The address provided does not match billing address of cardholder.|,|040643|,|S|,|6485105702|,|1410339163158|,|Adoption Portal|,|0.20|,|CC|,|auth_capture|,|6470|,|V A|,|Joseph|,||,|B102 NCC Nagarjuna Laurel|,|Cochin|,|KER|,|030|,|IN|,|(999)556-4892|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|435418F7422BBD81225941D4093DE3E1|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX6475|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|08438G|,|Z|,|6485184813|,|1410342304140|,|Adoption Portal|,|0.20|,|CC|,|auth_capture|,|6470|,|Jenson|,|George|,|Media Systems INC|,|8 Cherrywood Dr.|,|Schaumburg|,|IL|,|60194|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A7B990DE5D839020F571807E2430732B|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX7152|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|34532A|,|Y|,|6579807606|,|1413337917157|,|Adoption Portal|,|186.00|,|CC|,|auth_capture|,|7129|,|Tiffany|,|Van Dyke|,||,|1852 NE Sunrise Ln|,|Hillsboro|,|OR|,|97124|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|0B74BEA51225CBA93BB10CBDB670FDAE|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX6068|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|05368D|,|Y|,|6609328409|,|1414185250752|,|Adoption Portal|,|186.00|,|CC|,|auth_capture|,|7162|,|AMY|,|Olsson|,||,|2905 Kling Ct.|,|Frederick|,|md|,|21703|,|US|,|(240)529-6879|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|598AD3EA92A846AAB3A938EABAA7ABFE|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX4382|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|02374B|,|Y|,|6690556244|,|1416770322036|,|Adoption Portal|,|186.00|,|CC|,|auth_capture|,|7290|,|karen ann|,|pineman|,||,|521 W. 47th Street|,|new york|,|ny|,|10036|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|F2A3CD5789DB217C6E65435C5F6241D5|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX5003|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|40068Z|,|Y|,|6728514370|,|1417788571172|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7310|,|Michele|,|Dworkin|,||,|501 East 79th street|,|New York|,|NY|,|10075|,|US|,|(917)754-4180|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|200B473D22C018BBCCFF2A61E6AC0531|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1824|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|00283G|,|Y|,|6740341078|,|1418143366761|,|Adoption Portal|,|186.00|,|CC|,|auth_capture|,|7325|,|Mark|,|Livings|,||,|11643 Grove Street|,|Seminole|,|FLorida|,|33772|,|US|,|(773)750-8284|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|8D0E0105A63B43CDE3D8089B33E5B082|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX6336|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|3|,|1|,|103|,|This transaction cannot be accepted.|,||,|P|,|0|,||,||,|186.00|,||,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|631AD4AF0BAC231C1327F925DE7F2D0F|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|000212|,|Y|,|6774546306|,|1419056381839|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7345|,|yuriko|,|yano|,||,|46 Hitching Post Rd.|,|Bozeman|,|MT|,|59715|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|FC60C1EB4DB485287AB7BDA804BFE0F1|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX6788|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|3|,|1|,|103|,|This transaction cannot be accepted.|,||,|P|,|0|,||,||,|590.00|,||,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B0F14DA052A28EDC0009CF62396C262F|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|3|,|1|,|103|,|This transaction cannot be accepted.|,||,|P|,|0|,||,||,|590.00|,||,|auth_capture|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B0F14DA052A28EDC0009CF62396C262F|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|27670Z|,|Y|,|6859715738|,|1421960986310|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7224|,|Cora|,|Passis|,||,|1956 N. Lincoln Ave.|,|Chicago|,|IL|,|60614|,|US|,|(312)593-7587|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|B54FB842FA789F0EFBFE8E7203012EB5|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX4388|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|029381|,|Y|,|6878558479|,|1422579516483|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7411|,|Lynn|,|Deardorff|,||,|6328 Graham Rd|,|Indianapolis|,|IN|,|46220|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|F18945E036C69566F1706365539A2009|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX2779|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|06347C|,|Y|,|6890761456|,|1422962012430|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7413|,|Katherine|,|Rigsby|,||,|4768 S 800 W|,|Russiaville|,|IN|,|46979|,|US|,|(770)833-2437|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|97FA3E34F2B20823F383CDEC0444CF52|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1203|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|667315|,|Y|,|6919155288|,|1423790703808|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7434|,|Alan|,|Wiegand|,||,|10283 Edison Road|,|Osceola|,|Indiana|,|46561|,|US|,|(219)242-1910|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|A6B7A5A6B6B3063E6ED8696FFE923F24|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX9064|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|283687|,|Y|,|6926128581|,|1424039803613|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7442|,|Jeremy|,|Hodel|,||,|357 S Glen Ave|,|Morton|,|IL|,|61550|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|BDA28684F49F542047369324BDD59D68|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1007|,|American Express|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|045211|,|Y|,|6942788553|,|1424548283156|,|Adoption Portal|,|186.00|,|CC|,|auth_capture|,|7451|,|Jeff|,|Jackson|,||,|5586 E Kinderhook Road|,|Scottsburg|,|IN|,|47170|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|D13C637029BF15CBED6E345E38D34F7C|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1283|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|035617|,|Y|,|6957604974|,|1425000600375|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7451|,|Amanda|,|Jackson|,||,|5586 E Kinderhook Rd|,|Scottsburg|,|IN|,|47170|,|US|,|(812)889-2205|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|43550F79E9CE8007D778311C59DAB573|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1283|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|B11733|,|Y|,|6960793083|,|1425072185003|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7471|,|Amanda|,|Tellmann|,||,|4835 Lakestone Dr|,|Indianapolis|,|Indiana|,|46237|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|76D68AC26A0A5A5566AB93C93B2D3699|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX3666|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|07598C|,|Y|,|6971017643|,|1425351617813|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7480|,|Arielle|,|Markley|,||,|140 Bennington Drive|,|Zionsville|,|IN|,|46077|,|US|,|(317)439-5228|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|939A36ECF97EB86B5B1DA78578066599|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX6736|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|H62240|,|Y|,|6982285903|,|1425659468772|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7482|,|Katie|,|Mitchell|,||,|10109 Cumberland Pointe Boulevard|,|Noblesville|,|IN|,|46060|,|US|,|(317)450-8445|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|279780A7F9096B21FFC0B5D38E6848D8|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX7560|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|08154C|,|Y|,|7034620523|,|1427292506502|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7504|,|Jay|,|Bhat|,||,|3733 Shafer Circle|,|Carmel|,|IN|,|46033|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|4F17181F6110309E9AEE9BBC9216CC9F|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX4806|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|08592D|,|Y|,|7046446544|,|1427675323085|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7512|,|Grant|,|Otto|,||,|2076 Spring Run Cir|,|Frederick|,|MD|,|21702|,|US|,|5405884544|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|960B7C731875DCEA13F4094881FE1FC8|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX4056|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|266916|,|Y|,|7061796751|,|1428073358482|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7343|,|Jodi|,|Zisser|,||,|40 West 116th St|,|NYC|,|NY|,|10026|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|8CF6FC9C30781CA29F31ECF05C681E30|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX4002|,|American Express|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|324560|,|Y|,|7098458458|,|1429195869296|,|Adoption Portal|,|186.00|,|CC|,|auth_capture|,|6211|,|SHANNON|,|Barney|,||,|2644 Castletown Dr|,|Hephzibah|,|Georgia|,|30815|,|US|,|7062678444|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|3A8026DDE77B26D8EEDCE0EFEDE93394|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1214|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|024978|,|Y|,|7121706568|,|1429905454267|,|Adoption Portal|,|100.30|,|CC|,|auth_capture|,|7422|,|KRISTY|,|Steien|,||,|18017 Duncan Ct|,|Farmington|,|MN|,|55024|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|57D645C1696B634064E5C9671DB83BE8|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX8266|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|224742|,|Y|,|7152245984|,|1430837587845|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7670|,|Shana|,|Marchio|,||,|1504 S. Pollard St.|,|Arlington|,|Virginia|,|22204|,|US|,|(202)251-7881|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|DC03D35C16BA2626D2C152F1B30950C5|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX2011|,|American Express|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|019988|,|Y|,|7192544833|,|1432078100185|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7706|,|Heidi|,|Knight|,||,|43 Upland Rd|,|Watertown|,|MA|,|02472|,|US|,|(410)868-2023|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|EFC3BC33B866D90126FC5C55C9A17A65|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX1078|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|05132P|,|Z|,|7206566479|,|1432591889184|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7721|,|Claudia|,|Conte|,||,|33Tileston Street|,|Boston|,|MA|,|02113|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|51AD6BABDD9C7D7F43F3D504E391F646|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX0577|,|MasterCard|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----Response----
+|1|,|1|,|1|,|This transaction has been approved.|,|055500|,|Y|,|7207115230|,|1432616024825|,|Adoption Portal|,|590.00|,|CC|,|auth_capture|,|7724|,|suzanne|,|butcher|,||,|9581 bay vista w. drive|,|indianapolis|,|in|,|46250|,|US|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,|CA50AFF81DFFB5B86A4C4C313229C837|,|M|,||,||,||,||,||,||,||,||,||,||,||,|XXXX5374|,|Visa|,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||,||
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+
+----CURL ERROR----
+SSL certificate problem, verify that the CA cert is OK. Details:
+error:14090086:SSL routines:SSL3_GET_SERVER_CERTIFICATE:certificate verify failed
+
+----Response----
+
+

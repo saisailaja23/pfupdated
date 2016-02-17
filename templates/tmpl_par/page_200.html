@@ -1,0 +1,427 @@
+<bx_include_auto:_sub_header.html />
+
+<div class="clear_both"></div>
+<div class="page200">
+
+  <div class="pinkIcons_adoptive icoResources_adoptive">Select MemberShip Type</div>
+  <div class="loader">Loading....</div>
+  <div class="extra_member_wrap">
+    <!-- box 1-->
+    <div class="box basic">
+      <div class="profilePic basic">BASIC</div>
+      <div class="info">
+        <h3>
+          <span>30 Days Subscription</span>
+        </h3>
+        <b class="cost">
+              <span class="dollersign">$</span>
+              <span class="price">0</span>
+              </b>
+        <div class="clear_both"></div>
+        <p>Click proceed to continues to the next step.</p>
+        <form action="" method="post" id="basic_form">
+          <button type="submit" class="proceed">Proceed</button>
+        </form>
+      </div>
+      <div class="clear_both"></div>
+    </div>
+    <!-- box 2-->
+    <div class="box network">
+      <div class="profilePic network">NETWORK</div>
+      <div class="info">
+        <h3>
+          <span>Annual Renewal</span>
+        </h3>
+        <b class="cost">
+              <span class="dollersign">$</span>
+              <span class="price">186</span>
+              </b>
+        <div class="clear_both"></div>
+        <p>If you have a voucher code type it here and get a discount</p>
+        <form action="" method="post" id="network_form">
+          <input type="text" name="network_vcode" class="vcode" />
+          <button name="network" class="validate">Validate</button>
+          <div class="clear_both"></div>
+          <p>Click on proceed to make your payment</p>
+          <button type="submit" class="proceed">Proceed</button>
+        </form>
+      </div>
+      <div class="clear_both"></div>
+    </div>
+
+
+    <!-- box 3-->
+    <div class="box last featured">
+      <div class="profilePic featured">FEATURED</div>
+      <div class="info">
+        <h3>
+          <span>Annual Renewal</span>
+        </h3>
+        <b class="cost">
+              <span class="dollersign">$</span>
+              <span class="price">590</span>
+              </b>
+        <div class="clear_both"></div>
+        <p>If you have a voucher code type it here and get a discount</p>
+        <form action="" method="post" id="featured_form">
+          <input type="text" name="featured_vcode" class="vcode" />
+          <button class="validate">Validate</button>
+          <div class="clear_both"></div>
+          <p>Click on proceed to make your payment</p>
+          <button type="submit" class="proceed">Proceed</button>
+        </form>
+      </div>
+      <div class="clear_both"></div>
+    </div>
+  </div>
+</div>
+<div class="clear_both"></div>
+
+
+
+
+<script type="text/javascript" src="paymentFlow/javascript/countries.js"></script>
+<script type="text/javascript" src="paymentFlow/javascript/masks.js"></script>
+
+<script type="text/javascript" src="paymentFlow/model/Model.js"></script>
+<script type="text/javascript" src="paymentFlow/controller/PaymentFlow.js"></script>
+
+
+
+<script type="text/javascript">
+$(function() {
+  window.siteurl = '<bx_url_root />',
+  memberPHPUrl = "Member_vocher_validate.php";
+  var Member = function() {
+    this.vCode = "";
+    this.netWorkCost = 186;
+    this.featuredCost = 590;
+    this.newNetWorkCost = 186;
+    this.newFeaturedCost = 590;
+    this.userActive = false,
+    this.user = {};
+    this.dicount = 0;
+    this.priceid = 0;
+    this.amount=0;
+    this.Type="";
+    this.selectedTypeId=25;
+    this.isVocharActive=false;
+    this.init();
+    this.paymentCallFlag = 0;
+  };
+  Member.prototype = {
+    init: function() {
+      $('.loader').show();
+      $('.extra_member_wrap').hide();
+      this.events();
+      this.getUserDetails(this.loadingAnimationCallback);
+    },
+    events: function() {
+      var self = this;
+      $("#basic_form .proceed").click(function(e) {
+        e.preventDefault();
+        self.selectedTypeId=25;
+        self.successRedirect({
+          provider:null
+        });
+        self.Type="Basic";
+      });
+      $("#network_form .proceed").click(function(e) {
+        e.preventDefault();
+        self.selectedTypeId=23;
+        if (self.newNetWorkCost == 0) {
+          self.successRedirect({
+          provider:null
+        });
+          return;
+        }
+         self.Type="Network";
+        var data = {};
+        data.memtype = "Network-New";
+        self.amount=data.cost = self.newNetWorkCost;
+        data.user = self.user;
+        self.callPaymentFlow(data);
+        return;
+      });
+      $("#featured_form .proceed").click(function(e) {
+           self.selectedTypeId=24;
+        e.preventDefault();
+        if (self.newFeaturedCost==0) {
+          self.successRedirect({
+            provider:null
+          });
+          return;
+        }
+         self.Type="Featured";
+        var data = {};
+        data.memtype = "Featured-New";
+        self.amount=data.cost = self.newFeaturedCost;
+        data.user = self.user;
+        self.callPaymentFlow(data);
+        return;
+      });
+      $("#network_form .validate").click(function(e) {
+        e.preventDefault();
+        self.vCode = $("#network_form .vcode").val();
+        self.getDiscount(self.vCode, 'network', 180);
+      });
+      $("#featured_form .validate").click(function(e) {
+        e.preventDefault();
+        self.vCode = $("#featured_form .vcode").val();
+        self.getDiscount(self.vCode, 'featured', 590);
+      });
+    },
+    getUserDetails: function(callback) {
+      var self = this;
+      $.get(memberPHPUrl + "?user=true", function(data) {
+        self.user = $.parseJSON(data);
+        self.userActive = true;
+        callback ? callback() : ' ';
+      });
+    },
+    loadingAnimationCallback: function() {
+      $('.loader').hide();
+      $('.extra_member_wrap').show();
+    },
+    getDiscount: function(vCode, memberType, price) {
+      var self = this;
+      if (!vCode || vCode == " ") {
+         dhtmlx.alert({
+            //  title:"Alert",
+            //  type:"alert",
+              text:"Please enter the voucher code"
+          });
+        return;
+      }
+      //Sailaja- To Fix the issue with IE11 and IE10 at payment with validate and proceed buttons
+       $.ajax({
+        url: memberPHPUrl,
+        type: 'POST',
+        //dataType: 'default: Intelligent Guess (Other values: xml, json, script, or html)',
+        data: {
+            vcode: vCode,
+            memberType: memberType,
+            price: price
+          }
+      })
+      .done(function(data) {
+         if(self.isVocharActive){
+          dhtmlx.alert({
+          //  title:"Alert",
+          //  type:"alert",
+            text:"Voucher already applied. Please reload your page."
+          });
+          return ;
+        }
+        self.processResult(data);
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+      
+      // $.post(memberPHPUrl, {
+      //   vcode: vCode,
+      //   memberType: memberType,
+      //   price: price
+      // }, function(data) {
+      //   if(self.isVocharActive){
+      //     dhtmlx.alert({
+      //     //  title:"Alert",
+      //     //  type:"alert",
+      //       text:"Voucher already applied. Please reload your page."
+      //     });
+      //     return ;
+      //   }
+      //   self.processResult(data);
+      // });
+    },
+    processResult: function(res) {
+      var self = this;
+    
+      res = $.parseJSON(res);
+
+       console.log(res.discount);
+      if (res.result) {
+        this.discount = res.discount;
+        this.priceid = res.priceId;
+        if (res.memtype == "network") {
+           dhtmlx.alert({
+            //  type:"alert",
+              text:"You got " + res.discount + "% discount with your voucher code."
+          });
+          self.newNetWorkCost = (self.netWorkCost - ((self.netWorkCost * res.discount) / 100)).toFixed(2);
+          $('.extra_member_wrap .network .price').text(self.newNetWorkCost);
+        } else {
+           dhtmlx.alert({
+             
+            //  type:"alert",
+              text:"You got " + res.discount + "% with your voucher code."
+          });
+           this.isVocharActive=true;
+           console.log(self.featuredCost);
+          self.newFeaturedCost = (self.featuredCost - ((self.featuredCost * res.discount) / 100)).toFixed(2);
+          console.log(self.featuredCost);
+          $('.extra_member_wrap .featured .price').text(self.newFeaturedCost);
+        }
+      } else {       
+         dhtmlx.alert({
+           //  type: "confirm",
+              text:res.msg
+          });
+      }
+    },
+    successRedirect: function(res) {
+      var self=this,provider="";
+      
+      if(res.paymentType){
+        provider=(res.paymentType=="paypal")?"paypal":"authorize-net";
+      }
+      
+       if(self.selectedTypeId == "25") {
+       self.mess = "Your membership has been updated to Basic" 
+       }
+      else if(self.selectedTypeId == "23") {
+       self.mess = "Your membership has been updated to Network" 
+       }
+      else if(self.selectedTypeId == "24") {
+      self.mess = "Your membership has been updated to Featured" 
+       }
+     else {      
+      
+          
+      }   
+      
+      $.post(siteurl+"MemberComponent/processors/membershipRenewal.php",{
+        "userid":self.user.id,
+        "memtype":self.selectedTypeId,
+        "provider":provider,
+        "amount":self.amount,
+        "vCode":self.vCode
+      },function(res){
+			if(res=='exist')
+				self.mess = "You have already used your basic 30 days membership. You need to select an upgraded account.";
+			dhtmlx.alert({
+             // title:"confirm",
+              text:self.mess,
+              callback:function(){
+                if(self.paymentCallFlag == 0){
+					if(res!='exist')
+						window.location.href = siteurl + "our-family-dashboard.php?status=1";
+				}
+              }
+          });
+      
+      });
+    },
+    successTransaction: function(res) {
+      console.log(res);
+      console.log(res.status);
+      var self = this;
+      if (res.status=="success") {
+        if (!self.vCode || self.vCode == " ") {
+          self.successRedirect(res);
+          return;
+       }
+        var p="code="+self.vCode+"&discount="+self.discount+"&priceid="+self.priceid;
+        $.get(memberPHPUrl+"?"+p, function(data) {
+          data=$.parseJSON(data);
+          console.log(data);
+          if (data.status=="success") {            
+            dhtmlx.alert({
+             // title:"Alert",
+              text:"Payment Process is success. Click ok to continue."
+          });
+            self.successRedirect(res);
+          } else {
+              dhtmlx.alert({
+            //  title:"Alert",
+            // type: "confirm",
+              text:"Intenal Server error."
+          });
+          }
+        });
+
+      } else {
+         dhtmlx.alert({
+            //  title:"Alert",
+           //  type: "confirm",
+              text:res.msg
+          });
+      }
+    },
+    paymentCallBack: function(res) { 
+      
+      if (!res.error) {
+        this.successTransaction(res);
+      } else {
+        dhtmlx.alert({
+           //   title:"Alert",
+          //   type: "confirm",
+              text:res.error.message
+          });
+      }
+    },
+    callPaymentFlow: function(call) {
+      var self=this,
+      proto=location.protocol,
+      siteUrl='<bx_url_root />',
+      appPath = siteUrl + 'paymentFlow/';
+      if (self.userActive) {
+        innercall();
+        self.paymentCallFlag = 1;
+      }
+      function innercall() {
+        console.log(call.cost);
+        PaymentFlow.newFlow({
+          invoice_id: (new Date().getTime()), // mandatory, must to be unique
+          invoice_pay_for_desc: "Adoption Portal", // mandatory. payment description
+          invoice_custom_message: "thank you guy...",
+          customer_id: call.user.id, // mandatory
+          customer_firstName: call.user.fname, // mandatory
+          customer_lastName: call.user.lname, // mandatory
+          customer_email: call.user.email, // mandatory
+          customer_address1: " ", // mandatory
+         
+          //App settings
+          signature_saving_path: appPath + 'signatures/',
+          application_url: appPath,
+          dhtmlx_codebase_path: siteUrl + "plugins/dhtmlx/",
+          icons_path : appPath+'asserts/icons/', 
+          imgs_path:appPath+'asserts/imgs/', 
+          pdf_saving_path: appPath + "/pdfs/",
+          //Payment settings
+          pay_for_items: [{
+            invoice_item_id: 1,
+            values: [call.memtype, call.memtype, call.cost]
+          }],
+          gateways_allowed: [{
+            paypal: true
+          }, {
+            authorize_net: true,
+            Visa : true,
+            MasterCard : true,
+            AmericanExpress : true,
+            Discover : true 
+          }, {
+            wire_transfer: false
+          }, {
+            echeck: false
+          }, {
+            check: false
+          }],
+          paymentCallBack: function(res){
+            self.paymentCallBack(res);
+          }
+        });
+      }
+    }
+  };
+  new Member();
+});
+</script>
+
+
+<bx_include_auto:_sub_footer.html />

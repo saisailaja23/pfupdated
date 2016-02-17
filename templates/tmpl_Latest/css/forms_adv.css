@@ -1,0 +1,4 @@
+@import url(../../base/css/forms_adv.css);
+.form_advanced_table th, .form_advanced_table td, .input_close, .button_wrapper_close {
+background-color:#fff;
+}

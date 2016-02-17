@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>PF Orderer</title>
+         
+        <link rel="stylesheet" type="text/css" href="../plugins/dhtmlx/dhtmlx.css" />
+        <script src="../plugins/dhtmlx/dhtmlx.js"></script>
+         
+        <script type="text/javascript" src="PForder/model/PForder_Model.js"></script>
+        <script type="text/javascript" src="PForder/controller/PForder.js"></script>
+         
+        <script type="text/javascript" >
+            window.onload = function()
+            {
+                    PForder.start( { 
+                        uid : (new Date()).getTime() 
+						,usertype : 0 /* 0--Agency 1--Users*/
+                        ,application_path : "http://localhost/www.parentfinder.com/PForder/" 
+                        ,dhtmlx_codebase_path : "http://localhost/www.parentfinder.com/plugins/dhtmlx/" 
+                    } );
+             }
+         </script>
+     </head>
+    <body>
+    </body>
+</html>

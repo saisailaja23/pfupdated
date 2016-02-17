@@ -1,0 +1,16 @@
+#join_form td.colspan {
+    text-align: center;
+}
+
+#join_form .hidable {
+    /* hidden by default */
+    display: none;
+}
+
+.input_wrapper_textarea {
+	width: 370px;
+}
+#join_form .form_input_select {
+    width: 350px\9;
+    min-width: 150px\9;
+}

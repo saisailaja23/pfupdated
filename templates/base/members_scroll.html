@@ -1,0 +1,63 @@
+
+
+    <link rel="stylesheet" type="text/css" media="screen" href="KevinBatdorf-codaslider-b404ecf/css/coda-slider.css">
+
+
+
+    <!--
+    I would suggest using these for production, because of better caching
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
+    -->
+
+    <!-- Definitely use these for development -->
+    <script src="KevinBatdorf-codaslider-b404ecf/js/jquery-1.7.2.min.js"></script>
+    <script>jQuery.noConflict();</script>
+    <script src="KevinBatdorf-codaslider-b404ecf/js/jquery-ui-1.8.20.custom.min.js"></script>
+
+    <!-- This of course is required. The full version (not .min) is also included in the js directory -->
+    <script src="KevinBatdorf-codaslider-b404ecf/js/jquery.coda-slider-3.0.js"></script>
+
+    <title>Coda Slider 3.0</title>
+
+   <script>
+    jQuery(function(){
+
+      /* Here is the slider using default settings */
+     // $('#slider-id').codaSlider();
+      /* If you want to adjust the settings, you set an option
+         as follows:
+*/
+          jQuery('#slider-id').codaSlider({  
+            autoSlide:true,
+            autoHeight:false,
+            autoSlideInterval: 10000,
+            autoSlideStopWhenClicked: true
+
+          });
+
+     
+    });
+
+
+
+
+
+
+    </script>
+  </head>
+  <body>
+
+    
+
+    <div class="coda-slider"  id="slider-id" >
+     <bx_repeat:items>
+                <div>
+__url__ __url1__ __url2__ __url3__ __url4__
+</div>
+
+</bx_repeat:items>
+
+    </div>
+

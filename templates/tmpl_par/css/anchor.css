@@ -1,0 +1,94 @@
+@import url(../../base/css/anchor.css);
+
+a, a:link {
+	color:#f195bf;
+}
+a:visited {
+	color:#f195bf;
+}
+
+a:hover, a:active {
+	color:#a2a4a7;
+	text-decoration:underline;
+}
+
+.basicCol a:link, .basicCol a:visited
+{
+	color:#a2d077;
+	font-weight:bold;
+}
+
+.basicCol a:hover, .basicCol a:active
+{
+	color:#a2a4a7;
+	font-weight:bold;
+}
+
+.networkCol a:link, .networkCol a:visited
+{
+	color:#58b4a8;
+	font-weight:bold;
+}
+
+.networkCol a:hover, .networkCol a:active
+{
+	color:#a2a4a7;
+	font-weight:bold;
+}
+
+.featuredCol a:link, .featuredCol a:visited
+{
+	color:#f295bf;
+	font-weight:bold;
+}
+
+.featuredCol a:hover, .featuredCol a:active
+{
+	color:#a2a4a7;
+	font-weight:bold;
+}
+
+.buttonsArea a:link, .buttonsArea a:visited
+{
+	color:#fff;
+	font-weight:bold;
+}
+
+.buttonsArea a:hover, .buttonsArea a:active
+{
+	color:#fff;
+	font-weight:bold;
+}
+
+.resources a:link, .resources a:visited
+{
+	color:#199d94;
+	font-weight:bold;
+}
+
+.resources a:hover, .resources a:active
+{
+	color:#949599;
+	font-weight:bold;
+}
+
+.resourceDiv a:link, .resourceDiv a:visited
+{
+	color:#019d8c;
+}
+
+.resourceDiv a:hover, .resourceDiv a:active
+{
+	color:#949599;
+}
+
+.searchMenuBarRight a:link, .searchMenuBarRight a:visited
+{
+	color:#95959e;
+}
+
+.searchMenuBarRight a:hover, .searchMenuBarRight a:active
+{
+	color:#f295bf;
+}
+

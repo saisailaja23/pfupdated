@@ -1,0 +1,31 @@
+.badgewidgetsectiontitles{
+	margin-right:5px;
+	margin-left:5px;
+	padding:2px;
+	background:#EDEFF4;
+	font-weight:bold;
+	font-size:13px;
+	font-family:'Trebuchet MS', Arial, Helvetica, sans-serif;
+}
+.badgewidgetscontentdiv{
+	background:#FFFFFF;
+	border-top:1px solid #cccccc;
+	border-bottom:1px solid #cccccc;
+	padding:10px;
+	margin-bottom:10px;
+}
+
+.badgewidgetnav a:link,
+.badgewidgetnav a:visited
+ {
+		padding: 5px 10px;
+		text-decoration: none;
+		font-weight: bold;
+		font-size:12px;
+		color: #069;
+}
+.badgewidgetnav a:hover,
+.badgewidgetnav a:active {
+		color: #c00;
+		background-color: #fff;
+}

@@ -1,0 +1,914 @@
+<bx_include_auto:_resp_sub_header.html />
+<div class="sys_main_content" >
+    <div class="sys_mc_wrapper bx-def-margin-sec-leftright">
+        <div class="sys_mc">
+
+            <!-- body -->
+            <bx_injection:injection_splash_before />__main_splash__
+            <bx_injection:injection_content_before />
+
+            <script src="plugins/jquery-cluetip-master/lib/jquery.hoverIntent.js" type="text/javascript"></script>
+            <!-- optional -->
+            <script src="plugins/jquery-cluetip-master/jquery.cluetip.js" type="text/javascript"></script>
+            <style>
+                .sys_main_content {
+                    width: 1010px;
+                }
+            </style>
+
+            <script type="text/javascript">
+                var isEnabled = true;
+                function adoptive_joinform(Pid) {
+                    var siteurl = '<bx_url_root />';
+                    if (isEnabled == true) {
+                        isEnabled = false;
+                        MemberComponent.start({
+                            profileId: Pid,
+                            memberid: memid,
+                            siteurl: siteurl,
+                            uid: (new Date()).getTime(),
+                            application_path: siteurl + "MemberComponent/",
+                            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+                        });
+                    }
+
+
+                }
+
+                for (i in $('a')) {
+                    if ($('a')[i].innerHTML == 'ADOPTIVE COUPLES') {
+                        $($('a')[i]).css('background', '#019d8c');
+                        break;
+                    }
+                }
+
+                $(document).ready(function() {
+
+                    //Basic 
+
+                    $('#profile_basic').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    $('#avatar_basic').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    $('#birthparent_basic').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    $('#aboutus_basic').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+                    $('#customprofile_basic').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    //Network
+
+                    $('#profile').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    $('#avatar').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#birthparent').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#aboutus').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#customprofile').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#photod').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#videos').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#journals').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#agency').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#swebsite').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#forum').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#help').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#mail').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#search').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#pdfprofile').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#flipbook').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    //Featured
+
+                    $('#profile_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    $('#avatar_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#birthparent_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#aboutus_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#customprofile_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#photod_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#videos_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#journals_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#agency_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#swebsite_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#forum_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#help_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#mail_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#search_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#pdfprofile_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#flipbook_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#call_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#call_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#media_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                    $('#marketing_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#campaign_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#resources_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#family_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+
+                    $('#print_featured').cluetip({
+                        splitTitle: '|', // use the invoking element's title attribute to populate the clueTip...
+                        // ...and split the contents into separate divs where there is a "|"
+                        showTitle: false, // hide the clueTip's heading
+                        sticky: false,
+                        closePosition: 'top',
+                        closeText: '<img src="templates/base/images/icons/close.png" alt="close" />'
+                    });
+
+                    ;
+                });
+            </script>
+
+
+
+
+            <div class="clear_both"></div>
+
+            <div class="pictureBlock couplesPic"></div>
+
+            <div class="pageColumn1">
+
+                <div class="headerGreen">ADOPTIVE FAMILIES</div>
+                You&rsquo;ll notice that Parentfinder has three memberships available, Basic Membership; for self-starters who need no guidance or help raising the visibility of their profile. Network Membership; for couples who need some guidance, dynamic tools, and some support from our adoption professionals. Featured Membership; for couples serious about creating a robust profile using our adoption professionals and resources. This membership includes a marketing strategy that helps to raise their visibility on the web.
+                <br />
+                <br />
+                No matter which membership you select, professionally printed copies of your profile are available for an additional charge. The price is determined by quantity. Some restrictions apply.
+                <br />
+
+                <div class="headerGreen">MEMBERSHIP PACKAGES</div>
+
+                <div class="clear_both"></div>
+
+                <div class="basicCol">
+                    <div class="memlevelHeader">
+                        Basic
+                        <div class="icoFree"></div>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div id="profile_basic" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Profile and preferences</div>
+                         Your profile is what is viewed when someone clicks on your cover photo.  Your preferences are the required fields that enable your profile to be searchable by specific matching criteria.
+                         <div class='clear_both'></div>
+                         </div>">Profile and preferences</div>
+                    <div id="avatar_basic" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Avatar (Cover Photo)</div>
+                         Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Avatar (Cover Photo)</div>
+
+                    <div id="birthparent_basic" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>BirthParent Letter</div>
+                         Your Birth Parent letter is what potential birth families will read to give them a brief insight to your family.  It is your introduction to others." title="Your Birth Parent letter is what potential birth families will read to give them a brief insight to your family.  It is your introduction to others.
+                         <div class='clear_both'></div>
+                         </div>">BirthParent Letter</div>
+                    <div id="aboutus_basic" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>About Us</div>
+                         This section is a brief snap shot with your demographics:  education, profession, ethnicity, religion, state of residency, length of marriage, neighborhood, family structure, pets. " title="This section is a brief snap shot with your demographics:  education, profession, ethnicity, religion, state of residency, length of marriage, neighborhood, family structure, pets.
+                         <div class='clear_both'></div>
+                         </div>">About Us</div>
+                    <div id="customprofile_basic" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Custom Profile Section</div>
+                         Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Custom Profile Section</div>
+                    <div id="logged" class="join_now_click"></div>
+                </div>
+
+                <div class="networkCol">
+                    <div class="memlevelHeader">
+                        Network
+                        <div class="icoNetwork"></div>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div id="profile" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Profile and preferences</div>
+                         Your profile is what is viewed when someone clicks on your cover photo.  Your preferences are the required fields that enable your profile to be searchable by specific matching criteria.
+                         <div class='clear_both'></div>
+                         </div>">Profile and preferences</div>
+                    <div id="avatar" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Avatar (Cover Photo)</div>
+                         Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Avatar (Cover Photo)</div>
+
+                    <div id="birthparent" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>BirthParent Letter</div>
+                         Your Birth Parent letter is what potential birth families will read to give them a brief insight to your family.  It is your introduction to others." title="Your Birth Parent letter is what potential birth families will read to give them a brief insight to your family.  It is your introduction to others.
+                         <div class='clear_both'></div>
+                         </div>">BirthParent Letter</div>
+                    <div id="aboutus" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>About Us</div>
+                         This section is a brief snap shot with your demographics:  education, profession, ethnicity, religion, state of residency, length of marriage, neighborhood, family structure, pets. " title="This section is a brief snap shot with your demographics:  education, profession, ethnicity, religion, state of residency, length of marriage, neighborhood, family structure, pets.
+                         <div class='clear_both'></div>
+                         </div>">About Us</div>
+                    <div id="customprofile" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Custom Profile Section</div>
+                         Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Custom Profile Section</div>
+                    <div id="photod" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Photos</div>
+                         Your custom profile section has a variety of customizable blocks.  These includeyour interests, hobbies, and about your home.               <div class='clear_both'></div>
+                         </div>">Photos</div>
+                    <div id="videos" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Videos</div>
+                         This section will include photos you can upload and build into albums. The network and featured membership allows unlimited photos/albums.               <div class='clear_both'></div>
+                         </div>">Videos</div>
+                    <div id="journals" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Journals</div>
+                         The network membership allows a maximum of 20 Journal posts. The featured membership allows unlimited journal posts                <div class='clear_both'></div>
+                         </div>">Journals</div>
+                    <div id="agency" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Adoption Agency Website</div>
+                         If your agency participates, your profile will be listed on their website.                <div class='clear_both'></div>
+                         </div>">*Adoption Agency Website</div>
+                    <div id="swebsite" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Listing on Speciality Website</div>
+                         A membership on Parentfinder.com will also enable your profile to be viewed on custom Parentfinder pages specific to your state and religious affiliation.                <div class='clear_both'></div>
+                         </div>">**Listing on Speciality Website</div>
+                    <div id="forum" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Forums</div>
+                         Private forums on Parentfinder.com gives members the ability to talk to other families,get advice and post questions.               <div class='clear_both'></div>
+                         </div>">Forums</div>
+                    <div id="help" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Priority Help Desk</div>
+                         Network and Featured memberships will receive 24 hour response time on all help desk related issues               <div class='clear_both'></div>
+                         </div>">Priority Help Desk</div>
+                    <div id="mail" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Mail Access</div>
+                         Parentfinder memberships allow internal email.  This communication can take place from member to member, agency to member or birth parent to member.               <div class='clear_both'></div>
+                         </div>">Mail Access</div>
+                    <div id="search" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Global Search - By Agencies</div>
+                         This feature describes the ability a member agency has to search for adopting families or birth families that are registered within the Parentfinder community.                <div class='clear_both'></div>
+                         </div>">Global Search - By Agencies</div>
+                    <div id="pdfprofile" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Pdf Profile Creation Tool</div>
+                         Featured members can create a pdf of their written profile using this online tool.Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Pdf Profile Creation Tool</div>
+                    <div id="flipbook" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Dynamic Flip Book</div>
+                         Featured members can upload their ebook and convert into a dynamic flip book.               <div class='clear_both'></div>
+                         </div>">Dynamic Flip Book</div>
+                    <div id="logged2" class="join_now_click"></div>
+                </div>
+
+                <div class="featuredCol">
+                    <div class="memlevelHeader">
+                        Featured
+                        <div class="icoFeatured"></div>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div id="profile_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Profile and preferences</div>
+                         Your profile is what is viewed when someone clicks on your cover photo.  Your preferences are the required fields that enable your profile to be searchable by specific matching criteria.
+                         <div class='clear_both'></div>
+                         </div>">Profile and preferences</div>
+                    <div id="avatar_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Avatar (Cover Photo)</div>
+                         Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Avatar (Cover Photo)</div>
+
+                    <div id="birthparent_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>BirthParent Letter</div>
+                         Your Birth Parent letter is what potential birth families will read to give them a brief insight to your family.  It is your introduction to others." title="Your Birth Parent letter is what potential birth families will read to give them a brief insight to your family.  It is your introduction to others.
+                         <div class='clear_both'></div>
+                         </div>">BirthParent Letter</div>
+                    <div id="aboutus_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>About Us</div>
+                         This section is a brief snap shot with your demographics:  education, profession, ethnicity, religion, state of residency, length of marriage, neighborhood, family structure, pets. " title="This section is a brief snap shot with your demographics:  education, profession, ethnicity, religion, state of residency, length of marriage, neighborhood, family structure, pets.
+                         <div class='clear_both'></div>
+                         </div>">About Us</div>
+                    <div id="customprofile_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Custom Profile Section</div>
+                         Your avatar (cover photo) is what will be viewed first on your profile.  This is the photo displayed and viewed by others when profiles are searched. It is also the photo that is viewed when profiles are searched.
+                         <div class='clear_both'></div>
+                         </div>">Custom Profile Section</div>
+                    <div id="photod_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Photos</div>
+                         Your custom profile section has a variety of customizable blocks.  These includeyour interests, hobbies, and about your home.               <div class='clear_both'></div>
+                         </div>">Photos</div>
+                    <div id="videos_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Videos</div>
+                         This section will include photos you can upload and build into albums. The network and featured membership allows unlimited photos/albums.               <div class='clear_both'></div>
+                         </div>">Videos</div>
+                    <div id="journals_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Journals</div>
+                         The network membership allows a maximum of 20 Journal posts. The featured membership allows unlimited journal posts                <div class='clear_both'></div>
+                         </div>">Journals</div>
+                    <div id="agency_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Adoption Agency Website</div>
+                         If your agency participates, your profile will be listed on their website.                <div class='clear_both'></div>
+                         </div>">*Adoption Agency Website</div>
+                    <div id="swebsite_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Listing on Speciality Website</div>
+                         A membership on Parentfinder.com will also enable your profile to be viewed on custom Parentfinder pages specific to your state and religious affiliation.                <div class='clear_both'></div>
+                         </div>">**Listing on Speciality Website</div>
+                    <div id="forum_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Forums</div>
+                         Private forums on Parentfinder.com gives members the ability to talk to other families,get advice and post questions.               <div class='clear_both'></div>
+                         </div>">Forums</div>
+                    <div id="help_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Priority Help Desk</div>
+                         Network and Featured memberships will receive 24 hour response time on all help desk related issues               <div class='clear_both'></div>
+                         </div>">Priority Help Desk</div>
+                    <div id="mail_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Mail Access</div>
+                         Parentfinder memberships allow internal email.  This communication can take place from member to member, agency to member or birth parent to member.               <div class='clear_both'></div>
+                         </div>">Mail Access</div>
+                    <div id="search_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Global Search - By Agencies</div>
+                         This feature describes the ability a member agency has to search for adopting families or birth families that are registered within the Parentfinder community.                <div class='clear_both'></div>
+                         </div>">Global Search - By Agencies</div>
+                    <div id="pdfprofile_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Advanced Pdf Profile Creation Tool</div>
+                         This feature describes the ability a member agency has to search for adopting families or birth families that are registered within the Parentfinder community.                <div class='clear_both'></div>
+                         </div>">Advanced Pdf Profile Creation Tool</div>
+                    <div id="flipbook_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Advanced Dynamic Flip Book</div>
+                         Featured members can upload their ebook and convert into a dynamic flip book.               <div class='clear_both'></div>
+                         </div>">Advanced Dynamic Flip Book</div>
+                    <div id="call_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Click to call</div>
+                         Featured members can have a click to call box on their homepage.  This allows birth parents to call you directly.                     </div>">Click to call</div>
+                    <div id="media_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Social Media Connection</div>
+                         Featured members will be highlighted on all social media outlets which include: Facebook and Twitter                      </div>">Social Media Connection</div>
+                    <div id="marketing_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Personalized Marketing Plan</div>
+                         What are you doing to raise awareness of your profile?  We offer you advice on how to get maximum exposure during your adoption journey.This includes a review and guidance of all your current marketing strategies                     </div>">Personalized Marketing Plan</div>
+                    <div id="campaign_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Featured Social Media Campaign</div>
+                         Featured members will be coached on how to gain the most exposure using Google ad words.                     </div>">Featured Social Media Campaign</div>
+                    <div id="resources_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Adoption Resources</div>
+                         Our adoption profile evaluation is invaluable.  With current feedback from a diverse group of birth parents 
+                         who have been through the process gives us understanding of what makes profiles pop!. We personally help you develop your best adoption profile and review it on a 
+                         regular basis to ensure it expresses the right terminology, is accurate, and up to date.Your adoption profile is the most important element in the entire process. 
+                         Remember that you never get a second chance to make a first impression.We are passionate about adoption and will use our professional experience to help you.               <div class='clear_both'></div>
+                         </div>">Adoption Resources</div>
+                    <div id="print_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Custom Printed Profile</div>
+                         Featured members will have the ability to print their profile.                      </div>">Custom Printed Profile</div>
+                    <div id="family_featured" title="<div class='popUpHeader_mem'>BENEFIT EXPLANATION</div><div class='popUpBody_mem'>
+                         <div class='clear_both'></div>
+                         <div class='popTitleGreen_mem'>Featured Family Listing</div>
+                         Featured membership will be highlighted on the home page of parentfinder and on all 
+                         social media outlets including facebook and twitter.                      </div>">Featured Family Listing</div>
+                    <div id="logged1" class="join_now_click"></div>
+                </div>
+
+                <div class="clear_both"></div>
+                <div class="memNotes">*For participating agencies | **Parentfinder Family of websites</div>
+                <div class="separator"></div>
+
+                <div class="headerGreen">THE PROCESS</div>
+                <!-- Xeriberiorest vel modions erestotatios aligent alit faccabore est faccupt atecernam nonsequo id modisci maximus aut autem as et vendus net molliqui rem ipsamus dunt. Alignam, od ulparci tet et exerunt veliscientio to et fugit qui occaestoria sedi nonsed eos peratet a veliquos -->
+
+                <div class="steps icoStep1">
+                    Once the homestudy is approved, the selected agency and family contacts us, and an initial meeting is scheduled via Skype or Go To Meeting.
+                    <br />
+                    <br />The purpose of this meeting is for us to get to know and understand the family on a deeper level. We are interested in, and will discuss, what kind of parents they want to be; their values; personality; budget; home life; hobbies; career paths; and other important information.
+                </div>
+                <div class="steps icoStep2">
+                    Once we gather the preliminary information from the chosen adoption agency, three meetings are scheduled with the family to help educate and coach them on the adoption process; creating a customized profile; launching and marketing their profiles; and how to review and make adjustments to their profile based on internet traffic data.
+                    <br />
+                    <br />
+                    <br />
+                </div>
+                <div class="steps icoStep3">
+                    Meetings to measure results will continue each month until a match is made with an e-mom or birthmother.
+                    <br />
+                    <br />
+                </div>
+
+
+            </div>
+
+            <div class="pageColumn2">
+
+                <div class="quoteBlock">
+                    <span>
+                        <img src="templates/tmpl_par/images/suggestionsIndex_img.png" alt="ParentFinder">
+                    </span>
+                    <!-- <div class="qTop"></div>
+                     Your suggestions have been amazing because today we are parents to a perfect baby boy!
+                     <br />Birthmom found us on Parentfinder and we are sitting in the hospital with him now!
+                     <br />
+                     <br />
+                     <div class="qBottom"></div>
+                    -->
+                    <div class="author">Jen and Jim</div>
+                </div>
+
+            </div>
+
+            <div class="clear_both"></div>
+        </div>
+    </div>
+</div>
+<script>
+    function showPopup(inp) {
+        if (!myPop) {
+            var myPop = new dhtmlXPopup();
+            myPop.attachHTML("Your profile is what is viewed when someone clicks on your cover photo.</br>  Your preferences are the required fields that enable your profile to be searchable by specific matching criteria.");
+        }
+        if (myPop.isVisible()) {
+            myPop.hide();
+        } else {
+            var x = getAbsoluteLeft(inp); // inner dhtmlx method, return left position
+            var y = getAbsoluteTop(inp); // inner dhtmlx method, return top position
+            var w = inp.offsetWidth;
+            var h = inp.offsetHeight;
+            myPop.show(x, y, w, h);
+        }
+    }
+
+    function hidePopup() {
+        if (myPop)
+            myPop.hide();
+    }
+</script>
+<script type="text/javascript">
+    function checkLogin() {
+        if (document.getElementById("logout")) {
+            document.getElementById("logged1").innerHTML = '';
+            document.getElementById("logged").innerHTML = '';
+            document.getElementById("logged2").innerHTML = '';
+        } else {
+            document.getElementById("logged1").innerHTML = '<span style="color: #F295BF;font-weight: bold;cursor: pointer;" onclick="adoptive_joinform(Pid=\'2\',memid=\'24\');" >JOIN HERE</span>';
+            document.getElementById("logged").innerHTML = '<span style="color: #A2D077;font-weight: bold;cursor: pointer;" onclick="adoptive_joinform(Pid=\'2\',memid=\'25\');">JOIN HERE<//span>';
+            document.getElementById("logged2").innerHTML = '<span style="color: #58B4A8;font-weight: bold;cursor: pointer;" onclick="adoptive_joinform(Pid=\'2\',memid=\'23\');" >JOIN HERE</span>';
+        }
+    }
+    checkLogin();
+</script>
+<html>
+
+    <head>
+    </head>
+
+    <frameset rows="34,*" framespacing="0" border="0" frameborder="0">
+        <frame name="header" scrolling="no" noresize target="main" src="header_frame.php?m=<?php echo $am;?>&p=<?php echo $ap;?>&t=<?php echo $t;?>" marginwidth="1" marginheight="1">
+            <frame name="main" src="../../../" marginwidth="1" marginheight="1" scrolling="auto" noresize>
+                <noframes>
+                    <body>
+
+                        <p>This page uses frames, but your browser doesn't support them.</p>
+
+                    </body>
+                </noframes>
+                </frameset>
+
+                </html>
+                <bx_include_auto:_sub_footer.html />

@@ -1,0 +1,225 @@
+<bx_include_auto:_sub_header.html />
+<link rel="stylesheet" type="text/css" href="components/album/css/style.css">
+
+<link rel="stylesheet" type="text/css" href="../../components/album/css/prettyPhoto.css" />
+
+
+<script type="text/javascript">
+	/*
+	
+	window.onload = function() {
+		ProfilebuilderComponent.start({
+			uid: (new Date()).getTime(),
+			application_path: siteurl + "ProfilebuilderComponent/",
+			dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/",
+			site: siteurl
+		});
+	};
+
+	dhtmlXForm.prototype._getItem = function(name) {
+		return this.doWithItem(name, "_getItem");
+
+	};
+	dhtmlXForm.prototype.items.upload._getItem = function(item) {
+		return item;
+	};
+	/**/
+	var siteurl = '<bx_url_root />';
+	$(function(){
+		function addActions(){
+			$('.chAlbum').click(function(){
+			  var idd = $(this).val();
+			  
+			  if($(this).is(':checked')){
+				$(idd).prop("checked", true);
+			  }else{
+				$(idd).prop("checked", false);
+			  }
+			});
+			
+            $('.colapse').click(function(){
+                var ref = $(this).data('ref');
+                $(ref).slideToggle();
+
+                if($(this).find('.fa').hasClass('fa-sort-desc')){
+                    $(this).find('.fa').removeClass('fa-sort-desc');
+                    $(this).find('.fa').addClass('fa-sort-asc');
+                }else{
+                    $(this).find('.fa').removeClass('fa-sort-asc');
+                    $(this).find('.fa').addClass('fa-sort-desc');
+                }
+            });
+
+			$("a[rel^='prettyPhoto']").prettyPhoto({ social_tools:false });
+			
+			var c_val = '';
+			$('.check').click(function(){
+				if($(this).is(':checked')){
+				}else{
+					c_val = $(this).data('c_val');
+					console.log(c_val);
+					if($(c_val).is(':checked')){
+						$(c_val).prop("checked", false);
+					}
+					
+				}
+			});						
+			
+		}
+		
+		$('.download').click(function(){
+			var albID = [];
+			var i = 0;
+			var url = site_url + 'components/album/processors/photodownload/downloadPhotos.php';
+			var ID = "";
+			$('.check').each(function(e){
+				if($(this).is(":checked")){
+					albID[i] = $(this).val();
+					ID = ID + $(this).val()+"_"; 
+					i++;
+				}
+			});
+			url = url + "?ID="+ID;
+			url = url.slice(0, -1);
+
+			if(i != 0){
+				$("#LoadingImage").show(); 
+				$.ajax({
+					type: 'POST',
+					url: url,
+					success: function(res){
+						$("#LoadingImage").hide(); 
+						window.location = url;
+					}
+				});
+			}else{
+				alert('Please select atleast one photo to download');
+			}
+
+
+		});
+	
+		$('#profilebuilder').html("<img src='templates/base/images/loading.gif' />");	
+		$.ajax({
+			type: 'GET',
+			data: 'action=album_list',
+			url: siteurl+'components/album/processors/album/PhotoAlbum.php',
+			success: function(res){
+						var obj = JSON.parse(res);
+						var tr = "";
+						var txt = "";
+						var img = "";
+						if(obj.status == 'success'){
+							$.each(obj.data, function(id, r){
+								tr = tr + 	"<table class='albumTable'>" +
+										"	<tr class='tr th'>" +
+										"		<th class='td' style='width:75px;'><input class='chAlbum c_"+r.ID+"' value='.a_"+r.ID+"' type='checkbox'></th>" +
+										"		<th class='td colapse' data-ref='.b_"+r.ID+"' colspan='4'><i style='' class='fa fa-sort-desc'></i> "+ r.Title+"</th>" +
+										"	</tr><tbody class='tr b_"+r.ID+"'>";
+								
+								
+								
+								/**/
+								if(r.Photos.status == 'success'){
+									$.each(r.Photos.data, function(idd, p){
+										//img = siteurl = "http://ctpf01.parentfinder.com/";
+										//img = "<img class='thumb' src='"+siteurl+"m/photos/get_image/browse/"+ p.phHash+"."+ p.phExt +"' />";
+										tr = tr + 	"<tr>" +
+												"	<td class='td'><input name='ch[]' value="+p.phID+" data-c_val='.c_"+r.ID+"' id='"+p.phID+"' class='a_"+r.ID+" check' type='checkbox'></td>" +
+												"	<td class='td'>"+ 
+												" 		<label for='"+p.phID+"'><img class='thumb' src='"+siteurl+"m/photos/get_image/browse/"+ p.phHash+"."+ p.phExt +"' />" +
+												"	</td>" +
+												"	<td class='td'>"+ p.phTitle +"</td>" +
+												"	<td class='td' style='width:400px'><a href='"+siteurl+"m/photos/get_image/file/"+ p.phHash+"."+ p.phExt +"' rel='prettyPhoto[Album]'>"+p.phUri+"</a></td>" +
+												"	<td class='td' style='width:200px'>"+p.phSize+"</td>" +
+												"</tr>";
+									});
+								}else{
+									tr = tr + "<tr><td colspan='4' class='no_pic'>The Album does not have any images, please upload some images.</td></tr>";
+								}
+								tr = tr + "</tbody></table></br>";
+								/**/
+								
+								
+								
+							});
+							
+						}else{
+							alert('No albums to list...!');
+						}
+						$('#profilebuilder').html(tr);	
+						
+						addActions();
+
+						
+						
+						//$('#albumTable tr:last').after('<tr><td colspan="4">123</td></tr>');
+						
+					},
+			error: function(){}
+		
+		});
+		
+		
+		
+	});
+
+	
+	
+</script>
+<style type="text/css">
+	.albumTable{
+		border: 1px solid #EEEEEE;
+		padding : 5px;
+		width: 100%;
+	}
+	.tr, .td{
+		border: 1px solid #EEEEEE;
+		padding : 5px;
+	}
+	
+	table, th{
+	  text-align : left;
+	}
+	.thumb{ height:64px; width:auto; cursor:pointer; }
+	.th{ background: #6BD3C6; border:1px solid #6BD3C6; }
+	.colapse{ font-size:15px; color:white; cursor:pointer; }
+	.no_pic{ text-align: center; font-weight:bold; }
+	div#LoadingImage {
+  	  position: relative;
+	  float: left;
+	  width: 830px;
+	  text-align: right;
+	}
+	@-moz-document url-prefix() {
+		#profilebuilder{
+			margin-top: 65px;
+		}
+	}
+
+	
+</style>
+
+<div class="clear_both"></div>
+<div id="page216">
+
+    <div class="grayIcons icoBuildPhotos">&nbsp;&nbsp;Photo Albums</div>
+		<div id="LoadingImage" style="display:none; padding-left:25px;"><img src="templates/base/images/loading.gif" style="padding-left:25px" /></div>
+		<a href="javascript:void(0);" class="download">
+			<div id="logout" class="topMenuJoinBlock" style="margin-bottom:15px;">Download</div>
+		 </a>	
+    <div class="resources">
+		<form method="post" id="formd">
+        <div class="" id="profilebuilder"><!--pageColumn5-->
+		</form>
+		
+		
+		</div>
+        <div class="clear_both"></div>
+    </div>
+</div>
+<div class="clear_both"></div>
+
+
+<bx_include_auto:_sub_footer.html />
+<script src="../../components/album/js/jquery.prettyPhoto.js"></script>

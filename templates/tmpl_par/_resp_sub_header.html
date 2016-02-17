@@ -1,0 +1,461 @@
+<bx_include_auto:_resp_header.html />
+
+<div class="modal" id="navmenu"><!-- nav menu modal dialog responsive-->
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="pf_content_menu">
+                    <span><!-- dropdown image --></span>
+                    <a href="<bx_url_root />index.php">PARENTFINDER SERVICES </a>
+                    <a href="<bx_url_root />adoptive_couples.php">ADOPTIVE FAMILIES</a>
+                    <a href="<bx_url_root />agencies.php">AGENCIES/ATTORNEYS</a>
+                    <a href="<bx_url_root />expectant_parents.php" class="last">EXPECTANT PARENTS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="login">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn closebtnLogin" data-dismiss="modal"><!-- close button--></div>
+                <div class="login pf_popupcl01">
+                    <div class="pf_popup_login_cl01">LOGIN</div>
+                    <div class="loginIncorrect incorrectdata">Username or Password is incorrect</div>
+                    <div class="pfForm">
+                        <div class="pf_popup_login_cl02">PROFILE</div>
+                        <div class="pf_popup_login_cl03">
+                            <span>*</span><label class="loginText"> USERNAME:</label>
+                            <input type="text" name="username"/>
+                        </div>
+                        <div class="pf_popup_login_cl03">
+                            <span>*</span><label class="loginText">PASSWORD:</label>
+                            <input type="password" name="password"/>
+                        </div>
+                        <!--                        <div class="pf_popup_login_cl03">
+                                                    <label> REMEMBER ME</label>
+                                                    <input type="checkbox" name="rememberme" id="rememberme"/>
+                                                </div>-->
+                        <div>
+                            <div class="pf_popup_login_cl04">
+                                <div class="pf_popup_login_cl03">
+                                    <input type="checkbox" name="rememberme" id="rememberme"/>
+                                    <label id="remembermelabel"> REMEMBER ME</label>
+                                </div>
+                                <div class="pf_popup_login_cl05">
+                                    <div class="loginSubmit pf_popup_login_cl08">LOGIN</div>
+                                    <span class="forgotPwd pf_popup_login_cl09">FORGOT PASSWORD ?</span>
+                                </div>                      
+                                <div class="pf_popup_login_cl05">
+                                    <span class="pf_popup_login_cl010">NOT A MEMBER YET ?</span>                
+                                    <span class="join_now pf_popup_login_cl011">JOIN NOW! </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="forgot">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                <div class="pf_fp pf_popupcl01">
+                    <div class="pf_popup_login_cl01">FORGOT PASSWORD</div>
+                    <div class="pfForm">
+                        <div class="forgotForm">
+                            <div class="pf_popup_login_cl03">
+                                Forgot your ID and/or password? No problem! please supply your email address below and you will be sent your Parentfinder account ID and password
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <label class="forgotText">*MY EMAIL</label>
+                                <input type="text" name="forgotemail"/>
+                                <div class="forgotSubmit pf_popup_login_cl08">RESET</div>
+                            </div>
+                            <div class="forgotError">The email address you have entered does not exist.</div>
+                        </div>
+                        <div class="forgotSucc aloneContent">A new password has been sent to the email entered.</div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="join">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                <div class="join pf_popupcl01">
+                    <div class="pf_popup_login_cl01">JOIN</div>
+                    <div class="pfForm">
+                        <div class="pf_popup_login_cl03">
+                            <div class="pf_popup_login_cl02">PROFILE TYPE</div>
+                            <div style="display: none" id='APJoinFormClick' data-toggle='modal' href='#APJoinForm'></div>
+                            <div style="display: none" id='BPJoinFormClick' data-toggle='modal' href='#BPJoinForm'></div>
+                            <div style="display: none" id='AAJoinFormClick' data-toggle='modal' href='#AAJoinForm'></div>
+                            <select id="joinList">
+                                <option value="0" text="Select"> Select </option>
+                            </select>
+                            <div class="joinForm"></div>
+                        </div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="APJoinForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                <div class="apjoin pf_popupcl01">
+                    <div class="pf_popup_login_cl01">JOIN</div>
+                    <div class="loginIncorrect pwdsmismatch">Passwords did not match</div>
+                    <div class="loginIncorrect usernameIssue">Username must contain only Latin symbols, numbers or underscore(_)or minus(-)signs</div>
+                    <div class="loginIncorrect nameIssue">Name must contain only Latin symbols, numbers or underscore(_)or minus(-)signs</div>
+                    <div class="loginIncorrect pwdIssue">Password length should be atleast six characters.</div>
+                    <div class="loginIncorrect alreadyExist"></div>
+                    <div class="loginIncorrect usernameAlreadyExist">Username is already in use</div>
+                    <div class="loginIncorrect emailAlreadyExist">Email is already in use</div>
+                    <div class="loginIncorrect agreement">You must agree to the Terms of Use</div>
+                    <div class="aloneContent Joinsuccess">Please select the subscription to complete the joining process.</div>
+                    <div class="pfForm">
+                        <div class="profileDetails">
+                            <div class="pf_popup_login_cl02">PROFILE</div>
+                            <div class="pf_popup_login_cl03_check">
+                                <input type="radio" name="AP_marital" value="single" class="marital" checked/><label id="Single"> SINGLE</label> 
+                                <input type="radio" name="AP_marital" value="couple" class="marital"/><label id="Couple"> COUPLE</label> 
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="APusernamelabel" class="loginText"> USERNAME:</label>
+                                <input id="APusername" class="blurValidate" type="text" name="APusername"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="APpasswordlabel" class="loginText">PASSWORD:</label>
+                                <input id="APpassword" type="password" name="APpassword"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="APConfPasswordlabel" class="loginText">CONFIRM PASSWORD:</label>
+                                <input id="APConfPassword" type="password" name="APConfPassword"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="APemaillabel" class="loginText">EMAIL:</label>
+                                <input id="APemail" class="blurValidate" type="text" name="APemail"/>
+                            </div>
+                        </div>
+                        <div class="firstParent">
+                            <div class="pf_popup_login_cl02">ABOUT</div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AP_p1_FNlabel" class="loginText">FIRST NAME:</label>
+                                <input type="text" name="AP_p1_FN"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AP_p1_LNlabel" class="loginText">LAST NAME:</label>
+                                <input type="text" name="AP_p1_LN"/>
+                            </div>
+                            <div class="pf_popup_login_cl03_check">
+                                <input type="radio" name="AP_p1_gender" class="p1_gender" value='male' checked/><label id="p1_man" class="loginText"> MAN</label> 
+                                <input type="radio" name="AP_p1_gender" class="p1_gender" value='female'/><label id="p1_woman" class="loginText"> WOMAN</label> 
+                            </div>
+                        </div>
+                        <div class="secondParent">
+                            <div class="pf_popup_login_cl02">ABOUT - SECOND PERSON</div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AP_p2_FNlabel" class="loginText">FIRST NAME:</label>
+                                <input type="text" name="AP_p2_FN"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AP_p2_LNlabel" class="loginText">LAST NAME:</label>
+                                <input type="text" name="AP_p2_LN"/>
+                            </div>
+                            <div class="pf_popup_login_cl03_check">
+                                <input type="radio" name="AP_p2_gender" value='male' class="p2_gender" checked/><label id="p2_man" class="loginText"> MAN</label> 
+                                <input type="radio" name="AP_p2_gender" value='female' class="p2_gender"/><label id="p2_woman" class="loginText"> WOMAN</label> 
+                            </div>
+                        </div>
+                        <div class="agency_Info">
+                            <div>
+                                <div class="pf_popup_login_cl02">AGENCY INFORMATION<span class="extraAddAgency">(IF YOUR AGENCY IS NOT LISTED, PLEASE <a class="addagency">CLICK HERE</a>)</span></div>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="aaListlabel" class="loginText">ADOPTION AGENCY:</label>
+                                <select class="aaList">
+                                    <option value="0" text="Select"> Select an Agency </option>
+                                </select>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="stateListlabel" class="loginText">STATE:</label>
+                                <select class="stateList">
+                                    <option value="0" text="Select"> Select a State</option>
+                                </select>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="regionListlabel" class="loginText">REGION:</label>
+                                <select class="regionList">
+                                    <option value="0" text="Select"> Select a Region</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="pf_popup_login_cl03_check termsCond">
+                            <input type="checkbox" name="ap_terms" class="ap_terms"/><label id="ap_termslabel"> I HAVE READ AND AGREED WITH <a href="terms_of_use.php" target="_blank" style="color:#009D8C">TERMS OF USE</a></label> 
+                        </div>
+                        <div class="joinDisabled joinButton pf_popup_login_cl08">JOIN NOW</div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="BPJoinForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                <div class="bpjoin pf_popupcl01">
+                    <div class="pf_popup_login_cl01">JOIN</div>
+                    <div class="loginIncorrect pwdsmismatch">Passwords did not match</div>
+                    <div class="loginIncorrect usernameIssue">Username must contain only Latin symbols, numbers or underscore(_)or minus(-)signs</div>
+                    <div class="loginIncorrect nameIssue">Name must contain only Latin symbols, numbers or underscore(_)or minus(-)signs</div>
+                    <div class="loginIncorrect pwdIssue">Password length should be atleast six characters.</div>
+                    <div class="loginIncorrect alreadyExist"></div>
+                    <div class="loginIncorrect usernameAlreadyExist">Username is already in use</div>
+                    <div class="loginIncorrect emailAlreadyExist">Email is already in use</div>
+                    <div class="loginIncorrect agreement">You must agree to the Terms of Use</div>
+                    <div class="pfForm">
+                        <div class="profileDetails">
+                            <div class="pf_popup_login_cl02">PROFILE</div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="BPusernamelabel" class="loginText"> USERNAME:</label>
+                                <input id="BPusername" class="blurValidate" type="text" name="BPusername"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="BPpasswordlabel" class="loginText">PASSWORD:</label>
+                                <input id="BPpassword" type="password" name="BPpassword"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="BPConfPasswordlabel" class="loginText">CONFIRM PASSWORD:</label>
+                                <input id="BPConfPassword" type="password" name="BPConfPassword"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="BPemaillabel" class="loginText">EMAIL:</label>
+                                <input id="BPemail" type="text" class="blurValidate" name="BPemail"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="BP_p1_FNlabel" class="loginText">FIRST NAME:</label>
+                                <input type="text" name="BP_p1_FN"/>
+                            </div>
+                        </div>
+                        <div class="agency_Info">
+                            <div class="pf_popup_login_cl02">AGENCY INFORMATION<span class="extraAddAgency">(IF YOUR AGENCY IS NOT LISTED, PLEASE <a class="addagency">CLICK HERE</a>)</span></div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="aaListlabel" class="loginText">ADOPTION AGENCY:</label>
+                                <select class="aaList">
+                                    <option value="0" text="Select"> Select an Agency </option>
+                                </select>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="stateListlabel" class="loginText">STATE:</label>
+                                <select class="stateList">
+                                    <option value="0" text="Select"> Select a State</option>
+                                </select>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="regionListlabel" class="loginText">REGION:</label>
+                                <select class="regionList">
+                                    <option value="0" text="Select"> Select a Region</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="pf_popup_login_cl02">YOUR PERSONAL INFORMATION STAYS 100% ANONYMOUS AND YOUR ARE ONLY KNOW ON PARENTFINDER AS YOUR USERNAME</div>
+                        <div class="pf_popup_login_cl03_check termsCond">
+                            <input type="checkbox" name="bp_terms" class="ap_terms"/><label id="ap_termslabel"> I HAVE READ AND AGREED WITH <a href="terms_of_use.php" target="_blank" style="color:#009D8C">TERMS OF USE</a></label> 
+                        </div>
+                        <div class="joinDisabled joinButton pf_popup_login_cl08">JOIN NOW</div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="AAJoinForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                <div class="aajoin pf_popupcl01">
+                    <div class="pf_popup_login_cl01">JOIN</div>
+                    <div class="loginIncorrect pwdsmismatch">Passwords did not match</div>
+                    <div class="loginIncorrect usernameIssue">Username must contain only Latin symbols, numbers or underscore(_)or minus(-)signs</div>
+                    <div class="loginIncorrect nameIssue">Name should be 30 characters maximum only.</div>
+                    <div class="loginIncorrect pwdIssue">Password length should be atleast six characters.</div>
+                    <div class="loginIncorrect alreadyExist"></div>
+                    <div class="loginIncorrect usernameAlreadyExist">Username is already in use</div>
+                    <div class="loginIncorrect emailAlreadyExist">Email is already in use</div>
+                    <div class="loginIncorrect agreement">You must agree to the Terms of Use</div>
+                    <div class="aloneContent Joinsuccess">PLEASE WAIT FOR ADMINISTRATIVE APPROVAL</div>
+                    <div class="pfForm">
+                        <div class="profileDetails">
+                            <div class="pf_popup_login_cl02">PROFILE</div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AAusernamelabel" class="loginText"> USERNAME:</label>
+                                <input id="AAusername" type="text" class="blurValidate" name="AAusername"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AApasswordlabel" class="loginText">PASSWORD:</label>
+                                <input id="AApassword" type="password" name="AApassword"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AAConfPasswordlabel" class="loginText">CONFIRM PASSWORD:</label>
+                                <input id="AAConfPassword" type="password" name="AAConfPassword"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="AAemaillabel" class="loginText">EMAIL:</label>
+                                <input id="AAemail" type="text" class="blurValidate" name="AAemail"/>
+                            </div>
+                        </div>
+                        <div class="agency_Info">
+                            <div class="pf_popup_login_cl02">AGENCY INFORMATION</div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="aaListlabel" class="loginText">ADOPTION AGENCY:</label>
+                                <input id="AAName" type="text" name="AAName"/>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="stateListlabel" class="loginText">STATE:</label>
+                                <select class="stateList">
+                                    <option value="0" text="Select"> Select a State</option>
+                                </select>
+                            </div>
+                            <div class="pf_popup_login_cl03">
+                                <span>*</span><label id="regionListlabel" class="loginText">REGION:</label>
+                                <select class="regionList">
+                                    <option value="0" text="Select"> Select a Region</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="pf_popup_login_cl03_check termsCond">
+                            <input type="checkbox" name="aa_terms" class="ap_terms"/><label id="ap_termslabel"> I HAVE READ AND AGREED WITH <a href="terms_of_use.php" target="_blank" style="color:#009D8C">TERMS OF USE</a></label> 
+                        </div>
+                        <div class="joinDisabled joinButton pf_popup_login_cl08">JOIN NOW</div>
+                        <div style="clear: both"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal popup" id="AddAAJoinForm">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                <div class="addaajoin pf_popupcl01">
+                    <div class="pf_popup_login_cl01">AGENCY DETAILS</div>
+                    <div class="pfForm">
+                        <div class="addaaForm">
+                            <div class="profileDetails">
+                                <div class="pf_popup_login_cl02">Please enter the following details to send a request to the agency to join Parent Finder.</div>
+                                <div class="pf_popup_login_cl02">YOUR DETAILS</div>
+                                <div class="pf_popup_login_cl03">
+                                    <span>*</span><label id="AddAAusernamelabel" class="loginText"> YOUR NAME</label>
+                                    <input id="AddAAusername" type="text" name="AddAAusername"/>
+                                </div>
+                                <div class="pf_popup_login_cl03">
+                                    <span>*</span><label id="AddAAemaillabel" class="loginText">YOUR EMAIL</label>
+                                    <input id="AddAAemail" type="text" name="AddAAemail"/>
+                                </div>
+                            </div>
+                            <div class="agency_Info">
+                                <div class="pf_popup_login_cl02">AGENCY DETAILS</div>
+                                <div class="pf_popup_login_cl03">
+                                    <span>*</span><label id="Add_AANamelabel" class="loginText">AGENCY NAME</label>
+                                    <input id="Add_AAName" type="text" name="Add_AAName"/>
+                                </div>
+                                <div class="pf_popup_login_cl03">
+                                    <span>*</span><label id="Add_AAEmaillabel" class="loginText">AGENCY EMAIL</label>
+                                    <input id="Add_AAEmail" type="text" name="Add_AAEmail"/>
+                                </div>
+                                <div class="pf_popup_login_cl03">
+                                    <span>*</span><label id="stateListlabel" class="loginText">AGENCY STATE</label>
+                                    <select class="stateList">
+                                        <option value="0" text="Select"> Select a State</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="joinSubmit pf_popup_login_cl08">SUBMIT</div>
+                            <div style="clear: both"></div>
+                        </div>
+                        <div class="aloneContent addagsuccess">Your request has been sent to the Agency.</div>
+                        <div class="aloneContent addagfail" style="color:#f195bf">Error while sending notification to Agency.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container view more"> <!--main container -->
+    <div class="row">
+        <header id="pf_header_view_id01" ><!-- header section -->
+            <div id="pf_header_id01"><!-- responsive header-->
+                __top_login_form_par__
+            </div>
+            <div class="pf_header_cl03" data-toggle="modal" href="#navmenu"><!-- drop down icon --></div>
+            <div class="pf_content_menu"><!-- header menu section -->
+                <a href="<bx_url_root />index.php">PARENTFINDER SERVICES </a>
+                <a href="<bx_url_root />adoptive_couples.php">ADOPTIVE FAMILIES</a>
+                <a href="<bx_url_root />agencies.php">AGENCIES/ATTORNEYS</a>
+                <a href="<bx_url_root />expectant_parents.php" class="last">EXPECTANT PARENTS</a>
+            </div>
+            <a class="pf_view_logo" href="#">
+                <!-- logo -->
+            </a>
+            <div class="clear"><!-- clear division --></div>
+            <div class="pf_view_icons"><!-- top icons-->
+                <a href="help.php" class="pf_view_icons_cl04"><!-- help icon --></a>
+                <a href="<bx_url_root />viewourfamilies.php" class="pf_view_icons_cl03"><!-- search icon --></a>
+                <a href="cart_view_01.php" class="icoCart" style="display:none"><!-- contact icon --></a>
+                <a href="contact.php" class="pf_view_icons_cl02"><!-- contact icon --></a>
+                <a href="javascript:void(0)" onclick="userredirect(__top_login__, __top_status__)" class="pf_view_icons_cl01"><!-- home icon --></a>
+            </div>
+        </header>
+    </div>
+</div>
+<script src="viewourfamilies/js/respHeaderFunctions.js?cache=__cache_control__"></script>
+<bx_injection:injection_between_logo_top_menu />
+
+
+<bx_injection:injection_between_top_menu_content />
+
+<script type="text/javascript">
+                    var loaded_From = '__load_from__';
+                    if (loaded_From == 'badge')
+                    {
+                        document.getElementById('pf_header_view_id01').style.display = 'none';
+
+                    }
+                    function userredirect(id, status) {
+                        var siteurl = '<bx_url_root />';
+                        if (id == '2') {
+                            window.location.href = siteurl + 'our-family-dashboard.php';
+                        } else if (id == '4') {
+
+                            window.location.href = siteurl + 'bmhome.php';
+                        } else if (id == '8') {
+
+                            window.location.href = siteurl + 'extra_agency_view_28.php';
+                        } else {
+                            window.location.href = siteurl;
+                        }
+                    }
+</script>
+<script type="text/javascript" src="templates/tmpl_par/js/head.core.min.js"></script>

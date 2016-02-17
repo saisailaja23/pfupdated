@@ -1,0 +1,512 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/**
+ * Colors
+ */
+/**
+ * Mixins
+ */
+/**
+ * Size Calculations
+ */
+/**
+ * Layout
+ */
+body {
+  color: #333333;
+  font-size: 12px;
+  line-height: 1.4;
+}
+body a {
+  color: inherit;
+  text-decoration: none;
+}
+body a:hover {
+  text-decoration: underline;
+}
+body #page {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 20px auto;
+  width: 957px;
+  /**
+   * Stylistic wrappers for the main page content
+   */
+  /**
+   * Page footer
+   */
+}
+body #page .wrapper {
+  /**
+   * Outer wrapper, yellow border and a white background
+   */
+  /**
+   * Inner wrapper, blue background
+   */
+  /**
+   * The very innermost wrapper; most content goes in here
+   */
+}
+body #page .wrapper#yellow {
+  -webkit-border-top-right-radius: 40px;
+  -webkit-border-top-left-radius: 40px;
+  -moz-border-top-right-radius: 40px;
+  -moz-border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-top-left-radius: 40px;
+  -webkit-border-bottom-right-radius: 40px;
+  -webkit-border-bottom-left-radius: 40px;
+  -moz-border-bottom-right-radius: 40px;
+  -moz-border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  background-color: white;
+  border: 5px solid #ffe505;
+  padding: 10px;
+  width: 937px;
+}
+body #page .wrapper#blue {
+  -webkit-border-top-right-radius: 30px;
+  -webkit-border-top-left-radius: 30px;
+  -moz-border-top-right-radius: 30px;
+  -moz-border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-top-left-radius: 30px;
+  -webkit-border-bottom-right-radius: 30px;
+  -webkit-border-bottom-left-radius: 30px;
+  -moz-border-bottom-right-radius: 30px;
+  -moz-border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  background-color: #0e5ab8;
+  padding: 25px;
+  width: 887px;
+}
+body #page .wrapper #main {
+  /**
+   * Page content area
+   */
+}
+body #page .wrapper #main.combined {
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -moz-border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-bottom-right-radius: 20px;
+  -moz-border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: white;
+  border: 1px solid #333333;
+  overflow: hidden;
+  padding: 28px;
+  padding-top: 15px;
+  width: 829px;
+}
+body #page .wrapper #main.combined #montage, body #page .wrapper #main.combined #subhead {
+  margin-left: -28px;
+  margin-right: -28px;
+}
+body #page .wrapper #main.combined #montage img {
+  display: block;
+}
+body #page .wrapper #main.combined #subhead {
+  -webkit-border-bottom-right-radius: 5px;
+  -webkit-border-bottom-left-radius: 5px;
+  -moz-border-bottom-right-radius: 5px;
+  -moz-border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background-color: #a9adb2;
+  color: white;
+  font-size: 26px;
+  font-weight: bold;
+  padding: 5px;
+  text-align: center;
+}
+body #page .wrapper #main.combined #content {
+  margin: -28px;
+  padding: 28px;
+}
+body #page .wrapper #main.combined #content .banner {
+  margin: 10px 0;
+}
+body #page .wrapper #main.split header, body #page .wrapper #main.split #content {
+  -webkit-border-top-right-radius: 20px;
+  -webkit-border-top-left-radius: 20px;
+  -moz-border-top-right-radius: 20px;
+  -moz-border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-bottom-right-radius: 20px;
+  -moz-border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  border: 1px solid #333333;
+  overflow: hidden;
+  padding: 28px;
+  width: 829px;
+}
+body #page .wrapper #main.split header {
+  background-color: white;
+  padding-bottom: 10px;
+  padding-top: 15px;
+}
+body #page .wrapper #main.split #content {
+  background-repeat: no-repeat;
+}
+body #page .wrapper #main.split #content.about {
+  background-image: url(images/bg.png);
+  background-position: 304px top;
+}
+body #page .wrapper #main.split #content.about .banner {
+  margin-top: 170px;
+}
+body #page .wrapper #main.split #content.how_it_works {
+  background-image: url(images/bg.png);
+  background-position: 608px top;
+}
+body #page .wrapper #main.split #content.unplanned_pregnancy {
+  background-image: url(images/bg.png);
+  background-position: 534px top;
+}
+body #page .wrapper #main.split #content.unplanned_pregnancy .banner {
+  margin-bottom: 0;
+}
+body #page .wrapper #main.split #content.letter_to_expectant_mother {
+  background-image: url(images/bg.png);
+  background-position: 529px top;
+}
+body #page .wrapper #main.split #content.letter_to_expectant_mother #letter {
+  -webkit-box-shadow: 0px 0px 35px 3px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 0px 35px 3px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 0px 35px 3px rgba(0, 0, 0, 0.6);
+  -o-transform: rotate(-7.8deg);
+  -ms-transform: rotate(-7.8deg);
+  -moz-transform: rotate(-7.8deg);
+  -webkit-transform: rotate(-7.8deg);
+  background-image: url(images/letter.jpg);
+  height: 686px;
+  margin-left: 50px;
+  margin-top: 15px;
+  padding: 70px 30px 0 83px;
+  width: 433px;
+}
+body #page .wrapper #main.split #content.letter_to_expectant_mother #letter h1 {
+  margin-left: -14px;
+}
+body #page .wrapper #main.split #content.letter_to_expectant_mother #letter p {
+  font-family: "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+  font-size: 13px;
+  line-height: 1.7;
+}
+body #page .wrapper #main.split #content.letter_to_expectant_mother #letter #thank_you {
+  text-align: center;
+  margin-top: 1em;
+}
+body #page .wrapper #main.split #content.letter_to_expectant_mother .banner {
+  margin-bottom: 0;
+  margin-top: -15px;
+  position: relative;
+  z-index: 10;
+}
+body #page .wrapper #main.split #content.contact form {
+  -webkit-border-top-right-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
+  -moz-border-top-right-radius: 15px;
+  -moz-border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-bottom-right-radius: 15px;
+  -moz-border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-color: white;
+  border: 1px solid #bbb;
+  margin: 1em 0;
+  padding: 1em 0;
+}
+body #page .wrapper #main.split #content.contact form ol li {
+  position: relative;
+}
+body #page .wrapper #main.split #content.contact form ol li + li {
+  border-top: 1px solid #bbb;
+  margin-top: 1em;
+  padding-top: 1em;
+}
+body #page .wrapper #main.split #content.contact form ol li.message {
+  height: 6em;
+}
+body #page .wrapper #main.split #content.contact form ol li label {
+  display: inline-block;
+  line-height: 1.8;
+  padding-left: 1em;
+  vertical-align: top;
+}
+body #page .wrapper #main.split #content.contact form ol li input[type=text], body #page .wrapper #main.split #content.contact form ol li textarea {
+  width: 250px;
+}
+body #page .wrapper #main.split #content.contact form ol li input, body #page .wrapper #main.split #content.contact form ol li textarea {
+  display: inline-block;
+  float: left;
+  left: 150px;
+  position: absolute;
+}
+body #page .wrapper #main.split #content.contact form ol li textarea {
+  height: 6em;
+}
+body #page .wrapper #main.split #content h1 {
+  color: #0e5ab8;
+  font-family: Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+  font-size: 36px;
+}
+body #page .wrapper #main.split #content h2 {
+  color: #0e5ab8;
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+  text-transform: uppercase;
+}
+body #page .wrapper #main.split #content h2 span.subtle {
+  color: #666666;
+  text-transform: none;
+}
+body #page .wrapper #main.split #content p {
+  font-family: Verdana, Geneva, sans-serif;
+}
+body #page .wrapper #main.split #content p + p {
+  margin-top: 1em;
+}
+body #page .wrapper #main.split #content p.subhead {
+  color: #0e5ab8;
+}
+body #page .wrapper #main.split #content ul {
+  margin: 1em;
+  margin-left: 30px;
+}
+body #page .wrapper #main.split #content ul li {
+  list-style-type: disc;
+}
+body #page .wrapper #main.split #content ul li + li {
+  margin-top: 1em;
+}
+body #page .wrapper #main.split #content .banner {
+  margin: 15px 0;
+}
+body #page .wrapper #main header {
+  margin-bottom: 10px;
+}
+body #page .wrapper #main header h2 {
+  text-align: right;
+}
+body #page .wrapper #main header nav {
+  color: #0e5ab8;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-align: center;
+  text-transform: uppercase;
+}
+body #page .wrapper #main header nav ul li {
+  display: inline;
+}
+body #page .wrapper #main header nav ul li + li {
+  margin-left: 25px;
+}
+body #page .wrapper #main #content {
+  background-color: #dfe5ed;
+}
+body #page .wrapper #main #content .banner {
+  -webkit-border-top-right-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
+  -moz-border-top-right-radius: 15px;
+  -moz-border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-bottom-right-radius: 15px;
+  -moz-border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  background-color: #0e5ab8;
+  border: 1px solid #0e5ab8;
+  color: white;
+  padding: 10px;
+  text-align: center;
+}
+body #page .wrapper #main #content .banner.photo {
+  background-image: url(images/banner_family.jpg);
+  background-repeat: no-repeat;
+  padding-left: 128px;
+}
+body #page .wrapper #main #content .banner a:hover {
+  text-decoration: none;
+}
+body #page .wrapper #main #content .banner span, body #page .wrapper #main #content .banner img {
+  display: inline-block;
+  vertical-align: middle;
+}
+body #page .wrapper #main #content .banner span {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: 10px;
+  text-shadow: #000 0px 0px 7px;
+}
+body #page .wrapper #main #content .banner span.large {
+  font-size: 44px;
+}
+body #page .wrapper #main #content #sections section {
+  -webkit-border-top-right-radius: 15px;
+  -webkit-border-top-left-radius: 15px;
+  -moz-border-top-right-radius: 15px;
+  -moz-border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  -webkit-border-bottom-right-radius: 15px;
+  -webkit-border-bottom-left-radius: 15px;
+  -moz-border-bottom-right-radius: 15px;
+  -moz-border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border: 1px solid #0e5ab8;
+  display: inline-block;
+  font-size: 14px;
+  height: 214px;
+  padding: 15px;
+  vertical-align: top;
+  width: 223px;
+}
+body #page .wrapper #main #content #sections section + section {
+  margin-left: 28px;
+}
+body #page .wrapper #main #content #sections section#about ul {
+  margin-top: 40px;
+}
+body #page .wrapper #main #content #sections section#letter_to_mother {
+  background-image: url(images/legal_pad.png);
+}
+body #page .wrapper #main #content #sections section#letter_to_mother h1, body #page .wrapper #main #content #sections section#letter_to_mother p {
+  margin-left: 20px;
+}
+body #page .wrapper #main #content #sections section#letter_to_mother h1 {
+  color: #d60404;
+  font-family: TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 35px;
+  text-transform: lowercase;
+}
+body #page .wrapper #main #content #sections section#letter_to_mother p {
+  font-size: 12px;
+  line-height: 1.5;
+  margin-top: 10px;
+}
+body #page .wrapper #main #content #sections section#letter_to_mother a.more {
+  color: #d60404;
+  display: block;
+  font-weight: bold;
+  margin-top: 1em;
+  text-align: right;
+  text-decoration: underline;
+  text-transform: lowercase;
+}
+body #page .wrapper #main #content #sections section#unplanned_pregnancy {
+  background-image: url(images/pregnant_girl.png);
+}
+body #page .wrapper #main #content #sections section#unplanned_pregnancy h1 {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.2;
+}
+body #page .wrapper #main #content #sections section#unplanned_pregnancy p {
+  font-size: 12px;
+  margin-top: 0.7em;
+}
+body #page .wrapper #main #content #sections section#unplanned_pregnancy ul li {
+  margin-top: 0.4em;
+}
+body #page .wrapper #main #content #sections section ul {
+  padding-left: 15px;
+}
+body #page .wrapper #main #content #sections section ul li {
+  font-weight: bold;
+  list-style-position: outside;
+  list-style-type: disc;
+}
+body #page .wrapper #main #content #sections section ul li + li {
+  margin-top: 1em;
+}
+body #page > footer {
+  color: #0e5ab8;
+  font-size: 12px;
+  margin-top: 15px;
+  text-align: center;
+  text-transform: uppercase;
+}
+body #page > footer ul li {
+  display: inline;
+}
+body #page > footer ul li + li:before {
+  content: "|";
+  margin-left: 8px;
+  margin-right: 12px;
+}

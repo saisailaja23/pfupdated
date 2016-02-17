@@ -1,0 +1,162 @@
+<bx_include_auto:_resp_header.html />
+<script src="viewourfamilies/js/respHeaderFunctions.js?cache=__cache_control__"></script>
+<bx_injection:injection_between_logo_top_menu />
+
+
+<bx_injection:injection_between_top_menu_content />
+
+<script type="text/javascript">
+                    var loaded_From = '__load_from__';
+                    if (loaded_From == 'badge')
+                    {
+                        // document.getElementById('pf_header_view_id01').style.display = 'none';
+                        $('pf_header_view_id01').hide();
+                    }
+                    function userredirect(id, status) {
+                        var siteurl = '<bx_url_root />';
+                        if (id == '2') {
+                            window.location.href = siteurl + 'our-family-dashboard.php';
+                        } else if (id == '4') {
+
+                            window.location.href = siteurl + 'bmhome.php';
+                        } else if (id == '8') {
+
+                            window.location.href = siteurl + 'extra_agency_view_28.php';
+                        } else {
+                            window.location.href = siteurl;
+                        }
+                    }
+</script>
+<script type="text/javascript" src="templates/tmpl_par/js/head.core.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="viewourfamilies/css/bootstrap.min.css?cache=__cache_control__"/>
+<link rel="stylesheet" type="text/css" href="viewourfamilies/css/parentfinder.css?cache=__cache_control__"/>
+<script src="viewourfamilies/js/bootstrap.min.js?cache=__cache_control__"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js?cache=__cache_control__"></script>-->
+<script src="viewourfamilies/js/contactus.js?cache=__cache_control__"></script>
+<script type="text/javascript">
+    var siteurl = '<bx_url_root />';
+    var id = '__profile_id__';
+    var loadFrom = '__profile_badge__';
+    var nickName = '__profile_nickname__';
+</script>
+<style>
+    .social-icons{
+        width:80px;
+        height:auto;
+        /*background-color:#fff;*/
+        position : fixed;
+        right :0px;
+        top:200px;
+        padding-top: 5px;
+ 	z-index: 50;
+    }
+    .social-icons a{
+        display:block;
+        cursor: pointer;
+        height:33px;
+        width: 33px;
+        padding:1px;
+    }
+    .social-icons .fb{
+        background-image: url("templates/tmpl_par/images/splash/ico_fb_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .tw{
+        background-image: url("templates/tmpl_par/images/splash/ico_tw_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .gp{
+        background-image: url("templates/tmpl_par/images/splash/ico_go_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .pi{
+        background-image: url("templates/tmpl_par/images/splash/ico_pi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .bg{
+        background-image: url("templates/tmpl_par/images/splash/ico_bi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+
+</style>
+<div class="social-icons"> 
+    <a class="fb" href="javascript:void(0)" target="_blank"></a>
+    <a class="tw" href="javascript:void(0)" target="_blank"></a>
+    <a class="gp" href="javascript:void(0)" target="_blank"></a>
+    <a class="bg" href="javascript:void(0)" target="_blank"></a>
+    <a class="pi" href="javascript:void(0)" target="_blank"></a>
+</div>
+<div class="clear_both"></div>
+<div class="page212">
+    <div class="container view">
+        <div class="back"></div>
+        <div class="row pf_view_cl020"><!-- row section for data starts-->
+            <div id="pf_contact_id01" class="pf_view_cl01" ><!-- outer data container starts-->
+
+                <div id="pf_contact_id03"><!-- Contact details-->
+                    <div class="pf_contact_cl01" >
+                        <span>Contact Details</span>
+                    </div>
+                    <div id="pf_contact_id05">
+                        <div class="pf_contact_cl02">
+                            <label> Adoption Agency:</label>
+                            <span id="agencytitle"></span>
+                        </div>
+                        <div class="pf_contact_cl02">
+                            <label> Contact Number:</label>
+                            <span id="agencycontact"></span>
+                        </div>
+                        <div class="pf_contact_cl02">
+                            <label> Email:</label>
+                            <a href="mailto:" id="agencyemail"></a>
+                        </div>
+                    </div>
+                </div>
+                <div id="pf_contact_id02"><!-- send details-->
+                    <div class="pf_contact_cl01" >
+                        <span>Send Mail</span>
+                    </div>
+                    <div>
+                        <span id="ajaxMessage"></span>
+                    </div>
+                    <div id="pf_contact_id04">
+                        <div class="pf_contact_cl02">
+                            <label> <span>*</span>Your Name:</label>
+                            <input type="text" name="name"/>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Should Not be Empty"></i></span>
+                        </div>
+                        <div class="pf_contact_cl02">
+                            <label> <span>*</span>Your Email:</label>
+                            <input type="text" name="email"/>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Incorrect Email"></i></span>
+                        </div>
+                        <div class="pf_contact_cl02">
+                            <label> <span>*</span>Message Subject:</label>
+                            <input type="text" name="subject"/>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Should Not be Empty"></i></span>
+                        </div>
+                        <div class="pf_contact_cl02 pf_contact_cl04">
+                            <label class="pf_contact_cl05"> <span>*</span>Message For User:</label>
+                            <textarea name="body"></textarea>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Should Not be Empty"></i></span>
+                        </div>
+                        <div class="">
+                            <input name="check" type="hidden" value=""/>
+                        </div>
+                        <div class="pf_contact_cl07">
+                            <input id="submit" type="submit" value="Submit"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- outer container ends-->
+        </div>
+    </div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_resp_sub_footer.html />

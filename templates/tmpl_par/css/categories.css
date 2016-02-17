@@ -1,0 +1,17 @@
+@import url(../../base/css/categories.css);
+
+.lcont_top {
+    background-color: transparent;
+}
+
+.quick_links_elink {
+    background-color: transparent;
+    border: 0px solid #DADADA;
+    position: relative;
+}
+
+.quick_links_elink_lcont {
+    background-color: transparent;
+    border-top: 0px solid #DADADA;
+    width: 100%;
+}

@@ -1,0 +1,104 @@
+<bx_include_auto:_resp_sub_header.html />
+<!--<link rel="stylesheet" type="text/css" href="viewourfamilies/css/bootstrap.min.css?cache=__cache_control__"/>
+<link rel="stylesheet" type="text/css" href="viewourfamilies/css/parentfinder.css?cache=__cache_control__"/>-->
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="components/album/js/jwplayer/jwplayer.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="viewourfamilies/js/videos.js?cache=__cache_control__"></script>
+<!--<script src="viewourfamilies/js/bootstrap.min.js?cache=__cache_control__"></script>-->
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+    var Id = '__profile_id__';
+    var loadFrom = '__profile_badge__';
+    var nickName = '__profile_nickname__';
+    $('.pf_view_icons_cl02').attr('href','contact.php?id='+Id);
+</script>
+<style>
+    .social-icons{
+        width:80px;
+        height:auto;
+        /*background-color:#fff;*/
+        position : fixed;
+        right :0px;
+        top:200px;
+        padding-top: 5px;
+ 	z-index: 50;
+    }
+    .social-icons a{
+        display:block;
+        cursor: pointer;
+        height:33px;
+        width: 33px;
+        padding:1px;
+    }
+    .social-icons .fb{
+        background-image: url("templates/tmpl_par/images/splash/ico_fb_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .tw{
+        background-image: url("templates/tmpl_par/images/splash/ico_tw_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .gp{
+        background-image: url("templates/tmpl_par/images/splash/ico_go_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .pi{
+        background-image: url("templates/tmpl_par/images/splash/ico_pi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .bg{
+        background-image: url("templates/tmpl_par/images/splash/ico_bi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+
+</style>
+<div class="social-icons"> 
+    <a class="fb" href="javascript:void(0)" target="_blank"></a>
+    <a class="tw" href="javascript:void(0)" target="_blank"></a>
+    <a class="gp" href="javascript:void(0)" target="_blank"></a>
+    <a class="bg" href="javascript:void(0)" target="_blank"></a>
+    <a class="pi" href="javascript:void(0)" target="_blank"></a>
+</div>
+<div class="clear_both"></div>
+<div style="width:100%">
+    <!--<div class="pf_more_cl01" >-->
+        <div class="container view more">
+	<div class="back"></div>
+            <div class="row"><!-- main container -->
+                <!--<div class="row pf_view_cl020"> row section for data starts-->
+                    <!--<div class="pf_more_cl02">-->
+                    <div style="width: 90%;margin: 0 auto;">
+          <div class="pf_contact_cl01 pf_video_cl09" >
+                            <span>OUR VIDEOS</span>
+                            <!--<span>VIDEO ALBUMS</span>-->
+          </div>
+                        <br><br>
+                        <!--    <div class="pf_video_id01" id="pf_video_id01_id"> album listing </div>-->
+                        <!--<div class="pf_more_image_gallery videos">-->
+                        <div class="videos">
+                            <div u="loading" class="loader">Loading</div>
+                            <div id="sliderV" class="flexslider"><!-- image slider-->
+                                <!--<ul class="slides"></ul>-->
+          </div>
+                            <div id="carouselV" class="flexslider">
+                                <ul class="slides"></ul>
+                            </div>
+                            <div id="noVideo" class='noPhoto'>
+                                <img src='<bx_url_root />templates/tmpl_par/images/NO-VIDEOS_icon.png'/>
+                            </div>
+                        </div>
+                    </div>
+                <!--</div>-->
+            </div>
+        </div>
+    <!--</div>-->
+        </div><!-- row section for data ends -->
+
+<div class="clear_both"></div>
+
+<bx_include_auto:_resp_sub_footer.html />

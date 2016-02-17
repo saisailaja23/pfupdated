@@ -1,0 +1,98 @@
+<bx_include_auto:_sub_header.html />
+		<link rel="stylesheet" type="text/css" href="templates/tmpl_par/css/205.css" />
+		<script type="text/javascript" src="paymentFlow/javascript/countries.js"></script>
+		<script type="text/javascript" src="paymentFlow/javascript/masks.js"></script>
+
+        <script type="text/javascript" src="PForder/model/PForder_Model.js"></script>
+        <script type="text/javascript" src="PForder/controller/PForder.js"></script>
+		<script type="text/javascript" src="paymentFlow/model/Model.js"></script>    
+		<script type="text/javascript" src="paymentFlow/controller/PaymentFlow.js"></script>
+
+		
+        <script type="text/javascript" >
+		var siteurl = '<bx_url_root />';
+		var application_path = appPath = siteurl + "PForder/" ;
+		
+           window.onload = function()
+            {
+			
+                    PForder.start( { 
+                        uid : (new Date()).getTime() 
+						,usertype : 0  //0--Agency 1--Users
+                        ,application_path : siteurl + "PForder/" 
+                        ,dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+                    } );
+             }
+         </script>	
+		 <div class="pinkIcons_adoptive icoResources_adoptive">A LA CARTE SERVICES</div>
+	<div id="data_container">
+		<div id="navigation">
+			<div id="category">
+				<span class="category">Category: </span>
+			</div>		
+			<div class="order_button" onclick="PForder.order_selected();">Order</div>
+			<div class="clear_button" onclick="PForder.clear_selected();">Clear</div>
+		</div>
+		<div id="content">
+			<div id="books_list">
+				<div id="books_list_cont">&nbsp;</div>
+			</div>
+			<div id="books_selected">
+				<div id="books_selected_cont">
+					<div id="books_selected_data">
+					&nbsp;
+					</div>
+				</div>
+				<div class="total">Total: $<span id="total">0</span></div>
+			</div>
+			
+		</div>
+	</div>
+	<form id="books_order" action="order.php" method="post">
+		<input type="hidden" id="order_list" name="order_list" value="" />
+	</form>
+
+	<div id="books_list_template">
+		<div>
+			<div class='book_info'>
+				<div>
+					<span class='title'>Item Name:</span>
+					<span class='book_name'>#itemname#</span>
+				</div>
+				<div>
+					<span class='title'>Description:</span>
+					<span class='author_name'>#description#</span>
+				</div>
+				<div>
+					<span class='title'>URL:</span>
+					<span class='url'><a href="#cart_url#" target="_blank"> #cart_url#</a></span>
+				</div>					
+				<div>
+					<span class='title'>Price:</span>
+					<span class='price'>$#price#</span>
+				</div>
+		
+				<div>
+					<div class="select_button">Select</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	
+	<div id="books_selected_template">
+		<div class='selected_title'>
+			<span class='title'>Title:</span><br />
+			<span class='selected_book'>#itemname#</span>
+			<!-- <span class='selected_author'>#description#</span> -->
+		</div>
+		<div class='selected_price'>
+			<span class='title'>Price:</span>
+			<span class='price'>$#price#</span>
+		</div>
+		<div class='selected_quantity'>
+			<span class='title'>Quantity:</span>
+			<span class='quantity_name'>#item_quantity#</span>
+		</div>
+	</div>		 
+<bx_include_auto:_sub_footer.html />

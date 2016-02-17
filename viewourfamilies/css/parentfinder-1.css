@@ -1,0 +1,955 @@
+/* 
+
+Document name    : parentfinder.css
+Created on       : 05/09/2014
+Author           : Rosemin D Kalliath
+Description      : This Document contains css code for the parentfinder project
+
+*/
+
+
+/* site specific styles starts */
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html{
+    /*min-height:100%;
+    position:relative;*/
+
+}
+
+body{ /* body styles */
+    background-color:#FFFFFF;
+    font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    height:100%;
+    font-size: 12px;
+    color: #666;
+    line-height:16px;
+    margin:0px;
+    padding:0px;
+    color:#76787b;
+
+}
+
+.clear{/* clear*/
+    clear:both;
+
+}
+
+a:link, a:visited{/*links*/
+    color: #f195bf;
+    text-decoration: none;
+}
+
+a:hover,  a:active{/*link styles*/
+    color: #a2a4a7;
+    text-decoration: none;
+}
+
+/* public home page starts  */
+
+
+#wrap{/* outer container*/
+    width: 1300px;
+    margin: 0 auto;
+
+}
+
+#main{/* main container*/
+    float: left;
+    width: 1028px;
+    position:relative;
+    
+}
+
+
+#side{/*right side container*/
+    float: right;
+    width: 265px;
+    background: #e2f0d4;
+    min-height: 100%;
+    height: 100%;
+    position:relative;
+    
+}
+
+.home{
+    width:1300px;
+}
+
+/* header styles */
+
+header{/*header container*/
+    height: 140px;
+    width: 100%;
+
+}
+
+.pf_logo { /* logo*/
+    display: block;
+    float: left;
+    margin-left:165px;
+    margin-top: 30px;
+}
+
+#pf_header_id01{/*login and join button in for mobile devices*/
+    height:37px;
+    width:100%;
+    display:none;
+}
+
+#pf_header_id02{/*text*/
+    font-size: 17px;
+    line-height: 16px;
+    font-weight: bold;
+    float: left;
+    margin-left: 255px;
+    margin-top: 12px;
+    position:relative;
+    top:8px;
+}
+
+#pf_header_id03 {/*button container*/
+    width: 124px;
+    height: 55px;
+    float: right;
+    margin-top: -25px;
+    position: relative;
+    right: 0;
+}
+
+
+#pf_header_id04 {/* dropdown icon */
+    width: 124px;
+    height: 55px;
+    float: right;
+    margin-top: -30px;
+    position: relative;
+    bottom: 0;
+    right: 0;
+    position: relative;
+}
+
+.pf_header_cl01 {/* join button */
+    margin-bottom: 5px;
+    background-color: #bbdc9b;
+}
+
+.pf_header_cl02{/* login button */
+    background-color: #abd6cf;
+}
+
+
+.pf_header_cl01:hover {/* join button hover*/
+    background-color: #a2d178;
+}
+
+.pf_header_cl02:hover {/* login button hover*/
+    background-color: #019d8c;
+}
+
+.pf_header_cl01, .pf_header_cl02 {/* button styles*/
+    position: relative;
+    text-align: center;
+    padding: 8px 7px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    height:28px;
+}
+
+.pf_header_cl03 {/* dropdown icon*/
+    position: relative;
+    background-image: url("../images/img_dropdown.png");
+    background-repeat: no-repeat;
+    height:32px;
+    width:32px;
+    cursor: pointer;
+    display:none;
+}
+
+.pf_header_cl03:active {/* dropdown icon*/
+
+    background-image: url("../images/img_dropdown_select.png");
+    
+}
+
+.pf_header_cl05{/* join button */
+     background-color: #bbdc9b;
+}
+
+.pf_header_cl05:active{/* join button active*/
+     background-color: #a2d178;
+}
+
+.pf_header_cl05:hover{/* join button hover*/
+     background-color: #a2d178;
+}
+
+.pf_header_cl06{/* login button */
+     background-color: #abd6cf;
+}
+
+.pf_header_cl06:active{/* login button active*/
+     background-color:  #019d8c;
+}
+
+.pf_header_cl05, .pf_header_cl06 {/* button styles for devices*/
+    position: relative;
+    text-align: center;
+    padding: 8px 7px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    float:right;
+    width:30%;
+    height:35px;
+    margin-left: 1%
+
+}
+
+.pf_header_cl07{/* dummy container in login and join section devices*/
+    width:38%;
+    background-color:#d3e9e6;
+    position:relative;
+    height:35px;
+    padding:0px 10px 0px 0px;
+}
+
+#pf_banner{ /* splash image */
+    width: 100%;
+    height: 441px;
+    background-image: url("../images/img_splash.png");
+    background-repeat: no-repeat;
+    margin-bottom: 5px;
+    overflow: hidden;
+}
+
+#pf_side_id01{/*data container*/
+    width: 180px;
+    margin: 0 auto;
+    height:auto;
+    padding:3px 0px 0px 0px;
+    overflow: hidden;
+    position:relative; 
+
+}
+
+#pf_side_id02{/*data inner container*/
+    width: 100%;
+    height:auto;
+    padding:3px 0px 0px 0px;    
+}
+
+a.pf_side_cl01{ /* view all families */
+    background: #BBDC9B;
+    border: 2px solid #FFFFFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: block;
+    font-size: 14px;
+    font-weight: bold;
+    height: 35px;
+    line-height: 29px;
+    text-align: center;
+    width: 180px;
+    margin: 74px auto 25px
+}
+
+a.pf_side_cl01:hover{
+    background-color: #a2d178;
+    text-decoration: none;
+    color: #FFFFFF; 
+}
+
+.pf_side_cl02{/*data container*/
+    width: 180px;
+    height: 140px;
+    padding: 3px 3px 3px 3px;
+    text-align: center; 
+    background-color: #FFFFFF; 
+    margin-bottom: 8px 
+}
+
+.pf_side_cl02 img{/*image*/
+    width: 174px;
+    height: 134px;
+   
+}
+
+#pf_content_id01{/*content section */
+    position: relative;
+    margin: 0 0 0 163px;
+}
+
+#pf_content_id02{/*icons container*/
+    position: relative;
+    width: 30px;
+    float: left;
+}
+
+#pf_content_id02 a{/*icons*/
+    position: relative;
+    height: 28px;
+    width: 29px;
+    margin-bottom: 5px;
+    display: block;
+    background-repeat: no-repeat;
+}
+
+#pf_content_id03{/*sub menu section and paragraph container*/
+    position: relative;
+    width: 832px;
+    float: right;
+    height: 170px;
+}
+
+.pf_content_menu{/*sub menu section */
+    position: relative;
+    width: 100%;
+    height: 30px;
+}
+
+.pf_content_menu a{/*sub menu links */
+    position: relative;
+    float: left;
+    width: 203px;
+    padding: 6px 0px 6px 0px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    color: #FFFFFF;
+    margin-left: 5px;
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+    background-color: #abd6cf;
+}
+
+.pf_content_menu a:hover{/*sub menu links hover*/
+    background-color: #019d8c;
+}
+
+.pf_content_menu a.last{/*sub menu last link */
+    background-color: #f5b3d1;
+}
+
+.pf_content_menu a.last:hover{/*sub menu last link hover */
+    background-color: #f195bf;;
+}
+
+.pf_content_cl01{/*content paragraph*/
+    padding: 12px 20px 0 25px;
+    width:auto;
+    text-align: justify;
+}
+
+.pf_content_cl02{/*fb icon*/
+    background-image: url("../images/icon_fb.png");
+}
+
+.pf_content_cl02:hover, .pf_content_cl02:active{/*fb hover icon*/
+    background-image: url("../images/icon_fb_active.png");
+}
+
+
+.pf_content_cl03{/*twitter icon*/
+    background-image: url("../images/icon_tw.png");
+}
+
+.pf_content_cl03:hover, .pf_content_cl03:active{/*twitter hover icon*/
+    background-image: url("../images/icon_tw_active.png");
+}
+
+.pf_content_cl04{/*google plus icon*/
+    background-image: url("../images/icon_go.png");
+}
+
+.pf_content_cl04:hover, .pf_content_cl04:active{/*google plus hover icon*/
+    background-image: url("../images/icon_go_active.png");
+}
+
+.pf_content_cl05{/*pi icon*/
+    background-image: url("../images/icon_pi.png");
+}
+
+.pf_content_cl05:hover, .pf_content_cl05:active{/*pi  hover icon*/
+    background-image: url("../images/icon_pi_active.png");
+}
+
+.pf_content_cl06{/*bi icon*/
+    background-image: url("../images/icon_bi.png");
+}
+
+.pf_content_cl06:hover, .pf_content_cl06:active{/*bi hover icon*/
+    background-image: url("../images/icon_bi_active.png");
+}
+
+#pf_footer{/*footer container*/
+    position:relative;
+    float:right;
+    margin:15px 0px 15px 0px;
+    color: #B4DA91;
+    font-size: 11px;
+    padding-right: 25px;
+}
+
+#pf_footer a{/*footer links*/
+    font-weight: bold;
+    margin-right:5px;
+}
+
+/* public home page ends  */
+
+/* view our home page starts */
+
+.view{
+    width:1010px;
+}
+
+.pf_view_logo{
+    float:left;
+    display:block;
+    margin-top:-20px;
+}
+
+.view #pf_header_id01{
+    display: block;
+    height:41px;
+    width:674px;
+    float:right;
+}
+
+#pf_header_view_id01{/*header container*/
+    width: 1010px;
+    height: 127px;
+    position: relative;
+}
+
+#pf_header_view_id01 .pf_header_cl05{/*login join container*/
+    width:24.5%;
+}
+
+#pf_header_view_id01 .pf_header_cl07{/*dummy area*/
+    width:49%
+}
+
+#pf_header_view_id01 .pf_content_menu{/*header menu*/
+    float:right;
+    psition:relative;
+    width:674px;
+}
+
+#pf_header_view_id01 .pf_content_menu a {/*header menu items*/
+    width: 163px;
+    font-size: 11px;
+    margin-right: 7px;
+    margin-left:0px;
+}
+
+#pf_header_view_id01 .pf_content_menu a.last {/*header menu last item*/
+    margin-right: 0px;
+  
+}
+
+.pf_view_icons{ /*top icons*/
+    position: relative;
+    height: 20px;
+    width: 145px;
+    float:right;
+    margin-top:8px;
+}
+
+.pf_view_icons a{ /*top icons*/
+    position: relative;
+    height: 20px;
+    width: 20px;
+    display: block;
+    float:left;
+    margin-right: 10px;
+    background-repeat: no-repeat;
+
+}
+
+.pf_view_icons_cl01 { /*home icon*/
+    background-image: url("../images/icon_home_inactive.png");
+
+}
+
+.pf_view_icons_cl01:hover,.pf_view_icons_cl01:active  { /*home icon hover*/
+    background-image: url("../images/icon_home_active.png");
+
+}
+
+.pf_view_icons_cl02{ /*home icon*/
+    background-image: url("../images/icon_contact_inactive.png");
+
+}
+
+.pf_view_icons_cl02:hover,.pf_view_icons_cl02:active  { /*home icon hover*/
+    background-image: url("../images/icon_contact_active.png");
+
+}
+
+.pf_view_icons_cl03{ /*home icon*/
+    background-image: url("../images/icon_search_inactive.png");
+
+}
+
+.pf_view_icons_cl03:hover,.pf_view_icons_cl03:active  { /*home icon hover*/
+    background-image: url("../images/icon_search_active.png");
+
+}
+
+.pf_view_icons_cl04{ /*home icon*/
+    background-image: url("../images/icon_help_inactive.png");
+
+}
+
+.pf_view_icons_cl04:hover,.pf_view_icons_cl04:active  { /*home icon hover*/
+    background-image: url("../images/icon_help_active.png");
+
+}
+
+#pf_view_id{ /*view our families*/
+    height: 30px;
+    background-image: url("../images/icon_search.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    position: relative;
+    color: #939598;
+    text-transform: uppercase;
+    padding: 7px 0px 0px 30px;
+    height: 30px;
+    font-weight: bold;
+    font-size: 17px;
+}
+
+.view nav{ /*menu links*/
+    height: 25px;
+    width: 1010px;
+    position: relative;
+    margin-top:15px;
+    z-index:100;
+
+}
+
+.view nav .pf_content_menu{/*sub menu section */
+    height: 25px;
+}
+
+.view nav .pf_content_menu a{/*sub menu links */
+    width: 160px;
+    padding: 3px 0px 4px 0px;
+    font-size: 11px;
+    font-weight:bold;
+    margin-right: 4px;
+    margin-left: 0px;
+    height:23px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid white;
+    cursor: pointer;
+}
+
+.view nav a:hover ul{/*sub menu links hover*/
+    display: block;
+}
+
+.view nav .pf_content_menu a.last{/*sub menu last link */
+    background-color: #bbdc9b;
+}
+
+.view nav .pf_content_menu a.last:hover{/*sub menu last link hover */
+    background-color: #a2d178;
+}
+
+.view nav .pf_content_menu ul{/*sub menu dropdown*/
+    margin: 2px 0px 0px 0px;
+    padding: 0px;
+    display: none;
+    width: 190px;
+    background-color: #FFFFFF;
+    border: 1px solid gray;
+}
+.view nav .pf_content_menu ul li{/*sub menu dropdown items */
+    padding-left: 4px;
+    padding-top: 4px;
+    vertical-align: middle;
+    width: 166 px;
+    cursor: pointer;
+    height:25px;
+    font-size: 11px;
+    font-weight: normal;
+    color: #77787A ;
+    white-space: nowrap;
+    text-align: left;
+    list-style:none;
+    text-transform: capitalize;
+}
+
+.view nav .pf_content_menu ul li:hover{/*sub menu dropdown items hover*/
+   background-color: #bbdc9b;
+}
+
+.pf_view_cl01{/*no padding*/
+   padding-left: 0px;
+   padding-right: 0px;
+}
+
+.pf_view_cl02{/*data container*/
+   width: 300px;
+   height: auto;
+   padding: 0px;
+   margin: 0px;
+}
+
+.pf_view_cl03{/*image container*/
+   width: 300px;
+   height: 230px;
+   position: relative;
+   overflow: hidden;
+   margin-bottom: 3px;
+   
+}
+
+
+.pf_view_cl03 img{/*image */
+   width: 300px;
+   height: auto;
+   position: relative;
+   margin: 0px;   
+}
+
+.pf_view_cl04{/*image container*/
+    position: relative;
+    height: 26px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 3px;
+    width: 300px;
+    overflow:hidden;
+}
+
+.pf_view_cl04 span{/*text*/
+    position: relative;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    padding-top:4px;
+    padding-left:10px;
+    background-color: #57b4a8;
+    width: 226px;
+    margin-right:5px;
+    float:left;
+    height:26px;
+    display: block;
+}
+
+.pf_view_cl04 img{/*like image*/
+    position: relative;
+    background-color: #57b4a8;
+    height: 26px;
+    width: 69px;
+    float:right;
+    cursor: pointer;
+}
+
+.pf_view_cl05{/*information container*/
+    position: relative;
+    height: auto;
+    color: #fff;
+    width: 300px;
+    overflow: hidden;
+}
+
+.pf_view_cl06{/*left information container*/
+    position: relative;
+    width:232px;
+    float:left;
+    height:auto;
+}
+
+
+.pf_view_cl07{/*right link icons container container*/
+    position: relative;
+    float:right;
+    width:68px;
+    height: auto;
+}
+
+.pf_view_cl07 a{/*link icons */
+    position: relative;
+    width:68px;
+    display: block;
+    height: 44px;
+    margin-bottom: 2px;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+.pf_view_cl07 a:hover{/*link icons hover */
+    opacity: 1;
+    filter: alpha(opacity=100);
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    -o-transition: all 1s;
+    transition: all 1s;
+}
+
+a.pf_view_cl08{/*more about us */
+    background-image: url("../images/icon_more_about.png");
+    
+}
+
+a.pf_view_cl09{/*our home */
+    background-image: url("../images/icon_our_home.png");
+    
+}
+
+a.pf_view_cl010{/*our letters */
+    background-image: url("../images/icon_letters.png");
+    
+}
+
+a.pf_view_cl011{/* contact */
+    background-image: url("../images/icon_contact.png");
+    
+}
+
+a.pf_view_cl012{/*our videos */
+    background-image: url("../images/icon_videos.png");
+    
+}
+
+a.pf_view_cl013{/* print*/
+    background-image: url("../images/icon_print.png");
+    
+}
+
+.pf_view_cl014{/*left information boxes*/
+    position: relative;
+    margin-top:2px;
+    width:220px;
+    height:auto;
+    padding-top: 2px;
+}
+
+.pf_view_cl014 span{/*text*/
+   color: #77787A;
+   margin-top: 4px;
+   font-family: arial;
+   font-size: 12px;
+}
+
+.pf_view_cl015 {/*text*/
+   font-weight: bold;
+}
+
+.pf_view_cl016 {/* head text*/
+   font-weight: bold;
+   margin-top:20px;
+   font-size: 14px;
+   color: #77787A;
+}
+
+a.pf_view_cl017 span {/* more link*/
+   color: #f195bf;
+   text-decoration: none;
+   cursor: pointer;
+}
+
+a.pf_view_cl017 span:hover, a.pf_view_cl017 span:active{/* more link hover*/
+   color: #a2a4a7;
+   text-decoration: none;
+}
+
+
+.pf_view_cl018 {
+   margin-left:20px;
+}
+
+.pf_view_cl019{
+   margin-left:36px;
+}
+
+.pf_view_cl020{
+   margin-top: 25px;
+   margin-bottom: 35px;
+}
+
+.view #pf_footer{
+  padding-right: 0px ;
+  margin-top:50px; 
+}
+
+/* view our home page ends */
+
+
+/* responsive styles */
+@media (max-width: 639px) {
+
+    /* public home page in responsive starts */
+    .home{/* container*/
+        float:none;
+        margin:auto; 
+        width:100%;  
+    }
+
+    #main{/*left side container*/
+        float:none;
+        margin:auto; 
+        width:100%; 
+    }
+
+
+    #side{/*right side container*/
+        display:none;
+    }
+
+    header {
+        height: 127px;
+    }
+
+    #pf_header_id01{/*login and join button in for mobile devices*/
+
+        display:block;
+    }
+
+    #pf_header_id02 {
+        font-size: 13px;
+        line-height: 16px;
+        font-weight: bold;
+        float: none;
+        margin-left: 15px;
+        width:auto;
+        margin-top:0px;
+        margin-right:50px;
+    }
+
+    #pf_header_id03 {/* dropdown button container*/
+        width: auto;
+        margin-right:15px;
+        margin-top: 0px;
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        top:60px;
+
+    }
+
+    .pf_logo{ /* logo container*/
+        float:none;
+        width:150px;
+        margin-top:15px;
+        margin-left:15px;
+    }
+
+    .pf_logo img { /* logo*/
+        height:100%;
+        width:100%;
+    }
+
+    #pf_banner{ /* splash image */
+        display:none;
+    }
+
+    .pf_header_cl01, .pf_header_cl02 {/* button styles*/
+        display: none;
+    }    
+    .pf_header_cl03{
+        display:block;
+    }
+
+    #pf_content_id01{/*content section */
+        margin: 0 15px 0 15px;
+        overflow: hidden;
+    }
+
+    #pf_content_id02 {
+        width: auto;
+        float: none;
+        margin-right: 5px;
+        overflow: hidden;
+        padding-bottom: 15px;
+
+    }
+
+    #pf_content_id02 a{
+        float: left;
+        margin-right: 10px
+    }
+
+    #pf_content_id03 {
+        width: auto;
+        float: none;
+        height:auto;
+    }
+
+    #pf_footer {
+        padding-right: 0px;
+        float:none;
+        font-size: 10px;
+    }
+
+    #pf_footer a{/*footer links*/
+        font-size: 12px
+    }
+
+    .pf_content_menu{
+        display: none;
+    }
+
+    .pf_content_cl01{
+        padding: 12px 0px 0 0px;
+        font-size:13px;
+    }
+
+    /*home page in responsive ends*/
+
+   
+   
+}
+
+@media (min-width: 640px) and (min-width: 959px) { 
+
+
+
+}
+
+@media (min-width: 960px) and (max-width: 1299px) { 
+
+   
+    .view{
+    width:960px;
+    }
+
+    #pf_header_view_id01 {
+    width: 960px;
+
+    }
+    .view nav{
+    width: 960px;
+    }
+  
+    .pf_view_logo img{
+    width:270px;
+    height:45px;
+    }
+}

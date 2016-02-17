@@ -1,0 +1,119 @@
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+html, body {
+  width: 100%;
+  height: 100%;
+}
+/*.create_signature {
+  float: left;
+  margin-left: 60px;
+  margin-top: 40px;
+  cursor:pointer;
+}
+.make_payment {
+  float: left;
+  margin-left: 60px;
+  cursor:pointer;
+}
+.check_button {
+  float: left;
+  margin-left: 80px;
+  margin-top:40px;
+  cursor:pointer;
+}*/
+table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhtmlxLayoutPolyProgressBGIMG {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  height: 100%;
+  background-image:none;
+   z-index: 1;
+ /* background-image: url('../imgs/dhxlayout_progress.gif');
+  background-repeat: no-repeat;
+  background-position: center center;*/
+   display: block;
+  width: 150px;
+  height: 150px;
+  line-height: 150px;
+  margin: 100px auto;
+  position: relative;
+  box-sizing: border-box;
+  text-align: center;
+  z-index: 0;
+  text-transform: uppercase;
+}
+
+/*Looding animation effect*/
+ table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhtmlxLayoutPolyProgressBGIMG  {
+ 
+}
+table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhtmlxLayoutPolyProgressBGIMG:before, table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhtmlxLayoutPolyProgressBGIMG:after {
+  opacity: 0;
+  box-sizing: border-box;
+  content:"\0020";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 100px;
+  border: 5px solid #019d8c;
+  box-shadow: 0 0 50px #019d8c, inset 0 0 50px #019d8c;
+}
+table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhtmlxLayoutPolyProgressBGIMG:after {
+  z-index: 1;
+  -webkit-animation: gogoloader 2s infinite 1s;
+  -moz-animation: gogoloader 2s infinite 1s;
+  animation: gogoloader 2s infinite 1s;
+}
+table.dhtmlxLayoutPolyContainer_dhx_skyblue div.dhtmlxLayoutPolyProgressBGIMG:before {
+  z-index: 2;
+  -webkit-animation: gogoloader 2s infinite;
+  -moz-animation: gogoloader 2s infinite;
+  animation: gogoloader 2s infinite;
+}
+@-webkit-keyframes gogoloader {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+}
+@-moz-keyframes gogoloader {
+  0% {
+    -moz-transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    -moz-transform: scale(1);
+    opacity: 0;
+  }
+}
+
+}
+@keyframes gogoloader {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}

@@ -1,0 +1,88 @@
+@import url(../../base/css/general.css);
+.main {
+background-color:transparent;
+border:0 none;
+margin:10px auto 0px;
+min-height:200px;
+padding-bottom:1px;
+}
+.indexcustom {
+	margin-top:2px;
+	background:url(../images/PromoAreaBG.png) repeat-x;
+}
+.bottomCopyright {
+background-color:transparent;
+border:0px solid #CCCCCC;
+margin:2px auto 0;
+}
+.page_column_first .page_block_container {
+margin-left:10px;
+}
+.page_column_last .page_block_container {
+margin-right:10px;
+}
+.page_block_container .disignBoxFirst {
+	margin:0px 0px 10px 0px;
+}
+.disignBoxFirst, .page_column_single .page_block_container .disignBoxFirst {
+	margin:0px 10px 10px 10px;
+}
+.TransBox .disignBoxFirst, .page_column_single .page_block_container .disignBoxFirst {
+	margin:0px;
+}
+
+div.sys_main_logo {
+	background:url(../images/pf_headerbkgrnd.png) repeat-x top;
+}
+
+.disignBoxFirst_112 {
+background-image:none;
+border:0px;
+}
+.Mom_blu {
+	background:url(../images/MOA-WTMOA.png) left top no-repeat;
+	margin:0px 0px 10px 0px;
+	display:block;
+	height:30px;
+}
+div.TransBox {
+background:url("../images/TransBoxBorder.png") repeat scroll 0 0 transparent;
+padding:20px;
+}
+
+.indexfooter .bott_img {
+	margin:0px;
+	height:80px;
+	padding:0 0 0 20px;
+}
+.bott_img li {
+display:inline;
+}
+.imag {
+float:left;
+list-style-type:none;
+width:223px;
+margin-right:18px;
+border-right:1px solid #0079c2;
+}
+.lastbullet {
+	border:none;
+	margin-right:8px;
+}
+.indexfooter {
+background:url("../images/footer_bg.png") repeat-x scroll 0 0 transparent;
+margin:0px auto 0;
+height:114px;
+border-top:1px solid #0079C2;
+padding-top:30px;
+}
+.content_small {
+	margin-left:85px;
+}
+.mainLogo {
+margin:16px 0 16px 10px;
+}
+div.sys_ml_wrapper {
+margin:0 5px;
+/*background:url(../images/HomePage_BirthBanner.png) 504px 12px no-repeat; */
+}

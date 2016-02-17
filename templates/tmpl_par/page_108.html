@@ -1,0 +1,148 @@
+<bx_include_auto:_sub_header.html />
+
+<script type="text/javascript" src="PDFUser/Processing/dialog.js"></script>
+<script type="text/javascript" src="components/album/js/jwplayer/jwplayer.js"></script>
+<script type="text/javascript" src="ProfileViewComponent/model/ProfileViewComponent_Model.js"></script>
+<script type="text/javascript" src="ProfileViewComponent/controller/ProfileViewComponent.js"></script>
+
+
+<script type="text/javascript" src="LikeComponent/Model/likeComponent_model.js"></script>
+<script type="text/javascript" src="LikeComponent/Controller/likeComponent.js"></script>
+
+
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+window.onload = function() {
+  ProfileViewComponent.start({
+    uid: (new Date()).getTime(),
+    application_path: siteurl + "ProfileViewComponent/",
+    dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+  });
+};
+</script>
+
+<div class="clear_both"></div>
+<div class="page108">
+	<div class="pageColumn5">
+	  <div id ="letter_text">Click on the links below to expand and read the letters.</div> 
+	  <div class="headerGreenSmall" id="accordObj" style="height: auto;overflow: auto"></div>
+	  <div class="letterDivBody" id="mother" style="height: auto;overflow: auto"></div>
+	  <div class="letterDivBody" id="HER" style="height: auto;overflow: auto"></div>
+	  <div class="letterDivBody" id="HIM" style="height: auto;overflow: auto"></div>
+	  <div class="letterDivBody" id="THEM" style="height: auto;overflow: auto"></div>
+	  <div class="letterDivBody" id="AGENCY" style="height: auto;overflow: auto"></div>
+	  <div id="other"></div>
+	</div>
+	<div class="pageColumn6">
+	  <div class="profileInfoMainBlock">
+	    <div class="profileInfoHeader">
+	      <div class="profileInfoName" id="profileid"></div>
+	      <div class="profileInfoLastSeen" id="lastactive"></div>
+	      <div class="icoLike" style="cursor:pointer"></div>
+	    </div>
+	    <div class="clear_both"></div>
+	    <div class="profileInfoStats">
+	      <span class="profileInfoCaption">AGE:</span>
+	      <span id="profileage"></span>
+	      <br />
+	      <span class="profileInfoCaption">STATE:</span>
+	      <span id="profilestate"></span>
+	      <br />
+	      <span class="profileInfoCaption">WAITING:</span>
+	      <span id="profilewaiting"></span>
+	      <br />
+	      <span class="profileInfoCaption">CHILDREN:</span>
+	      <span id="profilechildren"></span>
+	      <br />
+             <span id="profilechildrentype"></span>
+	      <span class="profileInfoCaption">FAITH:</span>
+	      <span id="profilefaith"></span>
+	      <br /><br />
+	      <span class="profileInfoCaption">OUR CHILD</span>
+	      <br />
+	      <span class="profileInfoCaption">ETHNICITY:</span>
+	      <span id="profileethinicity"></span>
+	      <br />
+	      <span class="profileInfoCaption">AGE:</span>
+	      <span id="profilechildage"></span>
+	      <br />
+	      <span class="profileInfoCaption">ADOPTION TYPE:</span>
+	      <span id="profileadoptiontype"></span>
+	    </div>
+	    <div class="profileInfoSocial">
+	      <div class="profileSocial">
+	        <a href="" id="face">
+	          <div class="icoSmFb" id="faceimage"></div>
+	        </a>
+	        <a href="" id="twit">
+	          <div class="icoSmTw"></div>
+	        </a>
+	        <a href="" id="goog">
+	          <div class="icoSmGo"></div>
+	        </a>
+	        <a href="" id="pine">
+	          <div class="icoSmPi"></div>
+	        </a>
+	        <a href="" id="blog">
+	          <div class="icoSmBi"></div>
+	        </a>
+	      </div>
+	    </div>
+	    <div class="clear_both"></div>
+
+	    <div class="userActions">
+	      <div class="clear_both"></div>
+	      <div id="flipbookdetails">
+	        <a href="" id="flip" target= "_blank">
+	          <div class="icoOurFlip" id="ebookpdf"></div>
+	        </a>
+	      </div>
+	      <a href="" id="homes">
+	        <div class="icoOurHome"></div>
+	      </a>
+	      <a href="" id="letter">
+	        <div class="icoOurLetters"></div>
+	      </a>
+	      <a href="" id="contact">
+	        <div class="icoOurContact"></div>
+	      </a>
+	      <div id="profilepublic">
+	        <a href="javascript:void(0);" class="printpublic">
+	          <div class="icoOurPrint"></div>
+	        </a>
+	      </div>
+	      <div class="clear_both"></div>
+	    </div>
+	    <div class="clear_both"></div>
+
+
+
+	    <div class="profileSubBlocks">
+	      <div class="profileSubHead">
+	        <img class="headIcon" src="templates/tmpl_par/images/ico_our_agency.png" alt="ParentFinder" title="" />
+	        <div id="agencies">OUR AGENCY</div>
+	        <div id="websites"></div>
+	        <div id="journals"></div>
+	      </div>
+	      <div class="profileSubBody">
+	        <div class="profileBlockBody">
+	          <div class="clear_both"></div>
+	          <div class="profileInfoAgency">
+	            <div class="clear_both"></div>
+	            <div class="agencyThumbSm" id="profile_agency_logo">
+	              <img class="headIcon" src="templates/tmpl_par/images/agency_thumb_small.png" alt="" title="" />
+	            </div>
+	            <span class="agencyInfo"></span>
+	            <div style="padding-left:75px;" id="profileagencyaddress"></div>
+	            <div class="clear_both"></div>
+	          </div>
+	          <div class="clear_both"></div>
+	        </div>
+	      </div>
+	    </div>
+
+	  </div>
+	</div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

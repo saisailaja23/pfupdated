@@ -1,0 +1,25 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="components/album/js/jquery.plugins.js"></script>
+<script type="text/javascript" src="components/views/controllers/videos.js"></script>
+<link rel="stylesheet" type="text/css" href="components/album/css/style.css" />
+<style type="text/css">
+    .edit{
+        background: none;
+    }
+
+</style>
+<script type="text/javascript">
+    var siteurl = '<bx_url_root />';
+</script>
+<div class="clear_both"></div>
+<div class="page215">
+    <div class="container view">
+        <div id="video_album_view"></div>
+    </div>
+</div>
+<div class="clear_both"></div>
+
+<script type="text/javascript">
+    videoAlbum.init($("#video_album_view"));
+</script>
+<bx_include_auto:_sub_footer.html />

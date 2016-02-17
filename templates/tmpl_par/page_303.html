@@ -1,0 +1,167 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1 user-scalable=no">
+        <base href="<bx_url_root />" />
+		
+		<script src="plugins/jquery/jquery.js?cache=__cache_control__"></script>
+		<title>Parent Finder</title>
+
+		<script type="text/javascript" >
+			var site_url = '<bx_url_root />';
+		</script>
+
+	</head>
+
+
+
+
+<script type="text/javascript">
+	var id = '__profile_id__';
+
+</script>
+<script type="text/javascript" src="viewourfamilies/js/fastfact.js?cache=__cache_control__"></script>
+<body style="font-family:arial; font-size:10px; color:#3A3536;">
+
+	
+	<!-- container start -->
+	<div style="width:595px; height:842px; margin:auto; ">
+			<div style="overflow:hidden; padding:10px 20px 5px 20px;">
+				<h1 id="p_name" style="color:#43A8DE; float:left; margin:0px; font-size:30px; "></h1> <!-- parent name -->
+				<h3 class="contact_div"  style="float:right; margin:12px 0px 0px 0px; font-size:15px; color:#43A8DE;">Contact Us At:  <span class="p_contact"></span><img src="templates/tmpl_par/images/icon_phone_header.png" style="margin-left:10px; "></h3> <!-- header contact us devision -->
+			</div>
+			<div id="img_let_div" style="background-color:#A0CF6D; overflow:hidden; padding:10px 20px; "> <!-- profile image and discription container -->
+			</div>
+
+			<div style="overflow:hidden; padding:8px 25px 18px 25px;">
+				<div style="float:left; width:546px;"> <!-- parent details -->
+					<table style="width: 546px; font-size: 10px;">
+						<tr>						
+							<th id="p1_FirstName" style="color:#43A8DE; text-align:left; font-size:12px; padding: 5px 0px 5px 0px;"></th>
+							<th id="p2_FirstName" style="color:#43A8DE; text-align:left; font-size:12px; padding: 5px 0px 5px 0px;"></th>
+							<td rowspan="7">
+				<div style="float:right; width: 175px; height: 168px; ">
+					<div style="padding-top:10px; ">
+						<div id="Avatar">
+							<!-- <img src="images/img_1.jpg"> right side image -->
+						</div>												
+												
+					</div>
+				</div>
+
+							</td>
+						</tr>
+						<tr>						
+							<td valign="top" style="padding: 3px 0px; width: 50%;" id="p1_faith"></td>
+							<td valign="top" style="padding: 3px 0px; width: 50%;" id="p2_faith"></td>
+						</tr>
+						<tr>						
+							<td valign="top" style="padding: 3px 0px" id="p1_Ethnicity"></td>
+							<td valign="top" style="padding: 3px 0px" id="p2_Ethnicity"></td>
+						</tr>
+						<tr>						
+							<td valign="top" style="padding: 3px 0px" id="p1_Education"></td>
+							<td valign="top" style="padding: 3px 0px" id="p2_Education"></td>
+						</tr>
+						<tr>						
+							<td valign="top" style="padding: 3px 0px" id="p1_DateOfBirth"></td>
+							<td valign="top" style="padding: 3px 0px" id="p2_DateOfBirth"></td>
+						</tr>
+						<tr>						
+							<td valign="top" id="p1_Sex" style="padding: 3px 0px;"></td>
+							<td valign="top" id="p2_Sex" style="padding: 3px 0px;"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><h3 style="color:#43A8DE; margin: 11px 0px 8px 0px; ">Our Adoption Preferences</h3></td>
+						</tr>
+					</table>
+
+					<div style="width: 546px;"> <!-- adoption preferences -->
+
+						
+						<table style="font-size:10px;">
+							<tr>
+								<td valign="top" style="padding: 4px 0px; width:85px;">AGE</td>
+								<td valign="top" style="width:10px; padding: 2px 0px;">:</td>
+								<td valign="top" style="padding: 3px 0px; "><div id="ChildAge" style="width:252px; overflow: hidden;"></div></td>
+								<td rowspan="6" style="width:185px;" valign="top">
+									<table style="font-size: 10px; margin-left: 8px; margin-top:-3px;">
+										<tr>
+											<td valign="top" style="padding: 3px 0px; width: 92px;">Relationship Status</td>
+											<td valign="top" style="padding: 3px 0px; "><span style="float:left; ">:&nbsp;</span><span id="p1_RelationshipStatus" style="display:flex; "> </span></td>
+										</tr>
+										<tr>
+											<td valign="top"style="padding: 3px 0px;">State</td>
+											<td valign="top" style="padding: 3px 0px;"><span style="float:left; ">:&nbsp;</span><span id="p1_State" style="display:flex; "> </span></td>
+										</tr>
+										<tr>
+											<td valign="top" style="padding: 3px 0px;">Waiting</td>
+											<td valign="top"style="padding: 3px 0px;"><span style="float:left; ">:&nbsp;</span><span id="p1_waiting" style="display:flex; "> </span></td>
+										</tr>
+										<tr>
+											<td valign="top" style="padding: 3px 0px;">Family Status</td>
+											<td valign="top" style="padding: 3px 0px;"><span style="float:left; ">:&nbsp;</span><span id="FamilyStructure" style="display:flex; "> </span></td>
+										</tr>
+
+									</table>
+
+								</td>
+							</tr>
+							<tr>
+								<td valign="top" style="padding: 4px 0px;">GENDER</td>
+								<td valign="top" style="padding: 2px 0px;">:</td>
+								<td style="padding: 3px 0px;"><div id="ChildGender" style="width:252px; overflow: hidden;"></div></td>
+							</tr>
+							<tr>
+								<td valign="top" style="padding: 4px 0px;">ETHNICITY</td>
+								<td valign="top" style="padding: 2px 0px;">:</td>
+								<td valign="top" style="padding: 3px 0px;"><div id="ChildEthnicity" style="width:252px; overflow: hidden;"></div></td>
+							</tr>
+							<tr>
+								<td valign="top" style="padding: 4px 0px;">TYPE</td>
+								<td valign="top" style="padding: 2px 0px;">:</td>
+								<td valign="top" style="padding: 3px 0px;"><div id="AdoptionType" style="width:252px; overflow: hidden;"></div></td>
+							</tr>
+							<tr>
+								<td valign="top" style="font-weight: bold; padding: 2px 0px;;"><h3 style="color:#43A8DE; margin: 10px 0px 8px 0px;">Online Profile</h3></td>
+								<td valign="top" style="padding: 13px 0px; color:#238BAF;">:</td>
+								<td valign="top" style="font-weight: bold; padding: 2px 0px;;"><h3 style="color:#43A8DE; margin: 10px 0px 8px 0px;"><span id="portal_link"></span></h3></td>
+							</tr>
+							<tr>
+								<td valign="top" style="font-weight: bold;     padding: 4px 0px;"><h3 style="color:#43A8DE; margin: 2px 0px 8px 0px;">Email</h3></td>
+								<td valign="top" style="padding: 6px 0px; color:#238BAF;">:</td>
+								<td valign="top" style="font-weight: bold;     padding: 4px 0px;"><h3 style="color:#43A8DE; margin: 2px 0px 8px 0px;"><span id="Email"></span></h3></td>
+							</tr>
+
+
+						</table>
+
+					</div>					
+				</div>		
+
+
+
+			</div>
+
+			<div id="bottom_div"></div>
+			<!--
+			<div style="text-align:center; padding:5px 60px; overflow:hidden; ">
+				<span style="font-size:12px; font-weight:bold; color:#43A8DE; float:left; ">Adoption Associates</span>
+				<span class="contact_div" style="font-size:12px; font-weight:bold; color:#43A8DE; float:right; ">Contact Us At:  <span class="p_contact"></span><img src="templates/tmpl_par/images/icon_phone_footer.png" style="margin-left:10px; "></span>
+			</div>	
+			-->	
+			<div style="overflow:hidden; padding:10px 20px 5px 20px;">
+				<h3 style="color:#43A8DE; float:left; margin:0px; font-size:15px;">Adoption Associates</h3>
+				<h3 class="contact_div"  style="float:right; margin:0px; font-size:15px; color:#43A8DE;">Contact Us At:  <span class="p_contact"></span><img src="templates/tmpl_par/images/icon_phone_header.png" style="margin-left:10px; "></h3> <!-- header contact us devision -->
+			</div>	
+
+		</div> 
+
+</body>
+
+
+__boonex_footers__
+
+
+

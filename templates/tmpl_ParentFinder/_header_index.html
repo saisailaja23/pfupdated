@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US" lang="en-US">
+<head>
+	<title>__page_header__</title>
+	<base href="<bx_url_root />" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	__page_description__
+	__page_keywords__
+	<meta http-equiv="Content-Style-Type" content="text/css" />
+	<bx_include_css />
+	<bx_include_js />
+    __dol_images__
+    __dol_lang__
+    __dol_options__
+    <script type="text/javascript" language="javascript">
+		var site_url = '<bx_url_root />';
+        var aUserInfoTimers = new Array();
+		$(document).ready( function() {
+			$( 'div.RSSAggrCont' ).dolRSSFeed();
+		} );
+	</script>
+    <!--[if lt IE 7.]>
+	<script defer type="text/javascript" src="inc/js/pngfix.js"></script>
+	<![endif]-->
+	__extra_js__
+	<bx_injection:injection_head />
+
+    <script language="javascript" type="text/javascript" src="inc/js/user_status.js"></script>
+    <script type="text/javascript">
+        var oBxUserStatus = new BxUserStatus();
+        oBxUserStatus.userStatusInit('<bx_url_root />', __is_profile_page__);
+    </script>
+    <script type="text/javascript">/*<![CDATA[*/var el="logo-photos";var bgimg=new Array("http://www.genesisgraphix.com/moa/templates/tmpl_MomsOfAmerica/images/LargeHeader-photos.png", "http://www.genesisgraphix.com/moa/templates/tmpl_MomsOfAmerica/images/LargeHeader-photos_02.png", "http://www.genesisgraphix.com/moa/templates/tmpl_MomsOfAmerica/images/LargeHeader-photos_03.png", "http://www.genesisgraphix.com/moa/templates/tmpl_MomsOfAmerica/images/LargeHeader-photos_04.png");var random=Math.round((bgimg.length-1)*Math.random());var cssStr="#"+el+" { background: url("+bgimg[random]+") no-repeat top right } ";var style=document.createElement("style");style.setAttribute("type","text/css");if(style.styleSheet){style.styleSheet.cssText=cssStr;}else{var cssText=document.createTextNode(cssStr);style.appendChild(cssText);}document.getElementsByTagName("head")[0].appendChild(style);/*]]>*/</script>
+</head>
+__flush_header__
+<body <bx_injection:injection_body /> >
+    <bx_injection:injection_header />
+    <div id="notification_window" class="notifi_window"></div>
+	<div id="FloatDesc" style="position:absolute;display:none;z-index:100;"></div>

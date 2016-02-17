@@ -1,0 +1,209 @@
+div#data_container {
+	border: 1px solid #A4BED4 !important ;
+	background-color:white !important;
+	width:750px !important;
+	height:540px !important;
+	position: relative !important;
+}
+
+div#navigation {
+	/* background-image: url("../images/sky_blue_grid.png") !important; */
+	background-color: #d3e9e6 !important;
+	border-bottom: 1px solid #a4bed4 !important;
+	height: 49px !important;
+	padding: 10px 10px 10px 14px !important;
+	width: 750px !important;
+}
+
+div#content {
+	height: 480px !important;
+	width: 750px !important;
+}
+
+div#books_list {
+	width: 416px !important;
+	height: 489px !important;
+	float: left !important;
+}
+
+div#books_list_cont {
+	height: 100% !important;
+	width: 100% !important;
+}
+
+div#books_selected {
+	width: 332px !important;
+	height: 499px !important;
+	float: left !important;
+	border-left: 1px solid #A4BED4 !important;
+	color: #76787b !important;
+}
+
+div#books_selected_cont {
+	width: 100% !important;
+	height: 460px !important;
+	overflow-y:auto !important;
+	overflow-x:hidden !important;
+}
+
+div#books_list_template, div#books_selected_template {
+	display: none !important;
+}
+
+img.book_icon {
+	height: 116px !important;
+	width: 80px !important;
+	float: left !important;
+	margin-right: 10px !important;
+}
+
+div.book_info {
+	height: 90px !important;
+}
+
+div.book_info div {
+	padding-bottom: 4px !important;
+	padding-top: 2px !important;
+}
+
+span.title {
+	color: #555555 !important;
+	display: block !important;
+	width: 75px !important;
+	float: left !important;
+}
+
+span.book_name {
+	font-weight: bold !important;
+	display:block !important;
+	color: #76787b !important;
+}
+
+
+
+div.selected_title {
+	width: 160px !important;
+	float: left !important;
+}
+
+span.selected_book {
+/*	height: 25px !important;
+	
+	font-weight: bold !important;
+	 display: block !important; 
+	overflow: hidden !important;
+	color: #76787b !important;
+	*/
+}
+
+span.selected_author {
+	height: 25px !important;
+	display: block !important;
+	overflow: hidden !important;
+}
+
+div.selected_quantity, div.selected_price {
+	width: 50px !important;
+	text-align: center !important;
+	float: right !important;
+}
+
+div#category {
+	width:550px !important;
+	height:30px !important;
+	float: left !important;
+}
+
+span.category {
+	padding-top: 4px !important;
+	display: block !important;
+	float: left !important;
+	font-size:9pt !important;
+	color: #555555 !important;
+	width: 70px !important;
+}
+div.total {
+	background-image: url("../images/sky_blue_grid.png") !important;
+	border-top: 1px solid #a4bed4 !important;
+	font-family: 'Verdana' !important;
+	font-size: 10pt !important;
+	font-weight: bold !important;
+	height: 30px !important;
+	padding-top: 5px !important;
+	text-align: center !important;
+	width: 100% !important;
+}
+span#total {
+	color: #2fa600 !important;
+}
+
+div.order_button{
+	cursor: pointer !important;
+	float: left !important;
+	height: 21px !important;
+	margin-right: 6px !important;
+	padding-left: 25px !important;
+	padding-top: 2px !important;
+		width: 78px !important;
+color: #fff !important;
+text-align: left !important;
+font-weight: bold !important;
+font-size: 11px !important;
+background-color: #f5b3d1 !important;
+}
+div.clear_button{
+	cursor: pointer !important;
+	float: left !important;
+	height: 21px !important;
+	padding-left: 27px !important;
+	padding-top: 2px !important;
+	width: 80px !important;
+color: #fff !important;
+text-align: left !important;
+font-weight: bold !important;
+font-size: 11px !important;
+background-color: #f5b3d1 !important;
+
+}
+div.select_button {
+	float: left !important;
+	height: 21px !important;
+	padding-left: 17px !important;
+	width: 	70px !important;
+	color: #fff !important;
+	text-align: left !important;
+	font-weight: bold !important;
+	font-size: 11px !important;
+	background-color: #f5b3d1 !important;	
+	cursor:pointer !important;
+}
+/* 
+div.select_button {
+	background-image: url("./../images/select_button.gif") !important;
+	float: left !important;
+	height: 21px !important;
+	padding-left: 30px !important;
+	width: 80px !important;
+}
+
+
+div.clear_button {
+	background-image: url("../images/clear_button.gif") !important;
+	cursor: pointer !important;
+	float: left !important;
+	height: 21px !important;
+	padding-left: 30px !important;
+	padding-top: 4px !important;
+	width: 80px !important;
+	
+}
+div.order_button {
+	background-image: url("../images/order_button.gif") !important;
+	cursor: pointer !important;
+	float: left !important;
+	height: 21px !important;
+	margin-right: 6px !important;
+	padding-left: 30px !important;
+	padding-top: 4px !important;
+	width: 78px !important;
+}*/

@@ -1,0 +1,25 @@
+<script language="javascript">
+	function reloadForm (sNewSection, sNewField) {
+		$.get("__url__index_search.php", 
+		  { section: sNewSection, field: sNewField, action: "get_values" }, 
+		  function(data){ 
+		    $("#ctz_search_form").html(data);
+		  } 
+		);
+	}
+</script>
+<div class="disignBoxFirst">
+	<div class="boxFirstHeader"><div class="dbTitle">Search Families</div></div>
+	<div class="boxContent">
+    
+    <div class="ctz_index_search">
+	<div class="form" id="ctz_search_form">
+		__form__
+	</div>
+	<div class="search_link">
+		<a href="__search_href__"><bx_text:_adm_fields_advanced_search /></a>
+	</div>
+</div>
+
+</div>
+</div>

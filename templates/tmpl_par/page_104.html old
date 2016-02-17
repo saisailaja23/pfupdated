@@ -1,0 +1,304 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="plugins/tiny_mce4/tinymce.js"></script>
+<script type="text/javascript" src="ProfilebuilderComponent/model/ProfilebuilderComponent_Model.js"></script>
+<script type="text/javascript" src="ProfilebuilderComponent/controller/ProfilebuilderComponent.js"></script>
+<script type="text/javascript" src="plugins/dhtmlx/dhtmlxForm/codebase/ext/dhtmlxform_item_upload.js"></script>
+
+
+<script type="text/javascript" src="ImageCrop/model/ProfileImageCrop_Model.js"></script>
+<script type="text/javascript" src="ImageCrop/controller/ProfileImageCrop.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="components/album/css/style.css">
+
+
+<script type="text/javascript" src="ImageCrop/lib/jquery.js"></script>
+<script type="text/javascript" src="components/album/js/jquery.prettyPhoto.js"></script>
+<script type="text/javascript" src="components/album/js/jquery.plugins.js"></script>
+<script type="text/javascript">
+        $("area[rel^='prettyPhoto']").prettyPhoto();
+</script>
+
+
+<script type="text/javascript" src="ImageCrop/lib/imgareaselect/jquery.imgareaselect.js"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+window.onload = function() {
+    ProfilebuilderComponent.start({
+        uid: (new Date()).getTime(),
+        application_path: siteurl + "ProfilebuilderComponent/",
+        dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/",
+        site: siteurl
+    });
+	
+
+//tinyMCE init
+tinyMCE.init({
+//[START DeeEmm TinyBrowser MOD]
+            file_browser_callback : "tinyBrowser",
+            //[END DeeEmm TinyBrowser MOD]
+            convert_urls : false,
+            mode : "specific_textareas",
+            //theme : "modern",
+            //[START DeeEmm TinyBrowser MOD]
+            file_browser_callback : "imageManager",
+            //[END DeeEmm TinyBrowser MOD]
+            editor_selector :"'group_edit_html', 'story_edit_area', 'classfiedsTextArea', 'blogText', 'comment_textarea', 'form_input_html'",
+
+           theme: 'modern',
+            plugins: [
+                'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+                'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+                'save table contextmenu directionality emoticons template paste textcolor',
+                'image moxiemanager'
+            ],
+            toolbar: 'image insertimage | insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media fullpage | forecolor backcolor emoticons| styleselect formatselect fontselect fontsizeselect',
+            image_advtab: true,
+
+            entity_encoding : "named",
+            width : 780,
+            paste_use_dialog : false,
+            paste_auto_cleanup_on_paste : true,
+            paste_convert_headers_to_strong : false,
+            paste_strip_class_attributes : "all",
+            paste_remove_spans : false,
+            paste_remove_styles : false,
+            init_instance_callback  :  ProfilebuilderComponent.setAgencyDescription
+});
+
+//New control - tinyMCE
+dhtmlXForm.prototype.items.tinyMCE = {			
+
+            // constructor, required
+            render: function(item, data) {				
+
+                    item._type = "tinyMCE";				
+                    var p = document.createElement("DIV");
+                    p.className = "dhxlist_cont";
+                    item.appendChild(p);
+
+                    var t = document.createElement("TEXTAREA");
+                    t.name = item._idd;
+                    t._idd = item._idd;
+                    t.id = item._idd;
+                    t.rows = data.rows;
+                    p.appendChild(t);
+                    var style = "";
+                    if (!isNaN(data.inputWidth)) style += "width:"+parseInt(data.inputWidth)+"px;";
+                    if (!isNaN(data.inputHeight)) style += "height:"+parseInt(data.inputHeight)+"px;";
+
+                    t.style.cssText = style;
+
+                    tinyMCE.execCommand('mceAddEditor', false, item._idd);
+
+                    return this;
+            },
+
+            // setValue and getValue, below basic code, you can add your custom code also
+            setValue: function(item, val) {
+                    item._value = val;
+                    tinyMCE.get(item._idd).setContent(val);
+            },
+            getValue: function(item) {
+                    return  tinyMCE.get(item._idd).getContent();
+            },
+
+            // destructor, required (if you will use unload)
+            destruct: function(item) {
+                    /* your custom code here */
+            },
+            // enable item, mandatory
+            enable: function(item) {
+                item._is_enabled = true;
+                    /* your custom code here */
+            },
+            // disable item, mandatory
+            disable: function(item) {
+                item._is_enabled = false;
+                    /* your custom code here */
+            }
+    };
+
+    // support for set/get form data
+    // in our sample default set/get value used, but you can also use your custom methods
+    dhtmlXForm.prototype.setFormData_tinyMCE = function(name, value) {
+            return this.doWithItem(name, "setValue", value);
+    };
+
+    dhtmlXForm.prototype.getFormData_tinyMCE = function(name) {
+            return this.doWithItem(name, "getValue");
+    };
+ //tinyMCE init	
+	
+};
+dhtmlXForm.prototype._getItem = function(name) {
+    return this.doWithItem(name, "_getItem");
+
+};
+dhtmlXForm.prototype.items.upload._getItem = function(item) {
+    return item;
+};
+</script>
+
+<style type="text/css">
+
+a.hLink {
+  color: #f195bf !important;
+}
+a.hLink:hover {
+  color: #a2a4a7 !important;
+}
+.dhxlist_cont {
+//padding-top: 80px !important;
+padding-top: 30px !important;
+
+}
+.dhxform_item_absolute{
+margin-top: 0px;
+}
+.save_btn{ padding-top: 10px !important; }
+.delete_btn{ margin-top: -30px !important; float:left; height:0px !important; }
+.imgID{ padding-top: 15px !important; }
+.imgClass{ float:left; margin:5px; height: 64px; width:64px; overflow:hidden; }
+
+.td{ padding:5px; }
+.dwnld_ldng{ margin-left: 5px; margin-top:-11px; cursor: pointer !important; }
+
+</style>
+
+<div class="clear_both"></div>
+<div id="page104">
+    <div class="grayIcons icoBuilder">FAMILY PROFILE BUILDER</div>
+    <div class="resources">
+        <div class="clear_both"></div>
+        <div class="page-left">
+
+            <div class="headerGreen">HOW TO CREATE THE MOST ENGAGING PROFILE</div>
+            <b>Basic Members</b> - Simply upload your avatar photo, enter your profile information, upload your dear birthparent letter and customize your profile.
+            <br />
+            <br />
+            <b>Network Members</b> - Should also begin utilizing their journals, video capabilities and the creation of their ebook. Feel free to contact us any time you need help with one of these features.
+            <br />
+            <br />
+            <b>Featured Members</b> - Contact us for an appointment where we will discuss using the proper photos, the creation of your Dear Birth Parent letter and other profile text. We will go over tips for journaling. Set a schedule for your engagement with social media. As well as advising you on the creation of your printed profile.
+            <br />
+            <br />
+            <br />
+            <br />
+            <!-- <b> -->
+            <!-- The below tag is commented by Satya and added the below anchor tag to show tooltip for the "i" image -->
+            <!-- <img src="templates/tmpl_par/images/infoicon.png" alt="ParentFinder" style="float:left"/> -->
+
+            <a class='tooltip' title-text="content" href="javascript:void(0)" style="float:left"><span><b class="more-link"></b></span></a>
+            Need help or ideas? Click on the information button for directions and helpful hints or download the Profile Builder Guidlines. <a class="hLink" href="PF_Profile Builder Guidelines_2015.pdf" target="_blank">here</a> 
+
+            <!-- </b> -->
+            <br />
+            <br />
+            <br />
+            <br />
+
+        </div>
+
+        <div class="page-right">
+            <div class="headerGreen">HOW TO CRAFT A GREAT LETTER</div>
+
+            <div class="builderVideoBlock" style="z-index:0;">
+                <iframe src="//player.vimeo.com/video/113765564" width="450" height="298" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+            </div>
+        </div>
+
+
+        <div class="clear_both"></div>
+
+
+        <div class="pageColumn5" id="profilebuilder">
+
+
+
+        </div>
+
+
+
+        <div class="clear_both"></div>
+    </div>
+</div>
+<div class="clear_both"></div>
+<div id="picDiv" title="Basic dialog">
+	<div id="picBuilder"></div>
+</div>
+
+<bx_include_auto:_sub_footer.html />
+
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<!-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> -->
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+$(function(){
+	$( "#picDiv" ).dialog({ autoOpen: false });
+	
+	 //var siteurl = "http://www.parentfinder.com/";
+		$.ajax({
+            type: 'GET',
+            data: 'action=album_list_letters',
+            url: siteurl+'components/album/processors/album/PhotoAlbum.php',
+            success: function(res){
+
+               res = res.replace("'",'');
+
+                        var obj = JSON.parse(res);
+                        console.log(obj);
+                        var tr = "";
+                        var txt = "";
+                        var img = "";
+                        if(obj.status == 'success'){
+                            $.each(obj.data, function(id, r){
+                                tr = tr +  "<table class='albumTable'>" +
+	                                        "   <tr class='tr th'>" +
+	                                        "       <td class='colapse' data-ref='.b_"+r.ID+"' colspan='5'><i style='padding-left: 5px;' class='fa alb-fa fa-sort-asc'></i><b> "+ r.Title+"</b></td>" +
+                                           	"   </tr>" +
+	                                        "<tbody class='tr b_"+r.ID+" alb_img' style='display:none;' >" +
+	                                        "		<tr>";
+                                
+                                
+                                
+                                if(r.Photos.status == 'success'){
+                                		var i = 1;
+                                    $.each(r.Photos.data, function(idd, p){
+                                       tr = tr +  	"   <td class='td'>"+ 
+	                                                "       <label for='id_"+p.phID+"' for='"+p.phID+"'><img class='thumb' src='"+siteurl+"m/photos/get_image/thumb/"+ p.phHash+"."+ p.phExt +"' /><br>" +
+                                                   	"       <input class='check' type='checkbox' name='"+p.phID+"' value='"+p.phID+"' id='id_"+p.phID+"' data-img='"+p.phHash+"."+ p.phExt+"' data-phid="+p.phID+" />  " +
+	                                                "   </td>";
+                                       i++;
+                                       if(i%9 == 0){
+						tr = tr + "</tr><tr>";
+                                        	i = 1;                                    	
+                                       }
+
+                                    });
+                                }else{
+                                    tr = tr + "<td colspan='4' class='no_pic'>The Album does not have any images, please upload some images.</td>";
+                                }
+                                tr = tr + "</tr></tbody></table></br>";
+                                
+                                
+                                
+                            });
+                            
+                        }else{
+                            alert('No albums to list...!');
+                        }
+                        $('#picDiv').html(tr);  
+                        
+                      
+                        
+                    },
+            error: function(){}
+        
+        }); 
+	
+	//$('.colapse').click(function(){ alert(); });
+	 
+});
+</script>
+

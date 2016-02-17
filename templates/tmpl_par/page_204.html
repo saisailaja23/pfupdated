@@ -1,0 +1,32 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="Agencyapprovalcomponent/model/Agencyapprovalcomponent_Model.js"></script>
+<script type="text/javascript" src="Agencyapprovalcomponent/controller/Agencyapprovalcomponent.js"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+var agencyurl = '__top_current_agency__'
+window.onload = function() {
+Agencyapprovalcomponent.start({
+        uid: (new Date()).getTime(),
+        siteurl: siteurl,
+        agencyurl:agencyurl,
+        application_path: siteurl + "Agencyapprovalcomponent/",
+        dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+    });
+};
+</script>
+<div class="clear_both"></div>
+<div class="page113">    
+<div class="searchmenu">
+<div id="menuObj"></div>
+
+<div class="pinkIcons_adoptive icoResources_adoptive title">Pending approval</div>
+<div id="activate"></div>  <div id="page_here_approval"></div>        
+</div>
+<div class="clear_both"></div>
+<div id="data_container_pending" style="width:100%">
+<div id="error" class="errormessages"></div>
+</div> 
+
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

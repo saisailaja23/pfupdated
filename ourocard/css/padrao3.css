@@ -1,0 +1,257 @@
+@charset "UTF-8";
+/* CSS Document */	
+
+.bt_sair { width:64px; height:21px; background:url(../img/sair.png) no-repeat ; cursor:pointer; border:none;}
+.bt_alterar { width:167px; height:21px; background:url(../img/botao_alterar_cadastro.png) no-repeat ; cursor:pointer; border:none;}
+.bt_limpar { width:68px; height:21px; background:url(../img/botao_limpar.png) no-repeat ; cursor:pointer; border:none;}
+.bt_meu_cadastro { width:167px; height:21px; background:url(../img/botao_meu_cadastro.png) no-repeat ; cursor:pointer; border:none;}
+.bt_quero_cadastrar_minha_senha { width:201px; height:21px; background:url(../img/botao_quero_cadastrar_minha_senha.png) no-repeat ; cursor:pointer; border:none;}
+.bt_cadastrar_vendedores { width:167px; height:21px; background:url(../img/botao_cadastrar_vendedores.png) no-repeat ; cursor:pointer; border:none;}
+.bt_meu_cadastro1 { width:167px; height:21px; background:url(../img/botao_meu_cadastro1.png) no-repeat ; cursor:pointer; border:none;}
+.bt_cadastrar_vendedores1 { width:167px; height:21px; background:url(../img/botao_cadastrar_vendedores1.png) no-repeat ; cursor:pointer; border:none;}
+.bt_entrar { width:68px; height:21px; background:url(../img/botao_entrar.png) no-repeat ; cursor:pointer; border:none;}
+.bt_enviar { width:68px; height:21px; background:url(../img/botao_enviar.png) no-repeat ; cursor:pointer; border:none;}
+.bt_prosseguir { width:68px; height:21px; background:url(../img/botao_prosseguir.png) no-repeat ; cursor:pointer; border:none;}
+.bt_quero_cadastrar { width:167px; height:21px; background:url(../img/botao_quero_me_cadastrar.png) no-repeat ; cursor:pointer; border:none;}
+.campos_texto { border-bottom: solid 1px #6592E3; border-top: solid 1px #6592E3; border-left:solid 1px #6592E3; border-right:solid 1px #6592E3; font-family:verdana; font-size:12px;}
+
+#tudo {
+	width:1000px;
+	height:627px;
+	margin:auto;
+	margin-top:2px;
+}
+
+a {
+	text-decoration:none;
+	outline:0px;}
+
+img {border:0px;
+margin:0px;}
+
+@font-face {
+	
+}
+
+
+
+/* Barra */
+
+#barraamarela {
+	width:699px;
+	height:31px;
+	background-image:url(../img/barraazul.jpg);
+	background-repeat:repeat-x;
+	float:left;
+}
+
+#barraamarela p {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:12px;
+	text-align:right;
+	margin-top:5px;
+	text-shadow: #000 1px 2px 3px;
+	color:#FFF;
+}
+
+#barraamarela span {
+	font-weight:bold;
+}
+
+#ponta1 {
+	width:16px;
+	height:31px;
+	background-image:url(../img/pontabarrazul.png);
+	background-repeat:no-repeat;
+	float:left;
+}
+
+#ponta2 {
+	width:10px;
+	height:31px;
+	background-image:url(../img/pontabarramarela.png);
+	background-repeat:no-repeat;
+	margin-left:-5px;
+	float:left;
+}
+
+#barrazul {
+	width:265px;
+	height:31px;
+	background-image:url(../img/barraamarela.jpg);
+	background-repeat:repeat-x;
+	float:left;
+
+}
+
+#barrazul a {
+	font-family: Tahoma, Geneva, sans-serif;
+	font-size:12px;
+	margin-top:6px;
+	color:#000;
+	text-shadow:#999 1px 1px 3px;
+	text-decoration:none;
+	float:left;
+}
+
+#barrazul span {
+	font-weight:bold;
+}
+
+#barrazul .2 {
+	text-decoration:underline;
+	font-weight:100;
+}
+/* menu */
+
+#logobb {
+	width:91px;
+	height:85px;
+	margin-top:16px;
+	margin-left:43px;
+	background-image:url(../img/logotopo.png);
+	background-position:bottom right;
+	background-repeat:no-repeat;
+	float:left;
+}
+
+#menu {
+	width:861px;
+	height:65px;
+	float:left;
+}
+
+#menu img {
+	margin-top:17px;
+}
+
+#menu .menu {
+	margin-left:65px;
+}
+
+/* conteudo */
+
+#logopromo {
+	width:330px;
+	height:411px;
+	float:left;
+	margin-left:-159px;
+	margin-top:20px;
+}
+
+#logopromo img {margin-top:45px;}
+#areaexclusiva {
+	width:280px;
+	height:19px;
+	margin-left:-450px;
+	margin-top:22px;
+	float:left;
+}
+
+#textointro {
+	width:780px;
+	height:59px;
+	float:left;
+	margin-left:-123px;
+	margin-top:-17px;
+}
+
+#textointro p {
+	font-family: helveticaneue, Tahoma, Geneva, sans-serif;
+	font-size:11px;
+	margin-top:0px;
+	
+}
+
+#textointro span {
+	font-weight:bold;
+}
+
+#rodrigo {
+	width:144px;
+	height:411px;
+	float:left;
+	margin-left:-86px;
+	margin-top:11px;
+}
+
+
+
+#conteudo {
+	width:700px;
+	height:410px;
+	float:right;
+	margin-top:-19px;
+	background-image:url(../img/boxbranco.png);
+	background-repeat:no-repeat;
+	background-position:right;
+	margin-left:-100px;
+	
+	
+
+}
+
+#conteudovariavel {
+	width:645px;
+	height:700px;
+	float:right;
+	margin-top:33px;
+}
+
+#conteudo p {
+	font-family: helveticaneue, Tahoma, Geneva, sans-serif;
+	font-weight:80;
+	color:#3f454a;
+	font-size:11px;
+	line-height:18px;
+	letter-spacing:0.2px;
+	width:315px;
+}
+
+#conteudo span {
+	font-weight:bold;
+	letter-spacing:0.1px;}
+	
+
+
+#conteudo h1 {
+	font-family: helveticaneue, Tahoma, Geneva, sans-serif;
+	font-weight:bold;
+	color:#3f454a;
+	font-size:24px;
+	line-height:20px;
+	letter-spacing:0.2px;
+	width:330px;
+}
+
+#placas {
+	width:220px;
+	height:473px;
+	background-image:url(../img/placasnovas.png);
+	background-repeat:no-repeat;
+	float:left;
+	margin-top:-10px;
+	margin-left:54px;
+}
+
+
+#legal {
+	width:967px;
+	float:left;
+	margin-left:0px;
+	margin-top:4px;
+}
+
+#legal p {
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:9px;
+	text-align:justify;
+		margin-top:-12px;
+}
+
+#legal h3 {
+	font-family:Tahoma, Geneva, sans-serif;
+	font-size:11px;
+	font-weight:100;
+
+}

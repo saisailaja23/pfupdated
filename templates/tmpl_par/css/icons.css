@@ -1,0 +1,6 @@
+@import url(../../base/css/icons.css);
+
+.sys-icon.plus:before {
+    color: #f295bf;
+}
+

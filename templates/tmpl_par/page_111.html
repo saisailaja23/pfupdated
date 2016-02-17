@@ -1,0 +1,67 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="Expctantparentprofilefavorite/model/Expctantparentprofilefavorite_Model.js"></script>
+<script type="text/javascript" src="Expctantparentprofilefavorite/controller/Expctantparentprofilefavorite.js"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+window.onload = function() {
+  Expctantparentprofilefavorite.start({
+    uid: (new Date()).getTime(),
+    application_path: siteurl + "Expctantparentprofilefavorite/",
+    dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+  });
+};
+</script>
+
+<div class="clear_both"></div>
+<div class="page111">
+  <div class="grayIcons icoBuilder">MY EXPECTANT PARENT PROFILE</div>
+
+  <div class="clear_both"></div>
+  <div class="profileInfoHeader">
+    <div class="profileInfoName" id="Bmprofilename"></div>
+    <div class="profileInfoLastSeen" id="lastactive"></div>
+    <a href="" id="profilelink">
+      <div class="icoProfHome">PROFILE HOME</div>
+    </a>
+    <div class="questionnaire"><a href="">QUESTIONNAIRE</a>
+    </div>
+  </div>
+  <div class="clear_both"></div>
+  <div class="headerGreen">HOW TO BE MATCH WITH A FAMILY</div>
+  <div class="clear_both"></div>
+  Matching can happen two different ways.
+  <div class="matchesNotes">
+    <ul>
+      <li>Agencies/Attorneys have the ability to match you with their Adoptive Couples based on the information you provide when joining as a full member.</li>
+      <li>After refining your search of Parentfinder Couples, you can reach out to Agencies/Attorneys to be matched with Adoptive Couple(s) you FAVORITE.</li>
+    </ul>
+  </div>
+  <div class="parentMenuIconsBlock">
+    <div class="clear_both"></div>
+    <a href="" id="forumlink" class="parAccountIcons icoParForum">
+    </a>
+    <a href="" id="familylink" class="parAccountIcons icoParLike">
+    </a>
+    <a href="" id="searchlink" class="parAccountIcons icoParSearch">
+    </a>
+    <a href="" id="resourcelink" class="parAccountIcons icoParResources">
+    </a>
+    <a href="" id="agencylink" class="parAccountIcons icoParAgencies">
+    </a>
+    <a href="" id="favouritelink"  class="parAccountIcons icoParFavoriteAct">
+    </a>
+    <div class="clear_both"></div>
+  </div>
+  <div class="clear_both"></div>
+
+  <div>
+    <span class="pinkIcons icoFavorite">FAMILIES I FAVORITE</span>
+    <div id="page_here"></div>
+
+  </div>
+
+  <div id="data_container_fav"><div id="error" class="errormessage"></div></div>
+</div>
+
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

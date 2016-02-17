@@ -1,0 +1,314 @@
+<bx_include_auto:_resp_header.html />
+<script src="viewourfamilies/js/respHeaderFunctions.js?cache=__cache_control__"></script>
+
+<bx_injection:injection_between_logo_top_menu />
+
+
+<bx_injection:injection_between_top_menu_content />
+
+<script type="text/javascript">
+                    var loaded_From = '__load_from__';
+                    if (loaded_From == 'badge')
+                    {
+                        // document.getElementById('pf_header_view_id01').style.display = 'none';
+                        $('pf_header_view_id01').hide();
+                    }
+                    function userredirect(id, status) {
+                        var siteurl = '<bx_url_root />';
+                        if (id == '2') {
+                            window.location.href = siteurl + 'our-family-dashboard.php';
+                        } else if (id == '4') {
+
+                            window.location.href = siteurl + 'bmhome.php';
+                        } else if (id == '8') {
+
+                            window.location.href = siteurl + 'extra_agency_view_28.php';
+                        } else {
+                            window.location.href = siteurl;
+                        }
+                    }
+</script>
+<script type="text/javascript" src="templates/tmpl_par/js/head.core.min.js"></script>
+<!--<link rel="stylesheet" type="text/css" href="viewourfamilies/css/bootstrap.min.css?cache=__cache_control__"/>
+<link rel="stylesheet" type="text/css" href="viewourfamilies/css/parentfinder.css?cache=__cache_control__"/>-->
+<script src="http://code.jquery.com/ui/1.9.1/jquery-ui.js"></script>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js?cache=__cache_control__"></script>-->
+<script type="text/javascript" src="viewourfamilies/js/ourletter.js?cache=__cache_control__"></script>
+<!--<script src="viewourfamilies/js/bootstrap.min.js?cache=__cache_control__"></script>-->
+<script src="viewourfamilies/js/script.js?cache=__cache_control__"></script>
+<script type="text/javascript">
+    var siteurl = '<bx_url_root />';
+    var Id = '__profile_id__';
+    var loadFrom = '__profile_badge__';
+    var nickName = '__profile_nickname__';
+    $('.pf_view_icons_cl02').attr('href','contact.php?id='+Id);
+</script>
+<style>
+    .social-icons{
+        width:80px;
+        height:auto;
+        /*background-color:#fff;*/
+        position : fixed;
+        right :0px;
+        top:200px;
+        padding-top: 5px;
+ 	z-index: 50;
+    }
+    .social-icons a{
+        display:block;
+        cursor: pointer;
+        height:33px;
+        width: 33px;
+        padding:1px;
+    }
+    .social-icons .fb{
+        background-image: url("templates/tmpl_par/images/splash/ico_fb_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .tw{
+        background-image: url("templates/tmpl_par/images/splash/ico_tw_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .gp{
+        background-image: url("templates/tmpl_par/images/splash/ico_go_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .pi{
+        background-image: url("templates/tmpl_par/images/splash/ico_pi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .bg{
+        background-image: url("templates/tmpl_par/images/splash/ico_bi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .publishpwd {
+        font-size: 12px;
+        margin-left: 650px;
+        display: none;
+    }
+    .incorrect-publabel {
+        display: none;
+        color: red;         
+        text-transform: uppercase;
+    }
+    .pubpwd-label{
+        color: #009D8C;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 20px 0;
+    }
+    .pubpassword-label {
+        width: auto;
+        padding: 0 50px;
+    }
+    #pubpwd{
+        /*padding: 0 10px;*/
+        margin-left: 15px;
+    }    
+    #pubproceed{
+        border: 3px solid #f195bf;
+        padding: 3px 15px;
+        text-align: center;
+        color: #FFFFFF;
+        font-weight: bold;
+        height: 27px;
+        cursor: pointer;
+        background-color: #f195bf;
+            margin-left: 139px;
+        width: 84px;
+    }   
+	.pf_more_cl019 > a > img:hover{ cursor:pointer !important; opacity:0.7 !important; }
+</style>
+<div class="social-icons"> 
+    <a class="fb" href="javascript:void(0)" target="_blank"></a>
+    <a class="tw" href="javascript:void(0)" target="_blank"></a>
+    <a class="gp" href="javascript:void(0)" target="_blank"></a>
+    <a class="bg" href="javascript:void(0)" target="_blank"></a>
+    <a class="pi" href="javascript:void(0)" target="_blank"></a>
+</div>
+<div class="clear_both"></div>
+<div class="publishpwd">
+    <div class="incorrect-publabel">Entered password is incorrect. Please try again.</div>
+    <div class="pubpwd-label">Please enter the password to view the profile</div>
+    <div class="pubpassword-label">PASSWORD:<input type="password" id="pubpwd"/></div></br>
+    <div id="pubproceed"> Proceed</div>
+</div>
+
+<div class="container view more"><!-- main container -->
+    <div class="likeClick" data-toggle="modal" data-target="#likeAdded"></div>
+    <div class="modal popup" id="likeAdded"><!-- tooltip dialog responsive-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                    <div class="pf_popupcl01">
+                        <div class="data ok"></div>
+                        <div class="likeButtons">
+                            <div class="likepop pf_popup_login_cl08" data-dismiss="modal">OK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="likeDialog" data-toggle="modal" data-target="#likeLogin"></div>
+    <div class="modal popup" id="likeLogin"><!-- tooltip dialog responsive-->
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                    <div class="pf_popupcl01">
+                        <div class="ok">Cannot save your favorites since you are not logged in.</div>
+                        <div class="likeButtons">
+                            <div class="createAcc likepop pf_popup_login_cl08">Create Account</div>
+                            <div class="loginAcc likepop pf_popup_login_cl08">Login</div>
+                            <div class="NoAcc likepop pf_popup_login_cl08" data-dismiss="modal">No Thanks</div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row pf_view_cl020"><!-- row section for data starts-->
+        <div class="back"></div>
+        <div class="pf_more_cl01" ><!-- outer data container starts-->
+
+            <div class="pf_more_cl02"><!-- left container starts-->
+                <div id ="letter_text">Click on the links below to expand and read the letters.</div>
+                <div id="accordion"></div>
+
+            </div><!-- left container ends-->
+            <div class="pf_more_cl03" ><!-- right container starts-->
+
+                <div class="pf_view_cl02" style="height: auto;">
+
+                    <div class="pf_more_collapsible_panel pf_more_panel_open"><!-- collapsible div starts -->
+
+                        <div class="pf_more_cl010">
+                            <div class="pf_more_cl011"><!-- name container-->
+                                <div class="pf_more_cl018"><!-- expand collapse--></div>
+                                <div class="profileName"></div>
+                                <span class="lastactive">LAST ACTIVE 227 DAYS 7 HOURS AND 37 MINUTES AGO</span>
+                            </div>
+                            
+                            <div class="printClick" ></div>
+                            <div class="print_more">
+                                <p style="margin:25px;text-decoration: underline; font-size: 14px;font-weight: bold;"><a style href="javascript:void(0);" id="viewHtml">Single Page Profile</a></p>
+                                <p style="margin:25px;text-decoration: underline; font-size: 14px;font-weight: bold">
+                                <a href="javascript:void(0);" id="viewPdf" >Multi Page Profile</a></p>
+                                   
+                           </div>
+                            <a class="pf_more_cl09"  href ="javascript:void(0)" ><!-- print icon --> </a>
+
+                            <div class="pf_more_cl012">
+                                <!-- like button-->
+                            </div>
+                        </div>
+
+                        <div class="pf_view_cl06"><!-- informations-->
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">AGE:</span>
+                                <span class="profileage"></span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">STATE:</span>
+                                <span class="profilestate"></span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">WAITING:</span>
+                                <span class="profilewaiting"></span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">CHILDREN:</span>
+                                <span class="profilechildren"></span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">FAITH:</span>
+                                <span class="profilefaith"></span>
+                            </div>
+
+                            <div class="pf_view_cl016">
+                                <span >OUR CHILD</span>
+                            </div>
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">ETHNICITY:</span>
+                                <span class="profileethinicity"></span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">AGE:</span>
+                                <span class="profilechildage"></span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">ADOPTION TYPE:</span>
+                                <span class="profileadoptiontype"></span>
+                            </div>
+
+                        </div>
+
+                    </div><!-- collapsible div ends -->
+
+                    
+                    <div class="pf_view_cl05">
+                         
+
+                        <div class="pf_more_cl04">
+                            <a class="pf_more_cl05"><!-- flip icon --> </a>
+                            <a class="pf_more_cl06" href="#"><!-- home icon --> </a>
+                            <a class="pf_more_cl07" href="#"><!-- contact icon --> </a>
+                            <a class="pf_more_cl08" href="#"><!-- letters icon --> </a>
+                            <a class="pf_more_cl08_ebok"><!-- ebook icon --> </a>
+                            
+
+                        </div>
+                        <div class="pf_more_cl013 ouragency">
+                            <div class="pf_more_cl022 pf_more_cl023">
+                                <div class="pf_more_cl014">
+                                    <img class="pf_more_cl015" src="viewourfamilies/images/icon_our_agency.png" alt="ParentFinder" >
+                                    <span id='agency'>OUR AGENCY</span>
+                                    <div class="pf_more_cl016"><!-- expand collapse icon--> </div>
+                                </div>
+                                <div class="pf_more_cl017">
+                                    <!-- journal notes-->
+                                    <div class="pf_more_cl019" >
+                                        <img  src="images/img_agency.jpg">
+                                    </div>
+                                    <div class="pf_more_cl020">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pf_more_cl024"><!-- green border --></div>
+
+                    </div>
+
+                </div>
+            </div><!-- right container ends -->
+
+
+
+        </div><!-- outer container -->
+
+
+
+    </div><!-- row section for data ends -->
+
+</div><!-- main container ends -->
+
+<div class="clear_both"></div>
+<script type="text/javascript">
+</script>
+<bx_include_auto:_resp_sub_footer.html />

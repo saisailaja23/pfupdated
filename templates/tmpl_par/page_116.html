@@ -1,0 +1,142 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="Agencyprofileviewcomponent/model/Agencyprofileviewcomponent_Model.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="Agencyprofileviewcomponent/controller/Agencyprofileviewcomponent.js?cache=__cache_control__"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+var ptype = __top_login__
+if (ptype == 8) {
+    window.onload = function() {
+        Agencyprofileviewcomponent.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "Agencyprofileviewcomponent/",
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+        });
+    };
+} else {
+
+}
+
+for(i in $('a')) {
+  if($('a')[i].innerHTML == 'AGENCIES/ATTORNEYS') {
+    $($('a')[i]).css('background','#019d8c');
+    break;
+  }
+}
+
+</script>
+<div class="clear_both"></div>
+<div class="page116">
+
+ <!--   <div class="grayIcons icoBuilder">OUR AGENCY PROFILE</div> -->
+
+  <div class="grayIcons icoBuilder">MANAGE FAMILIES</div>
+  <div id="menuObj" ></div>
+  <div id="data_search"></div>
+  <div id="page_here_approval"></div>  
+ <div class="page-left">
+        <div class="page-left" id="data_container">
+<div id="error" class="errormessage">
+
+
+        </div>
+       
+        <div class="clear_both" style="height:30px;"></div>
+
+    <!--    <div class="profileStatusBlock">
+            <a href="" id="editprofile">
+                <div class="statusApproved">EDIT MY PROFILE</div>
+            </a>
+            <a href="" id="approvechange">
+                <div class="statusApproved">Approve changes</div>
+            </a>
+        </div> -->
+        <div class="clear_both"></div>
+
+
+
+    </div>
+
+
+
+    <div class="page-right">
+    <!--    <div class="profileInfoMainBlock_agency">
+            <div class="profileInfoHeader">
+                <div class="profileInfoName" id="agencyname"></div>
+                <div class="profileInfoLastSeen" id="lastactive"></div>
+            </div>
+            <div class="clear_both"></div>
+
+            <div class="agencyInfoSocial">
+                <a href="" id="facebookurl" class="icoSmFb">
+                </a>
+                <a href="" id="twitterurl" class="icoSmTw">
+                </a>
+                <a href="" id="googleurl" class="icoSmGo">
+                </a>
+                <a href="" id="pineresturl" class="icoSmPi">
+                </a>
+                <a href="" id="bloggerurl" class="icoSmBi">
+                </a>
+            </div>
+
+            <div class="clear_both"></div>
+            <div id="agencyemail" class="profileInfoCaption_agencyemailview"></div>
+            <div>&nbsp;</div>
+            <div id="agencynames" class="profileInfoCaption_agencyview"></div>
+            <div id="agencydesc"></div>
+            <div class="profileBlock">
+                <div class="fieldTitleGreen icoBuildContactInfo">OUR CONTACT INFO</div>
+                <div class="profileBlockBody">
+                    <div>
+                        <span class="profileInfoCaption">PHONE:</span>
+                        <span id="phonenumber"></span>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div>
+                        <span class="profileInfoCaption">EMAIL:</span>
+                        <span id="pemail"></span>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div>
+                        <span class="profileInfoCaption">ADDRESS:</span>
+                        <span id="agency_address"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear_both"></div>
+
+            <div class="profileBlock">
+                <div class="fieldTitleGreen icoBuildMail">OUR MAIL</div>
+                <div class="profileBlockBody">
+                    <span class="profileInfoCaption">INBOX:</span>
+                    <div id="inbox"></div>
+                    <div class="clear_both"></div>
+                    <span class="profileInfoCaption">SENT:</span>
+                    <div id="sent"></div>
+                    <div class="clear_both"></div>
+                </div>
+                <div class="headerPinkSmall"><a href="mail.php?mode=inbox">ENTER MAILBOX HERE</a>
+                </div>
+            </div>
+            <div class="clear_both"></div>
+
+            <div class="fieldTitleGreen icoBuildPass">CHANGE PASSWORD</div>
+            <div id="change_pass">
+
+            </div>
+
+            <div class="clear_both"></div>
+
+
+
+        </div> -->
+    </div>
+    <div id="manage_pop_pro" style="display: none;">
+<div  class="popup_val_pro">
+<div  class="pop_profile_close"><img src="/viewourfamilies/images/img_close.png"></div>
+</div>
+</div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

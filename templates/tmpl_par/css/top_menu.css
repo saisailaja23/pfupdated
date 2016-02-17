@@ -1,0 +1,184 @@
+@import url(../../base/css/top_menu.css);
+
+.topMenuBlock
+{
+	position:relative;
+	width:674px;
+	height:74px;
+	float:right;
+}
+
+.topMenuFirstRow
+{
+	position:relative;
+	height:41px;
+	background-color:#d3e9e6;
+}
+
+div.sys_main_menu {
+    min-height: 41px;
+	position: relative;
+	z-index: 100;
+	background-color: transparent;
+	border:0px solid red;
+	box-shadow: 0 0px 0px rgba(51,51,51, 0.15);
+}
+
+div.sys_mm {
+    margin: 0 auto;
+}
+
+div.sys_top_menu
+ {
+	min-height: 50px;
+	position: relative;
+	background-color:transparent;
+	border:0px solid red;
+	background-image:none;
+	background-repeat:repeat-x;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+table.topMenu {
+    background-image: none;
+    margin:6px 0px 0px 0px;
+    position: relative;
+    z-index: 1;
+	font-size:14px;
+}
+
+/*****************Login******************/
+
+.topMenuJoinBlock
+{
+	position:relative;
+	background-color:#bbdc9b;
+	width:164px;
+	height:21px;
+	padding:20px 0px 0px 0px; 
+	float:right;
+	border-left:6px solid #fff;
+	text-align:center;
+	text-transform: uppercase;
+	font-size:12px;
+	font-weight:bold;
+	color:#fff;
+        cursor:pointer;
+}
+
+.topMenuJoinBlock:hover
+{
+	background-color:#a2d178;
+}
+
+.topMenuJoinBlock a
+{
+	color:#fff;
+	text-decoration:none;
+}
+
+/***************************/
+
+
+table.topMenu td.top:last-child a
+{
+	background-color:#f4b3d0;
+}
+
+table.topMenu td.top:last-child  a span.down:hover, 
+table.topMenu td.top:last-child b span.down:hover,
+table.topMenu td.top:last-child a span.down:hover, 
+table.topMenu td.top:last-child b span.down:hover {
+	background-color:#f295bf;
+	height:26px;
+}
+
+table.topMenu td#tm_active:last-child a.top_link, 
+table.topMenu td#tm_active:last-child a.top_link:link, 
+table.topMenu td#tm_active:last-child a.top_link:visited, 
+table.topMenu td#tm_active:last-child a.top_link:active {
+	background-color:#f295bf;
+	
+}
+
+table.topMenu td {
+    height: 26px;
+    width:164px;
+}
+
+table.topMenu a, 
+table.topMenu a:link, 
+table.topMenu a:visited, 
+table.topMenu b {
+    border-width: 0;
+    color: #fff;
+    display: block;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+    position: relative;
+    text-decoration: none;
+    text-shadow: 0 0px 0 #FFFFFF;
+    text-transform: uppercase;
+    z-index: 20;
+	border-right:0px solid transparent;
+	border-left:0px solid transparent;
+	margin-right:6px;
+	font-size:11px;
+	border:0px solid #4a7fbe;
+	background-image: none;
+	background-color:#90cac2;
+	width:164px;
+}
+
+table.topMenu td#tm_active a.top_link, 
+table.topMenu td#tm_active a.top_link:link, 
+table.topMenu td#tm_active a.top_link:visited, 
+table.topMenu td#tm_active a.top_link:active {
+	color: #fff;
+	border:0px solid #4a7fbe;
+	background-image: none;
+	background-color:#019d8c;
+	
+}
+table.topMenu td.top.active a.top_link,
+table.topMenu td.top:hover a.top_link, 
+table.topMenu td.top:hover a.top_link:link, 
+table.topMenu td.top:hover a.top_link:visited, 
+table.topMenu td.top:hover a.top_link:active {
+	z-index: 21;
+	color: #fff;
+	border:0px solid #4a7fbe;
+	background-image: none;
+	background-color:#019d8c;
+	
+}
+
+table.topMenu td.top:hover a span.down, 
+table.topMenu td.top:hover b span.down,
+table.topMenu td.top a:hover a span.down, 
+table.topMenu td.top a:hover b span.down {
+	background-image: none;
+	background-color:#019d8c;
+	height: 26px;
+	
+}
+
+table.topMenu ul.sub li a.button {
+    cursor: pointer;
+    font-size: 11px;
+    height: 28px;
+    line-height: 28px;
+    overflow: hidden;
+    padding: 0 10px;
+    text-align: left;
+	color:#77787a;
+	background-color:transparent;
+}
+
+div.subMenu a.sublinks, div.subMenu a.sublinks:link, div.subMenu a.sublinks:visited {
+    color: #174f82;
+    font-weight: normal;
+    text-decoration: none;
+}

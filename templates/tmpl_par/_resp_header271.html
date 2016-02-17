@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <base href="<bx_url_root />" />__page_description__ __page_keywords__
+    <bx_include_css />
+    <bx_include_js />__dol_images__ __dol_lang__ __dol_options__
+    <title>Parent Finder</title>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link rel="stylesheet" href="plugins/jquery-cluetip-master/jquery.cluetip.css?cache=__cache_control__" type="text/css" />
+    <link  rel="stylesheet" type="text/css" href="templates/tmpl_par/css/style.css?cache=__cache_control__" />
+    __extra_js__
+    <script src="//html5shim.googlecode.com/svn/trunk/html5.js?cache=__cache_control__"></script>
+    <link  rel="stylesheet" type="text/css" href="plugins/dhtmlx/dhtmlx.css?cache=__cache_control__" />
+    <script type="text/javascript">
+        var siteurl = '<bx_url_root />';
+        function loadScript(url) {
+            // Adding the script tag to the head as suggested before
+            var head = document.getElementsByTagName('head')[0];
+            var script = document.createElement('script');
+            script.type = 'text/javascript';
+            script.src = url;
+
+            head.appendChild(script);
+        }
+        
+        var loaded_from = '__load_from__';
+        if (loaded_from == 'badge') {
+            if (navigator.userAgent.indexOf('Trident') != -1)
+                loadScript("http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js");
+        }
+    </script>
+    <script type="text/javascript" src="<bx_url_root />/flash/modules/global/js/swfobject.js?cache=__cache_control__"></script>
+    <script type="text/javascript" src="<bx_url_root />/templates/tmpl_par/css/ui.fix.js?cache=__cache_control__"></script>
+    <link rel="stylesheet" type="text/css" href="<bx_url_root />/jqueryPlugins/flexSlider2/flexslider.css?cache=__cache_control__">
+    <script type="text/javascript" src="<bx_url_root />/jqueryPlugins/flexSlider2/jquery.flexslider-min.js?cache=__cache_control__"></script>
+    <script src="plugins/dhtmlx/dhtmlx.js?cache=__cache_control__"></script>
+    <script src="plugins/dhtmlx/ext/dhtmlxgrid_export.js?cache=__cache_control__"></script>
+    <script type="text/javascript" src="<bx_url_root />/plugins/dhtmlx/ext/dhtmlxform_dyn.js?cache=__cache_control__"></script>
+    <link rel="stylesheet" type="text/css" href="viewourfamilies/css/bootstrap.min.css?cache=__cache_control__"/>
+    <link rel="stylesheet" type="text/css" href="viewourfamilies/css/parentfinder.css?cache=__cache_control__"/>
+    <script src="viewourfamilies/js/bootstrap.min.js?cache=__cache_control__"></script>
+<!--    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js?cache=__cache_control__"></script>-->
+    <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js?cache=__cache_control__"></script>
+
+    <bx_injection:injection_head />
+
+    <script type="text/javascript" >
+        var site_url = '<bx_url_root />';
+    </script>
+
+</head>
+__flush_header__
+<body <bx_injection:injection_body /> class="bx-def-font">
+
+<bx_injection:injection_header />

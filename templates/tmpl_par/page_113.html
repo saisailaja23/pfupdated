@@ -1,0 +1,61 @@
+<bx_include_auto:_sub_header.html />
+
+<script type="text/javascript" src="Expctantparentsearchfamilies/model/Expctantparentsearchfamilies_Model.js"></script>
+<script type="text/javascript" src="Expctantparentsearchfamilies/controller/Expctantparentsearchfamilies.js"></script>
+<script type="text/javascript" src="LikeComponent/Model/likeComponent_model.js"></script>
+<script type="text/javascript" src="LikeComponent/Controller/likeComponent.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+<style type="text/css">
+    div.serachbutton div.dhxform_btn td.btn_m div.btn_txt {
+        height :20px;
+        line-height :20px;
+        padding : 0 10px;
+    }
+    .dhxform_obj_dhx_skyblue div.serachbutton {
+        padding-top:0px;
+        margin-left:5px;
+    }
+    
+</style>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+var loaded_from = '__load_from__';
+var load_rows = '__load_rows__';
+var load_columns = '__load_columns__';
+var load_agencyid = '__load_agencyid__';
+var adoption_agency = '__profile_agencyid__';
+//alert(loaded_From+" "+load_rows+" "+load_columns +" "+load_agencyid);
+
+window.onload = function() {
+    Expctantparentsearchfamilies.start({
+        uid: (new Date()).getTime(),
+        application_path: siteurl + "Expctantparentsearchfamilies/",
+        dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/",
+        loaded_from: loaded_from,
+        load_rows: load_rows,
+        load_columns: load_columns,
+        load_agencyid: load_agencyid,
+        adoption_agency: adoption_agency
+    });
+};
+
+
+</script>
+
+
+<div class="clear_both"></div>
+<div class="page113">
+    <div class="grayIcons icoSearchFam">VIEW OUR FAMILIES</div>
+    <div class="searchmenu" id="searchmenutab">
+        <div id="menuObj" ></div>
+        <div id="page_here" style=""></div>
+    </div>
+    <div id="data_search" style="margin-top:15px;"></div>
+    <div class="clear_both"></div>
+    <div id="data_container_test" style="width:100%">
+        <div id="error" class="errormessage"></div>
+    </div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

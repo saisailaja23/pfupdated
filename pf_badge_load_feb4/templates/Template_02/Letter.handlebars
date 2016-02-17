@@ -1,0 +1,169 @@
+<script type="text/javascript">
+  jqueryNoConflict(function() {
+    jqueryNoConflict( "#accordion" ).accordion({
+    heightStyle: "content"
+    });
+  });
+  </script>
+
+​
+
+
+    <div class="likeClick1" data-toggle="modal" data-target="#likeAdded1"></div>
+    <div class="pf_modal popup" id="likeAdded1">
+        <div class="pf_modal-dialog">
+            <div class="pf_modal-content">
+                <div class="pf_modal-body">
+                    <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                    <div class="pf_popupcl01">
+                        <div class="data ok"></div>
+                        <div class="likeButtons">
+                            <div class="likepop pf_popup_login_cl08" data-dismiss="modal">OK</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+
+
+<div class="backb" style="display: block;"/>
+
+    <div class="row pf_view_cl020"><!-- row section for data starts-->
+    <a style="display:inline-block;float:right;margin-top:-25px;cursor:pointer;" class="pf_more_cl06home" id="{{usrid}}">Home </a>
+        <div class="pf_more_cl01" ><!-- outer data container starts-->
+
+            <div class="pf_more_cl02" style="padding-left:10px"><!-- left container starts-->
+
+            {{#if data4}}
+                <div id ="letter_text">Click on the links below to expand and read the letters.</div>
+            {{/if}}
+
+                <div id="accordion">
+
+                   <div id ="letter_text">{{ClickText}}</div>
+                   <div class="pf_noletter">{{NoLetter}}</div>
+
+                        {{{newletterval}}}
+
+
+
+
+                </div>
+
+
+
+
+            </div><!-- left container ends-->
+            <div class="pf_more_cl03" ><!-- right container starts-->
+
+                <div class="pf_view_cl02" style="height: auto;">
+
+                    <div class="pf_more_collapsible_panel pf_more_panel_open"><!-- collapsible div starts -->
+
+                        <div class="pf_more_cl010">
+                            <div class="pf_more_cl011"><!-- name container-->
+                                <div class="pf_more_cl018"><!-- expand collapse--></div>
+                                <div class="profileName">{{tabtitle}}</div>
+                                <span class="lastactive">{{lastactivetime}}</span>
+                            </div>
+                            <div class="pf_more_cl012">
+                                <!-- like button-->
+                            </div>
+                        </div>
+
+                        <div class="pf_view_cl06"><!-- informations-->
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">AGE:</span>
+                                <span class="profileage">{{profileage}}</span>
+                            </div>
+{{#Profiles}}
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">STATE:</span>
+                                <span class="profilestate">{{profilestate}} </span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">WAITING:</span>
+                                <span class="profilewaiting">{{profilewaiting}}</span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">CHILDREN:</span>
+                                <span class="profilechildren">{{profilechildren}}</span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">FAITH:</span>
+                                <span class="profilefaith">{{profilefaith}}</span>
+                            </div>
+
+                            <div class="pf_view_cl016">
+                                <span >OUR CHILD</span>
+                            </div>
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">ETHNICITY:</span>
+                                <span class="profileethinicity">{{{profileethinicity}}}</span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">AGE:</span>
+                                <span class="profilechildage">{{profilechildage}}</span>
+                            </div>
+
+                            <div class="pf_view_cl014">
+                                <span class="pf_view_cl015">ADOPTION TYPE:</span>
+                                <span class="profileadoptiontype">{{profileadoptiontype}}</span>
+                            </div>
+
+                        </div>
+
+                    </div><!-- collapsible div ends -->
+                     <div class="printClick" ></div>
+                    <div class="pf_view_cl05">
+                        {{#if pdf_new_path}}
+                            {{{pdf_new_path}}}
+                             {{/if}}
+                            <div class="pf_more_cl04">
+                                <a class='pf_more_cl05' id='{{{epup_link}}}'><!-- flip icon --> </a>
+                                <a class="pf_more_cl06" id="{{id}}"><!-- home icon --> </a>
+                                <a class="pf_more_cl07_sel" id="{{id}}"><!-- contact icon --> </a>
+                                <a class="pf_more_cl08" id="{{id}}"><!-- letters icon --> </a>
+                               {{{pdf_atag}}}
+                            </div>
+{{/Profiles}}
+                        <div class="pf_more_cl013 ouragency" style="display:none">
+                            <div class="pf_more_cl022 pf_more_cl023">
+                                <div class="pf_more_cl014">
+                                    <img class="pf_more_cl015" src="https://www.parentfinder.com/viewourfamilies/images/icon_our_agency.png" alt="ParentFinder" >
+                                    <span>OUR AGENCY</span>
+                                    <div class="pf_more_cl016"><!-- expand collapse icon--> </div>
+                                </div>
+                                <div class="pf_more_cl017">
+                                    <!-- journal notes-->
+                                    <div class="pf_more_cl019" >
+                                        <img  src="https://www.parentfinder.com/viewourfamilies/images/img_agency.jpg">
+                                    </div>
+                                    <div class="pf_more_cl020">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="pf_more_cl024"><!-- green border --></div>
+
+                    </div>
+
+                </div>
+            </div><!-- right container ends -->
+
+
+
+        </div><!-- outer container -->
+
+
+
+    </div><!-- row section for data ends -->
+
+

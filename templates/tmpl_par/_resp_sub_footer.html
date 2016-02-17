@@ -1,0 +1,36 @@
+<bx_injection:injection_content_after />
+<div class="clear_both"></div>
+<bx_injection:banner_bottom />
+<bx_injection:injection_between_content_breadcrumb />
+<bx_injection:injection_between_breadcrumb_bottom_menu />
+
+<!--<div id ="footer_content" class="bottomLinksMainBlock" style="width:__main_div_width__;">-->
+<div id ="footer_content" class="bottomLinksMainBlock">
+    <div class="clear_both" style="height:1px;"></div>
+    <div class="bottomLinksBlock3">__copyright__</div>
+    <div class="clear_both" style="height:1px;"></div>
+</div>
+
+<script type="text/javascript" src="<bx_url_root />/templates/tmpl_par/css/ui.fix.js"></script>
+<bx_injection:injection_between_bottom_menu_footer />
+__boonex_footers__
+<bx_include_auto:_footer.html />
+<script type="text/javascript">
+    var loaded_From = '__load_from__';
+    if (loaded_From == 'badge')
+    {
+        document.getElementById('footer_content').style.display = 'none';
+        $("div.sys_main_content").css('margin', '0');
+
+    }
+</script>
+<style type="text/css">
+
+    .bottomLinksBlock3 a {
+        color: #f195bf !important;
+    }
+    .bottomLinksBlock3 a:hover {
+        color: #a2a4a7 !important;
+    }
+
+</style>

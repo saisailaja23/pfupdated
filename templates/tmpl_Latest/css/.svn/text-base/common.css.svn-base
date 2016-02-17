@@ -1,0 +1,222 @@
+@import url(../../base/css/common.css);
+body {
+background:none repeat scroll 0 0 #a1d8ef;
+border-top:3px solid #2e98cb;
+color:#333333;
+font-family:Verdana,Arial;
+font-size:11px;
+}
+.td_promoarea {
+	width:663px;
+	
+} 
+.td_advsearch {
+	vertical-align:top;
+	padding-top:15px;
+}
+#wrapper {
+background:url("../images/wrap_bg_repeat.png") repeat-y scroll 0 0 transparent;
+margin:0 auto;
+width:988px;
+padding:0px 21px;
+}
+#wrapper_foot {
+background:url("../images/wrap_bottom.png") no-repeat scroll 0 0 transparent;
+height:24px;
+margin:0 auto 0px;
+position:relative;
+width:988px;
+padding:0px 21px;
+}
+#wrapper_footer_index {
+	background:url(../images/MOA-footer-bgrnd-shadow.png) bottom center no-repeat;
+height:217px;
+margin:0 auto 0px;
+position:relative;
+width:988px;
+padding:15px 21px 0;
+}
+
+#gold_gradient {
+	background:url(../images/pf_main_bkgrnd.png) top repeat-x;
+}
+#logo-photos {
+	background:url(../images/LargeHeader-photos.png) top right no-repeat;
+}
+#page_block_458 {
+	margin-left:30px;
+	margin-top:52px;
+	background:url(../images/girls_bkgrnd.jpg) bottom right no-repeat;
+}
+.sigline {
+	background:url(../images/thumbnail1.png) top left no-repeat;
+	padding-left:190px;
+	min-height:160px;
+}
+.impact  {
+	color: #0079C2;
+	font-family: Impact, Charcoal, sans-serif;
+}
+.moa_head {
+	border-bottom:none;
+	padding-left:15px;
+}
+.MOA, .nohead {
+background:url(../images/MOA-BoxGradient.png) bottom repeat-x #fff;
+border:1px solid #c2c1c2;
+margin-bottom:10px;
+position:relative;
+}
+.boxContent {
+background-color:transparent;
+font-size:12px;
+overflow:hidden;
+padding:1px;
+}
+.login-join {
+	height:32px;
+	margin:auto;
+	padding-top:10px;
+}
+.login-join a {
+	vertical-align:baseline;
+}
+.login-join a, .login-join a:visited, .login-join a:link {
+	background:#F00;
+	padding:6px 22px;
+	text-transform:uppercase;
+	font-weight:bold;
+	font-size:16px;
+	color:#fff;
+	text-decoration:none;
+}
+.login-join a:hover {
+	color:#eee;
+}
+.login-join a.login-button {
+	background:#0079c2;
+}
+.login-join a.join-button {
+	margin:auto 8px auto 10px;
+}
+.dbTopMenu .active span {
+	font-size:11px;}
+	
+.disignBoxFirst .boxFirstHeader .dbTitle {
+font-size:16px;
+color:#0079c2;
+font-weight:bold;
+text-transform:uppercase;
+}
+
+ #mybg {
+	 position:absolute;
+	 top:58px;
+	 z-index:1;
+	 margin-left:30px;
+ }
+  #navtie {
+	 position:absolute;
+	 top:35px;
+	 z-index:200;
+	 margin-left:113px;
+	 background:url(../images/nav_tie.png);
+	 width:17px;
+	 height:40px;
+ }
+ #page_block_457 {
+	 margin-bottom:10px;
+ }
+ .banner1 {
+	 background:url(../images/banner1.gif) right center no-repeat;
+	 width:468px;
+	 top:0;
+	 margin:18px 0 0 504px;
+	 height:60px;
+	 position:absolute;
+ }
+ 
+ .main_footer_block {
+	 display:none;
+ }
+ 
+ /**************** OurLetter ***********************/
+ .ctz_our_letters {
+	 margin:10px;
+ }
+ .ctz_our_letters .caption {
+	 font-weight:bold;
+	 font-size:16px;
+	 margin-bottom:10px;
+ }
+ #page_block_487, #page_block_488 {
+	 margin:10px;
+ }
+ 
+ .adoption-agencies {
+background:url("../images/lower-main-bg.png") repeat-x scroll 0 0 transparent;
+border:1px solid #438ECE;
+float:left;
+height:199px;
+width:986px;
+}
+
+.section_1 span, .section_2 span {
+color:#FFD066;
+float:left;
+font-size:18px;
+font-weight:bold;
+padding:10px 0 10px 10px;
+}
+.button_small {
+float:right;
+margin-right:16px;
+margin-top:16px;
+}
+
+.button {
+background:url("../images/button-small.png") no-repeat scroll 0 0 transparent;
+border:0 none;
+cursor:pointer;
+height:19px;
+width:88px;
+padding:0px;
+}
+.section_1 p, .section_2 p {
+clear:both;
+padding:0 12px 8px;
+width:280px;
+}
+.section_1 p.bluebuttons, .section_2 p.bluebuttons {
+width:320px;
+}
+.adoption-agencies .section_1 {
+background:url("../images/background1.png") no-repeat scroll 0 0 transparent;
+float:left;
+height:164px;
+margin:18px 0 10px 26px;
+width:450px;
+}
+.adoption-agencies .section_2 {
+background:url("../images/background2.png") no-repeat scroll 0 0 transparent;
+float:right;
+height:164px;
+margin:18px 26px 10px 0;
+width:450px;
+}
+.button .small-text {
+color:#FFFFFF;
+font-size:9px;
+margin:0;
+padding:2px 0 10px 10px;
+}
+.search_link {
+	margin-top:8px;
+}
+.indexsearchadv {
+	font-size:11px;
+}
+.indexsearchadv a, .indexsearchadv a:link, .indexsearchadv a:visited, .indexsearchadv a:active {
+color:#F90;
+text-transform:lowercase;
+}

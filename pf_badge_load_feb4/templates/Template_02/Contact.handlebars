@@ -1,0 +1,88 @@
+{{debug}}
+<div class="page212">
+    <div class="pf_container pf_view">
+       <div class="backb" style="display: block;"/>
+        <div class="row pf_view_cl020"><!-- row section for data starts-->
+         <a style="display:inline-block;float:right;margin-top:-25px;cursor:pointer;" class="pf_more_cl06home" id="{{id}}">Home </a>
+            <div id="pf_contact_id01" class="pf_view_cl01" ><!-- outer data container starts-->
+
+                <div id="pf_contact_id03"><!-- Contact details-->
+                    <div class="pf_contact_cl01" >
+                        <span>Contact Details</span>
+                    </div>
+                    <div id="pf_contact_id05">
+
+                       {{#if AgencyTitle}}
+                        <div class="pf_contact_cl02">
+                            <label id="{{ID}}"> Adoption Agency:</label>
+                            <span id="agencytitle">{{AgencyTitle}}</span>
+                        </div>
+                        {{/if}}
+
+                        {{#if CONTACT_NUMBER}}
+                        <div class="pf_contact_cl02">
+                            <label> Contact Number:</label>
+                            <span id="agencycontact"><a href="tel:{{CONTACT_NUMBER}}">{{CONTACT_NUMBER}}</a></span>
+                        </div>
+                        {{/if}}
+
+                        {{#if Email}}
+                        <div class="pf_contact_cl02">
+                            <label> Email:</label>
+                            <a href="mailto:{{Email}}" id="agencyemail"> {{Email}} </a>
+                        </div>
+                        {{/if}}
+
+                    </div>
+                </div>
+                <div id="pf_contact_id02"><!-- send details-->
+                    <div class="pf_contact_cl01" >
+                        <span>Send Mail</span>
+                    </div>
+                    <div><br />
+                     <span id="ajaxMessage" style="color:green"></span>
+                    </div><form id="contact-form">
+                    <div>
+                        <div class="pf_contact_cl02">
+                            <label> <span>*</span>Your Name:</label>
+                            <input type="text" name="name"/>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Should Not be Empty"></i></span>
+                        </div>
+                        <div class="pf_contact_cl02">
+                            <label> <span>*</span>Your Email:</label>
+                            <input type="text" name="email"/>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Incorrect Email"></i></span>
+                        </div>
+                        <div class="pf_contact_cl02">
+                            <label> <span>*</span>Message Subject:</label>
+                            <input type="text" name="subject"/>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Should Not be Empty"></i></span>
+                        </div>
+                        <div class="pf_contact_cl02 pf_contact_cl04">
+                            <label> <span>*</span>Message:</label>
+                            <textarea name="message" id="messagecontact"></textarea>
+                            <span class="errordata"><i class="warn sys-icon exclamation-sign" float_info="Should Not be Empty"></i></span>
+                        </div>
+                        <div class="">
+                            <input name="check" type="hidden" value="{{ID}}"/>
+                        </div>
+                        <div class="pf_contact_cl07">
+                            <input id="Contactsubmit" type="button" value="Submit"/>
+                        </div></form>
+                    </div>
+                </div>
+            </div>
+            <!-- outer container ends-->
+        </div>
+    </div>
+</div>
+<div class="clear_both"></div>
+
+<div class="clear_both"></div>
+<div width="100%" style="padding: 10px 0px 10px 0px;" align="center">
+    <div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,8 @@
+<br><br>Passed Parameters :- <br><pre>Array
+(
+    [loadFrom] => badge
+    [agencyId] => undefined
+    [sortvalue] => random
+    [type] => Sortby
+)
+<br><br> SQL statement :- <br>SELECT `Profiles`. `ID`,`Profiles`. `Region`, `Profiles`. `NickName`, `Profiles`. `Couple`, `Profiles`. `Sex`, if(`DateLastNav` > SUBDATE(NOW(), INTERVAL 30 MINUTE ), 1, 0) AS `is_online`,Avatar FROM `Profiles`  Join sys_acl_levels_members ON Profiles.ID = sys_acl_levels_members.IDMember WHERE sys_acl_levels_members.IDLevel = 24  and (sys_acl_levels_members.DateExpires > Now() or sys_acl_levels_members.DateExpires IS NULL) and (`Profiles`.`Status` = 'Active')  and `Profiles`.`ProfileType` = 2  AND (`Profiles`.`Couple` = 0 or `Profiles`.`Couple` > `Profiles`.`ID`)  and `Profiles`. `ID` NOT IN (SELECT  `author_id` FROM  `watermarkimages`) and `Profiles`. `Avatar`!=0 ORDER BY RAND() limit 0 , 7

@@ -1,0 +1,121 @@
+<bx_include_auto:_resp_sub_header.html />
+
+<script type="text/javascript">
+
+for(i in $('a')) {
+  if($('a')[i].innerHTML == 'EXPECTANT PARENTS') {
+    $($('a')[i]).css('background','#f195bf');
+    break;
+  }
+}
+
+var siteurl = '<bx_url_root />';   
+function birthmother_joinform(Pid) { 
+ 
+MemberComponent.start({ 
+    profileId : Pid,  
+    uid : (new Date()).getTime() ,
+    application_path : siteurl +"MemberComponent/"  ,
+    dhtmlx_codebase_path : siteurl +"plugins/dhtmlx/" 
+});
+               
+ }   
+ </script> 
+  <style>
+    .sys_main_content {
+        width: 1010px;
+    }
+</style>
+<div class="sys_main_content" >
+    <div class="sys_mc_wrapper bx-def-margin-sec-leftright">
+        <div class="sys_mc">
+
+            <!-- body -->
+            <bx_injection:injection_splash_before />__main_splash__
+            <bx_injection:injection_content_before />
+	<div class="clear_both"></div>
+	
+		<div class="pictureBlock expectantPic"></div>
+		
+		<div class="pageColumn1">
+			
+			<div class="clear_both"></div>
+			
+			<div class="headerGreen">EXPECTANT PARENTS</div><br />
+			
+			<div class="headerGreen3">Pregnant and considering adoption?</div><br />
+			
+			We understand that adoption is one of the many options you have to choose. Our staff is here to support you in making the best 
+			decision for you and your baby. We can help you explore and understand the many aspects of adoption, along with your rights as 
+			a birth mom.<br /><br />
+			Here at Parentfinder we have made it easy for you to access the profiles of hundreds of Adoptive Couples and Agency/Attorneys. 
+			For your protection and the protection of the Adoptive Couples all communication is run through their Agency/Attorney unless 
+			their profile states independent.<br /><br />
+			
+			My name is Gina and I am a birth mom. I am here to help you. Email me anytime you have questions. You can reach me here: 
+			gina.crotts@cairsolutions.com.<br /><br />
+			
+			<div class="headerGreen3">Is Parentfinder.com an agency or affiliated with an agency?</div><br />
+			No, Parentfinder.com is a safe, secure, and impartial website.<br /><br />
+			Some families are registered with an agency or attorney. Some families are working independently. That information is posted 
+			on each profile under agency info.<br /><br />
+			
+			
+			<div class="headerGreen3">Do I have to buy a membership?</div>
+			There is no fee for an expectant parent to join Parentfinder.com. If you are interested in becoming a member, simply click on 
+			the join button and follow the instructions to complete your membership.<br /><br />
+			
+			<div class="headerGreen3">Will my personal information remain private and confidential?</div><br />
+			Always, if you are searching as a guest and you contact a family via the click to call service your personal information 
+			will be anonymous. If you register as a member and contact a family they will be able to view whatever you post on your profile.<br /><br />
+						
+			<div class="headerGreen3">With your free account, you will have access to:</div><br />
+			Forums<br />
+			Adoption Resources<br />
+			Searching and LIKE families<br />
+			Sorting and FAVORITE families<br />
+			Searching and LIKE agencies	<br />				
+			<div class="buttonsArea">
+                           <div id="SIGN"></div>
+				<div class="clear_both"></div>
+                    <a href="viewourfamilies.php" id="searchfamilies"><div class="searchButton">SEARCH OUR FAMILIES</div></a>
+				<a href="forum/" id="searchforums"><div class="forumsButton">PARTICIPATE IN OUR FORUMS</div></a>
+			</div>
+			<div class="clear_both"></div>
+		</div>
+		
+		<div class="pageColumn2">
+		
+			<div class="quoteBlock">
+                            <span>
+                            <img src="templates/tmpl_par/images/suggestions_img.png" alt="ParentFinder">
+                            </span>
+				<!--<div class="qTop"></div>
+				Your suggestions have been amazing because today we are parents to a perfect baby boy!<br />
+				Birthmom found us on Parentfinder and we are sitting in the hospital with him now!
+				<br /><br /><div class="qBottom"></div> -->
+				<div class="author">Jen and Jim</div>
+				<div class="clear_both"></div>
+			</div>
+			<div class="separator"></div>
+			<div class="bmbBlock">
+				<div class="headerGreen">BIRTH MOTHER BASKETS</div> Birth Mother Baskets {bmb} is a 501(c)(3) non-profit organization that delivers gift baskets to 
+				birth mothers who have recently placed their babies for adoption. Our baskets contain unique, high quality, handpicked 
+				items that are made to pamper a birth mom. bmb is a gift from one birth mother to another that offers hope, support and courage.
+			</div>
+			
+		</div>
+        </div>
+    </div>
+</div>
+		
+	<div class="clear_both"></div> 
+        <script type="text/javascript">
+function checkLogin(){
+    if(document.getElementById("logout")){  
+         document.getElementById("SIGN").innerHTML='';
+    }else{
+         document.getElementById("SIGN").innerHTML='<span class="signUpButton" id="SIGN" onclick="birthmother_joinform(Pid=\'4\');" style="color:#FFF;cursor:pointer;">SIGN UP</span>';
+    }
+} checkLogin();</script>
+<bx_include_auto:_sub_footer.html />

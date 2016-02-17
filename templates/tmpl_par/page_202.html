@@ -1,0 +1,154 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="Familydashboardcomponent/model/Familydashboardcomponent_Model.js"></script>
+<script type="text/javascript" src="Familydashboardcomponent/controller/Familydashboardcomponent.js"></script>
+<script type="text/javascript">
+var siteurl = '<bx_url_root />';
+var ptype = __top_login__
+var deano = __top_deano__
+
+//if (ptype == 2) {
+//if (deano == 'Deanotools' ) {
+    window.onload = function() {
+        Familydashboardcomponent.start({
+            uid: (new Date()).getTime(),
+            deano_tool: deano,
+            application_path: siteurl + "Familydashboardcomponent/",
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+        });
+    };
+//} else {
+
+//}
+
+
+ $('#photoAlbumLink').click(function(e) {
+    e.preventDefault();
+    alert("dfgdfg");
+     });
+     
+</script>
+
+<div class="clear_both"></div>
+<div class="page202">
+
+ <!--   <div class="grayIcons icoBuilder">OUR AGENCY PROFILE</div> -->
+  <div class="grayIcons icoBuilder">OUR FAMILY DASHBOARD</div>  
+  
+ <div class="page-left">
+        <div class="page-left" id="data_container">
+
+
+
+        </div>
+     <div class="userdashboard">
+         <div style="float:left;padding-right:30px;"> 
+             <div class="Itemspace" id="editprofile">EDIT PROFILE</div>
+             <div class="Itemspace">VIEW OUR PUBLIC PROFILE</div>
+             <div class="Itemspace">PHOTOS</div> 
+             <div class="Itemspace">VIDEOS</div>
+             <div class="Itemspace" id="editprofile">MAIL</div>
+             <div class="Itemspace">FLIP BOOK</div>
+             <div class="Itemspace">JOURNAL</div> 
+             <div class="Itemspace">PDF PROFILE</div> 
+             <div class="Itemspace" id="editprofile">AGENCY</div>
+             <div class="Itemspace">FORUMS</div>
+             <div class="Itemspace">ALA CARTE SERVICES</div> 
+             <div class="Itemspace">CHANGE PASSOWRD</div>             
+         </div>   
+
+     </div>
+        <div class="clear_both" style="height:30px;"></div>
+
+    <!--    <div class="profileStatusBlock">
+            <a href="" id="editprofile">
+                <div class="statusApproved">EDIT MY PROFILE</div>
+            </a>
+            <a href="" id="approvechange">
+                <div class="statusApproved">Approve changes</div>
+            </a>
+        </div> -->
+        <div class="clear_both"></div>
+
+
+
+    </div>
+
+
+
+    <div class="page-right">
+    <!--    <div class="profileInfoMainBlock_agency">
+            <div class="profileInfoHeader">
+                <div class="profileInfoName" id="agencyname"></div>
+                <div class="profileInfoLastSeen" id="lastactive"></div>
+            </div>
+            <div class="clear_both"></div>
+
+            <div class="agencyInfoSocial">
+                <a href="" id="facebookurl" class="icoSmFb">
+                </a>
+                <a href="" id="twitterurl" class="icoSmTw">
+                </a>
+                <a href="" id="googleurl" class="icoSmGo">
+                </a>
+                <a href="" id="pineresturl" class="icoSmPi">
+                </a>
+                <a href="" id="bloggerurl" class="icoSmBi">
+                </a>
+            </div>
+
+            <div class="clear_both"></div>
+            <div id="agencyemail" class="profileInfoCaption_agencyemailview"></div>
+            <div>&nbsp;</div>
+            <div id="agencynames" class="profileInfoCaption_agencyview"></div>
+            <div id="agencydesc"></div>
+            <div class="profileBlock">
+                <div class="fieldTitleGreen icoBuildContactInfo">OUR CONTACT INFO</div>
+                <div class="profileBlockBody">
+                    <div>
+                        <span class="profileInfoCaption">PHONE:</span>
+                        <span id="phonenumber"></span>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div>
+                        <span class="profileInfoCaption">EMAIL:</span>
+                        <span id="pemail"></span>
+                    </div>
+                    <div class="clear_both"></div>
+                    <div>
+                        <span class="profileInfoCaption">ADDRESS:</span>
+                        <span id="agency_address"></span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="clear_both"></div>
+
+            <div class="profileBlock">
+                <div class="fieldTitleGreen icoBuildMail">OUR MAIL</div>
+                <div class="profileBlockBody">
+                    <span class="profileInfoCaption">INBOX:</span>
+                    <div id="inbox"></div>
+                    <div class="clear_both"></div>
+                    <span class="profileInfoCaption">SENT:</span>
+                    <div id="sent"></div>
+                    <div class="clear_both"></div>
+                </div>
+                <div class="headerPinkSmall"><a href="mail.php?mode=inbox">ENTER MAILBOX HERE</a>
+                </div>
+            </div>
+            <div class="clear_both"></div>
+
+            <div class="fieldTitleGreen icoBuildPass">CHANGE PASSWORD</div>
+            <div id="change_pass">
+
+            </div>
+
+            <div class="clear_both"></div>
+
+
+
+        </div> -->
+    </div>
+</div>
+<div class="clear_both"></div>
+<bx_include_auto:_sub_footer.html />

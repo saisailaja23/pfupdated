@@ -1,0 +1,184 @@
+
+
+<script language="javascript">
+	function reloadForm (sNewSection, sNewField) {
+		$.get("__url__index_search.php",
+		  { section: sNewSection, field: sNewField, action: "get_values" },
+		  function(data){
+		    $("#ctz_search_form").html(data);
+		  }
+		);
+	}
+</script>
+
+<style>
+.ctrDropDown{
+    width:145px;
+    font-size:11px;
+}
+.ctrDropDownClick{
+    font-size:11px;
+
+    width:300px;
+
+}
+.plainDropDown{
+    width:145px;
+    font-size:11px;
+}
+</style>
+
+<script type="text/javascript">// <![CDATA[
+$(document).ready(function() {
+  $.viewMap = {
+    '0' : $([]),
+    'AdoptionAgency[]' : $('#AdoptionAgency'),
+    'ChildAge[]' : $('#view2a'),
+    'Ethnicity[]' : $('#Ethnicity'),
+    'ChildEthnicity[]' : $('#BMEthnicity'),
+    'BMChildSex[]' : $('#BMChildSex'),
+    'ChildSpecialNeeds[]' : $('#ChildSpecialNeeds'),
+    'FamilyStructure[]' : $('#view2b'),
+    'Region[]' : $('#view3'),
+    'State[]' : $('#view4'),
+    'Religion[]' : $('#view5')
+  };
+
+  $.each($.viewMap, function() { $(this).hide(); });
+
+   $('#viewSelector').change(function() {
+    var dat = $('#viewSelector').val();
+    $.get('getSaerchData.php', { send: dat }, function(data) {
+    $('select#result').html(data);
+    //alert(data);
+  });
+
+  });
+
+  $('#viewSelector').change(function() {
+    // hide all
+    $.each($.viewMap, function() { $(this).hide(); });
+    // show current
+    $.viewMap[$(this).val()].show();
+  });
+});
+// ]]></script>
+<div class="page_column_last" style="width:325px;">
+<div class="page_block_container" style="margin-left:10px;">
+<div class="disignBoxFirst MOA" style="height:230px">
+	<div class="boxFirstHeader moa_head"><div class="dbTitle">Search Families <!--span class="indexsearchadv">| <a href="__search_href__"><bx_text:_adm_fields_advanced_search /></a></span-->
+	
+	
+
+	
+	</div></div>
+	<div class="boxContent">
+    <div class="form_advanced_wrapper" style="margin:5px 10px 10px;">
+    <div class="ctz_index_search">
+	
+
+	
+	<div class="form" id="ctz_search_form">
+
+<form class="form_advanced" id="simple_search_form1" name="simple_search_form1" action="search.php" method="get"> <input value="simple" name="search_mode" class="form_input_hidden" type="hidden" /> <input value="1073741823" name="ProfileType" class="form_input_hidden" type="hidden" /> <input value="i8xmNZJ?BVFbSm3ghtza" name="csrf_token" class="form_input_hidden" type="hidden" />
+<div class="form_advanced_wrapper simple_search_form1_wrapper">
+<table class="form_advanced_table" cellpadding="0" cellspacing="0">
+<thead>
+<tr class="headers">
+<th colspan="2" class="block_header"> Search Families </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="caption">&nbsp;Search: <br /></td>
+<td class="value">
+<div class="clear_both"></div>
+<div class="input_wrapper input_wrapper_select_box"><select name="option" id="viewSelector"> <option value="0">-- Select --</option> <optgroup label="Child"> <option value="ChildAge[]">Age</option> <option value="ChildEthnicity[]">Ethnicity</option> <option value="BMChildSex[]">Gender</option> <option value="ChildSpecialNeeds[]">Special Needs</option> </optgroup> <optgroup label="Couple"> <option value="AdoptionAgency[]">Adoption Agency</option> <option value="Ethnicity[]">Ethnicity</option> <option value="FamilyStructure[]">Family Structure</option> <option value="Religion[]">Religion</option> </optgroup> <optgroup label="Location"> <option value="Region[]">Region</option> <option value="State[]">State</option> </optgroup> </select></div>
+&nbsp; <img float_info=" " src="/templates/base/images/icons/exclamation.png" alt="error" class="warn" />
+<div class="clear_both"></div>
+</td>
+</tr>
+<tr>
+<td class="caption">Type:</td>
+<td class="value">
+<div class="clear_both"></div>
+<div class="input_wrapper input_wrapper_select">
+<div style="display: none;" id="AdoptionAgency"><select id="result" name="AdoptionAgency[]" class="form_input_select" class="ctrDropDown" onBlur="this.className='ctrDropDown';" onMouseDown="this.className='ctrDropDownClick';" onChange="this.className='ctrDropDown';"> </select></div>
+<div style="display: none;" id="view2a"><select name="ChildAge[]" class="form_input_select"> <option></option> <option value="Newborn">Newborn</option> <option value="1-2 months">1-2 months</option> <option value="3-4 months">3-4 months</option> <option value="5-6 months">5-6 months</option> <option value="7-8 months">7-8 months</option> <option value="9-11 months">9-11 months</option> <option value="1 year old">1 year old</option> <option value="2 years old">2 years old</option> <option value="3 years old">3 years old</option> <option value="4 years old">4 years old</option> <option value="5 years old">5 years old</option> <option value="6 years old">6 years old</option> <option value="7 years old">7 years old</option> <option value="8 years old">8 years old</option> <option value="Over 8 years old">Over 8 years old</option> </select></div>
+<div style="display: none;" id="Ethnicity"><select name="Ethnicity[]" class="form_input_select" id="someDropDown" class="ctrDropDown" onBlur="this.className='ctrDropDown';" onMouseDown="this.className='ctrDropDownClick';" onChange="this.className='ctrDropDown';"> <option></option> <option value="Caucasian">Caucasian</option> <option value="Caucasian/Asian">Caucasian/Asian</option> <option value="Caucasian/African American">Caucasian/African American</option> <option value="African American">African American</option> <option value="African American/Asian">African American/Asian</option> <option value="Hispanic">Hispanic</option> <option value="Hispanic/African American">Hispanic/African American </option> <option value="Asian/Hispanic">Asian/Hispanic</option> <option value="European">European</option> <option value="Caucasian/Hispanic">Caucasian/Hispanic</option> <option value="Caucasian/Native American">Caucasian/Native American</option> <option value="Eastern European/Slavic/Russian">Eastern European/Slavic/Russian</option> <option value="Hispanic or South/Central American">Hispanic or South/Central American</option> <option value="Jewish">Jewish</option> <option value="Middle Eastern">Middle Eastern</option> <option value="Mediterranean">Mediterranean</option> <option value="Multi-Racial">Multi-Racial</option> <option value="Native American (American Indian)">Native American (American Indian)</option> <option value="Pacific Islander">Pacific Islander</option> <option value="Arab">Arab</option> <option value="Asian">Asian</option> <option value="Other">Other</option> </select></div>
+<div style="display: none;" id="BMEthnicity"><select name="ChildEthnicity[]" class="form_input_select" id="someDropDown" class="ctrDropDown" onBlur="this.className='ctrDropDown';" onMouseDown="this.className='ctrDropDownClick';" onChange="this.className='ctrDropDown';"> <option></option> <option value="Caucasian">Caucasian</option> <option value="Caucasian/Asian">Caucasian/Asian</option> <option value="Caucasian/African American">Caucasian/African American</option> <option value="African American">African American</option> <option value="African American/Asian">African American/Asian</option> <option value="Asian/Hispanic">Asian/Hispanic</option> <option value="European">European</option> <option value="Caucasian/Hispanic">Caucasian/Hispanic</option> <option value="Caucasian/Native American">Caucasian/Native American</option> <option value="Eastern European/Slavic/Russian">Eastern European/Slavic/Russian</option> <option value="Hispanic">Hispanic</option> <option value="Hispanic/African American">Hispanic/African American</option> <option value="Hispanic or South/Central American">Hispanic or South/Central American</option> <option value="Jewish">Jewish</option> <option value="Middle Eastern">Middle Eastern</option> <option value="Mediterranean">Mediterranean</option> <option value="Multi-Racial">Multi-Racial</option> <option value="Native American (American Indian)">Native American (American Indian)</option> <option value="Pacific Islander">Pacific Islander</option> <option value="Arab">Arab</option> <option value="Asian">Asian</option> <option value="Other">Other</option> </select></div>
+<div style="display: none;" id="view2b"><select name="FamilyStructure[]" class="form_input_select" id="someDropDown" class="ctrDropDown" onBlur="this.className='ctrDropDown';" onMouseDown="this.className='ctrDropDownClick';" onChange="this.className='ctrDropDown';"> <option></option> <option value="Married with biological and adopted children">Married with biological and adopted children</option> <option value="Married with only adopted children">Married with only adopted children</option> <option value="Married with only biological children">Married with only biological children</option><option value="Married with no children">Married with no children</option><option value="Single with biological and adopted children">Single with biological and adopted children</option> <option value="Single with only adopted children">Single with only adopted children</option><option value="Single with only biological children">Single with only biological children</option><option value="Single with no children">Single with no children </option><option value="Life partner">Life partner</option><option value="Living with life partner">Living with life partner</option><option value="Living with life partner with no children">Living with life partner with no children</option><option value="Living with life partner with biological and adoptive children">Living with life partner with biological and adoptive children</option></select></div>
+<div style="display: none;" id="view3"><select name="Region[]" class="form_input_select"> <option></option> <option value="Southwest">Southwest</option> <option value="Southeast">Southeast</option> <option value="Northwest">Northwest</option> <option value="Northeast">Northeast</option> <option value="South-central">South-central</option> <option value="North-central">North-central</option> <option value="Non US">Non US</option> </select></div>
+<div style="display: none;" id="view4"><select name="State[]" class="form_input_select"> <option></option> <option value="Alabama">Alabama</option> <option value="Alaska">Alaska</option> <option value="American Samoa">American Samoa</option> <option value="Arizona">Arizona</option> <option value="Arkansas">Arkansas</option> <option value="California">California</option> <option value="Colorado">Colorado</option> <option value="Connecticut">Connecticut</option> <option value="Delaware">Delaware</option> <option value="District of Columbia">District of Columbia</option> <option value="Florida">Florida</option> <option value="Georgia">Georgia</option> <option value="Guam">Guam</option> <option value="Hawaii">Hawaii</option> <option value="Idaho">Idaho</option> <option value="Illinois">Illinois</option> <option value="Indiana">Indiana</option> <option value="Iowa">Iowa</option> <option value="Kansas">Kansas</option> <option value="Kentucky">Kentucky</option> <option value="Louisiana">Louisiana</option> <option value="Maine">Maine</option> <option value="Maryland">Maryland</option> <option value="Massachusetts">Massachusetts</option> <option value="Michigan">Michigan</option> <option value="Minnesota">Minnesota</option> <option value="Mississippi">Mississippi</option> <option value="Missouri">Missouri</option> <option value="Montana">Montana</option> <option value="Nebraska">Nebraska</option> <option value="Nevada">Nevada</option> <option value="New Hampshire">New Hampshire</option> <option value="New Jersey">New Jersey</option> <option value="New Mexico">New Mexico</option> <option value="New York">New York</option> <option value="North Carolina">North Carolina</option> <option value="North Dakota">North Dakota</option> <option value="Northern Marianas Islands">Northern Marianas Islands</option> <option value="Ohio">Ohio</option> <option value="Oklahoma">Oklahoma</option> <option value="Oregon">Oregon</option> <option value="Pennsylvania">Pennsylvania</option> <option value="Puerto Rico">Puerto Rico</option> <option value="Rhode Island">Rhode Island</option> <option value="South Carolina">South Carolina</option> <option value="South Dakota">South Dakota</option> <option value="Tennessee">Tennessee</option> <option value="Texas">Texas</option> <option value="Utah">Utah</option> <option value="Vermont">Vermont</option> <option value="Virginia">Virginia</option> <option value="Virgin Islands">Virgin Islands</option> <option value="Washington">Washington</option> <option value="West Virginia">West Virginia</option> <option value="Wisconsin">Wisconsin</option> <option value="Wyoming">Wyoming</option> <option value="Non US (Italy)">Non US (Italy)</option> <option value="Non US (Germany)">Non US (Germany)</option> </select></div>
+<div style="display: none;" id="view5"><select name="Religion[]" class="form_input_select"> <option></option> <option value="Adventist">Adventist</option> <option value="Agnostic">Agnostic</option> <option value="Atheist">Atheist</option> <option value="Bahai">Bahai</option> <option value="Baptist">Baptist</option> <option value="Buddhist">Buddhist</option> <option value="Caodaism">Caodaism</option> <option value="Catholic">Catholic</option> <option value="Christian">Christian</option> <option value="Hindu">Hindu</option> <option value="Iskcon">Iskcon</option> <option value="Jainism">Jainism</option> <option value="Jewish">Jewish</option> <option value="Methodis">Methodis</option> <option value="Mormon">Mormon</option> <option value="Moslem">Moslem</option> <option value="Orthodox">Orthodox</option> <option value="Pentecostal">Pentecostal</option> <option value="Protestant">Protestant</option> <option value="Quaker">Quaker</option> <option value="Scientology">Scientology</option> <option value="Shinto">Shinto</option> <option value="Sikhism">Sikhism</option> <option value="Spiritual">Spiritual</option> <option value="Taoism">Taoism</option> <option value="Wiccan">Wiccan</option> <option value="Other">Other</option> </select></div>
+<div style="display: none;" id="BMChildSex"><select name="BMChildSex[]" class="form_input_select"> <option></option> <option value="Male">Male</option> <option value="Female">Female</option> <option value="Unknown">Either</option> </select></div>
+<div style="display: none;" id="ChildSpecialNeeds"><select name="ChildSpecialNeeds[]" class="form_input_select" id="someDropDown" class="ctrDropDown" onBlur="this.className='ctrDropDown';" onMouseDown="this.className='ctrDropDownClick';" onChange="this.className='ctrDropDown';"> <option></option> <option value="None Please">None Please</option> <option value="Open to discusssion">Open to discusssion</option> <option value="Drug Exposed (occasional)">Drug Exposed (occasional)</option> <option value="Deafness">Deafness</option> <option value="Mild or medically correctable">Mild or medically correctable</option> <option value="Alcohol exposed(occasional)">Alcohol exposed(occasional)</option> <option value="Smoking Exposed">Smoking Exposed</option> <option value="Emotional/mental disorders  in family">Emotional/mental disorders  in family</option> <option value="Premature Birth">Premature Birth</option> <option value="Multiple Birth">Multiple Birth</option> <option value="Club Foot">Club Foot</option> <option value="Cleft Pallet or lip">Cleft Pallet or lip</option> <option value="Down Syndrome">Down Syndrome</option> <option value="Epilepsy in Family">Epilepsy in Family</option> <option value="Blindness">Blindness</option> <option value="Diabeties in Child">Diabeties in Child</option> <option value="Diabeties in Family">Diabeties in Family</option> <option value="Conceived through rape">Conceived through rape</option> <option value="Conceived through incest">Conceived through incest</option> <option value="Nothing known about father">Nothing known about father</option> <option value="Nothing known about mother">Nothing known about mother</option><option value="Sibling group">Sibling group</option><option value="Fetal Alcohol Effects">Fetal Alcohol Effects</option> <option value="Requires specialized care">Requires specialized care</option> <option value="Requires life long medical treatment">Requires life long medical treatment</option> <option value="Terminally ill">Terminally ill</option> <option value="limited life expectancy">limited life expectancy</option> <option value="Family mental retardation">Family mental retardation</option> </select></div>
+<div class="input_close input_close_select"></div>
+</div>
+<div class="clear_both"></div>
+</td>
+</tr>
+<tr>
+<td class="caption">Per Page:</td>
+<td class="value">
+<div class="clear_both"></div>
+<div class="input_wrapper input_wrapper_select"><select name="res_per_page" id="viewSelector"> <option value="5">5</option> <option value="10">10</option> <option value="15">15</option> <option value="20" selected="selected">20</option> <option value="25">25</option> <option value="30">30</option> </select>
+<div class="input_close input_close_select"></div>
+</div>
+<div class="input_close input_close_submit"></div>
+<div class="clear_both"></div>
+</td>
+</tr>
+<tr>
+<td colspan="2" class="colspan">
+<div class="clear_both"></div>
+<div class="input_wrapper input_wrapper_submit">
+<div class="button_wrapper"><input value="Search" name="submit" class="form_input_submit" type="submit" />
+<div class="button_wrapper_close"></div>
+</div>
+<div class="input_close input_close_submit"></div>
+</div>
+<div class="clear_both"></div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</form>
+
+	</div>
+
+
+
+	
+
+	
+	
+	<!-- <div class="search_link">Need more options? Try our Advanced search feature with enhanced search options!<br />
+		<a href="__search_href__"><bx_text:_adm_fields_advanced_search /></a>
+	</div> -->
+	
+	
+
+
+
+
+
+	
+	
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+</div>
+
+
+
+
+
+
+
+

@@ -1,0 +1,18 @@
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  type	File: upload.php	Line: 46	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  type	File: upload.php	Line: 58	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  	File: upload.php	Line: 58	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined variable: filestr	File: upload.php	Line: 59	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  type	File: upload.php	Line: 59	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  	File: upload.php	Line: 59	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  type	File: upload.php	Line: 120	
+2015-06-30 20:27:16 (EDT)	8 Notice	Undefined index:  	File: upload.php	Line: 120	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagecreatefromgif() [<a href='function.imagecreatefromgif'>function.imagecreatefromgif</a>]: '/var/www/html/pf/media/users/0/images/upload.gif' is not a valid GIF file	File: fns_tinybrowser.php	Line: 157	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagesx(): supplied argument is not a valid Image resource	File: fns_tinybrowser.php	Line: 49	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagesy(): supplied argument is not a valid Image resource	File: fns_tinybrowser.php	Line: 50	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagegif(): supplied argument is not a valid Image resource	File: fns_tinybrowser.php	Line: 137	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagedestroy(): supplied argument is not a valid Image resource	File: upload_process.php	Line: 64	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagecreatefromgif() [<a href='function.imagecreatefromgif'>function.imagecreatefromgif</a>]: '/var/www/html/pf/media/users/0/images/upload.gif' is not a valid GIF file	File: fns_tinybrowser.php	Line: 157	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagesx(): supplied argument is not a valid Image resource	File: fns_tinybrowser.php	Line: 49	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagesy(): supplied argument is not a valid Image resource	File: fns_tinybrowser.php	Line: 50	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagegif(): supplied argument is not a valid Image resource	File: fns_tinybrowser.php	Line: 137	
+2015-06-30 20:27:29 (EDT)	2 Warning	imagedestroy(): supplied argument is not a valid Image resource	File: upload_process.php	Line: 74	

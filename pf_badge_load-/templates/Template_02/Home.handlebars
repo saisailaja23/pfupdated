@@ -1,0 +1,94 @@
+
+        {{debug}}
+
+<script type="text/javascript">
+jqueryNoConflict(document).ready(function(){
+//alert('loading');
+});
+</script>
+          <div class="pf_searchResult pf_searchFamilies" style="display:{{display}};">
+          <p> {{{searchMess}}} </p></div>
+
+          {{#objects}}
+            <div class='{{Class}}' style='height:555px'>
+              <div class='pf_view_cl03'> 
+              <image src="{{Image}}" id={{Id}} />
+              </div>
+              <div class='pf_view_cl04'>
+                        {{{Title}}}
+                        <!--<span style="font-size: 14px !important;">{{{Title}}}</span>-->
+                        <div class="pf_pinkBar"></div>
+                        </div>
+    
+                      <div class="pf_view_cl05">
+                        <div class="pf_view_cl06"><!-- informations-->
+                          <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">AGE:</span>
+                          <span>{{Age}}</span>
+                        </div>
+
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">STATE:</span>
+                          <span>{{State}}</span>
+                        </div>
+
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">CHILDREN:</span>
+                          <span>{{Children}}</span>
+                        </div>
+
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">FAITH:</span>
+                          <span>{{{fullFaiths}}}</span>
+                        </div>
+
+                        <div class="pf_view_cl016">
+                          <span >OUR CHILD</span>
+                        </div>
+                        <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">ETHNICITY:</span>
+                          {{#if CE}}
+                          <span>{{CE}}</span>
+                          <a class="pf_view_cl017" style="display:{{CEFV}}"><span data-toggle="modal" href="#more" data="{{CEF}}">....More</span></a>
+                          {{else}}
+                          <span>NONE</span>
+                          {{/if}}
+                         </div>
+
+                        <div class="pf_view_cl014">
+
+                          <span class="pf_view_cl015">AGE:</span>
+                          {{#if ChildAgesS}}
+                          <span>{{{ChildAgesS}}}</span>
+                          <a class="pf_view_cl017"  title-text="{{{ChildAgesS}}}" style="display:none">
+                          <span data-toggle="modal" href="#more" data="{{{ChildAgesL}}}">...More</span></a>
+                          {{else}}
+                          <span>NA</span>
+                          {{/if}}
+
+                          {{#if ChildAgesL}}
+                          <!--<span data-toggle="modal" href="#more" data="{{{ChildAgesL}}}">....More</span></a></span>-->
+                          {{/if}}
+
+                        </div>
+
+                         <div class="pf_view_cl014">
+                          <span class="pf_view_cl015">ADOPTION TYPE:</span>
+                          <span>{{AdptType}}</span>
+                        </div>
+
+                    </div>
+
+                    <div class="pf_view_cl07"><!-- links container--> 
+                          <a href="#" class="pf_view_cl08" id="{{Id}}"><!-- icons-->  </a>
+                          <a href="#" class="pf_view_cl09" id="{{Id}}"> <!-- icons-->  </a>
+                          <a href="#" class="pf_view_cl010" id="{{Id}}"><!-- icons--> </a>
+                          <a href="#" class="pf_view_cl011" id="{{Id}}"><!-- icons--> </a>
+                          <a href="#" class="pf_view_cl012" id="{{Id}}"><!-- icons--> </a>
+                          <a href="#" data="{{Epub_link}}" class="pf_view_cl013" id="{{Pdf_link}}"><!-- icons--> </a>             
+                    </div></div></div>
+          {{/objects}}
+          <!--</div>-->
+
+          
+

@@ -1,0 +1,3 @@
+user = seller_1359816747_biz_api1.web2solutions.com.br
+pwd  = 1359816772
+sig  = Avl1KxWv4rchFfm10kQROQJT9bbrAMEIVz8YaZRvJB5fGGPIup-6ylyr

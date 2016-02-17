@@ -1,0 +1,130 @@
+<bx_include_auto:_sub_header.html />
+<script type="text/javascript" src="ChangePassword/model/Changepasswordcomponent_Model.js"></script>
+<script type="text/javascript" src="ChangePassword/controller/Changepasswordcomponent.js"></script>
+<script type="text/javascript" src="YoutubeLoginComponent/model/youtubeLoginComponent_Model.js"></script>
+<script type="text/javascript" src="YoutubeLoginComponent/controller/youtubeLoginComponent.js"></script>
+<script type="text/javascript" src="AgencyEmailComponent/model/AgencyEmailModel.js"></script>
+<script type="text/javascript" src="AgencyEmailComponent/controller/AgencyEmailController.js"></script>
+<link rel="stylesheet" type="text/css" href="components/album/css/style.css" />
+<link rel="stylesheet" type="text/css" href="templates/tmpl_par/css/our-family.css" />
+<script type="text/javascript">
+    var siteurl = '<bx_url_root />';
+    var token_flag = __token_flag__;
+    window.onload = function() {
+        changePasswordcomponent.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "ChangePassword/",
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+        });
+        youtubeLoginComponent.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "YoutubeLoginComponent/",
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/",
+            site: siteurl
+        });
+        AgencyEmailController.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "AgencyEmailComponent/",
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/",
+            site: siteurl
+        });
+//        console.log(token_flag);
+        if(token_flag) {
+            $('.youtubeloginbtn').hide();
+        } else {
+            $('.loggedinText').hide();
+        }
+    };
+    function slide() {
+        if ($("#matchingSlider").is(":hidden")) {
+            $("#matchingSlider").slideDown("slow");
+        } else {
+            $("#matchingSlider").slideUp("slow");
+        }
+    }
+
+    for (i in $('a')) {
+        if ($('a')[i].innerHTML == 'AGENCIES/ATTORNEYS') {
+            $($('a')[i]).css('background', '#019d8c');
+            break;
+        }
+    }
+
+</script>
+<style>
+    #PwdForm {
+        display: none;
+        width:100%;
+    }
+    #matchingSlider, #youtubeExpand, #mailExpand {
+        display: none;
+        width:100%;
+    }
+</style>
+<div class="clear_both"></div>
+<div class="page201">
+
+    <div class="pinkIcons_adoptive icoResources_adoptive title">OUR AGENCY DASHBOARD</div>
+    <div class="OFDBMod">
+        <div class="row">
+            <ul>
+                <li class="approvals"><a href="m/groups/approval_settings/__top_current_agency__"></a></li>
+                <li class="matching"><a href="javascript:void(0)" onclick="slide()" id="matchings"></a>
+                </li>
+                 <li class="families"><a href="viewourfamilies.php" id="photoAlbumLink">FAMILIES</a></li> 
+                <!--<li class="families"><a href="extra_profile_view_24.php" id="photoAlbumLink">FAMILIES</a></li>-->
+                <li class="manage-families"><a href="extra_agency_view_27.php" id="videoAlbumLink"></a></li>
+            </ul>
+            <div id="photoResult"></div>
+            <div id="videoResult"></div>
+            <div  id="matchingSlider">
+                <div class="topbar">
+                    <span class="close" onclick="slide()">â†‘</span>
+                    <h2>Coming Soon. . .</h2> <h3 id="name"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row agencymiddle">
+            <ul>
+                <!--<li class="agency-public-profile"><a href="extra_agency_view_29.php?ID=__top_ID__"></a></li>-->
+                <li class="agency-public-profile"><a href="agency/__top_NickName__"></a></li>
+                <li class="blog"><a href="blogs/my_page"></a> </li>
+                <li class="agency-edit-profile"><a href="extra_agency_builder_26.php"></a></li>
+                <li class="agency-change-password"><a href="javascript:void(0)" id="Cpwd"></a></li>
+            </ul>
+            <div  id="PwdForm">
+                <div class="topbar">
+                    <span id="close">â†‘</span>
+                    <h2>Change Password</h2> <h3 id="name"></h3>
+                </div>
+            </div>
+        </div>
+        <div class="row agencymiddle">
+            <ul>
+                <li class="agency-badge"><a href="badgeWidgets-groups-owned.php"></a></li>
+                <li class="familygrid"><a href="m/groups/browse_fans_list/__top_current_agency__"></a></li>
+                <!-- Added by Sailaja -->
+                <!-- Adding the feature youtube integration -->
+                <li class="youtube-login"><a href="javascript:void(0)" id="youtube"></a></li>
+                <li class="mail-settings"><a href="javascript:void(0)" id="mail"></a></li>                
+            </ul>
+            <div  id="youtubeExpand">
+                <div class="topbar">
+                    <span class="youtubeclose" id="close">↑</span>
+                    <h2>Youtube Login</h2> <h3 id="name"></h3>                    
+                </div>
+            </div>
+            <div  id="mailExpand">
+                <div class="topbar">
+                    <span class="mailclose" id="close">↑</span>
+                    <h2>Configure your email notifications</h2>                   
+        </div>
+    </div>
+            
+                </div>
+            </div>
+    <div class="clear_both"></div>
+        </div>
+
+
+    <bx_include_auto:_sub_footer.html />

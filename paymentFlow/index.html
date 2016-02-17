@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">	
+<style type="text/css">
+	.test{
+		margin: 200px auto;
+		width: 400px;
+	}
+	#txt{
+		border: 1px solid #ddd;
+	height: 30px;
+	}
+	.btn{
+		width: 100px;
+		height: 40px;
+		border-radius: 28px;
+		text-transform: uppercase;
+		font-weight: bolder;
+		outline: none;
+	}
+</style>
+<link rel="stylesheet" type="text/css" href="/plugins/dhtmlx/dhtmlx.css" />
+<link rel="stylesheet" type="text/css" href="asserts/css/style.css">
+<script type="text/javascript" src="/plugins/dhtmlx/dhtmlx.js"></script>
+<script type="text/javascript" src="javascript/countries.js"></script>
+<script type="text/javascript" src="javascript/masks.js"></script>
+<script type="text/javascript" src="model/Model.js"></script>    
+<script type="text/javascript" src="controller/PaymentFlow.js"></script>
+<script type="text/javascript">
+	function myPersonalCallBackFunction(response){
+		alert( response );
+	}
+
+	window.onload = function (e){	
+			var 
+				btn=document.getElementById("btn"),
+				txt=document.getElementById("txt"),
+
+				siteUrl=location.protocol+"//"+location.host+"/",
+				appPath = siteUrl+"paymentFlow/",
+				signature_saving_path=appPath+"signatures/MarkLivings/",
+				call={
+					memtype: "Network-New",
+					cost:1,
+					user:{
+						id:6470,
+						name: "alpha",
+						fname:"Aravind",
+						lname:"Buddha",
+						email:"aravind.buddha@mediaus.com"
+					}
+				};
+
+			btn.addEventListener("click",function(e){
+                e.preventDefault();
+                call.cost=txt.value;	
+                console.log(call);
+
+                 PaymentFlow.newFlow({
+                 	uid: (new Date().getTime()),
+	          invoice_id: (new Date().getTime()), // mandatory, must to be unique
+	          invoice_pay_for_desc: "Adoption Portal", // mandatory. payment description
+	          invoice_custom_message: "thank you guy...",
+	          customer_id: call.user.id, // mandatory
+	          customer_firstName: call.user.fname, // mandatory
+	          customer_lastName: call.user.lname, // mandatory
+	          customer_email: call.user.email, // mandatory
+	          customer_address1: " ", // mandatory
+	         
+	          //App settings
+	          signature_saving_path: appPath + 'signatures/',
+	          application_url: appPath,
+	          dhtmlx_codebase_path: siteUrl + "plugins/dhtmlx/",
+	          icons_path : appPath+'asserts/icons/', 
+	          imgs_path:appPath+'asserts/imgs/', 
+	          pdf_saving_path: appPath + "/pdfs/",
+	          //Payment settings
+	          pay_for_items: [{
+	            invoice_item_id: 1,
+	            values: [call.memtype, call.memtype, call.cost]
+	          }],
+	          gateways_allowed: [{
+	            paypal: true
+	          }, {
+	            authorize_net: true,
+	            Visa : true,
+	            MasterCard : true,
+	            AmericanExpress : true,
+	            Discover : true 
+	          }, {
+	            wire_transfer: false
+	          }, {
+	            echeck: false
+	          }, {
+	            check: false
+	          }],
+	          paymentCallBack: function(res){
+	            // self.paymentCallBack(res);
+	            // alert(res);
+	            console.log(res);
+	          }
+	        });
+			});
+
+
+	       
+
+
+		};
+
+
+
+
+    	</script>
+	</head>
+	<body>
+	
+
+
+		<div class="test">
+			<input id="txt" type="text" value="0.2">
+			<input class="btn" id="btn" type="button" value="pay" />
+		</div>
+	</body>
+</html>

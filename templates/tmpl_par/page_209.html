@@ -1,0 +1,361 @@
+<bx_include_auto:_resp_sub_header.html />
+<script type="text/javascript" src="documentViewer/controller/FlexPaperComponent.js?cache=__cache_control__"></script>
+<!--<link rel="stylesheet" type="text/css" href="viewourfamilies/css/bootstrap.min.css?cache=__cache_control__"/>
+<link rel="stylesheet" type="text/css" href="viewourfamilies/css/parentfinder.css?cache=__cache_control__"/>
+<script src="viewourfamilies/js/bootstrap.min.js?cache=__cache_control__"></script>-->
+<script type="text/javascript" src="viewourfamilies/js/ourhome.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="components/album/js/jwplayer/jwplayer.js?cache=__cache_control__"></script>
+<!--<script type="text/javascript" src="sliderjs/js/jssor.slider.min.js"></script>-->
+<script defer src="viewourfamilies/js/jquery.flexslider.js"></script>
+<script src="viewourfamilies/js/script.js?cache=__cache_control__"></script>
+
+<link rel="stylesheet" type="text/css" href="viewourfamilies/css/pgwslideshow.css"/>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js?cache=__cache_control__"></script>-->
+<script type="text/javascript" src="viewourfamilies/js/pgwslideshow.js"></script>
+<style type="text/css">
+.pf_more_cl019 > a > img:hover{ cursor:pointer !important; opacity:0.7 !important; }
+</style>
+<script>
+    $(document).ready(function() {
+        //expand collapse function for journal
+        $(".pf_more_cl014").click(function() {
+            if ($(this).parent().is('.pf_more_cl023')) {
+                $(this).parent().removeClass("pf_more_cl023");
+            } else {
+                $(this).parent().addClass("pf_more_cl023");
+            }
+        });
+
+        //expand collapse function for name section
+        $(".pf_more_cl011").click(function() {
+            if ($(this).parent().parent().is('.pf_more_panel_open')) {
+                $(this).parent().parent().removeClass("pf_more_panel_open");
+            } else {
+                $(this).parent().parent().addClass("pf_more_panel_open");
+            }
+        });
+    });
+    var siteurl = '<bx_url_root />';
+    var Id = '__profile_id__';
+    var loadFrom = '__profile_badge__';
+    var nickName = '__profile_nickname__';
+    $('.pf_view_icons_cl02').attr('href','contact.php?id='+Id);
+</script>
+<style>
+    .social-icons{
+        width:80px;
+        height:auto;
+        /*background-color:#fff;*/
+        position : fixed;
+        right :0px;
+        top:200px;
+        padding-top: 5px;
+ 	z-index: 50;
+    }
+    .social-icons a{
+        display:block;
+        cursor: pointer;
+        height:33px;
+        width: 33px;
+        padding:1px;
+    }
+    .social-icons .fb{
+        background-image: url("templates/tmpl_par/images/splash/ico_fb_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .tw{
+        background-image: url("templates/tmpl_par/images/splash/ico_tw_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .gp{
+        background-image: url("templates/tmpl_par/images/splash/ico_go_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .pi{
+        background-image: url("templates/tmpl_par/images/splash/ico_pi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .bg{
+        background-image: url("templates/tmpl_par/images/splash/ico_bi_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .social-icons .in{
+        background-image: url("templates/tmpl_par/images/splash/ico_in_act.png");
+        background-repeat: no-repeat;
+        margin: auto;
+    }
+    .publishpwd {
+        font-size: 12px;
+        margin-left: 650px;
+        display: none;
+    }
+    .incorrect-publabel {
+        display: none;
+        color: red;         
+        text-transform: uppercase;
+    }
+    .pubpwd-label{
+        color: #009D8C;
+        font-weight: bold;
+        text-transform: uppercase;
+        margin: 20px 0;
+    }
+    .pubpassword-label {
+        width: auto;
+        padding: 0 50px;
+    }
+    #pubpwd{
+        /*padding: 0 10px;*/
+        margin-left: 15px;
+    }    
+    #pubproceed{
+        border: 3px solid #f195bf;
+        padding: 3px 15px;
+        text-align: center;
+        color: #FFFFFF;
+        font-weight: bold;
+        height: 27px;
+        cursor: pointer;
+        background-color: #f195bf;
+        margin-left: 139px;
+        width: 84px;
+    }   
+</style>
+<div class="social-icons"> 
+    <a class="fb" href="javascript:void(0)" target="_blank"></a>
+    <a class="tw" href="javascript:void(0)" target="_blank"></a>
+    <a class="gp" href="javascript:void(0)" target="_blank"></a>
+    <a class="bg" href="javascript:void(0)" target="_blank"></a>
+    <a class="pi" href="javascript:void(0)" target="_blank"></a>
+    <a class="in" href="javascript:void(0)" target="_blank"></a>
+</div>
+<div class="clear_both"></div>
+<div class="publishpwd">
+    <div class="incorrect-publabel">Entered password is incorrect. Please try again.</div>
+    <div class="pubpwd-label">Please enter the password to view the profile</div>
+    <div class="pubpassword-label">PASSWORD:<input type="password" id="pubpwd"/></div></br>
+    <div id="pubproceed"> Proceed</div>
+</div>
+<div class="page118">
+    <div class="container view more"><!-- main container -->
+        <div class="likeClick" data-toggle="modal" data-target="#likeAdded"></div>
+        <div class="modal popup" id="likeAdded"><!-- tooltip dialog responsive-->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                        <div class="pf_popupcl01">
+                            <div class="data ok"></div>
+                            <div class="likeButtons">
+                                <div class="likepop pf_popup_login_cl08" data-dismiss="modal">OK</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="likeDialog" data-toggle="modal" data-target="#likeLogin"></div>
+        <div class="modal popup" id="likeLogin"><!-- tooltip dialog responsive-->
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <div class="closebtn" data-dismiss="modal"><!-- close button--></div>
+                        <div class="pf_popupcl01">
+                            <div class="ok">Cannot save your favorites since you are not logged in.</div>
+                            <div class="likeButtons">
+                                <div class="createAcc likepop pf_popup_login_cl08">Create Account</div>
+                                <div class="loginAcc likepop pf_popup_login_cl08">Login</div>
+                                <div class="NoAcc likepop pf_popup_login_cl08" data-dismiss="modal">No Thanks</div>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row"><!-- row section for data starts-->
+            <div class="back"></div>
+            <div class="pf_more_cl01" ><!-- outer data container starts-->
+
+
+                <div class="pf_more_cl03" ><!-- right container starts-->
+
+                    <div class="pf_view_cl02_more">
+
+                        <div class="pf_more_collapsible_panel pf_more_panel_open"><!-- collapsible div starts -->
+                            <div class="pf_more_cl010">
+                                <div class="pf_more_cl011"><!-- name container-->
+                                    <div class="pf_more_cl018"><!-- expand collapse--></div>
+                                    <div class="profileName"></div>
+                                    <span class="lastactive">LAST ACTIVE 227 DAYS 7 HOURS AND 37 MINUTES AGO</span>
+                                </div>
+                                <div class="print_more" >
+                                <p style="margin:25px;text-decoration: underline; font-size: 14px;font-weight: bold;"><a style href="javascript:void(0);" id="viewHtml">Single Page Profile</a></p>
+                                <p style="margin:25px;text-decoration: underline; font-size: 14px;font-weight: bold">
+                                <a href="javascript:void(0);" id="viewPdf" >Multi Page Profile</a></p>
+                                   
+                            </div>
+                                <a class="pf_more_cl09" style="float: left;" href ="javascript:void(0)" ></a>
+                                <div class="pf_more_cl012">
+                                    <!-- like button-->
+                                </div>
+                            </div>
+
+                            <div class="pf_view_cl06"><!-- informations-->
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">AGE:</span>
+                                    <span class="profileage"></span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">STATE:</span>
+                                    <span class="profilestate"></span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">WAITING:</span>
+                                    <span class="profilewaiting"></span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">CHILDREN:</span>
+                                    <span class="profilechildren"></span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">FAITH:</span>
+                                    <span class="profilefaith"></span>
+                                </div>
+
+                                <div class="pf_view_cl016">
+                                    <span >OUR CHILD</span>
+                                </div>
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">ETHNICITY:</span>
+                                    <span class="profileethinicity"></span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">AGE:</span>
+                                    <span class="profilechildage"></span>
+                                </div>
+
+                                <div class="pf_view_cl014">
+                                    <span class="pf_view_cl015">ADOPTION TYPE:</span>
+                                    <span class="profileadoptiontype"></span>
+                                </div>
+
+                            </div>
+
+                        </div><!-- collapsible div ends -->
+                        <div class="printClick" ></div>
+                        <div class="pf_view_cl05">
+                             
+                            <div class="pf_more_cl04">
+                                <a class="pf_more_cl05"><!-- flip icon --> </a>
+                                <a class="pf_more_cl06"><!-- home icon --> </a>
+                                <a class="pf_more_cl07"><!-- contact icon --> </a>
+                                <a class="pf_more_cl08"><!-- letters icon --> </a>
+                                <a class="pf_more_cl08_ebok"><!-- ebook icon --> </a>
+                               <!--  <div class="print_more" >                                
+                                <p style="margin:25px;text-decoration: underline; font-size: 14px;font-weight: bold;"><a style href="javascript:void(0);" id="viewHtml">Single Page Profile</a></p>
+                                <p style="margin:25px;text-decoration: underline; font-size: 14px;font-weight: bold">
+                                <a href="javascript:void(0);" id="viewPdf" >Multi Page Profile</a></p>
+                                   
+                            </div>
+                                <a class="pf_more_cl09"  href ="javascript:void(0)" > </a> -->
+
+                            </div>
+                            <div id="HOME"></div>
+                            <br/>
+                            <div class="clear_both"></div>
+                            <div id="houseStyle"></div>
+                            <div class="clear_both"></div>
+                            <div class="" id="BED"></div>
+                            <div class="clear_both"></div>
+                            <div class="" id="BATH"></div>
+                            <div class="clear_both"></div>
+                            <div class="" id="LOT"></div>
+                            <div class="clear_both"></div>
+                            <div class="" id="FENCED"></div>
+                            <div class="clear_both"></div>
+                            <div class="" id="GARAGE"></div>
+                            <div class="clear_both"></div>
+                            <div class="pf_more_cl013 ouragency">
+                                <div class="pf_more_cl022 pf_more_cl023">
+                                    <div class="pf_more_cl014">
+                                        <img class="pf_more_cl015" src="viewourfamilies/images/icon_our_agency.png" alt="ParentFinder" >
+                                        <span id='agency'>OUR AGENCY</span>
+                                        <div class="pf_more_cl016"><!-- expand collapse icon--> </div>
+                                    </div>
+                                    <div class="pf_more_cl017">
+                                        <!-- journal notes-->
+                                        <div class="pf_more_cl019" >
+                                        </div>
+                                        <div class="pf_more_cl020">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pf_more_cl024"><!-- green border --></div>
+
+                        </div>
+
+                    </div>
+                </div><!-- right container ends -->
+                <div class="pf_more_cl02"><!-- left container starts-->
+                    <div class="pf_more_image_gallery image">
+                        <div u="loading" class="loader">Loading</div>
+                        <div id="sliderNew"><!-- image slider-->
+                            <ul class="pgwSlideshow"></ul>
+                        </div>
+<!--                        <div id="slider" class="flexslider"> image slider
+                            <ul class="slides"></ul>
+                        </div>
+                        <div id="carousel" class="flexslider">
+                            <ul class="slides"></ul>
+                        </div>-->
+                        <div id="noPhoto" class='noPhoto'>
+                            <img src='<bx_url_root />templates/tmpl_par/images/NO-PHOTOS_icon.png' />
+                        </div>
+                    </div>
+                    <div class="pf_more_fotos"> <!-- more photos -->
+                        <a>
+                            More Photos
+                        </a>
+                    </div>
+                    <div class="pf_more_image_gallery pf_more_no_videos videos">
+                        <div u="loading" class="loader">Loading</div>
+                        <div id="sliderV" class="flexslider"><!-- image slider-->
+                            <!--<ul class="slides"></ul>-->
+                        </div>
+                        <div id="carouselV" class="flexslider">
+                            <ul class="slides"></ul>
+                        </div>
+                        <div id="noVideo" class='noPhoto'>
+                            <img src='<bx_url_root />templates/tmpl_par/images/NO-VIDEOS_icon.png'/>
+                        </div>
+                    </div>
+                    <div class="pf_more_videos"> <!-- more videos -->
+                        <a>
+                            More Videos
+                        </a>
+                    </div>
+                </div><!-- left container ends-->
+            </div><!-- outer conatiner -->
+        </div><!-- row section for data ends -->
+    </div>
+</div>
+
+<div class="clear_both"></div>
+<script type="text/javascript">
+</script>
+<bx_include_auto:_resp_sub_footer.html />
+ 

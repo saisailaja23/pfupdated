@@ -1,0 +1,383 @@
+<!--<script type="text/javascript" src="grid/dhtmlxfull/dhtmlx.js"></script>
+<link rel="stylesheet" type="text/css" href="grid/dhtmlxfull/dhtmlx.css">
+-->
+<link rel="STYLESHEET" type="text/css" href="Matching/dhtmlxGrid/dhtmlxgrid.css"/>
+<link rel="STYLESHEET" type="text/css" href="Matching/dhtmlxGrid/skins/dhtmlxgrid_dhx_skyblue.css"/>
+<link rel="STYLESHEET" type="text/css" href="Matching/dhtmlxToolbar/codebase/skins/dhtmlxtoolbar_dhx_skyblue.css">
+<link rel="STYLESHEET" type="text/css" href="Matching/dhtmlxGrid/skins/dhtmlxgrid_dhx_skyblue.css"/>
+<link rel="stylesheet" type="text/css" href="Matching/dhtmlxGrid/skins/dhtmlxmenu_dhx_skyblue.css">
+<link type="text/css" href="Matching/css/jquery-ui-1.8.2.custom.css" rel="stylesheet" />
+
+<script  src="Matching/dhtmlxGrid/dhtmlxcommon.js"></script>
+<script  src="Matching/dhtmlxGrid/dhtmlxgrid.js"></script>
+<script  src="Matching/dhtmlxGrid/ext/dhtmlxgrid_pgn.js"></script>
+<script  src="Matching/dhtmlxGrid/dhtmlxgridcell.js"></script>
+<script  src="Matching/dhtmlxGrid/ext/dhtmlxgrid_start.js"></script>
+<script  src="Matching/dhtmlxToolbar/codebase/dhtmlxtoolbar.js"></script>
+<script  src="Matching/dhtmlxGrid/ext/dhtmlxgrid_filter.js"></script>
+<script  src="Matching/dhtmlxGrid/client/dhtmlxgrid_export.js"></script>
+<script  src="Matching/dhtmlxGrid/excells/dhtmlxgrid_excell_link.js"></script>
+<script language="JavaScript" src="Matching/dhtmlxGrid/dhtmlxmenu.js"></script>
+<script  src="Matching/dhtmlxGrid/ext/dhtmlxmenu_ext.js"></script>
+
+<script type="text/javascript" src="lightbox/thickbox-compressed.js"></script>
+<link rel="stylesheet" href="lightbox/thickbox.css" type="text/css" media="screen"/>
+<script>
+        dhtmlx.skin = "dhx_skyblue";
+</script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+<script type="text/javascript" src="Matching/js/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="Matching/js/mootools-1.2.4-core-nc.js"></script>
+<script type="text/javascript" src="Matching/js/mootools-1.2.4.4-more.js"></script>
+<script type="text/javascript" src="Matching/js/dialog.js"></script>
+<script type="text/javascript" src="Matching/js/jquery-ui-1.8.2.custom.min.js"></script>
+
+<style type="text/css">
+.tipz {z-index:2000;
+}
+.tip {
+border:1px solid #ddd;
+padding:5px 15px;
+background:#ffffff;
+width:auto;
+border-radius:25px;
+-moz-border-radius:15px;  }
+.tip-title { color:black; font-size:11.4px; margin:5px 5px 0 5px; width: 150px;text-align: center;background:#fff; padding: 1px 3px 1px 3px; }
+</style>
+<div class="adm-mp-members-wrapper" id="adm-mp-members-geeky" style="">
+<div class="adm-mp-members-geeky">
+     <div id="selectedResult"> </div>
+
+    <table width="100%" class="adm-mp-members-geeky" cellpadding="0" cellspacing="0">
+        <tr><td>&nbsp;</td></tr>
+
+        <tr><td>&nbsp;</td></tr>
+
+<script type="text/javascript">
+/*jQuery(function(){
+		 $(".img-swap").live('click', function() {alert('class');
+		 	if ($(this).attr("class") == "img-swap") {
+
+			this.src  = this.src.replace("_off","_on");
+                        this.alt = this.alt.replace("off","on");
+                        $(this).text("Hide").attr("title", "Disable Global Search");
+
+
+
+			$("#imgtype").val('YES');
+
+
+
+			} else {
+
+                          this.src = this.src.replace("_on","_off");
+			     this.alt = this.alt.replace("on","off");
+                          $(this).text("Show").attr("title", "Enable Global Search");
+
+
+
+
+
+			$("#imgtype").val('NO');
+
+			}
+
+			$(this).toggleClass("on");
+
+		});
+});
+*/
+jQuery(document).ready(function() {
+jQuery("#calculator").dialog(
+            {
+                bgiframe: true,
+                width: 412,
+                height: 130,
+                modal: true,
+                autoOpen: false,
+                draggable: true,
+                resizable: false,
+                title: 'Maximum Match Records',
+                close: function(event, ui) {  }
+               // close: function() {  }
+            }
+        );
+jQuery("#sub").click(function() {
+      //alert('Failed to import');
+            jQuery("#calculator").dialog("close");
+     });
+jQuery("#calculator1").dialog(
+            {
+                bgiframe: true,
+                width: 412,
+                height: 130,
+                modal: true,
+                autoOpen: false,
+                draggable: true,
+                resizable: false,
+                title: 'Minimum Match %',
+                close: function(event, ui) {  }
+               // close: function() {  }
+            }
+        );
+
+     jQuery("#sub1").click(function() {
+      //alert('Failed to import');
+            jQuery("#calculator1").dialog("close");
+     });
+
+
+});
+function popup(elem) {
+//alert('popup');
+
+//alert($("#imgtype").val());
+//document.getElementById(imageid).title="New tooltip"
+//var val = ($("#imageid").attr("alt"));
+
+  var uid = elem.id;
+  var val = ($("#"+uid).attr("alt"));
+  var title = ($("#"+uid).attr("title"));
+//alert(uid);
+//alert(title);
+//var gvall = "Yes";
+  if(val == "Disabled Global Search")
+  {
+    elem.src  = elem.src.replace("_off","_on");
+    elem.alt =  elem.alt.replace("Disabled Global Search","Enabled Global Search");
+     tooltips();
+
+   // elem.title("Hide").attr("title", "Disable Global Search");
+    //$('#greatphoto').attr('title', 'Photo by Kelly Clark')
+ 
+   
+    $("#imgtype").val('YES');
+    var gval = "Yes";
+  }
+  else
+  {
+    elem.src = elem.src.replace("_on","_off");
+    elem.alt = elem.alt.replace("Enabled Global Search","Disabled Global Search");
+    tooltips();
+    $("#imgtype").val('NO');
+    var gval = "No";
+  }
+//elem.toggleClass("on");
+//alert(gval);
+
+ jQuery.ajax({
+                 url: 'client_list.php',
+                 type: "POST",
+                 cache: false,
+                 data: {printid : gval, userid : uid},
+                 success: function(data) {
+
+                                }
+                            });
+}
+</script>
+
+<input type="button"  value="Export" style="float:right;margin-right:10px;" onclick="grid2.setColumnHidden(10,false);mygrid_html.toExcel('export/generate.php');">
+
+<table gridHeight="auto" name="grid2" id="grid_user" onbeforeinit="myfunc1()" imgpath="Matching/dhtmlxGrid/imgs/" style="width:980px" lightnavigation="true">
+<div class="dhx_toolbar_base_dhx_skyblue"><b><p style="margin-top:5px;">User Management & Matching</p></b></div>
+<div id="menuObj"></div>
+<tr>
+			<td type="ro" sort="na">Actions</td>
+                        <td type="ro" sort="str">User Name</td>
+                        <td type="ro" sort="str">Last Name</td>
+                        <td type="ro" sort="str">First Name</td>
+                        <td type="ro" sort="str">Profile Type</td>
+                        <td type="ro" sort="str">Status</td>
+                        <td type="ro" sort="str">Membership</td>
+                        <td type="ro" sort="date">Registered</td>
+                        <td type="ro" sort="na">Date of Upgrade</td>
+                        <td type="ro" sort="date">Last Visited</td>
+                        <td type="ro" hidden="true" >Test</td>
+		</tr>
+
+
+		<bx_repeat:items>
+                    <tr>
+                        <td width="250"><input type="checkbox" class="form_input_checkbox" id="adm-mp-__id__" name="members[]" value="__id__" />
+                        __match__  __profile_icon__ __changepass_icon__  __avatar_icon__ __global_icon__ __match_icon__
+                        </td>
+                        <td width="130" title =__email__><a href="__edit_link__" class="__edit_class__" id="__status__">__username__</a></td>
+                        <td width="*">__lastname__</td>
+                        <td width="*">__firstname__ __cname__</td>
+                        <td width="150">__profiletype__</td>
+                        <td width="150">__status__</td>
+                        <td width="150">__ml_name__</td>
+                        <td width="160">__registration__</td>
+                        <td width="210">__dateofupgrades__</td>
+                        <td width="150">__last_login__</td>
+                        <td width="10">Test123</td>
+
+                    </tr>
+                </bx_repeat:items>
+
+</table>
+
+
+<div id="recinfoArea" style="width:980px;"></div>
+
+<script type="text/javascript">
+
+    function onButtonClick(id) {
+ 
+    if(id == 'max') {
+
+      jQuery('#calculator').dialog('open');
+
+            }
+
+    else if(id == 'match') {
+
+      jQuery('#calculator1').dialog('open');
+
+
+
+    }
+
+      
+      }
+
+  //function record(id){
+
+  //jQuery('#rowid').val(id);
+  //jQuery('#rowid1').val(id);
+
+  //}
+  
+ function test() {
+        
+      
+var val = jQuery('#rowid').val();
+var rec = jQuery('#record').val();
+
+    jQuery.ajax({
+     url: 'update_match.php',
+     type: "post",
+     cache: false,
+    //data : jQuery("#form_ser_emp").serialize(),
+
+      data: {userid : val, record : rec},
+      
+    // datatype : "html",
+
+     success: function(data) {
+     //alert(data);
+     //jQuery('#fetch_user option').remove();
+      // HideBar();
+     // jQuery('#emp_container').html(data);
+
+               }
+            });
+ }
+
+  function test1() {
+
+
+     var val1 = jQuery('#rowid1').val();
+     var rec1 = jQuery('#match').val();
+
+     jQuery.ajax({
+     url: 'update_match.php',
+     type: "post",
+     cache: false,
+    //data : jQuery("#form_ser_emp").serialize(),
+
+      data: {userid : val1, match : rec1},
+
+    // datatype : "html",
+
+     success: function(data) {
+     //alert(data);
+     //jQuery('#fetch_user option').remove();
+      // HideBar();
+     // jQuery('#emp_container').html(data);
+
+               }
+            });
+ }
+
+    function myfunc1()
+        {
+        
+        grid2.enablePaging(true,10,5,"recinfoArea");
+        grid2.setPagingSkin("toolbar","dhx_skyblue");
+        grid2.attachHeader("#rspan,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter,#text_filter");
+        grid2.enableTooltips("false,true,true,true,true,true,true,true,true");
+        grid2.enableAutoHeight(true);
+        grid2.init();
+        grid2.setColumnHidden(10,true);
+        var menu;
+
+
+        menu = new dhtmlXMenuObject("menuObj");
+        menu.setIconsPath("Matching/dhtmlxGrid/imgs/");
+        menu.addNewSibling(null, "opts", "Configuration Settings");
+        
+       // menu.addNewSibling("opts", "color", "Color");
+        //menu.addNewSibling("opts", "help", "Help", false);
+
+        menu.addNewChild("opts", 0, "max", "Max Match Records", false, "true.gif");
+        menu.addNewChild("opts", 1, "match", "Minimum Match %", false, "red.gif");
+      
+      //  menu.addNewChild("help", 0, "about", "About...", false, "about.gif");
+      //  menu.addNewChild("help", 1, "help2", "Help", false, "help.gif");
+      //  menu.addNewChild("help", 2, "bugrep", "Bug Reporting", false, "bug_reporting.gif");
+       
+        menu.attachEvent("onClick", onButtonClick);
+    }
+
+    var mygrid_html = new dhtmlXGridFromTable('grid_user');
+    mygrid_html.changePage(0);
+
+  
+
+    tooltips();
+    grid2.attachEvent("onPaging", function(grid_obj,count){
+                                    tooltips();
+                                    });
+    function tooltips(){
+       
+        $$('img.tipz').each(function(element,index) {
+
+                //element.store('tip:title', 'Adoption Portal');
+              //  alert(element.id);
+                element.store('tip:text',element.alt );
+        });
+
+        //create the tooltips
+        var tipz = new Tips('.tipz',{
+                className: 'tipz',
+                fixed: true,
+                hideDelay: 50,
+                showDelay: 50,
+                offset: {'x': 10, 'y': 25}
+
+
+            });
+        }
+</script>
+
+<div id="calculator" style="display: none;margin-left: 90px;">
+<table>
+    <tr><td>Current Value:</td><td></td></tr>
+    <tr><td>New Value:</td><td><input type="text" id="record" name="records" /></td></tr>
+    <input type="hidden" id="rowid" name="uid" />
+</table>
+   <br/> <div style="margin-left:100px;"><input type="Button"  id="sub" name="submit" value="Save" onclick="test();" /></div>
+</div>
+
+<div id="calculator1" style="display: none;;margin-left: 90px;">
+<table>
+    <tr><td>Current Value:</td><td></td></tr>
+    <tr><td>New Value:</td><td><input type="text" id="match" name="records" /></td></tr>
+    <input type="hidden" id="rowid1" name="uid" />
+</table>
+<br/> <div style="margin-left:100px;"><input type="Button"  id="sub1" name="submit1" value="Save" onclick="test1();"/></div>
+</div>
+</div>
+</div>

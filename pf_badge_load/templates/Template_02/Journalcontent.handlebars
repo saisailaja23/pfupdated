@@ -1,0 +1,26 @@
+<div class="backb_inner" style="display: block;" />
+<div class="container view">
+        <div class="back" style="display: block;"></div>
+        <div class="row pf_view_cl020"><!-- row section for data starts-->
+            <div class="pf_view_cl01" id="pf_journal_id01"><!-- outer data container starts-->
+                <div class="ourjournal" id="journal">
+                {{#journalcontent}} 
+                    <div style="float:left" class="jorHead"><a  id="{{id}}" jid="{{PostID}}" >{{PostCaption}}</a></div>
+                    <div style="clear:both"></div>
+                     
+                    <div style="clear:both;" class="jorBody">
+                                        {{#if TrimText}} 
+                                        {{TrimText}}
+                                        <br/>
+                                        <br/>
+                                         {{/if}}
+
+                     <span>{{PostDate}}</span>
+                     <br/>
+                     <br/>
+                     <br/>
+                      {{/journalcontent}}
+                </div>
+            </div>
+        </div>
+    </div>

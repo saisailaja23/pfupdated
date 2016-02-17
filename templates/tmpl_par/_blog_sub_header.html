@@ -1,0 +1,144 @@
+<bx_include_auto:_blog_header.html />
+
+<!-- dhtmlx compnents-->
+<script type="text/javascript" src="MemberComponent/model/MemberComponent_Model.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="MemberComponent/controller/MemberComponent.js?cache=__cache_control__"></script>
+
+<script type="text/javascript" src="LoginComponent/model/LoginComponent_Model.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="LoginComponent/controller/LoginComponent.js?cache=__cache_control__"></script>
+
+<script type="text/javascript" src="NewAgencyComponent/model/NewAgencyModel.js?cache=__cache_control__"></script>
+<script type="text/javascript" src="NewAgencyComponent/controller/NewAgencyController.js?cache=__cache_control__"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        var cartid = __cart_item__;
+        var login_type = __top_login__;
+        if (cartid > 0 && login_type == 2) {
+            document.getElementById("carte_a").style.display = "block";
+        } else {
+            document.getElementById("carte_a").style.display = "none";
+        }
+    });
+
+    function showjoin() {
+        var siteurl = '<bx_url_root />';
+        MemberComponent.start({
+            uid: (new Date()).getTime(),
+            siteurl: siteurl,
+            application_path: siteurl + "/MemberComponent/",
+            dhtmlx_codebase_path: siteurl + "/plugins/dhtmlx/"
+        });
+    }
+</script>
+<script type="text/javascript">
+    function showlogin() {
+
+        var siteurl = '<bx_url_root />';
+        LoginComponent.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "LoginComponent/",
+            dhtmlx_codebase_path: siteurl + "/plugins/dhtmlx/"
+        });
+
+
+    }
+
+    function showRequest() {
+        NewAgencyComponent.start({
+            uid: (new Date()).getTime(),
+            application_path: siteurl + "NewAgencyComponent/",
+            siteurl: siteurl,
+            dhtmlx_codebase_path: siteurl + "plugins/dhtmlx/"
+        });
+    }
+</script>
+<script>
+    function userredirect(id, status) {
+        var siteurl = '<bx_url_root />';
+        if (id == '2') {
+            window.location.href = siteurl + 'our-family-dashboard.php';
+        } else if (id == '4') {
+
+            window.location.href = siteurl + 'bmhome.php';
+        } else if (id == '8') {
+
+            window.location.href = siteurl + 'extra_agency_view_28.php';
+        } else {
+            window.location.href = siteurl;
+        }
+    }
+</script>
+<!-- This div is used for view port for dhtmlx window it is closed in the _sub_footer.html -->
+<div id="vp">
+
+    <!-- <div class="sys_main_logo" style="min-width:__main_div_width__; z-index:50;"> -->
+    <header id="header" class="wrap">
+        <!-- Top site logo with image-->
+        <a class="logo" href="splash.php">
+            <img src="<bx_image_url:top_logo.png />" alt="Parent Finder logo" title="Parent Finder Logo" />
+        </a>
+        <!--Left menu iteams-->
+        <div class="topMenuBlock">
+            <div class="topMenuFirstRow">
+                __top_login_form_par__
+            </div>
+            <nav class="nav">
+                <ul>
+                    <li><a href="<bx_url_root />index.php">PARENTFINDER SERVICES</a></li>
+                    <li><a href="<bx_url_root />adoptive_couples.php">Adoptive Families</a></li>
+                    <li><a href="<bx_url_root />agencies.php">AGENCIES/ATTORNEYS</a></li>
+                    <li class="last"><a href="<bx_url_root />expectant_parents.php">EXPECTANT PARENTS</a></li>
+                </ul>
+            </nav>
+            <div class="topIcons">
+
+                <!-- __top_login_form_part_account__        
+                         <a href="<bx_url_root />"> --> 
+                <a href="javascript:void(0)" onclick="userredirect(__top_login__, __top_status__);"> 
+                    <div title="HOME" class="icoHome"></div>
+                </a>
+
+                <a href="contact.php">
+                    <div title="CONTACT US" class="icoContact"></div>
+                </a>
+
+                <a href="cart_view_01.php" id="carte_a" style="display:none;";>
+                    <div title="CARTE" class="icoCart"></div>
+
+                </a>
+
+                <a href="<bx_url_root />viewourfamilies.php">
+                    <div title="SEARCH FAMILIES" class="icoSearch"></div>
+                </a>
+        <a href="page/help1">
+                    <div title="HELP" class="icoHelp"></div>
+                </a>
+            </div>
+        </div>
+
+    </header>
+
+
+    <bx_injection:injection_between_logo_top_menu />
+
+
+    <bx_injection:injection_between_top_menu_content />
+    <!-- end of top -->
+
+    <div class="sys_main_content" >
+        <div class="sys_mc_wrapper bx-def-margin-sec-leftright">
+            <div class="sys_mc">
+
+                <!-- body -->
+                <bx_injection:injection_splash_before />__main_splash__
+                <bx_injection:injection_content_before />
+                <script type="text/javascript">
+                    var loaded_From = '__load_from__';
+                    if (loaded_From == 'badge')
+                    {
+                        document.getElementById('header').style.display = 'none';
+
+                    }
+                </script>
