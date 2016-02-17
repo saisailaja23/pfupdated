@@ -1,0 +1,516 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, maximum-scale=1, initial-scale=1, user-scalable=0" />
+  <meta charset="utf-8" />
+
+  <!-- Always force latest IE rendering engine or request Chrome Frame -->
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+
+  <!--[if lt IE 9]>
+			<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+			<script src="js/excanvas.js" type="text/javascript"></script>
+		<![endif]-->
+
+  <title>ChildConnect.com - Post adoption service for adoption agencies birth parents families that adopted</title>
+
+  <link rel="stylesheet" type="text/css" href="css/style.css" />
+  <link rel="shortcut icon" href="/images/cc_favicon.ico">
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+
+  <script src="js/jquery.plugins.js" type="text/javascript" charset="utf-8"></script>
+  <script src="https://dme0ih8comzn4.cloudfront.net/js/feather.js" type="text/javascript"></script>
+  <script src="js/application.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+
+     <div class="support-note">
+        <span class="note-ie">Sorry, only modern browsers.</span>
+      </div>
+
+    <section class="main">
+
+      <div class="wrapper">
+        <div class="topbar">
+          <span id="close" class="back">&larr;</span>
+          <h2>Mark Livings</h2>
+          <h3 id="name"></h3>
+        </div>
+
+        <!-- LifeBook Grid -->
+        <div id="content">
+
+          <ul class="filter-menu">
+            <li class="btn"><a href="#" rel="all">All</a>
+            </li>
+            <li><a href="#" rel="published">Published</a>
+            </li>
+            <li><a href="#" rel="saved">Saved</a>
+            </li>
+            <li><a href="#" rel="pending">Pending Review</a>
+            </li>
+          </ul>
+          <div id="lifebooksCont">
+            <span>6</span>Lifebook(s)</div>
+
+          <a href="#" class="btn btn-primary tooltip addAlbum" data-title="Create Lifebook." title="Create Lifebook."><i class="fa fa-plus"></i> Create Lifebook</a>
+
+          <ul id="lb-grid">
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+
+            <!-- -->
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+            <li rel="saved">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">23</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="23" src="images/10/img_01_thumb.jpg" alt="Holliday in the Zoo" />
+              </div>
+              <i class='fa fa-eye'>10</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday
+                <span class="lb-views">150</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="150" src="images/10/img_02_thumb.jpg" alt="Holliday" />
+              </div>
+              <i class='fa fa-eye'>25</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">Holliday test
+                <span class="lb-views">200</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="200" src="images/10/img_03_thumb.jpg" alt="Holliday test" />
+              </div>
+              <i class='fa fa-eye'>20</i>
+            </li>
+
+            <li rel="published">
+              <span class="tp-info">
+                <span class="edit">Holliday in the Zoo</span>
+                <span class="lb-views">30</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="30" src="images/10/img_04_thumb.jpg" alt="Test Holliday" />
+              </div>
+              <i class='fa fa-eye'>33</i>
+            </li>
+
+            <li rel="saved">
+              <span class="tp-info">Fest II
+                <span class="lb-views">33</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="33" src="images/10/img_05_thumb.jpg" alt="Fest II" />
+              </div>
+              <i class='fa fa-eye'>24</i>
+            </li>
+
+            <li rel="pending">
+              <span class="tp-info">
+                <span class="edit">Fest IV</span>
+                <span class="lb-views">43</span>
+              </span>
+              <div class="wrap-image">
+                <img class="lb-thumb" id="43" src="images/10/img_05_thumb.jpg" alt="Fest III" />
+              </div>
+              <i class='fa fa-eye'>51</i>
+            </li>
+
+          </ul>
+        </div>
+        <!-- #content-->
+      </div>
+    </section>
+
+  </div>
+  <!-- /container -->
+  <script type="text/javascript" src="https://widget.fotomoto.com/stores/script/f40dbef6122b46495bee34079ad6be1cb5684760.js?api=true"></script>
+
+</body>
+
+</html>

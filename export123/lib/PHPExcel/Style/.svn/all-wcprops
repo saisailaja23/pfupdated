@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style
+END
+Border.php
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Border.php
+END
+Alignment.php
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Alignment.php
+END
+Color.php
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Color.php
+END
+Borders.php
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Borders.php
+END
+NumberFormat.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/NumberFormat.php
+END
+Conditional.php
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Conditional.php
+END
+Fill.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Fill.php
+END
+Font.php
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Font.php
+END
+Protection.php
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Style/Protection.php
+END

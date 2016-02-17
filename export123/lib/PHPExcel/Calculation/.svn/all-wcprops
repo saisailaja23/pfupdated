@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation
+END
+functionlist.txt
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/functionlist.txt
+END
+ExceptionHandler.php
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/ExceptionHandler.php
+END
+Exception.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/Exception.php
+END
+FormulaParser.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/FormulaParser.php
+END
+Function.php
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/Function.php
+END
+FormulaToken.php
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/FormulaToken.php
+END
+Functions.php
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Calculation/Functions.php
+END

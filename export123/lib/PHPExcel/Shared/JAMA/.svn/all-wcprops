@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA
+END
+LUDecomposition.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/LUDecomposition.php
+END
+CholeskyDecomposition.php
+K 25
+svn:wc:ra_dav:version-url
+V 109
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/CholeskyDecomposition.php
+END
+SingularValueDecomposition.php
+K 25
+svn:wc:ra_dav:version-url
+V 114
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/SingularValueDecomposition.php
+END
+CHANGELOG.TXT
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/CHANGELOG.TXT
+END
+QRDecomposition.php
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/QRDecomposition.php
+END
+EigenvalueDecomposition.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/EigenvalueDecomposition.php
+END
+Matrix.php
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/Matrix.php
+END

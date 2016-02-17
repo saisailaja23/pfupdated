@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link href="Styles/Site.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <form>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <h1>
+                    Aviary Photo Editing Sample
+                </h1>
+            </div>
+            <div class="loginDisplay">
+            </div>
+            <div class="clear hideSkiplink">
+            </div>
+        </div>
+        <div class="main">
+            <div>
+                <img style="max-width: 600px;" src="Public/Chrysanthemum.jpg" id="imageArea" />
+            </div>
+            <!-- Load Feather code -->
+            <script type="text/javascript" src="http://feather.aviary.com/js/feather.js"></script>
+            <!-- Instantiate Feather -->
+            <script type="text/javascript">
+                var featherEditor = new Aviary.Feather({
+                    apiKey: '3d3d67b59b5c72eb',
+                    apiVersion: 2,
+                    theme: 'light',
+                    openType: 'lightbox',
+                    //tools: 'all',
+                    tools: ['crop'],
+                    initTool:'crop',
+                     postUrl:'http://parentfinder.com/components/album/processors/crop/crop.php',
+                    cropPresets:[
+                        ['Photo', '4:3']
+                    ],
+                    onSave: function (imageID, newURL) {
+                        var img = document.getElementById(imageID);
+                        img.src = newURL;
+                    }
+                   
+                });
+
+                function launchEditor(id, src) {
+                    featherEditor.launch({
+                        // forceCropPreset: ['Profile Picture','4:3'],
+                        // forceCropMessage: 'Crop your profile picture:',
+                        image: id,
+                        url: src
+                    });
+                    return false;
+                }
+
+                
+            </script>
+            <p>
+                <input id="imgbtnEditPhoto" type="image" src="http://advanced.aviary.com/images/feather/edit-photo.png"
+                    value="Edit photo" onclick="return launchEditor('imageArea');" />
+            </p>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>

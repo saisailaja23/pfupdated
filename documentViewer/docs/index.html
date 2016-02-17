@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title></title>
+<link type="text/css" rel="stylesheet" href="styles/shCoreDefault.css"/>
+<link href='styles/shCore.css' rel='stylesheet' type='text/css' />
+<link href='styles/shThemeDefault.css' rel='stylesheet' type='text/css' />
+<link type="text/css" rel="Stylesheet" href="styles/shThemeMidnight.css"/>
+<link type="text/css" rel="Stylesheet" href="styles/shThemeRDark.css"/>
+<link type="text/css" rel="Stylesheet" href="styles/shThemeFadeToGrey.css"/>
+<script type="text/javascript" src="scripts/shCore.js"></script>
+<script type="text/javascript" src="scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="scripts/shBrushJScript.js"></script>
+<script type="text/javascript" src="scripts/shBrushPlain.js"></script>
+
+<script src='scripts/shAutoloader.js' type='text/javascript'></script>
+<script src='scripts/shBrushXml.js' type='text/javascript'></script>
+<script src='scripts/shBrushCss.js' type='text/javascript'></script>
+<script type="text/javascript">SyntaxHighlighter.all();</script>
+<style type="text/css" media="screen"> 
+
+html, body {
+width: 100%;
+height: 100%;
+margin: 0px;
+background:#FFF;
+padding:0px;
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+background:#0D1D32;
+color:#ffffff;
+}
+input, textarea{
+border:solid 1px #69C;
+font-size:10px;
+}
+h1, h2, h3, p, a {
+	width:85%;
+	padding:4px;
+	margin:0px;
+	color:#FF9700;
+}
+h1{color:#FF9700;font-size:19px;}
+h2{font-size:17px;}
+h3{color:#FFB951;font-size:14px;}
+p{
+	color:#ffffff;
+	font-size:12px;
+}
+span{font-weight:bold; color:#FC0; font-size:13px; font-family:Tahoma, Geneva, sans-serif}
+.white{font-weight:bold; color:#fff; font-size:13px; font-family:Tahoma, Geneva, sans-serif}
+.whiteBig{font-weight:bold; color:#fff; font-size:20px; font-family:Tahoma, Geneva, sans-serif}
+</style>
+</head>
+
+<body>
+<h1><img src="../imgs/cairs_logo.png" width="315" height="54" alt="CAIRS" /></h1>
+<h1>Pluggable Signature Component documentation</h1>
+<p><em><span class="white">this software is property of CAIRS Solutions</span></em></p>
+<p>&nbsp;</p>
+<h2>Download</h2>
+<p>&nbsp;</p>
+<p><a href="http://www.web2solutions.com.br/poc/signature_component.rar">http://www.web2solutions.com.br/poc/signature_component.rar</a></p>
+<p>&nbsp;</p>
+<h2>Client-side installation</h2>
+<p>&nbsp;</p>
+<p><em><strong><span>This documentation presumes that you already have DHTMLX Suite PRO version and Jquery installed on your system</span></strong></em><strong>.</strong></p>
+<p>1 - To install, place the following Javascript and CSS files at the <strong>&lt;head&gt;&lt;/head&gt;</strong> section of your page</p>	
+<pre class="brush: php;ruler: true; first-line: 1; highlight: [14]; html-script: true;">
+		
+        
+        &lt;!-- Signature component --&gt;
+        
+        &lt;!-- JQuery --&gt;
+        &lt;script src="javascript/jquery-1.9.1.min.js" type="text/javascript"&gt;&lt;/script&gt;
+		
+        &lt;!-- Super Signature --&gt;
+		&lt;script type="text/javascript" src="signature/wz_jsgraphics.js"&gt;&lt;/script&gt; &lt;!-- if you need windows mobile support --&gt;
+      	&lt;script type="text/javascript" src="signature/ss.js"&gt;&lt;/script&gt;
+        
+        &lt;!-- JSON parser --&gt;
+        &lt;script type="text/javascript" src="javascript/json2.js"&gt;&lt;/script&gt;
+        
+        &lt;!-- PaymentFlow / Model and Model-View of application --&gt;
+        &lt;script type="text/javascript" src="controller/Signature_Component.js"&gt;&lt;/script&gt;
+       	
+        &lt;!-- Signature component --&gt;
+        
+        
+</pre>
+<p>Now the Signature component is already installed on your system.</p>
+<p>To use the component just call the <strong>Signature_Component.signIn()</strong> method inside your application.</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h3>Calling the component</h3>
+<p>We call the component by using the <span>Signature_Component.signIn()</span> facade method</p>
+<pre class="brush: js;ruler: true; first-line: 1;">
+
+            Signature_Component.signIn(
+            {
+				/* used as unique identifier */
+                user_id : 1,
+                // mandatory
+				
+                /* will be used to generate signature images */
+                user_name : "Creedence Clearwater", 
+                // mandatory
+				
+                /* will be used as name for saving singnature drawned by the user */
+                file_name : "Creedence Clearwater",
+				
+                /* absolute URL for the embedded application accessing */
+                /* used to embed in another applications */
+                application_url : "http://mark.web2.eti.br/signature_component/",
+                // mandatory
+				
+                /* relative url path from web application where stores the signature images */
+                file_path : '../signatures/Creedence Clearwater/',
+                // mandatory
+				
+                /* absolute path from file system used to store drawned and generated signatures */
+                /* if the directory does not exists, it will be created */
+                file_path_abs : 'D:/wwwroot/mark/www/signatures/Creedence Clearwater/', 
+                // mandatory
+				
+                /* Main aplication HTML DIV target which will holds the selected signature image */
+                div_display : "signature_target", 
+                // not mandatory - default empty, the signature will not displayed after signed
+				
+                /* callback function - called when the user have signed in */
+                signedCallBack : myPersonalCallBackFunction, 
+                // not mandatory - default empty, no function will be called
+				
+                /* string message displayed when the component is rendered */
+                message_before : "before message",
+                // not mandatory - default empty, no message will be displayed
+				
+                /* string message displayed when the user have signed in */
+                message_after : "Pass message",
+                // not mandatory - default empty, no message will be displayed
+				
+                /* absolute or relative url path for icons */
+                icons_path : 'icons/', 
+                // mandatory
+			});
+            	
+</pre>
+<p></p>
+<p></p>
+<h2>The callBack function</h2>
+<p>The callback function is setted by the <span>signedCallBack</span> property</p>
+<p>This property can be empty or you can provide a function name in your main application which will be called when user have signed in</p>
+<p>When you provide a function name, that function will be called with a parameter given: the "<span>response</span>" object</p>
+<pre class="brush: js;ruler: true; first-line: 1; highlight: [28];">
+			
+            function myPersonalCallBackFunction( response )
+            {
+            	alert( response.signature_status ); //==> output window: true
+                
+                if( response.signature_status )
+                {
+                	alert( "The user signed in" );
+                }
+                else
+                {
+                	alert( "The user does not signed in" );
+                }
+                
+                alert( response.file_name ); //==> output window: Creedence Clearwater.jpg
+                alert( response.user_id ); //==> output window: 1
+                alert( response.user_name ); //==> output window: Creedence Clearwater
+                
+                /* */
+                // do an AJAX request here and save to the database
+                /* */
+            }
+            
+            Signature_Component.signIn(
+            {
+				// ... code here
+                
+                /* callback function - called when the user have signed in */
+                signedCallBack : myPersonalCallBackFunction, 
+                // not mandatory - default empty, no function will be called
+				
+                
+                // ... code here
+			});
+            	
+</pre>
+<p>Following you can see the entire <span>response object scope</span>:</p>
+<p></p>
+<h2>Response object scope</h2>
+<pre class="brush: js;ruler: true; first-line: 1;">
+	response = 
+    {
+		/**/
+        application_url: "http://mark.web2.eti.br/signature_component/",
+		
+        /**/
+        div_display: "signature_target",
+		
+        /**/
+        file_name: "Creedence Clearwater.jpg",
+		
+        /* string - relative path from web app where the signature image was saved */
+        file_path: "../signatures/Creedence Clearwater/",
+		
+        /* string - absolute path from file system where the signature image was saved */
+        file_path_abs: "D:/wwwroot/mark/www/signatures/Creedence Clearwater/",
+		
+        /**/
+        signature_status: true,
+		
+        /* integer/string - User id who have signed in */
+        user_id: 1,
+		
+        /* string - User name who have signed in */
+        user_name: "Creedence Clearwater"
+	}
+    
+</pre>
+<p></p>
+<p></p>
+<h3>&nbsp;</h3>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><img src="../imgs/cairs_logo.png" width="315" height="54" alt="CAIRS" /></p>
+
+</body>
+</html>

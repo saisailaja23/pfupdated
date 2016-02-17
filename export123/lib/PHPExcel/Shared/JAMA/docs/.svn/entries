@@ -1,0 +1,91 @@
+8
+
+dir
+9605
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA/docs
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+example.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+36582bfdf084af67345368c57c629792
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+package.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+85c4454df30ddd4a8c286087c458b040
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+test.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+76e65ac1ba9dcfcd3ae425ed223783db
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+includes
+dir
+
+download.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+4edf14a2f79db9dd99bdb1fae5e4d9f9
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+index.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+dfd6ce095e0fce950f303e4e4a140e1e
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+docs.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+a984d61eb2cebc0bc65602400ffb8ad3
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+

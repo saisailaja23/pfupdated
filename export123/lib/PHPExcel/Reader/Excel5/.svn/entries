@@ -1,0 +1,28 @@
+8
+
+dir
+9605
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/export/lib/PHPExcel/Reader/Excel5
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+Escher.php
+file
+
+
+
+
+2010-05-12T13:33:24.000000Z
+c9274d71cc82b7e9255d911b8527e24a
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+

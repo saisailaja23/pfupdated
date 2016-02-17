@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend
+END
+logarithmicBestFitClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/logarithmicBestFitClass.php
+END
+polynomialBestFitClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/polynomialBestFitClass.php
+END
+exponentialBestFitClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 112
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/exponentialBestFitClass.php
+END
+linearBestFitClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/linearBestFitClass.php
+END
+trendClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/trendClass.php
+END
+powerBestFitClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/powerBestFitClass.php
+END
+bestFitClass.php
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/phpprojects/!svn/ver/9605/www.parentfinder.com/export/lib/PHPExcel/Shared/trend/bestFitClass.php
+END

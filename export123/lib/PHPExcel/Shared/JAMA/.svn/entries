@@ -1,0 +1,112 @@
+8
+
+dir
+9605
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/export/lib/PHPExcel/Shared/JAMA
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+utils
+dir
+
+tests
+dir
+
+LUDecomposition.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+55b867174a2f6bc16a2ec8c85e9faeb1
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+CholeskyDecomposition.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+4c8bfd42e8f638ee9e325d01e0626416
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+SingularValueDecomposition.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+b0e3e59ac4a59d120775fd038d8bc693
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+CHANGELOG.TXT
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+bb25fb4dcf5c745c711643f1578944df
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+QRDecomposition.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+f292506b779929554291274c9b34c4cd
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+EigenvalueDecomposition.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+932bdce69cd84691658ee4ebde954d1b
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+docs
+dir
+
+Matrix.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+bfcbd0fe1d125cde0ab9ffc82089f4a7
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+examples
+dir
+

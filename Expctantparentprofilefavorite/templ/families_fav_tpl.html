@@ -1,0 +1,48 @@
+<div class='imagecontaier'>
+   {obj.profile_image}
+</div>
+<div class='uniBottomBar_family'>{obj.profile_firstname}
+<!--   <input type='image' alt='Submit' class='data_del_fav' src='templates/tmpl_par/images/ico_delete.png' data-value='{obj.profile_id}' style='float:right;' />
+<input type='image' alt='Submit' id='data_fav' value='{obj.profile_id}' src='templates/tmpl_par/images/ico_fav.png' style='float:right;' /> -->
+<a href='javascript:void(0)' class='data_del del_btn' data-value='{obj.profile_id}'></a>
+</div>
+<div class='profile_info'>
+  <ul>
+    <li><b>AGE:</b><span>{obj.profile_age}</span></li>
+    <li><b>STATE:</b><span>{obj.profile_state}</span></li>
+    <li><b>WAITING:</b><span>{obj.profile_waiting}</span></li>
+    <li><b>CHILDREN:</b><span>{obj.profile_noofchilds}</span></li>
+    <li><b>FAITH:</b><span>{obj.profile_faith}</span></li>
+  </ul>
+  <h3 class='fieldhead'>OUR CHILD</h3>
+  <ul>
+    <li><b>ETHNICITY:</b><span>{obj.profile_childethnicity}</span></li>
+    <li><b>AGE:</b><span>{obj.profile_childage}</span></li>
+    <li><b>ADOPTION TYPE:</b><span>{obj.profile_adoptiontype}</span></li>
+  </ul>
+</div>
+<div class='profile_nav'>
+  <ul>
+    <li>
+      <a href='extra_profile_view_17.php?id={obj.profile_id}' class='abt_family_icon'></a>
+    </li>
+    <li>
+      <a href='extra_profile_view_18.php?id={obj.profile_id}' class='home_icon'></a>
+    </li>
+    <li>
+      <a href='extra_profile_view_19.php?id={obj.profile_id}' class='letter_icon'></a>
+    </li>
+      <li>
+      <a href='m/photos/albums/browse/owner/{obj.Profile_name}' class='vdo_family_icon'></a>
+    </li>
+    <li>
+      <a href='ContactAgency.php?ID={obj.profile_id}' class='contact_icon'></a>
+    </li>
+    <li>
+    <a href='#' data-profile-id='{obj.profile_id}' class='print_profile print_icon'></a>
+    </li>
+  </ul>
+</div>
+<div class='clear'></div>
+
+

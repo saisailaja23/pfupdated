@@ -1,0 +1,21 @@
+InfoBegin
+InfoKey: Creator
+InfoValue: Microsoft&#174; Word 2010
+InfoBegin
+InfoKey: Title
+InfoValue: Receipt for cyScape
+InfoBegin
+InfoKey: Producer
+InfoValue: Microsoft&#174; Word 2010
+InfoBegin
+InfoKey: Author
+InfoValue: Susan Lindholm
+InfoBegin
+InfoKey: ModDate
+InfoValue: D:20130402091614-04'00'
+InfoBegin
+InfoKey: CreationDate
+InfoValue: D:20130402091614-04'00'
+PdfID0: efdce1d2572ab447b2b5ad2d6f7a6289
+PdfID1: efdce1d2572ab447b2b5ad2d6f7a6289
+NumberOfPages: 1

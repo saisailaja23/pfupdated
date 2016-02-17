@@ -1,0 +1,55 @@
+8
+
+dir
+9605
+http://192.168.50.15/svn/phpprojects/www.parentfinder.com/export/lib
+http://192.168.50.15/svn/phpprojects
+
+
+
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+
+svn:special svn:externals svn:needs-lock
+
+LICENSE.TXT
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+354fd17bb57c30fa162b9ec0e343483a
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+AUTHORS.TXT
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+cf73e0ab138d42933f90f90a115083d6
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+
+PHPExcel
+dir
+
+PHPExcel.php
+file
+
+
+
+
+2010-05-12T13:33:26.000000Z
+b461fd5341e1994347c18f389f929e25
+2011-11-30T09:42:10.230482Z
+9605
+phpprojects
+

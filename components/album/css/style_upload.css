@@ -1,0 +1,936 @@
+/*620px is the "min width", after which we should prevent things from getting any smaller*/
+html, body {
+    height: 100%;
+    font-family: 'ProximaNova', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+/*    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke: 1px rgba(0,0,0,0);*/
+    min-height: 400px;
+}
+
+.hide {
+    display: none;
+}
+
+.opacity20 { -moz-opacity:.20; filter:alpha(opacity=20); opacity:.20; }
+
+.center {
+    margin:0 auto;
+    text-align: center;
+}
+
+.floatright {
+    float: right;
+}
+
+.clearboth {
+    clear: both;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.ellipsize { 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.badge:hover {
+    cursor: default;
+}
+
+#preload {
+    display: none;
+}
+
+body.loading {
+    cursor: progress;
+}
+
+body.uploading {
+    cursor: progress;
+    overflow: hidden;
+}
+
+#saveasForm {
+    margin: 0;
+}
+
+#saveas-submit {
+    margin-left: 20px;
+}
+
+h1 {
+    padding-top: 2em;
+}
+
+input[type="file"] {
+    margin-bottom: 0;
+}
+
+#fileUploadForm {
+    width: 90%;
+    margin-left: 30px;
+}
+
+#fileUploadForm .control-label {
+    width: auto;
+}
+
+#fileInputContainer, #fileInputContainerBackup {
+    position: relative;
+    width: 100px;
+    float: left;
+    margin-left: 25px;
+    display: inline-block;
+    overflow: hidden;
+    height: 28px;
+}
+
+#fileInputContainerBackup {
+    display: none;
+    float: right;
+    margin-left: 0;
+    padding-top: 5px;
+}
+
+#fileUploadDummy {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 98px;
+    padding-left:0;
+    padding-right:0
+}
+
+#fileUploadInput {
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 2;
+    -moz-opacity:0;
+    filter:alpha(opacity: 0);
+    opacity: 0;
+    width: 100%;
+    padding: 1px;
+    cursor: default;
+}
+
+#uploadAlerts {
+    clear: both;
+}
+
+#load-next {
+    display: block;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.row.last {
+    padding-bottom: 15px;
+}
+
+#picker_files {
+    overflow: hidden;
+}
+
+.picker_files_header {
+    position: fixed;
+    background: #FFF;
+    padding: 20px 10px 10px 10px;
+    margin: -10px 0 0 12px;
+    font-size: 1.1em;
+    font-weight: 800;
+    border-bottom: 2px solid #F5F5F5;
+    width: 43%;
+    list-style: none;
+}
+
+.saveas .picker_files_header {
+    width: 61%;
+ }
+
+.picker_files_header a {
+    color: #000;
+}
+
+.picker_files_header a:hover {
+    color: #333;
+}
+
+.nav-list a, .filelist a {
+    color: #333;
+    cursor: default;
+}
+
+.nav-list > li > a {
+    padding: 8px 15px;
+}
+
+.nav-list > li > a .open-folder {
+    display: none;
+ }
+
+.nav-list > li > a:hover .open-folder {
+    display: block !important;
+ }
+
+.nav-list .open-folder i{
+    padding-right: 0;
+    margin-right: 0;
+ }
+
+.nav-list > li > i {
+    padding-right: 4px;
+}
+
+.nav-list a.disabled, .filelist a.disabled {
+    color: #999;
+    cursor: not-allowed;
+}
+
+.nav-list [class^="sbicon-"] {
+      padding-right: 5px;
+}
+
+.nav-list [class^="icon-"] {
+      padding-right: 5px;
+}
+
+#services > .active > a,
+#services > .active > a:hover {
+    border-left: 8px solid #08C;
+    background: inherit;
+    color: #000;
+    padding-left: 7px;
+    text-shadow: none;
+}
+
+#services a:hover {
+    border-left: 8px solid #CCC;
+    background: inherit;
+    padding-left: 7px;
+    text-shadow: none;
+}
+
+#services a {
+    position: relative;
+}
+
+#services .disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    filter:alpha(opacity=50);
+}
+
+#services > .disabled > a,
+#services > .disabled > a:hover {
+    border-left: none;
+    background: inherit;
+    color: #000;
+    padding-left: 15px;
+    text-shadow: none;
+}
+
+#services .auth-label {
+    position: absolute;
+    right: 6px;
+    cursor: pointer;
+    display: none;
+    padding: 3px 4px;
+    line-height: 8px;
+    font-weight: bold;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 3px;
+    border-radius: 8px;
+    background-color: #CCC;
+}
+
+#services .disabled .auth-label,
+#services .disabled a:hover .auth-label,
+#services a:hover .auth-label.disabled,
+#services .auth-label.disabled {
+    display: none;
+}
+
+#services a:hover .auth-label {
+    background-color: #AAA;
+    display: inline;
+}
+
+#services a .auth-label:hover {
+    background-color: #B94A48;
+    display: inline;
+}
+
+#services > .active a > [class^="icon-"],
+#services > .active a > [class*="icon-"] {
+    background-image: url("../images/glyphicons-halflings.png");
+}
+
+#services > .active a > [class^="sbicon-"],
+#services > .active a > [class*="sbicon-"] {
+    background-image: url("../images/local-icons.png");
+}
+
+.nav-files {
+    margin-left: 1em;
+    font-size: 1.2em;
+    margin-bottom: 18px;
+}
+.filelist {
+    margin-top: 40px;   
+}
+
+.filelist>li:nth-child(odd)>a {
+    background-color: #edf3fe;
+}
+
+.filelist.nav a.selectedItem {
+    background-color: #3875d7;
+    color: #fff;
+}
+
+.filelist.nav > li > a:hover,
+.filelist.nav > li > a.selectedItem:hover {
+    color: #ffffff;
+    background-color: #989898;
+}
+
+.thumbnails > li {
+    height: 150px;
+    width: 150px;
+}
+
+.thumbnails > li a {
+    min-height: 100px;
+    line-height: 100px;
+    text-align: center;
+}
+
+.thumbnails > li a img {
+    vertical-align: middle;
+    display: inline-block;
+    max-height: 130px;
+    line-height: 16px; /*For alt text*/
+ }
+
+.thumbnails h5 {
+    text-align: center;
+    overflow: hidden;
+    height: 1.3em;
+}
+
+.filelist.thumbnails a.selectedItem img,
+.filelist.thumbnails a.selectable:hover img,
+.filelist.thumbnails a.selectedItem:hover img {
+    opacity: 0.5;
+    color: #fff;
+    background-color: transparent;
+}
+
+/* For the case where you just clicked to remove it */
+.filelist.thumbnails a.selectable.selectedItemActive:hover {
+    background: transparent;
+}
+
+.filelist.thumbnails a.selectedItem,
+.filelist.thumbnails a.selectedItem.selectedItemActive:hover {
+    background: transparent url("../images/check.png") no-repeat 50% 50%;
+}
+
+.filelist.thumbnails a.selectable:hover {
+    background: transparent url("../images/plus.png") no-repeat 50% 50%;
+}
+.filelist.thumbnails a.selectedItem:hover {
+    background: transparent url("../images/x.png") no-repeat 50% 50%;
+}
+
+#content.saveas .filelist.thumbnails a.selectable:hover,
+.filelist.thumbnails a.selectable.disabled:hover {
+    background: transparent;
+    border-color: #DDD;
+}
+
+.thumbnail > img {
+    max-height: 100%;
+}
+
+.thumbnail.disabled > img {
+    opacity: .5
+}
+
+.file {
+    user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+}
+
+#preview {
+    position:fixed; 
+    top: 70px; 
+    right: 5px;
+    height: 100%;
+    max-height: 450px;
+}
+
+.thumbnail-spinner {
+    width: 36px;
+    height: 36px;
+}
+
+.loading-text {
+    padding-top: 20px;
+    text-align: center;
+}
+
+#preview .thumbnail {
+    height: 100px;
+}
+
+.multi-file-preview {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.multi-file-preview li {
+    padding: 5px 8px;
+    margin-bottom: 8px;
+}
+
+.multi-filename {
+    display: inline-block;
+    float: left;
+    left: 8px;
+    overflow: hidden;
+    position: relative;
+    width: 105px;
+}
+
+.selected-preview {
+    overflow: auto;
+    color: #000000;
+}
+
+.small-thumbnail {
+    max-width: 50px;
+    max-height: 50px;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.small-thumbnail > img {
+    max-height: 50px;
+}
+
+.tiny-thumbnail {
+    width: 36px;
+    max-height: 36px;
+    float: left;
+    padding: 0 10px 0 0;
+    display: inline-block;
+    text-align: center;
+}
+
+.tiny-thumbnail > img {
+    max-height: 36px;
+    max-width: 50px;
+}
+
+#preview .table tr:hover td {
+    background-color: transparent;
+}
+
+#preview.url {
+    margin-top: 30px;
+    max-height: 600px;
+    position: static;
+    height: auto;
+    max-height: auto;
+    width: 90%;
+}
+
+#preview.url .thumbnail, #preview.url table, #preview.url #action-group {
+    position: static;
+}
+
+#preview.url .thumbnail {
+    display: inline-block;
+    float: none;
+    max-height: 250px;
+    max-width: 400px;
+}
+
+#preview.url .filename {
+    margin-bottom: 30px;
+}
+#preview.url table {
+    float:left;
+}
+
+#preview.url #action-group {
+    float: right;
+    margin-right: 20px;
+    width: auto;
+}
+
+#pickerUrl, #pickerComputer {
+    padding-top:30px;
+}
+
+#picker {
+    padding-top:50px;
+}
+
+#servicePane {
+    top: 20px;
+    position:fixed; 
+    left:10px;
+    width: 20%;
+    min-width: 132px;
+}
+
+#servicePaneSpacer {
+    margin-left: 0;
+}
+
+#services {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    height: 320px;
+    overflow-y: auto;
+}
+
+#servicePane.single-service {
+    display: none;
+}
+
+.span12.single-service {
+    width: 99%;
+}
+
+#branding {
+    padding-bottom: 1em;
+}
+
+img#branding {
+    max-width: 150px;
+    padding-bottom: 1em;
+}
+
+.subbranding {
+    font-style: italic;
+    padding-top: 1em;
+}
+
+#single-service-logout {
+    position: fixed;
+    right: 90px;
+    top: 15px;
+    background: #FFF;
+    padding: 3px;
+    border-radius: 4px;
+    border: 1px solid #CCC;
+    cursor: pointer;
+}
+
+#single-service-logout.disabled {
+    display: none;
+}
+
+#bread {
+    background: white;
+    top:0;
+    padding-top: 10px;
+    margin-left: 0;
+    position: fixed
+}
+
+#bread .breadcrumb {
+    padding: 3px 0 1px 15px;
+    margin-bottom: 0;
+    -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+       -moz-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+       -moz-background-clip: padding;
+            background-clip: padding-box;        
+}
+
+.breadcrumb_element {
+    display: inline-block;
+    *display: inline;
+    /* IE7 inline-block hack */
+
+    *zoom: 1;
+    text-shadow: 0 1px 0 #ffffff;
+    vertical-align: middle;
+
+    height: 30px;
+    line-height: 30px;
+    max-width: 130px;
+}
+
+#serviceBtn {
+    display: none;
+}
+
+.collapse {
+    display: block;
+    height: auto;
+}
+
+#action-group {
+    width: 100%;
+    position: absolute;
+    bottom: 90px;
+    margin-left: 30px;
+}
+
+#btn-actions::after {
+    clear:none;
+}
+
+#btn-upload {
+    margin-left: 5px;    
+}
+
+#search-form {
+    margin: 8px 0;
+}
+
+[class^="sbicon-"], [class*=" sbicon-"] {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-image: url("../images/local-icons.png");
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+    *margin-right: .3em;
+}
+
+[class^="sbicon-"]:last-child,
+[class*=" sbicon-"]:last-child {
+    *margin-left: 0;
+}
+.sbicon-white,
+.active [class^="sbicon-"],
+.active [class*=" sbicon-"] {
+    background-image: url("../images/local-icons-white.png");
+}
+.sbicon-dropbox {
+    background-position: 0 -48px;
+}
+
+.sbicon-facebook {
+    background-position: -48px -48px;
+}
+
+.sbicon-home {
+    background-position: -96px -48px;
+}
+
+.sbicon-flickr{
+    background-position: -122px -48px;
+}
+
+.sbicon-download {
+    background-position: -144px -48px;
+}
+
+.sbicon-instagram{
+    background-position: -168px -48px;
+}
+
+.sbicon-cog {
+    background-position: -192px -48px;
+}
+
+.sbicon-skydrive{
+    background-position: -216px -48px;
+}
+
+.sbicon-flag {
+    background-position: -240px -48px;
+}
+
+.sbicon-readability {
+    background-position: -264px -48px;
+}
+
+.sbicon-envelope {
+    background-position: -288px -48px;
+}
+
+.sbicon-evernote {
+    background-position: -312px -48px;
+}
+
+.sbicon-box {
+    background-position: -336px -48px;
+}
+
+.sbicon-youtube {
+    background-position: -360px -48px;
+}
+
+.sbicon-github {
+    background-position: -384px -48px;
+}
+
+.sbicon-vimeo {
+    background-position: -408px -48px;
+}
+
+.sbicon-gdrive {
+    background-position: -432px -48px;
+}
+
+.sbicon-picasa {
+    background-position: -456px -48px;
+}
+
+.sbicon-alfresco {
+    background-position: -482px -48px;
+}
+
+.sbicon-harddrive {
+    background-position: -503px -48px;
+}
+
+#zippane {
+    text-align: center;
+    padding: 10px;
+    background-color: #DDD;
+    margin-bottom: 5px;
+    border-radius: 5px;
+}
+
+.active [class^="icon-"],
+.active [class*=" icon-"] {
+    background-image: url("../images/glyphicons-halflings-white.png");
+}
+
+#localDragDrop {
+    width: 90%;
+    min-height: 290px;
+    margin-top: 34px;
+    margin-left: 30px;
+    background: whitesmoke;
+    border: dashed black 1px;
+    text-align: center;
+}
+
+#localDragDrop.acceptFileDrop {
+    border: 8px solid #CCC;
+    /*Should be -8px on the above margins*/
+    margin-top: 26px;
+    margin-left: 22px;
+    margin-right: -8px;
+    margin-bottom: -6px;
+}
+
+#localDragHelp {
+    font-weight: 200;
+    font-size:2.5em;
+    margin-top: 130px;
+    text-shadow: 0 1px rgba(255, 255, 255, 0.9);
+}
+
+table.fileinfo td{
+    padding-left: 8px;
+}
+
+table.fileinfo .filename{
+    word-break: break-all;
+    max-width: 175px;
+    display: inline-block;
+    overflow: hidden;
+    line-height: 20px;
+}
+
+.progress {
+    text-align: left;
+}
+
+.progress .bar.fpprogressbar {
+    text-align: right;
+    padding: 3px;
+    font-weight: bold;
+    color: #FFF;
+    margin: 0;
+}
+
+#emailheader {
+    margin-left: 160px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+#webcam_movie {
+    margin-top: -15px;
+    display: inline-block !important;
+}
+
+#swfupload {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0px;
+    height: 0px;
+}
+
+.overlay {
+    position: fixed;
+    width: 70%;
+    color: black;
+    background-color: white;
+    border-color: white;
+    padding-top: 15%;
+    font-size: 2em;
+    -moz-opacity:.90; 
+    filter:alpha(opacity=90);
+    opacity:.90;  
+    font-weight: 200;
+    text-align: center;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#importing {
+	position: fixed;
+	width: 73%;
+	color: black;
+	background-color: white;
+	border-color: white;
+	padding-top: 15%;
+	font-size: 2em;
+	-moz-opacity: .90;
+	filter: alpha(opacity=90);
+	opacity: 0.9;
+	font-weight: 200;
+	text-align: center;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	top: 0px;
+	height: 70%;
+}
+#importing.spinner {
+    background: #ffffff url('../images/spinner.gif') no-repeat 50% 50%;
+}
+.overlay.fullscreenMessage {
+    left: 0;
+    top: 0;
+
+    height: 100%;
+    width: 100%;
+
+    font-size: 4em;
+    line-height: 1.2em;
+}
+
+.overlay.spinner {
+    background: #ffffff url('../images/spinner.gif') no-repeat 50% 50%;
+}
+
+.overlay.done {
+    background: #ffffff url('../images/icons/glyphicons_193_circle_ok@2x.png') no-repeat 50% 50%;
+    -moz-opacity:.97;
+    filter:alpha(opacity=97);
+    opacity:.97;
+}
+
+.auth_service_title {
+    margin-bottom: 10px;
+}
+
+#auth_staging {
+    position: absolute;
+    left: 50%;
+    width: 400px;
+    padding-right: 20px;
+    margin-left: -200px;
+    margin-top: 100px;
+}
+
+#auth_staging p {
+    font-size: 14px;
+    margin-top: 10px;
+}
+
+#auth_staging .branding {
+    margin-top: 30px;
+}
+
+#auth_staging .logo {
+    max-width: 256px;
+    max-height: 96px;
+    margin: 0 auto;
+    display: block;
+}
+
+#auth_staging #loading-dots {
+    width: 40px;
+    display: inline-block;
+    text-align: left;
+}
+
+#notify-container {
+    position: fixed;
+    top: 0;
+    left: 55%;
+    width: 500px;
+    margin-left: -250px;
+    text-align: center;
+}
+
+#notify {
+    background-color: #FFF3D1;
+    border:1px solid #BF8F04;
+    border-radius: 3px;
+    margin-top: 5px;
+
+    display: none;
+
+    font-size: 14px;
+    line-height: 20px;
+    padding: 4px 16px;
+
+    max-width: 500px;
+}
+
+#notify.error {
+    background-color: #A53F3F;
+    border-color: #662424;
+    color: #fff;
+    font-weight: bold;
+}
+
+.nav-collapse {
+   height: auto !important;
+   overflow: visible !important;
+}
+.collapse {
+   height: auto !important;
+}
