@@ -1,0 +1,240 @@
+
+/* reset.css v1.0 | 20080212 */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align:top;
+    background: transparent;
+}
+
+body {
+    line-height: 1;
+}
+
+ol, ul {
+    list-style: none;
+}
+
+blockquote, q {
+    quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+
+:focus {/* remember to define focus styles! */
+    outline: 0;
+}
+
+ins {/* remember to highlight inserts somehow! */
+    text-decoration: none;
+}
+
+del {
+    text-decoration: line-through;
+}
+
+
+table {/* tables still need 'cellspacing="0"' in the markup */
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+body{
+    font-size: 12px;
+    font-family: arial, Helvetica, sans-serif;
+}
+
+.clear{
+    clear:both;
+    height:0px;
+}
+.dummy{
+    position:relative;
+    height:38px;
+}
+#main{/* main*/
+    width:1040px;
+    height:auto;
+    position:relative;
+    background-color:#EDEDF1;
+    margin:auto;
+}
+/*ap.html style starts*/
+.apmatch{/* container*/
+    position: relative; 
+    width: 100%; 
+    height: auto;
+    padding-bottom:20px;
+    padding-top:20px;
+}
+#apmatch_id01{/*left section*/
+	position: relative; 
+	float: left; 
+	min-height: 600px; 
+	width: 436px;
+	margin-left: 39px;
+}
+#apmatch_id02{/*right section*/
+	position: relative; 
+	float: left; 
+	min-height: 600px; 
+	width: 540px; 
+}
+#apmatch_id03{/*image section*/
+	height: 195px; 
+	position: relative;
+	width:425px; 
+}
+#apmatch_id04{/*left table container*/
+    position: relative;           
+	height: auto; 
+	width: 360px; 
+	padding-bottom:10px;
+}
+#apmatch_id05{/*first image*/
+	position: relative; 
+	float: left; 
+	width: 255px; 
+	height: 192px; 
+	border: 1px solid black;
+}
+#apmatch_id06{/*second image*/
+	position: relative; 
+	float: left; 
+	width: 157px; 
+	height: 192px;
+	margin-left:8px; 
+    border: 1px solid black;
+}
+#apmatch_id07{/*right table container*/
+	height: auto; 
+	width: 540px; 
+	position: relative; 
+	padding-bottom:10px;
+}
+#apmatch_id08{/*icon container*/
+	height:45px;
+	padding-bottom:10px;
+	padding-top:15px;
+	position:relative;
+	width:425px;
+}
+.apmatch_cl01{/*table td style*/
+	border-left: 1px solid #969799;
+	border-bottom: 1px solid #969799;
+	border-right: 1px solid #969799; 
+	padding:6px; 
+	font-size:13px;
+}
+.apmatch_cl02{/*table td style*/
+	border-right: 1px solid #969799; 
+	border-bottom: 1px solid #969799;
+    padding:6px;
+    font-size:13px;
+    word-wrap:break-word;
+    text-align: center;
+}
+.apmatch_cl03{/*table heading style*/
+    background-color: #808785; 
+    color: white;
+    font-size:14px;
+}
+.apmatch_cl04{/*table td style*/
+    text-decoration:underline;
+    font-weight:bold;
+    font-size:14px;
+}
+.apmatch_cl05{/*icons*/
+   height:40px;
+   width:40px;
+   position:relative;
+   float:left;
+   margin-left:5px;
+}
+.apmatch_cl06{/*color*/
+	color:#78898D;
+	font-size:12px;
+}
+/*ap.html style ends*/
+
+
+/*bp.html styles starts*/
+#bpmatch_id01{/*left section*/
+	position: relative; 
+	float: left; 
+	min-height: 600px; 
+	width: 360px;
+	margin-left:63px;
+}
+#bpmatch_id02{/*middle section*/
+	position: relative; 
+	float: left; 
+	min-height: 600px; 
+	width: 42px; 
+}
+#bpmatch_id03{/*right section*/
+	position: relative; 
+	float: left; 
+	min-height: 600px; 
+	width: 378px;
+}
+#bpmatch_id04{/*image  container*/
+	position: relative; 
+	height: 250px; 
+	width: 337px;
+	border:1px solid black; 
+}
+#bpmatch_id05{/*left table container*/
+	height: auto; 
+	width: 360px; 
+	position: relative; 
+	padding-bottom:10px;
+}
+#bpmatch_id06{/*right table container*/
+	height: auto; 
+	width: 378px; 
+	position: relative; 
+	padding-bottom:10px;
+}
+#bpmatch_id07{/*right table container*/
+	height: auto; 
+	width: 493px; 
+	position: relative; 
+}
+#bpmatch_id08{/*icon container*/
+	height: 45px; 
+	padding-top:5px;
+	padding-bottom:3px;
+	position:relative;
+	width:340px;
+}
+/*bp.html styles ends*/
+
+.nomatch_span {
+    position:relative;
+    top:100px;
+    font-size: 15px;
+    color:#78898D;
+}
+.icon_class{
+    cursor:pointer;
+}

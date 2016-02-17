@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <script type="text/javascript" src="lib/head.load.min.js" data-headjs-load="package.js"></script>
+
+
+
+  <script type="text/javascript">
+  var siteurl = "http://localhost/www.parentfinder.com.PV.3.0/";
+
+  function showPopup() {
+    MemberComponent.start({
+      uid: (new Date()).getTime(),
+      siteurl: siteurl,
+      application_path: siteurl + "/MemberComponent/",
+      dhtmlx_codebase_path: siteurl + "/plugins/dhtmlx/"
+    });
+  }
+  </script>
+</head>
+
+<body>
+  <a onclick="showPopup();" class="splJoin">JOIN</a>
+</body>
+
+</html>

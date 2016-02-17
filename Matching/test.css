@@ -1,0 +1,30 @@
+body:nth-of-type(1) div.gridbox_dhx_skyblue table.hdr tr {
+background-image:url("http://192.168.40.11:8090/newPF/Matching/dhtmlxGrid/imgs/sky_blue_grid.gif");
+background-position:0 -1px;
+}
+
+.dhx_toolbar_base_dhx_skyblue {
+	background-image: url("http://192.168.40.11:8090/newPF/Matching/dhtmlxToolbar/codebase/imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg.gif");
+}
+
+.dhx_toolbar_base_dhx_skyblue.in_layoutcell {
+	background-image: url("http://192.168.40.11:8090/newPF/Matching/dhtmlxToolbar/codebase/imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_layoutcell.gif") !important;
+}
+
+.dhx_toolbar_base_dhx_skyblue.in_acccell {
+	background-image: url("http://192.168.40.11:8090/newPF/Matching/dhtmlxToolbar/codebase/imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_acccell.gif") !important;
+}
+
+.dhx_toolbar_base_dhx_skyblue div.dhx_toolbar_sep {
+	background-image: url("http://192.168.40.11:8090/newPF/Matching/dhtmlxToolbar/codebase/imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_sep_bg.gif");
+
+}
+
+.dhx_toolbar_base_dhx_skyblue div.dhx_toolbar_btn.over {	
+	background-image: url("http://192.168.40.11:8090/newPF/Matching/dhtmlxToolbar/codebase/imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_over.gif");
+	
+}
+.dhx_toolbar_base_dhx_skyblue div.dhx_toolbar_btn.pres {
+	bckground-image: url("http://192.168.40.11:8090/newPF/Matching/dhtmlxToolbar/codebase/imgs/dhxtoolbar_dhx_skyblue/dhxtoolbar_bg_pressed.gif");
+	
+}
