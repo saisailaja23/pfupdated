@@ -1,0 +1,266 @@
+/* 
+    Document   : parentfinder.css
+    Created on : Nov 3, 2011
+    Author     : Media Systems, Inc.
+
+*/
+
+/* reset.css v1.0 | 20080212 */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+margin: 0;
+padding: 0;
+border: 0;
+outline: 0;
+font-size: 100%;
+vertical-align: top;
+background: transparent;
+}
+body {
+line-height: 1;
+}
+ol, ul {
+list-style: none;
+}
+blockquote, q {
+quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+content: '';
+content: none;
+}
+
+/* remember to define focus styles! */
+:focus {
+outline: 0;
+}
+
+/* remember to highlight inserts somehow! */
+ins {
+text-decoration: none;
+}
+del {
+text-decoration: line-through;
+}
+
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+
+a { text-decoration: none
+}
+
+/* site specific css */
+
+
+body {
+    font-family: arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color:#6D6E70;
+}
+
+.font_cl01{
+    color:#404041;
+    font-size:22px;
+    font-weight:bold;
+}
+
+.main  {/* container */
+    height: 1275px;
+    width: 1650px;
+    position:relative;
+    margin:auto;
+}
+#bg1{
+    
+    background-image:url('images/bg1.jpg');
+}
+#bg3{
+    background-image:url('images/bg3.jpg');
+}
+#bg5{
+    background-image:url('images/bg5.jpg');
+}
+.bg2{
+    background-image:url('images/bg2.jpg');
+}
+.bg4{
+    background-image:url('images/bg4.jpg');
+}
+.dummy {/* dummy spacing */
+    height: 100px;
+    width: 100%;
+    position:relative;
+}
+.dummy_cl01 {/* dummy spacing */
+    height: 10px;
+    position:relative;
+}
+p{/* for paragraph */
+   position: relative; 
+   padding-bottom:10px;
+   text-align:justify;
+   line-height:18px;
+    
+}
+/* index page starts */
+
+#index{/* container for index page */
+    position:relative;
+    height:286px;
+    width:302px;
+    left:150px;
+    top:202px;
+    
+}
+#index_id01{/* image container*/
+    position:relative;
+    border:1px solid  #D5DE9B;
+    width:268px;
+    height:175px;
+    margin-left:15px;
+    margin-bottom:25px;
+    top:15px;
+}
+#index_id01_div{
+    position:relative;
+    width:268px;
+    height:auto;
+    margin-left:15px;
+    top:0px;
+    text-align: center;
+}
+#index_id02{/* name*/
+    position:relative;
+    color:#404200;
+    font-size:28px;
+    font-weight:bold;
+}
+
+/* index page ends */
+
+/* birthparent page starts */
+
+#birthparent{/* container for birth parent page */
+   position: relative; 
+   padding: 70px 50px 90px 50px; 
+   width:690px;
+   height:450px 
+}
+
+#birthparent_id01{/* content for birth parent page */
+   position: relative; 
+   height: 430px; 
+   width: 690px; 
+    
+}
+
+/* birthparent page ends */
+
+/* about page starts */
+.about{/* container for about page */
+   position: relative; 
+   top: 45px; 
+   left: 30px; 
+   width: 710px; 
+   height: 500px;
+    
+}
+.about_cl01{/*left portion*/
+   width:435px;
+   padding-left:25px;
+   padding-right:30px;
+   padding-top:20px;
+   height:470px;
+   position:relative;
+    
+}
+.about_cl02{/*right portion*/
+   width:192px;
+   padding-left:35px;
+   padding-top:25px;
+   height:470px;
+   position:relative;
+    
+}
+.about_cl03{/*image*/
+   height: 126px; 
+   width: 173px; 
+   border: 1px solid  #D5DE9B;
+   position:relative;
+    
+}
+/* about page ends */
+
+/* child preference page starts */
+
+#child_id01{/* container */
+   height: 35px; 
+   padding: 70px 50px 0px 50px; 
+   position: relative;
+}
+#child_id02{/*table container*/
+   position: relative; 
+   padding-left: 25px; 
+   width: 740px; 
+   height: 446px;
+}
+.child_cl01{/* label*/
+   border-top: 1px solid #DFDFDF; 
+   padding: 8px 0px 8px 25px;
+   width: 100px;
+    
+}
+.child_cl02{/*colon*/
+   border-top: 1px solid #D5DE9B; 
+   padding: 8px 0px 8px 20px;
+   width: 40px;
+    
+}
+.child_cl03{/*value*/
+   border-top: 1px solid #D5DE9B; 
+   padding: 8px 0px 8px 5px;
+   width: 600px;   
+}
+.child_cl04{/*border*/
+   border-bottom: 1px solid #D5DE9B;   
+}
+
+/* child preference page ends */
+
+
+/* photo albums page starts */
+
+#photo_id01{/* container*/
+    height:412px;
+    width:587px;
+    position:relative;
+    padding:100px 85px 100px 120px
+}
+#photo_id02{/* inner container*/
+    height:412px;
+    width:587px;
+    position:relative;
+}
+.photo_cl01{/* positioning image*/
+   padding-left:10px;
+   padding-top:17px;
+}
+.photo_cl02{/* positioning image*/
+   padding-left:165px;
+   padding-top:17px;
+}
+.break { page-break-before: always; }
+
+/* photo albums page ends */

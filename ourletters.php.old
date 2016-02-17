@@ -1,0 +1,149 @@
+<?php
+
+require_once('inc/header.inc.php');
+require_once(BX_DIRECTORY_PATH_INC . 'admin.inc.php');
+require_once(BX_DIRECTORY_PATH_INC . 'utils.inc.php');
+
+require_once(BX_DIRECTORY_PATH_CLASSES . 'BxDolDb.php');
+require_once(BX_DIRECTORY_PATH_CLASSES . 'BxDolPageView.php');
+
+define("CTZ_OUR_LETTERS", 'ctz_our_letters');
+
+class ctzOurLetter extends Thing {
+	private $oDb;
+	private $oTemplate;
+	
+	public function __construct () {
+		$this->oDb = new BxDolDb();
+		$this->oTemplate = new BxDolTemplate();
+	}
+	
+	public function getDb () {
+		return $this->oDb;
+	}
+	
+	public function getTemplate () {
+		return $this->oTemplate;
+	}
+	
+	public function getPostForm ($aData) {
+		$iUserId = getLoggedId();
+		if ($iUserId == 0)
+			member_auth();
+		$sCode = '';
+		if (isset($aData['post'])) {
+			$aFields = array(
+				'caption', 'content', 'author_id', 'when'
+			);
+			$aData['author_id'] = $iUserId;
+			$aData['when'] = time();
+			// sql query
+			$sqlQuery = "REPLACE `" . CTZ_OUR_LETTERS . '` SET ';
+			$sqlFields = "";
+			foreach ($aFields as $sField)
+				$sqlFields .= "`$sField` = '" . process_db_input($aData[$sField]) . "', ";
+			$sqlQuery .= trim($sqlFields, ', ');
+			if ($this->oDb->res($sqlQuery))
+				$sCode .= MsgBox(_t('_Saved'));
+		}
+		$aValues = array();
+		$aItems = $this->getData($iUserId);
+		if (count($aItems) > 0)
+			$aValues = $aItems[0];
+		bx_import('BxTemplFormView');
+		$aForm = array(
+			'form_attrs' => array(
+                'id' => 'text_data',
+                'name' => 'text_data',
+                'action' => BX_DOL_URL_ROOT . 'ourletters.php?mode=post',
+                'method' => 'post',
+                'enctype' => 'multipart/form-data'
+            ),
+            'inputs' => array (
+                'caption' => array(
+                    'type' => 'text',
+                    'name' => 'caption',
+                    'caption' => _t("_td_caption"),
+                    'value' => isset($aValues['caption']) ? $aValues['caption'] : '',
+                	'required' => 1,
+                    'checker' => array (  
+                        'func' => 'length',
+                        'params' => array(3,64),
+                        'error' => _t('_td_err_incorrect_length'),
+                    ),                    
+                ),
+                'content' => array(
+                    'type' => 'textarea',
+                    'html' => 2,
+                    'name' => 'content',
+                    'caption' => _t("_td_content"),
+                    'value' => isset($aValues['content']) ? $aValues['content'] : '',
+                	'required' => 1,
+                    'checker' => array (  
+                        'func' => 'length',
+                        'params' => array(3,65536),
+                        'error' => _t('_td_err_incorrect_length'),
+                    ),                    
+                ),
+                'post' => array(
+                    'type' => 'submit',
+                    'name' => 'post',
+                    'value' => _t("_td_post"),
+                ),
+            )
+		);
+		$oForm = new BxTemplFormView($aForm);
+		$sCode .= $oForm->getCode();
+		return $sCode;
+	}
+	
+	public function getItemsList ($sNickName) {
+		$sNickName = strip_tags($sNickName);
+		$iId = getID($sNickName);
+		$GLOBALS['oTopMenu']->setCurrentProfileID($iId);
+		$aItems = $this->getData($iId);
+		if (count($aItems) > 0)
+			return $this->oTemplate->parseHtmlByName('our_letters_list.html', array('bx_repeat:items' => $aItems));
+		else
+			return MsgBox(_t('_Empty'));
+	}
+	
+	private function getData ($iUserId) {
+		$sqlQuery = "SELECT `caption`, `content`, FROM_UNIXTIME(`when`) as `when` FROM `" . CTZ_OUR_LETTERS . "` WHERE `author_id`='" . $iUserId . "'";
+		return $this->oDb->getAll($sqlQuery);
+	}
+}
+
+class ctzOurLettersBlock extends BxDolPageView {
+	public $oOurLetters;
+	public function __construct ($sMode = 'post') {
+		$sMode = 'our_letters_' . $sMode;
+		parent::BxDolPageView($sMode);
+		$this->oOurLetters = new ctzOurLetter();
+	}
+	
+	public function getBlockCode_post () {
+		return $this->oOurLetters->getPostForm($_POST);
+	}
+	
+	public function getBlockCode_view () {
+		if (isset($_GET['owner']))
+			return $this->oOurLetters->getItemsList($_GET['owner']);
+	}
+}
+
+check_logged();
+
+$_page['header'] = $GLOBALS['site']['title'];
+$_page['header_text'] = '';
+$_page['css_name'] = array('our_letters.css');
+$_page['name_index'] = 55;
+$_ni = $_page['name_index'];
+
+$sMode = isset($_GET['mode']) ? strip_tags($_GET['mode']) : 'post';
+$oPage = new ctzOurLettersBlock($sMode);
+$_page_cont[$_ni]['page_main_code'] = $oPage->getCode();
+
+PageCode();
+
+?>

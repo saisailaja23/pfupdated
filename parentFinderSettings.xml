@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<walkOut>
+    <settings>
+		<searchFamiliesLink>http://www.parentfinder.com/search.php</searchFamiliesLink> <!--  -->
+		<chatLaunch>window.open('http://www.parentfinder.com/popup.php','CallAdoptionSpecialist','height=250,width=290,top=250,left=700,resizable=no,scrollbars=no')</chatLaunch>
+        </settings>
+</walkOut>
