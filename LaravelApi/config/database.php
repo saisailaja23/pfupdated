@@ -54,8 +54,8 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'pfcomm'),
+            'host'      => env('DB_HOST', '192.168.0.100'),
+            'database'  => env('DB_DATABASE', 'pfcomm_api'),
             'username'  => env('DB_USERNAME', 'root'),
             'password'  => env('DB_PASSWORD', ''),
             'charset'   => 'utf8',

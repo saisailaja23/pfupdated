@@ -30,26 +30,10 @@ Route::group(['middleware' => ['web']], function () {
     //
 });
 
-Route::get('names/{id}', function($id)
-{
-    $names = array(
-      1 => "John",
-      2 => "Mary",
-      3 => "Steven"
-    );    
-    return array($id => $names[$id]);
-});
 
-// Route::get('profile', [
-//     'as' => 'profile', 'uses' => 'Controller@showProfile'
-// ]);
-
-
-Route::get('familylist', 'FamilyController@showProfile');
 
 /* profile List Api */
 
 Route::get('/profiles', 'ParentController@showProfile');
-Route::get('/profiles/{id}', 'ParentController@showProfile');
-Route::get('/profiles/filter', 'ParentController@showProfile');
-//Route::get('profiles/{id}', ['as' => 'search', 'uses' => 'ParentController@showProfile']);
+
+

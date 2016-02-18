@@ -1,12 +1,13 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Http\Model;
 
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-class Profiles extends Model
+use Illuminate\Database\Eloquent\Models;
+
+class Letter extends Model
 {
     //
+    protected $table = 'letter';
    
     public $timestamps = false;
     protected $dateFormat = 'U';
