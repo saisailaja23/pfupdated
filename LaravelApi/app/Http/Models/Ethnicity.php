@@ -8,7 +8,7 @@ class Ethnicity extends Model
 {
     //
     
-   
+   protected $table = 'ethnicity';
     public $timestamps = false;
     
     public function ethnicityPref() {

@@ -17,9 +17,9 @@ class ParentController extends Controller
 {
    public function showProfile()
     {
-    	/* All User List */
-    	
-	    	$profiles =  ParentService::getAllProfiles();
+    		/* Single Profile */
+    	    $Parent=new ParentService(11);
+	    	$profiles =  $Parent->getProfile();
 	    	return json_encode($profiles);
 	    	
 
