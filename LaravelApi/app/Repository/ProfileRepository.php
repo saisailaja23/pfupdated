@@ -26,13 +26,39 @@ class ProfileRepository {
          $this->profileId = $profileId;
     }   
     
+    /*Get Couple Profile */
+     public  function getCouple($accountId){   
+        try{
+
+            $couple=new Profiles;
+            $coupleDetails =$couple->where('accounts_id', '=',$accountId) 
+                                ->where('profile_id', '!=',$this->profileId)
+                                ->first();   
+            return $coupleDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+          
+    } 
+
+    /* Get all profiles */
+    public  function getAllProfiles(){   
+        try{
+            $profiles=new Profiles;
+            $profileDetails =$profiles->get();       
+            return $profileDetails;print_r($profileDetails);
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+          
+    } 
 
     /* Get a single profiles */
    
     public  function getProfile(){   
         try{
             $profiles=new Profiles;
-            $profileDetails =$profiles->where('accounts_id', '=',$this->profileId)->first();       
+            $profileDetails =$profiles->where('profile_id', '=',$this->profileId)->first();       
             return $profileDetails;
         }catch(\Exception $e){
              //Add Exception here
