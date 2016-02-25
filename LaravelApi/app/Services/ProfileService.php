@@ -33,10 +33,21 @@ class ProfileService {
     private $gender;
     private $accountId;
     private $coupleId;
+    private $coupleFirstName;
+    private $coupleLastName;
+    private $coupleDob;
+    private $coupleFaithId;
+    private $coupleEthnicityId;
+    private $coupleReligionId;
+    private $coupleWaitingId;
+    private $coupleEthnicity;
+    private $coupleFaith;
+    private $coupleWaiting;
+    private $coupleGender;
+    private $profileIds;
 
     public function __construct($profileId) {
        $this->setProfileId($profileId);
-
     }
     
     public  function getProfileId() {
@@ -99,6 +110,55 @@ class ProfileService {
         return $this->coupleId;
     }
 
+    public function getCoupleFirstName() {
+        return $this->coupleFirstName;
+    } 
+
+    public function getCoupleLastName(){        
+        return $this->coupleLastName;
+    }
+
+    public function getCoupleDob() {
+        return $this->coupleDob;
+    }
+
+    public function getCoupleFaithId(){        
+        return $this->coupleFaithId;
+    }
+
+    public function getCoupleEthnicityId(){        
+        return $this->coupleEthnicityId;
+    }
+
+    public function getCoupleReligionId() {
+        return $this->coupleReligionId;
+    }
+
+    public function getCoupleWaitingId() {
+        return $this->coupleWaitingId;
+    }
+
+    public function getCoupleEthnicity() {
+        return $this->coupleEthnicity;
+    } 
+
+    public function getCoupleFaith() {
+        return $this->coupleFaith;
+    }   
+
+    public function getCoupleWaiting() {
+        return $this->coupleWaiting;
+    }
+
+    public function getCoupleGender() {
+        return $this->coupleGender;
+    } 
+
+    public function getProfileIds() {
+        return $this->profileIds;
+    }  
+
+   
    
     /* Get a single profiles */
    
@@ -115,24 +175,46 @@ class ProfileService {
         $this->gender=$profileDetails->gender;
         $this->accountId=$profileDetails->accounts_id;
 
-         /*Get Couple*/
-        //$couple=new ProfileRepository($this->accountId);
-        $coupleDetails=$profile->getCouple($this->accountId);
-        $this->coupleId=$coupleDetails->profile_id;
-
         $ethnicity=new EthnicityRepository($this->ethnicityId);
-        $ethnicityDetails=$ethnicity->getEthnicityDetails();
+        if($ethnicityDetails=$ethnicity->getEthnicityDetails())
         $this->ethnicity=$ethnicityDetails->ethnicity;
 
         $faith=new FaithRepository($this->faithId);
-        $faithDetails=$faith->getFaithDetails();
+        if($faithDetails=$faith->getFaithDetails())
         $this->faith=$faithDetails->faith;
 
         $waiting=new WaitingRepository($this->waitingId);
-        $waitingDetails=$waiting->getWaitingDetails();
+        if($waitingDetails=$waiting->getWaitingDetails())
         $this->waiting=$waitingDetails->waiting;
 
-       
+        /*Get Couple*/        
+        if($coupleDetails=$profile->getCouple($this->accountId))
+        $this->coupleId=$coupleDetails->profile_id;
+        if($this->coupleId){
+            $couple=new ProfileRepository($this->coupleId);  
+            $coupleDetails=$couple->getProfile();
+            $this->coupleFirstName=$coupleDetails->first_name;
+            $this->coupleLastName=$coupleDetails->last_name;
+            $this->coupleDob=$coupleDetails->dob;
+            $this->coupleFaithId=$coupleDetails->faith_id;
+            $this->coupleEthnicityId=$coupleDetails->ethnicity_id;
+            $this->coupleWaitingId=$coupleDetails->waiting_id;
+            $this->coupleReligionId=$coupleDetails->religion_id;
+            $this->coupleGender=$coupleDetails->gender;
+
+            $ethnicity=new EthnicityRepository($this->coupleEthnicityId);
+            $ethnicityDetails=$ethnicity->getEthnicityDetails();
+            $this->coupleEthnicity=$ethnicityDetails->ethnicity;
+
+            $faith=new FaithRepository($this->coupleFaithId);
+            $faithDetails=$faith->getFaithDetails();
+            $this->coupleFaith=$faithDetails->faith;
+
+            $waiting=new WaitingRepository($this->coupleWaitingId);
+            $waitingDetails=$waiting->getWaitingDetails();
+            $this->coupleWaiting=$waitingDetails->waiting;
+            
+        }        
 
         return $this;       
     }  
@@ -140,6 +222,12 @@ class ProfileService {
     /*Get all profiles */
 
     public  function getAllProfiles(){ 
+        $profile=new ProfileRepository($this->profileId);  
+        $profileDetails=$profile->getAllProfiles();
+        foreach ($profileDetails as $ProfileID) {
+            $this->profileIds[]=$ProfileID->profile_id;
+        }
+        return $this;
     }
         
     

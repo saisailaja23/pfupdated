@@ -41,12 +41,24 @@ class ProfileRepository {
           
     } 
 
+   
     /* Get all profiles */
     public  function getAllProfiles(){   
         try{
+            $user=new User;
+            $users=$user->get();
             $profiles=new Profiles;
-            $profileDetails =$profiles->get();       
-            return $profileDetails;print_r($profileDetails);
+            foreach($users as $User){
+                $profileDetails=$profiles->select('status')
+                     ->where('status', '=', 1)
+                     ->groupBy('status')
+                     ->get();
+                     print_r($profileDetails);
+                // $profileDetails =$profiles->where('status','=',1)
+                //                     ->get();  
+            }
+             
+            return $profileDetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
