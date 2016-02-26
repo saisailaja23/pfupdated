@@ -38,7 +38,7 @@ class EthnicityRepository {
     }  
   
     /* Get ethnicity */
-    public function getEthnictyDetails() {
+    public function getEthnicityDetails() {
         try{
             $ethnicityObj=new Ethnicity;
             $ethnicityDetails =$ethnicityObj->where('ethnicity_id', '=',$this->getEthnicityId())->first();
