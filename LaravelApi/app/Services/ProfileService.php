@@ -44,6 +44,7 @@ class ProfileService {
     private $coupleFaith;
     private $coupleWaiting;
     private $coupleGender;
+    private $avatar;
     private $profileIds;
 
     public function __construct($profileId) {
@@ -152,7 +153,11 @@ class ProfileService {
 
     public function getCoupleGender() {
         return $this->coupleGender;
-    } 
+    }
+
+    public function getAvatar() {
+        return $this->avatar;
+    }   
 
     public function getProfileIds() {
         return $this->profileIds;
@@ -174,6 +179,7 @@ class ProfileService {
         $this->religionId=$profileDetails->religion_id;
         $this->gender=$profileDetails->gender;
         $this->accountId=$profileDetails->accounts_id;
+        $this->avatar=$profileDetails->Avatar;
 
         $ethnicity=new EthnicityRepository($this->ethnicityId);
         if($ethnicityDetails=$ethnicity->getEthnicityDetails())
@@ -203,15 +209,15 @@ class ProfileService {
             $this->coupleGender=$coupleDetails->gender;
 
             $ethnicity=new EthnicityRepository($this->coupleEthnicityId);
-            $ethnicityDetails=$ethnicity->getEthnicityDetails();
+            if($ethnicityDetails=$ethnicity->getEthnicityDetails())
             $this->coupleEthnicity=$ethnicityDetails->ethnicity;
 
             $faith=new FaithRepository($this->coupleFaithId);
-            $faithDetails=$faith->getFaithDetails();
+            if($faithDetails=$faith->getFaithDetails())
             $this->coupleFaith=$faithDetails->faith;
 
             $waiting=new WaitingRepository($this->coupleWaitingId);
-            $waitingDetails=$waiting->getWaitingDetails();
+            if($waitingDetails=$waiting->getWaitingDetails())
             $this->coupleWaiting=$waitingDetails->waiting;
             
         }        

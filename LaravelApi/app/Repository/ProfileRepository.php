@@ -49,13 +49,10 @@ class ProfileRepository {
             $users=$user->get();
             $profiles=new Profiles;
             foreach($users as $User){
-                $profileDetails=$profiles->select('status')
-                     ->where('status', '=', 1)
-                     ->groupBy('status')
-                     ->get();
-                     print_r($profileDetails);
-                // $profileDetails =$profiles->where('status','=',1)
-                //                     ->get();  
+                
+                $profileDetails =$profiles->where('status','=',1)
+                                        ->groupBy('accounts_id')
+                                        ->get();  
             }
              
             return $profileDetails;
