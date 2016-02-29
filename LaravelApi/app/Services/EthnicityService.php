@@ -12,7 +12,7 @@ use App\Repository\ProfileRepository;
 /**
  * Description of ParentService
 **/
-class ProfileService {
+class EthnicityService {
 
    
     private $ethnicityId;
