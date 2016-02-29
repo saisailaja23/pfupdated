@@ -7,7 +7,7 @@ use App\Models\User;
 use App\Models\Profiles;
 use App\Models\Ethnicity;
 
-use App\Repository\ProfileRepository;
+use App\Repository\EthnicityRepository;
 
 /**
  * Description of ParentService
