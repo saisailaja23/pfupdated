@@ -53,25 +53,26 @@ class ProfileController extends Controller
     		$profile=new ProfileService(0);
     		$profiles= $profile->getAllProfiles();
     		$profileIds=$profile->getProfileIds();
-    // 		foreach($profileIds as $profile_id){
-    // 			$profile=new ProfileService($profile_id);
-				// $profiles =  $profile->getProfile();
-				// $profileDetails[]=array(
-				// 		     	"first_name"=>$profile->getFirstName(),
-				// 		     	"last_name"=>$profile->getLastName(),
-				// 		     	"dob"=>$profile->getDob(),
-				// 		     	"faith"=>$profile->getFaith(),
-				// 		     	"waiting"=>$profile->getWaiting(),
-				// 		     	"couple_first_name"=>$profile->getCoupleFirstName(),
-				// 		     	"couple_last_name"=>$profile->getCoupleLastName(),
-				// 		     	"couple_dob"=>$profile->getCoupleDob()
-				// 		     	);	
-    // 		}
+     		foreach($profileIds as $profile_id){
+     			$profile=new ProfileService($profile_id);
+				$profiles =  $profile->getProfile();
+				$profileDetails[]=array(
+						     	"first_name"=>$profile->getFirstName(),
+						     	"last_name"=>$profile->getLastName(),
+						     	"dob"=>$profile->getDob(),
+						     	"faith"=>$profile->getFaith(),
+						     	"waiting"=>$profile->getWaiting(),
+						     	"avatar"=>$profile->getAvatar(),
+						     	"couple_first_name"=>$profile->getCoupleFirstName(),
+						     	"couple_last_name"=>$profile->getCoupleLastName(),
+						     	"couple_dob"=>$profile->getCoupleDob()
+						     	);	
+     		}
     		
     	}
     	
     	    
-	   // return json_encode($profileDetails);	    	
+	    return json_encode($profileDetails);	    	
 
   	}
 
