@@ -15,7 +15,7 @@ use App\Repository\UserRepository;
 /**
  * Description of ParentService
 **/
-class ProfileService {
+class ProfileService { 
 
    
     private $profileId;
