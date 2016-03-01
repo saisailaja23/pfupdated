@@ -55,6 +55,16 @@ class ProfileController extends Controller
 					$profiles= $profile->getProfilesByRegion($region);
 					$profileIds=$profile->getProfileIds();
 				}
+				else if($filter_tag=='kids'){
+					$kids=Input::segment(3);
+					$profiles= $profile->getProfilesByKids($kids);
+					$profileIds=$profile->getProfileIds();
+				}
+				else if($filter_tag=='state'){
+			     $state=Input::segment(3);
+			     $profiles= $profile->getProfilesByState($state);
+			     $profileIds=$profile->getProfileIds();
+			    }
 			}else{
 			
     		$profiles= $profile->getAllProfiles();

@@ -49,6 +49,17 @@ class ContactRepository {
              //Add Exception here
         }  
     }
-        
+     
+      public function getContactByState($stateId){
+      
+         try{
+            $contactObj=new ContactDetails;
+            $contcatDetails =$contactObj->where('State', '=',$stateId)
+                                ->get(); 
+                                return $contcatDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+    }   
     
 }

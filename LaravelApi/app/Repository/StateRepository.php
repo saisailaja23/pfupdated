@@ -31,6 +31,15 @@ class StateRepository {
              //Add Exception here
         }  
     }
+     public function getStateById($state) {
+        try{
+            $statetObj=new States;
+            $stateDetails =$statetObj->where('state', '=',$state)->first();
+            return $stateDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+    }
         
     
 }
