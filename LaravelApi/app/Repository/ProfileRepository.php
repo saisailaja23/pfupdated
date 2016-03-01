@@ -1,19 +1,14 @@
 <?php
-
 namespace App\Repository;
-
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Profiles;
-
 /**
  * Description of ParentService
 **/
 class ProfileRepository {
-
    
     private $profileId;
-
     public function __construct($profileId) {
          $this->setProfileId($profileId);
     }
@@ -21,7 +16,6 @@ class ProfileRepository {
     public  function getProfileId() {
        return $this->profileId;
     }
-
     public  function setProfileId($profileId) {
          $this->profileId = $profileId;
     }   
@@ -29,7 +23,6 @@ class ProfileRepository {
     /*Get Couple Profile */
      public  function getCouple($accountId){   
         try{
-
             $couple=new Profiles;
             $coupleDetails =$couple->where('accounts_id', '=',$accountId) 
                                 ->where('profile_id', '!=',$this->profileId)
@@ -40,7 +33,6 @@ class ProfileRepository {
         } 
           
     } 
-
    
     /* Get all profiles */
     public  function getAllProfiles(){   
@@ -54,14 +46,12 @@ class ProfileRepository {
                                         ->groupBy('accounts_id')
                                         ->get();  
             }
-             
             return $profileDetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
           
     } 
-
     /* Get a single profiles */
    
     public  function getProfile(){   
