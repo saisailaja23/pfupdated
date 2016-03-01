@@ -271,7 +271,7 @@ class ProfileService {
         $childObj=new ChildRepository($kids); 
         $childDetails=$childObj->getChildDetails();
          foreach ($childDetails as $childDetail) {
-          $accountId= $childDetail->Account_id;
+          $accountId= $childDetail->Accounts_id;
            $profileObj=new ProfileRepository(null);
            $profileIds=$profileObj->getProfileIdByAccount($accountId);
            $this->profileIds[]=$profileIds->profile_id;

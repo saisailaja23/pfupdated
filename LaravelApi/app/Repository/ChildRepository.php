@@ -27,8 +27,7 @@ class ChildRepository {
             $childObj=new Child;
             $childDetails =$childObj->where('Number_of_childern', '=',$this->child)
                                 ->get();
-           // print_r($childDetails);
-            return $stateDetails;
+            return $childDetails;
         }catch(\Exception $e){
              //Add Exception here
         }  
