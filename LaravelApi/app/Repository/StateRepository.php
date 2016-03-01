@@ -25,7 +25,7 @@ class StateRepository {
     public function getStateDetails() {
         try{
             $statetObj=new States;
-            $stateDetails =$statetObj->where('accounts_id', '=',$this->stateId)->first();
+            $stateDetails =$statetObj->where('state_id', '=',$this->stateId)->first();
             return $stateDetails;
         }catch(\Exception $e){
              //Add Exception here

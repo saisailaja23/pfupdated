@@ -63,6 +63,45 @@ class ProfileRepository {
              //Add Exception here
         } 
           
+    } 
+
+		public function getProfilesByReligion($religion_id){
+			try{
+            $profiles=new Profiles;
+            $profileDetails =$profiles
+							 ->join('Religions', 'profiles.religion_id', '=', 'Religions.ReligionId')									
+							 ->where('religion_id', '=',$religion_id)
+                             ->get();
+							
+            return $profileDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }
+		}
+
+        public function getProfilesByRegion($region_id){
+            try{
+            $contact=new Profiles;
+            $profileDetails =$profiles
+                             ->join('Regions', 'profiles.region_id', '=', 'Regions.RegionId')                                   
+                             ->where('region_id', '=',$region_id)
+                             ->get();
+                            
+            return $profileDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }
+        }
+
+
+        public function getProfileIdByAccount($account_id){
+         try{
+            $account=new Profiles;
+            $accountDetails =$account->where('accounts_id', '=',$account_id)->first();       
+            return $accountDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
     }    
         
     

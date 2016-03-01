@@ -39,6 +39,16 @@ class ContactRepository {
              //Add Exception here
         }  
     }
+      public function getContactByRegion($regionId){
+         try{
+            $contactObj=new ContactDetails;
+            $contcatDetails =$contactObj->where('Region', '=',$regionId)
+                                ->get();
+            return $contcatDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+    }
         
     
 }

@@ -12,6 +12,8 @@ use App\Repository\UserRepository;
 use App\Repository\ContactRepository;
 use App\Repository\CountryRepository;
 use App\Repository\StateRepository;
+use App\Repository\ReligionRepository;
+use App\Repository\RegionRepository;
 /**
  * Description of ParentService
 **/
@@ -186,7 +188,7 @@ class ProfileService {
 			$this->country=$countries->country;
 			$stateObj=new StateRepository($this->stateId);
 			$states=$stateObj->getStateDetails();
-			//$this->state=$states->state;
+			$this->state=$states->State;
 		}
 		
         /*Get Couple*/        
@@ -237,6 +239,31 @@ class ProfileService {
         }
         return $this;
 	}
-        
+	
+	public function getProfilesByReligion($religion){     
+		$profileObj=new ProfileRepository($this->profileId);
+        $religionObj=new ReligionRepository($religion); 
+        $religions=$religionObj->getReligionDetails();
+        $religionId=   $religions->ReligionId;    
+        $profileDetails=$profileObj->getProfilesByReligion($religionId);//print_r($profileDetails);
+        foreach ($profileDetails as $ProfileID) {
+            $this->profileIds[]=$ProfileID->profile_id;
+        }
+        return $this;
+	}
+     public function getProfilesByRegion($region){ 
+        $regionObj=new RegionRepository(null); 
+        $regions=$regionObj->getRegionById($region);
+        $regionId=   $regions->RegionId;
+        $regionObj1=new ContactRepository(null); 
+        $accountDetails=$regionObj1->getContactByRegion($regionId);
+        foreach ($accountDetails as $accountDetail) {
+          $accountId= $accountDetail->Account_id;
+           $profileObj=new ProfileRepository(null);
+           $profileIds=$profileObj->getProfileIdByAccount($accountId);
+           $this->profileIds[]=$profileIds->profile_id;
+        }
+        return $this;
+    }   
     
 }

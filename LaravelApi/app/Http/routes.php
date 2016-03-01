@@ -36,6 +36,9 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::get('/profile/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles', 'ProfileController@getProfileApi');
+Route::get('/profiles/religion/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/region/{any}', 'ProfileController@getProfileApi');
+
 
 
 
