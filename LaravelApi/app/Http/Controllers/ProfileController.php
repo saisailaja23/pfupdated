@@ -71,7 +71,8 @@ class ProfileController extends Controller
     		$profileIds=$profile->getProfileIds();
      		
 			}
-    		foreach($profileIds as $profile_id){
+    		
+     		foreach($profileIds as $profile_id){
      			$profileObj=new ProfileService($profile_id);
 				$profile =  $profileObj->getProfile();
 				$profileDetails[]=array(
@@ -89,7 +90,7 @@ class ProfileController extends Controller
 						     	);	
      		}
     		
-    	}
+    	
     	
     	    
 	    return json_encode($profileDetails);	    	
