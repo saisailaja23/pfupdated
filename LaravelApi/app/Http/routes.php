@@ -34,6 +34,13 @@ Route::group(['middleware' => ['web']], function () {
 
 /* profile List Api */
 
-Route::get('/profiles', 'ProfileController@getProfile');
+Route::get('/profile/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles', 'ProfileController@getProfileApi');
+Route::get('/profiles/religion/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/region/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/kids/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/state/{any}', 'ProfileController@getProfileApi');
+
+
 
 

@@ -1,18 +1,16 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 class Child extends Model
 {
     //
-    
+    protected $table='child';
    
     public $timestamps = false;
     
-    public function user() {
-        return $this->belongsTo('User');
-    } 
+    
 
 }

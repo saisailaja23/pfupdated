@@ -4,16 +4,18 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactDetails extends Model
+class FaithPref extends Model
 {
     //
     
-     protected $table = 'contactdetails';
+    protected $table = 'faith_pref';
     public $timestamps = false;
     
     public function user() {
         return $this->belongsTo('User');
     } 
-
+    public function ethnicity() {
+        return $this->hasOne('Faith');
+    }
 
 }

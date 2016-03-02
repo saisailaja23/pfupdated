@@ -4,7 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Account extends Model
+class Child extends Model
 {
     //
+    
+   
+    public $timestamps = false;    
+   
+
 }
