@@ -40,10 +40,38 @@ class ProfileController extends Controller
 						     	);	
     	}
     	else if($api=='profiles'){			/* To list all profiles */
-    		
-    		$profile=new ProfileService(0);
+
+			$profile=new ProfileService(0);
+    		$filter_tag=Input::segment(2);
+			if(isset($filter_tag)){
+				if($filter_tag=='religion'){
+					$religion=Input::segment(3);
+					$profiles= $profile->getProfilesByReligion($religion);
+					$profileIds=$profile->getProfileIds();
+					
+				}
+				else if($filter_tag=='region'){
+					$region=Input::segment(3);
+					$profiles= $profile->getProfilesByRegion($region);
+					$profileIds=$profile->getProfileIds();
+				}
+				else if($filter_tag=='kids'){
+					$kids=Input::segment(3);
+					$profiles= $profile->getProfilesByKids($kids);
+					$profileIds=$profile->getProfileIds();
+				}
+				else if($filter_tag=='state'){
+			     $state=Input::segment(3);
+			     $profiles= $profile->getProfilesByState($state);
+			     $profileIds=$profile->getProfileIds();
+			    }
+			}else{
+			
     		$profiles= $profile->getAllProfiles();
     		$profileIds=$profile->getProfileIds();
+     		
+			}
+    		
      		foreach($profileIds as $profile_id){
      			$profileObj=new ProfileService($profile_id);
 				$profile =  $profileObj->getProfile();
@@ -62,7 +90,7 @@ class ProfileController extends Controller
 						     	);	
      		}
     		
-    	}
+    	
     	
     	    
 	    return json_encode($profileDetails);	    	

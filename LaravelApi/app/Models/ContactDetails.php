@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class ContactDetails extends Model
 {
     //
     
-   
+     protected $table = 'contactdetails';
     public $timestamps = false;
     
     public function user() {
