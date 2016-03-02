@@ -91,7 +91,7 @@ class ProfileController extends Controller
      		}
     		
     	
-    	
+    	}
     	    
 	    return json_encode($profileDetails);	    	
   	}
