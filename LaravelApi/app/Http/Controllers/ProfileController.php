@@ -65,6 +65,16 @@ class ProfileController extends Controller
 			     $profiles= $profile->getProfilesByState($state);
 			     $profileIds=$profile->getProfileIds();
 			    }
+			    else if($filter_tag=='name'){
+			     $name=Input::segment(3);
+			     $profiles= $profile->getProfilesByName($name);
+			     $profileIds=$profile->getProfileIds();
+			    }
+			    else if($filter_tag=='child-preference'){
+			     $child_pref=Input::segment(3);
+			     $profiles= $profile->getProfilesChildPref($child_pref);
+			     $profileIds=$profile->getProfileIds();
+			    }
 			}else{
 			
     		$profiles= $profile->getAllProfiles();
@@ -90,7 +100,7 @@ class ProfileController extends Controller
 						     	);	
      		}
     		
-    	
+    	}
     	
     	    
 	    return json_encode($profileDetails);	    	

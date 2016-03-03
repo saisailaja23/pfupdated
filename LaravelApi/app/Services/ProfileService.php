@@ -295,5 +295,31 @@ class ProfileService {
         }
         return $this;
     }
+
+    public function getProfilesByName($name){  
+        $profileObj=new ProfileRepository(null);
+         $names=$profileObj->getProfileByName($name);
+        foreach ($names as $ProfileID) {
+            $this->profileIds[]=$ProfileID->profile_id;
+        }
+        return $this;
+    }
+    public function getProfilesChildPref($child_pref){  
+        $ethnicityObj=new EthnicityRepository(null); 
+        $ethnicity=$ethnicityObj->getEthinicityById($child_pref);
+        $ethinicityId=   $ethnicity->ethnicity_id;
+
+
+         $ethinicityDetails=$ethnicityObj->getProfilesByEthinicity($ethinicityId);
+
+        foreach ($ethinicityDetails as $ethinicityDetail) {
+           $accountId= $ethinicityDetail->account_id;
+           $profileObj=new ProfileRepository(null);
+           $profileIds=$profileObj->getProfileIdByAccount($accountId);
+           $this->profileIds[]=$profileIds->profile_id;
+        }
+        return $this;
+    }
+
     
 }

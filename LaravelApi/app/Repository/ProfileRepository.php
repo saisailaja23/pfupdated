@@ -104,5 +104,32 @@ class ProfileRepository {
         } 
     }    
         
-    
+    public function getProfileByName($name){
+       
+         try{
+            $nameobj=new Profiles;
+            $nameDetails =$nameobj->where('first_name', 'like','%'.$name.'%')
+                                  ->orWhere('last_name', 'like','%'.$name.'%')
+                                  ->get();       
+            return $nameDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+
+
+    public function getProfilesByEthinicity($ethinicityId){
+        echo "sds";echo $ethinicityId;
+            try{
+            $contact=new Profiles;
+            $profileDetails =$profiles
+                             ->join('Regions', 'profiles.region_id', '=', 'Regions.RegionId')                                   
+                             ->where('region_id', '=',$region_id)
+                             ->get();
+                            
+            return $profileDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }
+        }    
 }
