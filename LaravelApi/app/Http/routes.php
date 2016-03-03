@@ -42,6 +42,6 @@ Route::get('/profiles/kids/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/state/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/name/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/child-preference/{any}', 'ProfileController@getProfileApi');
-
-
+Route::get('/profiles/sort/{any}', 'ProfileController@getProfileApi');
+Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 

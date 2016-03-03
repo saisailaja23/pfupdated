@@ -308,10 +308,7 @@ class ProfileService {
         $ethnicityObj=new EthnicityRepository(null); 
         $ethnicity=$ethnicityObj->getEthinicityById($child_pref);
         $ethinicityId=   $ethnicity->ethnicity_id;
-
-
-         $ethinicityDetails=$ethnicityObj->getProfilesByEthinicity($ethinicityId);
-
+        $ethinicityDetails=$ethnicityObj->getProfilesByEthinicity($ethinicityId);
         foreach ($ethinicityDetails as $ethinicityDetail) {
            $accountId= $ethinicityDetail->account_id;
            $profileObj=new ProfileRepository(null);
@@ -321,5 +318,32 @@ class ProfileService {
         return $this;
     }
 
-    
+    public function getProfilesBySort($sort){  
+         $profile=new ProfileRepository(null);  
+        $profileDetails=$profile->getAllProfilesBySort($sort);
+        foreach ($profileDetails as $ProfileID) {
+            $this->profileIds[]=$ProfileID->profile_id;
+        }
+        return $this;
+    }
+
+     public function getAccountIdByUserName($user_name){
+    $profileObj=new ProfileRepository(null);
+    $accountId=$profileObj->getAccountIdByUserName($user_name);
+    return $accountId->account_id;
+   }
+
+   public function getFlipbookByID($acc_id){  
+        $profile=new ProfileRepository(null);  
+        $flipbookDetails=$profile->getFlipbook($acc_id);
+        $flipbooks =   $flipbookDetails->content;
+        $start = strpos($flipbooks, ".com/") + 5;
+        $end = strpos($flipbooks, ".html") - $start + 5;
+        $flipbook = substr($flipbooks, $start, $end);
+        /*foreach ($profileDetails as $ProfileID) {
+            $this->profileIds[]=$ProfileID->profile_id;
+        }*/
+        return $flipbook;
+    }
+
 }
