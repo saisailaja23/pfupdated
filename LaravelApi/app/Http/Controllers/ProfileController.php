@@ -2,92 +2,110 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\Builder;
+use App\Services\AccountService;
 use App\Services\ProfileService;
-use App\Models\User;
+use App\Services\CoupleService;
+use App\Services\FilterService;
 use Response;
 use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
 {
    
    /* Single Profile Api */
-   public function getProfileApi()
+   public function getProfileApi() 
     {
     	
     	$api=Input::segment(1);
     	if($api=='profile'){			/*To get a single profile */
-    		$profile_id=Input::segment(2);
-			$profile=new ProfileService($profile_id);
-			$profiles =  $profile->getProfile();
+    		$user_name=Input::segment(2);
+			$profile=new AccountService();
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$parentObj=new  CoupleService($account_id);
+			$parent1 =  $parentObj->getParentprofile1();
+			$parent2 =  $parentObj->getParentprofile2();
+
 			$profileDetails=array(
-						     	"first_name"=>$profile->getFirstName(),
-						     	"last_name"=>$profile->getLastName(),
-						     	"dob"=>$profile->getDob(),
-						     	"gender"=>$profile->getGender(),
-						     	"ethnicity"=>$profile->getEthnicity(),
-						     	"faith"=>$profile->getFaith(),
-						     	"religion_id"=>$profile->getReligionId(),
-						     	"waiting"=>$profile->getWaiting(),
-						     	"account_id"=>$profile->getAccountId(),
-						     	"couple_first_name"=>$profile->getCoupleFirstName(),
-						     	"couple_last_name"=>$profile->getCoupleLastName(),
-						     	"couple_dob"=>$profile->getCoupleDob(),
-						     	"couple_gender"=>$profile->getCoupleGender(),
-						     	"couple_faith"=>$profile->getCoupleFaith(),
-						     	"couple_ethnicity"=>$profile->getCoupleEthnicity()
+						     	"first_name"=>$parent1->getFirstName(),
+						     	"last_name"=>$parent1->getLastName(),
+						     	"dob"=>$parent1->getDob(),
+						     	"gender"=>$parent1->getGender(),
+						     	"ethnicity"=>$parent1->getEthnicity(),
+						     	"faith"=>$parent1->getFaith(),
+						     	"religion_id"=>$parent1->getReligionId(),
+						     	"waiting"=>$parent1->getWaiting(),
+						     	"avatar"=>$parent1->getAvatar(),
+
 						     	);	
     	}
     	else if($api=='profiles'){			/* To list all profiles */
 
-			$profile=new ProfileService(0);
+			$filter=new FilterService();
     		$filter_tag=Input::segment(2);
 			if(isset($filter_tag)){
 				if($filter_tag=='religion'){
 					$religion=Input::segment(3);
-					$profiles= $profile->getProfilesByReligion($religion);
-					$profileIds=$profile->getProfileIds();
-					
+					$accountIds= $filter->getProfilesByReligion($religion);
 				}
 				else if($filter_tag=='region'){
 					$region=Input::segment(3);
-					$profiles= $profile->getProfilesByRegion($region);
-					$profileIds=$profile->getProfileIds();
+					$profiles= $filter->getProfilesByRegion($region);
+					$profileIds=$filter->getProfileIds();
 				}
 				else if($filter_tag=='kids'){
 					$kids=Input::segment(3);
-					$profiles= $profile->getProfilesByKids($kids);
-					$profileIds=$profile->getProfileIds();
+					$profiles= $filter->getProfilesByKids($kids);
+					$profileIds=$filter->getProfileIds();
 				}
 				else if($filter_tag=='state'){
 			     $state=Input::segment(3);
-			     $profiles= $profile->getProfilesByState($state);
-			     $profileIds=$profile->getProfileIds();
+			     $profiles= $filter->getProfilesByState($state);
+			     $profileIds=$filter->getProfileIds();
 			    }
 			}else{
 			
-    		$profiles= $profile->getAllProfiles();
-    		$profileIds=$profile->getProfileIds();
-     		
+    		$accountIds= $filter->getAllProfiles();
 			}
     		
-     		foreach($profileIds as $profile_id){
-     			$profileObj=new ProfileService($profile_id);
-				$profile =  $profileObj->getProfile();
-				$profileDetails[]=array(
-						     	"first_name"=>$profile->getFirstName(),
-						     	"last_name"=>$profile->getLastName(),
-						     	"dob"=>$profile->getDob(),
-						     	"faith"=>$profile->getFaith(),
-						     	"waiting"=>$profile->getWaiting(),
-								"country"=>$profile->getCountry(),
-								"state"=>$profile->getState(),
-						     	"avatar"=>$profile->getAvatar(),
-						     	"couple_first_name"=>$profile->getCoupleFirstName(),
-								"couple_last_name"=>$profile->getCoupleLastName(),
-						     	"couple_dob"=>$profile->getCoupleDob()
-						     	);	
+     		foreach($accountIds as $account_id){
+     			$parent1Details=$parent2Details='';
+				$parentObj=new  CoupleService($account_id);
+				$parent1 =  $parentObj->getParentprofile1();
+				$parent2 =  $parentObj->getParentprofile2();
+				$parent1Details=array(
+						     	"first_name"=>$parent1->getFirstName(),
+						     	"last_name"=>$parent1->getLastName(),
+						     	"dob"=>$parent1->getDob(),
+						     	"faith"=>$parent1->getFaith(),
+						     	"waiting"=>$parent1->getWaiting(),
+								"country"=>$parent1->getCountry(),
+								"state"=>$parent1->getState(),
+						     	"avatar"=>$parent1->getAvatar()
+						     	
+						     	);
+				if(isset($parent2)){
+					$parent2Details=array(
+						     	"first_name"=>$parent2->getFirstName(),
+						     	"last_name"=>$parent2->getLastName(),
+						     	"dob"=>$parent2->getDob(),
+						     	"faith"=>$parent2->getFaith()
+						     	);
+				}
+				if(isset($parent1) && isset($parent2)){
+					$profileDetails[]=Array("profile"=>array(
+					                                 "parent1"=>$parent1Details,
+					                                  "parent2"=>$parent2Details
+					                                 )
+							);
+				}
+				else{
+					$profileDetails[]=Array("profile"=>array(
+					                                 "parent1"=>$parent1Details					                                  
+					                                 )
+							);
+				}
+
      		}
     		
     	
