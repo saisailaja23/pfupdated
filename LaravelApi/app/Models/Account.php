@@ -11,8 +11,6 @@ class Account extends Model
       protected $table = 'Account';
       public $timestamps = false;
 
-  
-
     public function role()
     {
         return $this->hasOne('Role');

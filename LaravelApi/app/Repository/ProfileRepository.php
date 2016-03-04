@@ -1,7 +1,7 @@
 <?php
 namespace App\Repository;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
+use App\Models\Account;
 use App\Models\Profiles;
 use App\Models\Account;
 use App\Models\Eprofile;
@@ -74,6 +74,7 @@ class ProfileRepository {
             $profileDetails =$profiles
 							 ->join('Religions', 'profiles.religion_id', '=', 'Religions.ReligionId')									
 							 ->where('religion_id', '=',$religion_id)
+                             ->groupBy('accounts_id')
                              ->get();
 							
             return $profileDetails;
@@ -97,10 +98,20 @@ class ProfileRepository {
         }
 
 
-        public function getProfileIdByAccount($account_id){
+    public function getProfileIdByAccount($account_id){
          try{
             $account=new Profiles;
             $accountDetails =$account->where('accounts_id', '=',$account_id)->first();       
+            return $accountDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }    
+
+     public function getAccountIdByUserName($user_name){
+         try{
+            $account=new Account;
+            $accountDetails =$account->where('username', '=',$user_name)->first();       
             return $accountDetails;
         }catch(\Exception $e){
              //Add Exception here
