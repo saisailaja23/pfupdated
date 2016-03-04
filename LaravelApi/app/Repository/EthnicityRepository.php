@@ -6,6 +6,7 @@ namespace App\Repository;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Ethnicity;
+use App\Models\EthnicityPref;
 
 /**
  * Description of ParentService
@@ -48,7 +49,25 @@ class EthnicityRepository {
         }  
     }
 
+    public function getEthinicityById($child_pref){
+        try{
+            $ethinicityObj=new Ethnicity;
+            $regionDetails =$ethinicityObj->where('ethnicity', '=',$child_pref)->first();
+            return $regionDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
 
-        
+    }
+    public function getProfilesByEthinicity($ethinicityId){
+        try{
+            $ethinicityObj=new EthnicityPref;
+             $ethinicityDetails =$ethinicityObj->where('ethnicity_id', '=',$ethinicityId)->get();
+            return $ethinicityDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+
+    }    
     
 }

@@ -4,16 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ContactDetails extends Model
+class Eprofile extends Model
 {
     //
     
-     protected $table = 'ContactDetails';
+    protected $table = 'aqb_pc_members_blocks';
     public $timestamps = false;
     
     public function user() {
-        return $this->belongsTo('User');
+        return $this->belongsTo('user');
     } 
-
 
 }

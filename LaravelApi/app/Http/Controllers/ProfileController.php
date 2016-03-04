@@ -63,6 +63,21 @@ class ProfileController extends Controller
 			     $profiles= $filter->getProfilesByState($state);
 			     $profileIds=$filter->getProfileIds();
 			    }
+			    else if($filter_tag=='name'){
+			     $name=Input::segment(3);
+			     $profiles= $profile->getProfilesByName($name);
+			     $profileIds=$profile->getProfileIds();
+			    }
+			    else if($filter_tag=='child-preference'){
+			     $child_pref=Input::segment(3);
+			     $profiles= $profile->getProfilesChildPref($child_pref);
+			     $profileIds=$profile->getProfileIds();
+			    }
+			    else if($filter_tag=='sort'){
+			     $sort=Input::segment(3);
+			     $profiles= $profile->getProfilesBySort($sort);
+			     $profileIds=$profile->getProfileIds();
+			    }
 			}else{
 			
     		$accountIds= $filter->getAllProfiles();
@@ -108,7 +123,17 @@ class ProfileController extends Controller
 
      		}
     		
-    	
+
+    	}
+    	else if($api=='flipbook'){	
+    		$profilename=Input::segment(2);
+    		$profile=new ProfileService(null);
+    		$acc_id= $profile->getAccountIdByUserName($profilename);
+			$flipbook= $profile->getFlipbookByID($acc_id);
+			$profileDetails[]=array(
+						     	"flip_book"=>$flipbook
+						     	);	
+
     	}
     	    
 	    return json_encode($profileDetails);	    	
