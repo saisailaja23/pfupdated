@@ -53,7 +53,8 @@ class UtilityService {
         $profile=new ProfileRepository(null);  
         $pdfDetails=$profile->getPdfDetails($acc_id);
         $pdf =   $pdfDetails->template_file_path;
-        
-        return $pdf;
+        $path_parts = explode('/', $pdf);
+        $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
+        return $pdf_output;
     }
 }

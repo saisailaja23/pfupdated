@@ -131,10 +131,10 @@ class ProfileController extends Controller
     		$profilename=Input::segment(2);
     		$profile=new UtilityService(null);
     		$acc_id= $profile->getAccountIdByUserName($profilename);
-			$flipbook= $profile->getPdf($acc_id);
+			$pdfoutput= $profile->getPdf($acc_id);
 			$profileDetails[]=array(
-						     	"flip_book"=>$flipbook
-						     	);	
+						     	"flip_book"=>$pdfoutput
+						     	);
     	}   
 	    return json_encode($profileDetails);	    	
   	}
