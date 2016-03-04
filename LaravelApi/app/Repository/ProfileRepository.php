@@ -3,7 +3,6 @@ namespace App\Repository;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Account;
 use App\Models\Profiles;
-use App\Models\Account;
 use App\Models\Eprofile;
 
 /**
@@ -185,16 +184,7 @@ class ProfileRepository {
         } 
     }
     
-    public function getAccountIdByUserName($user_name){
-         try{
-            $account=new Account;
-            $accountDetails =$account->where('username', '=',$user_name)->first();       
-            return $accountDetails;
-        }catch(\Exception $e){
-             //Add Exception here
-        } 
-    }
-
+    
     public function getFlipbook($acc_id){
          try{
             $eprofileobj=new Eprofile;

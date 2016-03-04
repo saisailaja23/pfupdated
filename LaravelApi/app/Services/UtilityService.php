@@ -18,7 +18,7 @@ use App\Repository\ChildRepository;
 /**
  * Description of AccountService
 **/
-class AccountService {
+class UtilityService {
 
     public function getAccountIdByUserName($user_name){
     $profileObj=new ProfileRepository(null);

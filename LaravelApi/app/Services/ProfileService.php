@@ -35,23 +35,10 @@ class ProfileService {
     private $waitingId;
     private $waiting;  
     private $gender;
-    private $accountId;
-    private $coupleId;
-    private $coupleFirstName;
-    private $coupleLastName;
-    private $coupleDob;
-    private $coupleFaithId;
-    private $coupleEthnicityId;
-    private $coupleReligionId;
-    private $coupleWaitingId;
-    private $coupleEthnicity;
-    private $coupleFaith;
-    private $coupleWaiting;
-    private $coupleGender;
-    private $avatar;
-    private $profileIds;
+    private $accountId;    
 	private $country;
 	private $state;
+    private $avatar;
 	private $countryId;
 	private $stateId;
 	
@@ -106,9 +93,7 @@ class ProfileService {
         return $this->avatar;
     }  
 
-    public function getProfileIds() {
-        return $this->profileIds;
-    }  
+    
 	public function getCountryId() {
         return $this->countryId;
     }  
