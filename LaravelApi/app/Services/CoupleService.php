@@ -14,12 +14,11 @@ class CoupleService {
    
   
     private $accountId;
-
+    private $avatar;
    
-	private $stateId;
-	
+		
     public function __construct($accountId) {
-       $this->setAccoountId($accountId);
+       $this->setAccoountId($accountId);      
     }
     
     public  function getAccoountId() {
@@ -27,7 +26,11 @@ class CoupleService {
     }
     public  function setAccoountId($accountId) {
          $this->accountId = $accountId;
-    }  
+    } 
+
+    public function getAvatar() {
+        return $this->avatar;
+    } 
     
 
     /* Get a single profiles */
@@ -63,6 +66,13 @@ class CoupleService {
              $parentId['parent1']=$profile_id[0];
         }   
         return $parentId;       
+    }
+
+    public function getAccountDetails() {
+        $accountObj=new AccountRepository($this->accountId);
+        $accountDetails1=$accountObj->getAccountDetails();
+        $this->avatar=$accountDetails1->Avatar;
+        return $this;
     } 
  
 }
