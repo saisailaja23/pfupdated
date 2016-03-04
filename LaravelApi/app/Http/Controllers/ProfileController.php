@@ -134,7 +134,7 @@ class ProfileController extends Controller
 			$pdfoutput= $profile->getPdf($acc_id);
 			$profileDetails[]=array(
 						     	"flip_book"=>$pdfoutput
-						     	);	
+						     	);
     	}   
 	    return json_encode($profileDetails);	    	
   	}
