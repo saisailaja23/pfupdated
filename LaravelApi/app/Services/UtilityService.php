@@ -46,7 +46,9 @@ class UtilityService {
         $start = strpos($flipbooks, ".com/") + 5;
         $end = strpos($flipbooks, ".html") - $start + 5;
         $flipbook = substr($flipbooks, $start, $end);
-        return $flipbook;
+        $this->country=$flipbook;
+        $this->id=$flipbookDetails->id;
+        return $this;
     }
 
     	public function getPdf($acc_id){  
@@ -55,6 +57,8 @@ class UtilityService {
         $pdf =   $pdfDetails->template_file_path;
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
-        return $pdf_output;
+        $this->pdf_output=$pdf_output;
+        $this->id=$pdfDetails->template_user_id;
+        return $this;
     }
 }
