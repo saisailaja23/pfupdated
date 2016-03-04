@@ -31,7 +31,16 @@ class AccountRepository {
    
     
 
-    /* Get a single profiles */
+    public  function getAccountDetails(){   
+        try{
+            $account=new Account;
+            $accountDetails =$account->where('account_id', '=', $this->accountId)->first();  
+            return $accountDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+          
+    }
    
     public  function getAccount(){   
         try{

@@ -24,7 +24,7 @@ class ProfileController extends Controller
 			$parentObj=new  CoupleService($account_id);
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
-
+			$accountObj=$parentObj->getAccountDetails();
 			$profileDetails=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
@@ -34,7 +34,7 @@ class ProfileController extends Controller
 						     	"faith"=>$parent1->getFaith(),
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$parent1->getAvatar(),
+						     	"avatar"=>$accountObj->getAvatar(),
 
 						     	);	
     	}
@@ -89,7 +89,7 @@ class ProfileController extends Controller
 						     	"waiting"=>$parent1->getWaiting(),
 								"country"=>$parent1->getCountry(),
 								"state"=>$parent1->getState(),
-						     	"avatar"=>$parent1->getAvatar()
+						     	"avatar"=>$parentObj->getAvatar()
 						     	
 						     	);
 				if(isset($parent2)){
@@ -111,7 +111,7 @@ class ProfileController extends Controller
 					$profileDetails[]=Array("profile"=>array(
 					                                 "parent1"=>$parent1Details					                                  
 					                                 )
-							);
+										);
 				}
 
      		}
