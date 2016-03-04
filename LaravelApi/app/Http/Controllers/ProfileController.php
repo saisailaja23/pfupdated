@@ -49,18 +49,27 @@ class ProfileController extends Controller
 				}
 				else if($filter_tag=='region'){
 					$region=Input::segment(3);
-					$profiles= $filter->getProfilesByRegion($region);
-					$profileIds=$filter->getProfileIds();
+					$accountIds= $filter->getProfilesByRegion($region);
 				}
 				else if($filter_tag=='kids'){
 					$kids=Input::segment(3);
-					$profiles= $filter->getProfilesByKids($kids);
-					$profileIds=$filter->getProfileIds();
+					$accountIds= $filter->getProfilesByKids($kids);
 				}
 				else if($filter_tag=='state'){
 			     $state=Input::segment(3);
-			     $profiles= $filter->getProfilesByState($state);
-			     $profileIds=$filter->getProfileIds();
+			     $accountIds= $filter->getProfilesByState($state);
+			    } 
+			   else if($filter_tag=='name'){
+			     $name=Input::segment(3);
+				$accountIds= $filter->getProfilesByName($name);
+			    }
+			   else if($filter_tag=='child-preference'){
+			     $child_pref=Input::segment(3);
+			     $accountIds= $filter->getProfilesChildPref($child_pref);
+			   }
+			   else if($filter_tag=='sort'){
+			     $sort=Input::segment(3);
+				$accountIds= $filter->getProfilesBySort($sort);
 			    }
 			}else{
 			

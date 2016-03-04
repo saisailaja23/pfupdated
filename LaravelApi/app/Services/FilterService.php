@@ -51,24 +51,19 @@ class FilterService {
         $regionObj1=new ContactRepository(null); 
         $accountDetails=$regionObj1->getContactByRegion($regionId);
         foreach ($accountDetails as $accountDetail) {
-          $accountId= $accountDetail->Account_id;
-           $profileObj=new ProfileRepository(null);
-           $profileIds=$profileObj->getProfileIdByAccount($accountId);
-           $this->profileIds[]=$profileIds->profile_id;
+            $accountIds[]= $accountDetail->Account_id;
         }
-        return $this;
+         return $accountIds;
     }
 
     public function getProfilesByKids($kids)   {
         $childObj=new ChildRepository($kids); 
         $childDetails=$childObj->getChildDetails();
          foreach ($childDetails as $childDetail) {
-          $accountId= $childDetail->Accounts_id;
-           $profileObj=new ProfileRepository(null);
-           $profileIds=$profileObj->getProfileIdByAccount($accountId);
-           $this->profileIds[]=$profileIds->profile_id;
+            $accountIds[]= $childDetail->Accounts_id;
+
         }
-        return $this;
+         return $accountIds;
     }
 
     public function getProfilesByState($state){ 
@@ -78,18 +73,38 @@ class FilterService {
         $stateObj1=new ContactRepository(null); 
         $accountDetails=$stateObj1->getContactByState($stateId);
         foreach ($accountDetails as $accountDetail) {
-          $accountId= $accountDetail->Account_id;
-           $profileObj=new ProfileRepository(null);
-           $profileIds=$profileObj->getProfileIdByAccount($accountId);
-           $this->profileIds[]=$profileIds->profile_id;
+          $accountIds[]= $accountDetail->Account_id;
+
         }
-        return $this;
+        return $accountIds;
+    }
+    public function getProfilesByName($name){  
+        $profileObj=new ProfileRepository(null);
+         $accountDetails=$profileObj->getProfileByName($name);
+        foreach ($accountDetails as $accountDetail) {
+            $accountIds[]= $accountDetail->accounts_id;
+        }
+        return $accountIds;
+    }
+    public function getProfilesChildPref($child_pref){  
+        $ethnicityObj=new EthnicityRepository(null); 
+        $ethnicity=$ethnicityObj->getEthinicityById($child_pref);
+        $ethinicityId=   $ethnicity->ethnicity_id;
+        $accountDetails=$ethnicityObj->getProfilesByEthinicity($ethinicityId);
+        foreach ($accountDetails as $accountDetail) {
+           $accountIds[]= $accountDetail->account_id;
+        }
+        return $accountIds;
+    }
+    public function getProfilesBySort($sort){  
+         $profile=new ProfileRepository(null);  
+        $accountDetails=$profile->getAllProfilesBySort($sort);
+        foreach ($accountDetails as $accountDetail) {
+            $accountIds[]= $accountDetail->accounts_id;
+        }
+        return $accountIds;
     }
 
-   public function getAccountIdByUserName($user_name){
-    $profileObj=new ProfileRepository(null);
-    $accountId=$profileObj->getAccountIdByUserName($user_name);
-    $this->accountId=$accountId->account_id;
-   }
+  
     
 }
