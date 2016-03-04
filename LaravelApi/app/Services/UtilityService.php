@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Profiles;
 use App\Models\Ethnicity;
+use App\Models\PdfTemplate;
 use App\Repository\ProfileRepository;
 use App\Repository\EthnicityRepository;
 use App\Repository\FaithRepository;
@@ -38,5 +39,21 @@ class UtilityService {
         return $this;
 	}
 	
-	
+	public function getFlipbookByID($acc_id){  
+        $profile=new ProfileRepository(null);  
+        $flipbookDetails=$profile->getFlipbook($acc_id);
+        $flipbooks =   $flipbookDetails->content;
+        $start = strpos($flipbooks, ".com/") + 5;
+        $end = strpos($flipbooks, ".html") - $start + 5;
+        $flipbook = substr($flipbooks, $start, $end);
+        return $flipbook;
+    }
+
+    	public function getPdf($acc_id){  
+        $profile=new ProfileRepository(null);  
+        $pdfDetails=$profile->getPdfDetails($acc_id);
+        $pdf =   $pdfDetails->template_file_path;
+        
+        return $pdf;
+    }
 }

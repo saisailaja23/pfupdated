@@ -4,7 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Account;
 use App\Models\Profiles;
 use App\Models\Eprofile;
-
+use App\Models\PdfTemplate;
 /**
  * Description of ParentService
 **/
@@ -192,6 +192,19 @@ class ProfileRepository {
                                   ->where('title', '=','E-book Profile')
                                   ->first();       
             return  $flipbookdetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+
+    public function getPdfDetails($acc_id){
+         try{
+            $pdfobj=new PdfTemplate;
+            $pdfdetails =$pdfobj->where('user_id', '=',$acc_id)
+                                  ->where('isDeleted', '=','N')
+                                  ->where('isDefault', '=','Y')
+                                  ->first();       
+            return  $pdfdetails;
         }catch(\Exception $e){
              //Add Exception here
         } 

@@ -44,4 +44,5 @@ Route::get('/profiles/name/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/child-preference/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/sort/{any}', 'ProfileController@getProfileApi');
 Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
+Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
 

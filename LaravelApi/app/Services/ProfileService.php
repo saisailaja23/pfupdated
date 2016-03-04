@@ -4,6 +4,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Profiles;
 use App\Models\Ethnicity;
+use App\Models\PdfTemplate;
 use App\Repository\ProfileRepository;
 use App\Repository\EthnicityRepository;
 use App\Repository\FaithRepository;
