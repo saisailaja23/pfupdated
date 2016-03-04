@@ -118,7 +118,24 @@ class ProfileController extends Controller
     		
     	
     	}
-    	    
+    	 else if($api=='flipbook'){	
+    		$profilename=Input::segment(2);
+    		$profile=new UtilityService(null);
+    		$acc_id= $profile->getAccountIdByUserName($profilename);
+			$flipbook= $profile->getFlipbookByID($acc_id);
+			$profileDetails[]=array(
+						     	"flip_book"=>$flipbook
+						     	);	
+    	}
+    	else if($api=='pdfprofile'){	
+    		$profilename=Input::segment(2);
+    		$profile=new UtilityService(null);
+    		$acc_id= $profile->getAccountIdByUserName($profilename);
+			$flipbook= $profile->getPdf($acc_id);
+			$profileDetails[]=array(
+						     	"flip_book"=>$flipbook
+						     	);	
+    	}   
 	    return json_encode($profileDetails);	    	
   	}
   	
