@@ -98,46 +98,12 @@ class ProfileService {
     }
     public function getAccountId() {
         return $this->accountId;
-    }
-    public function getCoupleId() {
-        return $this->coupleId;
-    }
-    public function getCoupleFirstName() {
-        return $this->coupleFirstName;
-    } 
-    public function getCoupleLastName(){        
-        return $this->coupleLastName;
-    }
-    public function getCoupleDob() {
-        return $this->coupleDob;
-    }
-    public function getCoupleFaithId(){        
-        return $this->coupleFaithId;
-    }
-    public function getCoupleEthnicityId(){        
-        return $this->coupleEthnicityId;
-    }
-    public function getCoupleReligionId() {
-        return $this->coupleReligionId;
-    }
-    public function getCoupleWaitingId() {
-        return $this->coupleWaitingId;
-    }
-    public function getCoupleEthnicity() {
-        return $this->coupleEthnicity;
-    } 
-    public function getCoupleFaith() {
-        return $this->coupleFaith;
     }   
-    public function getCoupleWaiting() {
-        return $this->coupleWaiting;
-    }
-    public function getCoupleGender() {
-        return $this->coupleGender;
-    }
+    
     public function getAvatar() {
         return $this->avatar;
-    }   
+    }  
+
     public function getProfileIds() {
         return $this->profileIds;
     }  
@@ -190,108 +156,13 @@ class ProfileService {
 			$stateObj=new StateRepository($this->stateId);
 			$states=$stateObj->getStateDetails();
 			$this->state=$states->State;
-		}
-		
-        /*Get Couple*/        
-        if($coupleDetails=$profile->getCouple($this->accountId))
-        $this->coupleId=$coupleDetails->profile_id;
-        if($this->coupleId){
-            $couple=new ProfileRepository($this->coupleId);  
-            $coupleDetails=$couple->getProfile();
-            $this->coupleFirstName=$coupleDetails->first_name;
-            $this->coupleLastName=$coupleDetails->last_name;
-            $this->coupleDob=$coupleDetails->dob;
-            $this->coupleFaithId=$coupleDetails->faith_id;
-            $this->coupleEthnicityId=$coupleDetails->ethnicity_id;
-            $this->coupleWaitingId=$coupleDetails->waiting_id;
-            $this->coupleReligionId=$coupleDetails->religion_id;
-            $this->coupleGender=$coupleDetails->gender;
-            $ethnicity=new EthnicityRepository($this->coupleEthnicityId);
-            if($ethnicityDetails=$ethnicity->getEthnicityDetails())
-            $this->coupleEthnicity=$ethnicityDetails->ethnicity;
-            $faith=new FaithRepository($this->coupleFaithId);
-            if($faithDetails=$faith->getFaithDetails())
-            $this->coupleFaith=$faithDetails->faith;
-            $waiting=new WaitingRepository($this->coupleWaitingId);
-            if($waitingDetails=$waiting->getWaitingDetails())
-            $this->coupleWaiting=$waitingDetails->waiting;
-		
-            
-        }        
+		} 
+           
         return $this;       
     }  
-    /*Get all profiles */
-    public  function getAllProfiles(){ 
-        $profile=new ProfileRepository($this->profileId);  
-        $profileDetails=$profile->getAllProfiles();
-        foreach ($profileDetails as $ProfileID) {
-            $this->profileIds[]=$ProfileID->profile_id;
-        }
-        return $this;
-    }
-	
-	/*Get Contact details */
-	public function getContactDetails(){
-		$contacts=new ContactRepository($this->profileId);
-		$contactDetails=$contacts->getContactDetails();
-		foreach ($contactDetails as $contact) {
-            $this->country=$contact->country;
-			$this->state=$contact->state;
-        }
-        return $this;
-	}
-	
-	public function getProfilesByReligion($religion){     
-		$profileObj=new ProfileRepository($this->profileId);
-        $religionObj=new ReligionRepository($religion); 
-        $religions=$religionObj->getReligionDetails();
-        $religionId=   $religions->ReligionId;    
-        $profileDetails=$profileObj->getProfilesByReligion($religionId);//print_r($profileDetails);
-        foreach ($profileDetails as $ProfileID) {
-            $this->profileIds[]=$ProfileID->profile_id;
-        }
-        return $this;
-	}
-     public function getProfilesByRegion($region){ 
-        $regionObj=new RegionRepository(null); 
-        $regions=$regionObj->getRegionById($region);
-        $regionId=   $regions->RegionId;
-        $regionObj1=new ContactRepository(null); 
-        $accountDetails=$regionObj1->getContactByRegion($regionId);
-        foreach ($accountDetails as $accountDetail) {
-          $accountId= $accountDetail->Account_id;
-           $profileObj=new ProfileRepository(null);
-           $profileIds=$profileObj->getProfileIdByAccount($accountId);
-           $this->profileIds[]=$profileIds->profile_id;
-        }
-        return $this;
-    }
 
-    public function getProfilesByKids($kids)   {
-        $childObj=new ChildRepository($kids); 
-        $childDetails=$childObj->getChildDetails();
-         foreach ($childDetails as $childDetail) {
-          $accountId= $childDetail->Accounts_id;
-           $profileObj=new ProfileRepository(null);
-           $profileIds=$profileObj->getProfileIdByAccount($accountId);
-           $this->profileIds[]=$profileIds->profile_id;
-        }
-        return $this;
-    }
-
-      public function getProfilesByState($state){ 
-        $stateObj=new StateRepository(null); 
-        $states=$stateObj->getStateById($state);
-        $stateId=   $states->state_id;
-        $stateObj1=new ContactRepository(null); 
-        $accountDetails=$stateObj1->getContactByState($stateId);
-        foreach ($accountDetails as $accountDetail) {
-          $accountId= $accountDetail->Account_id;
-           $profileObj=new ProfileRepository(null);
-           $profileIds=$profileObj->getProfileIdByAccount($accountId);
-           $this->profileIds[]=$profileIds->profile_id;
-        }
-        return $this;
-    }
+	
+	
+   
     
 }
