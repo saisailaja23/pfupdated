@@ -148,7 +148,7 @@ class ProfileRepository {
          public  function getAllProfilesBySort($sort){ 
            
         try{
-            $user=new User;
+            $user=new Account;
             $users=$user->get();
             $profiles=new Profiles;
             foreach($users as $User){

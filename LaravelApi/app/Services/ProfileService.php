@@ -91,9 +91,7 @@ class ProfileService {
     
     public function getAvatar() {
         return $this->avatar;
-    }  
-
-    
+    }     
 	public function getCountryId() {
         return $this->countryId;
     }  
