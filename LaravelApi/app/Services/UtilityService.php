@@ -51,14 +51,24 @@ class UtilityService {
         return $this;
     }
 
-    	public function getPdf($acc_id){  
+    	public function getPdf($acc_id,$type){
         $profile=new ProfileRepository(null);  
         $pdfDetails=$profile->getPdfDetails($acc_id);
         $pdf =   $pdfDetails->template_file_path;
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
-        $this->pdf_output=$pdf_output;
-        $this->id=$pdfDetails->template_user_id;
+        if($type == 'single_profile'){
+             $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
+        }
+        else  if($type == 'multi_profile'){
+             $this->multiprofile=$pdf_output;
+             $this->id=$pdfDetails->template_user_id;
+        }
+        else{
+            $this->multiprofile=$pdf_output;
+            $this->id=$pdfDetails->template_user_id;
+            $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
+        }
         return $this;
     }
 }

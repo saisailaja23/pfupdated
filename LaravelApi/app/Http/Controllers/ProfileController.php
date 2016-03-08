@@ -129,11 +129,22 @@ class ProfileController extends Controller
     	}
     	else if($api=='pdfprofile'){	
     		$profilename=Input::segment(2);
+    		$type=Input::segment(4);
     		$profile=new UtilityService(null);
     		$acc_id= $profile->getAccountIdByUserName($profilename);
-			$pdfoutput= $profile->getPdf($acc_id);
+			$pdfoutput= $profile->getPdf($acc_id,$type);
 			$profileDetails[]=array(
-						     	"flip_book"=>$pdfoutput
+						     	"pdf_output"=>$pdfoutput
+						     	);
+    	}
+    	 	else if($api=='journal'){	
+    		echo $profilename=Input::segment(2);
+    		echo $jid=Input::segment(4);
+    		$profile=new UtilityService(null);
+    		$acc_id= $profile->getAccountIdByUserName($profilename);
+			$pdfoutput= $profile->getPdf($acc_id,$type);
+			$profileDetails[]=array(
+						     	"pdf_output"=>$pdfoutput
 						     	);
     	}   
 	    return json_encode($profileDetails);	    	
