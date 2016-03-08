@@ -7,7 +7,6 @@ use Illuminate\Database\Query\Builder;
 use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
-use App\Services\ContactService;
 use Response;
 use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
@@ -26,7 +25,6 @@ class ProfileController extends Controller
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
-			$contactInfo=$parentObj->getContactDetails();
 			$profileDetails=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
@@ -37,8 +35,6 @@ class ProfileController extends Controller
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
 						     	"avatar"=>$accountObj->getAvatar(),
-						     	"country"=>$contactInfo->getCountry(),
-								"state"=>$contactInfo->getState(),
 
 						     	);	
     	}
@@ -85,15 +81,14 @@ class ProfileController extends Controller
 				$parentObj=new  CoupleService($account_id);
 				$parent1 =  $parentObj->getParentprofile1();
 				$parent2 =  $parentObj->getParentprofile2();
-				$contactInfo=$parentObj->getContactDetails();
 				$parent1Details=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
 						     	"faith"=>$parent1->getFaith(),
 						     	"waiting"=>$parent1->getWaiting(),
-								"country"=>$contactInfo->getCountry(),
-								"state"=>$contactInfo->getState(),
+								"country"=>$parent1->getCountry(),
+								"state"=>$parent1->getState(),
 						     	"avatar"=>$parentObj->getAvatar()
 						     	
 						     	);
@@ -143,8 +138,8 @@ class ProfileController extends Controller
 						     	);
     	}
     	 	else if($api=='journal'){	
-    		echo $profilename=Input::segment(2);
-    		echo $jid=Input::segment(4);
+    		$profilename=Input::segment(2);
+    		$jid=Input::segment(4);
     		$profile=new UtilityService(null);
     		$acc_id= $profile->getAccountIdByUserName($profilename);
 			$pdfoutput= $profile->getPdf($acc_id,$type);
