@@ -7,7 +7,7 @@ use Illuminate\Database\Query\Builder;
 use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
-use App\Services\ContactService;
+use App\Services\JournalService;
 use Response;
 use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
@@ -26,7 +26,6 @@ class ProfileController extends Controller
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
-			$contactInfo=$parentObj->getContactDetails();
 			$profileDetails=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
@@ -37,8 +36,6 @@ class ProfileController extends Controller
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
 						     	"avatar"=>$accountObj->getAvatar(),
-						     	"country"=>$contactInfo->getCountry(),
-								"state"=>$contactInfo->getState(),
 
 						     	);	
     	}
@@ -85,15 +82,14 @@ class ProfileController extends Controller
 				$parentObj=new  CoupleService($account_id);
 				$parent1 =  $parentObj->getParentprofile1();
 				$parent2 =  $parentObj->getParentprofile2();
-				$contactInfo=$parentObj->getContactDetails();
 				$parent1Details=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
 						     	"faith"=>$parent1->getFaith(),
 						     	"waiting"=>$parent1->getWaiting(),
-								"country"=>$contactInfo->getCountry(),
-								"state"=>$contactInfo->getState(),
+								"country"=>$parent1->getCountry(),
+								"state"=>$parent1->getState(),
 						     	"avatar"=>$parentObj->getAvatar()
 						     	
 						     	);
@@ -142,28 +138,46 @@ class ProfileController extends Controller
 						     	"pdf_output"=>$pdfoutput
 						     	);
     	}
+
+    	 	
+    	
+	    return json_encode($profileDetails);	    	
+  	}
+
+
+  	public function getJournalApi(){
+  		$api=Input::segment(1);
+  		if($api=='journals') {  
+  			$sub_param=Input::segment(2);
+
+  			if($sub_param=='title')	{
+  				$title=Input::segment(3);
+  			}	
+  			else{
+  				$user_name=Input::segment(2);
+    			$profile=new UtilityService();
+				$account_id=$profile->getAccountIdByUserName($user_name);
+    			$journalObj=new JournalService($account_id);
+				$journals= $journalObj->getJournals($account_id);
+  			}
+    		
+			$journalDetails[]=array(
+						     	"journals"=>$journals
+						     	);
+    	}
     	else if($api=='journal'){	
     		$profilename=Input::segment(2);
     		$jid=Input::segment(4);
     		$profile=new UtilityService(null);
     		$account_id= $profile->getAccountIdByUserName($profilename);
 			$pdfoutput= $profile->getPdf($account_id,$type);
-			$profileDetails[]=array(
+			$journalDetails[]=array(
 						     	"pdf_output"=>$pdfoutput
 						     	);
     	}  
-    	else if($api=='journals') {
-    		$profilename=Input::segment(2);
-    		$journalObj=new UtilityService(null);
-    		$account_id= $journalObj->getAccountIdByUserName($profilename);
-			$journals= $journals->getJournals($account_id);
-			$profileDetails[]=array(
-						     	"journals"=>$journals
-						     	);
-    	}
-	    return json_encode($profileDetails);	    	
+
+    	 return json_encode($journalDetails);
   	}
-  	
   	
 		
 }

@@ -47,4 +47,5 @@ Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
 Route::get('/journal/{any}/journal-id/{id}', 'ProfileController@getProfileApi');
-Route::get('/journals/profile/{any}', 'ProfileController@getProfileApi');
+Route::get('/journals/{any}', 'ProfileController@getJournalApi');
+Route::get('/journals/title/{any}', 'ProfileController@getJournalApi');

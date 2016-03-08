@@ -6,38 +6,38 @@ use App\Repository\JournalRepository;
  * Description of ParentService
 **/
 
-class JournalService {
+class JournalService{
 
-    private $journalid; 
+    private $accountId; 
         
-    public function __construct($journalid) {
-       $this->setAccoountId($journalid);      
+    public function __construct($accountId) {
+       $this->setAccoountId($accountId);      
     }
     
     public  function getAccoountId() {
-       return $this->journalid;
+       return $this->accountId;
     }
-    public  function setAccoountId($journalid) {
-         $this->journalid = $journalid;
+    public  function setAccoountId($accountId) {
+         $this->accountId = $accountId;
     }    
    
     public function getJournals() {
-        $journalsObj=new JournalRepository($this->journalid);
+        $journalsObj=new JournalRepository($this->accountId);
         if($journalDetails=$journalsObj->getJournalDetails()){
-            return $this;
+            return $journalDetails;
         } 
     }
 
     public function getJournalsById(){
         $journalsObj=new JournalRepository($this->journalid);
         if($journalDetails=$journalsObj->getJournalsById()){
-            return $this;
+            return $journalDetails;
         }
     } 
     public function getJournalsByTitle(){
         $journalsObj=new JournalRepository($this->journalid);
-        if($journalDetails=$journalsObj->getJournalsById()){
-            return $this;
+        if($journalDetails=$journalsObj->getJournalsByTitle()){
+            return $journalDetails;
         }
     } 
     
