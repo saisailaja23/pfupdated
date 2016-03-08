@@ -7,6 +7,7 @@ use Illuminate\Database\Query\Builder;
 use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
+use App\Services\JournalService;
 use Response;
 use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
@@ -137,19 +138,46 @@ class ProfileController extends Controller
 						     	"pdf_output"=>$pdfoutput
 						     	);
     	}
-    	 	else if($api=='journal'){	
+
+    	 	
+    	
+	    return json_encode($profileDetails);	    	
+  	}
+
+
+  	public function getJournalApi(){
+  		$api=Input::segment(1);
+  		if($api=='journals') {  
+  			$sub_param=Input::segment(2);
+
+  			if($sub_param=='title')	{
+  				$title=Input::segment(3);
+  			}	
+  			else{
+  				$user_name=Input::segment(2);
+    			$profile=new UtilityService();
+				$account_id=$profile->getAccountIdByUserName($user_name);
+    			$journalObj=new JournalService($account_id);
+				$journals= $journalObj->getJournals($account_id);
+  			}
+    		
+			$journalDetails[]=array(
+						     	"journals"=>$journals
+						     	);
+    	}
+    	else if($api=='journal'){	
     		$profilename=Input::segment(2);
     		$jid=Input::segment(4);
     		$profile=new UtilityService(null);
-    		$acc_id= $profile->getAccountIdByUserName($profilename);
-			$pdfoutput= $profile->getPdf($acc_id,$type);
-			$profileDetails[]=array(
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+			$pdfoutput= $profile->getPdf($account_id,$type);
+			$journalDetails[]=array(
 						     	"pdf_output"=>$pdfoutput
 						     	);
-    	}   
-	    return json_encode($profileDetails);	    	
+    	}  
+
+    	 return json_encode($journalDetails);
   	}
-  	
   	
 		
 }
