@@ -37,11 +37,7 @@ class ProfileService {
     private $waiting;  
     private $gender;
     private $accountId;    
-	private $country;
-	private $state;
-    private $avatar;
-	private $countryId;
-	private $stateId;
+	
 	
     public function __construct($profileId) {
        $this->setProfileId($profileId);
@@ -89,22 +85,7 @@ class ProfileService {
     public function getAccountId() {
         return $this->accountId;
     }   
-    
-    public function getAvatar() {
-        return $this->avatar;
-    }     
-	public function getCountryId() {
-        return $this->countryId;
-    }  
-	public function getStateId() {
-        return $this->stateId;
-    }
-	public function getCountry() {
-        return $this->country;
-    }  
-	public function getState() {
-        return $this->state;
-    }
+      	
 	
     /* Get a single profiles */
    
@@ -120,7 +101,6 @@ class ProfileService {
         $this->religionId=$profileDetails->religion_id;
         $this->gender=$profileDetails->gender;
         $this->accountId=$profileDetails->accounts_id;
-        $this->avatar=$profileDetails->Avatar;
         $ethnicity=new EthnicityRepository($this->ethnicityId);
         if($ethnicityDetails=$ethnicity->getEthnicityDetails())
         $this->ethnicity=$ethnicityDetails->ethnicity;
@@ -129,20 +109,7 @@ class ProfileService {
         $this->faith=$faithDetails->faith;
         $waiting=new WaitingRepository($this->waitingId);
         if($waitingDetails=$waiting->getWaitingDetails())
-        $this->waiting=$waitingDetails->waiting;
-	
-		/*Get Contacts */
-		$contacts=new ContactRepository($this->accountId);
-		if($contactDetails=$contacts->getContactDetails()){
-			$this->countryId=$contactDetails->Country;			
-			$this->stateId=$contactDetails->State;
-			$countryObj=new CountryRepository($this->countryId);
-			$countries=$countryObj->getCountryDetails();
-			$this->country=$countries->country;
-			$stateObj=new StateRepository($this->stateId);
-			$states=$stateObj->getStateDetails();
-			$this->state=$states->State;
-		} 
+        $this->waiting=$waitingDetails->waiting;		
            
         return $this;       
     }  

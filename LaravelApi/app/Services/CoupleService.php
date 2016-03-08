@@ -73,6 +73,12 @@ class CoupleService {
         $accountDetails1=$accountObj->getAccountDetails();
         $this->avatar=$accountDetails1->Avatar;
         return $this;
+    }
+
+    public function getContactDetails(){
+        $contactObj=new ContactService($this->accountId);
+        $contactDetails=$contactObj->getContactDetails();
+        return $contactDetails;
     } 
  
 }
