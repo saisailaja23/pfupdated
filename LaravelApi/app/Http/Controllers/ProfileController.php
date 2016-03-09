@@ -26,6 +26,7 @@ class ProfileController extends Controller
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
+			$contactInfo=$parentObj->getContactDetails();
 			$profileDetails=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
@@ -36,7 +37,6 @@ class ProfileController extends Controller
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
 						     	"avatar"=>$accountObj->getAvatar(),
-
 						     	);	
     	}
     	else if($api=='profiles'){			/* To list all profiles */
@@ -82,14 +82,15 @@ class ProfileController extends Controller
 				$parentObj=new  CoupleService($account_id);
 				$parent1 =  $parentObj->getParentprofile1();
 				$parent2 =  $parentObj->getParentprofile2();
+				$contactInfo=$parentObj->getContactDetails();
 				$parent1Details=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
 						     	"faith"=>$parent1->getFaith(),
 						     	"waiting"=>$parent1->getWaiting(),
-								"country"=>$parent1->getCountry(),
-								"state"=>$parent1->getState(),
+								"country"=>$contactInfo->getCountry(),
+								"state"=>$contactInfo->getState(),
 						     	"avatar"=>$parentObj->getAvatar()
 						     	
 						     	);
@@ -157,13 +158,19 @@ class ProfileController extends Controller
   				$user_name=Input::segment(2);
     			$profile=new UtilityService();
 				$account_id=$profile->getAccountIdByUserName($user_name);
-    			$journalObj=new JournalService($account_id);
-				$journals= $journalObj->getJournals($account_id);
+    			$journals=$profile->getJournalsByAccount($account_id);
+    			foreach($journals as $journal){
+    				$journalDetails[]=array(
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
+						     	);
+    			}
+				
   			}
     		
-			$journalDetails[]=array(
-						     	"journals"=>$journals
-						     	);
+			
     	}
     	else if($api=='journal'){	
     		$profilename=Input::segment(2);
