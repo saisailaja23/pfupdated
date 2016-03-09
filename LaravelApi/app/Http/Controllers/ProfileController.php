@@ -7,6 +7,7 @@ use Illuminate\Database\Query\Builder;
 use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
+use App\Services\AlbumsService;
 use Response;
 use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
@@ -150,6 +151,15 @@ class ProfileController extends Controller
 	    return json_encode($profileDetails);	    	
   	}
   	
+
+  	 public function getAlbumApi(){
+  	 	$user_name=Input::segment(4);
+  	 	$profile=new UtilityService();
+		$account_id=$profile->getAccountIdByUserName($user_name);
+		$album=new AlbumsService(null);
+		$album_details= $album->getAlbum($account_id);
+
+  	 } 
   	
 		
 }
