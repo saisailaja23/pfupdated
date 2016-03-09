@@ -80,5 +80,9 @@ class CoupleService {
         $contactDetails=$contactObj->getContactDetails();
         return $contactDetails;
     } 
+
+    public function getJournalDetails(){
+
+    }
  
 }

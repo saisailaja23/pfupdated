@@ -16,6 +16,7 @@ use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
+use App\Repository\JournalRepository;
 /**
  * Description of AccountService
 **/
@@ -28,16 +29,16 @@ class UtilityService {
    }
     
   
-	/*Get Contact details */
-	public function getContactDetails(){
-		$contacts=new ContactRepository($this->profileId);
-		$contactDetails=$contacts->getContactDetails();
-		foreach ($contactDetails as $contact) {
-            $this->country=$contact->country;
-			$this->state=$contact->state;
-        }
-        return $this;
-	}
+	// /*Get Contact details */
+	// public function getContactDetails(){
+	// 	$contacts=new ContactRepository($this->profileId);
+	// 	$contactDetails=$contacts->getContactDetails();
+	// 	foreach ($contactDetails as $contact) {
+ //            $this->country=$contact->country;
+	// 		$this->state=$contact->state;
+ //        }
+ //        return $this;
+	// }
 	
 	public function getFlipbookByID($acc_id){  
         $profile=new ProfileRepository(null);  
@@ -70,5 +71,15 @@ class UtilityService {
             $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
         }
         return $this;
+    }
+
+    public function getJournalsByAccount($account_id){
+      $journalObj=new JournalRepository(null);
+      $journalIds=$journalObj->getJournalsByAccount($account_id);
+      foreach($journalIds as $journalId){
+        $journalObj=new journalService($journalId->PostId);
+        $journalDetails[]=$journalObj->getJournal();        
+      }
+      return $journalDetails;
     }
 }

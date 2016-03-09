@@ -8,38 +8,52 @@ use App\Repository\JournalRepository;
 
 class JournalService{
 
-    private $accountId; 
+    private $journalId; 
+    private $journalCaption;
+    private $journalPhoto;
         
-    public function __construct($accountId) {
-       $this->setAccoountId($accountId);      
+    public function __construct($journalId) {
+       $this->setJournalId($journalId);      
     }
     
-    public  function getAccoountId() {
-       return $this->accountId;
-    }
-    public  function setAccoountId($accountId) {
-         $this->accountId = $accountId;
-    }    
-   
-    public function getJournals() {
-        $journalsObj=new JournalRepository($this->accountId);
-        if($journalDetails=$journalsObj->getJournalDetails()){
-            return $journalDetails;
-        } 
+    public  function getJournalId() {
+       return $this->journalId;
     }
 
-    public function getJournalsById(){
-        $journalsObj=new JournalRepository($this->journalid);
-        if($journalDetails=$journalsObj->getJournalsById()){
-            return $journalDetails;
-        }
+    public  function setJournalId($journalId) {
+         $this->journalId = $journalId;
     } 
-    public function getJournalsByTitle(){
-        $journalsObj=new JournalRepository($this->journalid);
-        if($journalDetails=$journalsObj->getJournalsByTitle()){
-            return $journalDetails;
-        }
-    } 
+
+    public  function getJournalCaption() {
+       return $this->journalCaption;
+    }
+    public  function getJournalPhoto() {
+       return $this->journalPhoto;
+    }
+    public  function getJournalText() {
+       return $this->journalText;
+    }
+    public  function getJournalUri() {
+       return $this->journalUri;
+    }  
+   
+    public function getJournal() {
+        $journalsObj=new JournalRepository($this->journalId);
+        $journalDetails=$journalsObj->getJournalDetails();
+        $this->journalCaption=$journalDetails->PostCaption;
+        $this->journalPhoto=$journalDetails->PostPhoto;
+        $this->journalUri=$journalDetails->PostUri;
+        $this->journalText=$journalDetails->PostText;
+        return $this;
+         
+    }
+
+
+    public function saveJournal(){
+        //Insert function...
+    }
+
+    
     
 }
 
