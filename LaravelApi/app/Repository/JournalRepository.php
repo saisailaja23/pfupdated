@@ -42,7 +42,8 @@ class JournalRepository {
    public function getJournalsByAccount($accountId){
     try{
         $journal=new Journal;
-        $journalDetails =$journal->select('PostId')->where('account_id', '=', $accountId)
+        $journalDetails =$journal->select('PostId')
+                                ->where('account_id', '=', $accountId)
                                 ->where('PostStatus','=','approval')
                                 //->where('allowView','=',3)
                                 ->get(); 
@@ -51,30 +52,36 @@ class JournalRepository {
              //Add Exception here
         } 
    }
-   /*public function getJournalsById(){
+
+   public function getJournalsByTitle($accountId,$title){
          try{
             $journal=new Journal;
-            $journalDetails =$journal->where('account_id', '=', $this->accountId)
+            $journalDetails =$journal->select('PostId')
+                                    ->where('account_id', '=', $accountId)
                                     ->where('PostStatus','=','approval')
-                                    ->where('allowView','=',3)
-                                    ->first();  
+                                    ->where('PostCaption','like','%'.$title.'%')
+                                    ->get();     
             return $journalDetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
    }
-   public function getJournalsByTitle(){
+
+   public function getJournalsById($accountId,$journalId){
          try{
             $journal=new Journal;
-            $journalDetails =$journal->where('account_id', '=', $this->accountId)
+            $journalDetails =$journal->select('PostId')
+                                    ->where('account_id', '=', $accountId)
                                     ->where('PostStatus','=','approval')
-                                    ->where('allowView','=',3)
-                                    ->first();  
+                                    ->where('PostId','=',$journalId)
+                                    ->get();                                  
+                                   
             return $journalDetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
-   }*/
+   }
+   
    
 }
 

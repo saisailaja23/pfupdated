@@ -17,6 +17,7 @@ use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
 use App\Repository\JournalRepository;
+//use App\Services\JournalService;
 /**
  * Description of AccountService
 **/
@@ -83,5 +84,24 @@ class UtilityService {
         return $pdfDetails;
     }
 
+    public function getJournalsByTitle($account_id,$title){
+        $journalObj=new JournalRepository(null);
+        $journalIds=$journalObj->getJournalsByTitle($account_id,$title);
+        foreach($journalIds as $journalId){
+            $journalObj=new JournalService($journalId->PostId);
+            $journalDetails[]=$journalObj->getJournal();        
+        }
+        return $journalDetails;
+    }
+
+    public function getJournalsById($account_id,$journal_id){
+      $journalObj=new JournalRepository(null);
+      $journalIds=$journalObj->getJournalsById($account_id,$journal_id);
+      foreach($journalIds as $journalId){
+          $journalObj=new JournalService($journalId->PostId);
+          $journalDetails[]=$journalObj->getJournal();        
+      }
+      return $journalDetails;
+    }
     
 }

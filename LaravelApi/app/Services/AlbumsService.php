@@ -43,17 +43,17 @@ class AlbumsService {
     }
   
    
-    public function getAlbum() {
+    public function getAlbums($albumId){
         $albumObj=new AlbumsRepository($this->ID);
         $albumDetails=$albumObj->getAlbumDetails();
-        $this->journalCaption=$journalDetails->PostCaption;
+        /*$this->journalCaption=$journalDetails->PostCaption;
         $this->journalPhoto=$journalDetails->PostPhoto;
         $this->journalUri=$journalDetails->PostUri;
-        return $this;
+        return $this;*/
          
     }
 
-    public function getAlbumID($account_id){  
+    public function getAlbumByID($account_id){  
         $album=new AlbumsRepository(null);  
         $this->albumId =$album->getAlbumID($account_id);
         return $this;

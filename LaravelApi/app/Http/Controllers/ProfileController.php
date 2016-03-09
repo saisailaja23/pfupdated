@@ -147,43 +147,46 @@ class ProfileController extends Controller
   	}
 
 
+    /* Journals */
   	public function getJournalApi(){
   		$api=Input::segment(1);
   		if($api=='journals') {  
-  			$sub_param=Input::segment(2);
 
-  			if($sub_param=='title')	{
-  				$title=Input::segment(3);
-  			}	
+  			$user_name=Input::segment(2);
+  			$title=urldecode(Input::segment(3));
+  			if(isset($title))	{
+  				$profile=new UtilityService();
+				$account_id=$profile->getAccountIdByUserName($user_name);
+				$journals=$profile->getJournalsByTitle($account_id,$title);
+  			}  				
   			else{
-  				$user_name=Input::segment(2);
     			$profile=new UtilityService();
 				$account_id=$profile->getAccountIdByUserName($user_name);
 				$journalObj=new CoupleService($account_id);
     			$journals=$journalObj->getJournalDetails();
-    			foreach($journals as $journal){
+    			
+				
+  			}
+  			
+    		
+			
+    	}
+    	else if($api=='journal'){	
+    		$profilename=Input::segment(2);
+    		$journal_id=Input::segment(3);
+    		$profile=new UtilityService(null);
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+			$journals=$profile->getJournalsById($account_id,$journal_id);
+			
+    	}
+    	foreach($journals as $journal){
     				$journalDetails[]=array(
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
 						     	"Photo"=>$journal->getJournalPhoto()
 						     	);
-    			}
-				
-  			}
-    		
-			
-    	}
-    	else if($api=='journal'){	
-    		$profilename=Input::segment(2);
-    		$jid=Input::segment(4);
-    		$profile=new UtilityService(null);
-    		$account_id= $profile->getAccountIdByUserName($profilename);
-			$pdfoutput= $profile->getPdf($account_id,$type);
-			$journalDetails[]=array(
-						     	"pdf_output"=>$pdfoutput
-						     	);
-    	}  
+    			}  
 
     	 return json_encode($journalDetails);
   	}

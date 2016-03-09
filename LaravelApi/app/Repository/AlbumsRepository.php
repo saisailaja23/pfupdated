@@ -29,15 +29,14 @@ class AlbumsRepository {
          $this->profileId = $account_id;
     }   
     
-    public function getAlbumID($account_id){
-echo $account_id;
+    public function getAlbumByID($account_id){
         try{
             $albumobj=new Albums;
             $albumdetails =$albumobj->where('account_id', '=',$account_id)
                                   ->where('Caption', '=','Home Pictures')
                                   ->where('Type', '=','bx_photos')
                                   ->where('AllowAlbumView', '!=','2')
-                                  ->get();       
+                                  ->first();       
             $albumid = $albumdetails->ID;
             /*$bxphotomainobj=new BxPhotosMain;
             $bxphotomain = $bxphotomainobj
@@ -52,18 +51,7 @@ echo $account_id;
              //Add Exception here
         } 
     }
-    public function getJournalsByAccount($accountId){
-    try{
-        $journal=new Journal;
-        $journalDetails =$journal->select('PostId')->where('account_id', '=', $accountId)
-                                ->where('PostStatus','=','approval')
-                                //->where('allowView','=',3)
-                                ->get(); 
-        return $journalDetails;
-    }catch(\Exception $e){
-             //Add Exception here
-        } 
-   }
+    
      public function getAlbumsByAccount($account_id){
 
         try{
