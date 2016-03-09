@@ -34,10 +34,10 @@ Route::group(['middleware' => ['web']], function () {
 
 /* profile List Api */
 
-Route::get('/profile/{any}', 'ProfileController@getProfileApi');
+Route::get('/profile/{username}', 'ProfileController@getProfileApi');
 Route::get('/profiles', 'ProfileController@getProfileApi');
-Route::get('/profiles/religion/{any}', 'ProfileController@getProfileApi');
-Route::get('/profiles/region/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/religion/{religion}', 'ProfileController@getProfileApi');
+Route::get('/profiles/region/{region}', 'ProfileController@getProfileApi');
 Route::get('/profiles/kids/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/state/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/name/{any}', 'ProfileController@getProfileApi');
@@ -46,6 +46,6 @@ Route::get('/profiles/sort/{any}', 'ProfileController@getProfileApi');
 Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
-Route::get('/journal/{any}/journal-id/{id}', 'ProfileController@getProfileApi');
-Route::get('/journals/{any}', 'ProfileController@getJournalApi');
-Route::get('/journals/title/{any}', 'ProfileController@getJournalApi');
+Route::get('/journal/{username}/{journalid}', 'ProfileController@getJournalApi');
+Route::get('/journals/{username}', 'ProfileController@getJournalApi');
+Route::get('/journals/{username}/{any}', 'ProfileController@getJournalApi');//journals/{username}/{title}
