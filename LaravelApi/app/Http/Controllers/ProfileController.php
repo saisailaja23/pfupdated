@@ -158,7 +158,8 @@ class ProfileController extends Controller
   				$user_name=Input::segment(2);
     			$profile=new UtilityService();
 				$account_id=$profile->getAccountIdByUserName($user_name);
-    			$journals=$profile->getJournalsByAccount($account_id);
+				$journalObj=new CoupleService($account_id);
+    			$journals=$journalObj->getJournalDetails();
     			foreach($journals as $journal){
     				$journalDetails[]=array(
 						     	"Caption"=>$journal->getJournalCaption(),

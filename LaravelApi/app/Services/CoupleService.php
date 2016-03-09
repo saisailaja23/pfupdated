@@ -7,6 +7,7 @@ use App\Models\Ethnicity;
 use App\Repository\ProfileRepository;
 use App\Repository\AccountRepository;
 use App\Services\ProfileService;
+use App\Repository\JournalRepository;
 /**
  * Description of ParentService
 **/
@@ -82,7 +83,13 @@ class CoupleService {
     } 
 
     public function getJournalDetails(){
-
+        $journalObj=new JournalRepository(null);
+        $journalIds=$journalObj->getJournalsByAccount($this->accountId);
+        foreach($journalIds as $journalId){
+            $journalObj=new journalService($journalId->PostId);
+            $journalDetails[]=$journalObj->getJournal();        
+        }
+        return $journalDetails;
     }
  
 }

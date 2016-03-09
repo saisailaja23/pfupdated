@@ -73,13 +73,5 @@ class UtilityService {
         return $this;
     }
 
-    public function getJournalsByAccount($account_id){
-      $journalObj=new JournalRepository(null);
-      $journalIds=$journalObj->getJournalsByAccount($account_id);
-      foreach($journalIds as $journalId){
-        $journalObj=new journalService($journalId->PostId);
-        $journalDetails[]=$journalObj->getJournal();        
-      }
-      return $journalDetails;
-    }
+    
 }
