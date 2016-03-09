@@ -16,6 +16,7 @@ use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
+use App\Repository\JournalRepository;
 /**
  * Description of AccountService
 **/
@@ -28,16 +29,16 @@ class UtilityService {
    }
     
   
-	/*Get Contact details */
-	public function getContactDetails(){
-		$contacts=new ContactRepository($this->profileId);
-		$contactDetails=$contacts->getContactDetails();
-		foreach ($contactDetails as $contact) {
-            $this->country=$contact->country;
-			$this->state=$contact->state;
-        }
-        return $this;
-	}
+	// /*Get Contact details */
+	// public function getContactDetails(){
+	// 	$contacts=new ContactRepository($this->profileId);
+	// 	$contactDetails=$contacts->getContactDetails();
+	// 	foreach ($contactDetails as $contact) {
+ //            $this->country=$contact->country;
+	// 		$this->state=$contact->state;
+ //        }
+ //        return $this;
+	// }
 	
 	public function getFlipbookByID($acc_id){  
         $profile=new ProfileRepository(null);  
@@ -46,9 +47,11 @@ class UtilityService {
         $start = strpos($flipbooks, ".com/") + 5;
         $end = strpos($flipbooks, ".html") - $start + 5;
         $flipbook = substr($flipbooks, $start, $end);
-        $this->country=$flipbook;
-        $this->id=$flipbookDetails->id;
-        return $this;
+        $flipDetails=array(
+                                "country"=>$flipbook,
+                                "id"=>$flipbookDetails->id
+                                );
+        return $flipDetails;
     }
 
     	public function getPdf($acc_id,$type){
@@ -58,17 +61,27 @@ class UtilityService {
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
         if($type == 'single_profile'){
-             $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
+             $pdfDetails=array(
+                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
+                                );
         }
         else  if($type == 'multi_profile'){
-             $this->multiprofile=$pdf_output;
-             $this->id=$pdfDetails->template_user_id;
+             $pdfDetails=array(
+                                "multiprofile"=>$pdf_output,
+                                "id"=>$pdfDetails->template_user_id
+                                );
+            
         }
         else{
-            $this->multiprofile=$pdf_output;
-            $this->id=$pdfDetails->template_user_id;
-            $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
+            $pdfDetails=array(
+                                "multiprofile"=>$pdf_output,
+                                "id"=>$pdfDetails->template_user_id,
+                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
+                                );
+            
         }
-        return $this;
+        return $pdfDetails;
     }
+
+    
 }

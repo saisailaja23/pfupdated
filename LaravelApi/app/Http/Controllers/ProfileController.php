@@ -8,6 +8,7 @@ use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
 use App\Services\AlbumsService;
+use App\Services\JournalService;
 use Response;
 use Illuminate\Support\Facades\Input;
 class ProfileController extends Controller
@@ -26,6 +27,7 @@ class ProfileController extends Controller
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
+			$contactInfo=$parentObj->getContactDetails();
 			$profileDetails=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
@@ -36,7 +38,6 @@ class ProfileController extends Controller
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
 						     	"avatar"=>$accountObj->getAvatar(),
-
 						     	);	
     	}
     	else if($api=='profiles'){			/* To list all profiles */
@@ -82,14 +83,15 @@ class ProfileController extends Controller
 				$parentObj=new  CoupleService($account_id);
 				$parent1 =  $parentObj->getParentprofile1();
 				$parent2 =  $parentObj->getParentprofile2();
+				$contactInfo=$parentObj->getContactDetails();
 				$parent1Details=array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
 						     	"faith"=>$parent1->getFaith(),
 						     	"waiting"=>$parent1->getWaiting(),
-								"country"=>$parent1->getCountry(),
-								"state"=>$parent1->getState(),
+								"country"=>$contactInfo->getCountry(),
+								"state"=>$contactInfo->getState(),
 						     	"avatar"=>$parentObj->getAvatar()
 						     	
 						     	);
@@ -138,28 +140,63 @@ class ProfileController extends Controller
 						     	"pdf_output"=>$pdfoutput
 						     	);
     	}
-    	 	else if($api=='journal'){	
+
+    	 	
+    	
+	    return json_encode($profileDetails);	    	
+  	}
+
+
+  	public function getJournalApi(){
+  		$api=Input::segment(1);
+  		if($api=='journals') {  
+  			$sub_param=Input::segment(2);
+
+  			if($sub_param=='title')	{
+  				$title=Input::segment(3);
+  			}	
+  			else{
+  				$user_name=Input::segment(2);
+    			$profile=new UtilityService();
+				$account_id=$profile->getAccountIdByUserName($user_name);
+				$journalObj=new CoupleService($account_id);
+    			$journals=$journalObj->getJournalDetails();
+    			foreach($journals as $journal){
+    				$journalDetails[]=array(
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
+						     	);
+    			}
+				
+  			}
+    		
+			
+    	}
+    	else if($api=='journal'){	
     		$profilename=Input::segment(2);
     		$jid=Input::segment(4);
     		$profile=new UtilityService(null);
-    		$acc_id= $profile->getAccountIdByUserName($profilename);
-			$pdfoutput= $profile->getPdf($acc_id,$type);
-			$profileDetails[]=array(
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+			$pdfoutput= $profile->getPdf($account_id,$type);
+			$journalDetails[]=array(
 						     	"pdf_output"=>$pdfoutput
 						     	);
-    	}   
-	    return json_encode($profileDetails);	    	
+    	}  
+
+    	 return json_encode($journalDetails);
   	}
   	
-
   	 public function getAlbumApi(){
   	 	$user_name=Input::segment(4);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($user_name);
-		$album=new AlbumsService(null);
-		$album_details= $album->getAlbum($account_id);
-
+		$album=new CoupleService($account_id);
+		echo $albums= $album->getAlbumDetails(); 
+		return json_encode($albumId);
   	 } 
   	
+
 		
 }

@@ -14,9 +14,48 @@ use App\Repository\AlbumsRepository;
 **/
 class AlbumsService {
 
-    public function getAlbum($account_id){  
+    private $ID; 
+    private $account_id;
+    private $Ext;
+    private $Title;
+    private $Hash;
+        
+    public function __construct($ID) {
+       $this->setAlbumId($ID);      
+    }
+    
+    public  function getAlbumId() {
+       return $this->ID;
+    }
+
+    public  function setAlbumId($ID) {
+         $this->AlbumId = $ID;
+    } 
+
+    public  function getAlbumExt() {
+       return $this->AlbumExt;
+    }
+    public  function getAlbumTitle() {
+       return $this->AlbumTitle;
+    }
+    public  function getAlbumHash() {
+       return $this->AlbumHash;
+    }
+  
+   
+    public function getAlbum() {
+        $albumObj=new AlbumsRepository($this->ID);
+        $albumDetails=$albumObj->getAlbumDetails();
+        $this->journalCaption=$journalDetails->PostCaption;
+        $this->journalPhoto=$journalDetails->PostPhoto;
+        $this->journalUri=$journalDetails->PostUri;
+        return $this;
+         
+    }
+
+    public function getAlbumID($account_id){  
         $album=new AlbumsRepository(null);  
-        echo $albumDetails=$album->getAlbumById($account_id);
+        $this->albumId =$album->getAlbumID($account_id);
         return $this;
     }
     
