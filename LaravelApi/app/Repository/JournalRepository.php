@@ -61,7 +61,7 @@ class JournalRepository {
                                     ->where('PostStatus','=','approval')
                                     ->where('PostCaption','like','%'.$title.'%')
                                     ->get();     
-            return $journalDetails;print_r($journalDetails);
+            return $journalDetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
