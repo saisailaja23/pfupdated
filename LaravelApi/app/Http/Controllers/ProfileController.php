@@ -179,7 +179,7 @@ class ProfileController extends Controller
 			
     	}
     	foreach($journals as $journal){
-    				$journalDetails[]=array(
+    		$journalDetails[]=array(
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
