@@ -14,22 +14,22 @@ use App\Repository\AlbumsRepository;
 **/
 class AlbumsService {
 
-    private $ID; 
+    private $AlbumId; 
     private $account_id;
     private $Ext;
     private $Title;
     private $Hash;
         
-    public function __construct($ID) {
-       $this->setAlbumId($ID);      
+    public function __construct($AlbumId) {
+       $this->setAlbumId($AlbumId);      
     }
     
     public  function getAlbumId() {
-       return $this->ID;
+       return $this->AlbumId;
     }
 
-    public  function setAlbumId($ID) {
-         $this->AlbumId = $ID;
+    public  function setAlbumId($AlbumId) {
+         $this->AlbumId = $AlbumId;
     } 
 
     public  function getAlbumExt() {
@@ -41,15 +41,21 @@ class AlbumsService {
     public  function getAlbumHash() {
        return $this->AlbumHash;
     }
+    public  function getAlbumUri() {
+       return $this->AlbumUri;
+    }
+  
   
    
-    public function getAlbums($albumId){
-        $albumObj=new AlbumsRepository($this->ID);
+    public function getAlbum() {
+        $albumObj=new AlbumsRepository($this->AlbumId);
         $albumDetails=$albumObj->getAlbumDetails();
-        /*$this->journalCaption=$journalDetails->PostCaption;
-        $this->journalPhoto=$journalDetails->PostPhoto;
-        $this->journalUri=$journalDetails->PostUri;
-        return $this;*/
+        $this->AlbumExt=$albumDetails->Ext;
+        $this->AlbumTitle=$albumDetails->Title;
+        $this->AlbumHash=$albumDetails->Hash;
+        $this->AlbumUri=$albumDetails->Uri;
+        $this->Id=$albumDetails->ID;
+        return $this;
          
     }
 

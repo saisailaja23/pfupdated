@@ -15,19 +15,19 @@ use App\Models\SysAlbumsObjects;
 class AlbumsRepository {
 
    
-    private $account_id;
+  private $AlbumId;
 
-    public function __construct($account_id) {
-       $this->setOwnerId($account_id);
+    public function __construct($AlbumId) {
+       $this->setAlbumId($AlbumId);
 
     }
 
-     public  function getOwnerId() {
-       return $this->account_id;
+     public  function getAlbumId() {
+       return $this->AlbumId;
     }
-    public  function setOwnerId($account_id) {
-         $this->profileId = $account_id;
-    }   
+    public  function setAlbumId($AlbumId) {
+         $this->AlbumId = $AlbumId;
+    }      
     
     public function getAlbumByID($account_id){
         try{
@@ -38,37 +38,39 @@ class AlbumsRepository {
                                   ->where('AllowAlbumView', '!=','2')
                                   ->first();       
             $albumid = $albumdetails->ID;
-            /*$bxphotomainobj=new BxPhotosMain;
-            $bxphotomain = $bxphotomainobj
-                           ->join('sys_albums_objects', 'bx_photos_main.ID', '=', 'sys_albums_objects.id_object') 
-                           ->where('sys_albums_objects.id_album', '=',$albumid)
-                           ->where('bx_photos_main.Status', '=','approved')
-                           ->where('bx_photos_main.account_id', '=',$account_id)
-                           ->orderBy('sys_albums_objects.obj_order','DESC')
-                           ->get();*/
             return $albumid;              
         }catch(\Exception $e){
              //Add Exception here
         } 
     }
-    
-     public function getAlbumsByAccount($account_id){
-
-        try{
-            $bxphotomainobj=new BxPhotosMain;
-            $bxphotomain = $bxphotomainobj
+        public function getAlbums($albumId,$account_id){
+           try{
+        $bxphotomainobj=new BxPhotosMain;
+        $bxphotomain = $bxphotomainobj
                            ->join('sys_albums_objects', 'bx_photos_main.ID', '=', 'sys_albums_objects.id_object') 
-                           ->where('sys_albums_objects.id_album', '=',$albumid)
+                           ->where('sys_albums_objects.id_album', '=',$albumId)
                            ->where('bx_photos_main.Status', '=','approved')
                            ->where('bx_photos_main.account_id', '=',$account_id)
                            ->orderBy('sys_albums_objects.obj_order','DESC')
                            ->get();
-            return $albumid;              
-        }catch(\Exception $e){
+         return $bxphotomain;
+          }catch(\Exception $e){
              //Add Exception here
         } 
     }
+    public function getAlbumDetails(){
+          try{
+            $bxphotomainobj=new BxPhotosMain;
+            $bxphotomain = $bxphotomainobj
+                           ->where('Status', '=','approved')
+                           ->where('ID', '=',$this->AlbumId)
+                           ->first();
 
+            return $bxphotomain;              
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+   }
 
     }
 

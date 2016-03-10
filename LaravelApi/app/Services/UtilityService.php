@@ -48,8 +48,8 @@ class UtilityService {
         $start = strpos($flipbooks, ".com/") + 5;
         $end = strpos($flipbooks, ".html") - $start + 5;
         $flipbook = substr($flipbooks, $start, $end);
-        $flipDetails=array(
-                                "country"=>$flipbook,
+        $flipDetails[]=array(
+                                "flipbook"=>$flipbook,
                                 "id"=>$flipbookDetails->id
                                 );
         return $flipDetails;
