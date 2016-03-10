@@ -95,11 +95,14 @@ class CoupleService {
 
      public function getAlbumDetails(){
         $albumObj=new AlbumsRepository(null);
-        echo $albumId=$albumObj->getAlbumByID($this->accountId);
-            $journalObj=new AlbumsService(null);
-            $journalDetails[]=$journalObj->getAlbums($albumId);        
+         $albumId=$albumObj->getAlbumByID($this->accountId);
+        $albumDetail=$albumObj->getAlbums($albumId,$this->accountId);   
+        foreach($albumDetail as $albumDetails){
+            $albumserviceObj=new AlbumsService($albumDetails->ID);
+             $albumout[]=$albumserviceObj->getAlbum();
+        }     
       
-        return $journalDetails;
+        return $albumout;
     }
  
 }
