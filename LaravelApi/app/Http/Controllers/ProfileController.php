@@ -7,6 +7,7 @@ use Illuminate\Database\Query\Builder;
 use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
+use App\Services\AlbumsService;
 use App\Services\JournalService;
 use Response;
 use Illuminate\Support\Facades\Input;
@@ -152,7 +153,7 @@ class ProfileController extends Controller
   		if($api=='journals') {  
 
   			$user_name=Input::segment(2);
-  			$title=urlencode(Input::segment(3));
+  			$title=urldecode(Input::segment(3));
   			if(isset($title))	{
   				$profile=new UtilityService();
 				$account_id=$profile->getAccountIdByUserName($user_name);
@@ -190,5 +191,15 @@ class ProfileController extends Controller
     	 return json_encode($journalDetails);
   	}
   	
+  	 public function getAlbumApi(){
+  	 	$user_name=Input::segment(4);
+  	 	$profile=new UtilityService();
+		$account_id=$profile->getAccountIdByUserName($user_name);
+		$album=new CoupleService($account_id);
+		echo $albums= $album->getAlbumDetails(); 
+		return json_encode($albumId);
+  	 } 
+  	
+
 		
 }

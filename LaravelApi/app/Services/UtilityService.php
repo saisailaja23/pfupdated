@@ -17,6 +17,7 @@ use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
 use App\Repository\JournalRepository;
+//use App\Services\JournalService;
 /**
  * Description of AccountService
 **/
@@ -47,9 +48,11 @@ class UtilityService {
         $start = strpos($flipbooks, ".com/") + 5;
         $end = strpos($flipbooks, ".html") - $start + 5;
         $flipbook = substr($flipbooks, $start, $end);
-        $this->country=$flipbook;
-        $this->id=$flipbookDetails->id;
-        return $this;
+        $flipDetails=array(
+                                "country"=>$flipbook,
+                                "id"=>$flipbookDetails->id
+                                );
+        return $flipDetails;
     }
 
     	public function getPdf($acc_id,$type){
@@ -59,25 +62,33 @@ class UtilityService {
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
         if($type == 'single_profile'){
-             $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
+             $pdfDetails=array(
+                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
+                                );
         }
         else  if($type == 'multi_profile'){
-             $this->multiprofile=$pdf_output;
-             $this->id=$pdfDetails->template_user_id;
+             $pdfDetails=array(
+                                "multiprofile"=>$pdf_output,
+                                "id"=>$pdfDetails->template_user_id
+                                );
+            
         }
         else{
-            $this->multiprofile=$pdf_output;
-            $this->id=$pdfDetails->template_user_id;
-            $this->single_profile = "ProfilebuilderComponent/pdf.php?id=".$acc_id;
+            $pdfDetails=array(
+                                "multiprofile"=>$pdf_output,
+                                "id"=>$pdfDetails->template_user_id,
+                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
+                                );
+            
         }
-        return $this;
+        return $pdfDetails;
     }
 
     public function getJournalsByTitle($account_id,$title){
         $journalObj=new JournalRepository(null);
         $journalIds=$journalObj->getJournalsByTitle($account_id,$title);
         foreach($journalIds as $journalId){
-            $journalObj=new journalService($journalId->PostId);
+            $journalObj=new JournalService($journalId->PostId);
             $journalDetails[]=$journalObj->getJournal();        
         }
         return $journalDetails;
@@ -87,7 +98,7 @@ class UtilityService {
       $journalObj=new JournalRepository(null);
       $journalIds=$journalObj->getJournalsById($account_id,$journal_id);
       foreach($journalIds as $journalId){
-          $journalObj=new journalService($journalId->PostId);
+          $journalObj=new JournalService($journalId->PostId);
           $journalDetails[]=$journalObj->getJournal();        
       }
       return $journalDetails;

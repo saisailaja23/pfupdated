@@ -8,6 +8,7 @@ use App\Repository\ProfileRepository;
 use App\Repository\AccountRepository;
 use App\Services\ProfileService;
 use App\Repository\JournalRepository;
+use App\Repository\AlbumsRepository;
 /**
  * Description of ParentService
 **/
@@ -89,6 +90,15 @@ class CoupleService {
             $journalObj=new journalService($journalId->PostId);
             $journalDetails[]=$journalObj->getJournal();        
         }
+        return $journalDetails;
+    }
+
+     public function getAlbumDetails(){
+        $albumObj=new AlbumsRepository(null);
+        echo $albumId=$albumObj->getAlbumByID($this->accountId);
+            $journalObj=new AlbumsService(null);
+            $journalDetails[]=$journalObj->getAlbums($albumId);        
+      
         return $journalDetails;
     }
  

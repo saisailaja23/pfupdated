@@ -46,6 +46,11 @@ Route::get('/profiles/sort/{any}', 'ProfileController@getProfileApi');
 Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
+Route::get('/journal/{any}/journal-id/{id}', 'ProfileController@getProfileApi');
+Route::get('/profile/photos/albums/{any}', 'ProfileController@getAlbumApi');
+Route::get('/journals/{any}', 'ProfileController@getJournalApi');
+Route::get('/journals/title/{all}', 'ProfileController@getJournalApi');
 Route::get('/journal/{username}/{journalid}', 'ProfileController@getJournalApi');
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
-Route::get('/journals/{username}/{any}', 'ProfileController@getJournalApi');//journals/{username}/{title}
+Route::get('/journals/{username}/{all}', 'ProfileController@getJournalApi');//journals/{username}/{title}
+
