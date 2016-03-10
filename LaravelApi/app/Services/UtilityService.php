@@ -103,5 +103,13 @@ class UtilityService {
       }
       return $journalDetails;
     }
+
+
+    public  function getEthnictyDetails($ethnicityId){
+        $ethnicity=new EthnicityRepository($ethnicityId);  
+        $ethnicityDetails=$ethnicity->getEthnictyDetails();
+        $ethnicityVal=$ethnicityDetails->ethnicity;
+        return $ethnicityVal;       
+    }  
     
 }

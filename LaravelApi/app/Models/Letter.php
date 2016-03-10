@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Model;
+namespace App\Models;
 
-use Illuminate\Database\Eloquent\Models;
+use Illuminate\Database\Eloquent\Model;
 
 class Letter extends Model
 {
