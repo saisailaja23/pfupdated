@@ -154,7 +154,7 @@ class ProfileController extends Controller
 
   			$user_name=Input::segment(2);
   			$title=urldecode(Input::segment(3));
-  			if(isset($title))	{
+  			if(isset($title)){
   				$profile=new UtilityService();
 				$account_id=$profile->getAccountIdByUserName($user_name);
 				$journals=$profile->getJournalsByTitle($account_id,$title);
@@ -199,6 +199,30 @@ class ProfileController extends Controller
 		echo $albums= $album->getAlbumDetails(); 
 		return json_encode($albumId);
   	 } 
+
+  	 /* Letters */
+  	public function getLetterApi(){
+  	 	$api=Input::segment(1);
+  	 	if($api=='letters'){
+  	 		$user_name=Input::segment(2);
+  	 		$profile=new UtilityService();
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$letterObj=new CoupleService($account_id);
+    		$letters=$letterObj->getLetterDetails();
+  	 	}else if($api=='letter'){
+  	 		$user_name=Input::segment(2);
+  	 		$letter_id=Input::segment(3);
+  	 	}
+
+  	 	foreach($letters as $letter){
+    		$letterDetails[]=array(
+						     	"Title"=>$letter->getTitle(),
+						     	"Content"=>$letter->getContent(),
+						     	"Image"=>$letter->getAssociatedImage()
+						     	);
+    			}  
+  	 	return json_encode($letterDetails);
+  	}
   	
 
 		

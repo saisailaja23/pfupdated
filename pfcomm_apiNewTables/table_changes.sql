@@ -15,3 +15,6 @@ ALTER TABLE `Countries` CHANGE `Name` `country` VARCHAR(45) CHARACTER SET latin1
   ALTER TABLE `States` DROP `CountryCode`;
    ALTER TABLE `States` ADD `state_id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY FIRST;
     ALTER TABLE `States` ADD `accounts_id` INT NOT NULL ;
+ALTER TABLE `letter` ADD `isDefault` ENUM('0','1') NOT NULL DEFAULT '0' COMMENT '1-default letter,0-custom letter' AFTER `img`;
+
+ALTER TABLE `letter` CHANGE `profile_id` `account_id` INT(11) NOT NULL;
