@@ -9,6 +9,7 @@ use App\Repository\AccountRepository;
 use App\Services\ProfileService;
 use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
+use App\Repository\LetterRepository;
 /**
  * Description of ParentService
 **/
@@ -103,6 +104,16 @@ class CoupleService {
         }     
       
         return $albumout;
+    }
+
+    public function getLetterDetails(){
+        $letterObj=new LetterRepository(null);
+        $letterIds=$letterObj->getLettersByAccount($this->accountId);
+        foreach($letterIds as $letterId){
+            $letterObj=new LetterService($letterId->id);
+            $letterDetails[]=$letterObj->getLetter();        
+        }
+        return $letterDetails;
     }
  
 }
