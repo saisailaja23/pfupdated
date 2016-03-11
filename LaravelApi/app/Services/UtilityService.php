@@ -26,8 +26,12 @@ class UtilityService {
 
     public function getAccountIdByUserName($user_name){
     $profileObj=new ProfileRepository(null);
-    $accountId=$profileObj->getAccountIdByUserName($user_name);
-    return $accountId->account_id;
+    if($accountId=$profileObj->getAccountIdByUserName($user_name)){
+        return $accountId->account_id;
+    }else{
+        echo "No user found";
+    }
+    
    }
     
   
