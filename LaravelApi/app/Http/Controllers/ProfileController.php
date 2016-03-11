@@ -198,6 +198,7 @@ class ProfileController extends Controller
   	
   	 public function getAlbumApi(){
   	 	$user_name=Input::segment(4);
+  	 	$photoid=Input::segment(5);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($user_name);
 		$album=new CoupleService($account_id);

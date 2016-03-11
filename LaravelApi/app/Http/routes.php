@@ -50,7 +50,7 @@ Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
 
 Route::get('/profile/photos/albums/{any}', 'ProfileController@getAlbumApi');
-
+Route::get('/profile/photos/albums/{any}/{photoid}', 'ProfileController@getAlbumApi');
 
 
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
