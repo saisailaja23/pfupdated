@@ -104,22 +104,8 @@ class FilterService {
             $accountIds[]= $accountDetail->accounts_id;
         }
         return $accountIds;
-    }
+    }  
 
-    public function getJournalsById(){
-        $journalsObj=new JournalRepository($this->journalid);
-        if($journalDetails=$journalsObj->getJournalsById()){
-            return $journalDetails;
-        }
-    }
-     
-    public function getJournalsByTitle(){
-        $journalsObj=new JournalRepository($this->journalid);
-        if($journalDetails=$journalsObj->getJournalsByTitle()){
-            return $journalDetails;
-        }
-    } 
-
-  
+    
     
 }

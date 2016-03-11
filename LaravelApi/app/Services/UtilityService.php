@@ -17,7 +17,8 @@ use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
 use App\Repository\JournalRepository;
-//use App\Services\JournalService;
+
+use App\Repository\LetterRepository;
 /**
  * Description of AccountService
 **/
@@ -110,6 +111,16 @@ class UtilityService {
         $ethnicityDetails=$ethnicity->getEthnictyDetails();
         $ethnicityVal=$ethnicityDetails->ethnicity;
         return $ethnicityVal;       
+    }  
+
+    public function getLetterById($account_id,$letter_id){
+        $letterObj=new LetterRepository(null);
+        $letterIds=$letterObj->getLettersById($account_id,$letter_id);
+        foreach($letterIds as $letterId){
+            $letterObj=new LetterService($letterId->id);
+            $letterDetails[]=$letterObj->getLetter();        
+        }
+        return $letterDetails;
     }  
     
 }

@@ -49,7 +49,7 @@ Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
 
-Route::get('/profile/photos/albums/{any}', 'ProfileController@getAlbumApi');
+Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
 
 
 
