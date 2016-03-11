@@ -197,6 +197,7 @@ class ProfileController extends Controller
   	}
   	
   	 public function getAlbumApi(){
+
   	 	$user_name=Input::segment(4);
   	 	$photoid=Input::segment(5);
   	 	$profile=new UtilityService();
@@ -215,18 +216,21 @@ class ProfileController extends Controller
 		return json_encode($albumDetails);
   	 } 
 
-  	 /* Letters */
+  	 /*  Letters  */
   	public function getLetterApi(){
   	 	$api=Input::segment(1);
-  	 	if($api=='letters'){
-  	 		$user_name=Input::segment(2);
-  	 		$profile=new UtilityService();
-			$account_id=$profile->getAccountIdByUserName($user_name);
-			$letterObj=new CoupleService($account_id);
-    		$letters=$letterObj->getLetterDetails();
+  	 	$user_name=Input::segment(2);
+  	 	$profile=new UtilityService();
+		if($account_id=$profile->getAccountIdByUserName($user_name))
+		{
+			if($api=='letters'){ 	
+  	 			$letterObj=new CoupleService($account_id);
+				$letters=$letterObj->getLetterDetails();
+
   	 	}else if($api=='letter'){
-  	 		$user_name=Input::segment(2);
   	 		$letter_id=Input::segment(3);
+  	 		$letters=$profile->getLetterById($account_id,$letter_id);
+  	 		
   	 	}
 
   	 	foreach($letters as $letter){
@@ -237,6 +241,10 @@ class ProfileController extends Controller
 						     	);
     			}  
   	 	return json_encode($letterDetails);
+		}
+		
+
+
   	}
   	
 

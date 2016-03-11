@@ -17,7 +17,8 @@ use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
 use App\Repository\JournalRepository;
-//use App\Services\JournalService;
+
+use App\Repository\LetterRepository;
 /**
  * Description of AccountService
 **/
@@ -25,10 +26,15 @@ class UtilityService {
 
     public function getAccountIdByUserName($user_name){
     $profileObj=new ProfileRepository(null);
-    $accountId=$profileObj->getAccountIdByUserName($user_name);
-    return $accountId->account_id;
-   }
+    if($accountId=$profileObj->getAccountIdByUserName($user_name)){
+        return $accountId->account_id;
+    }else{
+
+        //Add error log function here..
+        echo "No user found";
+    }
     
+   }    
   
 	// /*Get Contact details */
 	// public function getContactDetails(){
@@ -110,6 +116,16 @@ class UtilityService {
         $ethnicityDetails=$ethnicity->getEthnictyDetails();
         $ethnicityVal=$ethnicityDetails->ethnicity;
         return $ethnicityVal;       
+    }  
+
+    public function getLetterById($account_id,$letter_id){
+        $letterObj=new LetterRepository(null);
+        $letterIds=$letterObj->getLettersById($account_id,$letter_id);
+        foreach($letterIds as $letterId){
+            $letterObj=new LetterService($letterId->id);
+            $letterDetails[]=$letterObj->getLetter();        
+        }
+        return $letterDetails;
     }  
     
 }
