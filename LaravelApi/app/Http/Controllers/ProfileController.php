@@ -126,9 +126,14 @@ class ProfileController extends Controller
     		$profile=new UtilityService(null);
     		$acc_id= $profile->getAccountIdByUserName($profilename);
 			$flipbook= $profile->getFlipbookByID($acc_id);
-			$profileDetails[]=array(
-						     	"flip_book"=>$flipbook
+			foreach($flipbook as $flipbooks) {
+
+				$profileDetails[]=array(
+						     	"flip_book"=>$flipbooks['flipbook'],
+						     	"id"=>$flipbooks['id']
 						     	);	
+			}
+			
     	}
     	else if($api=='pdfprofile'){	
     		$profilename=Input::segment(2);
@@ -196,8 +201,17 @@ class ProfileController extends Controller
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($user_name);
 		$album=new CoupleService($account_id);
-		echo $albums= $album->getAlbumDetails(); 
-		return json_encode($albumId);
+		$albums= $album->getAlbumDetails(); 
+		foreach($albums as $album){
+    				$albumDetails[]=array(
+						     	"Ext"=>$album->getAlbumExt(),
+						     	"Title"=>$album->getAlbumTitle(),
+						     	"Hash"=>$album->getAlbumHash(),
+						     	"Uri"=>$album->getAlbumUri(),
+						     	"Id"=>$album->getAlbumId()
+						     	);
+    			}  
+		return json_encode($albumDetails);
   	 } 
 
   	 /*  Letters  */
