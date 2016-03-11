@@ -200,7 +200,7 @@ class ProfileController extends Controller
 		return json_encode($albumId);
   	 } 
 
-  	 /* Letters */
+  	 /*  Letters  */
   	public function getLetterApi(){
   	 	$api=Input::segment(1);
   	 	if($api=='letters'){
