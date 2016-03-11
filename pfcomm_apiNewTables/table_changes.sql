@@ -18,3 +18,7 @@ ALTER TABLE `Countries` CHANGE `Name` `country` VARCHAR(45) CHARACTER SET latin1
 ALTER TABLE `letter` ADD `isDefault` ENUM('0','1') NOT NULL DEFAULT '0' COMMENT '1-default letter,0-custom letter' AFTER `img`;
 
 ALTER TABLE `letter` CHANGE `profile_id` `account_id` INT(11) NOT NULL;
+
+ALTER TABLE `letters_sort` CHANGE `profile_id` `account_id` INT(11) NOT NULL;
+
+ALTER TABLE `letters_sort` CHANGE `label` `letter_id` INT(20) NOT NULL;

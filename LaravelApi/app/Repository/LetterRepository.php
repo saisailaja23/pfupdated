@@ -5,6 +5,7 @@ namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Letter;
+use App\Models\LetterSort;
 
 /**
  * Description of ParentService
@@ -59,6 +60,33 @@ class LetterRepository {
         }catch(\Exception $e){
              //Add Exception here
         } 
+   }
+
+    public function getLettersById($account_id,$letter_id){
+        try{
+            $letter=new Letter;
+            $letterDetails =$letter->select('id')
+                                    ->where('account_id', '=', $account_id)
+                                    ->where('id', '=', $letter_id)
+                                   ->get();  
+            return $letterDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+   }
+
+   public function getSortedLetters($account_id){
+      try{
+            $letterSort=new LetterSort;
+            $letterDetails =$letterSort->select('letter_id')
+                                  ->where('account_id', '=', $account_id)
+                                  ->orderBy('order_by', 'asc')
+                                  ->get();  
+                                  
+            return $letterDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+      } 
    }
   
    
