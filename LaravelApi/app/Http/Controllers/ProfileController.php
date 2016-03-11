@@ -219,12 +219,11 @@ class ProfileController extends Controller
   	 	$api=Input::segment(1);
   	 	$user_name=Input::segment(2);
   	 	$profile=new UtilityService();
-		$account_id=$profile->getAccountIdByUserName($user_name);
-		
-
-  	 	if($api=='letters'){ 	
-  	 		$letterObj=new CoupleService($account_id);
-			$letters=$letterObj->getLetterDetails();
+		if($account_id=$profile->getAccountIdByUserName($user_name))
+		{
+			if($api=='letters'){ 	
+  	 			$letterObj=new CoupleService($account_id);
+				$letters=$letterObj->getLetterDetails();
 
   	 	}else if($api=='letter'){
   	 		$letter_id=Input::segment(3);
@@ -240,6 +239,10 @@ class ProfileController extends Controller
 						     	);
     			}  
   	 	return json_encode($letterDetails);
+		}
+		
+
+
   	}
   	
 
