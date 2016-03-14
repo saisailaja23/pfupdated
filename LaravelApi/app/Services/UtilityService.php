@@ -30,8 +30,8 @@ class UtilityService {
         return $accountId->account_id;
     }else{
 
-        //Add error log function here..
-        echo "No user found";
+        //Add error function here..
+       
     }
     
    }    
