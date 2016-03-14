@@ -58,4 +58,16 @@
   
         return (isset($codes[$status])) ? $codes[$status] : '';  
  }  
+
+
+ function ErrorLog($error){
+
+    if($error == 'No User Found'){
+
+        $status = Array("Status"=>'Failed',"Message"=>"No User Found");
+    }
+
+    return $status;
+
+ }
  
