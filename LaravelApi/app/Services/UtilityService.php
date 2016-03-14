@@ -29,10 +29,7 @@ class UtilityService {
     if($accountId=$profileObj->getAccountIdByUserName($user_name)){
         return $accountId->account_id;
     }else{
-        //Add error log function here..
-         $status = ErrorLog('No User Found');
-         print_r($status);
-         return $status;
+
     }
     
    }    

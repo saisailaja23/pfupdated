@@ -253,6 +253,13 @@ class ProfileController extends Controller
 
 
   	}
+
+  	public function getErrorsApi($exception){
+
+
+    return $this->respondInternalError('Uncaught api exception error occurred - ' . $exception->getMessage());
+
+  	}
   	
 
 		

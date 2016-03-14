@@ -58,10 +58,29 @@ Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
 
 
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
-Route::get('/journal/{username}/{journalid}', 'ProfileController@getJournalApi');
+//Route::get('/journal/{username}/{journalid}', 'ProfileController@getJournalApi');
+
+Route::group([
+    'prefix' => 'journal/{username}/{journalid}',
+    'where' => ['id' => '[0-9]+'],
+], function() {
+	Route::get('/', 'ProfileController@getJournalApi');
+    
+});
+
 Route::get('/journals/{username}/{all}', 'ProfileController@getJournalApi');//journals/{username}/{title}
 
 
 Route::get('/letters/{username}', 'ProfileController@getLetterApi');
-Route::get('/letter/{username}/{id}', 'ProfileController@getLetterApi');
 
+
+Route::group([
+    'prefix' => 'letter/{username}/{id}',
+    'where' => ['id' => '[0-9]+'],
+], function() {
+Route::get('/', 'ProfileController@getLetterApi');
+    // Define Routes Here
+});
+
+
+Route::get('/errors/{any}', 'ProfileController@getErrorsApi');
