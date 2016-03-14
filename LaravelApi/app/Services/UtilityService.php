@@ -30,8 +30,6 @@ class UtilityService {
         return $accountId->account_id;
     }else{
 
-        //Add error function here..
-       
     }
     
    }    

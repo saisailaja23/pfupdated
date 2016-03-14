@@ -198,12 +198,19 @@ class ProfileController extends Controller
   	
   	 public function getAlbumApi(){
 
+  	 	$albumseg=Input::segment(3);
   	 	$user_name=Input::segment(4);
-  	 	$photoid=Input::segment(5);
+  	 	$albumid=Input::segment(5);
+  	 	$type=urldecode(Input::segment(6));
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($user_name);
 		$album=new CoupleService($account_id);
+		if($albumseg == 'album'){
+			$albums= $album->getAlbumDetailsByAlbumId($albumid,$type); 
+		}
+		else if($albumseg == 'albums'){
 		$albums= $album->getAlbumDetails(); 
+		}
 		foreach($albums as $album){
     				$albumDetails[]=array(
 						     	"Ext"=>$album->getAlbumExt(),

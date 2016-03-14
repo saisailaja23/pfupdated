@@ -51,9 +51,9 @@ Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
 
 
 Route::get('/profile/photos/albums/{any}', 'ProfileController@getAlbumApi');
-Route::get('/profile/photos/albums/{any}/{photoid}', 'ProfileController@getAlbumApi');
+Route::get('/profile/photos/album/{any}/{albumid}', 'ProfileController@getAlbumApi');
+Route::get('/profile/photos/album/{any}/{albumid}/{type}', 'ProfileController@getAlbumApi');
 Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
-
 
 
 
