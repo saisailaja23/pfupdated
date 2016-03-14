@@ -104,6 +104,7 @@ class ProfileRepository {
             return $accountDetails;
         }catch(\Exception $e){
              //Add Exception here
+           // throw new NotFoundHttpException('user_not_found');
         } 
     }    
 
@@ -113,6 +114,7 @@ class ProfileRepository {
             $accountDetails =$account->where('username', '=',$user_name)->first();       
             return $accountDetails;
         }catch(\Exception $e){
+             return Redirect::to('/login-me')->with('msg', ' Sorry something went worng. Please try again.');
              //Add Exception here
         } 
     }    
