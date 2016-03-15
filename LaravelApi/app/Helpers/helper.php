@@ -57,6 +57,20 @@
         );  
   
         return (isset($codes[$status])) ? $codes[$status] : '';  
+ }
+
+ function getErrorMessage($error,$exception){
+    $errors = Array(  
+            'ProfileNotFound' => 'Profile Not Found',  
+            101 => 'Switching Protocols'
+           
+        );  
+
+    $status=Array("status"=>'Failed',
+                  "Error"  =>isset($errors[$error]) ? $errors[$error] : '',
+                  "Error Message"=>$exception->getMessage()
+                  );
+    return $status; 
  }  
 
 

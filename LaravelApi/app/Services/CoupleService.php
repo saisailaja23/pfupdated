@@ -10,6 +10,8 @@ use App\Services\ProfileService;
 use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
+use App\Exceptions\ParentFinderException;
+
 /**
  * Description of ParentService
 **/
@@ -39,12 +41,17 @@ class CoupleService {
     /* Get a single profiles */
 
     public function getParentprofile1() {
+         try{
          $profileId = $this->getProfileId();
+
          if(count($profileId>0)){
              $parentProfile = new ProfileService($profileId['parent1']);
              $this->parentprofile1 = $parentProfile->getProfile();
              return $this->parentprofile1;
-        }
+        } }
+    catch(\Exception $e){
+          //print_r(getErrorMessage('ProfileNotFound',$e));exit;
+        } 
     }
 
     function getParentprofile2() {
@@ -58,6 +65,8 @@ class CoupleService {
 
     private function getProfileId(){
         $accountObj=new AccountRepository($this->accountId);
+        try{
+
         $profileIds=$accountObj->getProfileIds();
         foreach($profileIds as $profileId){
             $profile_id[]=$profileId->profile_id;
@@ -68,6 +77,11 @@ class CoupleService {
         }else{
              $parentId['parent1']=$profile_id[0];
         }   
+    }
+    catch(\Exception $e){
+         // throw new ParentFinderException('not_found',4);
+
+        } 
         return $parentId;       
     }
 
