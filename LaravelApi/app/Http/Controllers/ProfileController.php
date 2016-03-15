@@ -197,7 +197,7 @@ class ProfileController extends Controller
   	}
   	
   	 public function getAlbumApi(){
-
+  	 	$photoseg=Input::segment(1);
   	 	$albumseg=Input::segment(2);
   	 	$user_name=Input::segment(3);
   	 	$albumid=Input::segment(4);
@@ -205,11 +205,19 @@ class ProfileController extends Controller
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($user_name);
 		$album=new CoupleService($account_id);
+		if($photoseg == 'photos'){
 		if($albumseg == 'album'){
 			$albums= $album->getAlbumDetailsByAlbumId($albumid,$type); 
 		}
 		else if($albumseg == 'albums'){
 		$albums= $album->getAlbumDetails(); 
+		}
+		}
+		else{
+			$user_name=Input::segment(2);
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$photoid = Input::segment(3);
+			$albums=$profile->getPhotoById($photoid);
 		}
 		foreach($albums as $album){
     				$albumDetails[]=array(

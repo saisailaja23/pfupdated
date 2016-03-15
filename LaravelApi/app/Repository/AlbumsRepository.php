@@ -104,6 +104,22 @@ public function getAlbumsByAlbumId($albumId,$account_id,$type){
         } 
    }
 
+     public function getPhotosById(){
+      echo $this->AlbumId;echo "s";
+          try{
+            $bxphotomainobj=new BxPhotosMain;
+            $bxphotomain = $bxphotomainobj
+                           ->where('Status', '=','approved')
+                           ->where('ID', '=',$this->AlbumId)
+                           ->first();
+
+            return $bxphotomain;              
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+   }
+   
+
     }
 
 

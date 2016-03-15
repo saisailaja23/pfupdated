@@ -55,11 +55,7 @@ class CoupleService {
           //print_r(getErrorMessage('ProfileNotFound',$e));exit;
         } 
     }
-    catch(\Exception $e){
-             //Add Exception here
-        } 
-    }
-
+    
     function getParentprofile2() {
         try{
          $profileId = $this->getProfileId();
@@ -77,7 +73,7 @@ class CoupleService {
     private function getProfileId(){
         try{
         $accountObj=new AccountRepository($this->accountId);
-        try{
+       
 
         $profileIds=$accountObj->getProfileIds();
         foreach($profileIds as $profileId){
