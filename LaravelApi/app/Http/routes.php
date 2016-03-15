@@ -50,6 +50,7 @@ Route::get('/pdfprofile/{any}/type/{type}', 'ProfileController@getProfileApi');
 Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
 Route::get('/photos/album/{any}/{albumid}', 'ProfileController@getAlbumApi');
 Route::get('/photos/album/{any}/{albumid}/{type}', 'ProfileController@getAlbumApi');
+Route::get('/photo/{any}/{photoid}', 'ProfileController@getAlbumApi');
 //Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
 
 

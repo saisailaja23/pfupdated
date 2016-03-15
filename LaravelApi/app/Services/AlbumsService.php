@@ -50,12 +50,13 @@ class AlbumsService {
     public function getAlbum() {
         try{
         $albumObj=new AlbumsRepository($this->AlbumId);
-        $albumDetails=$albumObj->getAlbumDetails();
+         $albumDetails=$albumObj->getAlbumDetails();
         $this->AlbumExt=$albumDetails->Ext;
         $this->AlbumTitle=$albumDetails->Title;
         $this->AlbumHash=$albumDetails->Hash;
         $this->AlbumUri=$albumDetails->Uri;
         $this->Id=$albumDetails->ID;
+        //print_r($this);
         return $this;
     }
     catch(\Exception $e){

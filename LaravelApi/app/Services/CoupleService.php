@@ -50,6 +50,7 @@ class CoupleService {
              return $this->parentprofile1;
         } }
     catch(\Exception $e){
+
           
         } 
     }
@@ -65,7 +66,7 @@ class CoupleService {
 
     private function getProfileId(){
         $accountObj=new AccountRepository($this->accountId);
-        try{
+       
 
         $profileIds=$accountObj->getProfileIds();
         foreach($profileIds as $profileId){

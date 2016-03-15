@@ -17,7 +17,7 @@ use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
 use App\Repository\JournalRepository;
-
+use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
 /**
  * Description of AccountService
@@ -153,6 +153,19 @@ class UtilityService {
     catch(\Exception $e){
              //Add Exception here
         } 
-    }  
+    } 
+
+     public function getPhotoById($photoid){
+        try{
+        $albumservice=new AlbumsService($photoid);
+              $albumout[]=$albumservice->getAlbum();
+             //print_r($albumout);
+        return $albumout;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+     
     
 }
