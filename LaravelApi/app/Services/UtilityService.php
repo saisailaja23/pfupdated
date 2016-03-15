@@ -46,6 +46,7 @@ class UtilityService {
 	// }
 	
 	public function getFlipbookByID($acc_id){  
+        try{
         $profile=new ProfileRepository(null);  
         $flipbookDetails=$profile->getFlipbook($acc_id);
         $flipbooks =   $flipbookDetails->content;
@@ -58,8 +59,13 @@ class UtilityService {
                                 );
         return $flipDetails;
     }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
     	public function getPdf($acc_id,$type){
+        try{
         $profile=new ProfileRepository(null);  
         $pdfDetails=$profile->getPdfDetails($acc_id);
         $pdf =   $pdfDetails->template_file_path;
@@ -87,8 +93,13 @@ class UtilityService {
         }
         return $pdfDetails;
     }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
     public function getJournalsByTitle($account_id,$title){
+        try{
         $journalObj=new JournalRepository(null);
         $journalIds=$journalObj->getJournalsByTitle($account_id,$title);
         foreach($journalIds as $journalId){
@@ -97,8 +108,13 @@ class UtilityService {
         }
         return $journalDetails;
     }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
     public function getJournalsById($account_id,$journal_id){
+      try{
       $journalObj=new JournalRepository(null);
       $journalIds=$journalObj->getJournalsById($account_id,$journal_id);
       foreach($journalIds as $journalId){
@@ -106,17 +122,26 @@ class UtilityService {
           $journalDetails[]=$journalObj->getJournal();        
       }
       return $journalDetails;
+  }catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
 
     public  function getEthnictyDetails($ethnicityId){
+        try{
         $ethnicity=new EthnicityRepository($ethnicityId);  
         $ethnicityDetails=$ethnicity->getEthnictyDetails();
         $ethnicityVal=$ethnicityDetails->ethnicity;
-        return $ethnicityVal;       
+        return $ethnicityVal;
+        }
+        catch(\Exception $e){
+             //Add Exception here
+        }        
     }  
 
     public function getLetterById($account_id,$letter_id){
+        try{
         $letterObj=new LetterRepository(null);
         $letterIds=$letterObj->getLettersById($account_id,$letter_id);
         foreach($letterIds as $letterId){
@@ -124,6 +149,10 @@ class UtilityService {
             $letterDetails[]=$letterObj->getLetter();        
         }
         return $letterDetails;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
     }  
     
 }

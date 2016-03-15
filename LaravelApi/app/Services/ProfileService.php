@@ -90,6 +90,7 @@ class ProfileService {
     /* Get a single profiles */
    
     public  function getProfile(){
+        try{
         $profile=new ProfileRepository($this->profileId);  
         $profileDetails=$profile->getProfile();
         $this->firstName=$profileDetails->first_name;
@@ -111,7 +112,11 @@ class ProfileService {
         if($waitingDetails=$waiting->getWaitingDetails())
         $this->waiting=$waitingDetails->waiting;		
            
-        return $this;       
+        return $this;
+        }
+        catch(\Exception $e){
+             //Add Exception here
+        }        
     }  
 
 	

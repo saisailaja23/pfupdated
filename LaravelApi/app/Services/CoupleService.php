@@ -39,6 +39,7 @@ class CoupleService {
     /* Get a single profiles */
 
     public function getParentprofile1() {
+        try{
          $profileId = $this->getProfileId();
          if(count($profileId>0)){
              $parentProfile = new ProfileService($profileId['parent1']);
@@ -46,17 +47,27 @@ class CoupleService {
              return $this->parentprofile1;
         }
     }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
     function getParentprofile2() {
+        try{
          $profileId = $this->getProfileId();
          if(count($profileId)==2){
              $parentProfile = new ProfileService($profileId['parent2']);
              $this->parentprofile2 = $parentProfile->getProfile();
              return $this->parentprofile2;
          }
+     }
+     catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
     private function getProfileId(){
+        try{
         $accountObj=new AccountRepository($this->accountId);
         $profileIds=$accountObj->getProfileIds();
         foreach($profileIds as $profileId){
@@ -68,23 +79,38 @@ class CoupleService {
         }else{
              $parentId['parent1']=$profile_id[0];
         }   
-        return $parentId;       
+        return $parentId; 
+        }
+        catch(\Exception $e){
+             //Add Exception here
+        }       
     }
 
     public function getAccountDetails() {
+        try{
         $accountObj=new AccountRepository($this->accountId);
         $accountDetails1=$accountObj->getAccountDetails();
         $this->avatar=$accountDetails1->Avatar;
         return $this;
     }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
     public function getContactDetails(){
+        try{
         $contactObj=new ContactService($this->accountId);
         $contactDetails=$contactObj->getContactDetails();
         return $contactDetails;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
     } 
 
     public function getJournalDetails(){
+        try{
         $journalObj=new JournalRepository(null);
         $journalIds=$journalObj->getJournalsByAccount($this->accountId);
         foreach($journalIds as $journalId){
@@ -92,9 +118,13 @@ class CoupleService {
             $journalDetails[]=$journalObj->getJournal();        
         }
         return $journalDetails;
+    }catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
      public function getAlbumDetails(){
+        try{
         $albumObj=new AlbumsRepository(null);
         $albumId=$albumObj->getAlbumByID($this->accountId);
         $albumDetail=$albumObj->getAlbums($albumId,$this->accountId);   
@@ -105,8 +135,13 @@ class CoupleService {
       
         return $albumout;
     }
+        catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
      public function getAlbumDetailsByAlbumId($albumid,$type){
+        try{
         $albumObj=new AlbumsRepository(null);
         $albumDetail=$albumObj->getAlbumsByAlbumId($albumid,$this->accountId,$type);   
         foreach($albumDetail as $albumDetails){
@@ -116,8 +151,13 @@ class CoupleService {
       
         return $albumout;
     }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
 
     public function getLetterDetails(){
+        try{
         $letterObj=new LetterRepository(null);
         $letterIds=$letterObj->getSortedLetters($this->accountId);
         if(count($letterIds)){
@@ -135,6 +175,10 @@ class CoupleService {
         }       
         
         return $letterDetails;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
     }
  
 }

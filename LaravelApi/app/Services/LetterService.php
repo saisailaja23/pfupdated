@@ -39,12 +39,17 @@ class LetterService{
     } 
     
     function getLetter(){
+        try{
         $letterObj=new LetterRepository($this->letterId);
         $letterDetails=$letterObj->getLetters();
         $this->title=$letterDetails->label;
         $this->content=$letterDetails->description;
         $this->associatedImage=$letterDetails->img;
         return $this;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
     

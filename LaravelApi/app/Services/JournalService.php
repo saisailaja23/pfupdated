@@ -38,6 +38,7 @@ class JournalService{
     }  
    
     public function getJournal() {
+        try{
         $journalsObj=new JournalRepository($this->journalId);
         $journalDetails=$journalsObj->getJournalDetails();
         $this->journalCaption=$journalDetails->PostCaption;
@@ -45,6 +46,10 @@ class JournalService{
         $this->journalUri=$journalDetails->PostUri;
         $this->journalText=$journalDetails->PostText;
         return $this;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
          
     }
 
