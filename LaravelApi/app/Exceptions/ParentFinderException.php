@@ -55,8 +55,7 @@ use Exception;
     {
         return [
             'id'     => $this->id,
-            'status' => $this->status,
-            'title'  => $this->title,
+            'status'  => $this->status,
             'detail' => $this->detail
         ];
     }
@@ -69,13 +68,34 @@ use Exception;
      */
     protected function build(array $args)
     {
+        
         $this->id = array_shift($args);
+        $errorMessage=$this->errorDisplay($this->id);      
+        $this->status  = $errorMessage['status'];
+        $this->detail =  $errorMessage['detail'];
      
-        $error = config(sprintf('errors.%s', $this->id));
-     
-        $this->title  = $error['title'];
-        $this->detail = vsprintf($error['detail'], $args);
-     
-        return $this->detail;
+        return $this;
+    }
+
+    function errorDisplay($errorMessage){
+        switch($errorMessage){
+            case 'not_found' :
+                 $error['status']='The server cannot or will not process the request due to something that is perceived to be a client error.';
+                 $error['detail']='The resource you were looking for was not found';
+                 break;
+            case 'forbidden' :
+                 $error['status']='Forbidden';
+                 $error['detail']='Your request was valid, but you are not authorised to perform that action.';
+                 break;
+            case 'user_not_found' :
+                 $error['status']='User Not Found';
+                 $error['detail']='The User you were looking for was not found';
+                 break;
+
+        }
+        
+           
+            return $error;
+        
     }
 }
