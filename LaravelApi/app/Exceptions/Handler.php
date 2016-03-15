@@ -49,8 +49,8 @@ class Handler extends ExceptionHandler
         if (config('app.debug')) {
             return parent::render($request, $e);
         }
-
-        return $this->handle($request, $e);
+            /*customized handler */
+            return $this->handle($request, $e);
     }
 
     /**
