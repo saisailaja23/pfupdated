@@ -247,13 +247,13 @@ class ProfileController extends Controller
 
   	}
 
-  	public function getErrorsApi($exception){
-
-
-    return $this->respondInternalError('Uncaught api exception error occurred - ' . $exception->getMessage());
+  	public function getPageNotFound(){
+  		
+  		$message=array( "status"=>'Failed',
+  						"Message"=>getStatusCodeMessage(404));
+    	return json_encode($message);
 
   	}
-  	
 
 		
 }

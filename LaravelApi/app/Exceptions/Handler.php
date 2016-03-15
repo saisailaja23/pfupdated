@@ -80,7 +80,7 @@ class Handler extends ExceptionHandler
 
     $status=Array("status"=>'Failed',
                   //"Error"  =>isset($errors[$error]) ? $errors[$error] : '',
-                  "Error Message"=> $e->getMessage()
+                  "Message"=> $e->getMessage()
                   );
     return json_encode($status); 
       
