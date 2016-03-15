@@ -138,11 +138,11 @@ class FilterService {
         }
         return $accountIds;
     } 
-    }
+    
     catch(\Exception $e){
              //Add Exception here
         }  
-
+    }
     
     
 }

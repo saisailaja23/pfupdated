@@ -41,9 +41,7 @@ class CoupleService {
     /* Get a single profiles */
 
     public function getParentprofile1() {
-
          try{
-
          $profileId = $this->getProfileId();
 
          if(count($profileId>0)){
@@ -52,26 +50,21 @@ class CoupleService {
              return $this->parentprofile1;
         } }
     catch(\Exception $e){
-          //print_r(getErrorMessage('ProfileNotFound',$e));exit;
+
+          
         } 
     }
-    
+
     function getParentprofile2() {
-        try{
          $profileId = $this->getProfileId();
          if(count($profileId)==2){
              $parentProfile = new ProfileService($profileId['parent2']);
              $this->parentprofile2 = $parentProfile->getProfile();
              return $this->parentprofile2;
          }
-     }
-     catch(\Exception $e){
-             //Add Exception here
-        } 
     }
 
     private function getProfileId(){
-        try{
         $accountObj=new AccountRepository($this->accountId);
        
 
@@ -85,40 +78,28 @@ class CoupleService {
         }else{
              $parentId['parent1']=$profile_id[0];
         }   
-
     }
     catch(\Exception $e){
-         // throw new ParentFinderException('not_found',4);
+          throw new ParentFinderException('user_not_found',$e->getMessage());
 
         } 
         return $parentId;       
     }
 
     public function getAccountDetails() {
-        try{
         $accountObj=new AccountRepository($this->accountId);
         $accountDetails1=$accountObj->getAccountDetails();
         $this->avatar=$accountDetails1->Avatar;
         return $this;
     }
-    catch(\Exception $e){
-             //Add Exception here
-        } 
-    }
 
     public function getContactDetails(){
-        try{
         $contactObj=new ContactService($this->accountId);
         $contactDetails=$contactObj->getContactDetails();
         return $contactDetails;
-    }
-    catch(\Exception $e){
-             //Add Exception here
-        } 
     } 
 
     public function getJournalDetails(){
-        try{
         $journalObj=new JournalRepository(null);
         $journalIds=$journalObj->getJournalsByAccount($this->accountId);
         foreach($journalIds as $journalId){
@@ -126,15 +107,11 @@ class CoupleService {
             $journalDetails[]=$journalObj->getJournal();        
         }
         return $journalDetails;
-    }catch(\Exception $e){
-             //Add Exception here
-        } 
     }
 
      public function getAlbumDetails(){
-        try{
         $albumObj=new AlbumsRepository(null);
-        $albumId=$albumObj->getAlbumByID($this->accountId);
+         $albumId=$albumObj->getAlbumByID($this->accountId);
         $albumDetail=$albumObj->getAlbums($albumId,$this->accountId);   
         foreach($albumDetail as $albumDetails){
             $albumserviceObj=new AlbumsService($albumDetails->ID);
@@ -143,29 +120,8 @@ class CoupleService {
       
         return $albumout;
     }
-        catch(\Exception $e){
-             //Add Exception here
-        } 
-    }
-
-     public function getAlbumDetailsByAlbumId($albumid,$type){
-        try{
-        $albumObj=new AlbumsRepository(null);
-        $albumDetail=$albumObj->getAlbumsByAlbumId($albumid,$this->accountId,$type);   
-        foreach($albumDetail as $albumDetails){
-            $albumserviceObj=new AlbumsService($albumDetails->ID);
-             $albumout[]=$albumserviceObj->getAlbum();
-        }     
-      
-        return $albumout;
-    }
-    catch(\Exception $e){
-             //Add Exception here
-        } 
-    }
 
     public function getLetterDetails(){
-        try{
         $letterObj=new LetterRepository(null);
         $letterIds=$letterObj->getSortedLetters($this->accountId);
         if(count($letterIds)){
@@ -183,10 +139,6 @@ class CoupleService {
         }       
         
         return $letterDetails;
-    }
-    catch(\Exception $e){
-             //Add Exception here
-        } 
     }
  
 }

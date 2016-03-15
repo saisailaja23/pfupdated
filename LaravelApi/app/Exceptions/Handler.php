@@ -21,7 +21,7 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
-        ParentFinderException::class,
+       // ParentFinderException::class,
     ];
 
     /**
@@ -49,8 +49,8 @@ class Handler extends ExceptionHandler
         if (config('app.debug')) {
             return parent::render($request, $e);
         }
-
-        return $this->handle1($request, $e);
+            /*customized handler */
+            return $this->handle($request, $e);
     }
 
     /**
@@ -60,30 +60,35 @@ class Handler extends ExceptionHandler
      * @param Exception $e
      * @return JSONResponse
      */
-      function handle1($request, Exception $e) {
+      function handle($request, Exception $e) {
 
         
         if ($e instanceOf ParentFinderException) {
             $data   = $e->toArray();
             $status = $e->getStatus();
+            $errorList=Array(
+                                "Status"=>'Failed',
+                                "Message"=> $data['status'] ,
+                                "Details"=>$data['detail'] 
+                                );
+           
         }
      
-        if ($e instanceOf NotFoundHttpException) {
+      else if ($e instanceOf NotFoundHttpException) {
             $data = array_merge([
                 'id'     => 'not_found',
                 'status' => '404'
             ], config('errors.not_found'));
      
             $status = 404;
+        }     
+        else{
+            $errorList=Array("status"=>'Failed',
+                          "Message"=> $e->getMessage()
+                          );
+            
         }
-     
-
-    $status=Array("status"=>'Failed',
-                  //"Error"  =>isset($errors[$error]) ? $errors[$error] : '',
-                  "Message"=> $e->getMessage()
-                  );
-    return json_encode($status); 
-      
-       // return response()->json($data, $status);
+      return json_encode($errorList); 
+       
     }
 }
