@@ -25,16 +25,21 @@ class FilterService {
     
    
     /*Get all profiles */
-    public  function getAllProfiles(){ 
+    public  function getAllProfiles(){
+    try{ 
         $accountObj=new AccountRepository(null);  
         $accountDetails=$accountObj->getAllAccounts();
         foreach ($accountDetails as $account) {
             $accountIds[]=$account->account_id;
         }
         return  $accountIds;
+    }catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
-	public function getProfilesByReligion($religion){     
+	public function getProfilesByReligion($religion){
+        try{     
         $profileObj=new ProfileRepository(null);
         $religionObj=new ReligionRepository($religion); 
         $religions=$religionObj->getReligionDetails();
@@ -44,8 +49,12 @@ class FilterService {
               $accountIds[]=$account->accounts_id;
         }
         return $accountIds;
+    }catch(\Exception $e){
+             //Add Exception here
+        } 
     }
      public function getProfilesByRegion($region){ 
+        try{
         $regionObj=new RegionRepository(null); 
         $regions=$regionObj->getRegionById($region);
         $regionId=   $regions->RegionId;
@@ -55,9 +64,13 @@ class FilterService {
             $accountIds[]= $accountDetail->Account_id;
         }
          return $accountIds;
+     }catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
     public function getProfilesByKids($kids)   {
+        try{
         $childObj=new ChildRepository($kids); 
         $childDetails=$childObj->getChildDetails();
          foreach ($childDetails as $childDetail) {
@@ -65,9 +78,14 @@ class FilterService {
 
         }
          return $accountIds;
+     }
+     catch(\Exception $e){
+             //Add Exception here
+        } 
     }
 
     public function getProfilesByState($state){ 
+        try{
         $stateObj=new StateRepository(null); 
         $states=$stateObj->getStateById($state);
         $stateId=   $states->state_id;
@@ -79,7 +97,12 @@ class FilterService {
         }
         return $accountIds;
     }
-    public function getProfilesByName($name){  
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+    public function getProfilesByName($name){ 
+        try{ 
         $profileObj=new ProfileRepository(null);
          $accountDetails=$profileObj->getProfileByName($name);
         foreach ($accountDetails as $accountDetail) {
@@ -87,7 +110,12 @@ class FilterService {
         }
         return $accountIds;
     }
-    public function getProfilesChildPref($child_pref){  
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+    public function getProfilesChildPref($child_pref){
+        try{  
         $ethnicityObj=new EthnicityRepository(null); 
         $ethnicity=$ethnicityObj->getEthinicityById($child_pref);
         $ethinicityId=   $ethnicity->ethnicity_id;
@@ -97,14 +125,23 @@ class FilterService {
         }
         return $accountIds;
     }
-    public function getProfilesBySort($sort){  
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+    public function getProfilesBySort($sort){ 
+        try{ 
          $profile=new ProfileRepository(null);  
         $accountDetails=$profile->getAllProfilesBySort($sort);
         foreach ($accountDetails as $accountDetail) {
             $accountIds[]= $accountDetail->accounts_id;
         }
         return $accountIds;
-    }  
+    } 
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        }  
 
     
     

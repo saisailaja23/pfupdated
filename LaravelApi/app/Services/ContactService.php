@@ -67,6 +67,7 @@ class ContactService {
     }
 
     public function getContactDetails() {
+        try{
         $contacts=new ContactRepository($this->accountId);
         if($contactDetails=$contacts->getContactDetails()){
             $this->countryId=$contactDetails->Country;          
@@ -79,6 +80,10 @@ class ContactService {
             $states=$stateObj->getStateDetails();
             $this->state=$states->State;
             return $this;
+        } 
+    }
+    catch(\Exception $e){
+             //Add Exception here
         } 
     } 
     

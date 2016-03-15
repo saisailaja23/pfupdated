@@ -48,6 +48,7 @@ class AlbumsService {
   
    
     public function getAlbum() {
+        try{
         $albumObj=new AlbumsRepository($this->AlbumId);
         $albumDetails=$albumObj->getAlbumDetails();
         $this->AlbumExt=$albumDetails->Ext;
@@ -56,13 +57,22 @@ class AlbumsService {
         $this->AlbumUri=$albumDetails->Uri;
         $this->Id=$albumDetails->ID;
         return $this;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
          
     }
 
     public function getAlbumByID($account_id){  
+        try{
         $album=new AlbumsRepository(null);  
         $this->albumId =$album->getAlbumID($account_id);
         return $this;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
     }
     
 }
