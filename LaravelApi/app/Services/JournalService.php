@@ -37,7 +37,7 @@ class JournalService{
        return $this->journalUri;
     }  
    
-    public function getJournal() {
+    public function getJournal() { 
         try{
         $journalsObj=new JournalRepository($this->journalId);
         $journalDetails=$journalsObj->getJournalDetails();
