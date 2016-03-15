@@ -21,6 +21,7 @@ class Handler extends ExceptionHandler
         HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class,
+        ParentFinderException::class,
     ];
 
     /**
@@ -45,6 +46,44 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $e)
     {
-        return parent::render($request, $e);
+        if (config('app.debug')) {
+            return parent::render($request, $e);
+        }
+
+        return $this->handle1($request, $e);
+    }
+
+    /**
+     * Convert the Exception into a JSON HTTP Response
+     *
+     * @param Request $request
+     * @param Exception $e
+     * @return JSONResponse
+     */
+      function handle1($request, Exception $e) {
+
+        
+        if ($e instanceOf ParentFinderException) {
+            $data   = $e->toArray();
+            $status = $e->getStatus();
+        }
+     
+        if ($e instanceOf NotFoundHttpException) {
+            $data = array_merge([
+                'id'     => 'not_found',
+                'status' => '404'
+            ], config('errors.not_found'));
+     
+            $status = 404;
+        }
+     
+
+    $status=Array("status"=>'Failed',
+                  //"Error"  =>isset($errors[$error]) ? $errors[$error] : '',
+                  "Message"=> $e->getMessage()
+                  );
+    return json_encode($status); 
+      
+       // return response()->json($data, $status);
     }
 }
