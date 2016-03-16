@@ -95,6 +95,30 @@ use Exception;
                  $error['status']='Letter Not Found';
                  $error['detail']='The Letter you were looking for was not found';
                  break;
+            case 'journal_not_found' :
+                 $error['status']='Journal Not Found';
+                 $error['detail']='The Journal you were looking for was not found';
+                 break;
+            case 'photo_not_found' :
+                 $error['status']='Photo Not Found';
+                 $error['detail']='The Photo you were looking for was not found';
+                 break;
+            case 'album_not_found' :
+                 $error['status']='Album Not Found';
+                 $error['detail']='The Album you were looking for was not found';
+                 break;
+            case 'video_not_found' :
+                 $error['status']='Video Not Found';
+                 $error['detail']='The Video you were looking for was not found';
+                 break;
+            case 'pdf_not_found' :
+                 $error['status']='Pdf Not Found';
+                 $error['detail']='The Pdf you were looking for was not found';
+                 break;
+            case 'flip_not_found' :
+                 $error['status']='FlipBook Not Found';
+                 $error['detail']='The FlipBook you were looking for was not found';
+                 break;
 
         }
         
