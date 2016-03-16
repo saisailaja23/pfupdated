@@ -32,7 +32,7 @@ class AlbumsService {
          $this->AlbumId = $AlbumId;
     } 
 
-    public  function getAlbumExt() {
+    public  function getAlbumExt() { 
        return $this->AlbumExt;
     }
     public  function getAlbumTitle() {
