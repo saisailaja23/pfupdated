@@ -61,9 +61,7 @@
 
  function getErrorMessage($error,$exception){
     $errors = Array(  
-            'ProfileNotFound' => 'Profile Not Found',  
-            101 => 'Switching Protocols'
-           
+            'ProfileNotFound' => 'Profile Not Found'
         );  
 
     $status=Array("status"=>'Failed',
