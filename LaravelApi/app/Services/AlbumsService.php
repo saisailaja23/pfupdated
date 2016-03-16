@@ -61,8 +61,7 @@ class AlbumsService {
     }
     catch(\Exception $e){
              //Add Exception here
-        } 
-         
+        }          
     }
 
     public function getAlbumByID($account_id){  
