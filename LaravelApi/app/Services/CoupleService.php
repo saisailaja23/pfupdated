@@ -11,6 +11,7 @@ use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
+use App\Repository\VideoRepository;
 
 /**
  * Description of ParentService
@@ -128,7 +129,7 @@ class CoupleService {
         }
         return $journalDetails;
     }catch(\Exception $e){
-             //Add Exception here
+          throw new ParentFinderException('journal_not_found',$e->getMessage());
         } 
     }
 
@@ -145,7 +146,7 @@ class CoupleService {
         return $albumout;
     }
         catch(\Exception $e){
-             //Add Exception here
+             throw new ParentFinderException('album_not_found',$e->getMessage());
         } 
     }
 
@@ -188,6 +189,26 @@ class CoupleService {
     catch(\Exception $e){
              //Add Exception here
         } 
+    }
+
+
+    public function getVideoDetails(){
+        $albumout = '';
+         try{
+        $albumObj=new VideoRepository(null);
+         $albumId=$albumObj->getVideoAlbumByID($this->accountId);
+        $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);   
+        foreach($albumDetail as $albumDetails){
+            $videoserviceObj=new VideoService($albumDetails->ID);
+             $albumout[] = $videoserviceObj->getAlbum();
+        }     
+      
+        return $albumout;
+    }
+        catch(\Exception $e){
+             //throw new ParentFinderException('album_not_found',$e->getMessage());
+        } 
+
     }
  
 }

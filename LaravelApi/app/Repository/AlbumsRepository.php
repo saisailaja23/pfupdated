@@ -105,7 +105,6 @@ public function getAlbumsByAlbumId($albumId,$account_id,$type){
    }
 
      public function getPhotosById(){
-      echo $this->AlbumId;echo "s";
           try{
             $bxphotomainobj=new BxPhotosMain;
             $bxphotomain = $bxphotomainobj

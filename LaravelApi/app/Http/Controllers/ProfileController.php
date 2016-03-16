@@ -270,5 +270,25 @@ class ProfileController extends Controller
 
   	}
 
-		
+	public function getVideoApi(){
+
+  	 	$param1=Input::segment(2);
+  	 	$param2=Input::segment(3);
+  	 	$profile=new UtilityService();
+		$account_id=$profile->getAccountIdByUserName($param2);
+		$video=new CoupleService($account_id);
+		$videos= $video->getVideoDetails(); 
+		foreach($videos as $videout){
+    				$videoDetails[]=array(
+						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
+						     	"Source"=>$videout->getVideoSource(),
+						     	"Uri"=>$videout->getVideoUri(),
+						     	"Id"=>$videout->getVideoId()
+						     	);
+    			}  
+		return json_encode($videoDetails);
+
+	}
+
+
 }
