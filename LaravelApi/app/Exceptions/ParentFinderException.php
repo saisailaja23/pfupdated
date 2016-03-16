@@ -91,6 +91,10 @@ use Exception;
                  $error['status']='User Not Found';
                  $error['detail']='The User you were looking for was not found';
                  break;
+            case 'letter_not_found' :
+                 $error['status']='Letter Not Found';
+                 $error['detail']='The Letter you were looking for was not found';
+                 break;
 
         }
         
