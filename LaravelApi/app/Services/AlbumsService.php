@@ -48,7 +48,7 @@ class AlbumsService {
   
    
     public function getAlbum() {
-        try{
+        try{ 
         $albumObj=new AlbumsRepository($this->AlbumId);
          $albumDetails=$albumObj->getAlbumDetails();
         $this->AlbumExt=$albumDetails->Ext;
