@@ -279,10 +279,11 @@ class ProfileController extends Controller
 
   	 	$param1=Input::segment(2);
   	 	$param2=Input::segment(3);
-  	 	echo $param3=Input::segment(4);
+  	 	$param3=Input::segment(4);
+  	 	$videoseg = Input::segment(1);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($param2);
-
+		if($videoseg == 'videos'){
 		if($param1=='albums'){
 			$video=new CoupleService($account_id);
 			$videos= $video->getVideoDetails();
@@ -293,11 +294,22 @@ class ProfileController extends Controller
 			$videos= $video->getHomeVideoDetails(); 
   	 	}
   	 	else{
-	  	 	//video-----
-			 
+  	 		$video=new CoupleService($account_id);
+			$videos= $video->getVideoDetailsById($param3); 
+
+	  	 	
 		}
   	 	
 		}
+	}
+	else{
+
+		 	$user_name=Input::segment(2);
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$profile=new UtilityService();
+			$videoid = Input::segment(3);
+			$videos=$profile->getVideoById($videoid);
+	}
 
   	 	
 		foreach($videos as $videout){

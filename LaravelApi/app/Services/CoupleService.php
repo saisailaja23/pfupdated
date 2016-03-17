@@ -232,5 +232,27 @@ class CoupleService {
              throw new ParentFinderException('video_not_found',$e->getMessage());
         }     
     }
+
+
+    public function getVideoDetailsById($videoid){
+        try{
+            $albumObj=new VideoRepository(null);
+            $albumId[]=$videoid;
+            try{
+                $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);
+
+                foreach($albumDetail as $albumDetails){
+                    $videoserviceObj=new VideoService($albumDetails->ID);
+                    $albumout[] = $videoserviceObj->getAlbum();
+                }
+            return $albumout; 
+            }catch(\Exception $e){
+             throw new ParentFinderException('video_not_found',$e->getMessage());              
+           }
+           
+        }catch(\Exception $e){
+             throw new ParentFinderException('video_not_found',$e->getMessage());
+        }     
+    }
  
 }
