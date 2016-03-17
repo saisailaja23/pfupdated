@@ -22,3 +22,7 @@ ALTER TABLE `letter` CHANGE `profile_id` `account_id` INT(11) NOT NULL;
 ALTER TABLE `letters_sort` CHANGE `profile_id` `account_id` INT(11) NOT NULL;
 
 ALTER TABLE `letters_sort` CHANGE `label` `letter_id` INT(20) NOT NULL;
+
+ALTER TABLE `Account` ADD `agency_id` INT NOT NULL AFTER `Avatar`;
+
+ALTER TABLE `rayvideofiles` CHANGE `Owner` `account_id` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '';
