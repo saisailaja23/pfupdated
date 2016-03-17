@@ -53,9 +53,24 @@ Route::get('/photos/album/{any}/{albumid}/{type}', 'ProfileController@getAlbumAp
 Route::get('/photo/{any}/{photoid}', 'ProfileController@getAlbumApi');
 //Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
 
-Route::get('/videos/albums/{username}', 'ProfileController@getVideoApi');
 
-Route::get('/videos/album/{username}/homevideos', 'ProfileController@getVideoApi');
+
+Route::get('/videos/albums/{username}', 'ProfileController@getVideoApi');
+Route::get('/videos/albums/{username}/homevideos', 'ProfileController@getVideoApi');
+Route::group([
+    'prefix' => '/videos/album/{username}/{videoid}',
+    'where' => ['videoid' => '[0-9]+'],
+], function() {
+	Route::get('/', 'ProfileController@getVideoApi');
+    
+});
+Route::group([
+    'prefix' => '/video/{username}/{videoid}',
+    'where' => ['videoid' => '[0-9]+'],
+], function() {
+	Route::get('/', 'ProfileController@getVideoApi');
+    
+});
 
 
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
@@ -87,5 +102,5 @@ Route::get('/', 'ProfileController@getLetterApi');
 Route::get('/errors/{any}', 'ProfileController@getErrorsApi');
 
 
-Route::get('/{any}', 'ProfileController@getPageNotFound');
+Route::get('/{any}', 'ProfileController@getPageNotFound'); 
 Route::get('/{any}/{all}', 'ProfileController@getPageNotFound');

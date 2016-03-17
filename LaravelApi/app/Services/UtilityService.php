@@ -170,5 +170,17 @@ class UtilityService {
         } 
     }
      
+     public function getVideoById($videoid){
+        try{
+        $albumservice=new VideoService($videoid);
+              $albumout[]=$albumservice->getAlbum();
+             //print_r($albumout);
+        return $albumout;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+     
     
 }
