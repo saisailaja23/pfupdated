@@ -67,9 +67,9 @@ class Handler extends ExceptionHandler
             $data   = $e->toArray();
             $status = $e->getStatus();
             $errorList=Array(
-                                "Status"=>'Failed',
-                                "Message"=> $data['status'] ,
-                                "Details"=>$data['detail'] 
+                                "status"=>'Failed',
+                                "message"=> $data['status'] ,
+                                "details"=>$data['detail'] 
                                 );
            
         }

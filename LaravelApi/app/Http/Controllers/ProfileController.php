@@ -28,7 +28,9 @@ class ProfileController extends Controller
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
 			$contactInfo=$parentObj->getContactDetails();
-			$profileDetails=array(
+			$profileDetails=Array(
+								"status"=>"OK",
+								"data" =>array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
@@ -37,7 +39,8 @@ class ProfileController extends Controller
 						     	"faith"=>$parent1->getFaith(),
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$accountObj->getAvatar(),
+						     	"avatar"=>$accountObj->getAvatar()
+						     	)
 						     	);	
     	}
     	else if($api=='profiles'){			/* To list all profiles */
@@ -84,7 +87,7 @@ class ProfileController extends Controller
 				$parent1 =  $parentObj->getParentprofile1();
 				$parent2 =  $parentObj->getParentprofile2();
 				$contactInfo=$parentObj->getContactDetails();
-				$parent1Details=array(
+				$parent1Details=Array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
@@ -96,7 +99,7 @@ class ProfileController extends Controller
 						     	
 						     	);
 				if(isset($parent2)){
-					$parent2Details=array(
+					$parent2Details=Array(
 						     	"first_name"=>$parent2->getFirstName(),
 						     	"last_name"=>$parent2->getLastName(),
 						     	"dob"=>$parent2->getDob(),
@@ -104,14 +107,14 @@ class ProfileController extends Controller
 						     	);
 				}
 				if(isset($parent1) && isset($parent2)){
-					$profileDetails[]=Array("profile"=>array(
+					$profileDetails[]=Array("status"=>"OK","profile"=>array(
 					                                 "parent1"=>$parent1Details,
 					                                  "parent2"=>$parent2Details
 					                                 )
 							);
 				}
 				else{
-					$profileDetails[]=Array("profile"=>array(
+					$profileDetails[]=Array("status"=>"OK","profile"=>array(
 					                                 "parent1"=>$parent1Details					                                  
 					                                 )
 										);
@@ -128,9 +131,11 @@ class ProfileController extends Controller
 			$flipbook= $profile->getFlipbookByID($acc_id);
 			foreach($flipbook as $flipbooks) {
 
-				$profileDetails[]=array(
-						     	"flip_book"=>$flipbooks['flipbook'],
-						     	"id"=>$flipbooks['id']
+				$profileDetails[]=array("status"=>"OK",
+								"data"=>array(
+							     	"flip_book"=>$flipbooks['flipbook'],
+							     	"id"=>$flipbooks['id']
+							     	)
 						     	);	
 			}
 			
@@ -143,10 +148,8 @@ class ProfileController extends Controller
 			$pdfoutput= $profile->getPdf($acc_id,$type);
 			$profileDetails[]=array(
 						     	"pdf_output"=>$pdfoutput
-						     	);
-    	}
-
-    	 	
+						     );
+    	}    	 	
     	
 	    return json_encode($profileDetails);	    	
   	}
@@ -279,15 +282,23 @@ class ProfileController extends Controller
   	 	echo $param3=Input::segment(4);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($param2);
-  	 	if(isset($param3) && $param3=='homevideos'){
+
+		if($param1=='albums'){
+			$video=new CoupleService($account_id);
+			$videos= $video->getVideoDetails();
+		}
+		else if($param1=='album'){
+			if(isset($param3) && $param3=='homevideos'){
   	 		$video=new CoupleService($account_id);
 			$videos= $video->getHomeVideoDetails(); 
   	 	}
   	 	else{
-	  	 	
-			$video=new CoupleService($account_id);
-			$videos= $video->getVideoDetails(); 
+	  	 	//video-----
+			 
 		}
+  	 	
+		}
+
   	 	
 		foreach($videos as $videout){
     				$videoDetails[]=array(
