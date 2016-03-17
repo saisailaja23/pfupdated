@@ -77,9 +77,24 @@ class VideoRepository {
         } 
    }
 
-   
-
+  public function getHomeVideos($account_id){
+      try{
+            $albumobj=new Albums;
+            $albumdetails =$albumobj->where('account_id', '=',$account_id)
+                                  ->where('Caption', '=','Home Videos')
+                                  ->where('Type', '=','bx_videos')
+                                  ->where('AllowAlbumView', '!=','2')
+                                  ->get(); 
+          foreach ($albumdetails as $albumdetail) {
+             $albumid[]= $albumdetail->ID;
+          }             
+          return  $albumid;              
+      }catch(\Exception $e){
+             
+      } 
     }
+
+}
 
 
 

@@ -198,20 +198,22 @@ class ProfileController extends Controller
   	
   	 public function getAlbumApi(){
   	 	$photoseg=Input::segment(1);
-  	 	$albumseg=Input::segment(2);
-  	 	$user_name=Input::segment(3);
-  	 	$albumid=Input::segment(4);
-  	 	$type=urldecode(Input::segment(5));
+  	 	
   	 	$profile=new UtilityService();
-		$account_id=$profile->getAccountIdByUserName($user_name);
-		$album=new CoupleService($account_id);
 		if($photoseg == 'photos'){
-		if($albumseg == 'album'){
-			$albums= $album->getAlbumDetailsByAlbumId($albumid,$type); 
-		}
-		else if($albumseg == 'albums'){
-		$albums= $album->getAlbumDetails(); 
-		}
+			$user_name=Input::segment(3);
+	  	 	$albumid=Input::segment(4);
+	  	 	$type=urldecode(Input::segment(5));
+	  	 	$albumseg=Input::segment(2);
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$album=new CoupleService($account_id);
+  	 	
+			if($albumseg == 'album'){
+				$albums= $album->getAlbumDetailsByAlbumId($albumid,$type); 
+			}
+			else if($albumseg == 'albums'){
+			$albums= $album->getAlbumDetails(); 
+			}
 		}
 		else{
 			$user_name=Input::segment(2);
@@ -274,10 +276,19 @@ class ProfileController extends Controller
 
   	 	$param1=Input::segment(2);
   	 	$param2=Input::segment(3);
+  	 	$param3=Input::segment(4);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($param2);
-		$video=new CoupleService($account_id);
-		$videos= $video->getVideoDetails(); 
+  	 	if(isset($param3) && $param3=='homevideos'){
+  	 		$video=new CoupleService($account_id);
+			$videos= $video->getHomeVideoDetails(); 
+  	 	}
+  	 	else{
+	  	 	
+			$video=new CoupleService($account_id);
+			$videos= $video->getVideoDetails(); 
+		}
+  	 	
 		foreach($videos as $videout){
     				$videoDetails[]=array(
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),

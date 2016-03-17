@@ -53,7 +53,9 @@ Route::get('/photos/album/{any}/{albumid}/{type}', 'ProfileController@getAlbumAp
 Route::get('/photo/{any}/{photoid}', 'ProfileController@getAlbumApi');
 //Route::get('/photos/albums/{any}', 'ProfileController@getAlbumApi');
 
-Route::get('/videos/albums/{any}', 'ProfileController@getVideoApi');
+
+Route::get('/videos/albums/{username}', 'ProfileController@getVideoApi');
+Route::get('/videos/albums/{username}/homevideos', 'ProfileController@getVideoApi');
 Route::get('/videos/albums/{any}/{videoid}', 'ProfileController@getVideoApi');
 
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
