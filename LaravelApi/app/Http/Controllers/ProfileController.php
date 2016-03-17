@@ -28,25 +28,6 @@ class ProfileController extends Controller
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
 			$contactInfo=$parentObj->getContactDetails();
-			$journals=$parentObj->getJournalDetails();
-			foreach($journals as $journal){
-    		$journalDetails[]=array(
-						     	"Caption"=>$journal->getJournalCaption(),
-						     	"Text"=>$journal->getJournalText(),
-						     	"Uri"=>$journal->getJournalUri(),
-						     	"Photo"=>$journal->getJournalPhoto()
-						     	);
-    		}  
-
-			$letters=$parentObj->getLetterDetails();
-    		foreach($letters as $letter){
-    		$letterDetails[]=array(
-						     	"Title"=>$letter->getTitle(),
-						     	"Content"=>$letter->getContent(),
-						     	"Image"=>$letter->getAssociatedImage()
-						     	);
-    			}
-
 			$profileDetails=Array(
 								"status"=>"OK",
 								"data" =>array(
@@ -58,9 +39,7 @@ class ProfileController extends Controller
 						     	"faith"=>$parent1->getFaith(),
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$accountObj->getAvatar(),
-						     	"journal"=>$journalDetails,
-						     	"letter"=>$letterDetails
+						     	"avatar"=>$accountObj->getAvatar()
 						     	)
 						     	);	
     	}
@@ -303,8 +282,8 @@ class ProfileController extends Controller
   	 	$param3=Input::segment(4);
   	 	$videoseg = Input::segment(1);
   	 	$profile=new UtilityService();
-		$account_id=$profile->getAccountIdByUserName($param2);
 		if($videoseg == 'videos'){
+		$account_id=$profile->getAccountIdByUserName($param2);
 		if($param1=='albums'){
 			$video=new CoupleService($account_id);
 			$videos= $video->getVideoDetails();
@@ -327,7 +306,7 @@ class ProfileController extends Controller
 
 		 	$user_name=Input::segment(2);
 			$account_id=$profile->getAccountIdByUserName($user_name);
-			$profile=new UtilityService();
+			//$profile=new UtilityService();
 			$videoid = Input::segment(3);
 			$videos=$profile->getVideoById($videoid);
 	}
