@@ -56,7 +56,7 @@ Route::get('/photo/{any}/{photoid}', 'ProfileController@getAlbumApi');
 
 
 Route::get('/videos/albums/{username}', 'ProfileController@getVideoApi');
-Route::get('/videos/albums/{username}/homevideos', 'ProfileController@getVideoApi');
+Route::get('/videos/album/{username}/homevideos', 'ProfileController@getVideoApi');
 Route::group([
     'prefix' => '/videos/album/{username}/{videoid}',
     'where' => ['videoid' => '[0-9]+'],
