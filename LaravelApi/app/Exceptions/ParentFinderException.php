@@ -119,6 +119,7 @@ use Exception;
                  $error['status']='FlipBook Not Found';
                  $error['detail']='The FlipBook you were looking for was not found';
                  break;
+                  
 
         }
         
