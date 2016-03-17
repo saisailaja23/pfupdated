@@ -276,7 +276,7 @@ class ProfileController extends Controller
 
   	 	$param1=Input::segment(2);
   	 	$param2=Input::segment(3);
-  	 	$param3=Input::segment(4);
+  	 	echo $param3=Input::segment(4);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($param2);
   	 	if(isset($param3) && $param3=='homevideos'){
