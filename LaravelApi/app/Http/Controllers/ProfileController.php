@@ -28,6 +28,25 @@ class ProfileController extends Controller
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
 			$contactInfo=$parentObj->getContactDetails();
+			$journals=$parentObj->getJournalDetails();
+			foreach($journals as $journal){
+    		$journalDetails[]=array(
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
+						     	);
+    		}  
+
+			$letters=$parentObj->getLetterDetails();
+    		foreach($letters as $letter){
+    		$letterDetails[]=array(
+						     	"Title"=>$letter->getTitle(),
+						     	"Content"=>$letter->getContent(),
+						     	"Image"=>$letter->getAssociatedImage()
+						     	);
+    			}
+
 			$profileDetails=Array(
 								"status"=>"OK",
 								"data" =>array(
@@ -39,7 +58,9 @@ class ProfileController extends Controller
 						     	"faith"=>$parent1->getFaith(),
 						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$accountObj->getAvatar()
+						     	"avatar"=>$accountObj->getAvatar(),
+						     	"journal"=>$journalDetails,
+						     	"letter"=>$letterDetails
 						     	)
 						     	);	
     	}
