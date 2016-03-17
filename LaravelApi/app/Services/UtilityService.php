@@ -19,18 +19,21 @@ use App\Repository\ChildRepository;
 use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of AccountService
 **/
 class UtilityService {
 
     public function getAccountIdByUserName($user_name){
-    $profileObj=new ProfileRepository(null);
-    if($accountId=$profileObj->getAccountIdByUserName($user_name)){
-        return $accountId->account_id;
-    }else{
-
-    }
+        try{
+            $profileObj=new ProfileRepository(null);           
+            $accountId=$profileObj->getAccountIdByUserName($user_name);
+            return $accountId->account_id;
+            
+        }catch(\Exception $e){
+             throw new ParentFinderException('user_not_found',$e->getMessage());
+        } 
     
    }    
   
