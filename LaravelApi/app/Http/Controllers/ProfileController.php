@@ -276,10 +276,19 @@ class ProfileController extends Controller
 
   	 	$param1=Input::segment(2);
   	 	$param2=Input::segment(3);
+  	 	$param3=Input::segment(4);
   	 	$profile=new UtilityService();
 		$account_id=$profile->getAccountIdByUserName($param2);
-		$video=new CoupleService($account_id);
-		$videos= $video->getVideoDetails(); 
+  	 	if(isset($param3) && $param3=='homevideos'){
+  	 		$video=new CoupleService($account_id);
+			$videos= $video->getHomeVideoDetails(); 
+  	 	}
+  	 	else{
+	  	 	
+			$video=new CoupleService($account_id);
+			$videos= $video->getVideoDetails(); 
+		}
+  	 	
 		foreach($videos as $videout){
     				$videoDetails[]=array(
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
