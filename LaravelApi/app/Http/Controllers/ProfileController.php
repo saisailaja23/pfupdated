@@ -148,14 +148,14 @@ class ProfileController extends Controller
     	 else if($api=='flipbook'){	
     		$profilename=Input::segment(2);
     		$profile=new UtilityService(null);
-    		$acc_id= $profile->getAccountIdByUserName($profilename);
-			$flipbook= $profile->getFlipbookByID($acc_id);
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+    		$flipbookobj=new CoupleService($account_id);
+			$flipbook= $flipbookobj->getFlipbook();
 			foreach($flipbook as $flipbooks) {
-
 				$profileDetails[]=array("status"=>"OK",
 								"data"=>array(
-							     	"flip_book"=>$flipbooks['flipbook'],
-							     	"id"=>$flipbooks['id']
+							     	"flip_book"=>$flipbooks->getcontent(),
+							     	"id"=>$flipbooks->getId()
 							     	)
 						     	);	
 			}
@@ -165,12 +165,17 @@ class ProfileController extends Controller
     		$profilename=Input::segment(2);
     		$type=Input::segment(4);
     		$profile=new UtilityService(null);
-    		$acc_id= $profile->getAccountIdByUserName($profilename);
-			$pdfoutput= $profile->getPdf($acc_id,$type);
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+    		$pdfbookobj=new CoupleService($account_id);
+			$pdfoutput= $pdfbookobj->getPdf($type);
+			foreach($pdfoutput as $pdfoutputs) {
 			$profileDetails[]=array(
-						     	"pdf_output"=>$pdfoutput
+						     	"single_profile"=>$pdfoutputs->template_file_path2,
+						     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
+						     	"id"=>$pdfoutputs->getId()
 						     );
-    	}    	 	
+    	}  
+    	}  	 	
     	
 	    return json_encode($profileDetails);	    	
   	}

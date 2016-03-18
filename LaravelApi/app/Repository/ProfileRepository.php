@@ -187,17 +187,7 @@ class ProfileRepository {
     }
     
     
-    public function getFlipbook($acc_id){
-         try{
-            $eprofileobj=new Eprofile;
-            $flipbookdetails =$eprofileobj->where('owner_id', '=',$acc_id)
-                                  ->where('title', '=','E-book Profile')
-                                  ->first();       
-            return  $flipbookdetails;
-        }catch(\Exception $e){
-             //Add Exception here
-        } 
-    }
+    
 
     public function getPdfDetails($acc_id){
          try{

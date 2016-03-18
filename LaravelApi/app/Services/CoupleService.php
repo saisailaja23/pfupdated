@@ -7,11 +7,14 @@ use App\Models\Ethnicity;
 use App\Repository\ProfileRepository;
 use App\Repository\AccountRepository;
 use App\Services\ProfileService;
+use App\Services\EprofileService;
 use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
 use App\Repository\VideoRepository;
+use App\Repository\EprofileRepository;
+use App\Repository\PdfRepository;
 
 /**
  * Description of ParentService
@@ -253,6 +256,60 @@ class CoupleService {
         }catch(\Exception $e){
              throw new ParentFinderException('video_not_found',$e->getMessage());
         }     
+    }
+
+
+    public function getFlipbook(){  
+        //echo $this->accountId;
+        try{
+        $profile=new EprofileRepository($this->accountId);  
+        $flipbookId=$profile->getFlipbookId();
+        $flipserviceObj=new EprofileService($flipbookId['id']);
+        $flipbook[] = $flipserviceObj->getFlipbook();
+                     
+        return $flipbook;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+
+
+    public function getPdf($type){
+        try{
+        $profile=new PdfRepository($this->accountId);  
+        $pdfDetails=$profile->getPdfDetail();
+        $flipserviceObj=new PdfService($pdfDetails->template_user_id);
+        $flipbook[] = $flipserviceObj->getPdfDetails($type,$this->accountId);
+        /*$pdf =   $pdfDetails->template_file_path;
+        $path_parts = explode('/', $pdf);
+        $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
+        if($type == 'single_profile'){
+             $pdfDetails=array(
+                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
+                                );
+        }
+        else  if($type == 'multi_profile'){
+             $pdfDetails=array(
+                                "multiprofile"=>$pdf_output,
+                                "id"=>$pdfDetails->template_user_id
+                                );
+            
+        }
+        else{
+            $pdfDetails=array(
+                                "multiprofile"=>$pdf_output,
+                                "id"=>$pdfDetails->template_user_id,
+                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
+                                );
+            
+        }*/
+       // print_r($flipbook);
+        return $flipbook;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
     }
  
 }
