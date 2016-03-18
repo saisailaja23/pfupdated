@@ -5,12 +5,12 @@ namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\Eprofile;
+use App\Models\PdfTemplate;
 
 /**
  * Description of ParentService
 **/
-class EprofileRepository {
+class PdfRepository {
 
    
     private $account_id;
@@ -27,29 +27,30 @@ class EprofileRepository {
          $this->account_id = $account_id;
     }   
     
-    public function getFlipbookId(){
+   public function getPdfDetail(){
          try{
-            $eprofileobj=new Eprofile;
-            $flipbookdetails =$eprofileobj->where('account_id', '=',$this->account_id)
-                                  ->where('title', '=','E-book Profile')
+            $pdfobj=new PdfTemplate;
+            $pdfdetails =$pdfobj->where('account_id', '=',$this->account_id)
+                                  ->where('isDeleted', '=','N')
+                                  ->where('isDefault', '=','Y')
                                   ->first();       
-            return  $flipbookdetails;
+            return  $pdfdetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
     }
 
-    public function getFlipbookDetails($id){
-        try{
-            $eprofileobj=new Eprofile;
-            $flipbookdetails =$eprofileobj->where('id', '=',$id)
-                                  ->where('title', '=','E-book Profile')
+     public function getPdfDetails($id){
+         try{
+            $pdfobj=new PdfTemplate;
+            $pdfdetails =$pdfobj->where('template_user_id', '=',$id)
+                                  ->where('isDeleted', '=','N')
+                                  ->where('isDefault', '=','Y')
                                   ->first();       
-            return  $flipbookdetails;
+            return  $pdfdetails;
         }catch(\Exception $e){
              //Add Exception here
         } 
-
     }
    
     }
