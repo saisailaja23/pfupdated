@@ -46,7 +46,8 @@ class ProfileController extends Controller
 						     	"Image"=>$letter->getAssociatedImage()
 						     	);
     			}
-
+    		$childpreferences=$parentObj->getChildPreferences();
+    		print_r($childpreferences);
 			$profileDetails=Array(
 								"status"=>"OK",
 								"data" =>array(
@@ -56,7 +57,6 @@ class ProfileController extends Controller
 						     	"gender"=>$parent1->getGender(),
 						     	"ethnicity"=>$parent1->getEthnicity(),
 						     	"faith"=>$parent1->getFaith(),
-						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
 						     	"avatar"=>$accountObj->getAvatar(),
 						     	"journal"=>$journalDetails,

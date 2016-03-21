@@ -119,6 +119,26 @@ use Exception;
                  $error['status']='FlipBook Not Found';
                  $error['detail']='The FlipBook you were looking for was not found';
                  break;
+            case 'ethnicity-prefer-not-found' :
+                 $error['status']='Ethnicity Prference Not Found';
+                 $error['detail']='Ethnicity Prference you were looking for was not found for this user';
+                 break;
+            case 'age-prefer-not-found' :
+                 $error['status']='Age Prference Not Found';
+                 $error['detail']='Age Prference you were looking for was not found for this user';
+                 break;
+            case 'adoption-prefer-not-found' :
+                 $error['status']='Adoption Type Prference Not Found';
+                 $error['detail']='Adoption Type Prference you were looking for was not found for this user';
+                 break;
+             case 'child-preference-not-found' :
+                 $error['status']='Child Prference Not Found';
+                 $error['detail']='Child Prference you were looking for was not found for this user';
+                 break;
+            default :
+                $error['status']='Not Found';
+                 $error['detail']='There is an error in your script.';
+                 break;
                   
 
         }
