@@ -293,10 +293,10 @@ class CoupleService {
         try{
             $preferences=new ChildPreferService($this->accountId);
             $preferenceDetails=$preferences->getChildPreferDetails();
-            $ethnicityPrefernces=$preferenceDetails->getEthnicityPref();
-            $childpreferences[]=$ethnicityPrefernces;
+            $childpreferences['ethnicity']=$preferenceDetails->getEthnicityPref();
+            $childpreferences['ageGroup']=$preferenceDetails->getAgePref();
+            $childpreferences['adoption']=$preferenceDetails->getAdoptionTypePref();
             return $childpreferences;
-           // print_r($childpreferences);
             
         } catch(\Exception $e){
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());

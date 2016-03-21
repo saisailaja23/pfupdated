@@ -47,7 +47,6 @@ class ProfileController extends Controller
 						     	);
     			}
     		$childpreferences=$parentObj->getChildPreferences();
-    		print_r($childpreferences);
 			$profileDetails=Array(
 								"status"=>"OK",
 								"data" =>array(
@@ -60,7 +59,8 @@ class ProfileController extends Controller
 						     	"waiting"=>$parent1->getWaiting(),
 						     	"avatar"=>$accountObj->getAvatar(),
 						     	"journal"=>$journalDetails,
-						     	"letter"=>$letterDetails
+						     	"letter"=>$letterDetails,
+						     	"childpreferences"=>$childpreferences
 						     	)
 						     	);	
     	}

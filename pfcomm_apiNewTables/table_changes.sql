@@ -26,3 +26,10 @@ ALTER TABLE `letters_sort` CHANGE `label` `letter_id` INT(20) NOT NULL;
 ALTER TABLE `Account` ADD `agency_id` INT NOT NULL AFTER `Avatar`;
 
 ALTER TABLE `RayVideoFiles` CHANGE `Owner` `account_id` VARCHAR(64) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '';
+
+ALTER TABLE `Age_group` ADD PRIMARY KEY(`Age_group_id`);
+ALTER TABLE `Age_group` CHANGE `Age_group_id` `Age_group_id` INT(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `age_group_preference` ADD PRIMARY KEY(`age_group_preference_id`);
+ALTER TABLE `age_group_preference` CHANGE `age_group_preference_id` `age_group_preference_id` INT(5) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `adoption_type_preference` ADD PRIMARY KEY(`adoption_type_preference_id`);
+ALTER TABLE `adoption_type_preference` CHANGE `adoption_type_preference_id` `adoption_type_preference_id` INT(5) NOT NULL AUTO_INCREMENT;

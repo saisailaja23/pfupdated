@@ -131,9 +131,17 @@ use Exception;
                  $error['status']='Adoption Type Prference Not Found';
                  $error['detail']='Adoption Type Prference you were looking for was not found for this user';
                  break;
-             case 'child-preference-not-found' :
+            case 'child-preference-not-found' :
                  $error['status']='Child Prference Not Found';
                  $error['detail']='Child Prference you were looking for was not found for this user';
+                 break;
+            case 'age-group-not-found' :
+                 $error['status']='Age Group Not Found';
+                 $error['detail']='Age Group you were looking for was not found for this user';
+                 break;
+            case 'adoption-type-not-found' :
+                 $error['status']='Adoption Type  Not Found';
+                 $error['detail']='Adoption Type you were looking for was not found for this user';
                  break;
             default :
                 $error['status']='Not Found';

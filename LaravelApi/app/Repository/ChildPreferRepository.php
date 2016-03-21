@@ -9,6 +9,7 @@ use App\Models\EthnicityPref;
 use App\Models\AgeGroupPref;
 use App\Models\AdoptionTypePref;
 use App\Models\AdoptionType;
+use App\Models\AgeGroup;
 
 /**
  * Description of ParentService
@@ -58,12 +59,32 @@ class ChildPreferRepository {
     /* Get ethnicity */
     public function getAdoptionPrefDetails() {
         try{
-            $adoptionObj=new Adoptionpref;
+            $adoptionObj=new AdoptionTypePref;
             $adoptionPreferDetails =$adoptionObj->where('account_id', '=',$this->getAccountId())->get();
             return $adoptionPreferDetails;
         }catch(\Exception $e){
                throw new ParentFinderException('adoption-prefer-not-found',$e->getMessage());
         }  
+    }
+
+    public function getAgeGroupFromId($age_group_id){
+        try{
+            $ageObj=new AgeGroup;
+            $ageDetails =$ageObj->where('Age_group_id', '=',$age_group_id)->first();
+            return $ageDetails;
+        }catch(\Exception $e){
+               throw new ParentFinderException('age-group-not-found',$e->getMessage());
+        } 
+    }
+
+    public function getAdoptionFromId($adoption_id){
+        try{
+            $adoptionObj=new AdoptionType;
+            $adoptionDetails =$adoptionObj->where('adoption_type_id', '=',$adoption_id)->first();
+            return $adoptionDetails;
+        }catch(\Exception $e){
+               throw new ParentFinderException('adoption-type-not-found',$e->getMessage());
+        } 
     }
 
     

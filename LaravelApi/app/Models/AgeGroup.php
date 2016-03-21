@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Models;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -8,7 +8,7 @@ class AgeGroup extends Model
 {
     //
     
-   
+   	protected $table = 'Age_group';
     public $timestamps = false;
     
     public function ageGroupPrefer() {

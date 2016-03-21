@@ -12,7 +12,7 @@ class ChildPreferService {
     private $accountId; 
     private $ethnicityPref;
     private $agePref;  
-    private $adoptionTypepref;
+    private $adoptionPref;
         
     public function __construct($accountId) {
        $this->setAccoountId($accountId);      
@@ -30,30 +30,35 @@ class ChildPreferService {
     } 
 
     public function getAgePref() {
-        return $this->stateId;
+        return $this->agePref;
     } 
 
-    public function getAdoptionTypepref() {
-        return $this->homeNumber;
+    public function getAdoptionTypePref() {
+        return $this->adoptionPref;
     }
 
     public function getChildPreferDetails() {
         try{
         $childPrefer=new ChildPreferRepository($this->accountId);
-        if($ethnicitypreferDetails=$childPrefer->getEthnicityPrefDetails()){
-            foreach ($ethnicitypreferDetails as $ethnicityprefer) {
-                    $ethnicity=new EthnicityRepository($ethnicityprefer->ethnicity_id);
+        if($ethnicityPreferDetails=$childPrefer->getEthnicityPrefDetails()){
+            foreach ($ethnicityPreferDetails as $ethnicityPrefer) {
+                    $ethnicity=new EthnicityRepository($ethnicityPrefer->ethnicity_id);
                     $ethnicityDetails=$ethnicity->getEthnicityDetails();
                     $this->ethnicityPref[]=$ethnicityDetails->ethnicity;                   
             }
         } 
-        if($ethnicitypreferDetails=$childPrefer->getEthnicityPrefDetails()){
-            foreach ($ethnicitypreferDetails as $ethnicityprefer) {
-                    $ethnicity=new EthnicityRepository($ethnicityprefer->ethnicity_id);
-                    $ethnicityDetails=$ethnicity->getEthnicityDetails();
-                    $this->ethnicityPref[]=$ethnicityDetails->ethnicity;                   
+        if($agePreferDetails=$childPrefer->getAgePrefDetails()){
+            foreach ($agePreferDetails as $agePrefer) {
+                    $ageDetails=$childPrefer->getAgeGroupFromId($agePrefer->age_group_id);
+                    $this->agePref[]=$ageDetails->Age_group;                   
             }
-        }     
+        } 
+        if($adoptionPreferDetails=$childPrefer->getAdoptionPrefDetails()){
+            foreach ($adoptionPreferDetails as $adoptionPrefer) {
+                    $adoptionDetails=$childPrefer->getAdoptionFromId($adoptionPrefer->adoption_type_id);
+                    $this->adoptionPref[]=$adoptionDetails->adoption_type;                  
+            }
+        }      
         return $this;   
     }
     catch(\Exception $e){
