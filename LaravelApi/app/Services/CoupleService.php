@@ -9,6 +9,7 @@ use App\Repository\AccountRepository;
 use App\Services\ProfileService;
 use App\Services\EprofileService;
 use App\Services\ChildPreferService;
+use App\Services\AgencyService;
 use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
@@ -302,5 +303,22 @@ class CoupleService {
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());
         }
     }
+
+   public function getAgencyDetails(){
+        try{
+            $agency=new AgencyService(null);
+            $agencyeDetails=$agency->getAgencyDetails($this->accountId);
+             $agency = '';
+           // print_r($agencyeDetails);
+            $agency['id']=$agencyeDetails->getId();
+            $agency['uri']=$agencyeDetails->geturi();
+            $agency['title']=$agencyeDetails->gettitle();
+            //print_r($agency);
+            return $agency;
+            
+        } catch(\Exception $e){
+                 throw new ParentFinderException('child-preference-not-found',$e->getMessage());
+        }
+    } 
  
 }

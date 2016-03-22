@@ -46,6 +46,7 @@ class ProfileController extends Controller
 						     	"Image"=>$letter->getAssociatedImage()
 						     	);
     			}
+    		$AgencyDetails = $parentObj->getAgencyDetails();
     		$childpreferences=$parentObj->getChildPreferences();
 			$profileDetails=Array(
 								"status"=>"OK",
@@ -60,7 +61,8 @@ class ProfileController extends Controller
 						     	"avatar"=>$accountObj->getAvatar(),
 						     	"journal"=>$journalDetails,
 						     	"letter"=>$letterDetails,
-						     	"childpreferences"=>$childpreferences
+						     	"childpreferences"=>$childpreferences,
+						     	"agency"=>$AgencyDetails
 						     	)
 						     	);	
     	}
