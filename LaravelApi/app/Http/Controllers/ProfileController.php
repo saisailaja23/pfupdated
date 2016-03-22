@@ -28,17 +28,21 @@ class ProfileController extends Controller
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountObj=$parentObj->getAccountDetails();
 			$contactInfo=$parentObj->getContactDetails();
-			$journals=$parentObj->getJournalDetails();
-			foreach($journals as $journal){
-    		$journalDetails[]=array(
+			$journalDetails='';
+			if($journals=$parentObj->getJournalDetails())
+			{
+				
+				foreach($journals as $journal){
+    			$journalDetails[]=array(
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
 						     	"Photo"=>$journal->getJournalPhoto()
 						     	);
-    		}  
-
-			$letters=$parentObj->getLetterDetails();
+    			}  
+    		}			
+    		$letterDetails='';
+			if($letters=$parentObj->getLetterDetails())
     		foreach($letters as $letter){
     		$letterDetails[]=array(
 						     	"Title"=>$letter->getTitle(),
