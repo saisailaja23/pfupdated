@@ -135,11 +135,12 @@ class ProfileController extends Controller
 							     	);
 					}
 					if(isset($parent1) && isset($parent2)){
-						$profileDetails[]=Array("status"=>"OK","profile"=>array(
+						$profileDetails[]=Array("status"=>"OK",
+												"profile"=>array(
 						                                 "parent1"=>$parent1Details,
 						                                  "parent2"=>$parent2Details
 						                                 )
-								);
+										);
 					}
 					else{
 						$profileDetails[]=Array("status"=>"OK","profile"=>array(
