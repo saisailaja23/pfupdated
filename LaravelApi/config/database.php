@@ -54,10 +54,10 @@ return [
 
         'mysql' => [
             'driver'    => 'mysql',
-            'host'      => env('DB_HOST', '192.168.0.100'),
+            'host'      => env('DB_HOST', '192.168.1.50'),
             'database'  => env('DB_DATABASE', 'pfcomm_api'),
             'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', ''),
+            'password'  => env('DB_PASSWORD', 'I4G0tIt'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

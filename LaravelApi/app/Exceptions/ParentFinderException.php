@@ -143,6 +143,10 @@ use Exception;
                  $error['status']='Adoption Type  Not Found';
                  $error['detail']='Adoption Type you were looking for was not found for this user';
                  break;
+            case 'no-profiles-found' :
+                 $error['status']='No profiles Found';
+                 $error['detail']='Profile list is empty';
+                 break;
             default :
                 $error['status']='Not Found';
                  $error['detail']='There is an error in your script.';

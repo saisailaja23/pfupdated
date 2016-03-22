@@ -11,6 +11,7 @@ use App\Services\AlbumsService;
 use App\Services\JournalService;
 use Response;
 use Illuminate\Support\Facades\Input;
+use App\Exceptions\ParentFinderException;
 class ProfileController extends Controller
 {
    
@@ -107,47 +108,50 @@ class ProfileController extends Controller
 			
     		$accountIds= $filter->getAllProfiles();
 			}
-    		
-     		foreach($accountIds as $account_id){
-     			$parent1Details=$parent2Details='';
-				$parentObj=new  CoupleService($account_id);
-				$parent1 =  $parentObj->getParentprofile1();
-				$parent2 =  $parentObj->getParentprofile2();
-				$contactInfo=$parentObj->getContactDetails();
-				$parent1Details=Array(
-						     	"first_name"=>$parent1->getFirstName(),
-						     	"last_name"=>$parent1->getLastName(),
-						     	"dob"=>$parent1->getDob(),
-						     	"faith"=>$parent1->getFaith(),
-						     	"waiting"=>$parent1->getWaiting(),
-								"country"=>$contactInfo->getCountry(),
-								"state"=>$contactInfo->getState(),
-						     	"avatar"=>$parentObj->getAvatar()
-						     	
-						     	);
-				if(isset($parent2)){
-					$parent2Details=Array(
-						     	"first_name"=>$parent2->getFirstName(),
-						     	"last_name"=>$parent2->getLastName(),
-						     	"dob"=>$parent2->getDob(),
-						     	"faith"=>$parent2->getFaith()
-						     	);
-				}
-				if(isset($parent1) && isset($parent2)){
-					$profileDetails[]=Array("status"=>"OK","profile"=>array(
-					                                 "parent1"=>$parent1Details,
-					                                  "parent2"=>$parent2Details
-					                                 )
-							);
-				}
-				else{
-					$profileDetails[]=Array("status"=>"OK","profile"=>array(
-					                                 "parent1"=>$parent1Details					                                  
-					                                 )
-										);
-				}
+    		if($accountIds){
+	     		foreach($accountIds as $account_id){
+	     			$parent1Details=$parent2Details='';
+					$parentObj=new  CoupleService($account_id);
+					$parent1 =  $parentObj->getParentprofile1();
+					$parent2 =  $parentObj->getParentprofile2();
+					$contactInfo=$parentObj->getContactDetails();
+					$parent1Details=Array(
+							     	"first_name"=>$parent1->getFirstName(),
+							     	"last_name"=>$parent1->getLastName(),
+							     	"dob"=>$parent1->getDob(),
+							     	"faith"=>$parent1->getFaith(),
+							     	"waiting"=>$parent1->getWaiting(),
+									"country"=>$contactInfo->getCountry(),
+									"state"=>$contactInfo->getState(),
+							     	"avatar"=>$parentObj->getAvatar()
+							     	
+							     	);
+					if(isset($parent2)){
+						$parent2Details=Array(
+							     	"first_name"=>$parent2->getFirstName(),
+							     	"last_name"=>$parent2->getLastName(),
+							     	"dob"=>$parent2->getDob(),
+							     	"faith"=>$parent2->getFaith()
+							     	);
+					}
+					if(isset($parent1) && isset($parent2)){
+						$profileDetails[]=Array("status"=>"OK","profile"=>array(
+						                                 "parent1"=>$parent1Details,
+						                                  "parent2"=>$parent2Details
+						                                 )
+								);
+					}
+					else{
+						$profileDetails[]=Array("status"=>"OK","profile"=>array(
+						                                 "parent1"=>$parent1Details					                                  
+						                                 )
+											);
+					}
 
-     		}
+	     		}
+     	}else{
+     		throw new ParentFinderException('no-profiles-found');
+     	}
     		
     	
     	}
