@@ -114,13 +114,16 @@ class CoupleService {
     }
 
     public function getContactDetails(){
+        $contactDetails='';
         try{
         $contactObj=new ContactService($this->accountId);
-        $contactDetails=$contactObj->getContactDetails();
-        return $contactDetails;
+        if($contactDetails=$contactObj->getContactDetails()){
+            return $contactDetails;
+        }
+        
     }
     catch(\Exception $e){
-             //Add Exception here
+              throw new ParentFinderException('contact_not_found',$e->getMessage());
         } 
     } 
 

@@ -147,6 +147,18 @@ use Exception;
                  $error['status']='No profiles Found';
                  $error['detail']='Profile list is empty';
                  break;
+             case 'contact_not_found' :
+                $error['status']='Contact details  Not Found';
+                 $error['detail']='Contact details you were looking for was not found for this user';
+                 break;
+            case 'country-not-found' :
+                 $error['status']='Country Not Found';
+                 $error['detail']='Country you were looking for was not found for this user';
+                 break;
+            case 'state-not-found' :
+                 $error['status']='State Not Found';
+                 $error['detail']='State you were looking for was not found for this user';
+                 break;
             default :
                 $error['status']='Not Found';
                  $error['detail']='There is an error in your script.';

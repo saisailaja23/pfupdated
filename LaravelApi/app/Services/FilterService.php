@@ -131,7 +131,7 @@ class FilterService {
     }
     public function getProfilesBySort($sort){ 
         try{ 
-         $profile=new ProfileRepository(null);  
+        $profile=new ProfileRepository(null);  
         $accountDetails=$profile->getAllProfilesBySort($sort);
         foreach ($accountDetails as $accountDetail) {
             $accountIds[]= $accountDetail->accounts_id;
