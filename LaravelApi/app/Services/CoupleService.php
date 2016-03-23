@@ -125,14 +125,20 @@ class CoupleService {
     } 
 
     public function getJournalDetails(){
+        $journalDetails='';
         try{
         $journalObj=new JournalRepository(null);
-        $journalIds=$journalObj->getJournalsByAccount($this->accountId);
-        foreach($journalIds as $journalId){
-            $journalObj=new JournalService($journalId->PostId);
-            $journalDetails[]=$journalObj->getJournal();        
+
+        if($journalIds=$journalObj->getJournalsByAccount($this->accountId))
+        {
+            foreach($journalIds as $journalId){
+                $journalObj=new journalService($journalId->PostId);
+                $journalDetails[]=$journalObj->getJournal();        
+            }
+            return $journalDetails;
+
         }
-        return $journalDetails;
+        
     }catch(\Exception $e){
           throw new ParentFinderException('journal_not_found',$e->getMessage());
         } 
@@ -172,6 +178,7 @@ class CoupleService {
     }
 
     public function getLetterDetails(){
+         $letterDetails='';
         try{
         $letterObj=new LetterRepository(null);
         $letterIds=$letterObj->getSortedLetters($this->accountId);
@@ -319,6 +326,7 @@ class CoupleService {
             $agency['website']=$agencyeDetails->getwebsite();
             //print_r($agency);
             return $agency;
+
             
         } catch(\Exception $e){
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());
