@@ -6,8 +6,9 @@ use App\Repository\CountryRepository;
 use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
+use App\Exceptions\ParentFinderException;
 /**
- * Description of ParentService
+ * Description of ContactService
 **/
 
 class ContactService {
@@ -74,16 +75,18 @@ class ContactService {
             $this->stateId=$contactDetails->State;
             $this->mobileNumber=$contactDetails->mobile_num;
             $countryObj=new CountryRepository($this->countryId);
-            $countries=$countryObj->getCountryDetails();
-            $this->country=$countries->country;
+            if($countries=$countryObj->getCountryDetails()){
+                $this->country=$countries->country;
+            }
             $stateObj=new StateRepository($this->stateId);
-            $states=$stateObj->getStateDetails();
-            $this->state=$states->State;
+            if($states=$stateObj->getStateDetails()){
+                 $this->state=$states->State;
+            } 
             return $this;
         } 
     }
     catch(\Exception $e){
-             //Add Exception here
+            throw new ParentFinderException('contact_not_found',$e->getMessage());
         } 
     } 
     
