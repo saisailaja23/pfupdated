@@ -59,7 +59,7 @@ class AccountRepository {
                                     ->get();       
             return $profileDetails;
         }catch(\Exception $e){
-             //Add Exception here
+             //catch Exceptions here
         } 
           
     }

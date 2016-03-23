@@ -125,14 +125,18 @@ class CoupleService {
     } 
 
     public function getJournalDetails(){
+        $journalDetails='';
         try{
         $journalObj=new JournalRepository(null);
-        $journalIds=$journalObj->getJournalsByAccount($this->accountId);
-        foreach($journalIds as $journalId){
-            $journalObj=new journalService($journalId->PostId);
-            $journalDetails[]=$journalObj->getJournal();        
+        if($journalIds=$journalObj->getJournalsByAccount($this->accountId))
+        {
+            foreach($journalIds as $journalId){
+                $journalObj=new journalService($journalId->PostId);
+                $journalDetails[]=$journalObj->getJournal();        
+            }
+            return $journalDetails;
         }
-        return $journalDetails;
+        
     }catch(\Exception $e){
           throw new ParentFinderException('journal_not_found',$e->getMessage());
         } 
@@ -172,6 +176,7 @@ class CoupleService {
     }
 
     public function getLetterDetails(){
+         $letterDetails='';
         try{
         $letterObj=new LetterRepository(null);
         $letterIds=$letterObj->getSortedLetters($this->accountId);
@@ -306,15 +311,15 @@ class CoupleService {
 
    public function getAgencyDetails(){
         try{
-            $agency=new AgencyService(null);
-            $agencyeDetails=$agency->getAgencyDetails($this->accountId);
-             $agency = '';
-           // print_r($agencyeDetails);
-            $agency['id']=$agencyeDetails->getId();
-            $agency['uri']=$agencyeDetails->geturi();
-            $agency['title']=$agencyeDetails->gettitle();
-            //print_r($agency);
-            return $agency;
+            $agencyObj=new AgencyService(null);
+            $agency = '';
+            if($agencyeDetails=$agencyObj->getAgencyDetails($this->accountId)){
+             
+                $agency['id']=$agencyeDetails->getId();
+                $agency['uri']=$agencyeDetails->geturi();
+                $agency['title']=$agencyeDetails->gettitle();
+                return $agency;
+            }
             
         } catch(\Exception $e){
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());
