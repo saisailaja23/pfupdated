@@ -70,16 +70,23 @@ class FilterService {
     }
 
     public function getProfilesByKids($kids)   {
+
         try{
         $childObj=new ChildRepository($kids); 
-        $childDetails=$childObj->getChildDetails();
-         foreach ($childDetails as $childDetail) {
-            $accountIds[]= $childDetail->Accounts_id;
+        if($childDetails=$childObj->getChildDetails()){
+             foreach ($childDetails as $childDetail) {
+                $accountIds[]= $childDetail->Accounts_id;
 
-        }
-         return $accountIds;
+            }
+            if($accountIds){
+             return $accountIds;
+            }
+            else{
+                throw new ParentFinderException('user_not_found',$e->getMessage());
+            }
+         }
      }
-     catch(\Exception $e){
+     catch(\Exception $e){       
              //Add Exception here
         } 
     }
