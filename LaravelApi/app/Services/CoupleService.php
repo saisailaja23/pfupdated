@@ -135,7 +135,7 @@ class CoupleService {
         if($journalIds=$journalObj->getJournalsByAccount($this->accountId))
         {
             foreach($journalIds as $journalId){
-                $journalObj=new journalService($journalId->PostId);
+                $journalObj=new JournalService($journalId->PostId);
                 $journalDetails[]=$journalObj->getJournal();        
             }
             return $journalDetails;
