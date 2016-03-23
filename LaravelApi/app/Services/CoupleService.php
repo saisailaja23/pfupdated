@@ -131,14 +131,17 @@ class CoupleService {
         $journalDetails='';
         try{
         $journalObj=new JournalRepository(null);
+
         if($journalIds=$journalObj->getJournalsByAccount($this->accountId))
         {
             foreach($journalIds as $journalId){
-                $journalObj=new journalService($journalId->PostId);
+                $journalObj=new JournalService($journalId->PostId);
                 $journalDetails[]=$journalObj->getJournal();        
             }
             return $journalDetails;
+
         }
+        
         
     }catch(\Exception $e){
           throw new ParentFinderException('journal_not_found',$e->getMessage());
@@ -314,15 +317,20 @@ class CoupleService {
 
    public function getAgencyDetails(){
         try{
-            $agencyObj=new AgencyService(null);
-            $agency = '';
-            if($agencyeDetails=$agencyObj->getAgencyDetails($this->accountId)){
-             
-                $agency['id']=$agencyeDetails->getId();
-                $agency['uri']=$agencyeDetails->geturi();
-                $agency['title']=$agencyeDetails->gettitle();
-                return $agency;
-            }
+            $agency=new AgencyService(null);
+            $agencyeDetails=$agency->getAgencyDetails($this->accountId);
+             $agency = '';
+           // print_r($agencyeDetails);
+            $agency['id']=$agencyeDetails->getId();
+            $agency['uri']=$agencyeDetails->geturi();
+            $agency['title']=$agencyeDetails->gettitle();
+            $agency['country']=$agencyeDetails->getcountry();
+            $agency['city']=$agencyeDetails->getcity();
+            $agency['zip']=$agencyeDetails->getzip();
+            $agency['website']=$agencyeDetails->getwebsite();
+            //print_r($agency);
+            return $agency;
+
             
         } catch(\Exception $e){
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());

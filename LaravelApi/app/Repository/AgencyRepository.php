@@ -35,17 +35,19 @@ class AgencyRepository {
             $ethnicityPreferDetails =$Agencyobj->where('account_id', '=',$account_id)->first();
             return $ethnicityPreferDetails;
         }catch(\Exception $e){
-               throw new ParentFinderException('ethnicity-prefer-not-found',$e->getMessage());
+               throw new ParentFinderException('agency-not-found',$e->getMessage());
         }  
 
    }
    public function getAgencyDetails($agency_id){
        try{
             $Agencyobj=new Agency;
-            $ethnicityPreferDetails =$Agencyobj->where('id', '=',$agency_id)->first();
+            $ethnicityPreferDetails =$Agencyobj->where('author_id', '=',$agency_id)
+                                              ->join('ContactDetails', 'ContactDetails.Account_id', '=', 'bx_groups_main.author_id') 
+                                                ->first();
             return $ethnicityPreferDetails;
         }catch(\Exception $e){
-               throw new ParentFinderException('ethnicity-prefer-not-found',$e->getMessage());
+               throw new ParentFinderException('agency-not-found',$e->getMessage());
         }  
 
    }

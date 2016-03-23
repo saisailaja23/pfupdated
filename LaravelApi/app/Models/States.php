@@ -8,6 +8,6 @@ class States extends Model
 {
     //
     
-  // protected $table = 'states';
+  protected $table = 'States';
    public $timestamps = false;
 }

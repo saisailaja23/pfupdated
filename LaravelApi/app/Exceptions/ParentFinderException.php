@@ -143,9 +143,15 @@ use Exception;
                  $error['status']='Adoption Type  Not Found';
                  $error['detail']='Adoption Type you were looking for was not found for this user';
                  break;
+
+             case 'agency-not-found' :
+                 $error['status']='Agency  Not Found';
+                 $error['detail']='Agency you were looking for was not found for this user';
+
             case 'no-profiles-found' :
                  $error['status']='No profiles Found';
-                 $error['detail']='Profile list is empty';
+                 $error['detail']='Profile list is empty'; 
+
                  break;
              case 'contact_not_found' :
                 $error['status']='Contact details  Not Found';

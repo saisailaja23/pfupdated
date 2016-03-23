@@ -71,7 +71,7 @@ class ProfileController extends Controller
 						     	)
 						     	);	
     	}
-    	else if($api=='profiles'){			/* To list all profiles */
+    	else if($api=='profiles'){			/*  To list all profiles */
 
 			$filter=new FilterService();
     		$filter_tag=Input::segment(2);
@@ -188,6 +188,7 @@ class ProfileController extends Controller
 			$pdfoutput= $pdfbookobj->getPdf($type);
 			foreach($pdfoutput as $pdfoutputs) {
 			$profileDetails[]=array(
+								"status"=>"OK",
 						     	"single_profile"=>$pdfoutputs->template_file_path2,
 						     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
 						     	"id"=>$pdfoutputs->getId()
@@ -233,6 +234,7 @@ class ProfileController extends Controller
     	}
     	foreach($journals as $journal){
     		$journalDetails[]=array(
+    							"status"=>"OK",
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
@@ -270,6 +272,7 @@ class ProfileController extends Controller
 		}
 		foreach($albums as $album){
     				$albumDetails[]=array(
+    							"status"=>"OK",
 						     	"Ext"=>$album->getAlbumExt(),
 						     	"Title"=>$album->getAlbumTitle(),
 						     	"Hash"=>$album->getAlbumHash(),
@@ -299,6 +302,7 @@ class ProfileController extends Controller
 
   	 	foreach($letters as $letter){
     		$letterDetails[]=array(
+    							"status"=>"OK",
 						     	"Title"=>$letter->getTitle(),
 						     	"Content"=>$letter->getContent(),
 						     	"Image"=>$letter->getAssociatedImage()
@@ -358,6 +362,7 @@ class ProfileController extends Controller
   	 	
 		foreach($videos as $videout){
     				$videoDetails[]=array(
+    							"status"=>"OK",
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
 						     	"Source"=>$videout->getVideoSource(),
 						     	"Uri"=>$videout->getVideoUri(),

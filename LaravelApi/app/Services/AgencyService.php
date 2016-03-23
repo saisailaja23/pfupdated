@@ -30,6 +30,19 @@ class AgencyService{
     public  function gettitle() {
        return $this->title;
     }
+    public  function getcountry() {
+       return $this->country;
+    }
+     public  function getcity() {
+       return $this->city;
+    }
+     public  function getzip() {
+       return $this->zip;
+    }
+     public  function getwebsite() {
+       return $this->website;
+    }
+    
   
    
     
@@ -39,10 +52,14 @@ class AgencyService{
          try{
         $childPrefer=new AgencyRepository(null);
         $adoptionPreferDetails=$childPrefer->getAgencyId($account_id);
-                      $adoptionDetails=$childPrefer->getAgencyDetails($adoptionPreferDetails->agency_id);
+                   $adoptionDetails=$childPrefer->getAgencyDetails($adoptionPreferDetails->agency_id);
                    $this->id=$adoptionDetails->id;
                    $this->title=$adoptionDetails->title;
                    $this->uri=$adoptionDetails->uri;
+                   $this->country= $adoptionDetails->country;
+                   $this->city= $adoptionDetails->city;
+                   $this->zip= $adoptionDetails->zip;
+                   $this->website= $adoptionDetails->website;
            // print_r($this);
         return $this;   
     }
