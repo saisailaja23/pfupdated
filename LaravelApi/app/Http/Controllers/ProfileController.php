@@ -66,7 +66,7 @@ class ProfileController extends Controller
 						     	)
 						     	);	
     	}
-    	else if($api=='profiles'){			/* To list all profiles */
+    	else if($api=='profiles'){			/*  To list all profiles */
 
 			$filter=new FilterService();
     		$filter_tag=Input::segment(2);
