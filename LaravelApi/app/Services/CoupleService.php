@@ -142,6 +142,7 @@ class CoupleService {
 
         }
         
+        
     }catch(\Exception $e){
           throw new ParentFinderException('journal_not_found',$e->getMessage());
         } 
