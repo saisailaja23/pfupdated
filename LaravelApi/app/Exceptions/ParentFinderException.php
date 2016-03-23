@@ -150,7 +150,7 @@ use Exception;
 
             case 'no-profiles-found' :
                  $error['status']='No profiles Found';
-                 $error['detail']='Profile list is empty';
+                 $error['detail']='Profile list is empty'; 
 
                  break;
             default :
