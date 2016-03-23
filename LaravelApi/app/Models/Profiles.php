@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class Profiles extends Model
 {
     
-    //protected $table='Profiles';
+    protected $table='Profiles';
     public $timestamps = false;
     protected $dateFormat = 'U';
 

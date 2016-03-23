@@ -3,6 +3,8 @@ namespace App\Repository;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Account;
 use App\Models\Profiles;
+use App\Models\Eprofile;
+use App\Models\PdfTemplate;
 /**
  * Description of ParentService
 **/
@@ -101,7 +103,7 @@ class ProfileRepository {
             $accountDetails =$account->where('accounts_id', '=',$account_id)->first();       
             return $accountDetails;
         }catch(\Exception $e){
-             //Add Exception here
+             
         } 
     }    
 
@@ -111,9 +113,92 @@ class ProfileRepository {
             $accountDetails =$account->where('username', '=',$user_name)->first();       
             return $accountDetails;
         }catch(\Exception $e){
+             //return Redirect::to('/login-me')->with('msg', ' Sorry something went worng. Please try again.');
              //Add Exception here
         } 
     }    
         
+    public function getProfileByName($name){
+       
+         try{
+            $nameobj=new Profiles;
+            $nameDetails =$nameobj->where('first_name', 'like','%'.$name.'%')
+                                  ->orWhere('last_name', 'like','%'.$name.'%')
+                                  ->get();       
+            return $nameDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+
+
+    public function getProfilesByEthinicity($ethinicityId){
+            try{
+            $contact=new Profiles;
+            $profileDetails =$profiles
+                             ->join('Regions', 'profiles.region_id', '=', 'Regions.RegionId')                                   
+                             ->where('region_id', '=',$region_id)
+                             ->get();
+                            
+            return $profileDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }
+        }    
+
+         public  function getAllProfilesBySort($sort){ 
+           
+        try{
+            $user=new Account;
+            $users=$user->get();
+            $profiles=new Profiles;
+            foreach($users as $User){
+                if($sort == 'newFirst'){
+                    $profileDetails =$profiles->where('status','=',1)
+                         ->groupBy('accounts_id')
+                         ->orderBy('profile_id','DESC')
+                         ->get(); 
+               
+            }
+             else if($sort == 'oldFirst'){
+                $profileDetails = $profiles->where('status','=',1)
+                                ->groupBy('accounts_id')
+                                ->orderBy('profile_id','ASC')
+                                ->get(); 
+            }
+             else if($sort == 'FirstName'){
+                $profileDetails = $profiles->where('status','=',1)
+                                ->groupBy('accounts_id')
+                                ->orderBy('first_name','ASC')
+                                ->get(); 
+            }
+            else if($sort == 'random'){
+                $profileDetails = $profiles->where('status','=',1)
+                                ->groupBy('accounts_id')
+                                ->orderByRaw("RAND()")
+                                ->get(); 
+            }     
+            }
+            return $profileDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
     
+    
+    
+
+    public function getPdfDetails($acc_id){
+         try{
+            $pdfobj=new PdfTemplate;
+            $pdfdetails =$pdfobj->where('account_id', '=',$acc_id)
+                                  ->where('isDeleted', '=','N')
+                                  ->where('isDefault', '=','Y')
+                                  ->first();       
+            return  $pdfdetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+
 }

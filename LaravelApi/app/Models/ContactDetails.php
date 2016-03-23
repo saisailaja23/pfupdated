@@ -8,7 +8,7 @@ class ContactDetails extends Model
 {
     //
     
-     protected $table = 'contactdetails';
+     protected $table = 'ContactDetails';
     public $timestamps = false;
     
     public function user() {

@@ -1,21 +1,18 @@
 <?php
 
 namespace App\Models;
+
 use Illuminate\Database\Eloquent\Model;
 
-class AgeGroupPref extends Model
+class LetterSort extends Model
 {
     //
-    
-    protected $table = 'age_group_preference';
+    protected $table = 'letters_sort';
+   
     public $timestamps = false;
+    protected $dateFormat = 'U';
+
     public function user() {
         return $this->belongsTo('User');
     } 
-
-    public function ageGroup() {
-        return $this->hasOne('AgeGroup');
-    } 
-
-
 }

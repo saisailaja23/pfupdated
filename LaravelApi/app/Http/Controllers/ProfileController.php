@@ -4,12 +4,14 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\Builder;
-use App\Services\AccountService;
-use App\Services\ProfileService;
+use App\Services\UtilityService;
 use App\Services\CoupleService;
 use App\Services\FilterService;
+use App\Services\AlbumsService;
+use App\Services\JournalService;
 use Response;
 use Illuminate\Support\Facades\Input;
+use App\Exceptions\ParentFinderException;
 class ProfileController extends Controller
 {
    
@@ -20,23 +22,53 @@ class ProfileController extends Controller
     	$api=Input::segment(1);
     	if($api=='profile'){			/*To get a single profile */
     		$user_name=Input::segment(2);
-			$profile=new AccountService();
+			$profile=new UtilityService();
 			$account_id=$profile->getAccountIdByUserName($user_name);
 			$parentObj=new  CoupleService($account_id);
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
-
-			$profileDetails=array(
+			$accountObj=$parentObj->getAccountDetails();
+			$contactInfo=$parentObj->getContactDetails();
+			$journalDetails='';
+			if($journals=$parentObj->getJournalDetails())
+			{
+				
+				foreach($journals as $journal){
+    			$journalDetails[]=array(
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
+						     	);
+    			}  
+    		}			
+    		$letterDetails='';
+			if($letters=$parentObj->getLetterDetails())
+    		foreach($letters as $letter){
+    		$letterDetails[]=array(
+						     	"Title"=>$letter->getTitle(),
+						     	"Content"=>$letter->getContent(),
+						     	"Image"=>$letter->getAssociatedImage()
+						     	);
+    			}
+    		$AgencyDetails = $parentObj->getAgencyDetails();
+    		$childpreferences=$parentObj->getChildPreferences();
+			$profileDetails=Array(
+								"status"=>"OK",
+								"data" =>array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
 						     	"dob"=>$parent1->getDob(),
 						     	"gender"=>$parent1->getGender(),
 						     	"ethnicity"=>$parent1->getEthnicity(),
 						     	"faith"=>$parent1->getFaith(),
-						     	"religion_id"=>$parent1->getReligionId(),
 						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$parent1->getAvatar(),
-
+						     	"avatar"=>$accountObj->getAvatar(),
+						     	"journal"=>$journalDetails,
+						     	"letter"=>$letterDetails,
+						     	"childpreferences"=>$childpreferences,
+						     	"agency"=>$AgencyDetails
+						     	)
 						     	);	
     	}
     	else if($api=='profiles'){			/* To list all profiles */
@@ -50,70 +82,291 @@ class ProfileController extends Controller
 				}
 				else if($filter_tag=='region'){
 					$region=Input::segment(3);
-					$profiles= $filter->getProfilesByRegion($region);
-					$profileIds=$filter->getProfileIds();
+					$accountIds= $filter->getProfilesByRegion($region);
 				}
 				else if($filter_tag=='kids'){
 					$kids=Input::segment(3);
-					$profiles= $filter->getProfilesByKids($kids);
-					$profileIds=$filter->getProfileIds();
+					$accountIds= $filter->getProfilesByKids($kids);
 				}
 				else if($filter_tag=='state'){
 			     $state=Input::segment(3);
-			     $profiles= $filter->getProfilesByState($state);
-			     $profileIds=$filter->getProfileIds();
+			     $accountIds= $filter->getProfilesByState($state);
+			    } 
+			   else if($filter_tag=='name'){
+			     $name=Input::segment(3);
+				$accountIds= $filter->getProfilesByName($name);
+			    }
+			   else if($filter_tag=='child-preference'){
+			     $child_pref=Input::segment(3);
+			     $accountIds= $filter->getProfilesChildPref($child_pref);
+			   }
+			   else if($filter_tag=='sort'){
+			     $sort=Input::segment(3);
+				$accountIds= $filter->getProfilesBySort($sort);
 			    }
 			}else{
 			
     		$accountIds= $filter->getAllProfiles();
 			}
-    		
-     		foreach($accountIds as $account_id){
-     			$parent1Details=$parent2Details='';
-				$parentObj=new  CoupleService($account_id);
-				$parent1 =  $parentObj->getParentprofile1();
-				$parent2 =  $parentObj->getParentprofile2();
-				$parent1Details=array(
-						     	"first_name"=>$parent1->getFirstName(),
-						     	"last_name"=>$parent1->getLastName(),
-						     	"dob"=>$parent1->getDob(),
-						     	"faith"=>$parent1->getFaith(),
-						     	"waiting"=>$parent1->getWaiting(),
-								"country"=>$parent1->getCountry(),
-								"state"=>$parent1->getState(),
-						     	"avatar"=>$parent1->getAvatar()
-						     	
-						     	);
-				if(isset($parent2)){
-					$parent2Details=array(
-						     	"first_name"=>$parent2->getFirstName(),
-						     	"last_name"=>$parent2->getLastName(),
-						     	"dob"=>$parent2->getDob(),
-						     	"faith"=>$parent2->getFaith()
-						     	);
-				}
-				if(isset($parent1) && isset($parent2)){
-					$profileDetails[]=Array("profile"=>array(
-					                                 "parent1"=>$parent1Details,
-					                                  "parent2"=>$parent2Details
-					                                 )
-							);
-				}
-				else{
-					$profileDetails[]=Array("profile"=>array(
-					                                 "parent1"=>$parent1Details					                                  
-					                                 )
-							);
-				}
+    		if($accountIds){
+	     		foreach($accountIds as $account_id){
+	     			$parent1Details=$parent2Details='';
+					$parentObj=new  CoupleService($account_id);
+					$parent1 =  $parentObj->getParentprofile1();
+					$parent2 =  $parentObj->getParentprofile2();
+					$contactDetails='';
+					if($contactInfo=$parentObj->getContactDetails()){
+						$contactDetails=Array(
+									"country"=>$contactInfo->getCountry(),
+									"state"=>$contactInfo->getState()							     	
+							     	);
+					}					
+					
+					$parent1Details=Array(
+							     	"first_name"=>$parent1->getFirstName(),
+							     	"last_name"=>$parent1->getLastName(),
+							     	"dob"=>$parent1->getDob(),
+							     	"faith"=>$parent1->getFaith(),
+							     	"waiting"=>$parent1->getWaiting(),
+							     	"avatar"=>$parentObj->getAvatar()
+							     	
+							     	);
+					if(isset($parent2)){
+						$parent2Details=Array(
+							     	"first_name"=>$parent2->getFirstName(),
+							     	"last_name"=>$parent2->getLastName(),
+							     	"dob"=>$parent2->getDob(),
+							     	"faith"=>$parent2->getFaith()
+							     	);
+					}
+					if(isset($parent1) && isset($parent2)){
+						$profileDetails[]=Array("status"=>"OK",
+												"profile"=>array(
+						                                 "parent1"=>$parent1Details,
+						                                  "parent2"=>$parent2Details,
+						                                  "contactDetails"=>$contactDetails
+						                                 )
+										);
+					}
+					else{
+						$profileDetails[]=Array("status"=>"OK","profile"=>array(
+						                                 "parent1"=>$parent1Details	,
+						                                 "contactDetails"=>$contactDetails				                                  
+						                                 )
+											);
+					}
 
-     		}
+	     		}
+     	}else{
+     		throw new ParentFinderException('no-profiles-found');
+     	}
     		
     	
     	}
-    	    
+    	 else if($api=='flipbook'){	
+    		$profilename=Input::segment(2);
+    		$profile=new UtilityService(null);
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+    		$flipbookobj=new CoupleService($account_id);
+			$flipbook= $flipbookobj->getFlipbook();
+			foreach($flipbook as $flipbooks) {
+				$profileDetails[]=array("status"=>"OK",
+								"data"=>array(
+							     	"flip_book"=>$flipbooks->getcontent(),
+							     	"id"=>$flipbooks->getId()
+							     	)
+						     	);	
+			}
+			
+    	}
+    	else if($api=='pdfprofile'){	
+    		$profilename=Input::segment(2);
+    		$type=Input::segment(4);
+    		$profile=new UtilityService(null);
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+    		$pdfbookobj=new CoupleService($account_id);
+			$pdfoutput= $pdfbookobj->getPdf($type);
+			foreach($pdfoutput as $pdfoutputs) {
+			$profileDetails[]=array(
+						     	"single_profile"=>$pdfoutputs->template_file_path2,
+						     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
+						     	"id"=>$pdfoutputs->getId()
+						     );
+    	}  
+    	}  	 	
+    	
 	    return json_encode($profileDetails);	    	
   	}
+
+
+    /* Journals */
+  	public function getJournalApi(){
+  		$api=Input::segment(1);
+  		if($api=='journals') {  
+
+  			$user_name=Input::segment(2);
+  			$title=urldecode(Input::segment(3));
+  			if(isset($title)){
+  				$profile=new UtilityService();
+				$account_id=$profile->getAccountIdByUserName($user_name);
+				$journals=$profile->getJournalsByTitle($account_id,$title);
+  			}  				
+  			else{
+    			$profile=new UtilityService();
+				$account_id=$profile->getAccountIdByUserName($user_name);
+				$journalObj=new CoupleService($account_id);
+    			$journals=$journalObj->getJournalDetails();
+    			
+				
+  			}
+  			
+    		
+			
+    	}
+    	else if($api=='journal'){	
+    		$profilename=Input::segment(2);
+    		$journal_id=Input::segment(3);
+    		$profile=new UtilityService(null);
+    		$account_id= $profile->getAccountIdByUserName($profilename);
+			$journals=$profile->getJournalsById($account_id,$journal_id);
+			
+    	}
+    	foreach($journals as $journal){
+    		$journalDetails[]=array(
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
+						     	);
+    			}  
+
+    	 return json_encode($journalDetails);
+  	}
   	
-  	
+  	 public function getAlbumApi(){
+  	 	$photoseg=Input::segment(1);
+  	 	
+  	 	$profile=new UtilityService();
+		if($photoseg == 'photos'){
+			$user_name=Input::segment(3);
+	  	 	$albumid=Input::segment(4);
+	  	 	$type=urldecode(Input::segment(5));
+	  	 	$albumseg=Input::segment(2);
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$album=new CoupleService($account_id);
+  	 	
+			if($albumseg == 'album'){
+				$albums= $album->getAlbumDetailsByAlbumId($albumid,$type); 
+			}
+			else if($albumseg == 'albums'){
+			$albums= $album->getAlbumDetails(); 
+			}
+		}
+		else{
+			$user_name=Input::segment(2);
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			$photoid = Input::segment(3);
+			$albums=$profile->getPhotoById($photoid);
+		}
+		foreach($albums as $album){
+    				$albumDetails[]=array(
+						     	"Ext"=>$album->getAlbumExt(),
+						     	"Title"=>$album->getAlbumTitle(),
+						     	"Hash"=>$album->getAlbumHash(),
+						     	"Uri"=>$album->getAlbumUri(),
+						     	"Id"=>$album->getAlbumId()
+						     	);
+    			}  
+		return json_encode($albumDetails);
+  	 } 
+
+  	 /*  Letters  */
+  	public function getLetterApi(){
+  	 	$api=Input::segment(1);
+  	 	$user_name=Input::segment(2);
+  	 	$profile=new UtilityService();
+		if($account_id=$profile->getAccountIdByUserName($user_name))
+		{
+			if($api=='letters'){ 	
+  	 			$letterObj=new CoupleService($account_id);
+				$letters=$letterObj->getLetterDetails();
+
+  	 	}else if($api=='letter'){
+  	 		$letter_id=Input::segment(3);
+  	 		$letters=$profile->getLetterById($account_id,$letter_id);
+  	 		
+  	 	}
+
+  	 	foreach($letters as $letter){
+    		$letterDetails[]=array(
+						     	"Title"=>$letter->getTitle(),
+						     	"Content"=>$letter->getContent(),
+						     	"Image"=>$letter->getAssociatedImage()
+						     	);
+    			}  
+  	 	return json_encode($letterDetails);
+		}
 		
+
+
+  	}
+
+  	public function getPageNotFound(){
+  		
+  		$message=array( "status"=>'Failed',
+  						"Message"=>getStatusCodeMessage(404));
+    	return json_encode($message);
+
+  	}
+
+	public function getVideoApi(){
+
+  	 	$param1=Input::segment(2);
+  	 	$param2=Input::segment(3);
+  	 	$param3=Input::segment(4);
+  	 	$videoseg = Input::segment(1);
+  	 	$profile=new UtilityService();
+		if($videoseg == 'videos'){
+		$account_id=$profile->getAccountIdByUserName($param2);
+		if($param1=='albums'){
+			$video=new CoupleService($account_id);
+			$videos= $video->getVideoDetails();
+		}
+		else if($param1=='album'){
+			if(isset($param3) && $param3=='homevideos'){
+  	 		$video=new CoupleService($account_id);
+			$videos= $video->getHomeVideoDetails(); 
+  	 	}
+  	 	else{
+  	 		$video=new CoupleService($account_id);
+			$videos= $video->getVideoDetailsById($param3); 
+
+	  	 	
+		}
+  	 	
+		}
+	}
+	else{
+
+		 	$user_name=Input::segment(2);
+			$account_id=$profile->getAccountIdByUserName($user_name);
+			//$profile=new UtilityService();
+			$videoid = Input::segment(3);
+			$videos=$profile->getVideoById($videoid);
+	}
+
+  	 	
+		foreach($videos as $videout){
+    				$videoDetails[]=array(
+						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
+						     	"Source"=>$videout->getVideoSource(),
+						     	"Uri"=>$videout->getVideoUri(),
+						     	"Id"=>$videout->getVideoId()
+						     	);
+    			}  
+		return json_encode($videoDetails);
+
+	}
+
+
 }

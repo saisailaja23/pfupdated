@@ -57,5 +57,29 @@
         );  
   
         return (isset($codes[$status])) ? $codes[$status] : '';  
+ }
+
+ function getErrorMessage($error,$exception){
+    $errors = Array(  
+            'ProfileNotFound' => 'Profile Not Found'
+        );  
+
+    $status=Array("status"=>'Failed',
+                  "Error"  =>isset($errors[$error]) ? $errors[$error] : '',
+                  "Error Message"=>$exception->getMessage()
+                  );
+    return $status; 
  }  
+
+
+ function ErrorLog($error){
+
+    if($error == 'No User Found'){
+
+        $status = Array("Status"=>'Failed',"Message"=>"No User Found");
+    }
+
+    return $status;
+
+ }
  

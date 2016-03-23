@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Letter extends Model
+class Journal extends Model
 {
     //
-    protected $table = 'letter';
-   
+    
+    protected $table = 'bx_blogs_posts';
     public $timestamps = false;
-    protected $dateFormat = 'U';
-
+    
     public function user() {
-        return $this->belongsTo('User');
+        return $this->belongsTo('user');
     } 
+
 }

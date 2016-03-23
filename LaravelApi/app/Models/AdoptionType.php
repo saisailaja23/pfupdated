@@ -4,15 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AgeGroup extends Model
+class AdoptionType extends Model
 {
     //
     
-   	protected $table = 'Age_group';
+   	protected $table = 'adoption_type';
     public $timestamps = false;
     
     public function ageGroupPrefer() {
-        return $this->belongsTo('AgeGroupPref');
+        return $this->belongsTo('AdoptionTypePref');
     } 
 
 }
