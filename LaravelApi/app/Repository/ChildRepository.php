@@ -29,6 +29,7 @@ class ChildRepository {
                                 ->get();
             return $childDetails;
         }catch(\Exception $e){
+            echo "1";
              //Add Exception here
         }  
     }
