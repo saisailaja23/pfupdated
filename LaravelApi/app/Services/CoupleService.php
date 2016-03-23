@@ -129,7 +129,7 @@ class CoupleService {
         $journalObj=new JournalRepository(null);
         $journalIds=$journalObj->getJournalsByAccount($this->accountId);
         foreach($journalIds as $journalId){
-            $journalObj=new journalService($journalId->PostId);
+            $journalObj=new JournalService($journalId->PostId);
             $journalDetails[]=$journalObj->getJournal();        
         }
         return $journalDetails;
@@ -313,6 +313,10 @@ class CoupleService {
             $agency['id']=$agencyeDetails->getId();
             $agency['uri']=$agencyeDetails->geturi();
             $agency['title']=$agencyeDetails->gettitle();
+            $agency['country']=$agencyeDetails->getcountry();
+            $agency['city']=$agencyeDetails->getcity();
+            $agency['zip']=$agencyeDetails->getzip();
+            $agency['website']=$agencyeDetails->getwebsite();
             //print_r($agency);
             return $agency;
             

@@ -143,6 +143,10 @@ use Exception;
                  $error['status']='Adoption Type  Not Found';
                  $error['detail']='Adoption Type you were looking for was not found for this user';
                  break;
+             case 'agency-not-found' :
+                 $error['status']='Agency  Not Found';
+                 $error['detail']='Agency you were looking for was not found for this user';
+                 break;
             default :
                 $error['status']='Not Found';
                  $error['detail']='There is an error in your script.';
