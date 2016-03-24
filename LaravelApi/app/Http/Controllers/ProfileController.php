@@ -169,6 +169,7 @@ class ProfileController extends Controller
     		$account_id= $profile->getAccountIdByUserName($profilename);
     		$flipbookobj=new CoupleService($account_id);
 			$flipbook= $flipbookobj->getFlipbook();
+			if(!empty($flipbook)){
 			foreach($flipbook as $flipbooks) {
 				$profileDetails[]=array("status"=>"OK",
 								"data"=>array(
@@ -177,15 +178,20 @@ class ProfileController extends Controller
 							     	)
 						     	);	
 			}
+		}
+		else{
+			throw new ParentFinderException('flip_not_found');
+		}
 			
     	}
     	else if($api=='pdfprofile'){	
     		$profilename=Input::segment(2);
     		$type=Input::segment(4);
     		$profile=new UtilityService(null);
-    		$account_id= $profile->getAccountIdByUserName($profilename);
+    	    $account_id= $profile->getAccountIdByUserName($profilename);
     		$pdfbookobj=new CoupleService($account_id);
-			$pdfoutput= $pdfbookobj->getPdf($type);
+		    $pdfoutput= $pdfbookobj->getPdf($type);
+			if(!empty($pdfoutput)){
 			foreach($pdfoutput as $pdfoutputs) {
 			$profileDetails[]=array(
 								"status"=>"OK",
@@ -194,6 +200,10 @@ class ProfileController extends Controller
 						     	"id"=>$pdfoutputs->getId()
 						     );
     	}  
+    }
+    else{
+    	throw new ParentFinderException('pdf_not_found');
+    }
     	}  	 	
     	
 	    return json_encode($profileDetails);	    	
@@ -265,11 +275,13 @@ class ProfileController extends Controller
 			}
 		}
 		else{
-			$user_name=Input::segment(2);
+		    $user_name=Input::segment(2);
 			$account_id=$profile->getAccountIdByUserName($user_name);
 			$photoid = Input::segment(3);
-			$albums=$profile->getPhotoById($photoid);
+		    $albums=$profile->getPhotoById($photoid);
+			//print_r($albums);
 		}
+		if(!empty($albums)){
 		foreach($albums as $album){
     				$albumDetails[]=array(
     							"status"=>"OK",
@@ -281,6 +293,10 @@ class ProfileController extends Controller
 						     	);
     			}  
 		return json_encode($albumDetails);
+	}
+	else{
+		throw new ParentFinderException('album_not_found');
+	}
   	 } 
 
   	 /*  Letters  */
@@ -359,7 +375,7 @@ class ProfileController extends Controller
 			$videos=$profile->getVideoById($videoid);
 	}
 
-  	 	
+  	 	if(!empty($videos)){
 		foreach($videos as $videout){
     				$videoDetails[]=array(
     							"status"=>"OK",
@@ -370,6 +386,10 @@ class ProfileController extends Controller
 						     	);
     			}  
 		return json_encode($videoDetails);
+	}
+	else{
+		throw new ParentFinderException('video_not_found');
+	}
 
 	}
 

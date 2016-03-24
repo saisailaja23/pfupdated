@@ -142,7 +142,7 @@ class CoupleService {
 
         }
         
-        
+
     }catch(\Exception $e){
           throw new ParentFinderException('journal_not_found',$e->getMessage());
         } 
@@ -152,13 +152,19 @@ class CoupleService {
         try{
         $albumObj=new AlbumsRepository(null);
          $albumId=$albumObj->getAlbumByID($this->accountId);
-        $albumDetail=$albumObj->getAlbums($albumId,$this->accountId);   
+        $albumDetail=$albumObj->getAlbums($albumId,$this->accountId);
+
+        if(count($albumDetail)>0)  { 
         foreach($albumDetail as $albumDetails){
             $albumserviceObj=new AlbumsService($albumDetails->ID);
              $albumout[]=$albumserviceObj->getAlbum();
         }     
       
         return $albumout;
+    }
+    else{
+        throw new ParentFinderException('album_not_found');
+    }
     }
         catch(\Exception $e){
              throw new ParentFinderException('album_not_found',$e->getMessage());
@@ -168,13 +174,18 @@ class CoupleService {
      public function getAlbumDetailsByAlbumId($albumid,$type){
         try{
         $albumObj=new AlbumsRepository(null);
-        $albumDetail=$albumObj->getAlbumsByAlbumId($albumid,$this->accountId,$type);   
+        $albumDetail=$albumObj->getAlbumsByAlbumId($albumid,$this->accountId,$type); 
+       if(count($albumDetail)>0)  {
         foreach($albumDetail as $albumDetails){
             $albumserviceObj=new AlbumsService($albumDetails->ID);
              $albumout[]=$albumserviceObj->getAlbum();
         }     
       
         return $albumout;
+    }
+    else{
+        throw new ParentFinderException('album_not_found');
+    }
     }
     catch(\Exception $e){
              //Add Exception here
