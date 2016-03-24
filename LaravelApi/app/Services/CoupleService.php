@@ -17,7 +17,7 @@ use App\Exceptions\ParentFinderException;
 use App\Repository\VideoRepository;
 use App\Repository\EprofileRepository;
 use App\Repository\PdfRepository;
-
+//use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -140,6 +140,9 @@ class CoupleService {
             }
             return $journalDetails;
 
+        }
+        else{
+            throw new ParentFinderException('journal_not_found');
         }
         
 
@@ -267,12 +270,16 @@ class CoupleService {
             $albumId[]=$videoid;
             try{
                 $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);
-
+                if(empty($albumDetail)){               
                 foreach($albumDetail as $albumDetails){
                     $videoserviceObj=new VideoService($albumDetails->ID);
                     $albumout[] = $videoserviceObj->getAlbum();
                 }
             return $albumout; 
+             }
+                else{
+                   throw new ParentFinderException('album_not_found');
+                }
             }catch(\Exception $e){
              throw new ParentFinderException('video_not_found',$e->getMessage());              
            }
@@ -284,7 +291,6 @@ class CoupleService {
 
 
     public function getFlipbook(){  
-        //echo $this->accountId;
         try{
         $profile=new EprofileRepository($this->accountId);  
         $flipbookId=$profile->getFlipbookId();
@@ -303,7 +309,14 @@ class CoupleService {
         try{
             $profile=new PdfRepository($this->accountId);  
             $pdfDetails=$profile->getPdfDetail();
-            $flipserviceObj=new PdfService($pdfDetails->template_user_id);
+            if(!empty($pdfDetails)){
+
+                $pdfid= $pdfDetails->template_user_id;
+            } 
+            else{
+                 $pdfid= 0;
+            }
+            $flipserviceObj=new PdfService($pdfid);
             $flipbook[] = $flipserviceObj->getPdfDetails($type,$this->accountId);        
             return $flipbook;
         }

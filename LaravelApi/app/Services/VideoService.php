@@ -11,6 +11,7 @@ use App\Models\SysAlbumsObjects;
 use App\Repository\ProfileRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\VideoRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of AccountService
 **/
@@ -49,16 +50,19 @@ class VideoService {
     public function getAlbum() {
         try{ 
         $videoObj=new VideoRepository($this->VideoId);
-        $videoDetails=$videoObj->getVideoDetails();
-        $this->VideoYoutubeLink=$videoDetails->YoutubeLink;
-        $this->VideoSource=$videoDetails->Source;
-        $this->VideoUri=$videoDetails->Uri;
-        $this->Id=$videoDetails->ID;
-        //print_r($this);
-        return $this;
+        if($videoDetails=$videoObj->getVideoDetails()){
+            $this->VideoYoutubeLink=$videoDetails->YoutubeLink;
+            $this->VideoSource=$videoDetails->Source;
+            $this->VideoUri=$videoDetails->Uri;
+            $this->Id=$videoDetails->ID;
+            return $this;
+        }
+    else{
+         throw new ParentFinderException('album_not_found');
+    }
     }
     catch(\Exception $e){
-             //Add Exception here
+            throw new ParentFinderException('album_not_found');
         } 
          
     }
@@ -70,7 +74,7 @@ class VideoService {
         return $this;
     }
     catch(\Exception $e){
-             //Add Exception here
+             //catch Exception here
         } 
     }
     

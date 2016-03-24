@@ -13,7 +13,6 @@ use ParentFinderException;
     public function __construct()
     {
         $message = $this->build(func_get_args());
- echo "d";
         parent::__construct($message);
     }
 }

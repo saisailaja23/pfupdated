@@ -181,7 +181,7 @@ use Exception;
                  $error['detail']='State you were looking for was not found for this user';
                  break;
             default :
-                $error['status']=204;
+                $error['status']=500;
                 $error['title']='Not Found';
                 $error['detail']='There is an error in your script.';
                 break;
