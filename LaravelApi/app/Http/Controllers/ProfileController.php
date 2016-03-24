@@ -27,7 +27,7 @@ class ProfileController extends Controller
 			$parentObj=new  CoupleService($account_id);
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
-			$accountObj=$parentObj->getAccountDetails();
+			$accountInfo=$parentObj->getAccountDetails();
 			$contactInfo=$parentObj->getContactDetails();
 			$journalDetails='';
 			if($journals=$parentObj->getJournalDetails())
@@ -63,7 +63,7 @@ class ProfileController extends Controller
 						     	"ethnicity"=>$parent1->getEthnicity(),
 						     	"faith"=>$parent1->getFaith(),
 						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$accountObj->getAvatar(),
+						     	"avatar"=>$parentObj->getAvatar(),
 						     	"journal"=>$journalDetails,
 						     	"letter"=>$letterDetails,
 						     	"childpreferences"=>$childpreferences,
@@ -114,6 +114,7 @@ class ProfileController extends Controller
 					$parentObj=new  CoupleService($account_id);
 					$parent1 =  $parentObj->getParentprofile1();
 					$parent2 =  $parentObj->getParentprofile2();
+					$accountInfo=$parentObj->getAccountDetails();
 					$contactDetails='';
 					if($contactInfo=$parentObj->getContactDetails()){
 						$contactDetails=Array(

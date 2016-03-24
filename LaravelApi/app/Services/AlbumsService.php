@@ -61,11 +61,13 @@ class AlbumsService {
         return $this;
     }
     else{
+
         throw new ParentFinderException('album_not_found');
     }
     }
     catch(\Exception $e){
             throw new ParentFinderException('album_not_found');
+
         }          
     }
 
