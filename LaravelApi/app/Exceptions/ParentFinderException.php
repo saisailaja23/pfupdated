@@ -72,12 +72,7 @@ use Exception;
     }
 
     function errorDisplay($errorMessage){
-        switch($errorMessage){
-            case 'not_found' :
-                $error['status']=404;
-                $error['title']='The server cannot or will not process the request due to something that is perceived to be a client error.';
-                $error['detail']='The resource you were looking for was not found';
-                break;
+        switch($errorMessage){           
             case 'forbidden' :
                  $error['status']=403;
                  $error['title']='Forbidden';
