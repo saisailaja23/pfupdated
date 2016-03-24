@@ -61,7 +61,6 @@ class Handler extends ExceptionHandler
      * @return JSONResponse
      */
       function handle($request, Exception $e) {
-     //   echo "b";echo $e->getStatusCode();
         if ($e instanceOf ParentFinderException) {
             $data   = $e->toArray();
             $errorList=Array(
