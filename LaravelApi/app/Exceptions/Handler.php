@@ -73,7 +73,6 @@ class Handler extends ExceptionHandler
         }
       
          else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-                echo "1";
               throw new NotFoundException('not_found',$e->getMessage());
                
             } 

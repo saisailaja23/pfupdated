@@ -105,8 +105,8 @@ class CoupleService {
         try{
         $accountObj=new AccountRepository($this->accountId);
         $accountDetails1=$accountObj->getAccountDetails();
-        print_r($accountDetails1);
-        return $accountDetails1;
+        $this->avatar=$accountDetails1->Avatar;
+        return $this;
     }
     catch(\Exception $e){
              //Add Exception here
