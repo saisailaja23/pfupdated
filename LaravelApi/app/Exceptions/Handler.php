@@ -81,7 +81,9 @@ class Handler extends ExceptionHandler
         else{
             $errorList=Array("status"=>'Failed',
                           "Message"=> $e->getMessage()
+
                           );           
+
         }
       return json_encode($errorList); 
        

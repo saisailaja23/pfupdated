@@ -11,6 +11,7 @@ use App\Models\SysAlbumsObjects;
 use App\Repository\ProfileRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\EprofileRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of AccountService
 **/
@@ -41,7 +42,7 @@ class EprofileService {
     public function getFlipbook() {
         try{ 
         $eprofileObj=new EprofileRepository(null);
-        $eprofileDetails=$eprofileObj->getFlipbookDetails($this->id);
+        if($eprofileDetails=$eprofileObj->getFlipbookDetails($this->id)){
         $flipbooks =   $eprofileDetails->content;
         $start = strpos($flipbooks, ".com/") + 5;
         $end = strpos($flipbooks, ".html") - $start + 5;
@@ -51,8 +52,12 @@ class EprofileService {
         //print_r($this);
         return $this;
     }
+    else{
+        throw new ParentFinderException('flip_not_found');
+    }
+    }
     catch(\Exception $e){
-             //Add Exception here
+              throw new ParentFinderException('flip_not_found');
         } 
          
     }

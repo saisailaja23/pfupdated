@@ -44,11 +44,13 @@ class PdfService {
         try{ 
         $eprofileObj=new PdfRepository(null);
         if($eprofileDetails=$eprofileObj->getPdfDetails($this->id)){
-        $eprofileDetails->template_file_path;
-        $pdf =   $eprofileDetails->template_file_path;
+        $pdf = $eprofileDetails->template_file_path;
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
-    }
+            }
+        else{
+             $pdf_output = '';
+        }
         if($type == 'single_profile'){
             $this->template_file_path2="ProfilebuilderComponent/pdf.php?id=".$account_id;
             $this->template_file_path='';
@@ -58,13 +60,14 @@ class PdfService {
         else  if($type == 'multi_profile'){
             $this->template_file_path=$pdf_output;
             $this->template_file_path2='';
-            $this->id=$eprofileDetails->template_user_id;
+            $this->id=$this->id;
             
         }
+
         else{
              $this->template_file_path="ProfilebuilderComponent/pdf.php?id=".$account_id;
             $this->template_file_path2=$pdf_output;
-            $this->id=$eprofileDetails->template_user_id;
+            $this->id=$this->id;
             
         }
         //print_r($this);
