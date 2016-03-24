@@ -9,6 +9,7 @@ use App\Models\BxPhotosMain;
 use App\Models\SysAlbumsObjects;
 use App\Repository\ProfileRepository;
 use App\Repository\AlbumsRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of AccountService
 **/
@@ -50,7 +51,7 @@ class AlbumsService {
     public function getAlbum() {
         try{ 
         $albumObj=new AlbumsRepository($this->AlbumId);
-         $albumDetails=$albumObj->getAlbumDetails();
+        if($albumDetails=$albumObj->getAlbumDetails()){
         $this->AlbumExt=$albumDetails->Ext;
         $this->AlbumTitle=$albumDetails->Title;
         $this->AlbumHash=$albumDetails->Hash;
@@ -59,8 +60,14 @@ class AlbumsService {
         //print_r($this);
         return $this;
     }
+    else{
+        echo "s";
+        throw new ParentFinderException('album_not_found');
+        echo "a";
+    }
+    }
     catch(\Exception $e){
-             //Add Exception here
+            throw new ParentFinderException('user_not_found');
         }          
     }
 
