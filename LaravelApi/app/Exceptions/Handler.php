@@ -75,7 +75,7 @@ class Handler extends ExceptionHandler
 
                 $errorList=Array("status"=>404,
                             "message"=> "Not Found" ,
-                            "detail"=>$e->getMessage() 
+                            "detail"=>"The resource you were looking for was not found"
                           );  
                print_r(json_encode($errorList));
         }          
