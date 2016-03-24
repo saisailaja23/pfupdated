@@ -99,8 +99,9 @@ Route::get('/', 'ProfileController@getLetterApi');
 });
 
 
-Route::get('/errors/{any}', 'ProfileController@getErrorsApi');
+//Route::get('/errors/{any}', 'ProfileController@getErrorsApi');
 
 
 //Route::get('/{any}', 'ProfileController@getPageNotFound'); 
 //Route::get('/{any}/{all}', 'ProfileController@getPageNotFound');
+

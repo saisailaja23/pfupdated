@@ -328,10 +328,9 @@ class CoupleService {
 
    public function getAgencyDetails(){
         try{
-            $agency=new AgencyService(null);
-            $agencyeDetails=$agency->getAgencyDetails($this->accountId);
-             $agency = '';
-           // print_r($agencyeDetails);
+            $agencyObj=new AgencyService(null);
+            $agency = '';
+            if($agencyeDetails=$agencyObj->getAgencyDetails($this->accountId)){
             $agency['id']=$agencyeDetails->getId();
             $agency['uri']=$agencyeDetails->geturi();
             $agency['title']=$agencyeDetails->gettitle();
@@ -339,7 +338,8 @@ class CoupleService {
             $agency['city']=$agencyeDetails->getcity();
             $agency['zip']=$agencyeDetails->getzip();
             $agency['website']=$agencyeDetails->getwebsite();
-            //print_r($agency);
+            }
+          
             return $agency;
 
             

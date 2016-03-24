@@ -18,7 +18,7 @@ class Handler extends ExceptionHandler
      */
     protected $dontReport = [
         AuthorizationException::class,
-        HttpException::class,
+       // HttpException::class,
         ModelNotFoundException::class,
         ValidationException::class
        // ParentFinderException::class,
@@ -61,31 +61,27 @@ class Handler extends ExceptionHandler
      * @return JSONResponse
      */
       function handle($request, Exception $e) {
-        
-        if ($e instanceOf ParentFinderException) {echo "a";
+     //   echo "b";echo $e->getStatusCode();
+        if ($e instanceOf ParentFinderException) {
             $data   = $e->toArray();
-            $status = $e->getStatus();
             $errorList=Array(
-                                "status"=>'Failed',
-                                "message"=> $data['status'] ,
-                                "details"=>$data['detail'] 
+                                "status"=>$data['status'] ,
+                                "message"=> $data['message'] ,
+                                "detail"=>$data['detail'] 
                                 );
            
         }
-     
-      else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {echo "22";
-            $data = array_merge([
-                'id'     => 'not_found',
-                'status' => '404'
-            ], config('errors.not_found'));
-     
-            $status = 404;
-        }     
+      
+         else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+                echo "1";
+              throw new NotFoundException('not_found',$e->getMessage());
+               
+            } 
+         
         else{
             $errorList=Array("status"=>'Failed',
                           "Message"=> $e->getMessage()
-                          );
-            print_r($errorList);
+                          );           
         }
       return json_encode($errorList); 
        
