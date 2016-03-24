@@ -61,9 +61,8 @@ class Handler extends ExceptionHandler
      * @return JSONResponse
      */
       function handle($request, Exception $e) {
-
         
-        if ($e instanceOf ParentFinderException) {
+        if ($e instanceOf ParentFinderException) {echo "a";
             $data   = $e->toArray();
             $status = $e->getStatus();
             $errorList=Array(
@@ -74,7 +73,7 @@ class Handler extends ExceptionHandler
            
         }
      
-      else if ($e instanceOf NotFoundHttpException) {
+      else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {echo "22";
             $data = array_merge([
                 'id'     => 'not_found',
                 'status' => '404'
@@ -86,7 +85,7 @@ class Handler extends ExceptionHandler
             $errorList=Array("status"=>'Failed',
                           "Message"=> $e->getMessage()
                           );
-            
+            print_r($errorList);
         }
       return json_encode($errorList); 
        
