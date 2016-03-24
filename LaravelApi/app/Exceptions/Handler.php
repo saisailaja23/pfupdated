@@ -66,23 +66,26 @@ class Handler extends ExceptionHandler
             $data   = $e->toArray();
             $errorList=Array(
                                 "status"=>$data['status'] ,
-                                "message"=> $data['message'] ,
+                                "message"=> $data['title'] ,
                                 "detail"=>$data['detail'] 
                                 );
            
         }
       
          else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-                echo "1";
-              throw new NotFoundException('not_found',$e->getMessage());
-               
+                $errorList=Array("status"=>404,
+                            "message"=> "Not Found" ,
+                            "detail"=>$e->getMessage() 
+                          );  
+               print_r(json_encode($errorList));
             } 
          
         else{
-            $errorList=Array("status"=>'Failed',
-                          "Message"=> $e->getMessage()
+            $errorList=Array("status"=>404,
+                            "message"=> "Not Found" ,
+                            "detail"=>$e->getMessage() 
                           );           
-        }
+         }
       return json_encode($errorList); 
        
     }
