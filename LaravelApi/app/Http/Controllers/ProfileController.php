@@ -140,8 +140,7 @@ class ProfileController extends Controller
 							     	);
 					}
 					if(isset($parent1) && isset($parent2)){
-						$profileDetails[]=Array("status"=>"OK",
-												"profile"=>array(
+						$profileDetail[]=Array(	"profile"=>array(
 						                                 "parent1"=>$parent1Details,
 						                                  "parent2"=>$parent2Details,
 						                                  "contactDetails"=>$contactDetails
@@ -149,7 +148,7 @@ class ProfileController extends Controller
 										);
 					}
 					else{
-						$profileDetails[]=Array("status"=>"OK","profile"=>array(
+						$profileDetail[]=Array("profile"=>array(
 						                                 "parent1"=>$parent1Details	,
 						                                 "contactDetails"=>$contactDetails				                                  
 						                                 )
@@ -157,6 +156,7 @@ class ProfileController extends Controller
 					}
 
 	     		}
+				$profileDetails=Array("status"=>"OK",$profileDetail);
      	}else{
      		throw new ParentFinderException('no-profiles-found');
      	}
