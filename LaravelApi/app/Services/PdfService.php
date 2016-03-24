@@ -43,11 +43,12 @@ class PdfService {
     public function getPdfDetails($type,$account_id) {
         try{ 
         $eprofileObj=new PdfRepository(null);
-        $eprofileDetails=$eprofileObj->getPdfDetails($this->id);
+        if($eprofileDetails=$eprofileObj->getPdfDetails($this->id)){
         $eprofileDetails->template_file_path;
         $pdf =   $eprofileDetails->template_file_path;
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
+    }
         if($type == 'single_profile'){
             $this->template_file_path2="ProfilebuilderComponent/pdf.php?id=".$account_id;
             $this->template_file_path='';
