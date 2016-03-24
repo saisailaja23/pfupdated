@@ -54,7 +54,7 @@ class ProfileController extends Controller
     		$AgencyDetails = $parentObj->getAgencyDetails();
     		$childpreferences=$parentObj->getChildPreferences();
 			$profileDetails=Array(
-								"status"=>"OK",
+								"status"=>"202",
 								"data" =>array(
 						     	"first_name"=>$parent1->getFirstName(),
 						     	"last_name"=>$parent1->getLastName(),
@@ -156,7 +156,7 @@ class ProfileController extends Controller
 					}
 
 	     		}
-				$profileDetails=Array("status"=>"OK","profiles"=>$profileDetail);
+				$profileDetails=Array("status"=>"202","profiles"=>$profileDetail);
      	}else{
      		throw new ParentFinderException('no-profiles-found');
      	}
@@ -171,7 +171,7 @@ class ProfileController extends Controller
 			$flipbook= $flipbookobj->getFlipbook();
 			if(!empty($flipbook)){
 			foreach($flipbook as $flipbooks) {
-				$profileDetails[]=array("status"=>"OK",
+				$profileDetails[]=array("status"=>"202",
 								"data"=>array(
 							     	"flip_book"=>$flipbooks->getcontent(),
 							     	"id"=>$flipbooks->getId()
@@ -191,19 +191,19 @@ class ProfileController extends Controller
     	    $account_id= $profile->getAccountIdByUserName($profilename);
     		$pdfbookobj=new CoupleService($account_id);
 		    $pdfoutput= $pdfbookobj->getPdf($type);
-			if(!empty($pdfoutput)){
+			/*if(!empty($pdfoutput)){*/
 			foreach($pdfoutput as $pdfoutputs) {
 			$profileDetails[]=array(
-								"status"=>"OK",
+								"status"=>"202",
 						     	"single_profile"=>$pdfoutputs->template_file_path2,
 						     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
 						     	"id"=>$pdfoutputs->getId()
 						     );
     	}  
-    }
+   /* }
     else{
     	throw new ParentFinderException('pdf_not_found');
-    }
+    }*/
     	}  	 	
     	
 	    return json_encode($profileDetails);	    	
@@ -215,9 +215,9 @@ class ProfileController extends Controller
   		$api=Input::segment(1);
   		if($api=='journals') {  
 
-  			$user_name=Input::segment(2);
-  			$title=urldecode(Input::segment(3));
-  			if(isset($title)){
+  			 $user_name=Input::segment(2);
+  			 $title=urldecode(Input::segment(3));
+  			if(!empty($title)){
   				$profile=new UtilityService();
 				$account_id=$profile->getAccountIdByUserName($user_name);
 				$journals=$profile->getJournalsByTitle($account_id,$title);
@@ -242,9 +242,11 @@ class ProfileController extends Controller
 			$journals=$profile->getJournalsById($account_id,$journal_id);
 			
     	}
+
+   	if(!empty($journals)){
     	foreach($journals as $journal){
     		$journalDetails[]=array(
-    							"status"=>"OK",
+    							"status"=>"202",
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
@@ -253,6 +255,10 @@ class ProfileController extends Controller
     			}  
 
     	 return json_encode($journalDetails);
+    	}
+    	else{
+    		throw new ParentFinderException('journal_not_found');
+    	}
   	}
   	
   	 public function getAlbumApi(){
@@ -284,7 +290,7 @@ class ProfileController extends Controller
 		if(!empty($albums)){
 		foreach($albums as $album){
     				$albumDetails[]=array(
-    							"status"=>"OK",
+    							"status"=>"202",
 						     	"Ext"=>$album->getAlbumExt(),
 						     	"Title"=>$album->getAlbumTitle(),
 						     	"Hash"=>$album->getAlbumHash(),
@@ -318,7 +324,7 @@ class ProfileController extends Controller
 
   	 	foreach($letters as $letter){
     		$letterDetails[]=array(
-    							"status"=>"OK",
+    							"status"=>"202",
 						     	"Title"=>$letter->getTitle(),
 						     	"Content"=>$letter->getContent(),
 						     	"Image"=>$letter->getAssociatedImage()
@@ -378,7 +384,7 @@ class ProfileController extends Controller
   	 	if(!empty($videos)){
 		foreach($videos as $videout){
     				$videoDetails[]=array(
-    							"status"=>"OK",
+    							"status"=>"202",
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
 						     	"Source"=>$videout->getVideoSource(),
 						     	"Uri"=>$videout->getVideoUri(),

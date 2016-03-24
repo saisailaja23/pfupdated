@@ -2,6 +2,7 @@
 namespace App\Services;
 use Illuminate\Database\Eloquent\Model;
 use App\Repository\JournalRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -40,15 +41,19 @@ class JournalService{
     public function getJournal() { 
         try{
         $journalsObj=new JournalRepository($this->journalId);
-        $journalDetails=$journalsObj->getJournalDetails();
+        if($journalDetails=$journalsObj->getJournalDetails()){
         $this->journalCaption=$journalDetails->PostCaption;
         $this->journalPhoto=$journalDetails->PostPhoto;
         $this->journalUri=$journalDetails->PostUri;
         $this->journalText=$journalDetails->PostText;
         return $this;
     }
+    else{
+         throw new ParentFinderException('journal_not_found');
+    }
+    }
     catch(\Exception $e){
-             //Add Exception here
+          throw new ParentFinderException('journal_not_found');
         } 
          
     }

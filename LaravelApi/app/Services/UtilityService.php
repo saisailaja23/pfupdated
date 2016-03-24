@@ -74,26 +74,7 @@ class UtilityService {
         $pdf =   $pdfDetails->template_file_path;
         $path_parts = explode('/', $pdf);
         $pdf_output =  $path_parts[5].'/'.$path_parts[6].'/'.$path_parts[7];
-        if($type == 'single_profile'){
-             $pdfDetails=array(
-                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
-                                );
-        }
-        else  if($type == 'multi_profile'){
-             $pdfDetails=array(
-                                "multiprofile"=>$pdf_output,
-                                "id"=>$pdfDetails->template_user_id
-                                );
-            
-        }
-        else{
-            $pdfDetails=array(
-                                "multiprofile"=>$pdf_output,
-                                "id"=>$pdfDetails->template_user_id,
-                                "single_profile"=>"ProfilebuilderComponent/pdf.php?id=".$acc_id
-                                );
-            
-        }
+        
         return $pdfDetails;
     }
     catch(\Exception $e){
@@ -104,15 +85,19 @@ class UtilityService {
     public function getJournalsByTitle($account_id,$title){
         try{
         $journalObj=new JournalRepository(null);
-        $journalIds=$journalObj->getJournalsByTitle($account_id,$title);
+        if($journalIds=$journalObj->getJournalsByTitle($account_id,$title)){
         foreach($journalIds as $journalId){
             $journalObj=new JournalService($journalId->PostId);
             $journalDetails[]=$journalObj->getJournal();        
         }
         return $journalDetails;
+      }
+       else{
+         throw new ParentFinderException('journal_not_found');
+    }
     }
     catch(\Exception $e){
-             //Add Exception here
+              throw new ParentFinderException('journal_not_found');
         } 
     }
 
@@ -120,6 +105,10 @@ class UtilityService {
       try{
       $journalObj=new JournalRepository(null);
       $journalIds=$journalObj->getJournalsById($account_id,$journal_id);
+      if(empty($journalIds)){
+      }
+      else{
+      }
       foreach($journalIds as $journalId){
           $journalObj=new JournalService($journalId->PostId);
           $journalDetails[]=$journalObj->getJournal();        
