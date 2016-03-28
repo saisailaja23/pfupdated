@@ -34,3 +34,4 @@ ALTER TABLE `age_group_preference` CHANGE `age_group_preference_id` `age_group_p
 ALTER TABLE `adoption_type_preference` ADD PRIMARY KEY(`adoption_type_preference_id`);
 ALTER TABLE `adoption_type_preference` CHANGE `adoption_type_preference_id` `adoption_type_preference_id` INT(5) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `ContactDetails` ADD `website` VARCHAR(100) NOT NULL ;
+ALTER TABLE `sys_acl_levels_features` ADD `benefit_text` TEXT NOT NULL AFTER `status`;

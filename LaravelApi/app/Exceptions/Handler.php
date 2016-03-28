@@ -77,15 +77,15 @@ class Handler extends ExceptionHandler
                             "message"=> "Not Found" ,
                             "detail"=>"The resource you were looking for was not found"
                           );  
-                
+
                 print_r(json_encode($errorList));
         } 
          
         else{
-            $errorList=Array("status"=>'Failed',
-                          "Message"=> $e->getMessage()
-
-                          );           
+             $errorList=Array("status"=>500,
+                            "message"=> $e->getMessage() ,
+                            "detail"=>"There is an error."
+                          );                      
 
         }
 
