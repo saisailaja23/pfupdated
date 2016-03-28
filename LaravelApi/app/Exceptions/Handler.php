@@ -61,21 +61,25 @@ class Handler extends ExceptionHandler
      * @return JSONResponse
      */
       function handle($request, Exception $e) {
-     //   echo "b";echo $e->getStatusCode();
         if ($e instanceOf ParentFinderException) {
             $data   = $e->toArray();
             $errorList=Array(
                                 "status"=>$data['status'] ,
-                                "message"=> $data['message'] ,
+                                "message"=> $data['title'] ,
                                 "detail"=>$data['detail'] 
                                 );
            
         }
       
          else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
-              throw new NotFoundException('not_found',$e->getMessage());
-               
-            } 
+
+                $errorList=Array("status"=>404,
+                            "message"=> "Not Found" ,
+                            "detail"=>"The resource you were looking for was not found"
+                          );  
+               print_r(json_encode($errorList));
+        }          
+       
          
         else{
             $errorList=Array("status"=>'Failed',
@@ -84,6 +88,7 @@ class Handler extends ExceptionHandler
                           );           
 
         }
+
       return json_encode($errorList); 
        
     }
