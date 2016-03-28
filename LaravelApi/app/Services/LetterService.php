@@ -2,6 +2,7 @@
 namespace App\Services;
 use Illuminate\Database\Eloquent\Model;
 use App\Repository\LetterRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -41,14 +42,18 @@ class LetterService{
     function getLetter(){
         try{
         $letterObj=new LetterRepository($this->letterId);
-        $letterDetails=$letterObj->getLetters();
+        if($letterDetails=$letterObj->getLetters()){
         $this->title=$letterDetails->label;
         $this->content=$letterDetails->description;
         $this->associatedImage=$letterDetails->img;
         return $this;
     }
+    else{
+        throw new ParentFinderException('letter_not_found');
+    }
+    }
     catch(\Exception $e){
-             //Add Exception here
+            throw new ParentFinderException('letter_not_found');
         } 
     }
 
