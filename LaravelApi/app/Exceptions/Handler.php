@@ -71,15 +71,15 @@ class Handler extends ExceptionHandler
            
         }
       
-         else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
+        else if ($e instanceof \Symfony\Component\HttpKernel\Exception\NotFoundHttpException) {
 
                 $errorList=Array("status"=>404,
                             "message"=> "Not Found" ,
                             "detail"=>"The resource you were looking for was not found"
                           );  
-               print_r(json_encode($errorList));
-        }          
-       
+                
+                print_r(json_encode($errorList));
+        } 
          
         else{
             $errorList=Array("status"=>'Failed',
