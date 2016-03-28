@@ -322,7 +322,7 @@ class ProfileController extends Controller
   	 		$letters=$profile->getLetterById($account_id,$letter_id);
   	 		
   	 	}
-
+  	 	if(!empty($letters)){
   	 	foreach($letters as $letter){
     		$letterDetails[]=array(
     							"status"=>"202",
@@ -332,6 +332,10 @@ class ProfileController extends Controller
 						     	);
     			}  
   	 	return json_encode($letterDetails);
+  	 }
+  	 else{
+  	 	throw new ParentFinderException('letter_not_found');
+  	 }
 		}
 		
 
