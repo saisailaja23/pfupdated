@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use App\Http\Requests;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Query\Builder;
@@ -11,6 +12,7 @@ use App\Services\AlbumsService;
 use App\Services\JournalService;
 use App\Services\MembershipService;
 use Response;
+//use Request;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
 class ProfileController extends Controller
@@ -307,6 +309,7 @@ class ProfileController extends Controller
 	}
   	 } 
 
+
   	 /*  Letters  */
   	public function getLetterApi(){
   	 	$api=Input::segment(1);
@@ -439,6 +442,23 @@ class ProfileController extends Controller
 				throw new ParentFinderException('membership_not_found');
 			}
 	
+	public function postMembershipDetails(Request $request){
+		if($request->user_key && $request->url){
+			$appObj=new UtilityService;
+			$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+			if($app_key==1){
+				$member['id'] =  $request->member_id;
+				$member['idlevel']=$request->member_level;
+				$member['transaction_id']=$request->transaction_id;	
+				$memberObj=new UserMembershipService();
+				$saveMember=$memberObj->saveMembership();
+				return json_encode($member);
+			}
+			else{
+				throw new ParentFinderException('key_not_valid');
+			}
+		}
+		return json_encode($member);
 	}
 
 

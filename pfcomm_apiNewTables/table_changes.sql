@@ -34,3 +34,10 @@ ALTER TABLE `age_group_preference` CHANGE `age_group_preference_id` `age_group_p
 ALTER TABLE `adoption_type_preference` ADD PRIMARY KEY(`adoption_type_preference_id`);
 ALTER TABLE `adoption_type_preference` CHANGE `adoption_type_preference_id` `adoption_type_preference_id` INT(5) NOT NULL AUTO_INCREMENT;
 ALTER TABLE `ContactDetails` ADD `website` VARCHAR(100) NOT NULL ;
+ALTER TABLE `sys_acl_levels_features` ADD `benefit_text` TEXT NOT NULL AFTER `status`;
+
+ALTER TABLE `sys_acl_levels` ADD `Membership_Period` INT NOT NULL COMMENT 'In Days' AFTER `Trial_Length`, ADD `Membership_Amount` INT NOT NULL AFTER `membership_period`;
+
+ALTER TABLE `Account`   DROP `membership_id`;
+
+INSERT INTO `app_users` (`website`, `user_key`) VALUES ('ctpf01.parentfinder.com', MD5('p@r1ntfind1r'));

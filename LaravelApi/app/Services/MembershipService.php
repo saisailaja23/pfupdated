@@ -74,9 +74,6 @@ class MembershipService{
     
     
   
-   
-    
-
 
    public function getAllMembershipDetails(){
          try{
@@ -97,6 +94,7 @@ class MembershipService{
                    $this->membershipamount=$membershipDetails->Membership_Period;
                    $this->membershipperiod=$membershipDetails->Membership_Amount;
       //print_r($this);            
+
         return $this;   
     }
     catch(\Exception $e){

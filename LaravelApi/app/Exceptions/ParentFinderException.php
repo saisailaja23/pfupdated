@@ -179,6 +179,10 @@ use Exception;
                 $error['status']=204;
                  $error['title']='NO Memberships Found';
                  $error['detail']='Membership you were looking for was not found for this user';
+            case 'key_not_valid' :
+                $error['status']=401;
+                 $error['title']='Unauthorized';
+                 $error['detail']='Key mismatch - You are not authorized to do this action';
                  break;
             default :
                 $error['status']=500;
