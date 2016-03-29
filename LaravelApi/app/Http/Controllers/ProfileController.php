@@ -10,6 +10,7 @@ use App\Services\CoupleService;
 use App\Services\FilterService;
 use App\Services\AlbumsService;
 use App\Services\JournalService;
+use App\Services\MembershipService;
 use Response;
 //use Request;
 use Illuminate\Support\Facades\Input;
@@ -34,7 +35,6 @@ class ProfileController extends Controller
 			$journalDetails='';
 			if($journals=$parentObj->getJournalDetails())
 			{
-				
 				foreach($journals as $journal){
     			$journalDetails[]=array(
 						     	"Caption"=>$journal->getJournalCaption(),
@@ -131,7 +131,8 @@ class ProfileController extends Controller
 							     	"dob"=>$parent1->getDob(),
 							     	"faith"=>$parent1->getFaith(),
 							     	"waiting"=>$parent1->getWaiting(),
-							     	"avatar"=>$parentObj->getAvatar()
+							     	"avatar"=>$parentObj->getAvatar(),
+							     	"username"=>$parentObj->getusername()
 							     	
 							     	);
 					if(isset($parent2)){
@@ -407,6 +408,40 @@ class ProfileController extends Controller
 
 	}
 
+	public function getMembershipApi(){
+		$Membership_details = '';
+		$filter=new FilterService();
+		$membershipids= $filter->getAllMembershipIds();
+		if($membershipids){
+	    foreach($membershipids as $membershipid){
+		$membershipobj=new MembershipService($membershipid);
+		$Memberships= $membershipobj->getAllMembershipDetails();
+		
+    				$Membership_details[]=array(
+    							"status"=>"202",
+						     	"id"=>$Memberships->getId(),
+						     	"name"=>$Memberships->getname(),
+						     	"icon"=>$Memberships->geticon(),
+						     	"description"=>$Memberships->getdescription(),
+						     	"active"=>$Memberships->getactive(),
+						     	"purchasable"=>$Memberships->getpurchasable(),
+						     	"removable"=>$Memberships->getremovable(),
+						     	"order"=>$Memberships->getorder(),
+						     	"free"=>$Memberships->getfree(),
+						     	"trial"=>$Memberships->gettrial(),
+						     	"trial_length"=>$Memberships->gettrial_length(),
+						     	"membership_period"=>$Memberships->getmembershipamount(),
+						     	"membership_amount"=>$Memberships->getmembershipperiod()
+						     	);
+			    				
+				}
+				return json_encode($Membership_details);
+			}
+
+			else{
+				throw new ParentFinderException('membership_not_found');
+			}
+	
 	public function postMembershipDetails(Request $request){
 		if($request->user_key && $request->url){
 			$appObj=new UtilityService;

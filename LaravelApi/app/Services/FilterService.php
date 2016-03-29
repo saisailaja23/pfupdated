@@ -17,6 +17,7 @@ use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
+use App\Repository\MembershipRepository;
 /**
  * Description of ParentService
 **/
@@ -150,6 +151,17 @@ class FilterService {
              //Add Exception here
         }  
     }
-    
+    public  function getAllMembershipIds(){
+    try{ 
+        $membershipObj=new MembershipRepository(null);  
+        $membershipidDetails=$membershipObj->getAllMembershipids();
+        foreach ($membershipidDetails as $membershipid) {
+            $membershipids[]=$membershipid->ID;
+        }
+        return  $membershipids;
+    }catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
     
 }

@@ -50,9 +50,9 @@ class AgencyService{
 
    public function getAgencyDetails($account_id){
          try{
-        $childPrefer=new AgencyRepository(null);
-        $adoptionPreferDetails=$childPrefer->getAgencyId($account_id);
-                   $adoptionDetails=$childPrefer->getAgencyDetails($adoptionPreferDetails->agency_id);
+        $agencyobj=new AgencyRepository(null);
+        $adoptionPreferDetails=$agencyobj->getAgencyId($account_id);
+                   $adoptionDetails=$agencyobj->getAgencyDetails($adoptionPreferDetails->agency_id);
                    $this->id=$adoptionDetails->id;
                    $this->title=$adoptionDetails->title;
                    $this->uri=$adoptionDetails->uri;

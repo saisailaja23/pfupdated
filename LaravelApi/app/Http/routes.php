@@ -100,6 +100,8 @@ Route::get('/', 'ProfileController@getLetterApi');
     // Define Routes Here
 });
 
+Route::get('/membership/list', 'ProfileController@getMembershipApi');
+
 
 Route::post('/membership/add', 'ProfileController@postMembershipDetails');
 

@@ -67,7 +67,7 @@ class AccountRepository {
     public  function getAllAccounts(){   
         try{
             $account=new Account;
-            $accountDetails =$account->get();       
+            $accountDetails =$account->take(6)->get();       
             return $accountDetails;
         }catch(\Exception $e){
              //Add Exception here
