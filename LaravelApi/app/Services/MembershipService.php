@@ -33,17 +33,14 @@ class MembershipService{
     
     
   
-   
-    
-
 
    public function getMembershipDetails($account_id){
          try{
         $membershipobj=new MembershipRepository(null);
         $membershipDetails=$membershipobj->getMembershipDetails();
-                   $this->name=$membershipDetails->id;
-                   $this->icon=$membershipDetails->title;
-                   $this->id=$membershipDetails->uri;
+        $this->name=$membershipDetails->id;
+        $this->icon=$membershipDetails->title;
+        $this->id=$membershipDetails->uri;
 
            // print_r($this);
         return $this;   

@@ -414,7 +414,9 @@ class ProfileController extends Controller
 			if($app_key==1){
 				$member['id'] =  $request->member_id;
 				$member['idlevel']=$request->member_level;
-				$member['transaction_id']=$request->transaction_id;		
+				$member['transaction_id']=$request->transaction_id;	
+				$memberObj=new UserMembershipService();
+				$saveMember=$memberObj->saveMembership();
 				return json_encode($member);
 			}
 			else{
