@@ -20,6 +20,7 @@ use App\Repository\JournalRepository;
 use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
+use App\Repository\AppUserRepository;
 /**
  * Description of AccountService
 **/
@@ -159,16 +160,22 @@ class UtilityService {
         } 
     }
      
-     public function getVideoById($videoid){
+    public function getVideoById($videoid){
         try{
         $albumservice=new VideoService($videoid);
               $albumout[]=$albumservice->getAlbum();
              //print_r($albumout);
         return $albumout;
+      }
+      catch(\Exception $e){
+               //Add Exception here
+      } 
     }
-    catch(\Exception $e){
-             //Add Exception here
-        } 
+
+    public function checkAppKey($key,$url){
+      $appObj=new AppUserRepository($url);
+      $keyIdentity=$appObj->getAppUserKey($key);
+      return $keyIdentity;
     }
      
     

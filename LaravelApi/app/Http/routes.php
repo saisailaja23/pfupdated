@@ -33,6 +33,8 @@ Route::get('/', function () {
 
 Route::get('/profile/{username}', 'ProfileController@getProfileApi');
 
+Route::get('/profile/member', 'ProfileController@getMemberApi');
+
 Route::get('/profiles', 'ProfileController@getProfileApi');
 Route::get('/profiles/religion/{religion}', 'ProfileController@getProfileApi');
 Route::get('/profiles/region/{region}', 'ProfileController@getProfileApi');
@@ -99,9 +101,6 @@ Route::get('/', 'ProfileController@getLetterApi');
 });
 
 
-//Route::get('/errors/{any}', 'ProfileController@getErrorsApi');
+Route::post('/membership/add', 'ProfileController@postMembershipDetails');
 
-
-//Route::get('/{any}', 'ProfileController@getPageNotFound'); 
-//Route::get('/{any}/{all}', 'ProfileController@getPageNotFound');
 
