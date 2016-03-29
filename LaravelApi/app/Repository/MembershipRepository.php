@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
 use App\Models\Membership;
 use App\Models\Account;
+use App\Exceptions\ParentFinderException;
 
 /**
  * Description of ParentService
@@ -32,15 +33,25 @@ class MembershipRepository {
    public function getMembershipDetails(){
        try{
             $Membershipobj=new Membership;
-            $MembershipDetails =$Membershipobj->where('account_id', '=',$account_id)->first();
-            return $ethnicityPreferDetails;
+            $MembershipDetails =$Membershipobj->where('ID','=',$this->id)->first();
+           // print_r($MembershipDetails);
+            return $MembershipDetails;
         }catch(\Exception $e){
-               throw new ParentFinderException('agency-not-found',$e->getMessage());
+            //Add Exception here
         }  
 
    }
    
+ public function getAllMembershipids(){
+       try{
+            $Membershipobj=new Membership;
+             $MembershipDetails =$Membershipobj->get();
+            return $MembershipDetails;
+        }catch(\Exception $e){
+            //Add Exception here
+        }  
 
+   }
    
    
 }

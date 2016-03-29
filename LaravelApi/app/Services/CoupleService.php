@@ -42,6 +42,9 @@ class CoupleService {
     public function getAvatar() {
         return $this->avatar;
     } 
+     public function getusername() {
+        return $this->username;
+    }
     
 
     /* Get a single profiles */
@@ -106,6 +109,7 @@ class CoupleService {
         $accountObj=new AccountRepository($this->accountId);
         $accountDetails1=$accountObj->getAccountDetails();
         $this->avatar=$accountDetails1->Avatar;
+        $this->username=$accountDetails1->username;
         return $this;
     }
     catch(\Exception $e){

@@ -2,6 +2,7 @@
 namespace App\Services;
 use Illuminate\Database\Eloquent\Model;
 use App\Repository\MembershipRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -11,6 +12,16 @@ class MembershipService{
     private $id; 
     private $name;
     private $icon;
+    private $description;
+    private $active;
+    private $purchasable;
+    private $removable;
+    private $order;
+    private $free;
+    private $trial;
+    private $trial_length;
+    private $membershipamount;
+    private $membershipperiod;
         
     public function __construct($id) {
        $this->setId($id);      
@@ -30,6 +41,36 @@ class MembershipService{
     public  function geticon() {
        return $this->icon;
     }
+    public  function getdescription() {
+       return $this->description;
+    }
+    public  function getactive() {
+       return $this->active;
+    }
+    public  function getpurchasable() {
+       return $this->purchasable;
+    }
+    public  function getremovable() {
+       return $this->removable;
+    }
+    public  function getorder() {
+       return $this->order;
+    }
+    public  function getfree() {
+       return $this->free;
+    }
+    public  function gettrial() {
+       return $this->trial;
+    }
+    public  function gettrial_length() {
+       return $this->trial_length;
+    }
+    public  function getmembershipamount() {
+       return $this->membershipamount;
+    }
+    public  function getmembershipperiod() {
+       return $this->membershipperiod;
+    }
     
     
   
@@ -37,15 +78,25 @@ class MembershipService{
     
 
 
-   public function getMembershipDetails($account_id){
+   public function getAllMembershipDetails(){
          try{
-        $membershipobj=new MembershipRepository(null);
+        $membershipobj=new MembershipRepository($this->id);
         $membershipDetails=$membershipobj->getMembershipDetails();
-                   $this->name=$membershipDetails->id;
-                   $this->icon=$membershipDetails->title;
-                   $this->id=$membershipDetails->uri;
-
-           // print_r($this);
+       // print_r($membershipDetails);
+                   $this->id =  $membershipDetails->ID;
+                   $this->name=$membershipDetails->Name;
+                   $this->icon=$membershipDetails->Icon;
+                   $this->description=$membershipDetails->Description;
+                   $this->active=$membershipDetails->Active;
+                   $this->purchasable=$membershipDetails->Purchasable;
+                   $this->removable=$membershipDetails->Removable;
+                   $this->order=$membershipDetails->Order;
+                   $this->free=$membershipDetails->Free;
+                   $this->trial=$membershipDetails->Trial;
+                   $this->trial_length=$membershipDetails->Trial_Length;
+                   $this->membershipamount=$membershipDetails->Membership_Period;
+                   $this->membershipperiod=$membershipDetails->Membership_Amount;
+      //print_r($this);            
         return $this;   
     }
     catch(\Exception $e){

@@ -175,6 +175,11 @@ use Exception;
                  $error['title']='State Not Found';
                  $error['detail']='State you were looking for was not found for this user';
                  break;
+            case 'membership_not_found' :
+                $error['status']=204;
+                 $error['title']='NO Memberships Found';
+                 $error['detail']='Membership you were looking for was not found for this user';
+                 break;
             default :
                 $error['status']=500;
                 $error['title']='Not Found';
