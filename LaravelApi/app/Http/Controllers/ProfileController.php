@@ -441,6 +441,7 @@ class ProfileController extends Controller
 			else{
 				throw new ParentFinderException('membership_not_found');
 			}
+		}
 	
 	public function postMembershipDetails(Request $request){
 		if($request->user_key && $request->url){
