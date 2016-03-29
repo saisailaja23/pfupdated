@@ -175,6 +175,11 @@ use Exception;
                  $error['title']='State Not Found';
                  $error['detail']='State you were looking for was not found for this user';
                  break;
+            case 'key_not_valid' :
+                $error['status']=401;
+                 $error['title']='Unauthorized';
+                 $error['detail']='Key mismatch - You are not authorized to do this action';
+                 break;
             default :
                 $error['status']=500;
                 $error['title']='Not Found';
