@@ -429,8 +429,8 @@ class ProfileController extends Controller
 						     	"free"=>$Memberships->getfree(),
 						     	"trial"=>$Memberships->gettrial(),
 						     	"trial_length"=>$Memberships->gettrial_length(),
-						     	"membership_period"=>$Memberships->getmembershipperiod(),
-						     	"membership_amount"=>$Memberships->getmembershipamount()
+						     	"membership_period"=>$Memberships->getmembershipamount(),
+						     	"membership_amount"=>$Memberships->getmembershipperiod()
 						     	);
 			    				
 				}
@@ -451,9 +451,22 @@ class ProfileController extends Controller
 				$member['id'] =  $request->member_id;
 				$member['idlevel']=$request->member_level;
 				$member['transaction_id']=$request->transaction_id;	
-				$memberObj=new UserMembershipService();
-				$saveMember=$memberObj->saveMembership();
-				return json_encode($member);
+				if(!empty($member['id']&&$member['idlevel']&&$member['transaction_id'])){
+					$memberObj=new UserMembershipService($member['id']);
+					if($saveMember=$memberObj->saveMembership($member)){
+						$result=array(
+    							"status"=>"201",
+						     	"Message"=>"Inserted"
+						     	);
+					}else{
+						throw new ParentFinderException('insertion_failed');
+					}
+					return json_encode($saveMember);
+				}else{
+					//Need to check null point exception
+					throw new ParentFinderException('null_argument_found');
+				}
+				
 			}
 			else{
 				throw new ParentFinderException('key_not_valid');
@@ -466,7 +479,6 @@ class ProfileController extends Controller
 	public function postMembershipCouponValidation(Request $request){	
 				$member['vocher_code'] =  $request->vocher_code;
 				$member['idlevel']=$request->member_level;
-				
 				return json_encode($member);
 	}
 
