@@ -11,7 +11,9 @@ use App\Services\FilterService;
 use App\Services\AlbumsService;
 use App\Services\JournalService;
 use App\Services\MembershipService;
+use App\Services\VoucherService;
 use App\Services\UserMembershipService;
+
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -160,7 +162,7 @@ class ProfileController extends Controller
 					}
 
 	     		}
-				$profileDetails=Array("status"=>"202","profiles"=>$profileDetail);
+				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
      	}else{
      		throw new ParentFinderException('no-profiles-found');
      	}
@@ -175,7 +177,7 @@ class ProfileController extends Controller
 			$flipbook= $flipbookobj->getFlipbook();
 			if(!empty($flipbook)){
 			foreach($flipbook as $flipbooks) {
-				$profileDetails[]=array("status"=>"202",
+				$profileDetails[]=array("status"=>"200",
 								"data"=>array(
 							     	"flip_book"=>$flipbooks->getcontent(),
 							     	"id"=>$flipbooks->getId()
@@ -198,7 +200,7 @@ class ProfileController extends Controller
 			/*if(!empty($pdfoutput)){*/
 			foreach($pdfoutput as $pdfoutputs) {
 			$profileDetails[]=array(
-								"status"=>"202",
+								"status"=>"200",
 						     	"single_profile"=>$pdfoutputs->template_file_path2,
 						     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
 						     	"id"=>$pdfoutputs->getId()
@@ -250,7 +252,7 @@ class ProfileController extends Controller
    	if(!empty($journals)){
     	foreach($journals as $journal){
     		$journalDetails[]=array(
-    							"status"=>"202",
+    							"status"=>"200",
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
@@ -294,7 +296,7 @@ class ProfileController extends Controller
 		if(!empty($albums)){
 		foreach($albums as $album){
     				$albumDetails[]=array(
-    							"status"=>"202",
+    							"status"=>"200",
 						     	"Ext"=>$album->getAlbumExt(),
 						     	"Title"=>$album->getAlbumTitle(),
 						     	"Hash"=>$album->getAlbumHash(),
@@ -329,7 +331,7 @@ class ProfileController extends Controller
   	 	if(!empty($letters)){
   	 	foreach($letters as $letter){
     		$letterDetails[]=array(
-    							"status"=>"202",
+    							"status"=>"200",
 						     	"Title"=>$letter->getTitle(),
 						     	"Content"=>$letter->getContent(),
 						     	"Image"=>$letter->getAssociatedImage()
@@ -393,7 +395,7 @@ class ProfileController extends Controller
   	 	if(!empty($videos)){
 		foreach($videos as $videout){
     				$videoDetails[]=array(
-    							"status"=>"202",
+    							"status"=>"200",
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
 						     	"Source"=>$videout->getVideoSource(),
 						     	"Uri"=>$videout->getVideoUri(),
@@ -434,7 +436,7 @@ class ProfileController extends Controller
 						     	);
 			    				
 				}
-				$Membership_details=Array("status"=>"202","Membership_details"=>$Membership_details1);
+				$Membership_details=Array("status"=>"200","Membership_details"=>$Membership_details1);
 				return json_encode($Membership_details);
 			}
 
@@ -477,9 +479,22 @@ class ProfileController extends Controller
 
 
 	public function postMembershipCouponValidation(Request $request){	
-				$member['vocher_code'] =  $request->vocher_code;
-				$member['idlevel']=$request->member_level;
-				return json_encode($member);
+				$voucher['vocher_code'] =  $request->vocher_code;
+				$voucher['idlevel']=$request->member_level;
+				$voucher['accountid']=$request->accountid;
+				if(!empty($voucher['vocher_code']&&$voucher['idlevel'] && $voucher['accountid'])){
+					$voucherobj=new VoucherService(null);
+					 $getvocher=$voucherobj->getVoucherDetails($voucher);
+					 $result=array(
+    							"status"=>"200",
+						     	"Voucher_Status"=>$getvocher['Voucher_Status']
+						     	);
+				}
+				else{
+					//Need to check null point exception
+					throw new ParentFinderException('null_argument_found');
+				}
+				return json_encode($result);
 	}
 
 
