@@ -33,7 +33,9 @@ class MembershipRepository {
    public function getMembershipDetails(){
        try{
             $Membershipobj=new Membership;
-            $MembershipDetails =$Membershipobj->where('ID','=',$this->id)->first();
+            $MembershipDetails =$Membershipobj
+                                ->join('sys_acl_level_prices', 'sys_acl_levels.ID', '=', 'sys_acl_level_prices.IDLevel')  
+                                ->where('sys_acl_levels.ID','=',$this->id)->first();
            // print_r($MembershipDetails);
             return $MembershipDetails;
         }catch(\Exception $e){
@@ -45,7 +47,9 @@ class MembershipRepository {
  public function getAllMembershipids(){
        try{
             $Membershipobj=new Membership;
-             $MembershipDetails =$Membershipobj->get();
+             $MembershipDetails =$Membershipobj
+                                  ->join('sys_acl_level_prices', 'sys_acl_levels.ID', '=', 'sys_acl_level_prices.IDLevel')
+                                  ->get();
             return $MembershipDetails;
         }catch(\Exception $e){
             //Add Exception here

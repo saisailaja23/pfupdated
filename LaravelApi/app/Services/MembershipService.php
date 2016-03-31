@@ -91,8 +91,8 @@ class MembershipService{
                    $this->free=$membershipDetails->Free;
                    $this->trial=$membershipDetails->Trial;
                    $this->trial_length=$membershipDetails->Trial_Length;
-                   $this->membershipamount=$membershipDetails->Membership_Period;
-                   $this->membershipperiod=$membershipDetails->Membership_Amount;
+                   $this->membershipamount=$membershipDetails->Price;
+                   $this->membershipperiod=$membershipDetails->Days;
       //print_r($this);            
 
         return $this;   

@@ -179,6 +179,7 @@ use Exception;
                 $error['status']=204;
                  $error['title']='NO Memberships Found';
                  $error['detail']='Membership you were looking for was not found for this user';
+                 break;
             case 'key_not_valid' :
                 $error['status']=401;
                  $error['title']='Unauthorized';

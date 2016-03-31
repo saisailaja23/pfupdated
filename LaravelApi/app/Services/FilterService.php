@@ -18,6 +18,7 @@ use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
 use App\Repository\MembershipRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -155,12 +156,19 @@ class FilterService {
     try{ 
         $membershipObj=new MembershipRepository(null);  
         $membershipidDetails=$membershipObj->getAllMembershipids();
-        foreach ($membershipidDetails as $membershipid) {
+        if(count($membershipidDetails) > 0){
+            foreach ($membershipidDetails as $membershipid) {
             $membershipids[]=$membershipid->ID;
         }
-        return  $membershipids;
+         return  $membershipids;
+        }
+        else{
+           throw new ParentFinderException('membership_not_found');
+        }
+        
+       
     }catch(\Exception $e){
-             //Add Exception here
+           // throw new ParentFinderException('membership_not_found');
         } 
     }
     

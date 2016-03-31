@@ -409,7 +409,7 @@ class ProfileController extends Controller
 	}
 
 	public function getMembershipApi(){
-		$Membership_details = '';
+		$Membership_details1 = '';
 		$filter=new FilterService();
 		$membershipids= $filter->getAllMembershipIds();
 		if($membershipids){
@@ -417,8 +417,7 @@ class ProfileController extends Controller
 		$membershipobj=new MembershipService($membershipid);
 		$Memberships= $membershipobj->getAllMembershipDetails();
 		
-    				$Membership_details[]=array(
-    							"status"=>"202",
+    				$Membership_details1[]=array(
 						     	"id"=>$Memberships->getId(),
 						     	"name"=>$Memberships->getname(),
 						     	"icon"=>$Memberships->geticon(),
@@ -430,11 +429,12 @@ class ProfileController extends Controller
 						     	"free"=>$Memberships->getfree(),
 						     	"trial"=>$Memberships->gettrial(),
 						     	"trial_length"=>$Memberships->gettrial_length(),
-						     	"membership_period"=>$Memberships->getmembershipamount(),
-						     	"membership_amount"=>$Memberships->getmembershipperiod()
+						     	"membership_period"=>$Memberships->getmembershipperiod(),
+						     	"membership_amount"=>$Memberships->getmembershipamount()
 						     	);
 			    				
 				}
+				$Membership_details=Array("status"=>"202","Membership_details"=>$Membership_details1);
 				return json_encode($Membership_details);
 			}
 
@@ -460,6 +460,14 @@ class ProfileController extends Controller
 			}
 		}
 		return json_encode($member);
+	}
+
+
+	public function postMembershipCouponValidation(Request $request){	
+				$member['vocher_code'] =  $request->vocher_code;
+				$member['idlevel']=$request->member_level;
+				
+				return json_encode($member);
 	}
 
 
