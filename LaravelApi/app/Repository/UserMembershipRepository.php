@@ -3,8 +3,7 @@
 namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\User;
-use App\Models\Profiles;
+use App\Models\UserMembership;
 
 /**
  * Description of ParentService
@@ -64,7 +63,7 @@ class UserMembershipRepository {
  
     /* Save membership */
    
-    public  function save($member){   
+    public  function save(){ 
         try{
     		$Membershipobj=new UserMembership;
     		$saveMember=$Membershipobj->insert(
@@ -72,7 +71,7 @@ class UserMembershipRepository {
     										'IDLevel' => $this->getIdLevel(),
     										'TransactionID' => $this->getTransactionId(),
     										'DateStarts' => $this->getStartDate(),
-    										'DateExpires' => $this->getEndDate(),
+    				 						'DateExpires' => $this->getEndDate(),
     										'Upgrade' => $this->getUpgradeDate()
                                             )
     					);  

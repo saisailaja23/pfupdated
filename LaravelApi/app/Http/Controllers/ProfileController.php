@@ -452,24 +452,23 @@ class ProfileController extends Controller
 					$userMemberObj=new UserMembershipService($request->member_id);
 					$userMemberObj->setIdLevel($request->member_level);
 				 	$userMemberObj->setTransactionId($request->transaction_id);
-					if($saveMember=$userMemberObj->saveMembership()){echo "0";
+					if($saveMember=$userMemberObj->saveMembership()){
 						$result=array(
     							"status"=>"201",
 						     	"Message"=>"Inserted"
 						     	);
+						return json_encode($result);
 					}else{
-						echo "1";
 						throw new ParentFinderException('insertion_failed');
 					}
-					return json_encode($saveMember);
+					
 				}else{
-					echo "2";
 					//Need to check null point exception
 					throw new ParentFinderException('null_argument_found');
 				}
 				
 			}
-			else{echo "3";
+			else{
 				throw new ParentFinderException('key_not_valid');
 			}
 		}

@@ -43,17 +43,18 @@ class UserMembershipService{
       		 $accountObj=new AccountRepository($this->accountId);
       		 if($accountExist=$accountObj->getAccountDetails()){
       			 $memberobj=new MembershipService($this->idLevel);
-      			 if($membershipExist=$memberobj->getAllMembershipDetails()){
-        			echo	"--". $planPeriod=$memberobj->getMembershipPeriod();
-        				echo "--". $startDate=date('Y-m-d');
-        				echo "--". $endDate=date('Y-m-d',strtotime($startDate + $planPeriod+'days'));;
-        				 $upgradeDate=date('Y-m-d');
-        				 $userMemberObj->setIdLevel($this->idLevel);
-        				 $userMemberObj->setTransactionId($this->transactionId);
-        				 $userMemberObj->setStartDate($startDate) ;
-        				 $userMemberObj->setEndDate($endDate) ;
-        				 $userMemberObj->setUpgradeDate($upgradeDate) ;
-        				 $save=$userMemberObj->save();
+      			 if($membershipExist=$memberobj->getMembershipDetails()){
+        			  $planPeriod=$memberobj->getMembershipPeriod();
+        				$startDate=date('Y-m-d');
+        				$endDate= date('Y-m-d',date(strtotime("+".$planPeriod." day", strtotime($startDate))));
+        				$upgradeDate=date('Y-m-d');
+        				$userMemberObj->setIdLevel($this->idLevel);
+        				$userMemberObj->setTransactionId($this->transactionId);
+        				$userMemberObj->setStartDate($startDate);
+        				$userMemberObj->setEndDate($endDate);
+        				$userMemberObj->setUpgradeDate($upgradeDate);
+        				$save=$userMemberObj->save();
+                return $save;
       			 }else{
       				throw new ParentFinderException('membership_not_found',$e->getMessage());
       			}
