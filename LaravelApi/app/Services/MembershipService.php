@@ -68,14 +68,14 @@ class MembershipService{
     public  function getmembershipamount() {
        return $this->membershipamount;
     }
-    public  function getmembershipperiod() {
+    public  function getMembershipPeriod() {
        return $this->membershipperiod;
     }
     
     
   
 
-   public function getAllMembershipDetails(){
+   public function getMembershipDetails(){
          try{
         $membershipobj=new MembershipRepository($this->id);
         $membershipDetails=$membershipobj->getMembershipDetails();

@@ -31,7 +31,7 @@ class MembershipRepository {
     
 
    public function getMembershipDetails(){
-       try{
+       try{echo $this->id;
             $Membershipobj=new Membership;
             $MembershipDetails =$Membershipobj
                                 ->join('sys_acl_level_prices', 'sys_acl_levels.ID', '=', 'sys_acl_level_prices.IDLevel')  

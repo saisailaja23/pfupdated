@@ -36,18 +36,8 @@ class UtilityService {
              throw new ParentFinderException('user_not_found',$e->getMessage());
         } 
     
-   }    
+   } 
   
-	// /*Get Contact details */
-	// public function getContactDetails(){
-	// 	$contacts=new ContactRepository($this->profileId);
-	// 	$contactDetails=$contacts->getContactDetails();
-	// 	foreach ($contactDetails as $contact) {
- //            $this->country=$contact->country;
-	// 		$this->state=$contact->state;
- //        }
- //        return $this;
-	// }
 	
 	public function getFlipbookByID($acc_id){  
         try{
@@ -176,6 +166,18 @@ class UtilityService {
       $appObj=new AppUserRepository($url);
       $keyIdentity=$appObj->getAppUserKey($key);
       return $keyIdentity;
+    }
+
+    public function getUsernameByAccountId($account_id){
+      try{
+            $profileObj=new ProfileRepository(null);           
+            $accountId=$profileObj->getUsernameByAccountId($account_id);
+            return $accountId->account_id;
+            
+        }catch(\Exception $e){
+             throw new ParentFinderException('user_not_found',$e->getMessage());
+        } 
+    
     }
      
     
