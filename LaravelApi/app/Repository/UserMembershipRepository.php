@@ -65,17 +65,22 @@ class UserMembershipRepository {
     /* Save membership */
    
     public  function save($member){   
-		$Membershipobj=new Membership;
-		$saveMember=$Membershipobj->insert(
-										['IDMember' =>$this->getAccountId(),
-										'IDLevel' => $this->getIdLevel(),,
-										'TransactionID' => $this->getTransactionId()
-										'DateStarts' => $this->getStartDate(),
-										'DateExpires' => $this->getEndDate(),
-										'Upgrade' => $this->getUpgradeDate()
-										]
-					);  
-		return $saveMember;
+        try{
+    		$Membershipobj=new UserMembership;
+    		$saveMember=$Membershipobj->insert(
+                                        array('IDMember' =>$this->getAccountId(),
+    										'IDLevel' => $this->getIdLevel(),
+    										'TransactionID' => $this->getTransactionId(),
+    										'DateStarts' => $this->getStartDate(),
+    										'DateExpires' => $this->getEndDate(),
+    										'Upgrade' => $this->getUpgradeDate()
+                                            )
+    					);  
+    		return $saveMember;
+        }
+        catch(\Exception $e){
+              //Throwing default Exceptions here
+      } 
     }
     
 
