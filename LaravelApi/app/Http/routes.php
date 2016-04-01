@@ -106,4 +106,6 @@ Route::get('/membership/list', 'ProfileController@getMembershipApi');
 Route::post('/membership/add', 'ProfileController@postMembershipDetails');
 Route::post('/membership/coupon', 'ProfileController@postMembershipCouponValidation');
 
+Route::post('/new/profile', 'ProfileController@postProfile');
+
 

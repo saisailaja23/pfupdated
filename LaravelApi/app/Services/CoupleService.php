@@ -382,6 +382,10 @@ class CoupleService {
         } catch(\Exception $e){
                  //throw new ParentFinderException('agency-not-found');
         }
+    }
+
+    public function savePaentProfile(){
+        
     } 
  
 }

@@ -498,5 +498,33 @@ class ProfileController extends Controller
 				return json_encode($result);
 	}
 
+	/* Registration */
+	public function postProfile(Request $request){
+		$profileType=$request->profile_type;
+		if(!empty($profileType)){
+			$username=$request->APusername;
+			$password=$request->APpassword;
+			$emailId=$request->APemail;
+			$agencyId=$request->APagencyId;
+			$firstName=$request->APfirstName;
+			if($profileType==2){
+			/*		Adoptive Family Registration	*/
+			$profileObj=new CoupleService(null);
+
+			}
+			else if($profileType==4){
+				/*		Birth Mother Registration	*/
+			}
+			else if($profileType==8){
+				/*		Adoption Agency Registration	*/
+			}else{
+				throw new ParentFinderException('profile_type_not_found');
+			}
+		}else{
+				throw new ParentFinderException('profile_type_not_found');
+			}
+		
+	}
+
 
 }
