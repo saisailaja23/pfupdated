@@ -12,8 +12,9 @@ use App\Services\AlbumsService;
 use App\Services\JournalService;
 use App\Services\MembershipService;
 use App\Services\VoucherService;
+use App\Services\UserMembershipService;
+
 use Response;
-//use Request;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
 class ProfileController extends Controller
@@ -446,23 +447,23 @@ class ProfileController extends Controller
 	
 	public function postMembershipDetails(Request $request){
 		if($request->user_key && $request->url){
-			$appObj=new UtilityService;
+			$appObj=new UtilityService;			
 			$app_key=$appObj->checkAppKey($request->user_key,$request->url);
 			if($app_key==1){
-				$member['id'] =  $request->member_id;
-				$member['idlevel']=$request->member_level;
-				$member['transaction_id']=$request->transaction_id;	
-				if(!empty($member['id']&&$member['idlevel']&&$member['transaction_id'])){
-					$memberObj=new UserMembershipService($member['id']);
-					if($saveMember=$memberObj->saveMembership($member)){
+				if(!empty($request->member_id && $request->member_level && $request->transaction_id)){
+					$userMemberObj=new UserMembershipService($request->member_id);
+					$userMemberObj->setIdLevel($request->member_level);
+				 	$userMemberObj->setTransactionId($request->transaction_id);
+					if($saveMember=$userMemberObj->saveMembership()){
 						$result=array(
     							"status"=>"201",
 						     	"Message"=>"Inserted"
 						     	);
+						return json_encode($result);
 					}else{
 						throw new ParentFinderException('insertion_failed');
 					}
-					return json_encode($saveMember);
+					
 				}else{
 					//Need to check null point exception
 					throw new ParentFinderException('null_argument_found');
@@ -473,7 +474,7 @@ class ProfileController extends Controller
 				throw new ParentFinderException('key_not_valid');
 			}
 		}
-		return json_encode($member);
+		
 	}
 
 
