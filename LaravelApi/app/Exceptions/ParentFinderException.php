@@ -185,6 +185,21 @@ use Exception;
                  $error['title']='Unauthorized';
                  $error['detail']='Key mismatch - You are not authorized to do this action';
                  break;
+            case 'code_applied' :
+                $error['status']=204;
+                 $error['title']='Code Applied';
+                 $error['detail']='The code has been applied';
+                 break;
+            case 'code_expired' :
+                $error['status']=204;
+                 $error['title']='Code Expired';
+                 $error['detail']='The code has been Expired';
+                 break;
+            case 'invalid_code' :
+                $error['status']=204;
+                 $error['title']='Invalid Code';
+                 $error['detail']='Invalid Code';
+                 break;
             default :
                 $error['status']=500;
                 $error['title']='Not Found';
