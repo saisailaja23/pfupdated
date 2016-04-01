@@ -36,8 +36,9 @@ ALTER TABLE `adoption_type_preference` CHANGE `adoption_type_preference_id` `ado
 ALTER TABLE `ContactDetails` ADD `website` VARCHAR(100) NOT NULL ;
 ALTER TABLE `sys_acl_levels_features` ADD `benefit_text` TEXT NOT NULL AFTER `status`;
 
-ALTER TABLE `sys_acl_levels` ADD `Membership_Period` INT NOT NULL COMMENT 'In Days' AFTER `Trial_Length`, ADD `Membership_Amount` INT NOT NULL AFTER `membership_period`;
 
 ALTER TABLE `Account`   DROP `membership_id`;
 
 INSERT INTO `app_users` (`website`, `user_key`) VALUES ('ctpf01.parentfinder.com', MD5('p@r1ntfind1r'));
+
+ALTER TABLE `account` ADD `Profile_no` INT NOT NULL AFTER `agency_id`, ADD `Profile_year` VARCHAR(225) NOT NULL AFTER `Profile_no`, ADD `ZOHO_ID` VARCHAR(225) NOT NULL AFTER `Profile_year`;

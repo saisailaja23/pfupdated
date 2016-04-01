@@ -11,6 +11,14 @@ use App\Models\PdfTemplate;
 class ProfileRepository {
    
     private $profileId;
+    private $firstName;
+    private $lastName;
+    private $gender;
+    private $accountId; 
+    private $status;
+    private $createdAt;
+    private $modifiedAt;
+
     public function __construct($profileId) {
          $this->setProfileId($profileId);
     }
@@ -18,9 +26,53 @@ class ProfileRepository {
     public  function getProfileId() {
        return $this->profileId;
     }
+    public  function getFirstName() {
+       return $this->firstName;
+    }
+    public  function getLastName() {
+       return $this->lastName;
+    }
+    public  function getGender() {
+       return $this->gender;
+    }
+    public  function getAccountId() {
+       return $this->$accountId;
+    }
+    public  function getStatus() {
+       return $this->status;
+    }
+    public  function getCreatedAt() {
+       return $this->createdAt;
+    }
+
+    public  function getModifiedAt($modifiedAt) {
+       $this->modifiedAt=$modifiedAt;
+    }
+
     public  function setProfileId($profileId) {
          $this->profileId = $profileId;
-    }   
+    }
+    public  function setFirstName($firstName) {
+       $this->firstName=$firstName;
+    }
+    public  function setLastName($lastName) {
+       $this->lastName=$lastName;
+    }
+    public  function setGender($gender) {
+       $this->gender=$gender;
+    } 
+    public  function setAccountId($accountId) {
+       $this->$accountId=$accountId;
+    }
+    public  function setStatus($status) {
+       $this->status=$status;
+    }    
+    public  function setCreatedAt($createdAt) {
+       $this->createdAt=$createdAt;
+    }
+    public  function setModifiedAt($modifiedAt) {
+       $this->modifiedAt=$modifiedAt;
+    }  
     
     /*Get Couple Profile */
      public  function getCouple($accountId){   
@@ -198,6 +250,24 @@ class ProfileRepository {
             return  $pdfdetails;
         }catch(\Exception $e){
              //Add Exception here
+        } 
+    }
+
+    public function saveProfile(){
+        try{
+            $profiles=new Profiles;
+            $saveprofile=$profiles->insert(
+                                        array('first_name'=>$this->firstName(),
+                                            'last_name'=>$this->lastName(),
+                                            'gender'=>$this->userName(),
+                                            'accounts_id'=>$this->accountId,
+                                            'status'=>$this->status, 
+                                            'created_at'=>$this->createdAt(),
+                                            'modified_at'=>$this->modifiedAt()
+                                            )
+                                    );
+        }catch(\Exception $e){
+             //Throwing Exception here
         } 
     }
 
