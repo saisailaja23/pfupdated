@@ -363,6 +363,10 @@ class CoupleService {
         } catch(\Exception $e){
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());
         }
+    }
+
+    public function savePaentProfile(){
+        
     } 
  
 }

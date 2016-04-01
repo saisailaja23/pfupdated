@@ -115,8 +115,16 @@ class ProfileService {
         return $this;
         }
         catch(\Exception $e){
-             //Add Exception here
+             //Throwing Exception here
         }        
+    }
+
+    public function saveProfile(){
+        try{
+
+        }catch(\Exception $e){
+             //Throwing Exception here
+        }
     }  
 
 	
