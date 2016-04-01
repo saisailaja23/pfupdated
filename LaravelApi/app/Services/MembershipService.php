@@ -80,6 +80,7 @@ class MembershipService{
         $membershipobj=new MembershipRepository($this->id);
         $membershipDetails=$membershipobj->getMembershipDetails();
        // print_r($membershipDetails);
+                    if(count($membershipDetails)>0){
                    $this->id =  $membershipDetails->ID;
                    $this->name=$membershipDetails->Name;
                    $this->icon=$membershipDetails->Icon;
@@ -95,7 +96,11 @@ class MembershipService{
                    $this->membershipperiod=$membershipDetails->Days;
       //print_r($this);            
 
-        return $this;   
+                  return $this; 
+                  }
+                  else{
+                    throw new ParentFinderException('membership_not_found');
+                  }  
     }
     catch(\Exception $e){
              //Add Exception here

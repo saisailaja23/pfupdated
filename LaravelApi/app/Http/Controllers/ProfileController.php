@@ -81,8 +81,8 @@ class ProfileController extends Controller
     		$filter_tag=Input::segment(2);
 			if(isset($filter_tag)){
 				if($filter_tag=='religion'){
-					$religion=Input::segment(3);
-					$accountIds= $filter->getProfilesByReligion($religion);
+					 $religion=Input::segment(3);
+					 $accountIds= $filter->getProfilesByReligion($religion);
 				}
 				else if($filter_tag=='region'){
 					$region=Input::segment(3);
@@ -164,6 +164,7 @@ class ProfileController extends Controller
 	     		}
 				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
      	}else{
+     		echo "a";
      		throw new ParentFinderException('no-profiles-found');
      	}
     		
@@ -417,7 +418,7 @@ class ProfileController extends Controller
 		if($membershipids){
 	    foreach($membershipids as $membershipid){
 		$membershipobj=new MembershipService($membershipid);
-		$Memberships= $membershipobj->getAllMembershipDetails();
+		$Memberships= $membershipobj->getMembershipDetails();
 		
     				$Membership_details1[]=array(
 						     	"id"=>$Memberships->getId(),

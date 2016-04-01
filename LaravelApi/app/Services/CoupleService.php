@@ -55,11 +55,13 @@ class CoupleService {
 
          $profileId = $this->getProfileId();
 
-         if(count($profileId>0)){
+        
              $parentProfile = new ProfileService($profileId['parent1']);
              $this->parentprofile1 = $parentProfile->getProfile();
              return $this->parentprofile1;
-        } }
+       
+
+         }
     catch(\Exception $e){
 
           
@@ -74,6 +76,7 @@ class CoupleService {
              $this->parentprofile2 = $parentProfile->getProfile();
              return $this->parentprofile2;
          }
+         
      }
      catch(\Exception $e){
              //Add Exception here
@@ -111,6 +114,7 @@ class CoupleService {
         $this->avatar=$accountDetails1->Avatar;
         $this->username=$accountDetails1->username;
         return $this;
+    
     }
     catch(\Exception $e){
              //Add Exception here
@@ -123,6 +127,9 @@ class CoupleService {
         $contactObj=new ContactService($this->accountId);
         if($contactDetails=$contactObj->getContactDetails()){
             return $contactDetails;
+        }
+        else{
+             throw new ParentFinderException('contact_not_found');
         }
         
     }
@@ -298,10 +305,15 @@ class CoupleService {
         try{
         $profile=new EprofileRepository($this->accountId);  
         $flipbookId=$profile->getFlipbookId();
+        if($flipbookId){
         $flipserviceObj=new EprofileService($flipbookId['id']);
         $flipbook[] = $flipserviceObj->getFlipbook();
                      
         return $flipbook;
+    }
+    else{
+        throw new ParentFinderException('flip_not_found');
+    }
     }
     catch(\Exception $e){
              //Add Exception here
@@ -333,11 +345,15 @@ class CoupleService {
         try{
             $preferences=new ChildPreferService($this->accountId);
             $preferenceDetails=$preferences->getChildPreferDetails();
+            if($preferenceDetails){
             $childpreferences['ethnicity']=$preferenceDetails->getEthnicityPref();
             $childpreferences['ageGroup']=$preferenceDetails->getAgePref();
             $childpreferences['adoption']=$preferenceDetails->getAdoptionTypePref();
             return $childpreferences;
-            
+        }
+         else{
+            throw new ParentFinderException('child-preference-not-found');
+         }   
         } catch(\Exception $e){
                  throw new ParentFinderException('child-preference-not-found',$e->getMessage());
         }
@@ -355,13 +371,16 @@ class CoupleService {
             $agency['city']=$agencyeDetails->getcity();
             $agency['zip']=$agencyeDetails->getzip();
             $agency['website']=$agencyeDetails->getwebsite();
+             return $agency;
+            }
+            else{
+                throw new ParentFinderException('agency-not-found');
             }
           
-            return $agency;
-
+           
             
         } catch(\Exception $e){
-                 throw new ParentFinderException('child-preference-not-found',$e->getMessage());
+                 //throw new ParentFinderException('agency-not-found');
         }
     } 
  

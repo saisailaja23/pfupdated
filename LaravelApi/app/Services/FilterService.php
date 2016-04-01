@@ -45,12 +45,20 @@ class FilterService {
         $profileObj=new ProfileRepository(null);
         $religionObj=new ReligionRepository($religion); 
         $religions=$religionObj->getReligionDetails();
-        $religionId=   $religions->ReligionId;    
+        if(!empty($religions)){
+            $religionId=   $religions->ReligionId;    
         $profileDetails=$profileObj->getProfilesByReligion($religionId);
         foreach ($profileDetails as $account) {
               $accountIds[]=$account->accounts_id;
         }
         return $accountIds;
+            
+        }
+        else{
+            echo "f";
+           throw new ParentFinderException('no-profiles-found');
+        }
+        
     }catch(\Exception $e){
              //Add Exception here
         } 
@@ -59,6 +67,7 @@ class FilterService {
         try{
         $regionObj=new RegionRepository(null); 
         $regions=$regionObj->getRegionById($region);
+        if(!empty($regions)){
         $regionId=   $regions->RegionId;
         $regionObj1=new ContactRepository(null); 
         $accountDetails=$regionObj1->getContactByRegion($regionId);
@@ -66,6 +75,11 @@ class FilterService {
             $accountIds[]= $accountDetail->Account_id;
         }
          return $accountIds;
+        }
+         else{
+            echo "e";
+           throw new ParentFinderException('no-profiles-found');
+        }
      }catch(\Exception $e){
              //Add Exception here
         } 
@@ -97,6 +111,7 @@ class FilterService {
         try{
         $stateObj=new StateRepository(null); 
         $states=$stateObj->getStateById($state);
+        if(!empty($states)){
         $stateId=   $states->state_id;
         $stateObj1=new ContactRepository(null); 
         $accountDetails=$stateObj1->getContactByState($stateId);
@@ -106,6 +121,10 @@ class FilterService {
         }
         return $accountIds;
     }
+    else{
+        throw new ParentFinderException('user_not_found',$e->getMessage());
+    }
+    }
     catch(\Exception $e){
              //Add Exception here
         } 
@@ -114,10 +133,16 @@ class FilterService {
         try{ 
         $profileObj=new ProfileRepository(null);
          $accountDetails=$profileObj->getProfileByName($name);
-        foreach ($accountDetails as $accountDetail) {
+         if(count($accountDetails) > 0){
+           foreach ($accountDetails as $accountDetail) {
             $accountIds[]= $accountDetail->accounts_id;
         }
         return $accountIds;
+         }
+         else{
+            throw new ParentFinderException('user_not_found',$e->getMessage()); 
+         }
+        
     }
     catch(\Exception $e){
              //Add Exception here
@@ -129,10 +154,17 @@ class FilterService {
         $ethnicity=$ethnicityObj->getEthinicityById($child_pref);
         $ethinicityId=   $ethnicity->ethnicity_id;
         $accountDetails=$ethnicityObj->getProfilesByEthinicity($ethinicityId);
-        foreach ($accountDetails as $accountDetail) {
+        if(count($accountDetails) > 0){
+            foreach ($accountDetails as $accountDetail) {
            $accountIds[]= $accountDetail->account_id;
         }
         return $accountIds;
+        }
+        else{
+            throw new ParentFinderException('user_not_found',$e->getMessage()); 
+        }
+
+        
     }
     catch(\Exception $e){
              //Add Exception here
