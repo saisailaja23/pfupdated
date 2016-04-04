@@ -448,11 +448,15 @@ class ProfileController extends Controller
 	
 	public function postMembershipDetails(Request $request){
 		$member_id=verifyData($request->member_id);
+		$member_level=verifyData($request->member_level);
+		$transaction_id=verifyData($request->transaction_id);
 		if($request->user_key && $request->url){
 			$appObj=new UtilityService;			
 			$app_key=$appObj->checkAppKey($request->user_key,$request->url);
 			if($app_key==1){
-				if(!empty($request->member_id && $request->member_level && $request->transaction_id)){
+				if(!empty($member_id && $member_level && $transaction_id)){
+					if(verifyIntegerData($member_id) == 1 && verifyIntegerData($member_level) == 1){
+					
 					$userMemberObj=new UserMembershipService($request->member_id);
 					$userMemberObj->setIdLevel($request->member_level);
 				 	$userMemberObj->setTransactionId($request->transaction_id);
@@ -464,6 +468,11 @@ class ProfileController extends Controller
 						return json_encode($result);
 					}else{
 						throw new ParentFinderException('insertion_failed');
+					}
+					}
+					else{
+						throw new ParentFinderException('int_error');
+						
 					}
 					
 				}else{
@@ -484,6 +493,10 @@ class ProfileController extends Controller
 				$voucher['vocher_code'] =  $request->vocher_code;
 				$voucher['idlevel']=$request->member_level;
 				$voucher['accountid']=$request->accountid;
+				if($request->user_key && $request->url){
+				    $appObj=new UtilityService;			
+					$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+					if($app_key==1){	
 				if(!empty($voucher['vocher_code']&&$voucher['idlevel'] && $voucher['accountid'])){
 					$voucherobj=new VoucherService(null);
 					 $getvocher=$voucherobj->getVoucherDetails($voucher);
@@ -496,7 +509,13 @@ class ProfileController extends Controller
 					//Need to check null point exception
 					throw new ParentFinderException('null_argument_found');
 				}
+				}
+				else{
+				throw new ParentFinderException('key_not_valid');
+					}
 				return json_encode($result);
+
+			}		
 	}
 
 	/* Registration */
@@ -541,7 +560,18 @@ class ProfileController extends Controller
 
 		$profiletypeobj=new UtilityService();
 		$profiletype= $profiletypeobj->getProfileTypes();
+		if($profiletype){
+			 $result=array(
+    							"status"=>"200",
+						     	"Profile_types"=>$profiletype
+						     	);
 
+		}
+		else{
+        throw new ParentFinderException('No_profile_type');
+        
+      }
+      return json_encode($result);
 	}
 
 }

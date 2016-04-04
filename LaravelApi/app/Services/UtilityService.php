@@ -218,14 +218,15 @@ class UtilityService {
       try{
       $profiletypeobj=new ProfileTypeRepository(null);           
       $profiletype=$profiletypeobj->getProfileTypes();
-      if($profiletype){
-
+      if(count($profiletype) > 0){
+        return  $profiletype;
       }
       else{
+        throw new ParentFinderException('No_profile_type');
         
       }
        }catch(\Exception $e){
-             throw new ParentFinderException('user_not_found',$e->getMessage());
+             
 
         } 
     }
