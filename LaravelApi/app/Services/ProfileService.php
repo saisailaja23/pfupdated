@@ -85,6 +85,29 @@ class ProfileService {
     public function getAccountId() {
         return $this->accountId;
     }   
+
+    
+    public  function setFirstName($firstName) {
+       $this->firstName=$firstName;
+    }
+    public  function setLastName($lastName) {
+       $this->lastName=$lastName;
+    }
+    public  function setGender($gender) {
+       $this->gender=$gender;
+    } 
+    public  function setAccountId($accountId) {
+       $this->$accountId=$accountId;
+    }
+    public  function setStatus($status) {
+       $this->status=$status;
+    }    
+    public  function setCreatedAt($createdAt) {
+       $this->createdAt=$createdAt;
+    }
+    public  function setModifiedAt($modifiedAt) {
+       $this->modifiedAt=$modifiedAt;
+    }  
       	
 	
     /* Get a single profiles */
