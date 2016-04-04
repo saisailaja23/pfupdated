@@ -21,6 +21,7 @@ use App\Repository\AlbumsRepository;
 use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
 use App\Repository\AppUserRepository;
+use App\Repository\ProfileTypeRepository;
 /**
  * Description of AccountService
 **/
@@ -208,9 +209,15 @@ class UtilityService {
             
         }catch(\Exception $e){
              throw new ParentFinderException('user_not_found',$e->getMessage());
-             
+
         } 
     
+    }
+
+    public function getProfileTypes(){
+
+      $profiletypeobj=new ProfileTypeRepository(null);           
+      $profiletype=$profiletypeobj->getProfileTypes();
     }
      
     

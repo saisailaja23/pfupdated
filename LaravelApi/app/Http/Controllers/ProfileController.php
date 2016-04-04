@@ -527,4 +527,11 @@ class ProfileController extends Controller
 	}
 
 
+	public function getProfileType(){
+
+		$profiletypeobj=new UtilityService();
+		$profiletype= $profiletypeobj->getProfileTypes();
+
+	}
+
 }
