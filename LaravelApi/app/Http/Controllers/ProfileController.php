@@ -502,11 +502,11 @@ class ProfileController extends Controller
 	public function postProfile(Request $request){
 		$profileType=$request->profile_type;
 		if(!empty($profileType)){
-			$username=$request->APusername;
-			$password=$request->APpassword;
-			$emailId=$request->APemail;
-			$agencyId=$request->APagencyId;
-			$firstName=$request->APfirstName;
+			$username=$request->PFusername;
+			$password=$request->PFpassword;
+			$emailId=$request->PFemail;
+			$agencyId=$request->PFagencyId;
+			$firstName=$request->PFfirstName1;
 			if($profileType==2){
 			/*		Adoptive Family Registration	*/
 			$profileObj=new CoupleService(null);
