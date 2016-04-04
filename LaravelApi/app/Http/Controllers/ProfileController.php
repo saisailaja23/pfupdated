@@ -520,30 +520,29 @@ class ProfileController extends Controller
 
 	/* Registration */
 	public function postProfile(Request $request){
-		$profileType=$request->profile_type;
-		if(!empty($profileType)){
-			$username=$request->PFusername;
-			$password=$request->PFpassword;
-			$emailId=$request->PFemail;
-			$agencyId=$request->PFagencyId;
-			
-			$agency = $request->agency;
-			$agencyState = $request->agencyState;
-			$agencyRegion = $request->agencyRegion;
+		$data['profileType']=$request->profile_type;
+		if(!empty($data['profileType'])){
+			$data['username']=$request->PFusername;
+			$data['password']=$request->PFpassword;
+			$data['emailId']=$request->PFemail;
+			$data['agencyId']=$request->PFagencyId;
+			$data['state'] = $request->state;
+			$data['region'] = $request->region;
 			if($profileType==2){
 			/*		Adoptive Family Registration	*/
 			$profileObj=new CoupleService(null);
 
-					$firstNameSingle=$request->PFfirstNameSingle;
-					$lastNameSingle=$request->PFlastNameSingle;
-					$firstNameCouple=$request->PFfirstNameCouple;
-					$lastNameCouple=$request->PFlastNameCouple;
-					$genderSingle = $request->PFgenderSingle;
-					$genderCouple = $request->PFgenderCouple;
+					$data['firstNameSingle']=$request->PFfirstNameSingle;
+					$data['$lastNameSingle']=$request->PFlastNameSingle;
+					$data['$firstNameCouple']=$request->PFfirstNameCouple;
+					$data['$lastNameCouple']=$request->PFlastNameCouple;
+					$data['$genderSingle'] = $request->PFgenderSingle;
+					$data['$genderCouple'] = $request->PFgenderCouple;
+					$insertStatus=$profileObj->savePaentProfile($data);
 			}
 			else if($profileType==4){
 				/*		Birth Mother Registration	*/
-				$firstNameBM=$request->PFfirstNameBM;
+				$data['firstName']=$request->PFfirstName;
 			}
 			else if($profileType==8){
 				/*		Adoption Agency Registration	*/

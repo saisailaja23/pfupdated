@@ -386,8 +386,41 @@ class CoupleService {
         }
     }
 
-    public function savePaentProfile(){
+    /*  Parent Registration 
+    *       Get Array $data
+    *       Return boolean $insertStatus
+    */
+    public function saveParentProfile($data){
+        try{
+            $accountObj=new AccountRepository(null);
+            $accountObj->setUserName($data['username']);
+            $accountObj->setPassword($data['password']);
+            $accountObj->setEmailId($data['emailId']);
+            $accountObj->setAgencyId($data['agencyId']);
+            $accountObj->setState($data['state']);
+            $accountObj->setRegion($data['region']); 
+            $accountObj->setCreatedAt(date('Y-m-d'));
+            $accountObj->setModifiedAt(date('Y-m-d'));
+            $accountObj->setStatus('1');    
+            $accountObj->setRoleId('1');      
+            if($data['profileType']==2){
+                $accountObj->setName($data['firstNameSingle']);
+                $accountId=$accountObj->saveAccountDetails();
+                $profileObj=new ProfileService();
+                $insertStatus=$profileObj->saveProfile();
+            }else if($profileType==4){
+                    /*      Birth Mother Registration   */
+                    $data['firstNameSingle']=$request->PFfirstNameSingle;
+            }
+            else{
+                    /*      Adoption Agency Registration    */
+            }
+        }catch(\Exception $e){
+                 //throw new ParentFinderException('agency-not-found');
+        }
+       
         
+
     } 
  
 }
