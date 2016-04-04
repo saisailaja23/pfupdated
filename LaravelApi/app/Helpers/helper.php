@@ -89,4 +89,15 @@
     $data = htmlspecialchars($data);
     return $data;
 }
+
+function verifyIntegerData($data){
+            $data = is_numeric($data);
+            if($data){
+               $result ="1";
+            }
+            else{
+                  $result ="0";
+            }
+return $result;
+}
  

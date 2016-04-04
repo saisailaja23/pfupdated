@@ -200,6 +200,16 @@ use Exception;
                  $error['title']='Invalid Code';
                  $error['detail']='Invalid Code';
                  break;
+            case 'int_error' :
+                $error['status']=204;
+                 $error['title']='Invalid Integer Agrument';
+                 $error['detail']='Invalid Integer Agrument';
+                 break;
+            case 'No_profile_type' :
+                $error['status']=204;
+                 $error['title']='No Profile Type Found';
+                 $error['detail']='No Profile Type Found';
+                 break;
             default :
                 $error['status']=500;
                 $error['title']='Not Found';
