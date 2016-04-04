@@ -35,7 +35,7 @@ class AgencyRepository {
             $ethnicityPreferDetails =$Agencyobj->where('account_id', '=',$account_id)->first();
             return $ethnicityPreferDetails;
         }catch(\Exception $e){
-               throw new ParentFinderException('agency-not-found',$e->getMessage());
+              // throw new ParentFinderException('agency-not-found',$e->getMessage());
         }  
 
    }
@@ -47,7 +47,7 @@ class AgencyRepository {
                                                 ->first();
             return $ethnicityPreferDetails;
         }catch(\Exception $e){
-               throw new ParentFinderException('agency-not-found',$e->getMessage());
+               //throw new ParentFinderException('agency-not-found',$e->getMessage());
         }  
 
    }

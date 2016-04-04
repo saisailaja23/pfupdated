@@ -2,6 +2,7 @@
 namespace App\Services;
 use Illuminate\Database\Eloquent\Model;
 use App\Repository\AgencyRepository;
+use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -61,7 +62,8 @@ class AgencyService{
                    $this->zip= $adoptionDetails->zip;
                    $this->website= $adoptionDetails->website;
            // print_r($this);
-        return $this;   
+        return $this;
+       
     }
     catch(\Exception $e){
              //Add Exception here

@@ -153,7 +153,7 @@ use Exception;
                 $error['status']=204;
                  $error['title']='Agency  Not Found';
                  $error['detail']='Agency you were looking for was not found for this user';
-
+                 break;
             case 'no-profiles-found' :
                 $error['status']=204;
                  $error['title']='No profiles Found';
