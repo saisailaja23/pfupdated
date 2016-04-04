@@ -11,6 +11,8 @@ use App\Exceptions\ParentFinderException;
 **/
 class UserMembershipService{
     private $accountId;
+    private $idLevel;
+    private $transactionId;
         
     public function __construct($accountId) {
        $this->setAccountId($accountId);      
