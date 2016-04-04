@@ -447,6 +447,7 @@ class ProfileController extends Controller
 		}
 	
 	public function postMembershipDetails(Request $request){
+		$member_id=verifyData($request->member_id);
 		if($request->user_key && $request->url){
 			$appObj=new UtilityService;			
 			$app_key=$appObj->checkAppKey($request->user_key,$request->url);

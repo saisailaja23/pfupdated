@@ -26,6 +26,8 @@ class CoupleService {
   
     private $accountId;
     private $avatar;
+    private $parentprofile1;
+    private $parentprofile2;
    
 		
     public function __construct($accountId) {
