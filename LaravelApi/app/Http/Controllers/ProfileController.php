@@ -506,14 +506,24 @@ class ProfileController extends Controller
 			$password=$request->PFpassword;
 			$emailId=$request->PFemail;
 			$agencyId=$request->PFagencyId;
-			$firstName=$request->PFfirstName1;
+			
+			$agency = $request->agency;
+			$agencyState = $request->agencyState;
+			$agencyRegion = $request->agencyRegion;
 			if($profileType==2){
 			/*		Adoptive Family Registration	*/
 			$profileObj=new CoupleService(null);
 
+					$firstNameSingle=$request->PFfirstNameSingle;
+					$lastNameSingle=$request->PFlastNameSingle;
+					$firstNameCouple=$request->PFfirstNameCouple;
+					$lastNameCouple=$request->PFlastNameCouple;
+					$genderSingle = $request->PFgenderSingle;
+					$genderCouple = $request->PFgenderCouple;
 			}
 			else if($profileType==4){
 				/*		Birth Mother Registration	*/
+				$firstNameBM=$request->PFfirstNameBM;
 			}
 			else if($profileType==8){
 				/*		Adoption Agency Registration	*/
@@ -526,5 +536,12 @@ class ProfileController extends Controller
 		
 	}
 
+
+	public function getProfileType(){
+
+		$profiletypeobj=new UtilityService();
+		$profiletype= $profiletypeobj->getProfileTypes();
+
+	}
 
 }
