@@ -208,6 +208,7 @@ class UtilityService {
             
         }catch(\Exception $e){
              throw new ParentFinderException('user_not_found',$e->getMessage());
+             
         } 
     
     }
