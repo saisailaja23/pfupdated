@@ -26,13 +26,13 @@ class ContactService {
     private $homeNumber;
         
     public function __construct($accountId) {
-       $this->setAccoountId($accountId);      
+       $this->setAccountId($accountId);      
     }
     
     public  function getAccoountId() {
        return $this->accountId;
     }
-    public  function setAccoountId($accountId) {
+    public  function setAccountId($accountId) {
          $this->accountId = $accountId;
     } 
 
@@ -67,14 +67,14 @@ class ContactService {
         return $this->homeNumber;
     }
 
-    public  function setStateId($state) {
-       $this->state=$state;
+    public  function setStateId($stateId) {
+       $this->stateId=$state;
     }
-    public  function setCountryId($country) {
-       $this->country=$country;
+    public  function setCountryId($countryId) {
+       $this->countryId=$countryId;
     }
-    public  function setRegionId($region) {
-       $this->region=$region;
+    public  function setRegionId($regionId) {
+       $this->regionId=$regionId;
     }
 
     public function getContactDetails() {
@@ -100,11 +100,18 @@ class ContactService {
         } 
     }
 
+     /*  
+        *   Save Contact details On registration
+        *   @return boolean $saveContact
+    *       
+    */
+
      public function saveContactDetails(){       
       try{
-            $contactObj=new ContactRepository;
-            $status=$contactObj->saveContactDetails();
-            return $status;
+            $contactObj=new ContactDetails;
+            $contactObj->
+            $saveContact=$contactObj->saveContactDetails();
+            return $saveContact;
       } 
       catch(\Exception $e){
             //Throwing default Exceptions here
