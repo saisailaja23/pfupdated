@@ -39,6 +39,8 @@ class LetterService{
         $this->letterId = $letterId;
     } 
     
+
+    /*Get Letter*/
     function getLetter(){
         try{
         $letterObj=new LetterRepository($this->letterId);

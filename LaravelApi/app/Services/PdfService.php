@@ -39,7 +39,7 @@ class PdfService {
     
   
   
-   
+   /*Get Pdf Profile*/
     public function getPdfDetails($type,$account_id) {
         try{ 
         $eprofileObj=new PdfRepository(null);

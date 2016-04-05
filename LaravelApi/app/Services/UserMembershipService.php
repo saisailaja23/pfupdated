@@ -39,6 +39,7 @@ class UserMembershipService{
       }   
     
     
+  /*Save Membership*/
    public function saveMembership(){
       try{
       		 $userMemberObj=new UserMembershipRepository($this->accountId);

@@ -38,6 +38,8 @@ class JournalService{
        return $this->journalUri;
     }  
    
+
+    /*Get Journal*/
     public function getJournal() { 
         try{
         $journalsObj=new JournalRepository($this->journalId);
@@ -59,6 +61,7 @@ class JournalService{
     }
 
 
+    /*Save Journal*/
     public function saveJournal(){
         //Insert function...
     }

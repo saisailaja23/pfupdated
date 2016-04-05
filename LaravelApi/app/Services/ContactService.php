@@ -77,6 +77,7 @@ class ContactService {
        $this->regionId=$regionId;
     }
 
+    /* Get Contact Details */
     public function getContactDetails() {
         try{
         $contacts=new ContactRepository($this->accountId);
@@ -106,6 +107,7 @@ class ContactService {
     *       
     */
 
+     /* Add Contact Details */
      public function saveContactDetails(){       
       try{
             $contactObj=new ContactDetails;
