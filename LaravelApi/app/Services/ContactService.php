@@ -67,6 +67,16 @@ class ContactService {
         return $this->homeNumber;
     }
 
+    public  function setStateId($state) {
+       $this->state=$state;
+    }
+    public  function setCountryId($country) {
+       $this->country=$country;
+    }
+    public  function setRegionId($region) {
+       $this->region=$region;
+    }
+
     public function getContactDetails() {
         try{
         $contacts=new ContactRepository($this->accountId);
@@ -88,7 +98,19 @@ class ContactService {
     catch(\Exception $e){
             throw new ParentFinderException('contact_not_found',$e->getMessage());
         } 
-    } 
+    }
+
+     public function saveContactDetails(){       
+      try{
+            $contactObj=new ContactRepository;
+            $status=$contactObj->saveContactDetails();
+            return $status;
+      } 
+      catch(\Exception $e){
+            //Throwing default Exceptions here
+
+      }
+    }   
     
     
 }

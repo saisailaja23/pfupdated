@@ -386,9 +386,13 @@ class CoupleService {
         }
     }
 
-    /*  Parent Registration 
-    *       Get Array $data
-    *       Return boolean $insertStatus
+    /*  
+        *   Save Parent Registration 
+        *   Saving account details, profile details and contact details
+        *   Adoptive family=2,Birth Mother=4 , Adoption Agency=8
+        *   @param  Request $request
+        *   @return boolean $insertStatus
+    *       
     */
     public function saveParentProfile($data){
         try{
@@ -399,24 +403,57 @@ class CoupleService {
             $accountObj->setAgencyId($data['agencyId']);
             $accountObj->setState($data['state']);
             $accountObj->setRegion($data['region']); 
-            $accountObj->setCreatedAt(date('Y-m-d'));
-            $accountObj->setModifiedAt(date('Y-m-d'));
-            $accountObj->setStatus('1');    
-            $accountObj->setRoleId('1');      
+            $accountObj->setCreatedAt(getCurrentDateTime());
+            $accountObj->setModifiedAt(getCurrentDateTime());
+            $accountObj->setStatus(1);    
+            $accountObj->setRoleId($data['profileType']);      
             if($data['profileType']==2){
                 $accountObj->setName($data['firstNameSingle']);
                 $accountId=$accountObj->saveAccountDetails();
                 $profileObj=new ProfileService();
-                $insertStatus=$profileObj->saveProfile();
+                $profileObj->setAccountId($accountId);
+                $profileObj->setFirstName($data['firstNameSingle']);
+                $profileObj->setLastName($data['lastNameSingle']);
+                $profileObj->setGender($data['genderSingle']);
+                $profileObj->setCreatedAt(getCurrentDateTime());
+                $profileObj->setModifiedAt(getCurrentDateTime());
+                $insertStatus1=$profileObj->saveProfile();
+                if($insertStatus1){ 
+
+                    $profileObj->setFirstName($data['firstNameCouple']);
+                    $profileObj->setLastName($data['lastNameCouple']);
+                    $profileObj->setGender($data['genderCouple']);
+                    $insertStatus=$profileObj->saveProfile();
+                }
             }else if($profileType==4){
-                    /*      Birth Mother Registration   */
+                    
                     $data['firstNameSingle']=$request->PFfirstNameSingle;
+                    $accountObj->setName($data['firstNameSingle']);
+                    $accountId=$accountObj->saveAccountDetails();
+                    $profileObj=new ProfileService();
+                    $profileObj->setAccountId($accountId);
+                    $profileObj->setFirstName($data['firstNameSingle']);
+                    $profileObj->setCreatedAt(getCurrentDateTime());
+                    $profileObj->setModifiedAt(getCurrentDateTime());
+                    $insertStatus=$profileObj->saveProfile();
             }
-            else{
-                    /*      Adoption Agency Registration    */
+            else{        /* Agency Registration*/
+                    $accountId=$accountObj->saveAccountDetails();
+                    $profileObj=new ProfileService();
+                    $profileObj->setAccountId($accountId);                    
+                    $profileObj->setCreatedAt(getCurrentDateTime());
+                    $profileObj->setModifiedAt(getCurrentDateTime());
+                    $insertStatus=$profileObj->saveProfile();
+                    if($insertStatus){       /* Insert Agency Informations */
+
+                    }
+            }
+            if($insertStatus){               /*  Save Contact details */   
+                $contactObj=new ContactService($accountId);
+                $status=$contactObj->saveContactDetails();
             }
         }catch(\Exception $e){
-                 //throw new ParentFinderException('agency-not-found');
+                //Throwing  exceptions if any
         }
        
         

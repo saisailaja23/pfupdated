@@ -27,6 +27,10 @@ class ContactRepository {
     public function getState(){        
         return $this->state;
     }
+     public  function getRegion() {
+      return $this->region;
+    }
+  
     
     public  function setState($state) {
        $this->state=$state;
