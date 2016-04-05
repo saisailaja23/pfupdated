@@ -19,8 +19,11 @@ use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
 class ProfileController extends Controller
 {
+    /**
+     * List of the apis for Parent Finder.
+     * Get and post apis 
+     */
    
-   /* Single Profile Api */
    public function getProfileApi() 
     {
     	
@@ -29,7 +32,7 @@ class ProfileController extends Controller
     		$user_name=Input::segment(2);
 			$profile=new UtilityService();
 			$account_id=$profile->getAccountIdByUserName($user_name);
-			$parentObj=new  CoupleService($account_id);
+			$parentObj=new CoupleService($account_id);
 			$parent1 =  $parentObj->getParentprofile1();
 			$parent2 =  $parentObj->getParentprofile2();
 			$accountInfo=$parentObj->getAccountDetails();
@@ -49,12 +52,12 @@ class ProfileController extends Controller
     		$letterDetails='';
 			if($letters=$parentObj->getLetterDetails())
     		foreach($letters as $letter){
-    		$letterDetails[]=array(
-						     	"Title"=>$letter->getTitle(),
-						     	"Content"=>$letter->getContent(),
-						     	"Image"=>$letter->getAssociatedImage()
-						     	);
-    			}
+	    		$letterDetails[]=array(
+							     	"Title"=>$letter->getTitle(),
+							     	"Content"=>$letter->getContent(),
+							     	"Image"=>$letter->getAssociatedImage()
+							     	);
+    		}
     		$AgencyDetails = $parentObj->getAgencyDetails();
     		$childpreferences=$parentObj->getChildPreferences();
 			$profileDetails=Array(
@@ -198,19 +201,15 @@ class ProfileController extends Controller
     	    $account_id= $profile->getAccountIdByUserName($profilename);
     		$pdfbookobj=new CoupleService($account_id);
 		    $pdfoutput= $pdfbookobj->getPdf($type);
-			/*if(!empty($pdfoutput)){*/
 			foreach($pdfoutput as $pdfoutputs) {
-			$profileDetails[]=array(
-								"status"=>"200",
-						     	"single_profile"=>$pdfoutputs->template_file_path2,
-						     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
-						     	"id"=>$pdfoutputs->getId()
-						     );
-    	}  
-   /* }
-    else{
-    	throw new ParentFinderException('pdf_not_found');
-    }*/
+				$profileDetails[]=array(
+									"status"=>"200",
+							     	"single_profile"=>$pdfoutputs->template_file_path2,
+							     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
+							     	"id"=>$pdfoutputs->getId()
+							     );
+	    	}  
+   
     	}  	 	
     	
 	    return json_encode($profileDetails);	    	
@@ -292,7 +291,6 @@ class ProfileController extends Controller
 			$account_id=$profile->getAccountIdByUserName($user_name);
 			$photoid = Input::segment(3);
 		    $albums=$profile->getPhotoById($photoid);
-			//print_r($albums);
 		}
 		if(!empty($albums)){
 		foreach($albums as $album){
@@ -457,18 +455,18 @@ class ProfileController extends Controller
 				if(!empty($member_id && $member_level && $transaction_id)){
 					if(verifyIntegerData($member_id) == 1 && verifyIntegerData($member_level) == 1){
 					
-					$userMemberObj=new UserMembershipService($request->member_id);
-					$userMemberObj->setIdLevel($request->member_level);
-				 	$userMemberObj->setTransactionId($request->transaction_id);
-					if($saveMember=$userMemberObj->saveMembership()){
-						$result=array(
-    							"status"=>"201",
-						     	"Message"=>"Inserted"
-						     	);
-						return json_encode($result);
-					}else{
-						throw new ParentFinderException('insertion_failed');
-					}
+						$userMemberObj=new UserMembershipService($request->member_id);
+						$userMemberObj->setIdLevel($request->member_level);
+					 	$userMemberObj->setTransactionId($request->transaction_id);
+						if($saveMember=$userMemberObj->saveMembership()){
+							$result=array(
+	    							"status"=>"201",
+							     	"Message"=>"Inserted"
+							     	);
+							return json_encode($result);
+						}else{
+							throw new ParentFinderException('insertion_failed');
+						}
 					}
 					else{
 						throw new ParentFinderException('int_error');
@@ -518,7 +516,12 @@ class ProfileController extends Controller
 			}		
 	}
 
-	/* Registration */
+	/*  *	Registration 
+		*	Adoptive family,Birth Mother and Adoption Agency Registration
+		* 	Adoptive family=2,Birth Mother=4 , Adoption Agency=8
+		* 	@param  Request $request
+     	* 	@return array
+	*/
 	public function postProfile(Request $request){
 		$data['profileType']=$request->profile_type;
 		if(!empty($data['profileType'])){
@@ -528,24 +531,25 @@ class ProfileController extends Controller
 			$data['agencyId']=$request->PFagencyId;
 			$data['state'] = $request->state;
 			$data['region'] = $request->region;
-			if($profileType==2){
-			/*		Adoptive Family Registration	*/
-			$profileObj=new CoupleService(null);
-
-					$data['firstNameSingle']=$request->PFfirstNameSingle;
-					$data['$lastNameSingle']=$request->PFlastNameSingle;
-					$data['$firstNameCouple']=$request->PFfirstNameCouple;
-					$data['$lastNameCouple']=$request->PFlastNameCouple;
-					$data['$genderSingle'] = $request->PFgenderSingle;
-					$data['$genderCouple'] = $request->PFgenderCouple;
-					$insertStatus=$profileObj->savePaentProfile($data);
+			if($profileType==2){		
+			
+				$profileObj=new CoupleService(null);
+				$data['firstNameSingle']=$request->PFfirstNameSingle;
+				$data['lastNameSingle']=$request->PFlastNameSingle;
+				$data['firstNameCouple']=$request->PFfirstNameCouple;
+				$data['lastNameCouple']=$request->PFlastNameCouple;
+				$data['genderSingle'] = $request->PFgenderSingle;
+				$data['genderCouple'] = $request->PFgenderCouple;
+				$insertStatus=$profileObj->saveParentProfile($data);
 			}
-			else if($profileType==4){
-				/*		Birth Mother Registration	*/
+			else if($profileType==4){		
+				
 				$data['firstName']=$request->PFfirstName;
+				$insertStatus=$profileObj->saveParentProfile($data);
 			}
-			else if($profileType==8){
-				/*		Adoption Agency Registration	*/
+			else if($profileType==8){		
+				
+				$insertStatus=$profileObj->saveParentProfile($data);
 			}else{
 				throw new ParentFinderException('profile_type_not_found');
 			}

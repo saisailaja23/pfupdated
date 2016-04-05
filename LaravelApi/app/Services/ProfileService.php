@@ -144,6 +144,13 @@ class ProfileService {
 
     public function saveProfile(){
         try{
+            $profileObj=new ProfileRepository();
+            $profileObj->setFirstName($this->firstName);
+            $profileObj->setLastName($this->lastName);
+            $profileObj->setGender($this->gender);           
+            $profileObj->setCreatedAt(getCurrentDateTime());
+            $profileObj->setModifiedAt(getCurrentDateTime());
+            $insertStatus=$profileObj->saveProfile();
 
         }catch(\Exception $e){
              //Throwing Exception here

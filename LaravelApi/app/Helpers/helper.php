@@ -57,19 +57,7 @@
         );  
   
         return (isset($codes[$status])) ? $codes[$status] : '';  
- }
-
- function getErrorMessage($error,$exception){
-    $errors = Array(  
-            'ProfileNotFound' => 'Profile Not Found'
-        );  
-
-    $status=Array("status"=>'Failed',
-                  "Error"  =>isset($errors[$error]) ? $errors[$error] : '',
-                  "Error Message"=>$exception->getMessage()
-                  );
-    return $status; 
- }  
+ } 
 
 
  function ErrorLog($error){
@@ -99,5 +87,14 @@ function verifyIntegerData($data){
                   $result ="0";
             }
 return $result;
+}
+
+/*
+    * To get Today's date
+    * @return string dateTime 
+*/
+function getCurrentDateTime(){
+    $dateTime=date('Y-m-d H:i:s')
+    return $dateTime;
 }
  
