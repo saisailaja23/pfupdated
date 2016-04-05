@@ -266,6 +266,7 @@ class ProfileController extends Controller
     	}
   	}
   	
+  	/* Photo Album */
   	 public function getAlbumApi(){
   	 	$photoseg=Input::segment(1);
   	 	
@@ -346,6 +347,7 @@ class ProfileController extends Controller
 
   	}
 
+  	/* Page Not Found */
   	public function getPageNotFound(){
   		
   		$message=array( "status"=>'Failed',
@@ -354,6 +356,7 @@ class ProfileController extends Controller
 
   	}
 
+  	/* Video Api */
 	public function getVideoApi(){
 
   	 	$param1=Input::segment(2);
@@ -408,6 +411,7 @@ class ProfileController extends Controller
 
 	}
 
+	/* Membership */
 	public function getMembershipApi(){
 		$Membership_details1 = '';
 		$filter=new FilterService();
@@ -442,7 +446,10 @@ class ProfileController extends Controller
 				throw new ParentFinderException('membership_not_found');
 			}
 		}
-	
+	/*  *	MembershipDetails 
+		* 	@param  Request $request
+     	* 	@return array
+		*/
 	public function postMembershipDetails(Request $request){
 		$member_id=verifyData($request->member_id);
 		$member_level=verifyData($request->member_level);
@@ -485,7 +492,10 @@ class ProfileController extends Controller
 		
 	}
 
-
+		/*  *	Coupon Validation 
+		* 	@param  Request $request
+     	* 	@return array
+		*/
 	public function postMembershipCouponValidation(Request $request){	
 				$voucher['vocher_code'] =  $request->vocher_code;
 				$voucher['idlevel']=$request->member_level;
@@ -558,7 +568,7 @@ class ProfileController extends Controller
 		
 	}
 
-
+	/* List Profile Types */
 	public function getProfileType(){
 
 		$profiletypeobj=new UtilityService();

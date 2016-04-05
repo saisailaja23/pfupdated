@@ -70,6 +70,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Second profiles */
     function getParentprofile2() {
         try{
          $profileId = $this->getProfileId();
@@ -85,6 +86,7 @@ class CoupleService {
         } 
     }
 
+    /* Get profiles Id*/
     private function getProfileId(){
         try{
         $accountObj=new AccountRepository($this->accountId);
@@ -109,6 +111,7 @@ class CoupleService {
         return $parentId;       
     }
 
+    /* Get Account Details*/
     public function getAccountDetails() {
         try{
         $accountObj=new AccountRepository($this->accountId);
@@ -123,6 +126,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Contact Details */
     public function getContactDetails(){
         $contactDetails='';
         try{
@@ -140,6 +144,7 @@ class CoupleService {
         } 
     } 
 
+    /* Get Journal Details */
     public function getJournalDetails(){
         $journalDetails='';
         try{
@@ -164,6 +169,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Album Details */
      public function getAlbumDetails(){
         try{
         $albumObj=new AlbumsRepository(null);
@@ -187,6 +193,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Album Details By AlbumId */
      public function getAlbumDetailsByAlbumId($albumid,$type){
         try{
         $albumObj=new AlbumsRepository(null);
@@ -208,6 +215,7 @@ class CoupleService {
         } 
     }
 
+    /* Get letter Details */
     public function getLetterDetails(){
          $letterDetails='';
         try{
@@ -227,7 +235,7 @@ class CoupleService {
         } 
     }
 
-
+    /* Get Video Details */
     public function getVideoDetails(){
         $albumout = '';
          try{
@@ -247,6 +255,7 @@ class CoupleService {
 
     }
 
+    /* Get HomeVideo Details */
     public function getHomeVideoDetails(){
         try{
             $albumObj=new VideoRepository(null);
@@ -270,6 +279,7 @@ class CoupleService {
     }
 
 
+    /* Get Video Details ById*/
     public function getVideoDetailsById($videoid){
         try{
             $albumObj=new VideoRepository(null);
@@ -295,7 +305,7 @@ class CoupleService {
         }     
     }
 
-
+    /* Get FlipBook Details */
     public function getFlipbook(){  
         try{
         $profile=new EprofileRepository($this->accountId);  
@@ -316,6 +326,7 @@ class CoupleService {
     }
 
 
+    /* Get Pdf Profile */
     public function getPdf($type){
         try{
             $profile=new PdfRepository($this->accountId);  
@@ -336,6 +347,7 @@ class CoupleService {
         } 
     }
 
+    /* Get ChildPreference Details */
     public function getChildPreferences(){
         try{
             $preferences=new ChildPreferService($this->accountId);
@@ -354,6 +366,7 @@ class CoupleService {
         }
     }
 
+    /* Get Agency Details */
    public function getAgencyDetails(){
         try{
             $agencyObj=new AgencyService(null);

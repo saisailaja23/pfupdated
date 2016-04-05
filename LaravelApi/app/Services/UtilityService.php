@@ -27,6 +27,8 @@ use App\Repository\ProfileTypeRepository;
 **/
 class UtilityService {
 
+
+    /*Get Account By Username*/
     public function getAccountIdByUserName($user_name){
         try{
             $profileObj=new ProfileRepository(null);           
@@ -45,7 +47,7 @@ class UtilityService {
     
    } 
   
-	
+	/*Get FlipBook*/
 	public function getFlipbookByID($acc_id){  
         try{
         $profile=new ProfileRepository(null);  
@@ -73,6 +75,7 @@ class UtilityService {
         } 
     }
 
+      /*Get Pdf*/
     	public function getPdf($acc_id,$type){
         try{
         $profile=new ProfileRepository(null);  
@@ -94,6 +97,8 @@ class UtilityService {
         } 
     }
 
+
+    /*Get Journal By Tittle*/
     public function getJournalsByTitle($account_id,$title){
         try{
         $journalObj=new JournalRepository(null);
@@ -113,6 +118,8 @@ class UtilityService {
         } 
     }
 
+
+    /*Get Journal ById*/
     public function getJournalsById($account_id,$journal_id){
       try{
       $journalObj=new JournalRepository(null);
@@ -134,6 +141,7 @@ class UtilityService {
     }
 
 
+    /*Get Ethnicity Details*/
     public  function getEthnictyDetails($ethnicityId){
         try{
         $ethnicity=new EthnicityRepository($ethnicityId);  
@@ -151,6 +159,8 @@ class UtilityService {
         }        
     }  
 
+
+    /*Get Letter ById*/
     public function getLetterById($account_id,$letter_id){
         try{
         $letterObj=new LetterRepository(null);
@@ -171,6 +181,8 @@ class UtilityService {
         } 
     } 
 
+
+     /*Get Photo ById*/
      public function getPhotoById($photoid){
         try{
         $albumservice=new AlbumsService($photoid);
@@ -183,6 +195,7 @@ class UtilityService {
         } 
     }
      
+    /*Get Video ById*/
     public function getVideoById($videoid){
         try{
         $albumservice=new VideoService($videoid);
@@ -195,12 +208,16 @@ class UtilityService {
       } 
     }
 
+
+    /*Check AppKey*/
     public function checkAppKey($key,$url){
       $appObj=new AppUserRepository($url);
       $keyIdentity=$appObj->getAppUserKey($key);
       return $keyIdentity;
     }
 
+
+    /*Get UserName By Account Id*/
     public function getUsernameByAccountId($account_id){
       try{
             $profileObj=new ProfileRepository(null);           
@@ -214,6 +231,8 @@ class UtilityService {
     
     }
 
+
+    /*Get ProfileTypes*/
     public function getProfileTypes(){
       try{
       $profiletypeobj=new ProfileTypeRepository(null);           
