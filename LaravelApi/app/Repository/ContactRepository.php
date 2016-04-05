@@ -28,6 +28,15 @@ class ContactRepository {
         return $this->state;
     }
     
+    public  function setState($state) {
+       $this->state=$state;
+    }
+    public  function setCountry($country) {
+       $this->country=$country;
+    }
+    public  function setRegion($region) {
+       $this->region=$region;
+    }
   
     /* Get Waiting */
     public function getContactDetails() {
@@ -60,6 +69,25 @@ class ContactRepository {
         }catch(\Exception $e){
              //Add Exception here
         }  
-    }   
+    } 
+
+
+    public function saveContactDetails(){       
+      try{
+            $contactObj=new ContactDetails;
+            $saveContact=$contactObj->insert(
+                                        array('State'=>$this-state(),
+                                            'Country'=>$this->country(),
+                                            'Region'=>$this->region(),
+                                            'Account_id'=>$this->accountId()
+                                            )
+                                    );
+            return $saveContact->id;
+      } 
+      catch(\Exception $e){
+            //Throwing default Exceptions here
+
+      }
+    }  
     
 }
