@@ -393,9 +393,7 @@ class CoupleService {
             $accountObj->setUserName($data['username']);
             $accountObj->setPassword($data['password']);
             $accountObj->setEmailId($data['emailId']);
-            $accountObj->setAgencyId($data['agencyId']);
-            $accountObj->setState($data['state']);
-            $accountObj->setRegion($data['region']); 
+            $accountObj->setAgencyId($data['agencyId']);            
             $accountObj->setCreatedAt(getCurrentDateTime());
             $accountObj->setModifiedAt(getCurrentDateTime());
             $accountObj->setStatus(1);    
@@ -443,7 +441,10 @@ class CoupleService {
             }
             if($insertStatus){               /*  Save Contact details */   
                 $contactObj=new ContactService($accountId);
+                $contactObj->setStateId($data['state']);
+                $contactObj->setRegionId($data['region']);
                 $status=$contactObj->saveContactDetails();
+                return $status;
             }
         }catch(\Exception $e){
                 //Throwing  exceptions if any

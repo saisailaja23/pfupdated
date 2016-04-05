@@ -94,7 +94,7 @@ return $result;
     * @return string dateTime 
 */
 function getCurrentDateTime(){
-    $dateTime=date('Y-m-d H:i:s')
+    $dateTime=date('Y-m-d H:i:s');
     return $dateTime;
 }
  
