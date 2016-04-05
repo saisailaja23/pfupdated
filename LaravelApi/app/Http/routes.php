@@ -109,3 +109,4 @@ Route::post('/membership/coupon', 'ProfileController@postMembershipCouponValidat
 Route::post('/new/profile', 'ProfileController@postProfile');
 Route::get('/profiletype', 'ProfileController@getProfileType');
 
+
