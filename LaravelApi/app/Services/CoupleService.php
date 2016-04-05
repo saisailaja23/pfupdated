@@ -212,19 +212,12 @@ class CoupleService {
          $letterDetails='';
         try{
         $letterObj=new LetterRepository(null);
-        $letterIds=$letterObj->getSortedLetters($this->accountId);
-        if(count($letterIds)){
-            foreach($letterIds as $letterId){
-            $letterObj=new LetterService($letterId->letter_id);
-            $letterDetails[]=$letterObj->getLetter();        
-        }
-            
-        }else{
+        //$letterIds=$letterObj->getSortedLetters($this->accountId);
+
             $letterIds=$letterObj->getLettersByAccount($this->accountId);
             foreach($letterIds as $letterId){
             $letterObj=new LetterService($letterId->id);
             $letterDetails[]=$letterObj->getLetter();        
-        }
         }       
         
         return $letterDetails;

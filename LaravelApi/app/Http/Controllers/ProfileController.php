@@ -164,7 +164,6 @@ class ProfileController extends Controller
 	     		}
 				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
      	}else{
-     		echo "a";
      		throw new ParentFinderException('no-profiles-found');
      	}
     		
