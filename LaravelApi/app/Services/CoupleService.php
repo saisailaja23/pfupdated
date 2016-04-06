@@ -238,18 +238,19 @@ class CoupleService {
 
 
 
-public function getSeoDetails($slug){
-         $letterDetails='';
-        try{
-          
-        $letterObj=new LetterRepository(null);
-         $letterIds=$letterObj->getSeo($slug);
-        if(count($letterIds)){
-            foreach($letterIds as $letterId){
-   
-            $letterObj=new LetterService($letterId->id);
-            $letterDetails[]=$letterObj->getLetter();        
-        }
+public function getSeoDetails($slug,$type){
+
+            if($type=='letter'){
+             $letterDetails='';
+             try{
+             $letterObj=new LetterRepository(null);
+             $letterIds=$letterObj->getSeo($slug);
+             if(count($letterIds)){
+             foreach($letterIds as $letterId){
+             $letterObj=new LetterService($letterId->id);
+             $letterDetails[]=$letterObj->getLetter();        
+             
+          }
             
       
         }       
@@ -259,8 +260,28 @@ public function getSeoDetails($slug){
     catch(\Exception $e){
              //Add Exception here
         } 
-    }
 
+
+    }
+        else
+             {
+              $journalDetails='';
+              try{
+              $journalObj=new JournalRepository(null);
+              $journalIds=$journalObj->getJournalSeo($slug);
+              if(count($journalIds)){
+                foreach($journalIds as $journalId){
+                 $journalObj=new JournalService($journalId->PostID);
+                $journalDetails[]=$journalObj->getJournal();        
+            }
+        }
+            return $journalDetails;
+         }catch(\Exception $e){
+         // throw new ParentFinderException('journal_not_found',$e->getMessage());
+        } 
+  }
+
+}
 
 
 

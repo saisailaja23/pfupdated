@@ -39,6 +39,23 @@ class JournalRepository {
              //Add Exception here
         } 
    }
+
+
+public function getJournalSeo($slug){
+         try{
+           
+            $journal=new Journal;
+            $journalDetails =$journal->where('slug', '=', $slug)
+                                     ->where('PostStatus','=','approval')
+                                    ->get();  
+            return $journalDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+   }
+
+
+   
    public function getJournalsByAccount($accountId){
     try{
         $journal=new Journal;
