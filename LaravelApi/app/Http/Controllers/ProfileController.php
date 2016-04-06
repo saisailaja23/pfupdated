@@ -354,44 +354,58 @@ class ProfileController extends Controller
   	*/
   	public function getSeoApi(){
   		$api=Input::segment(1);
-$slug=Input::segment(2);
+		$slug=Input::segment(2);
 
-if($api=='letter'){
+		if($api=='letter'){
   	 		
-  	 	$letterObj=new CoupleService($slug);
-				$letters=$letterObj->getSeoDetails($slug);
+	  	 	$letterObj=new CoupleService($slug);
+			$letters=$letterObj->getSeoDetails($slug,'letter');
+	  	 	if(!empty($letters)){
+		  	 	foreach($letters as $letter){
+		    		$letterDetails[]=array(
+		    							"status"=>"200",
+								     	"Title"=>$letter->getTitle(),
+								     	"Content"=>$letter->getContent(),
+								     	"Image"=>$letter->getAssociatedImage()
+								     	);
+		    	}  
+		  	 	return json_encode($letterDetails);
+		  	}
+		  	 else{
+		  	 	
+		  	 	throw new ParentFinderException('letter_not_found');
+		  	 }
 
-  	 		
-  	 	}
+		}
 
+        else if($api=='journal')
+          {
 
-		if(!empty($letters)){
-  	 	foreach($letters as $letter){
-    		$letterDetails[]=array(
+	            $journalObj=new CoupleService($slug);
+    			$journals=$journalObj->getSeoDetails($slug,'journal');
+                 if(!empty($journals)){
+    	         foreach($journals as $journal){
+    		     $journalDetails[]=array(
     							"status"=>"200",
-						     	"Title"=>$letter->getTitle(),
-						     	"Content"=>$letter->getContent(),
-						     	"Image"=>$letter->getAssociatedImage()
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
 						     	);
     			}  
-  	 	return json_encode($letterDetails);
-  	 }
-  	 else{
-  	 	
-  	 	throw new ParentFinderException('letter_not_found');
-  	 }
 
+    	 return json_encode($journalDetails);
+    	}
+    	else{
+    		throw new ParentFinderException('journal_not_found');
+    	}
 
-  }
-
-
-
+           }
+}
 
 
   	
-
-
-  	/* Page Not Found */
+/* Page Not Found */
 
   	public function getPageNotFound(){
   		

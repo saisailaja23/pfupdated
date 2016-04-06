@@ -76,6 +76,7 @@ Route::group([
 
 
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
+Route::get('/journal/{slug}', 'ProfileController@getSeoApi');
 //Route::get('/journal/{username}/{journalid}', 'ProfileController@getJournalApi');
 
 Route::group([
