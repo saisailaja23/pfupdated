@@ -70,6 +70,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Second profiles */
     function getParentprofile2() {
         try{
          $profileId = $this->getProfileId();
@@ -85,6 +86,7 @@ class CoupleService {
         } 
     }
 
+    /* Get profiles Id*/
     private function getProfileId(){
         try{
         $accountObj=new AccountRepository($this->accountId);
@@ -109,6 +111,7 @@ class CoupleService {
         return $parentId;       
     }
 
+    /* Get Account Details*/
     public function getAccountDetails() {
         try{
         $accountObj=new AccountRepository($this->accountId);
@@ -123,6 +126,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Contact Details */
     public function getContactDetails(){
         $contactDetails='';
         try{
@@ -140,6 +144,7 @@ class CoupleService {
         } 
     } 
 
+    /* Get Journal Details */
     public function getJournalDetails(){
         $journalDetails='';
         try{
@@ -164,6 +169,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Album Details */
      public function getAlbumDetails(){
         try{
         $albumObj=new AlbumsRepository(null);
@@ -187,6 +193,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Album Details By AlbumId */
      public function getAlbumDetailsByAlbumId($albumid,$type){
         try{
         $albumObj=new AlbumsRepository(null);
@@ -208,23 +215,17 @@ class CoupleService {
         } 
     }
 
+    /* Get letter Details */
     public function getLetterDetails(){
          $letterDetails='';
         try{
         $letterObj=new LetterRepository(null);
-        $letterIds=$letterObj->getSortedLetters($this->accountId);
-        if(count($letterIds)){
-            foreach($letterIds as $letterId){
-            $letterObj=new LetterService($letterId->letter_id);
-            $letterDetails[]=$letterObj->getLetter();        
-        }
-            
-        }else{
+        //$letterIds=$letterObj->getSortedLetters($this->accountId);
+
             $letterIds=$letterObj->getLettersByAccount($this->accountId);
             foreach($letterIds as $letterId){
             $letterObj=new LetterService($letterId->id);
             $letterDetails[]=$letterObj->getLetter();        
-        }
         }       
         
         return $letterDetails;
@@ -233,6 +234,7 @@ class CoupleService {
              //Add Exception here
         } 
     }
+
 
 
 
@@ -262,6 +264,9 @@ public function getSeoDetails($slug){
 
 
 
+
+    /* Get Video Details */
+
     public function getVideoDetails(){
         $albumout = '';
          try{
@@ -281,6 +286,7 @@ public function getSeoDetails($slug){
 
     }
 
+    /* Get HomeVideo Details */
     public function getHomeVideoDetails(){
         try{
             $albumObj=new VideoRepository(null);
@@ -304,6 +310,7 @@ public function getSeoDetails($slug){
     }
 
 
+    /* Get Video Details ById*/
     public function getVideoDetailsById($videoid){
         try{
             $albumObj=new VideoRepository(null);
@@ -329,7 +336,7 @@ public function getSeoDetails($slug){
         }     
     }
 
-
+    /* Get FlipBook Details */
     public function getFlipbook(){  
         try{
         $profile=new EprofileRepository($this->accountId);  
@@ -350,6 +357,7 @@ public function getSeoDetails($slug){
     }
 
 
+    /* Get Pdf Profile */
     public function getPdf($type){
         try{
             $profile=new PdfRepository($this->accountId);  
@@ -370,6 +378,7 @@ public function getSeoDetails($slug){
         } 
     }
 
+    /* Get ChildPreference Details */
     public function getChildPreferences(){
         try{
             $preferences=new ChildPreferService($this->accountId);
@@ -388,6 +397,7 @@ public function getSeoDetails($slug){
         }
     }
 
+    /* Get Agency Details */
    public function getAgencyDetails(){
         try{
             $agencyObj=new AgencyService(null);
@@ -413,9 +423,13 @@ public function getSeoDetails($slug){
         }
     }
 
-    /*  Parent Registration 
-    *       Get Array $data
-    *       Return boolean $insertStatus
+    /*  
+        *   Save Parent Registration 
+        *   Saving account details, profile details and contact details
+        *   Adoptive family=2,Birth Mother=4 , Adoption Agency=8
+        *   @param  Request $request
+        *   @return boolean $insertStatus
+    *       
     */
     public function saveParentProfile($data){
         try{
@@ -423,27 +437,61 @@ public function getSeoDetails($slug){
             $accountObj->setUserName($data['username']);
             $accountObj->setPassword($data['password']);
             $accountObj->setEmailId($data['emailId']);
-            $accountObj->setAgencyId($data['agencyId']);
-            $accountObj->setState($data['state']);
-            $accountObj->setRegion($data['region']); 
-            $accountObj->setCreatedAt(date('Y-m-d'));
-            $accountObj->setModifiedAt(date('Y-m-d'));
-            $accountObj->setStatus('1');    
-            $accountObj->setRoleId('1');      
+            $accountObj->setAgencyId($data['agencyId']);            
+            $accountObj->setCreatedAt(getCurrentDateTime());
+            $accountObj->setModifiedAt(getCurrentDateTime());
+            $accountObj->setStatus(1);    
+            $accountObj->setRoleId($data['profileType']);      
             if($data['profileType']==2){
                 $accountObj->setName($data['firstNameSingle']);
                 $accountId=$accountObj->saveAccountDetails();
                 $profileObj=new ProfileService();
-                $insertStatus=$profileObj->saveProfile();
+                $profileObj->setAccountId($accountId);
+                $profileObj->setFirstName($data['firstNameSingle']);
+                $profileObj->setLastName($data['lastNameSingle']);
+                $profileObj->setGender($data['genderSingle']);
+                $profileObj->setCreatedAt(getCurrentDateTime());
+                $profileObj->setModifiedAt(getCurrentDateTime());
+                $insertStatus1=$profileObj->saveProfile();
+                if($insertStatus1){ 
+
+                    $profileObj->setFirstName($data['firstNameCouple']);
+                    $profileObj->setLastName($data['lastNameCouple']);
+                    $profileObj->setGender($data['genderCouple']);
+                    $insertStatus=$profileObj->saveProfile();
+                }
             }else if($profileType==4){
-                    /*      Birth Mother Registration   */
+                    
                     $data['firstNameSingle']=$request->PFfirstNameSingle;
+                    $accountObj->setName($data['firstNameSingle']);
+                    $accountId=$accountObj->saveAccountDetails();
+                    $profileObj=new ProfileService();
+                    $profileObj->setAccountId($accountId);
+                    $profileObj->setFirstName($data['firstNameSingle']);
+                    $profileObj->setCreatedAt(getCurrentDateTime());
+                    $profileObj->setModifiedAt(getCurrentDateTime());
+                    $insertStatus=$profileObj->saveProfile();
             }
-            else{
-                    /*      Adoption Agency Registration    */
+            else{        /* Agency Registration*/
+                    $accountId=$accountObj->saveAccountDetails();
+                    $profileObj=new ProfileService();
+                    $profileObj->setAccountId($accountId);                    
+                    $profileObj->setCreatedAt(getCurrentDateTime());
+                    $profileObj->setModifiedAt(getCurrentDateTime());
+                    $insertStatus=$profileObj->saveProfile();
+                    if($insertStatus){       /* Insert Agency Informations */
+
+                    }
+            }
+            if($insertStatus){               /*  Save Contact details */   
+                $contactObj=new ContactService($accountId);
+                $contactObj->setStateId($data['state']);
+                $contactObj->setRegionId($data['region']);
+                $status=$contactObj->saveContactDetails();
+                return $status;
             }
         }catch(\Exception $e){
-                 //throw new ParentFinderException('agency-not-found');
+                //Throwing  exceptions if any
         }
        
         

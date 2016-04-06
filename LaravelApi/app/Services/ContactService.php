@@ -26,13 +26,13 @@ class ContactService {
     private $homeNumber;
         
     public function __construct($accountId) {
-       $this->setAccoountId($accountId);      
+       $this->setAccountId($accountId);      
     }
     
     public  function getAccoountId() {
        return $this->accountId;
     }
-    public  function setAccoountId($accountId) {
+    public  function setAccountId($accountId) {
          $this->accountId = $accountId;
     } 
 
@@ -67,6 +67,17 @@ class ContactService {
         return $this->homeNumber;
     }
 
+    public  function setStateId($stateId) {
+       $this->stateId=$state;
+    }
+    public  function setCountryId($countryId) {
+       $this->countryId=$countryId;
+    }
+    public  function setRegionId($regionId) {
+       $this->regionId=$regionId;
+    }
+
+    /* Get Contact Details */
     public function getContactDetails() {
         try{
         $contacts=new ContactRepository($this->accountId);
@@ -88,7 +99,27 @@ class ContactService {
     catch(\Exception $e){
             throw new ParentFinderException('contact_not_found',$e->getMessage());
         } 
-    } 
+    }
+
+     /*  
+        *   Save Contact details On registration
+        *   @return boolean $saveContact
+    *       
+    */
+
+     /* Add Contact Details */
+     public function saveContactDetails(){       
+      try{
+            $contactObj=new ContactDetails;
+            $contactObj->
+            $saveContact=$contactObj->saveContactDetails();
+            return $saveContact;
+      } 
+      catch(\Exception $e){
+            //Throwing default Exceptions here
+
+      }
+    }   
     
     
 }

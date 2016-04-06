@@ -74,7 +74,7 @@ class MembershipService{
     
     
   
-
+  /*Get Membership*/
    public function getMembershipDetails(){
          try{
         $membershipobj=new MembershipRepository($this->id);

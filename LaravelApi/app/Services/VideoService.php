@@ -46,7 +46,7 @@ class VideoService {
     }
   
   
-   
+   /*Get Album*/
     public function getAlbum() {
         try{ 
         $videoObj=new VideoRepository($this->VideoId);
@@ -67,6 +67,8 @@ class VideoService {
          
     }
 
+
+    /*Get Album ById*/
     public function getAlbumByID($account_id){  
         try{
         $album=new AlbumsRepository(null);  

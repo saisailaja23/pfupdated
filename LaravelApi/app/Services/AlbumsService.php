@@ -47,7 +47,7 @@ class AlbumsService {
     }
   
   
-   
+   /* Get Album */
     public function getAlbum() {
         try{ 
         $albumObj=new AlbumsRepository($this->AlbumId);
@@ -71,6 +71,7 @@ class AlbumsService {
         }          
     }
 
+    /* Get Album By Id*/
     public function getAlbumByID($account_id){  
         try{
         $album=new AlbumsRepository(null);  

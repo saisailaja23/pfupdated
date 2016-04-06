@@ -8,6 +8,9 @@ use App\Models\ContactDetails;
 class ContactRepository {   
     
 	private $accountId; 
+  private $regionId; 
+  private $countryId; 
+  private $stateId; 
 	
     public function __construct($accountId) {
          $this->setProfileId($accountId);
@@ -21,21 +24,25 @@ class ContactRepository {
     }
 	
     public  function getCountry() {
-       return $this->country;
+       return $this->countryId;
     }
     
-    public function getState(){        
-        return $this->state;
+    public function getStateId(){        
+        return $this->stateId;
     }
+     public  function getRegionId() {
+      return $this->regionId;
+    }
+  
     
-    public  function setState($state) {
-       $this->state=$state;
+    public  function setStateId($stateId) {
+       $this->stateId=$stateId;
     }
-    public  function setCountry($country) {
-       $this->country=$country;
+    public  function setCountryId($countryId) {
+       $this->countryId=$countryId;
     }
-    public  function setRegion($region) {
-       $this->region=$region;
+    public  function setRegionId($regionId) {
+       $this->regionId=$regionId;
     }
   
     /* Get Waiting */
@@ -71,18 +78,22 @@ class ContactRepository {
         }  
     } 
 
-
+    /*  
+        *   Save Contact details On registration
+        *   @return boolean $saveContact
+    *       
+    */
     public function saveContactDetails(){       
       try{
             $contactObj=new ContactDetails;
             $saveContact=$contactObj->insert(
-                                        array('State'=>$this-state(),
-                                            'Country'=>$this->country(),
-                                            'Region'=>$this->region(),
+                                        array('State'=>$this-stateId(),
+                                            'Country'=>$this->countryId(),
+                                            'Region'=>$this->regionId(),
                                             'Account_id'=>$this->accountId()
                                             )
                                     );
-            return $saveContact->id;
+            return $saveContact;
       } 
       catch(\Exception $e){
             //Throwing default Exceptions here

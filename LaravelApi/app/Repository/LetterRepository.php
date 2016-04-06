@@ -72,6 +72,7 @@ class LetterRepository {
             $letter=new Letter;
             $letterDetails =$letter->select('id')
                                     ->where('account_id', '=', $account_id)
+                                    ->orderBy('sort_order', 'asc')
                                    ->get();  
             return $letterDetails;
         }catch(\Exception $e){

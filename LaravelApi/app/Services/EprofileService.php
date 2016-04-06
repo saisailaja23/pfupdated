@@ -38,7 +38,7 @@ class EprofileService {
     
   
   
-   
+   /* Get Flipbook Details */
     public function getFlipbook() {
         try{ 
         $eprofileObj=new EprofileRepository(null);
