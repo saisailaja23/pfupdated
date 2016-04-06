@@ -347,7 +347,52 @@ class ProfileController extends Controller
 
   	}
 
+
+
+/* Get SEO 
+
+  	*/
+  	public function getSeoApi(){
+  		$api=Input::segment(1);
+$slug=Input::segment(2);
+
+if($api=='letter'){
+  	 		
+  	 	$letterObj=new CoupleService($slug);
+				$letters=$letterObj->getSeoDetails($slug);
+
+  	 		
+  	 	}
+
+
+		if(!empty($letters)){
+  	 	foreach($letters as $letter){
+    		$letterDetails[]=array(
+    							"status"=>"200",
+						     	"Title"=>$letter->getTitle(),
+						     	"Content"=>$letter->getContent(),
+						     	"Image"=>$letter->getAssociatedImage()
+						     	);
+    			}  
+  	 	return json_encode($letterDetails);
+  	 }
+  	 else{
+  	 	
+  	 	throw new ParentFinderException('letter_not_found');
+  	 }
+
+
+  }
+
+
+
+
+
+  	
+
+
   	/* Page Not Found */
+
   	public function getPageNotFound(){
   		
   		$message=array( "status"=>'Failed',

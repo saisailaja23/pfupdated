@@ -235,7 +235,38 @@ class CoupleService {
         } 
     }
 
+
+
+
+public function getSeoDetails($slug){
+         $letterDetails='';
+        try{
+          
+        $letterObj=new LetterRepository(null);
+         $letterIds=$letterObj->getSeo($slug);
+        if(count($letterIds)){
+            foreach($letterIds as $letterId){
+   
+            $letterObj=new LetterService($letterId->id);
+            $letterDetails[]=$letterObj->getLetter();        
+        }
+            
+      
+        }       
+        
+        return $letterDetails;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
+
+
+
+
+
     /* Get Video Details */
+
     public function getVideoDetails(){
         $albumout = '';
          try{

@@ -91,6 +91,8 @@ Route::get('/journals/{username}/{all}', 'ProfileController@getJournalApi');//jo
 
 Route::get('/letters/{username}', 'ProfileController@getLetterApi');
 
+Route::get('/letter/{slug}', 'ProfileController@getSeoApi');
+
 
 Route::group([
     'prefix' => 'letter/{username}/{id}',
@@ -108,4 +110,5 @@ Route::post('/membership/coupon', 'ProfileController@postMembershipCouponValidat
 
 Route::post('/new/profile', 'ProfileController@postProfile');
 Route::get('/profiletype', 'ProfileController@getProfileType');
+
 
