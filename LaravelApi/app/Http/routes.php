@@ -111,5 +111,7 @@ Route::post('/membership/coupon', 'ProfileController@postMembershipCouponValidat
 
 Route::post('/new/profile', 'ProfileController@postProfile');
 Route::get('/profiletype', 'ProfileController@getProfileType');
+Route::get('/country','ProfileController@getCountryApi');
+Route::get('/state/{country}','ProfileController@getCountryApi');
 
 

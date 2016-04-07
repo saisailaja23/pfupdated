@@ -170,6 +170,11 @@ use Exception;
                  $error['message']='Country Not Found';
                  $error['detail']='Country you were looking for was not found for this user';
                  break;
+            case 'countries-not-found' :
+                $error['status']=204;
+                 $error['title']='Country Not Found';
+                 $error['detail']='Country Details not found';
+                 break;
             case 'state-not-found' :
                 $error['status']=204;
                  $error['title']='State Not Found';
