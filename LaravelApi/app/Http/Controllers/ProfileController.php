@@ -505,6 +505,44 @@ class ProfileController extends Controller
 				throw new ParentFinderException('membership_not_found');
 			}
 		}
+
+
+
+    public function getCountryApi(){
+        $countrysdtails="";
+        $api=Input::segment(1);
+        if($api=='country')
+        {
+          $countryObj=new utilityService;
+          if($countrys=$countryObj->getCountry())
+           {
+           
+          	$countrysdetails=Array("status"=>"200","Country Details"=>$countrys);
+            return json_encode($countrysdetails);
+           }
+           else
+           {
+           	throw new ParentFinderException('countries-not-found');
+           }
+        }
+
+        else if($api=='state')
+        {
+           $stateDetails="";
+           $country_id=Input::segment(2);
+       	   $stateObj=new UtilityService;
+       	   if($states=$stateObj->getStatesByCountryId($country_id))
+           {
+       	   $stateDetails=Array("status"=>"200","State Details"=>$states);
+           return json_encode($stateDetails);  
+           }
+          else
+          {
+           throw new ParentFinderException('state_country_not_found');
+          } 
+        }
+    }
+    	
 	/*  *	MembershipDetails 
 		* 	@param  Request $request
      	* 	@return array

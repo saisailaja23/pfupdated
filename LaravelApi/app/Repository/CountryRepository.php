@@ -31,6 +31,17 @@ class CountryRepository {
              //Add Exception here
         }  
     }
-        
+    
+   public function getCountrysDetails() {
+        try{
+          
+            $countrysObj=new Countries;
+           $countryDetails=$countrysObj->get();
+            return $countryDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+    }
+     
     
 }

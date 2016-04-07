@@ -249,6 +249,25 @@ class UtilityService {
 
         } 
     }
+
+    public function getCountry(){
+      try{
+        
+            $country=new CountryRepository(null);  
+             $countryDetails=$country->getCountrysDetails();  
+
+            if(count($countryDetails)!=0)
+            {
+             return $countryDetails;
+            }
+            
+
+          }
+    catch(\Exception $e){
      
+          throw new ParentFinderException('countries_not_found',$e->getMessage());
+        } 
+    }
+  
     
 }

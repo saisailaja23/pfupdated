@@ -40,6 +40,17 @@ class StateRepository {
              //Add Exception here
         }  
     }
+    
+    public function getStatesDetails($country_id) {
+        try{
+           
+            $statetObj=new States;
+            $stateDetails=$statetObj->where('country_id', '=', $country_id)->get();
+            return $stateDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+    }
         
     
 }
