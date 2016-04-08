@@ -189,11 +189,11 @@ class UtilityService {
               $albumout[]=$albumservice->getAlbum();
              //print_r($albumout);
         return $albumout;
-    }
-    catch(\Exception $e){
+       }
+       catch(\Exception $e){
              //Add Exception here
         } 
-    }
+      }
      
     /*Get Video ById*/
     public function getVideoById($videoid){
@@ -254,7 +254,7 @@ class UtilityService {
       try{
         
             $country=new CountryRepository(null);  
-             $countryDetails=$country->getCountrysDetails();  
+            $countryDetails=$country->getCountrysDetails();  
 
             if(count($countryDetails)!=0)
             {
@@ -269,5 +269,40 @@ class UtilityService {
         } 
     }
   
+    public function getStatesByCountryId($country_id)
+    {
+ 
+      try{
+       
+       $state=new StateRepository(null);
+       $stateDetails=$state->getStatesDetails($country_id);
+       if(count($stateDetails)!=0)
+       {
+        return $stateDetails;
+       }
+      }
+      catch(\Exception $e)
+      {
+      throw new ParentFinderException('state_country_not_found',$e->getMessage());
+      } 
+
+    }
+
+    public function getRegionDetails()
+    {
+  
+     try {
+       $region=new RegionRepository(null);
+       $regionDetails=$region->getRegionByStateId();
+       if(count($regionDetails)!=0)
+       {
+        return $regionDetails;
+       }
+      } catch (\Exception $e) {
+             throw new ParentFinderException('region-not-found',$e->getMessage());
+         }
+    } 
+
+
     
 }

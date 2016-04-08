@@ -36,7 +36,7 @@ class CountryRepository {
         try{
           
             $countrysObj=new Countries;
-           $countryDetails=$countrysObj->get();
+            $countryDetails=$countrysObj->get();
             return $countryDetails;
         }catch(\Exception $e){
              //Add Exception here

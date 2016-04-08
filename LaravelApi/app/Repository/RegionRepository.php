@@ -51,7 +51,15 @@ class RegionRepository {
         }  
     }
 
-    
+    public function getRegionByStateId() {
+        try{
+            $regionObj=new Regions;
+            $regionDetails =$regionObj->get();
+            return $regionDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        }  
+    }
 
 
         

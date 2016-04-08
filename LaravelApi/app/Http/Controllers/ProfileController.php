@@ -357,7 +357,7 @@ class ProfileController extends Controller
 		$slug=Input::segment(2);
 
 		if($api=='letter'){
-  	 		
+  	 		echo "s";
 	  	 	$letterObj=new CoupleService($slug);
 			$letters=$letterObj->getSeoDetails($slug,'letter');
 	  	 	if(!empty($letters)){
@@ -374,8 +374,7 @@ class ProfileController extends Controller
 		  	 else{
 		  	 	
 		  	 	throw new ParentFinderException('letter_not_found');
-		  	 }
-
+		  	     }
 		}
 
         else if($api=='journal')
@@ -394,14 +393,14 @@ class ProfileController extends Controller
 						     	);
     			}  
 
-    	 return json_encode($journalDetails);
-    	}
-    	else{
-    		throw new ParentFinderException('journal_not_found');
-    	}
+    	        return json_encode($journalDetails);
+    	    }
+    	   else{
+    		   throw new ParentFinderException('journal_not_found');
+    	       }
 
-           }
-}
+    }
+    }
 
 
   	
@@ -509,13 +508,14 @@ class ProfileController extends Controller
 
 
     public function getCountryApi(){
-        $countrysdtails="";
+
         $api=Input::segment(1);
+        $countrysdetails = "";
         if($api=='country')
         {
           $countryObj=new utilityService;
           if($countrys=$countryObj->getCountry())
-           {
+          {
            
           	$countrysdetails=Array("status"=>"200","Country Details"=>$countrys);
             return json_encode($countrysdetails);
@@ -527,7 +527,7 @@ class ProfileController extends Controller
         }
 
         else if($api=='state')
-        {
+          {
            $stateDetails="";
            $country_id=Input::segment(2);
        	   $stateObj=new UtilityService;
@@ -538,11 +538,31 @@ class ProfileController extends Controller
            }
           else
           {
-           throw new ParentFinderException('state_country_not_found');
+             throw new ParentFinderException('state_country_not_found');
+
           } 
+       	
+       }
+
+       else if($api=='region')
+        {
+        	$regionObj=new UtilityService;
+        	$region=$regionObj->getRegionDetails();
+        	if($region!="")
+        	{
+        	$regionDetail=Array("status"=>"200","Region Details"=>$region);
+        	return json_encode($regionDetail);
+           }
+           else
+           {
+           	 throw new ParentFinderException('region-not-found');
+           }
+
         }
+
+
     }
-    	
+
 	/*  *	MembershipDetails 
 		* 	@param  Request $request
      	* 	@return array
