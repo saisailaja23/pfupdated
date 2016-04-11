@@ -16,6 +16,7 @@ use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
+use App\Repository\EprofileRepository;
 /**
  * Description of ParentService
 **/
@@ -36,7 +37,9 @@ class ProfileService {
     private $waitingId;
     private $waiting;  
     private $gender;
-    private $accountId;    
+    private $accountId;
+     private $creationDate;
+
 	
 	
     public function __construct($profileId) {
@@ -85,6 +88,10 @@ class ProfileService {
     public function getAccountId() {
         return $this->accountId;
     }   
+    
+    
+    
+
 
     
     public  function setFirstName($firstName) {
@@ -158,6 +165,27 @@ class ProfileService {
         }
     }  
 
+    public function getCreatedDate($account_id)
+    {
+      try {
+          
+    
+          
+        $profile=new ProfileRepository(null);  
+        $profileDetails=$profile->getProfileIdByAccount($account_id);
+        $this->creationDate=$profileDetails->created_at;
+        $pdfDetails=$profile->getPdfDetails($account_id);
+        echo  $this->pdf=$pdfDetails->user_id;
+       //$eprofile=new EprofileRepository(null);
+        //$flipbook=$eprofile->getFlipbookId($account_id);
+
+       return $this;
+     }
+     catch(\Exception $e){
+           // Throwing Exception here;
+        }
+
+    }
 	
 	
 

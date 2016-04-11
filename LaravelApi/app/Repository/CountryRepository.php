@@ -32,7 +32,7 @@ class CountryRepository {
         }  
     }
     
-   public function getCountrysDetails() {
+    public function getCountrysDetails() {
         try{
           
             $countrysObj=new Countries;

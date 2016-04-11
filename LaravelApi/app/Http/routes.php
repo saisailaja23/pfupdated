@@ -111,9 +111,11 @@ Route::post('/membership/coupon', 'ProfileController@postMembershipCouponValidat
 
 Route::post('/new/profile', 'ProfileController@postProfile');
 Route::get('/profiletype', 'ProfileController@getProfileType');
-Route::get('/country','ProfileController@getCountryApi');
-Route::get('/state/{country}','ProfileController@getCountryApi');
-Route::get('/region/{state}','ProfileController@getCountryApi');
+Route::get('/country','ProfileController@getLocationApi');
+Route::get('/state/{country}','ProfileController@getLocationApi');
+Route::get('/region','ProfileController@getLocationApi');
+Route::get('/profile/basic/{username}','ProfileController@getBasicProfileApi');
+
 
 
 

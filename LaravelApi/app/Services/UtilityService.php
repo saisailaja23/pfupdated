@@ -22,6 +22,7 @@ use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
 use App\Repository\AppUserRepository;
 use App\Repository\ProfileTypeRepository;
+use App\Repository\AccountRepository;
 /**
  * Description of AccountService
 **/
@@ -259,13 +260,15 @@ class UtilityService {
             if(count($countryDetails)!=0)
             {
              return $countryDetails;
+            }else{
+              throw new ParentFinderException('countries_not_found',$e->getMessage());
             }
             
 
           }
     catch(\Exception $e){
      
-          throw new ParentFinderException('countries_not_found',$e->getMessage());
+          //throwing default exceptions
         } 
     }
   
@@ -280,10 +283,14 @@ class UtilityService {
        {
         return $stateDetails;
        }
+       else
+       {
+         throw new ParentFinderException('state_country_not_found',$e->getMessage());
+       }
       }
       catch(\Exception $e)
       {
-      throw new ParentFinderException('state_country_not_found',$e->getMessage());
+      //throwing default exceptions
       } 
 
     }
@@ -298,11 +305,22 @@ class UtilityService {
        {
         return $regionDetails;
        }
+       else
+       {
+         throw new ParentFinderException('region-not-found',$e->getMessage());
+       }
       } catch (\Exception $e) {
-             throw new ParentFinderException('region-not-found',$e->getMessage());
+            //throwing default exceptions
          }
     } 
 
+    public function getEmailById($account_id)
+    {
+       $email=new AccountRepository($account_id);
+       $region=$email->getAccountDetails();
+      return $region;
+     
+   }
 
     
 }

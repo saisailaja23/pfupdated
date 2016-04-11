@@ -13,6 +13,7 @@ use App\Services\JournalService;
 use App\Services\MembershipService;
 use App\Services\VoucherService;
 use App\Services\UserMembershipService;
+use App\Services\ProfileService;
 
 use Response;
 use Illuminate\Support\Facades\Input;
@@ -357,7 +358,7 @@ class ProfileController extends Controller
 		$slug=Input::segment(2);
 
 		if($api=='letter'){
-  	 		echo "s";
+  	 		
 	  	 	$letterObj=new CoupleService($slug);
 			$letters=$letterObj->getSeoDetails($slug,'letter');
 	  	 	if(!empty($letters)){
@@ -507,17 +508,18 @@ class ProfileController extends Controller
 
 
 
-    public function getCountryApi(){
+    public function getLocationApi(){
 
         $api=Input::segment(1);
         $countrysdetails = "";
         if($api=='country')
         {
-          $countryObj=new utilityService;
+          $countryObj=new UtilityService;
           if($countrys=$countryObj->getCountry())
           {
            
-          	$countrysdetails=Array("status"=>"200","Country Details"=>$countrys);
+          	$countrysdetails=array("status"=>"200",
+          							"Country Details"=>$countrys);
             return json_encode($countrysdetails);
            }
            else
@@ -703,5 +705,42 @@ class ProfileController extends Controller
       }
       return json_encode($result);
 	}
+
+
+    public function getBasicProfileApi(){
+    
+        $api=Input::segment(1);
+        $param1=Input::segment(2);
+        $user_name=Input::segment(3);
+        $type=Input::segment(4);
+        $profile=new UtilityService();
+		$account_id=$profile->getAccountIdByUserName($user_name);
+
+		$email=$profile->getEmailById($account_id);
+         $pdfbookobj=new CoupleService($account_id);
+		    $pdfoutput= $pdfbookobj->getPdf($type);
+		    if(!empty($pdfoutput))
+		    {
+              $pdf="true";
+		    }
+
+               $flipbook= $pdfbookobj->getFlipbook();
+
+		    	if(!empty($flipbook))
+		    	{
+		    		$flipbook="true";
+		    	}
+
+		//$result=array("Status"=>"200",
+              //"Username"=>$user_name,
+             // "creation date"=>$email->created_at,
+			//"Email on File"=>$email->emailid,
+		    // 
+		   // "pdf"=>$pdf);
+           //return json_encode($result);
+
+
+    }
+
 
 }
