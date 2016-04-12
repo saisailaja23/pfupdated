@@ -376,7 +376,21 @@ public function getSeoDetails($slug,$type){
              //Add Exception here
         } 
     }
-
+     public function getEpub()
+     {
+        try {
+        $profile=new EprofileRepository($this->accountId);  
+        $Epub=$profile->getEpubDetails();
+        if(!empty($Epub))
+        {
+         return $Epub;    
+        }
+        
+        } catch (Exception $e) {
+            //Add Exception here
+        }
+    
+     }
 
     /* Get Pdf Profile */
     public function getPdf($type){

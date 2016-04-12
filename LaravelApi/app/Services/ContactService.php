@@ -119,8 +119,12 @@ class ContactService {
             //Throwing default Exceptions here
 
       }
-    }   
-    
+    } 
+
+    public function updateg($account_id)
+    {
+ $contacts=new ContactRepository($this->accountId);
+    }
     
 }
 

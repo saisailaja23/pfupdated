@@ -13,6 +13,9 @@ use App\Services\JournalService;
 use App\Services\MembershipService;
 use App\Services\VoucherService;
 use App\Services\UserMembershipService;
+use App\Services\ProfileService;
+use App\Services\ContactService;
+
 
 use Response;
 use Illuminate\Support\Facades\Input;
@@ -374,8 +377,7 @@ class ProfileController extends Controller
 		  	 else{
 		  	 	
 		  	 	throw new ParentFinderException('letter_not_found');
-		  	 }
-
+		  	     }
 		}
 
         else if($api=='journal')
@@ -394,14 +396,14 @@ class ProfileController extends Controller
 						     	);
     			}  
 
-    	 return json_encode($journalDetails);
-    	}
-    	else{
-    		throw new ParentFinderException('journal_not_found');
-    	}
+    	        return json_encode($journalDetails);
+    	    }
+    	   else{
+    		   throw new ParentFinderException('journal_not_found');
+    	       }
 
-           }
-}
+    }
+    }
 
 
   	
@@ -507,17 +509,20 @@ class ProfileController extends Controller
 		}
 
 
+    /* country,state,region listing */
 
-    public function getCountryApi(){
-        $countrysdtails="";
+    public function getLocationApi(){
+
         $api=Input::segment(1);
+        $countrysdetails = "";
         if($api=='country')
         {
-          $countryObj=new utilityService;
+          $countryObj=new UtilityService;
           if($countrys=$countryObj->getCountry())
-           {
+          {
            
-          	$countrysdetails=Array("status"=>"200","Country Details"=>$countrys);
+          	$countrysdetails=array("status"=>"200",
+          							"Country Details"=>$countrys);
             return json_encode($countrysdetails);
            }
            else
@@ -527,7 +532,7 @@ class ProfileController extends Controller
         }
 
         else if($api=='state')
-        {
+          {
            $stateDetails="";
            $country_id=Input::segment(2);
        	   $stateObj=new UtilityService;
@@ -538,11 +543,31 @@ class ProfileController extends Controller
            }
           else
           {
-           throw new ParentFinderException('state_country_not_found');
+             throw new ParentFinderException('state_country_not_found');
+
           } 
+       	
+       }
+
+       else if($api=='region')
+        {
+        	$regionObj=new UtilityService;
+        	$region=$regionObj->getRegionDetails();
+        	if($region!="")
+        	{
+        	$regionDetail=Array("status"=>"200","Region Details"=>$region);
+        	return json_encode($regionDetail);
+           }
+           else
+           {
+           	 throw new ParentFinderException('region-not-found');
+           }
+
         }
+
+
     }
-    	
+
 	/*  *	MembershipDetails 
 		* 	@param  Request $request
      	* 	@return array
@@ -683,5 +708,62 @@ class ProfileController extends Controller
       }
       return json_encode($result);
 	}
+
+    /*List Basic profile Information */
+    public function getBasicProfileApi(){
+      
+        $api=Input::segment(1);
+        $param1=Input::segment(2);
+        $user_name=Input::segment(3);
+        $type=Input::segment(4);
+        $profile=new UtilityService();
+		if($account_id=$profile->getAccountIdByUserName($user_name))
+		{
+        $email=$profile->getEmailById($account_id);
+	    $creationDate=date("d-m-Y", strtotime($email->created_at));
+         $pdfbookobj=new CoupleService($account_id);
+		    $pdfoutput= $pdfbookobj->getPdf($type);
+		    $Epub=$pdfbookobj->getEpub();
+		    if(!empty($pdfoutput)){ $pdf="true";}
+		    else{$pdf="false";}
+            $flipbook= $pdfbookobj->getFlipbook();
+            if(!empty($flipbook)){$flipbook="true";}
+		    	else{$flipbook="false";	}
+             $memberObj=new UserMembershipService($account_id);
+             $member=$memberObj->getMembership($account_id);
+             if($member==""){ $membership=""; }
+             else {$membership=$member->Name;}
+             if(!empty($Epub)){$epub="true";}
+             else{$epub="false";}
+
+             $result=array("Status"=>"200",
+                      "Username"=>$user_name,
+                      "Membership"=>$membership,
+                      "creation date"=>$creationDate,
+			          "Email on File"=>$email->emailid,
+			          "Our Page"=>"",
+		              "FlipBook"=>$flipbook,
+		              "E-PUB"=>$epub,
+		              "Pdf profile"=>$pdf);
+          return json_encode($result);
+        }
+        else
+        {
+        	
+        throw new ParentFinderException('no-profiles-found');	
+        }
+
+    }
+
+     public function editContactApi(){
+     
+     $account_id="13";
+     //$state=$request->phonenumber;
+     //$country=$request->city;
+     //$region=$request->region;
+     $contactObj=new ContactService($account_id);
+     $contactObj->updateg($account_id);       
+    }
+
 
 }

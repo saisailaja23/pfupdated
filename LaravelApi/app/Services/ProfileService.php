@@ -16,6 +16,7 @@ use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
+use App\Repository\EprofileRepository;
 /**
  * Description of ParentService
 **/
@@ -36,7 +37,9 @@ class ProfileService {
     private $waitingId;
     private $waiting;  
     private $gender;
-    private $accountId;    
+    private $accountId;
+     private $creationDate;
+
 	
 	
     public function __construct($profileId) {
@@ -85,6 +88,10 @@ class ProfileService {
     public function getAccountId() {
         return $this->accountId;
     }   
+    
+    
+    
+
 
     
     public  function setFirstName($firstName) {
@@ -158,7 +165,7 @@ class ProfileService {
         }
     }  
 
-	
+    
 	
 
    

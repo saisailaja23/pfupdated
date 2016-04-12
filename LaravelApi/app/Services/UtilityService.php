@@ -22,6 +22,7 @@ use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
 use App\Repository\AppUserRepository;
 use App\Repository\ProfileTypeRepository;
+use App\Repository\AccountRepository;
 /**
  * Description of AccountService
 **/
@@ -189,11 +190,11 @@ class UtilityService {
               $albumout[]=$albumservice->getAlbum();
              //print_r($albumout);
         return $albumout;
-    }
-    catch(\Exception $e){
+       }
+       catch(\Exception $e){
              //Add Exception here
         } 
-    }
+      }
      
     /*Get Video ById*/
     public function getVideoById($videoid){
@@ -254,20 +255,72 @@ class UtilityService {
       try{
         
             $country=new CountryRepository(null);  
-             $countryDetails=$country->getCountrysDetails();  
+            $countryDetails=$country->getCountrysDetails();  
 
             if(count($countryDetails)!=0)
             {
              return $countryDetails;
+            }else{
+              throw new ParentFinderException('countries_not_found',$e->getMessage());
             }
             
 
           }
     catch(\Exception $e){
      
-          throw new ParentFinderException('countries_not_found',$e->getMessage());
+          //throwing default exceptions
         } 
     }
   
+    public function getStatesByCountryId($country_id)
+    {
+ 
+      try{
+       
+       $state=new StateRepository(null);
+       $stateDetails=$state->getStatesDetails($country_id);
+       if(count($stateDetails)!=0)
+       {
+        return $stateDetails;
+       }
+       else
+       {
+         throw new ParentFinderException('state_country_not_found',$e->getMessage());
+       }
+      }
+      catch(\Exception $e)
+      {
+      //throwing default exceptions
+      } 
+
+    }
+
+    public function getRegionDetails()
+    {
+  
+     try {
+       $region=new RegionRepository(null);
+       $regionDetails=$region->getRegionByStateId();
+       if(count($regionDetails)!=0)
+       {
+        return $regionDetails;
+       }
+       else
+       {
+         throw new ParentFinderException('region-not-found',$e->getMessage());
+       }
+      } catch (\Exception $e) {
+            //throwing default exceptions
+         }
+    } 
+
+    public function getEmailById($account_id)
+    {
+       $email=new AccountRepository($account_id);
+       $accountDetails=$email->getAccountDetails();
+      return $accountDetails;
+     
+   }
+
     
 }

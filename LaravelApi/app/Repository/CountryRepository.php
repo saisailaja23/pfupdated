@@ -32,11 +32,11 @@ class CountryRepository {
         }  
     }
     
-   public function getCountrysDetails() {
+    public function getCountrysDetails() {
         try{
           
             $countrysObj=new Countries;
-           $countryDetails=$countrysObj->get();
+            $countryDetails=$countrysObj->get();
             return $countryDetails;
         }catch(\Exception $e){
              //Add Exception here

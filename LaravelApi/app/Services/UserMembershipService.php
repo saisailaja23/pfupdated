@@ -71,6 +71,27 @@ class UserMembershipService{
       } 
     
     }
+
+  public function getMembership($account_id){
+
+     try {
+       
+       $userMemberObj=new UserMembershipRepository($this->accountId);
+       $memberDetails=$userMemberObj->getMembershipDetails($account_id);
+       if(count($memberDetails)!="")
+       {
+        return $memberDetails;
+       }
+       else
+       {
+      
+       //throw new ParentFinderException('membership_not_found');
+       }
+      } catch (Exception $e) {
+       
+        //Throwing default Exceptions here
+       }
+  }
     
     
 }

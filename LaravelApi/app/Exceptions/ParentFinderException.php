@@ -180,6 +180,16 @@ use Exception;
                  $error['title']='State Not Found';
                  $error['detail']='State you were looking for was not found for this user';
                  break;
+            case 'state_country_not_found' :
+                $error['status']=204;
+                 $error['title']='State Not Found';
+                 $error['detail']='State you were looking for was not found for this country';
+                 break;
+            case 'region-not-found' :
+                $error['status']=204;
+                 $error['title']='Region Not Found';
+                 $error['detail']='Region you were looking for was not found for this state';
+                 break;          
             case 'membership_not_found' :
                 $error['status']=204;
                  $error['title']='NO Memberships Found';
