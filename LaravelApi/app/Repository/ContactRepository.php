@@ -99,6 +99,18 @@ class ContactRepository {
             //Throwing default Exceptions here
 
       }
-    }  
+    } 
+
+
+    public function updateContact()
+    {
+      echo "e";
+     $contactObj=new ContactDetails;
+     $update=$contactObj->where('Account_id',"=",$accountId),
+                        ->update(array('state','=','2');
+
+    }
+
+
     
 }

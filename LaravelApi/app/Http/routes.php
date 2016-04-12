@@ -116,6 +116,7 @@ Route::get('/state/{country}','ProfileController@getLocationApi');
 Route::get('/region','ProfileController@getLocationApi');
 Route::get('/profile/basic/{username}','ProfileController@getBasicProfileApi');
 
+Route::get('/profile/contact/edit', 'ProfileController@editContactApi');
 
 
 

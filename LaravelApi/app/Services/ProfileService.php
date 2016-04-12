@@ -165,28 +165,7 @@ class ProfileService {
         }
     }  
 
-    public function getCreatedDate($account_id)
-    {
-      try {
-          
     
-          
-        $profile=new ProfileRepository(null);  
-        $profileDetails=$profile->getProfileIdByAccount($account_id);
-        $this->creationDate=$profileDetails->created_at;
-        $pdfDetails=$profile->getPdfDetails($account_id);
-        echo  $this->pdf=$pdfDetails->user_id;
-       //$eprofile=new EprofileRepository(null);
-        //$flipbook=$eprofile->getFlipbookId($account_id);
-
-       return $this;
-     }
-     catch(\Exception $e){
-           // Throwing Exception here;
-        }
-
-    }
-	
 	
 
    

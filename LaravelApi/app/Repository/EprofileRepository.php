@@ -51,6 +51,22 @@ class EprofileRepository {
         } 
 
     }
+
+     public function getEpubDetails(){
+           try{
+         
+            $eprofileobj=new Eprofile;
+            $Epubdetails =$eprofileobj->where('owner_id', '=',$this->account_id)
+                                  ->where('title', '=','E-PUB Profile')
+                                   ->where('content', '!=','')
+                                  ->first();  
+                                  return $Epubdetails;
+            }
+             catch(\Exception $e){
+             //Add Exception here
+              } 
+
+      }
    
     }
 

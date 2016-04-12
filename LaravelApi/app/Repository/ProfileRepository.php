@@ -242,7 +242,7 @@ class ProfileRepository {
 
     public function getPdfDetails($acc_id){
          try{
-            echo "s";
+            
             $pdfobj=new PdfTemplate;
             $pdfdetails =$pdfobj->where('user_id', '=',$acc_id)
                                   ->where('isDeleted', '=','N')

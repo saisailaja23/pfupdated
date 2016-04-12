@@ -82,8 +82,18 @@ class UserMembershipRepository {
       } 
     }
     
+    public  function getMembershipDetails($account_id){ 
 
-    
-        
+           try {
+               
+                 $Membershipobj=new UserMembership;
+                 $membershipDetails=$Membershipobj->where('IDMember','=',$account_id)
+                    ->join('sys_acl_levels','sys_acl_levels.ID','=','sys_acl_levels_members.IDLevel')
+                    ->first();
+                    return $membershipDetails;
+                }
+                 catch (Exception $e) {
+                }
+    }
     
 }

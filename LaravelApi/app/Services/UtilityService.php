@@ -317,8 +317,8 @@ class UtilityService {
     public function getEmailById($account_id)
     {
        $email=new AccountRepository($account_id);
-       $region=$email->getAccountDetails();
-      return $region;
+       $accountDetails=$email->getAccountDetails();
+      return $accountDetails;
      
    }
 
