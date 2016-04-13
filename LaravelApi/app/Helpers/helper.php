@@ -88,6 +88,16 @@ function verifyIntegerData($data){
             }
 return $result;
 }
+ function verifyAlphaNumSpaces($data ) {
+        return (bool) preg_match( "/^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/", $data );
+}
+
+function verifyZip($data ) {
+        return (bool) preg_match( "/^[0-9]{0,6}$/", $data );
+}
+
+
+
 
 /*
     * To get Today's date

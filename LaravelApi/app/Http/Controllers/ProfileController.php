@@ -755,15 +755,74 @@ class ProfileController extends Controller
 
     }
 
-     public function editContactApi(){
-     
-     $account_id="13";
-     //$state=$request->phonenumber;
-     //$country=$request->city;
-     //$region=$request->region;
-     $contactObj=new ContactService($account_id);
-     $contactObj->updateg($account_id);       
-    }
+    public function editContact(Request $request){
+     	
+          $data['account_id']=verifyData($request->accountid);
+          $data['State']=verifyData($request->state);
+          $data['Country']=verifyData($request->country);
+          $data['Region']=verifyData($request->region);
+          $data['Zip']=verifyData($request->zip);
+          $data['City']=verifyData($request->city);
+          $data['phonenumber']=verifyData($request->phonenumber);
+          $data['address1']=verifyData($request->address1);
+   
+          $contactObj=new ContactService(null);
+          if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region']&&$data['City']&&$data['address1']&&$data['Zip']&&$data['phonenumber'])) {
+            if(verifyAlphaNumSpaces($data['phonenumber']) == 1 && verifyZip($data['Zip']) == 1){
+             $updatestatus=$contactObj->updateContact($data);
+              if($updatestatus)
+               {
+                $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"updated"
+							     	);
+							return json_encode($result);
+                }
+                 else
+                    {
+                          	throw new ParentFinderException('updation_failed');
+                     }
+             }
+              else{
+
+    	           throw new ParentFinderException('int_error');
+                   } 
+            }
+                else{
+                  throw new ParentFinderException('null_argument_found');
+				}
+						
+    }  
+
+     public function postContact(Request $request){
+          $data['account_id']=verifyData($request->accountid);
+          $data['State']=verifyData($request->state);
+          $data['Country']=verifyData($request->country);
+          $data['Region']=verifyData($request->region);
+          $contactObj=new ContactService(null);
+          if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region'])) {
+          $insertstatus=$contactObj->saveContactDetails($data);	
+          if($insertstatus)
+               {
+                $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"inserted"
+							     	);
+							return json_encode($result);
+                }
+                 else
+                    {
+                          	throw new ParentFinderException('updation_failed');
+                     }
+            }
+            else{
+                  throw new ParentFinderException('null_argument_found');
+				}
+
+
+      }
+    
+    
 
 
 }
