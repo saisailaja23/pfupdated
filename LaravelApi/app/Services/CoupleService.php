@@ -528,9 +528,17 @@ public function getSeoDetails($slug,$type){
         }catch(\Exception $e){
                 //Throwing  exceptions if any
         }
-       
-        
-
-    } 
+     } 
+    public function updateParentProfile($data){
+            $accountObj=new AccountRepository(null);
+            $accountObj->setUserName($data['username']);
+            $accountObj->setPassword($data['password']);
+            $accountObj->setEmailId($data['emailId']);
+            $accountObj->setAgencyId($data['agencyId']);            
+            $accountObj->setCreatedAt(getCurrentDateTime());
+            $accountObj->setModifiedAt(getCurrentDateTime());
+            $accountObj->setStatus(1);    
+            $accountObj->setRoleId($data['profileType']);      
+    }
  
 }

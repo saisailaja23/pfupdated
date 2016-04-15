@@ -756,7 +756,7 @@ class ProfileController extends Controller
     }
 
     public function editContact(Request $request){
-     	
+     	  
           $data['account_id']=verifyData($request->accountid);
           $data['State']=verifyData($request->state);
           $data['Country']=verifyData($request->country);
@@ -765,64 +765,98 @@ class ProfileController extends Controller
           $data['City']=verifyData($request->city);
           $data['phonenumber']=verifyData($request->phonenumber);
           $data['address1']=verifyData($request->address1);
-   
-          $contactObj=new ContactService(null);
-          if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region']&&$data['City']&&$data['address1']&&$data['Zip']&&$data['phonenumber'])) {
-            if(verifyAlphaNumSpaces($data['phonenumber']) == 1 && verifyZip($data['Zip']) == 1){
-             $updatestatus=$contactObj->updateContact($data);
-              if($updatestatus)
-               {
-                $result=array(
+          if($request->user_key && $request->url){
+		  $appObj=new UtilityService;			
+		  $app_key=$appObj->checkAppKey($request->user_key,$request->url);
+			if($app_key==1){
+            $contactObj=new ContactService(null);
+              if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region']&&$data['City']&&$data['address1']&&$data['Zip']&&$data['phonenumber'])){
+                if(verifyAlphaNumSpaces($data['phonenumber']) == 1 && verifyZip($data['Zip']) == 1){
+                  $updatestatus=$contactObj->updateContact($data);
+                  if($updatestatus){
+                    $result=array(
 	    					 "status"=>"201",
 							  "Message"=>"updated"
 							     	);
 							return json_encode($result);
-                }
-                 else
+                   }
+                  else
                     {
                           	throw new ParentFinderException('updation_failed');
                      }
-             }
-              else{
+                }
+                else{
 
     	           throw new ParentFinderException('int_error');
                    } 
-            }
+              }
                 else{
                   throw new ParentFinderException('null_argument_found');
 				}
+            }
+			 else{
+				throw new ParentFinderException('key_not_valid');
+			    }
+		 }
 						
     }  
 
-     public function postContact(Request $request){
+        public function postContact(Request $request){
           $data['account_id']=verifyData($request->accountid);
           $data['State']=verifyData($request->state);
           $data['Country']=verifyData($request->country);
           $data['Region']=verifyData($request->region);
-          $contactObj=new ContactService(null);
-          if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region'])) {
-          $insertstatus=$contactObj->saveContactDetails($data);	
-          if($insertstatus)
-               {
-                $result=array(
+          if($request->user_key && $request->url){
+			$appObj=new UtilityService;			
+			$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+			 if($app_key==1){
+                $contactObj=new ContactService(null);
+                if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region'])) {
+                  $insertstatus=$contactObj->saveContactDetails($data);	
+                   if($insertstatus)
+                   {
+                     $result=array(
 	    					 "status"=>"201",
 							  "Message"=>"inserted"
 							     	);
 							return json_encode($result);
-                }
-                 else
-                    {
+                   }
+                     else
+                     {
                           	throw new ParentFinderException('updation_failed');
                      }
-            }
-            else{
-                  throw new ParentFinderException('null_argument_found');
-				}
-
-
-      }
+               }
+                 else{
+                    throw new ParentFinderException('null_argument_found');
+				    }
+			 }
+			 else{
+                     throw new ParentFinderException('key_not_valid');
+			    }
+		   }	    
+        }
     
-    
+    public function editProfile(Request $request){
+    	        $data['profileType']=$request->profile_type;
+    	        if(!empty($data['profileType'])){
+			$data['username']=$request->PFusername;
+			$data['password']=$request->PFpassword;
+			$data['emailId']=$request->PFemail;
+			$data['agencyId']=$request->PFagencyId;
+			$data['state'] = $request->state;
+			$data['region'] = $request->region;
+    	        $data['account_id']=$request->account_id;
+                 
+    	        $data['firstNameSingle']=$request->PFfirstNameSingle;
+				$data['lastNameSingle']=$request->PFlastNameSingle;
+				$data['firstNameCouple']=$request->PFfirstNameCouple;
+				$data['lastNameCouple']=$request->PFlastNameCouple;
+				$data['genderSingle'] = $request->PFgenderSingle;
+				$data['genderCouple'] = $request->PFgenderCouple;
+					$profileObj=new CoupleService(null);
+					$updateStatus=$profileObj->updateParentProfile($data);
+}
+    }
 
 
 }

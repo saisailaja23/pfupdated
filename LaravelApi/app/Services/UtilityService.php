@@ -316,9 +316,13 @@ class UtilityService {
 
     public function getEmailById($account_id)
     {
+      try{
        $email=new AccountRepository($account_id);
        $accountDetails=$email->getAccountDetails();
       return $accountDetails;
+       } catch (\Exception $e) {
+            //throwing default exceptions
+         }
      
    }
 
