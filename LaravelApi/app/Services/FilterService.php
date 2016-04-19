@@ -40,6 +40,8 @@ class FilterService {
         } 
     }
 
+
+    /*Get profiles By Religion*/
 	public function getProfilesByReligion($religion){
         try{     
         $profileObj=new ProfileRepository(null);
@@ -55,7 +57,6 @@ class FilterService {
             
         }
         else{
-            echo "f";
            throw new ParentFinderException('no-profiles-found');
         }
         
@@ -63,6 +64,8 @@ class FilterService {
              //Add Exception here
         } 
     }
+
+    /*Get profiles By Region*/
      public function getProfilesByRegion($region){ 
         try{
         $regionObj=new RegionRepository(null); 
@@ -77,7 +80,6 @@ class FilterService {
          return $accountIds;
         }
          else{
-            echo "e";
            throw new ParentFinderException('no-profiles-found');
         }
      }catch(\Exception $e){
@@ -85,6 +87,8 @@ class FilterService {
         } 
     }
 
+
+    /*Get profiles By Kids*/
     public function getProfilesByKids($kids)   {
 
         try{
@@ -107,6 +111,8 @@ class FilterService {
         } 
     }
 
+
+    /*Get profiles By State*/
     public function getProfilesByState($state){ 
         try{
         $stateObj=new StateRepository(null); 
@@ -129,6 +135,8 @@ class FilterService {
              //Add Exception here
         } 
     }
+
+    /*Get profiles By Name*/
     public function getProfilesByName($name){ 
         try{ 
         $profileObj=new ProfileRepository(null);
@@ -148,6 +156,9 @@ class FilterService {
              //Add Exception here
         } 
     }
+
+
+    /*Get profiles By ChildPreference*/
     public function getProfilesChildPref($child_pref){
         try{  
         $ethnicityObj=new EthnicityRepository(null); 
@@ -170,6 +181,9 @@ class FilterService {
              //Add Exception here
         } 
     }
+
+
+    /*Get profiles By Sort*/
     public function getProfilesBySort($sort){ 
         try{ 
         $profile=new ProfileRepository(null);  
@@ -184,6 +198,10 @@ class FilterService {
              //Add Exception here
         }  
     }
+
+
+
+    /*Get All Memberships*/
     public  function getAllMembershipIds(){
     try{ 
         $membershipObj=new MembershipRepository(null);  
@@ -203,5 +221,38 @@ class FilterService {
            // throw new ParentFinderException('membership_not_found');
         } 
     }
+
+    public function getProfilesByCountry($country){ 
+        try {
+        $countryObj=new CountryRepository(null); 
+        $country=$countryObj->getCountryByName($country);
+         if(!empty($country)){
+           $countryId=   $country->country_id;
+         $countryObj1=new ContactRepository(null); 
+         $accountDetails=$countryObj1->getContactByCountry($countryId);
+         if(count($accountDetails)!=0)
+         {
+         foreach ($accountDetails as $accountDetail) {
+          $accountIds[]= $accountDetail->Account_id;
+            }
+        return $accountIds;
+        }
+       else
+       {
+        throw new ParentFinderException('no-profiles-found');
+        }
+     } 
+        else{
+           
+         throw new ParentFinderException('countries-not-found');
+         }
+      }
+        catch (Exception $e) {
+           
+           //Add Exception here 
+        }
+    }
+
+  
     
 }

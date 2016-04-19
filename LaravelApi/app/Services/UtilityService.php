@@ -22,11 +22,14 @@ use App\Repository\LetterRepository;
 use App\Exceptions\ParentFinderException;
 use App\Repository\AppUserRepository;
 use App\Repository\ProfileTypeRepository;
+use App\Repository\AccountRepository;
 /**
  * Description of AccountService
 **/
 class UtilityService {
 
+
+    /*Get Account By Username*/
     public function getAccountIdByUserName($user_name){
         try{
             $profileObj=new ProfileRepository(null);           
@@ -45,7 +48,7 @@ class UtilityService {
     
    } 
   
-	
+	/*Get FlipBook*/
 	public function getFlipbookByID($acc_id){  
         try{
         $profile=new ProfileRepository(null);  
@@ -73,6 +76,7 @@ class UtilityService {
         } 
     }
 
+      /*Get Pdf*/
     	public function getPdf($acc_id,$type){
         try{
         $profile=new ProfileRepository(null);  
@@ -94,6 +98,8 @@ class UtilityService {
         } 
     }
 
+
+    /*Get Journal By Tittle*/
     public function getJournalsByTitle($account_id,$title){
         try{
         $journalObj=new JournalRepository(null);
@@ -113,6 +119,8 @@ class UtilityService {
         } 
     }
 
+
+    /*Get Journal ById*/
     public function getJournalsById($account_id,$journal_id){
       try{
       $journalObj=new JournalRepository(null);
@@ -134,6 +142,7 @@ class UtilityService {
     }
 
 
+    /*Get Ethnicity Details*/
     public  function getEthnictyDetails($ethnicityId){
         try{
         $ethnicity=new EthnicityRepository($ethnicityId);  
@@ -151,6 +160,8 @@ class UtilityService {
         }        
     }  
 
+
+    /*Get Letter ById*/
     public function getLetterById($account_id,$letter_id){
         try{
         $letterObj=new LetterRepository(null);
@@ -171,18 +182,21 @@ class UtilityService {
         } 
     } 
 
+
+     /*Get Photo ById*/
      public function getPhotoById($photoid){
         try{
         $albumservice=new AlbumsService($photoid);
               $albumout[]=$albumservice->getAlbum();
              //print_r($albumout);
         return $albumout;
-    }
-    catch(\Exception $e){
+       }
+       catch(\Exception $e){
              //Add Exception here
         } 
-    }
+      }
      
+    /*Get Video ById*/
     public function getVideoById($videoid){
         try{
         $albumservice=new VideoService($videoid);
@@ -195,12 +209,16 @@ class UtilityService {
       } 
     }
 
+
+    /*Check AppKey*/
     public function checkAppKey($key,$url){
       $appObj=new AppUserRepository($url);
       $keyIdentity=$appObj->getAppUserKey($key);
       return $keyIdentity;
     }
 
+
+    /*Get UserName By Account Id*/
     public function getUsernameByAccountId($account_id){
       try{
             $profileObj=new ProfileRepository(null);           
@@ -214,6 +232,8 @@ class UtilityService {
     
     }
 
+
+    /*Get ProfileTypes*/
     public function getProfileTypes(){
       try{
       $profiletypeobj=new ProfileTypeRepository(null);           
@@ -230,6 +250,113 @@ class UtilityService {
 
         } 
     }
+
+    public function getCountry(){
+      try{
+        
+            $country=new CountryRepository(null);  
+            $countryDetails=$country->getCountrysDetails();  
+
+            if(count($countryDetails)!=0)
+            {
+             return $countryDetails;
+            }else{
+              throw new ParentFinderException('countries_not_found',$e->getMessage());
+            }
+            
+
+          }
+    catch(\Exception $e){
      
+          //throwing default exceptions
+        } 
+    }
+  
+    public function getStatesByCountryId($country_id)
+    {
+ 
+      try{
+       
+       $state=new StateRepository(null);
+       $stateDetails=$state->getStatesDetails($country_id);
+       if(count($stateDetails)!=0)
+       {
+        return $stateDetails;
+       }
+       else
+       {
+         throw new ParentFinderException('state_country_not_found',$e->getMessage());
+       }
+      }
+      catch(\Exception $e)
+      {
+      //throwing default exceptions
+      } 
+
+    }
+
+    public function getRegionDetails()
+    {
+  
+     try {
+       $region=new RegionRepository(null);
+       $regionDetails=$region->getRegionByStateId();
+       if(count($regionDetails)!=0)
+       {
+        return $regionDetails;
+       }
+       else
+       {
+         throw new ParentFinderException('region-not-found',$e->getMessage());
+       }
+      } catch (\Exception $e) {
+            //throwing default exceptions
+         }
+    } 
+
+    public function getEmailById($account_id)
+    {
+      try{
+       $email=new AccountRepository($account_id);
+       $accountDetails=$email->getAccountDetails();
+      return $accountDetails;
+       } catch (\Exception $e) {
+            //throwing default exceptions
+         }
+     
+   }
+
+    public function getFamilystatus($account_id){
+      try
+      {
+       $profile=new ProfileRepository(null);  
+        $countAccount=$profile->getFStatus($account_id);
+        return $countAccount;
+      }
+
+     catch (\Exception $e) {
+            //throwing default exceptions
+         }
+    
+    }
+    public function editChild($data){
+      try
+      {
+
+       $child=new ChildRepository(null);  
+       $child->setType($data['type']);
+       $child->setNoOfChildren($data['NoOfChildren']);
+       $child->setAccountId($data['accounts_id']);
+       $status=$child->updateChild();
+        return $status;
+      }
+
+     catch (\Exception $e) {
+            //throwing default exceptions
+         }
+    
+    }
+    
+
     
 }

@@ -43,6 +43,8 @@ Route::get('/profiles/state/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/name/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/child-preference/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/sort/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/country/{country}', 'ProfileController@getProfileApi');
+
 
 Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
@@ -76,6 +78,7 @@ Route::group([
 
 
 Route::get('/journals/{username}', 'ProfileController@getJournalApi');
+Route::get('/journal/{slug}', 'ProfileController@getSeoApi');
 //Route::get('/journal/{username}/{journalid}', 'ProfileController@getJournalApi');
 
 Route::group([
@@ -90,6 +93,8 @@ Route::get('/journals/{username}/{all}', 'ProfileController@getJournalApi');//jo
 
 
 Route::get('/letters/{username}', 'ProfileController@getLetterApi');
+
+Route::get('/letter/{slug}', 'ProfileController@getSeoApi');
 
 
 Route::group([
@@ -108,4 +113,15 @@ Route::post('/membership/coupon', 'ProfileController@postMembershipCouponValidat
 
 Route::post('/new/profile', 'ProfileController@postProfile');
 Route::get('/profiletype', 'ProfileController@getProfileType');
+Route::get('/country','ProfileController@getLocationApi');
+Route::get('/state/{country}','ProfileController@getLocationApi');
+Route::get('/region','ProfileController@getLocationApi');
+Route::get('/profile/basic/{username}','ProfileController@getBasicProfileApi');
+
+Route::post('/profile/contact/edit', 'ProfileController@editContact');
+Route::post('/profile/contact/add', 'ProfileController@postContact');
+Route::post('/profile/edit', 'ProfileController@editProfile');
+
+
+
 

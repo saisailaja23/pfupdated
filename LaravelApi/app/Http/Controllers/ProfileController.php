@@ -13,6 +13,9 @@ use App\Services\JournalService;
 use App\Services\MembershipService;
 use App\Services\VoucherService;
 use App\Services\UserMembershipService;
+use App\Services\ProfileService;
+use App\Services\ContactService;
+
 
 use Response;
 use Illuminate\Support\Facades\Input;
@@ -111,6 +114,10 @@ class ProfileController extends Controller
 			     $sort=Input::segment(3);
 				$accountIds= $filter->getProfilesBySort($sort);
 			    }
+			    else if($filter_tag=='country'){
+			    $country=Input::segment(3);
+				$accountIds= $filter->getProfilesByCountry($country);
+			    }
 			}else{
 			
     		$accountIds= $filter->getAllProfiles();
@@ -167,7 +174,7 @@ class ProfileController extends Controller
 	     		}
 				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
      	}else{
-     		echo "a";
+     		echo "s";
      		throw new ParentFinderException('no-profiles-found');
      	}
     		
@@ -267,6 +274,7 @@ class ProfileController extends Controller
     	}
   	}
   	
+  	/* Photo Album */
   	 public function getAlbumApi(){
   	 	$photoseg=Input::segment(1);
   	 	
@@ -347,6 +355,65 @@ class ProfileController extends Controller
 
   	}
 
+
+
+/* Get SEO 
+
+  	*/
+  	public function getSeoApi(){
+  		$api=Input::segment(1);
+		$slug=Input::segment(2);
+
+		if($api=='letter'){
+  	 		
+	  	 	$letterObj=new CoupleService($slug);
+			$letters=$letterObj->getSeoDetails($slug,'letter');
+	  	 	if(!empty($letters)){
+		  	 	foreach($letters as $letter){
+		    		$letterDetails[]=array(
+		    							"status"=>"200",
+								     	"Title"=>$letter->getTitle(),
+								     	"Content"=>$letter->getContent(),
+								     	"Image"=>$letter->getAssociatedImage()
+								     	);
+		    	}  
+		  	 	return json_encode($letterDetails);
+		  	}
+		  	 else{
+		  	 	
+		  	 	throw new ParentFinderException('letter_not_found');
+		  	     }
+		}
+
+        else if($api=='journal')
+          {
+
+	            $journalObj=new CoupleService($slug);
+    			$journals=$journalObj->getSeoDetails($slug,'journal');
+                 if(!empty($journals)){
+    	         foreach($journals as $journal){
+    		     $journalDetails[]=array(
+    							"status"=>"200",
+						     	"Caption"=>$journal->getJournalCaption(),
+						     	"Text"=>$journal->getJournalText(),
+						     	"Uri"=>$journal->getJournalUri(),
+						     	"Photo"=>$journal->getJournalPhoto()
+						     	);
+    			}  
+
+    	        return json_encode($journalDetails);
+    	    }
+    	   else{
+    		   throw new ParentFinderException('journal_not_found');
+    	       }
+
+    }
+    }
+
+
+  	
+/* Page Not Found */
+
   	public function getPageNotFound(){
   		
   		$message=array( "status"=>'Failed',
@@ -355,6 +422,7 @@ class ProfileController extends Controller
 
   	}
 
+  	/* Video Api */
 	public function getVideoApi(){
 
   	 	$param1=Input::segment(2);
@@ -409,6 +477,7 @@ class ProfileController extends Controller
 
 	}
 
+	/* Membership */
 	public function getMembershipApi(){
 		$Membership_details1 = '';
 		$filter=new FilterService();
@@ -443,7 +512,71 @@ class ProfileController extends Controller
 				throw new ParentFinderException('membership_not_found');
 			}
 		}
-	
+
+
+    /* country,state,region listing */
+
+    public function getLocationApi(){
+
+        $api=Input::segment(1);
+        $countrysdetails = "";
+        if($api=='country')
+        {
+          $countryObj=new UtilityService;
+          if($countrys=$countryObj->getCountry())
+          {
+           
+          	$countrysdetails=array("status"=>"200",
+          							"Country Details"=>$countrys);
+            return json_encode($countrysdetails);
+           }
+           else
+           {
+           	throw new ParentFinderException('countries-not-found');
+           }
+        }
+
+        else if($api=='state')
+          {
+           $stateDetails="";
+           $country_id=Input::segment(2);
+       	   $stateObj=new UtilityService;
+       	   if($states=$stateObj->getStatesByCountryId($country_id))
+           {
+       	   $stateDetails=Array("status"=>"200","State Details"=>$states);
+           return json_encode($stateDetails);  
+           }
+          else
+          {
+             throw new ParentFinderException('state_country_not_found');
+
+          } 
+       	
+       }
+
+       else if($api=='region')
+        {
+        	$regionObj=new UtilityService;
+        	$region=$regionObj->getRegionDetails();
+        	if($region!="")
+        	{
+        	$regionDetail=Array("status"=>"200","Region Details"=>$region);
+        	return json_encode($regionDetail);
+           }
+           else
+           {
+           	 throw new ParentFinderException('region-not-found');
+           }
+
+        }
+
+
+    }
+
+	/*  *	MembershipDetails 
+		* 	@param  Request $request
+     	* 	@return array
+		*/
 	public function postMembershipDetails(Request $request){
 		$member_id=verifyData($request->member_id);
 		$member_level=verifyData($request->member_level);
@@ -486,7 +619,10 @@ class ProfileController extends Controller
 		
 	}
 
-
+		/*  *	Coupon Validation 
+		* 	@param  Request $request
+     	* 	@return array
+		*/
 	public function postMembershipCouponValidation(Request $request){	
 				$voucher['vocher_code'] =  $request->vocher_code;
 				$voucher['idlevel']=$request->member_level;
@@ -559,7 +695,7 @@ class ProfileController extends Controller
 		
 	}
 
-
+	/* List Profile Types */
 	public function getProfileType(){
 
 		$profiletypeobj=new UtilityService();
@@ -577,5 +713,207 @@ class ProfileController extends Controller
       }
       return json_encode($result);
 	}
+
+    /*List Basic profile Information */
+    public function getBasicProfileApi(){
+      
+        $api=Input::segment(1);
+        $param1=Input::segment(2);
+        $user_name=Input::segment(3);
+        $type=Input::segment(4);
+        $profile=new UtilityService();
+		if($account_id=$profile->getAccountIdByUserName($user_name))
+		{
+        $email=$profile->getEmailById($account_id);
+	    $creationDate=date("d-m-Y", strtotime($email->created_at));
+         $pdfbookobj=new CoupleService($account_id);
+		    $pdfoutput= $pdfbookobj->getPdf($type);
+		    $Epub=$pdfbookobj->getEpub();
+		    if(!empty($pdfoutput)){ $pdf="true";}
+		    else{$pdf="false";}
+            $flipbook= $pdfbookobj->getFlipbook();
+            if(!empty($flipbook)){$flipbook="true";}
+		    	else{$flipbook="false";	}
+             $memberObj=new UserMembershipService($account_id);
+             $member=$memberObj->getMembership($account_id);
+             if($member==""){ $membership=""; }
+             else {$membership=$member->Name;}
+             if(!empty($Epub)){$epub="true";}
+             else{$epub="false";}
+
+             $result=array("Status"=>"200",
+                      "Username"=>$user_name,
+                      "Membership"=>$membership,
+                      "creation date"=>$creationDate,
+			          "Email on File"=>$email->emailid,
+			          "Our Page"=>"",
+		              "FlipBook"=>$flipbook,
+		              "E-PUB"=>$epub,
+		              "Pdf profile"=>$pdf);
+          return json_encode($result);
+        }
+        else
+        {
+        	
+        throw new ParentFinderException('no-profiles-found');	
+        }
+
+    }
+
+    public function editContact(Request $request){
+     	  
+        $data['account_id']=verifyData($request->accountid);
+        $data['State']=verifyData($request->state);
+        $data['Country']=verifyData($request->country);
+        $data['Region']=verifyData($request->region);
+        $data['City']=verifyData($request->city);
+        $data['phonenumber']=verifyData($request->phonenumber);
+        $data['address1']=verifyData($request->address1);
+          if($request->user_key && $request->url){
+		  $appObj=new UtilityService;			
+		  $app_key=$appObj->checkAppKey($request->user_key,$request->url);
+			if($app_key==1){
+            $contactObj=new ContactService(null);
+              if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region']&&$data['City']&&$data['address1']&&$data['Zip']&&$data['phonenumber'])){
+                if(verifyAlphaNumSpaces($data['phonenumber']) == 1 && verifyZip($data['Zip']) == 1){
+                  $updatestatus=$contactObj->updateContact($data);
+                  if($updatestatus){
+                    $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"updated"
+							     	);
+							return json_encode($result);
+                   }
+                  else
+                    {
+                          	throw new ParentFinderException('updation_failed');
+                     }
+                }
+                else{
+
+    	           throw new ParentFinderException('int_error');
+                   } 
+              }
+                else{
+                  throw new ParentFinderException('null_argument_found');
+				}
+            }
+			 else{
+				throw new ParentFinderException('key_not_valid');
+			    }
+		 }
+						
+    }  
+
+        public function postContact(Request $request){
+          $data['account_id']=verifyData($request->accountid);
+          $data['State']=verifyData($request->state);
+          $data['Country']=verifyData($request->country);
+          $data['Region']=verifyData($request->region);
+          if($request->user_key && $request->url){
+			$appObj=new UtilityService;			
+			$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+			 if($app_key==1){
+                $contactObj=new ContactService(null);
+                if(!empty($data['account_id']&&$data['State']&&$data['Country']&&$data['Region'])) {
+                  $insertstatus=$contactObj->saveContactDetails($data);	
+                   if($insertstatus)
+                   {
+                     $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"inserted"
+							     	);
+							return json_encode($result);
+                   }
+                     else
+                     {
+                          	throw new ParentFinderException('updation_failed');
+                     }
+                }
+                 else{
+                    throw new ParentFinderException('null_argument_found');
+				    }
+			 }
+			 else{
+                     throw new ParentFinderException('key_not_valid');
+			    }
+		   }	    
+        }
+
+    /* Edit profile information  */    
+    public function editProfile(Request $request){
+    	$data['accounts_id']=verifyData($request->account_id);
+    	$data['profile_id']=verifyData($request->profile_id);
+    	$appObj=new UtilityService;	
+    	$countAccount=$appObj->getFamilystatus($data['accounts_id']);
+    	  
+        $data['firstNameSingle']=verifyData($request->PFfirstNameSingle); 
+        $data['DOB']=verifyData($request->DOB); 
+        $data['genderSingle'] = verifyData($request->PFgenderSingle);
+        $data['ethnicity']=verifyData($request->Ethnicity);
+        $data['education']=verifyData($request->Education);
+        $data['religion']=verifyData($request->Religion);
+        $data['occupation']=verifyData($request->Occupation);
+        $data['waiting']=verifyData($request->Waiting);
+        $data['faith']=verifyData($request->Faith);
+        $data['NoOfChildren']=verifyData($request->NoOfChildren);
+        $data['type']=verifyData($request->Type);
+        if(!empty($data['accounts_id']&&$data['profile_id']&&$data['firstNameSingle'])){
+           	if(verifyStringData($data['firstNameSingle']) == 1)
+           	{
+             $profileObj=new ProfileService(null);
+		     $updateStatus=$profileObj->updateProfile($data);
+             $childObj=new UtilityService(null);
+             $childStatus= $childObj->editChild($data);
+                if($countAccount>'1'){ 
+                 $data['profile_id']=$request->profile_id1;
+    	  	     $data['firstNameSingle']=verifyData($request->PFfirstNameSingle1); 
+                 $data['DOB']=verifyData($request->DOB1); 
+                 $data['genderSingle'] = verifyData($request->PFgenderSingle1);
+                 $data['ethnicity']=verifyData($request->Ethnicity1);
+                 $data['education']=verifyData($request->Education1);
+                 $data['religion']=verifyData($request->Religion1);
+                 $data['occupation']=verifyData($request->Occupation1);
+                 $data['waiting']=verifyData($request->Waiting);
+                 $data['faith']=verifyData($request->Faith);
+                   if(!empty($data['accounts_id']&&$data['profile_id']&&$data['firstNameSingle'])){
+                   	 if(verifyStringData($data['firstNameSingle']) == 1)
+                   	 {
+                    $profileObj=new ProfileService(null);
+                    $updateStatus=$profileObj->updateProfile($data);
+		             }
+		              else{
+                       throw new ParentFinderException('string_error');
+				        }
+				    }
+				     else
+				       {
+					     throw new ParentFinderException('null_argument_found');
+				        }
+    	        }
+    	    
+    	           if(($updateStatus) || ($childStatus)){
+                    $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"updated"
+							     	);
+							return json_encode($result);
+                    }
+                    else
+                    {
+                   	  throw new ParentFinderException('updation_failed');
+                      }
+
+            }
+             else
+                 {
+               	 throw new ParentFinderException('string_error');
+                 }
+        }
+          else{
+                   throw new ParentFinderException('null_argument_found');
+				  }
+    }
+
 
 }

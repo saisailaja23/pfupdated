@@ -145,7 +145,7 @@ class AccountRepository {
       try{
             $accountObj=new Account;
             $saveAccount=$accountObj->insert(
-                                        array('name'=>$this-name(),
+                                        array('name'=>$this->name(),
                                             'emailid'=>$this->emailId(),
                                             'username'=>$this->userName(),
                                             'status'=>$this->status(),
@@ -165,6 +165,5 @@ class AccountRepository {
     }
 
     
-        
     
 }

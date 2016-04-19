@@ -38,6 +38,23 @@ class LetterRepository {
         } 
    }
 
+
+
+ public function getSeo($slug){
+         try{
+
+            $letter=new Letter;
+           $letterDetails =$letter->where('slug', '=', $slug)
+                                   ->get();  
+            return $letterDetails;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+   }
+
+
+   
+
    public function getDefaultLettersByAccount($account_id){
         try{
             $letter=new Letter;
@@ -55,6 +72,7 @@ class LetterRepository {
             $letter=new Letter;
             $letterDetails =$letter->select('id')
                                     ->where('account_id', '=', $account_id)
+                                    ->orderBy('sort_order', 'asc')
                                    ->get();  
             return $letterDetails;
         }catch(\Exception $e){

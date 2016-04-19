@@ -16,6 +16,7 @@ use App\Repository\StateRepository;
 use App\Repository\ReligionRepository;
 use App\Repository\RegionRepository;
 use App\Repository\ChildRepository;
+use App\Repository\EprofileRepository;
 /**
  * Description of ParentService
 **/
@@ -36,7 +37,9 @@ class ProfileService {
     private $waitingId;
     private $waiting;  
     private $gender;
-    private $accountId;    
+    private $accountId;
+     private $creationDate;
+
 	
 	
     public function __construct($profileId) {
@@ -85,6 +88,10 @@ class ProfileService {
     public function getAccountId() {
         return $this->accountId;
     }   
+    
+    
+    
+
 
     
     public  function setFirstName($firstName) {
@@ -97,7 +104,7 @@ class ProfileService {
        $this->gender=$gender;
     } 
     public  function setAccountId($accountId) {
-       $this->$accountId=$accountId;
+       $this->accountId=$accountId;
     }
     public  function setStatus($status) {
        $this->status=$status;
@@ -107,7 +114,21 @@ class ProfileService {
     }
     public  function setModifiedAt($modifiedAt) {
        $this->modifiedAt=$modifiedAt;
-    }  
+    } 
+     public  function setEthnicityId($ethnicityId) {
+       $this->ethnicityId=$ethnicityId;
+    } 
+     public  function setEducationId($educationId) {
+       $this->educationId=$educationId;
+    } 
+
+      public  function setDOB($dob) {
+       $this->dob=$dob;
+    } 
+  public  function setReligionId($religionId) {
+       $this->religionId=$religionId;
+    } 
+ 
       	
 	
     /* Get a single profiles */
@@ -142,6 +163,7 @@ class ProfileService {
         }        
     }
 
+    /*Save Profile Details*/
     public function saveProfile(){
         try{
             $profileObj=new ProfileRepository();
@@ -156,8 +178,30 @@ class ProfileService {
              //Throwing Exception here
         }
     }  
+ public function updateProfile($data){
+        try{
+     
+            $profileObj=new ProfileRepository(null);
+            $profileObj->setAccountId($data['accounts_id']); 
+            $profileObj->setProfileId($data['profile_id']); 
+            $profileObj->setFirstName($data['firstNameSingle']);
+            $profileObj->setGender($data['genderSingle']);
+            $profileObj->setDOB($data['DOB']);   
+            $profileObj->setEthnicityId($data['ethnicity']);   
+            $profileObj->setReligionId($data['religion']); 
+            $profileObj->setOccupation($data['occupation']); 
+            $profileObj->setEducationId($data['education']);
+            $profileObj->setWaitingId($data['waiting']);
+            $profileObj->setFaithId($data['faith']);
+         
+            $updateStatus=$profileObj->updateProfile();
+            return $updateStatus;
 
-	
+        }catch(\Exception $e){
+             //Throwing Exception here
+        }
+    }  
+    
 	
 
    
