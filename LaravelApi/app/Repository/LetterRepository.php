@@ -25,7 +25,22 @@ class LetterRepository {
     }
     public  function setLetterId($letter_id) {
          $this->letter_id = $letter_id;
-    }   
+    }  
+     public  function setLabel($label) {
+         $this->label= $label;
+    }  
+     
+     public  function setDescription($description) {
+         $this->description= $description;
+    }  
+    public  function setSlug($slug) {
+         $this->slug= $slug;
+    }  
+    public  function setAccountid($accountid) {
+         $this->accountid= $accountid;
+    }  
+    
+    
     
    public function getLetters(){
          try{
@@ -106,8 +121,19 @@ class LetterRepository {
              //Add Exception here
       } 
    }
+
+  public function insertLetter()
+    {
+
+      $letterObj=new Letter;
+     $saveDetails=$letterObj->insert(
+                                        array('label'=>$this->label,
+                                          'description'=>$this->description,
+                                          'account_id'=>$this->accountid,
+                                          'slug'=>$this->slug
+                                         ) );
   
-   
+   }
 }
 
 
