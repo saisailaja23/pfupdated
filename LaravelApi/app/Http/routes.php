@@ -121,6 +121,8 @@ Route::get('/profile/basic/{username}','ProfileController@getBasicProfileApi');
 Route::post('/profile/contact/edit', 'ProfileController@editContact');
 Route::post('/profile/contact/add', 'ProfileController@postContact');
 Route::post('/profile/edit', 'ProfileController@editProfile');
+Route::post('/profile/letter/add', 'ProfileController@postLetter');
+
 
 
 
