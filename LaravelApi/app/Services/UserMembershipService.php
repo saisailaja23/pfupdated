@@ -36,9 +36,12 @@ class UserMembershipService{
     }   
     public  function setTransactionId($transactionId) {
            $this->transactionId = $transactionId;
-      }   
+    }   
     
     
+
+    public function saveMembership(){
+
   /*Save Membership*/
    public function saveMembership(){
       try{

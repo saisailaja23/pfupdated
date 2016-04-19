@@ -469,8 +469,11 @@ public function getSeoDetails($slug,$type){
     public function saveParentProfile($data){
         try{
             $accountObj=new AccountRepository(null);
+            //check for unique username
+            $sSalt = genRndSalt();
+            $password = encryptUserPwd($data['password'], $sSalt);
             $accountObj->setUserName($data['username']);
-            $accountObj->setPassword($data['password']);
+            $accountObj->setPassword();
             $accountObj->setEmailId($data['emailId']);
             $accountObj->setAgencyId($data['agencyId']);            
             $accountObj->setCreatedAt(getCurrentDateTime());
