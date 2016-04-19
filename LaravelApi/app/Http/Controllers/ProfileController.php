@@ -923,12 +923,14 @@ class ProfileController extends Controller
     }
 
 public function postLetter(Request $request){
-    	echo $data['account_id']=verifyData($request->account_id);
-          echo   $data['label']=verifyData($request->label);
-             $data['description']=verifyData($request->description);
-             $data['slug']=verifyData($request->slug);
-             $data['image']=verifyData($request->image);
-              $letterObj=new LetterService(null);
+    	$data['account_id']=verifyData($request->account_id);
+        $data['label']=verifyData($request->label);
+        $data['description']=verifyData($request->description);
+        $data['slug']=verifyData($request->slug);
+        $data['image']=verifyData($request->image);
+         $data['default']=verifyData($request->default);
+          $data['sort_order']=verifyData($request->sortorder);
+        $letterObj=new LetterService(null);
                 
                 $insertstatus=$letterObj->saveletterDetails($data);	
 }

@@ -66,6 +66,9 @@ class LetterService{
          $letter->setDescription($data['description']);
           $letter->setAccountid($data['account_id']);
            $letter->setSlug($data['slug']);
+              $letter->setImage($data['image']);
+                 $letter->setIsdefault($data['default']);
+                    $letter->setSortorder($data['sortorder']);
         $insertStatus=$letter->insertLetter();
     }
     
