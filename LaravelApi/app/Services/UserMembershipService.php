@@ -36,10 +36,10 @@ class UserMembershipService{
     }   
     public  function setTransactionId($transactionId) {
            $this->transactionId = $transactionId;
-      }   
+    }   
     
     
-   public function saveMembership(){
+    public function saveMembership(){
       try{
       		 $userMemberObj=new UserMembershipRepository($this->accountId);
       		 $accountObj=new AccountRepository($this->accountId);

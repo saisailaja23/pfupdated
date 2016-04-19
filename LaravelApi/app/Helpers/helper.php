@@ -97,4 +97,32 @@ function getCurrentDateTime(){
     $dateTime=date('Y-m-d H:i:s');
     return $dateTime;
 }
+
+// Generate Random Password
+function genRndPwd($iLength = 8, $bSpecialCharacters = true) {
+    $sPassword = '';
+    $sChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+
+    if ($bSpecialCharacters === true)
+        $sChars .= "!?=/&+,.";
+
+    srand((double) microtime() * 1000000);
+    for ($i = 0; $i < $iLength; $i++) {
+        $x = mt_rand(0, strlen($sChars) - 1);
+        $sPassword .= $sChars{$x};
+    }
+
+    return $sPassword;
+}
+
+
+// Generate Random Salt for Password encryption
+function genRndSalt() {
+    return genRndPwd(8, true);
+}
+
+// Encrypt User Password
+function encryptUserPwd($sPwd, $sSalt) {
+    return sha1(md5($sPwd) . $sSalt);
+}
  
