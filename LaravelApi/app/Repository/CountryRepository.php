@@ -28,6 +28,7 @@ class CountryRepository {
             $countryDetails =$countryObj->where('country_id', '=',$this->countryId)->first();
             return $countryDetails;
         }catch(\Exception $e){
+
              //Add Exception here
         }  
     }
@@ -43,5 +44,14 @@ class CountryRepository {
         }  
     }
      
-    
+     public function getCountryByName($country) {
+        try{
+            $countryObj=new Countries;
+            $countryDetails =$countryObj->where('country', '=',$country)->first();
+            return $countryDetails;
+        }catch(\Exception $e){
+           
+             //Add Exception here
+        }  
+    }
 }

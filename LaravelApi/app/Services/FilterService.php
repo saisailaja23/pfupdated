@@ -221,5 +221,38 @@ class FilterService {
            // throw new ParentFinderException('membership_not_found');
         } 
     }
+
+    public function getProfilesByCountry($country){ 
+        try {
+        $countryObj=new CountryRepository(null); 
+        $country=$countryObj->getCountryByName($country);
+         if(!empty($country)){
+           $countryId=   $country->country_id;
+         $countryObj1=new ContactRepository(null); 
+         $accountDetails=$countryObj1->getContactByCountry($countryId);
+         if(count($accountDetails)!=0)
+         {
+         foreach ($accountDetails as $accountDetail) {
+          $accountIds[]= $accountDetail->Account_id;
+            }
+        return $accountIds;
+        }
+       else
+       {
+        throw new ParentFinderException('no-profiles-found');
+        }
+     } 
+        else{
+           
+         throw new ParentFinderException('countries-not-found');
+         }
+      }
+        catch (Exception $e) {
+           
+           //Add Exception here 
+        }
+    }
+
+  
     
 }

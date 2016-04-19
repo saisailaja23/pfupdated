@@ -326,5 +326,37 @@ class UtilityService {
      
    }
 
+    public function getFamilystatus($account_id){
+      try
+      {
+       $profile=new ProfileRepository(null);  
+        $countAccount=$profile->getFStatus($account_id);
+        return $countAccount;
+      }
+
+     catch (\Exception $e) {
+            //throwing default exceptions
+         }
+    
+    }
+    public function editChild($data){
+      try
+      {
+
+       $child=new ChildRepository(null);  
+       $child->setType($data['type']);
+       $child->setNoOfChildren($data['NoOfChildren']);
+       $child->setAccountId($data['accounts_id']);
+       $status=$child->updateChild();
+        return $status;
+      }
+
+     catch (\Exception $e) {
+            //throwing default exceptions
+         }
+    
+    }
+    
+
     
 }

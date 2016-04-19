@@ -11,10 +11,10 @@ class ContactRepository {
   private $regionId; 
   private $countryId; 
   private $stateId;
-   private $city; 
-    private $zip;
-    private $phonenumber; 
-    private $address1;
+  private $city; 
+  private $zip;
+  private $phonenumber; 
+  private $address1;
 	
     public function __construct($accountId) {
          $this->setProfileId($accountId);
@@ -94,6 +94,23 @@ class ContactRepository {
              //Add Exception here
         }  
     } 
+
+      public function getContactByCountry($countryId){
+      
+        try{
+        
+            $contactObj=new ContactDetails;
+            $contcatDetails =$contactObj->where('Country', '=',$countryId)
+                                ->get(); 
+                                return $contcatDetails;
+        }
+        catch(\Exception $e){
+         
+             //Add Exception here
+        }  
+      } 
+
+
 
     /*  
         *   Save Contact details On registration

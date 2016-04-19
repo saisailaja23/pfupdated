@@ -234,7 +234,12 @@ use Exception;
                 $error['status']=204;
                  $error['title']='null argument found';
                  $error['detail']='null argument found';
-                 break;          
+                 break;  
+            case 'string_error' :
+                $error['status']=204;
+                 $error['title']='Invalid string argument';
+                 $error['detail']='Invalid string argument';
+                 break;            
             default :
                 $error['status']=500;
                 $error['title']='Not Found';

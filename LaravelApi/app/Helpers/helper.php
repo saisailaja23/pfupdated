@@ -95,6 +95,10 @@ return $result;
 function verifyZip($data ) {
         return (bool) preg_match( "/^[0-9]{0,6}$/", $data );
 }
+function verifyStringData($data ) {
+        return (bool) preg_match( "/^[A-z ]+$/", $data );
+}
+
 
 
 

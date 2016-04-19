@@ -8,6 +8,9 @@ use App\Models\Child;
 class ChildRepository {   
     
 	private $child; 
+    private $type; 
+    private $accountId;
+    private $children;
 	
     public function __construct($child) {
          $this->setChild($child);
@@ -18,8 +21,18 @@ class ChildRepository {
     }
     public  function setChild($child) {
          $this->child = $child;
-    }    
-    
+    } 
+
+    public  function setType($type) {
+         $this->type = $type;
+    } 
+    public  function setAccountId($accountId) {
+         $this->accountId= $accountId;
+    } 
+
+     public  function setNoOfChildren($children) {
+         $this->children= $children;
+    } 
   
     /* Get Waiting */
     public function getChildDetails() {
@@ -34,6 +47,21 @@ class ChildRepository {
         }  
     }
     
-        
+    public function updateChild() {
+        try{
+            $childObj=new Child;
+            $status=$childObj->where('Accounts_id',$this->accountId)
+                               ->update(['Type'=>$this->type,
+                                          'Number_of_childern'=>$this->children
+                                         ]
+                                            
+                                    );
+              
+            return $status;
+        }catch(\Exception $e){
+          
+             //Add Exception here
+        }  
+    }    
     
 }

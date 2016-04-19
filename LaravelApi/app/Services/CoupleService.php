@@ -31,13 +31,13 @@ class CoupleService {
    
 		
     public function __construct($accountId) {
-       $this->setAccoountId($accountId);      
+       $this->setAccountId($accountId);      
     }
     
     public  function getAccoountId() {
        return $this->accountId;
     }
-    public  function setAccoountId($accountId) {
+    public  function setAccountId($accountId) {
          $this->accountId = $accountId;
     } 
 
@@ -529,16 +529,5 @@ public function getSeoDetails($slug,$type){
                 //Throwing  exceptions if any
         }
      } 
-    public function updateParentProfile($data){
-            $accountObj=new AccountRepository(null);
-            $accountObj->setUserName($data['username']);
-            $accountObj->setPassword($data['password']);
-            $accountObj->setEmailId($data['emailId']);
-            $accountObj->setAgencyId($data['agencyId']);            
-            $accountObj->setCreatedAt(getCurrentDateTime());
-            $accountObj->setModifiedAt(getCurrentDateTime());
-            $accountObj->setStatus(1);    
-            $accountObj->setRoleId($data['profileType']);      
-    }
- 
+    
 }
