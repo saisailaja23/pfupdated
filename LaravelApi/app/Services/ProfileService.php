@@ -104,7 +104,7 @@ class ProfileService {
        $this->gender=$gender;
     } 
     public  function setAccountId($accountId) {
-       $this->$accountId=$accountId;
+       $this->accountId=$accountId;
     }
     public  function setStatus($status) {
        $this->status=$status;
@@ -114,7 +114,21 @@ class ProfileService {
     }
     public  function setModifiedAt($modifiedAt) {
        $this->modifiedAt=$modifiedAt;
-    }  
+    } 
+     public  function setEthnicityId($ethnicityId) {
+       $this->ethnicityId=$ethnicityId;
+    } 
+     public  function setEducationId($educationId) {
+       $this->educationId=$educationId;
+    } 
+
+      public  function setDOB($dob) {
+       $this->dob=$dob;
+    } 
+  public  function setReligionId($religionId) {
+       $this->religionId=$religionId;
+    } 
+ 
       	
 	
     /* Get a single profiles */
@@ -164,7 +178,29 @@ class ProfileService {
              //Throwing Exception here
         }
     }  
+ public function updateProfile($data){
+        try{
+     
+            $profileObj=new ProfileRepository(null);
+            $profileObj->setAccountId($data['accounts_id']); 
+            $profileObj->setProfileId($data['profile_id']); 
+            $profileObj->setFirstName($data['firstNameSingle']);
+            $profileObj->setGender($data['genderSingle']);
+            $profileObj->setDOB($data['DOB']);   
+            $profileObj->setEthnicityId($data['ethnicity']);   
+            $profileObj->setReligionId($data['religion']); 
+            $profileObj->setOccupation($data['occupation']); 
+            $profileObj->setEducationId($data['education']);
+            $profileObj->setWaitingId($data['waiting']);
+            $profileObj->setFaithId($data['faith']);
+         
+            $updateStatus=$profileObj->updateProfile();
+            return $updateStatus;
 
+        }catch(\Exception $e){
+             //Throwing Exception here
+        }
+    }  
     
 	
 

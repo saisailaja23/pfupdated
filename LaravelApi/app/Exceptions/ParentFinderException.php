@@ -225,6 +225,21 @@ use Exception;
                  $error['title']='No Profile Type Found';
                  $error['detail']='No Profile Type Found';
                  break;
+            case 'updation_failed' :
+                $error['status']=204;
+                 $error['title']='Updation Failed';
+                 $error['detail']='Updation Failed';
+                 break;
+            case 'null_argument_found' :
+                $error['status']=204;
+                 $error['title']='null argument found';
+                 $error['detail']='null argument found';
+                 break;  
+            case 'string_error' :
+                $error['status']=204;
+                 $error['title']='Invalid string argument';
+                 $error['detail']='Invalid string argument';
+                 break;            
             default :
                 $error['status']=500;
                 $error['title']='Not Found';

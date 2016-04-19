@@ -108,11 +108,14 @@ class ContactService {
     */
 
      /* Add Contact Details */
-     public function saveContactDetails(){       
+     public function saveContactDetails($data){       
       try{
-            $contactObj=new ContactDetails;
-            $contactObj->
-            $saveContact=$contactObj->saveContactDetails();
+        $contacts=new ContactRepository(null);
+        $contacts->setProfileId($data['account_id']);
+        $contacts->setCountryId($data['Country']);
+        $contacts->setStateId($data['State']);
+        $contacts->setRegionId($data['Region']);
+            $saveContact=$contacts->saveContactDetails();
             return $saveContact;
       } 
       catch(\Exception $e){
@@ -121,9 +124,24 @@ class ContactService {
       }
     } 
 
-    public function updateg($account_id)
+    public function updateContact($data)
     {
- $contacts=new ContactRepository($this->accountId);
+      try {
+          
+         $contacts=new ContactRepository(null);
+         $contacts->setProfileId($data['account_id']);
+         $contacts->setCountryId($data['Country']);
+         $contacts->setStateId($data['State']);
+         $contacts->setRegionId($data['Region']);
+         $contacts->setCity($data['City']);
+         $contacts->setZip($data['Zip']);
+         $contacts->setPhonenumber($data['phonenumber']);
+         $contacts->setAddress1($data['address1']);
+         $updateStatus=$contacts->updateContacts();
+           return $updateStatus;
+            } catch (Exception $e) {
+           //throw new ParentFinderException('contact_not_found',$e->getMessage());
+      }
     }
     
 }

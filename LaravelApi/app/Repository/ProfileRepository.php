@@ -18,6 +18,13 @@ class ProfileRepository {
     private $status;
     private $createdAt;
     private $modifiedAt;
+    private $dob;
+    private $ethnicityId;
+    private $educationId;
+    private $religionId;
+    private $occupationId;
+    private $waitingId;
+    private $faithId;
 
     public function __construct($profileId) {
          $this->setProfileId($profileId);
@@ -73,6 +80,31 @@ class ProfileRepository {
     public  function setModifiedAt($modifiedAt) {
        $this->modifiedAt=$modifiedAt;
     }  
+
+    public  function setEthnicityId($ethnicityId) {
+       $this->ethnicityId=$ethnicityId;
+    } 
+     public  function setEducationId($educationId) {
+       $this->educationId=$educationId;
+    } 
+
+      public  function setDOB($dob) {
+       $this->dob=$dob;
+    } 
+   public  function setReligionId($religionId) {
+       $this->religionId=$religionId;
+    } 
+     public  function setOccupation($occupation) {
+       $this->occupation=$occupation;
+    } 
+
+   public  function setWaitingId($waitingId) {
+       $this->waitingId=$waitingId;
+    } 
+   public  function setFaithId($faithId) {
+       $this->faithId=$faithId;
+    } 
+
     
     /*Get Couple Profile */
      public  function getCouple($accountId){   
@@ -271,5 +303,44 @@ class ProfileRepository {
              //Throwing Exception here
         } 
     }
+     public function updateProfile(){
+        try{
+           
+           $profiles=new Profiles;
+           $updateprofile=$profiles->where('profile_id', $this->profileId)
+                               ->update(['first_name'=>$this->firstName,
+                                         
+                                            'gender'=>$this->gender,
+                                            'dob'=>$this->dob,
+                                            'ethnicity_id'=>$this->ethnicityId,
+                                            'education_id'=>$this->educationId,
+                                            'religion_id'=>$this->religionId,
+                                            'occupation'=>$this->occupation,
+                                            'waiting_id'=>$this->waitingId,
+                                            'faith_id'=>$this->faithId
+                                            ]
+                                            
+                                    );
+              return $updateprofile;
+
+        }catch(\Exception $e){
+             //Throwing Exception here
+        } 
+    }
+    public function  getFStatus($account_id)
+    {
+        try{
+        $profiles=new Profiles;
+        $countAccount=$profiles->where('accounts_id', $account_id)
+                        ->count();
+                        return $countAccount;
+         }
+              
+             catch(\Exception $e){
+             //Throwing Exception here
+           } 
+    }
+
+     
 
 }

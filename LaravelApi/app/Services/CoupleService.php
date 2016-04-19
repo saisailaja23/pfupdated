@@ -31,13 +31,13 @@ class CoupleService {
    
 		
     public function __construct($accountId) {
-       $this->setAccoountId($accountId);      
+       $this->setAccountId($accountId);      
     }
     
     public  function getAccoountId() {
        return $this->accountId;
     }
-    public  function setAccoountId($accountId) {
+    public  function setAccountId($accountId) {
          $this->accountId = $accountId;
     } 
 
@@ -528,9 +528,6 @@ public function getSeoDetails($slug,$type){
         }catch(\Exception $e){
                 //Throwing  exceptions if any
         }
-       
-        
-
-    } 
- 
+     } 
+    
 }

@@ -43,6 +43,8 @@ Route::get('/profiles/state/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/name/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/child-preference/{any}', 'ProfileController@getProfileApi');
 Route::get('/profiles/sort/{any}', 'ProfileController@getProfileApi');
+Route::get('/profiles/country/{country}', 'ProfileController@getProfileApi');
+
 
 Route::get('/flipbook/{any}', 'ProfileController@getProfileApi');
 Route::get('/pdfprofile/{any}', 'ProfileController@getProfileApi');
@@ -116,8 +118,9 @@ Route::get('/state/{country}','ProfileController@getLocationApi');
 Route::get('/region','ProfileController@getLocationApi');
 Route::get('/profile/basic/{username}','ProfileController@getBasicProfileApi');
 
-Route::get('/profile/contact/edit', 'ProfileController@editContactApi');
-
+Route::post('/profile/contact/edit', 'ProfileController@editContact');
+Route::post('/profile/contact/add', 'ProfileController@postContact');
+Route::post('/profile/edit', 'ProfileController@editProfile');
 
 
 
