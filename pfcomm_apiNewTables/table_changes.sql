@@ -44,3 +44,4 @@ INSERT INTO `app_users` (`website`, `user_key`) VALUES ('ctpf01.parentfinder.com
 ALTER TABLE `account` ADD `Profile_no` INT NOT NULL AFTER `agency_id`, ADD `Profile_year` VARCHAR(225) NOT NULL AFTER `Profile_no`, ADD `ZOHO_ID` VARCHAR(225) NOT NULL AFTER `Profile_year`;
 ALTER TABLE `Profiles` ADD `occupation_id` INT NOT NULL AFTER `religion_id`;
 ALTER TABLE `Profiles` CHANGE `occupation_id` `occupation` VARCHAR(40) CHARACTER SET latin1 COLLATE latin1_swedish_ci NOT NULL;
+
