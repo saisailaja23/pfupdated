@@ -31,13 +31,13 @@ class CoupleService {
    
 		
     public function __construct($accountId) {
-       $this->setAccoountId($accountId);      
+       $this->setAccountId($accountId);      
     }
     
     public  function getAccoountId() {
        return $this->accountId;
     }
-    public  function setAccoountId($accountId) {
+    public  function setAccountId($accountId) {
          $this->accountId = $accountId;
     } 
 
@@ -70,6 +70,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Second profiles */
     function getParentprofile2() {
         try{
          $profileId = $this->getProfileId();
@@ -85,6 +86,7 @@ class CoupleService {
         } 
     }
 
+    /* Get profiles Id*/
     private function getProfileId(){
         try{
         $accountObj=new AccountRepository($this->accountId);
@@ -109,6 +111,7 @@ class CoupleService {
         return $parentId;       
     }
 
+    /* Get Account Details*/
     public function getAccountDetails() {
         try{
         $accountObj=new AccountRepository($this->accountId);
@@ -123,6 +126,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Contact Details */
     public function getContactDetails(){
         $contactDetails='';
         try{
@@ -140,6 +144,7 @@ class CoupleService {
         } 
     } 
 
+    /* Get Journal Details */
     public function getJournalDetails(){
         $journalDetails='';
         try{
@@ -164,6 +169,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Album Details */
      public function getAlbumDetails(){
         try{
         $albumObj=new AlbumsRepository(null);
@@ -187,6 +193,7 @@ class CoupleService {
         } 
     }
 
+    /* Get Album Details By AlbumId */
      public function getAlbumDetailsByAlbumId($albumid,$type){
         try{
         $albumObj=new AlbumsRepository(null);
@@ -208,23 +215,17 @@ class CoupleService {
         } 
     }
 
+    /* Get letter Details */
     public function getLetterDetails(){
          $letterDetails='';
         try{
         $letterObj=new LetterRepository(null);
-        $letterIds=$letterObj->getSortedLetters($this->accountId);
-        if(count($letterIds)){
-            foreach($letterIds as $letterId){
-            $letterObj=new LetterService($letterId->letter_id);
-            $letterDetails[]=$letterObj->getLetter();        
-        }
-            
-        }else{
+        //$letterIds=$letterObj->getSortedLetters($this->accountId);
+
             $letterIds=$letterObj->getLettersByAccount($this->accountId);
             foreach($letterIds as $letterId){
             $letterObj=new LetterService($letterId->id);
             $letterDetails[]=$letterObj->getLetter();        
-        }
         }       
         
         return $letterDetails;
@@ -234,6 +235,58 @@ class CoupleService {
         } 
     }
 
+
+
+
+public function getSeoDetails($slug,$type){
+
+            if($type=='letter'){
+             $letterDetails='';
+             try{
+             $letterObj=new LetterRepository(null);
+             $letterIds=$letterObj->getSeo($slug);
+             if(count($letterIds)){
+             foreach($letterIds as $letterId){
+             $letterObj=new LetterService($letterId->id);
+             $letterDetails[]=$letterObj->getLetter();        
+             
+          }
+            
+      
+        }       
+        
+        return $letterDetails;
+    }
+    catch(\Exception $e){
+             //Add Exception here
+        } 
+
+
+    }
+        else
+             {
+              $journalDetails='';
+              try{
+              $journalObj=new JournalRepository(null);
+              $journalIds=$journalObj->getJournalSeo($slug);
+              if(count($journalIds)){
+                foreach($journalIds as $journalId){
+                 $journalObj=new JournalService($journalId->PostID);
+                $journalDetails[]=$journalObj->getJournal();        
+            }
+        }
+            return $journalDetails;
+         }catch(\Exception $e){
+         // throw new ParentFinderException('journal_not_found',$e->getMessage());
+        } 
+  }
+
+}
+
+
+
+
+    /* Get Video Details */
 
     public function getVideoDetails(){
         $albumout = '';
@@ -254,6 +307,7 @@ class CoupleService {
 
     }
 
+    /* Get HomeVideo Details */
     public function getHomeVideoDetails(){
         try{
             $albumObj=new VideoRepository(null);
@@ -277,6 +331,7 @@ class CoupleService {
     }
 
 
+    /* Get Video Details ById*/
     public function getVideoDetailsById($videoid){
         try{
             $albumObj=new VideoRepository(null);
@@ -302,7 +357,7 @@ class CoupleService {
         }     
     }
 
-
+    /* Get FlipBook Details */
     public function getFlipbook(){  
         try{
         $profile=new EprofileRepository($this->accountId);  
@@ -321,8 +376,23 @@ class CoupleService {
              //Add Exception here
         } 
     }
+     public function getEpub()
+     {
+        try {
+        $profile=new EprofileRepository($this->accountId);  
+        $Epub=$profile->getEpubDetails();
+        if(!empty($Epub))
+        {
+         return $Epub;    
+        }
+        
+        } catch (Exception $e) {
+            //Add Exception here
+        }
+    
+     }
 
-
+    /* Get Pdf Profile */
     public function getPdf($type){
         try{
             $profile=new PdfRepository($this->accountId);  
@@ -343,6 +413,7 @@ class CoupleService {
         } 
     }
 
+    /* Get ChildPreference Details */
     public function getChildPreferences(){
         try{
             $preferences=new ChildPreferService($this->accountId);
@@ -361,6 +432,7 @@ class CoupleService {
         }
     }
 
+    /* Get Agency Details */
    public function getAgencyDetails(){
         try{
             $agencyObj=new AgencyService(null);
@@ -459,9 +531,6 @@ class CoupleService {
         }catch(\Exception $e){
                 //Throwing  exceptions if any
         }
-       
-        
-
-    } 
- 
+     } 
+    
 }

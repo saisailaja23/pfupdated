@@ -15,8 +15,7 @@ use App\Services\VoucherService;
 use App\Services\UserMembershipService;
 use App\Services\ProfileService;
 use App\Services\ContactService;
-
-
+use App\Services\LetterService;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -174,7 +173,6 @@ class ProfileController extends Controller
 	     		}
 				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
      	}else{
-     		echo "s";
      		throw new ParentFinderException('no-profiles-found');
      	}
     		
@@ -513,8 +511,7 @@ class ProfileController extends Controller
 			}
 		}
 
-
-    /* country,state,region listing */
+    /* Listing country,state,region  */
 
     public function getLocationApi(){
 
@@ -759,7 +756,6 @@ class ProfileController extends Controller
         }
 
     }
-
     public function editContact(Request $request){
      	  
         $data['account_id']=verifyData($request->accountid);
@@ -803,7 +799,11 @@ class ProfileController extends Controller
 			    }
 		 }
 						
-    }  
+    } 
+   /*   *Post Contact		
+		* @param  Request $request
+     	* @return array
+     */
 
         public function postContact(Request $request){
           $data['account_id']=verifyData($request->accountid);
@@ -839,8 +839,7 @@ class ProfileController extends Controller
 			    }
 		   }	    
         }
-
-    /* Edit profile information  */    
+    /* Edit profile information  */
     public function editProfile(Request $request){
     	$data['accounts_id']=verifyData($request->account_id);
     	$data['profile_id']=verifyData($request->profile_id);
@@ -914,6 +913,16 @@ class ProfileController extends Controller
                    throw new ParentFinderException('null_argument_found');
 				  }
     }
+public function postLetter(Request $request){
+    	echo $data['account_id']=verifyData($request->account_id);
+          echo   $data['label']=verifyData($request->label);
+             $data['description']=verifyData($request->description);
+             $data['slug']=verifyData($request->slug);
+             $data['image']=verifyData($request->image);
+              $letterObj=new LetterService(null);
+                
+                $insertstatus=$letterObj->saveletterDetails($data);	
+}
 
 
 }

@@ -59,7 +59,15 @@ class LetterService{
         } 
     }
 
+    public function saveletterDetails($data){       
     
+        $letter=new LetterRepository(null);
+        $letter->setLabel($data['label']);
+         $letter->setDescription($data['description']);
+          $letter->setAccountid($data['account_id']);
+           $letter->setSlug($data['slug']);
+        $insertStatus=$letter->insertLetter();
+    }
     
 }
 
