@@ -164,6 +164,39 @@ class AccountRepository {
       }
     }
 
+       public function checkEmailuser($email){
+    
+     try{
+            $accountObj=new Account;
+            $emailDetails =$accountObj
+                                ->where('emailid','=',$email)
+                                ->first();
+           return $emailDetails;
+        }catch(\Exception $e){
+            //Add Exception here
+        } 
+
+
+      }
+
+    public function updatePassword($account_id,$password,$salt)
+    {
+      try{
+            $accountObj=new Account;
+            $updateDetails=$accountObj->where('account_id', $account_id)
+                               ->update(['password'=>$password,
+                                         'salt'=>$salt
+                                         ]);
+           return $updateDetails;
+          }catch(\Exception $e){
+            //Add Exception here
+          } 
+
+    } 
+
+
+   
+
     
     
 }

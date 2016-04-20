@@ -923,6 +923,43 @@ public function postLetter(Request $request){
                 
                 $insertstatus=$letterObj->saveletterDetails($data);	
 }
+		
+
+		 /*   *forgot Password		
+		* @param  Request $request
+     	* @return array
+     	*/
+		public function forgotPassword(Request $request){
+
+			$data['mail_id']=verifyData($request->email_id);
+			$appObj=new UtilityService;
+			if(!empty($data['mail_id'])){
+				if(emailVerification($data['mail_id']) == 1){
+					$emailcheck=$appObj->emailCheck($data['mail_id']);	
+					if($emailcheck){
+						$result=array(
+	    					 "status"=>"201",
+							  "Message"=>"Mail Send",
+							  "Mail Status" =>1
+							     	);
+					}else{
+						$result=array(
+	    					 "status"=>"201",
+							  "Message"=>"Mail Not Send",
+							  "Mail Status" =>0
+							     	);
+					}
+					return json_encode($result);
+				}
+				else{
+					throw new ParentFinderException('email_error');
+					}
+			}
+			else{
+				throw new ParentFinderException('null_argument_found');
+				}
+
+		}
 
 
 }
