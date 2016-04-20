@@ -23,6 +23,7 @@ use App\Exceptions\ParentFinderException;
 use App\Repository\AppUserRepository;
 use App\Repository\ProfileTypeRepository;
 use App\Repository\AccountRepository;
+use App\Repository\EmailTemplatesRepository;
 /**
  * Description of AccountService
 **/
@@ -364,7 +365,46 @@ class UtilityService {
          }
     
     }
-    
+
+
+    public function emailCheck($email)
+    {
+        try
+      {
+
+         $emailobj=new AccountRepository(null);  
+         $emailresult = $emailobj->checkEmailuser($email);
+         if(!empty($emailresult)){
+            $sPwd = genRndPwd();
+            $sSalt = genRndSalt();
+            $langId = 0;
+            $password = encryptUserPwd($sPwd, $sSalt);
+            $updatepassword = $emailobj->updatePassword($emailresult->account_id,$password,$sSalt);
+              if($updatepassword == 1){
+                $emailtemplateobj=new EmailTemplatesRepository(null);
+                $template =  $emailtemplateobj->getEmailTemplate('t_Forgot',$langId);
+                $mailsend = SendMail($email,$template->Subject,$template->Body);
+                if($mailsend)
+                {
+                  $result =1;
+                }
+                else{
+                  $result =0;
+                }
+               return $result; 
+              }
+         }else{
+              throw new ParentFinderException('email_not_found');
+        }
+          return $status;
+      }
+
+        catch (\Exception $e) {
+            //throwing default exceptions
+        }
+
+    } 
+
 
     
 }

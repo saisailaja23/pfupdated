@@ -239,7 +239,17 @@ use Exception;
                 $error['status']=204;
                  $error['title']='Invalid string argument';
                  $error['detail']='Invalid string argument';
-                 break;
+                 break; 
+             case 'email_not_found' :
+                $error['status']=204;
+                 $error['title']='Email Not Found';
+                 $error['detail']='The email address you have entered does not exist';
+                 break;  
+            case 'email_error' :
+                $error['status']=204;
+                 $error['title']='Email address is not valid';
+                 $error['detail']='Email address is not valid';
+                 break;           
             case 'insertion_failed' :
                 $error['status']=204;
                  $error['title']='Insertion Failed';

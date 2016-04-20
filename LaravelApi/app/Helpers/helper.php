@@ -140,3 +140,27 @@ function encryptUserPwd($sPwd, $sSalt) {
     return sha1(md5($sPwd) . $sSalt);
 }
  
+    function emailVerification($email){
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+             $result ="0";
+        }else{
+             $result ="1";
+        }
+
+        return $result;
+
+    }
+
+    function SendMail($to,$subject,$message){
+         $headers = 'From: webmaster@parentfinder.com' . "\r\n" .
+        'Reply-To: webmaster@parentfinder.com' . "\r\n" .
+        'X-Mailer: PHP/' . phpversion();
+
+        $send = mail($to, $subject, $message, $headers);
+            if($send)
+            {
+             $result ="1";
+            }else{
+             $result ="0";
+            }
+    }
