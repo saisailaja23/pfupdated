@@ -115,7 +115,6 @@ class ContactRepository {
     /*  
         *   Save Contact details On registration
         *   @return boolean $saveContact
-    *       
     */
     public function saveContactDetails(){       
       try{
@@ -135,7 +134,12 @@ class ContactRepository {
       }
     } 
 
-
+    
+    /*  
+        *   Update Contact details 
+        *   @return boolean $updateDetails
+   
+    */
     public function updateContacts()
     {
 

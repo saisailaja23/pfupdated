@@ -251,7 +251,7 @@ class UtilityService {
 
         } 
     }
-
+    /* Get country details */
     public function getCountry(){
       try{
         
@@ -272,7 +272,7 @@ class UtilityService {
           //throwing default exceptions
         } 
     }
-  
+    /* Get State BYId*/
     public function getStatesByCountryId($country_id)
     {
  
@@ -295,7 +295,7 @@ class UtilityService {
       } 
 
     }
-
+    /* Get Region Details*/
     public function getRegionDetails()
     {
   
@@ -314,7 +314,7 @@ class UtilityService {
             //throwing default exceptions
          }
     } 
-
+    /*Get Email By AccountId */
     public function getEmailById($account_id)
     {
       try{
@@ -326,7 +326,7 @@ class UtilityService {
          }
      
    }
-
+    /* Get Family Status single or couple*/
     public function getFamilystatus($account_id){
       try
       {
@@ -340,6 +340,14 @@ class UtilityService {
          }
     
     }
+
+    /* 
+      *   Edit Child Details 
+        
+        *   @param  Request $request
+        *   @return boolean $insertStatus
+
+    */
     public function editChild($data){
       try
       {

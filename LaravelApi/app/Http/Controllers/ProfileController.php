@@ -16,6 +16,7 @@ use App\Services\UserMembershipService;
 use App\Services\ProfileService;
 use App\Services\ContactService;
 use App\Services\LetterService;
+use App\Services\PdfService;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -756,6 +757,12 @@ class ProfileController extends Controller
         }
 
     }
+    /*  *Edit Contact Information
+        * @param  Request $request
+     	* @return array
+
+
+     */
     public function editContact(Request $request){
      	  
         $data['account_id']=verifyData($request->accountid);
@@ -827,7 +834,7 @@ class ProfileController extends Controller
                    }
                      else
                      {
-                          	throw new ParentFinderException('updation_failed');
+                          	throw new ParentFinderException('insertion_failed');
                      }
                 }
                  else{
@@ -839,14 +846,21 @@ class ProfileController extends Controller
 			    }
 		   }	    
         }
-    /* Edit profile information  */
+    /* *Edit profile information  
+       * @param  Request $request
+       * @return array
+
+
+    */
     public function editProfile(Request $request){
     	$data['accounts_id']=verifyData($request->account_id);
     	$data['profile_id']=verifyData($request->profile_id);
-    	$appObj=new UtilityService;	
-    	$countAccount=$appObj->getFamilystatus($data['accounts_id']);
-    	  
-        $data['firstNameSingle']=verifyData($request->PFfirstNameSingle); 
+    	if($request->user_key && $request->url){
+			$appObj=new UtilityService;			
+			$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+			if($app_key==1){
+    	    $countAccount=$appObj->getFamilystatus($data['accounts_id']);
+    	$data['firstNameSingle']=verifyData($request->PFfirstNameSingle); 
         $data['DOB']=verifyData($request->DOB); 
         $data['genderSingle'] = verifyData($request->PFgenderSingle);
         $data['ethnicity']=verifyData($request->Ethnicity);
@@ -912,7 +926,45 @@ class ProfileController extends Controller
           else{
                    throw new ParentFinderException('null_argument_found');
 				  }
+		}
+         else{
+				throw new ParentFinderException('key_not_valid');
+			    }
+	}
+
     }
+    /* *Post Letter
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function postLetter(Request $request){
+    	$data['account_id']=verifyData($request->account_id);
+        $data['label']=verifyData($request->label);
+        $data['description']=verifyData($request->description);
+        $data['slug']=verifyData($request->slug);
+        $data['image']=verifyData($request->image);
+        $data['isdefault']=verifyData($request->isdefault);
+        if(!empty($data['account_id']&&$data['label'])){
+           $letterObj=new LetterService(null);
+           $insertstatus=$letterObj->saveletterDetails($data);	
+           if($insertstatus){
+                     $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"inserted"
+							     	);
+							return json_encode($result);
+            }
+             else
+                {
+                     throw new ParentFinderException('insertion_failed');
+                 }
+        } 
+        else{
+               throw new ParentFinderException('null_argument_found');
+               }
+    }
+
 public function postLetter(Request $request){
     	echo $data['account_id']=verifyData($request->account_id);
           echo   $data['label']=verifyData($request->label);
@@ -961,5 +1013,27 @@ public function postLetter(Request $request){
 
 		}
 
+     /* *Delete Pdf
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function deletePdf(Request $request){
+ 	     $data=verifyData($request->template_userid);
+         $pdfObj=new PdfService(null);
+         if($deleteStatus=$pdfObj->deletePdf($data)){
+                     $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"deleted"
+							     	);
+							return json_encode($result);
+            }
+             else
+                {
+
+                     throw new ParentFinderException('deletion_failed');
+                 }	
+
+    }
 
 }

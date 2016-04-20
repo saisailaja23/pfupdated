@@ -124,6 +124,8 @@ Route::post('/profile/edit', 'ProfileController@editProfile');
 
 Route::post('/profile/letter/add', 'ProfileController@postLetter');
 Route::post('/forgotpassword', 'ProfileController@forgotPassword');
+Route::post('/profile/pdf/delete', 'ProfileController@deletePdf');
+
 
 
 

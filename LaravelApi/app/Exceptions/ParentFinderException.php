@@ -250,6 +250,16 @@ use Exception;
                  $error['title']='Email address is not valid';
                  $error['detail']='Email address is not valid';
                  break;           
+            case 'insertion_failed' :
+                $error['status']=204;
+                 $error['title']='Insertion Failed';
+                 $error['detail']='Insertion Failed';
+                 break; 
+            case 'deletion_failed' :
+                $error['status']=204;
+                 $error['title']='Deletion Failed';
+                 $error['detail']='Deletion Failed';
+                 break;                  
             default :
                 $error['status']=500;
                 $error['title']='Not Found';

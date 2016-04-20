@@ -178,6 +178,13 @@ class ProfileService {
              //Throwing Exception here
         }
     }  
+
+
+    /*  
+        *   Update profile details 
+        *   @return boolean $updateStatus
+    *       
+    */
  public function updateProfile($data){
         try{
      
