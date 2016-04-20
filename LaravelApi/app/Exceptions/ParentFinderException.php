@@ -239,7 +239,12 @@ use Exception;
                 $error['status']=204;
                  $error['title']='Invalid string argument';
                  $error['detail']='Invalid string argument';
-                 break;            
+                 break;
+            case 'insertion_failed' :
+                $error['status']=204;
+                 $error['title']='Insertion Failed';
+                 $error['detail']='Insertion Failed';
+                 break;               
             default :
                 $error['status']=500;
                 $error['title']='Not Found';

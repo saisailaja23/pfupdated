@@ -40,6 +40,16 @@ class LetterRepository {
          $this->accountid= $accountid;
     }  
     
+     public  function setImage($image) {
+         $this->image= $image;
+    }  
+     public  function setSortorder($sortorder) {
+         $this->sortorder= $sortorder;
+    }  
+     public  function setIsdefault($isdefault) {
+         $this->isdefault= $isdefault;
+    }  
+    
     
     
    public function getLetters(){
@@ -121,17 +131,29 @@ class LetterRepository {
              //Add Exception here
       } 
    }
-
+  
+    /*  
+        *   Save Lettere details 
+        *   @return boolean $status
+    *       
+    */
   public function insertLetter()
     {
-
+     try{
       $letterObj=new Letter;
-     $saveDetails=$letterObj->insert(
-                                        array('label'=>$this->label,
+      $status=$letterObj->insert(array('label'=>$this->label,
                                           'description'=>$this->description,
                                           'account_id'=>$this->accountid,
-                                          'slug'=>$this->slug
+                                          'slug'=>$this->slug,
+                                          'img'=>$this->image,
+                                          'sort_order'=>$this->sortorder,
+                                          'isDefault'=>$this->isdefault
                                          ) );
+     return $status;
+   }
+   catch(\Exception $e){
+             //Add Exception here
+      } 
   
    }
 }

@@ -59,17 +59,22 @@ class LetterService{
         } 
     }
 
-    public function saveletterDetails($data){       
-    
-        $letter=new LetterRepository(null);
-        $letter->setLabel($data['label']);
-         $letter->setDescription($data['description']);
-          $letter->setAccountid($data['account_id']);
-           $letter->setSlug($data['slug']);
-              $letter->setImage($data['image']);
-                 $letter->setIsdefault($data['default']);
-                    $letter->setSortorder($data['sortorder']);
-        $insertStatus=$letter->insertLetter();
+    public function saveletterDetails($data){  
+    try{  
+     $letter=new LetterRepository(null);
+     $letter->setLabel($data['label']);
+     $letter->setDescription($data['description']);
+     $letter->setAccountid($data['account_id']);
+     $letter->setSlug($data['slug']);
+     $letter->setImage($data['image']);
+     $letter->setIsdefault($data['isdefault']);
+     $letter->setSortorder($data['sortorder']);
+     $insertStatus=$letter->insertLetter();
+        return $insertStatus;
+    }
+    catch(\Exception $e){
+            //throw new ParentFinderException('letter_not_found');
+        } 
     }
     
 }

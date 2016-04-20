@@ -78,6 +78,13 @@ class PdfService {
         } 
          
     }
+       public function deletePdf($data)
 
+       {
+       
+      $pdfObj=new PdfRepository(null);
+     $pdfObj->setTemplate_userid($data['template_userid']);
+    $deleteStatus=$pdfObj->deletePdf();
+     }
        
 }
