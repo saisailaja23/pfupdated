@@ -78,13 +78,18 @@ class PdfService {
         } 
          
     }
-       public function deletePdf($data)
-
-       {
-       
-      $pdfObj=new PdfRepository(null);
-     $pdfObj->setTemplate_userid($data['template_userid']);
-    $deleteStatus=$pdfObj->deletePdf();
-     }
+    /* Delete pdf profile   */
+    public function deletePdf($data){
+        try{
+        $pdfObj=new PdfRepository(null);
+        foreach(explode(',',$data) as $val){
+        $deleteStatus=$pdfObj->deletePdfDetails($val);
+       }
+        return $deleteStatus;
+        }
+       catch(\Exception $e){
+             //Add Exception here
+        } 
+    }
        
 }

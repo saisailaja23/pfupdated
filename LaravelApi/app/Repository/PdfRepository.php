@@ -56,18 +56,20 @@ class PdfRepository {
              //Add Exception here
         } 
     }
-public function deletePdf(){
-       
+    /*Delete pdf */
+      public function deletePdfDetails($id){
+            try{
             $pdfobj=new PdfTemplate;
-            $pdfdetails =$pdfobj->where('template_user_id',$this->template_userid)
+            $status =$pdfobj->where('template_user_id',$id)
                                 ->update(['isDeleted'=>'Y'
-                                        
-                                         
-                                         ]
+                                           ]
 
                                           );
-
-}
+                   return $status;             
+            }catch(\Exception $e){
+             //Add Exception here
+               } 
+      }
    
     }
 

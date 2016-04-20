@@ -945,22 +945,46 @@ class ProfileController extends Controller
         $data['slug']=verifyData($request->slug);
         $data['image']=verifyData($request->image);
         $data['isdefault']=verifyData($request->isdefault);
-        $data['sortorder']=verifyData($request->sortorder);
-        $letterObj=new LetterService(null);
-        $insertstatus=$letterObj->saveletterDetails($data);	
-        if($insertstatus)
-                   {
+        if(!empty($data['account_id']&&$data['label'])){
+           $letterObj=new LetterService(null);
+           $insertstatus=$letterObj->saveletterDetails($data);	
+           if($insertstatus){
                      $result=array(
 	    					 "status"=>"201",
 							  "Message"=>"inserted"
 							     	);
 							return json_encode($result);
-                   }
-                   else
-                     {
-                          	throw new ParentFinderException('insertion_failed');
-                     }
+            }
+             else
+                {
+                     throw new ParentFinderException('insertion_failed');
+                 }
+        } 
+        else{
+               throw new ParentFinderException('null_argument_found');
+               }
+    }
+     /* *Delete Pdf
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function deletePdf(Request $request){
+ 	     $data=verifyData($request->template_userid);
+         $pdfObj=new PdfService(null);
+         if($deleteStatus=$pdfObj->deletePdf($data)){
+                     $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"deleted"
+							     	);
+							return json_encode($result);
+            }
+             else
+                {
+
+                     throw new ParentFinderException('deletion_failed');
+                 }	
+
     }
 
-    
 }

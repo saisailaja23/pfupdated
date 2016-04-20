@@ -43,9 +43,7 @@ class LetterRepository {
      public  function setImage($image) {
          $this->image= $image;
     }  
-     public  function setSortorder($sortorder) {
-         $this->sortorder= $sortorder;
-    }  
+      
      public  function setIsdefault($isdefault) {
          $this->isdefault= $isdefault;
     }  
@@ -140,13 +138,17 @@ class LetterRepository {
   public function insertLetter()
     {
      try{
+  
       $letterObj=new Letter;
+      $sort_order1= $letterObj->where('account_id', '=', $this->accountid)
+                ->max('sort_order');
+      $sort_order=$sort_order1+1;     
       $status=$letterObj->insert(array('label'=>$this->label,
                                           'description'=>$this->description,
                                           'account_id'=>$this->accountid,
                                           'slug'=>$this->slug,
                                           'img'=>$this->image,
-                                          'sort_order'=>$this->sortorder,
+                                          'sort_order'=>$sort_order,
                                           'isDefault'=>$this->isdefault
                                          ) );
      return $status;

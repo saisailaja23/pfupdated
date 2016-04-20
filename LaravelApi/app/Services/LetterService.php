@@ -58,9 +58,9 @@ class LetterService{
             throw new ParentFinderException('letter_not_found');
         } 
     }
-
+    /* Post Letter details           */
     public function saveletterDetails($data){  
-    try{  
+    try{ 
      $letter=new LetterRepository(null);
      $letter->setLabel($data['label']);
      $letter->setDescription($data['description']);
@@ -68,7 +68,6 @@ class LetterService{
      $letter->setSlug($data['slug']);
      $letter->setImage($data['image']);
      $letter->setIsdefault($data['isdefault']);
-     $letter->setSortorder($data['sortorder']);
      $insertStatus=$letter->insertLetter();
         return $insertStatus;
     }
