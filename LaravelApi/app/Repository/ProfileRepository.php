@@ -303,6 +303,14 @@ class ProfileRepository {
              //Throwing Exception here
         } 
     }
+
+    
+    /*  
+        *   update profile details
+        *   @return boolean $updateprofile
+         
+    */
+
      public function updateProfile(){
         try{
            
@@ -327,6 +335,7 @@ class ProfileRepository {
              //Throwing Exception here
         } 
     }
+    /* Get Family Status*/
     public function  getFStatus($account_id)
     {
         try{
