@@ -236,7 +236,7 @@ class CoupleService {
     }
 
 
-
+/* Get Slug details*/
 
     public function getSeoDetails($slug,$type){
         if($type=='letter'){
@@ -370,6 +370,7 @@ class CoupleService {
              //Add Exception here
         } 
     }
+    /* Get Epub Details */
      public function getEpub()
      {
         try {
@@ -427,7 +428,7 @@ class CoupleService {
     }
 
     /* Get Agency Details */
-   public function getAgencyDetails(){
+    public function getAgencyDetails(){
         try{
             $agencyObj=new AgencyService(null);
             $agency = '';

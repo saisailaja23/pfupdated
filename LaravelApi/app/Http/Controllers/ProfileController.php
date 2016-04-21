@@ -17,6 +17,7 @@ use App\Services\ProfileService;
 use App\Services\ContactService;
 use App\Services\LetterService;
 use App\Services\PdfService;
+use App\Services\ChildService;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -965,6 +966,9 @@ class ProfileController extends Controller
                }
     }
 
+
+
+
 		
 
 		 /*   *forgot Password		
@@ -1010,8 +1014,9 @@ class ProfileController extends Controller
     */
     public function deletePdf(Request $request){
  	     $data=verifyData($request->template_userid);
+ 	      $account_id=verifyData($request->account_id);
          $pdfObj=new PdfService(null);
-         if($deleteStatus=$pdfObj->deletePdf($data)){
+         if($deleteStatus=$pdfObj->deletePdf($data,$account_id)){
                      $result=array(
 	    					 "status"=>"201",
 							  "Message"=>"deleted"
@@ -1027,11 +1032,55 @@ class ProfileController extends Controller
     }
 
 
+
     public function getChildren(){
 
     	$filter=new FilterService();
 		$childids= $filter->getAllChildIds();
 
     }
+
+      /* *Post ChildProfile for Child finder
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function postChildProfile(Request $request){
+	     $data['firstname']=verifyData($request->firstname);
+	     $data['lastname']=verifyData($request->lastname);
+	     $data['dob']=verifyData($request->dob);
+	     $data['about']=verifyData($request->about);
+	     $data['gender']=verifyData($request->gender);
+	     $data['location']=verifyData($request->location);
+	     $data['agency']=verifyData($request->agency);
+	     $data['sibling_group']=verifyData($request->sibling_group);
+	     if(!empty($data['firstname']&&$data['lastname']&& $data['dob']&&$data['about']&&$data['gender']&&$data['location']&&$data['agency']&&$data['sibling_group'])){
+	       if(verifyStringData($data['firstname']) == 1 && verifyStringData($data['lastname']) == 1){
+           $childObj=new ChildService(null);
+           $insertstatus=$childObj->saveChildDetails($data);	
+           if($insertstatus){
+          	$result=array(
+	    					 "status"=>"201",
+							  "Message"=>"inserted"
+							     	);
+							return json_encode($result);
+                   }
+                     else
+                     {
+                          	throw new ParentFinderException('insertion_failed');
+                     }
+                 }
+                 else
+                 {
+                 	 throw new ParentFinderException('string_error');
+                 }
+        }
+        else{
+				throw new ParentFinderException('null_argument_found');
+				}
+
+    }
+    
+
 
 }

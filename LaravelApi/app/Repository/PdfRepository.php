@@ -57,10 +57,11 @@ class PdfRepository {
         } 
     }
     /*Delete pdf */
-      public function deletePdfDetails($id){
+      public function deletePdfDetails($id,$account_id){
             try{
             $pdfobj=new PdfTemplate;
             $status =$pdfobj->where('template_user_id',$id)
+                            ->where('account_id',$account_id)
                                 ->update(['isDeleted'=>'Y'
                                            ]
 
