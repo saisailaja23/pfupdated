@@ -971,8 +971,9 @@ class ProfileController extends Controller
     */
     public function deletePdf(Request $request){
  	     $data=verifyData($request->template_userid);
+ 	      $account_id=verifyData($request->account_id);
          $pdfObj=new PdfService(null);
-         if($deleteStatus=$pdfObj->deletePdf($data)){
+         if($deleteStatus=$pdfObj->deletePdf($data,$account_id)){
                      $result=array(
 	    					 "status"=>"201",
 							  "Message"=>"deleted"
