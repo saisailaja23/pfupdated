@@ -1035,8 +1035,36 @@ class ProfileController extends Controller
 
     public function getChildren(){
 
+    	$children_details = '';
     	$filter=new FilterService();
-		$childids= $filter->getAllChildIds();
+	    $childids= $filter->getAllChildIds();
+	    if($childids){
+	    foreach($childids as $childid){
+		$childpobj=new ChildService($childid);
+		$Children= $childpobj->getChildDetails();
+		
+    				$children_details[]=array(
+						     	"id"=>$Children->getchildId(),
+						     	"firstname"=>$Children->getfirst_name(),
+						     	"lastname"=>$Children->getlast_name(),
+						     	"dob"=>$Children->getdob(),
+						     	"about"=>$Children->getabout(),
+						     	"gender"=>$Children->getgender(),
+						     	"sibiling_group"=>$Children->getis_sibling_group(),
+						     	"private"=>$Children->getis_private(),
+						     	"status"=>$Children->getstatus(),
+						     	"location"=>$Children->getlocation_id(),
+						     	"agency"=>$Children->getagency_id()
+						     	);
+
+				}
+				$childrenDetails=Array("status"=>"200","Children_details"=>$children_details);
+				return json_encode($childrenDetails);
+			}
+
+			else{
+				throw new ParentFinderException('membership_not_found');
+			}
 
     }
 
