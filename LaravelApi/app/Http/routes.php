@@ -128,7 +128,7 @@ Route::post('/profile/pdf/delete', 'ProfileController@deletePdf');
 Route::post('/child/add', 'ProfileController@postChildProfile');
 
 
-
+Route::get('/children','ProfileController@getChildren');
 
 
 

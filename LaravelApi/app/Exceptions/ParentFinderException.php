@@ -259,6 +259,11 @@ use Exception;
                 $error['status']=204;
                  $error['title']='Deletion Failed';
                  $error['detail']='Deletion Failed';
+                 break; 
+            case 'child_not_found' :
+                $error['status']=204;
+                 $error['title']='Child Not Found';
+                 $error['detail']='Child Not Found';
                  break;                  
             default :
                 $error['status']=500;
