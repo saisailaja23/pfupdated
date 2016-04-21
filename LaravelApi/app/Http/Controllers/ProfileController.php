@@ -965,16 +965,6 @@ class ProfileController extends Controller
                }
     }
 
-public function postLetter(Request $request){
-    	echo $data['account_id']=verifyData($request->account_id);
-          echo   $data['label']=verifyData($request->label);
-             $data['description']=verifyData($request->description);
-             $data['slug']=verifyData($request->slug);
-             $data['image']=verifyData($request->image);
-              $letterObj=new LetterService(null);
-                
-                $insertstatus=$letterObj->saveletterDetails($data);	
-}
 		
 
 		 /*   *forgot Password		
@@ -1033,6 +1023,14 @@ public function postLetter(Request $request){
 
                      throw new ParentFinderException('deletion_failed');
                  }	
+
+    }
+
+
+    public function getChildren(){
+
+    	$filter=new FilterService();
+		$childids= $filter->getAllChildIds();
 
     }
 

@@ -127,7 +127,7 @@ Route::post('/forgotpassword', 'ProfileController@forgotPassword');
 Route::post('/profile/pdf/delete', 'ProfileController@deletePdf');
 
 
-
+Route::get('/children','ProfileController@getChildren');
 
 
 

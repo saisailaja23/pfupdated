@@ -253,6 +253,26 @@ class FilterService {
         }
     }
 
-  
+    
+    public function getAllChildIds(){
+
+        try{ 
+        $membershipObj=new MembershipRepository(null);  
+        $membershipidDetails=$membershipObj->getAllMembershipids();
+            if(count($membershipidDetails) > 0){
+                foreach ($membershipidDetails as $membershipid) {
+                $membershipids[]=$membershipid->ID;
+            }
+             return  $membershipids;
+            }else{
+               throw new ParentFinderException('membership_not_found');
+            }
+        
+       
+        }catch(\Exception $e){
+           // throw new ParentFinderException('membership_not_found');
+        } 
+        }
+    }
     
 }
