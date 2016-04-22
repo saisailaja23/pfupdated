@@ -18,6 +18,7 @@ use App\Services\ContactService;
 use App\Services\LetterService;
 use App\Services\PdfService;
 use App\Services\ChildService;
+use App\Services\ChildPhotoService;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -1031,6 +1032,19 @@ class ProfileController extends Controller
 
     }
 
+<<<<<<< HEAD
+public function getChildren(){
+
+    	$children_details = '';
+    	$param=Input::segment(2);
+    	$filter=new FilterService();
+    	if(!empty($param)){
+    	$childids= $filter->getChildById($param);	
+    	}
+    	else{
+	    $childids= $filter->getAllChildIds();
+	    }
+=======
 
 
     public function getChildren(){
@@ -1038,6 +1052,7 @@ class ProfileController extends Controller
     	$children_details = '';
     	$filter=new FilterService();
 	    $childids= $filter->getAllChildIds();
+>>>>>>> upstream/API-integration
 	    if($childids){
 	    foreach($childids as $childid){
 		$childpobj=new ChildService($childid);
@@ -1063,52 +1078,102 @@ class ProfileController extends Controller
 			}
 
 			else{
+<<<<<<< HEAD
+				throw new ParentFinderException('child_not_found');
+=======
 				throw new ParentFinderException('membership_not_found');
+>>>>>>> upstream/API-integration
 			}
 
     }
 
+<<<<<<< HEAD
+
+
+
+
+    
+
+=======
+>>>>>>> upstream/API-integration
       /* *Post ChildProfile for Child finder
         * @param  Request $request
      	* @return array
 
     */
     public function postChildProfile(Request $request){
-	     $data['firstname']=verifyData($request->firstname);
-	     $data['lastname']=verifyData($request->lastname);
-	     $data['dob']=verifyData($request->dob);
-	     $data['about']=verifyData($request->about);
-	     $data['gender']=verifyData($request->gender);
-	     $data['location']=verifyData($request->location);
-	     $data['agency']=verifyData($request->agency);
-	     $data['sibling_group']=verifyData($request->sibling_group);
-	     if(!empty($data['firstname']&&$data['lastname']&& $data['dob']&&$data['about']&&$data['gender']&&$data['location']&&$data['agency']&&$data['sibling_group'])){
+	    $data['firstname']=verifyData($request->firstname);
+	    $data['lastname']=verifyData($request->lastname);
+	    $data['dob']=verifyData($request->dob);
+	    $data['about']=verifyData($request->about);
+	    $data['gender']=verifyData($request->gender);
+	    $data['location']=verifyData($request->location);
+	    $data['agency']=verifyData($request->agency);
+	    $data['sibling_group']=verifyData($request->sibling_group);
+	    if(!empty($data['firstname']&&$data['lastname']&& $data['dob']&&$data['about']&&$data['gender']&&$data['location']&&$data['agency']&&$data['sibling_group'])){
 	       if(verifyStringData($data['firstname']) == 1 && verifyStringData($data['lastname']) == 1){
-           $childObj=new ChildService(null);
-           $insertstatus=$childObj->saveChildDetails($data);	
-           if($insertstatus){
-          	$result=array(
-	    					 "status"=>"201",
+            $childObj=new ChildService(null);
+            $insertstatus=$childObj->saveChildDetails($data);	
+                    if($insertstatus){
+          	        $result=array(
+	    			 		 "status"=>"201",
 							  "Message"=>"inserted"
 							     	);
 							return json_encode($result);
-                   }
+                    }
                      else
                      {
                           	throw new ParentFinderException('insertion_failed');
                      }
-                 }
-                 else
-                 {
-                 	 throw new ParentFinderException('string_error');
+            }
+             else
+                {
+                 	throw new ParentFinderException('string_error');
                  }
         }
         else{
 				throw new ParentFinderException('null_argument_found');
 				}
-
     }
-    
+
+    public function editChildProfile(Request $request){
+    	$data['child_id']=verifyData($request->child_id);
+	    $data['firstname']=verifyData($request->firstname);
+	    $data['lastname']=verifyData($request->lastname);
+	    $data['dob']=verifyData($request->dob);
+	    $data['about']=verifyData($request->about);
+	    $data['gender']=verifyData($request->gender);
+	    $data['location']=verifyData($request->location);
+	    $data['agency']=verifyData($request->agency);
+	    $data['sibling_group']=verifyData($request->sibling_group);
+	    if(!empty($data['child_id']&&$data['firstname']&&$data['lastname']&& $data['dob']&&$data['about']&&$data['gender']&&$data['location']&&$data['agency']&&$data['sibling_group'])){
+         $childObj=new ChildService(null);
+            $updatestatus=$childObj->updateChildDetails($data);	
+             if($updatestatus){
+                    $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"updated"
+							     	);
+							return json_encode($result);
+                }
+                 else
+                   {
+                   	 throw new ParentFinderException('updation_failed');
+                    }
+        }
+        else{
+			 throw new ParentFinderException('null_argument_found');
+				}
+                    
+    }
+public function postChildPhoto(Request $request){
+    	$data['child_id']=verifyData($request->child_id);
+    	$data['title']=verifyData($request->title);
+	    $data['url']=verifyData($request->url);
+	    $data['status']=verifyData($request->status);
+        $childObj=new ChildPhotoService(null);
+        $insertstatus=$childObj->saveChildPhoto($data);	
+    }
 
 
 }
