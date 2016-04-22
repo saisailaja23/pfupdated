@@ -139,7 +139,7 @@ Route::get('/', 'ProfileController@getChildren');
 });
 
 
-
+Route::get('/children','ProfileController@getChildren');
 
 
 
