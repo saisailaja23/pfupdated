@@ -80,6 +80,19 @@ class ChildProfileRepository {
 
     }  
 
+    public function getChildId(){
+         try{
+       $childObj=new ChildProfile;
+       $childid = $childObj
+                  ->where('child_id', '=', $this->childId)
+                  ->get();
+         return $childid;
+        }catch(\Exception $e){
+             //Add Exception here
+        } 
+
+    } 
+    
     public function getchildDetails(){
 
          try{

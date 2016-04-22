@@ -1036,8 +1036,14 @@ class ProfileController extends Controller
     public function getChildren(){
 
     	$children_details = '';
+    	$param=Input::segment(2);
     	$filter=new FilterService();
+    	if(!empty($param)){
+    	$childids= $filter->getChildById($param);	
+    	}
+    	else{
 	    $childids= $filter->getAllChildIds();
+	    }
 	    if($childids){
 	    foreach($childids as $childid){
 		$childpobj=new ChildService($childid);
@@ -1063,7 +1069,7 @@ class ProfileController extends Controller
 			}
 
 			else{
-				throw new ParentFinderException('membership_not_found');
+				throw new ParentFinderException('child_not_found');
 			}
 
     }

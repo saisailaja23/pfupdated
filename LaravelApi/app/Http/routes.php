@@ -129,6 +129,12 @@ Route::post('/child/add', 'ProfileController@postChildProfile');
 
 
 Route::get('/children','ProfileController@getChildren');
-
+Route::group([
+    'prefix' => '/children/{childid}',
+    'where' => ['childid' => '[0-9]+'],
+], function() {
+Route::get('/', 'ProfileController@getChildren');
+    // Define Routes Here
+});
 
 
