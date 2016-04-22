@@ -126,6 +126,17 @@ Route::post('/profile/letter/add', 'ProfileController@postLetter');
 Route::post('/forgotpassword', 'ProfileController@forgotPassword');
 Route::post('/profile/pdf/delete', 'ProfileController@deletePdf');
 Route::post('/child/add', 'ProfileController@postChildProfile');
+Route::post('/child/edit', 'ProfileController@editChildProfile');
+Route::post('/childphoto/add', 'ProfileController@postChildPhoto');
+
+Route::get('/children','ProfileController@getChildren');
+Route::group([
+    'prefix' => '/children/{childid}',
+    'where' => ['childid' => '[0-9]+'],
+], function() {
+Route::get('/', 'ProfileController@getChildren');
+    // Define Routes Here
+});
 
 
 

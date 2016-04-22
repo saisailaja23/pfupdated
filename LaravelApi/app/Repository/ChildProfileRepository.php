@@ -64,6 +64,69 @@ class ChildProfileRepository {
            catch(\Exception $e){
              //Add Exception here
            } 
-    }    
+    }   
+
+    public function updateChildProfile($id) { 
+        try{
+        $childObj=new ChildProfile;
+        $status=$childObj->where('child_id', $id)
+                               ->update(['first_name'=>$this->firstname,
+                                         
+                                            'gender'=>$this->gender,
+                                            'dob'=>$this->dob,
+                                            'last_name'=>$this->lastname,
+                                            'about'=>$this->about,
+                                            'location_id'=>$this->locationId,
+                                            'is_sibling_group'=>$this->sibling_group,
+                                            'agency_id'=>$this->agencyId
+                                            
+                                            ]
+                                            );
+         return $status;
+       }catch(\Exception $e){
+             //Add Exception here
+        }
+    }
+    public function getAllChildids(){
+         try{
+       $childObj=new ChildProfile;
+       $childids =$childObj
+                  ->get();
+         return $childids;
+        }
+           catch(\Exception $e){
+             //Add Exception here
+           } 
+
+    }  
+
+    public function getChildId(){
+         try{
+       $childObj=new ChildProfile;
+       $childid = $childObj
+                  ->where('child_id', '=', $this->childId)
+                  ->get();
+         return $childid;
+        }
+           catch(\Exception $e){
+             //Add Exception here
+           } 
+
+    } 
+    
+    public function getchildDetails(){
+
+         try{
+       $childObj=new ChildProfile;
+       $childids =$childObj
+                  ->where('child_id', '=', $this->childId)
+                  ->first();
+         return $childids;
+        }
+           catch(\Exception $e){
+             //Add Exception here
+           } 
+    }
+    
     
 }
