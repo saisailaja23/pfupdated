@@ -1032,7 +1032,7 @@ class ProfileController extends Controller
 
     }
 
-<<<<<<< HEAD
+
 public function getChildren(){
 
     	$children_details = '';
@@ -1044,15 +1044,22 @@ public function getChildren(){
     	else{
 	    $childids= $filter->getAllChildIds();
 	    }
-=======
+
 
 
     public function getChildren(){
 
     	$children_details = '';
+    	$param=Input::segment(2);
     	$filter=new FilterService();
+    	if(!empty($param)){
+    	$childids= $filter->getChildById($param);	
+    	}
+    	else{
 	    $childids= $filter->getAllChildIds();
->>>>>>> upstream/API-integration
+
+	    }
+
 	    if($childids){
 	    foreach($childids as $childid){
 		$childpobj=new ChildService($childid);
@@ -1078,24 +1085,16 @@ public function getChildren(){
 			}
 
 			else{
-<<<<<<< HEAD
+
 				throw new ParentFinderException('child_not_found');
-=======
-				throw new ParentFinderException('membership_not_found');
->>>>>>> upstream/API-integration
+
+
+
 			}
 
     }
 
-<<<<<<< HEAD
 
-
-
-
-    
-
-=======
->>>>>>> upstream/API-integration
       /* *Post ChildProfile for Child finder
         * @param  Request $request
      	* @return array
