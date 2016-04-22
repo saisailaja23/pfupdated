@@ -22,6 +22,12 @@ class ChildService {
        $this->setChildId($childId);      
     }
     
+<<<<<<< HEAD
+    
+    
+
+=======
+>>>>>>> upstream/API-integration
     public  function getchildId() {
        return $this->childId;
     }
@@ -68,6 +74,11 @@ class ChildService {
     public  function getagency_id() {
        return $this->agency_id;
     }
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> upstream/API-integration
 
 
     /* Save Child  Details */
@@ -90,8 +101,12 @@ class ChildService {
         } 
     } 
 
+<<<<<<< HEAD
+      public function getChildDetails(){
+=======
 
     public function getChildDetails(){
+>>>>>>> upstream/API-integration
          try{
         $child=new ChildProfileRepository($this->childId);
         $childDetails=$child->getchildDetails();
@@ -118,6 +133,28 @@ class ChildService {
         }
 
     }
+<<<<<<< HEAD
+
+    public function updateChildDetails($data){
+        try{
+        $child=new ChildProfileRepository(null);
+        $child->setChildId($data['child_id']);
+        $child->setFirstname($data['firstname']);
+        $child->setLastname($data['lastname']);
+        $child->setDOB($data['dob']);
+        $child->setAbout($data['about']);
+        $child->setGender($data['gender']);
+        $child->setLocationId($data['location']);
+        $child->setAgencyId($data['agency']);
+        $child->setSibling_group($data['sibling_group']);
+        $status=$child->updateChildProfile($data['child_id']);
+        return $status;
+        }catch(\Exception $e){
+             //Add Exception here
+        }
+    }   
+=======
+>>>>>>> upstream/API-integration
     
     
 }
