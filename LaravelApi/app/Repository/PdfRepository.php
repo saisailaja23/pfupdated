@@ -26,6 +26,10 @@ class PdfRepository {
     public  function setAccountId($account_id) {
          $this->account_id = $account_id;
     }   
+    public  function setTemplate_userid($template_userid) {
+         $this->template_userid = $template_userid;
+    }   
+    
     
    public function getPdfDetail(){
          try{
@@ -52,6 +56,21 @@ class PdfRepository {
              //Add Exception here
         } 
     }
+    /*Delete pdf */
+      public function deletePdfDetails($id,$account_id){
+            try{
+            $pdfobj=new PdfTemplate;
+            $status =$pdfobj->where('template_user_id',$id)
+                            ->where('account_id',$account_id)
+                                ->update(['isDeleted'=>'Y'
+                                           ]
+
+                                          );
+                   return $status;             
+            }catch(\Exception $e){
+             //Add Exception here
+               } 
+      }
    
     }
 

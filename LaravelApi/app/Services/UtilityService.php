@@ -23,6 +23,7 @@ use App\Exceptions\ParentFinderException;
 use App\Repository\AppUserRepository;
 use App\Repository\ProfileTypeRepository;
 use App\Repository\AccountRepository;
+use App\Repository\EmailTemplatesRepository;
 /**
  * Description of AccountService
 **/
@@ -250,7 +251,7 @@ class UtilityService {
 
         } 
     }
-
+    /* Get country details */
     public function getCountry(){
       try{
         
@@ -271,7 +272,7 @@ class UtilityService {
           //throwing default exceptions
         } 
     }
-  
+    /* Get State BYId*/
     public function getStatesByCountryId($country_id)
     {
  
@@ -294,7 +295,7 @@ class UtilityService {
       } 
 
     }
-
+    /* Get Region Details*/
     public function getRegionDetails()
     {
   
@@ -313,7 +314,7 @@ class UtilityService {
             //throwing default exceptions
          }
     } 
-
+    /*Get Email By AccountId */
     public function getEmailById($account_id)
     {
       try{
@@ -325,7 +326,7 @@ class UtilityService {
          }
      
    }
-
+    /* Get Family Status single or couple*/
     public function getFamilystatus($account_id){
       try
       {
@@ -339,6 +340,14 @@ class UtilityService {
          }
     
     }
+
+    /* 
+      *   Edit Child Details 
+        
+        *   @param  Request $request
+        *   @return boolean $insertStatus
+
+    */
     public function editChild($data){
       try
       {
@@ -356,7 +365,46 @@ class UtilityService {
          }
     
     }
-    
+
+
+    public function emailCheck($email)
+    {
+        try
+      {
+
+         $emailobj=new AccountRepository(null);  
+         $emailresult = $emailobj->checkEmailuser($email);
+         if(!empty($emailresult)){
+            $sPwd = genRndPwd();
+            $sSalt = genRndSalt();
+            $langId = 0;
+            $password = encryptUserPwd($sPwd, $sSalt);
+            $updatepassword = $emailobj->updatePassword($emailresult->account_id,$password,$sSalt);
+              if($updatepassword == 1){
+                $emailtemplateobj=new EmailTemplatesRepository(null);
+                $template =  $emailtemplateobj->getEmailTemplate('t_Forgot',$langId);
+                $mailsend = SendMail($email,$template->Subject,$template->Body);
+                if($mailsend)
+                {
+                  $result =1;
+                }
+                else{
+                  $result =0;
+                }
+               return $result; 
+              }
+         }else{
+              throw new ParentFinderException('email_not_found');
+        }
+          return $status;
+      }
+
+        catch (\Exception $e) {
+            //throwing default exceptions
+        }
+
+    } 
+
 
     
 }
