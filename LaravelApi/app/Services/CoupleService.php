@@ -473,31 +473,47 @@ public function getSeoDetails($slug,$type){
             $sSalt = genRndSalt();
             $password = encryptUserPwd($data['password'], $sSalt);
             $accountObj->setUserName($data['username']);
-            $accountObj->setPassword();
+            $accountObj->setPassword($password);
             $accountObj->setEmailId($data['emailId']);
-            $accountObj->setAgencyId($data['agencyId']);            
+            $accountObj->setAgencyId($data['agencyId']);          
             $accountObj->setCreatedAt(getCurrentDateTime());
             $accountObj->setModifiedAt(getCurrentDateTime());
-            $accountObj->setStatus(1);    
-            $accountObj->setRoleId($data['profileType']);      
+            $accountObj->setStatus(1);    echo "a";
+            $accountObj->setRoleId($data['profileType']); 
             if($data['profileType']==2){
-                $accountObj->setName($data['firstNameSingle']);
-                $accountId=$accountObj->saveAccountDetails();
-                $profileObj=new ProfileService();
-                $profileObj->setAccountId($accountId);
-                $profileObj->setFirstName($data['firstNameSingle']);
-                $profileObj->setLastName($data['lastNameSingle']);
-                $profileObj->setGender($data['genderSingle']);
-                $profileObj->setCreatedAt(getCurrentDateTime());
-                $profileObj->setModifiedAt(getCurrentDateTime());
-                $insertStatus1=$profileObj->saveProfile();
-                if($insertStatus1){ 
-
-                    $profileObj->setFirstName($data['firstNameCouple']);
-                    $profileObj->setLastName($data['lastNameCouple']);
-                    $profileObj->setGender($data['genderCouple']);
-                    $insertStatus=$profileObj->saveProfile();
+                if($data['maritalStatus']=='single)'){
+                    echo "ok";
+                    $accountObj->setName($data['firstName']);
+                    $accountId=$accountObj->saveAccountDetails();
+                    $profileObj=new ProfileService();
+                    $profileObj->setAccountId($accountId);
+                    $profileObj->setFirstName($data['firstName']);
+                    $profileObj->setLastName($data['lastName']);
+                    $profileObj->setGender($data['gender']);
+                    $profileObj->setCreatedAt(getCurrentDateTime());
+                    $profileObj->setModifiedAt(getCurrentDateTime());
+                    $insertStatus1=$profileObj->saveProfile();
+                }else{
+                    $accountObj->setName($data['firstName1']);
+                    $accountId=$accountObj->saveAccountDetails();
+                    $profileObj=new ProfileService();
+                    $profileObj->setAccountId($accountId);
+                    $profileObj->setFirstName($data['firstName1']);
+                    $profileObj->setLastName($data['lastName1']);
+                    $profileObj->setGender($data['gender1']);
+                    $profileObj->setCreatedAt(getCurrentDateTime());
+                    $profileObj->setModifiedAt(getCurrentDateTime());
+                    $insertStatus1=$profileObj->saveProfile();
+                    if($insertStatus1){ 
+                        $profileObj->setFirstName($data['firstName2']);
+                        $profileObj->setLastName($data['lastName2']);
+                        $profileObj->setGender($data['gender2']);
+                        $insertStatus=$profileObj->saveProfile();
+                    }
                 }
+                
+                
+                
             }else if($profileType==4){
                     
                     $data['firstNameSingle']=$request->PFfirstNameSingle;
@@ -516,18 +532,17 @@ public function getSeoDetails($slug,$type){
                     $profileObj->setAccountId($accountId);                    
                     $profileObj->setCreatedAt(getCurrentDateTime());
                     $profileObj->setModifiedAt(getCurrentDateTime());
+                   
                     $insertStatus=$profileObj->saveProfile();
                     if($insertStatus){       /* Insert Agency Informations */
-
+                        $contactObj=new ContactService($accountId);
+                        $contactObj->setStateId($data['state']);
+                        $contactObj->setRegionId($data['region']);
+                        $status=$contactObj->saveContactDetails();
+                        return $status;
                     }
             }
-            if($insertStatus){               /*  Save Contact details */   
-                $contactObj=new ContactService($accountId);
-                $contactObj->setStateId($data['state']);
-                $contactObj->setRegionId($data['region']);
-                $status=$contactObj->saveContactDetails();
-                return $status;
-            }
+            
         }catch(\Exception $e){
                 //Throwing  exceptions if any
         }
