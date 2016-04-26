@@ -1,4 +1,4 @@
-<FilesMatch "\.(html|htm|js)$">
+<FilesMatch "\.(html|htm)$">
   <IfModule mod_headers.c>
     Header set Access-Control-Allow-Origin "*"
   </IfModule>
