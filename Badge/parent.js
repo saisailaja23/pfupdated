@@ -1,4 +1,4 @@
-var baseurl="http://localhost/Badge/";
+var baseurl="http://localhost/parentfinderApi/PARENTFINDER/Badge/";
 (function() {
 
     // Localize jQuery variable
@@ -60,10 +60,7 @@ var baseurl="http://localhost/Badge/";
 
     /******** Our main function ********/
     function main() { 
-          
-            /* Family listing page */
-
-           // $("#content").append('<base href="http://localhost/Badge/">')
+            /*Loading main html */
             $("#content").load(baseurl+"index.html");
             loadFamilies();           
        
