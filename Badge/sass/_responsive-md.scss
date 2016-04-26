@@ -1,0 +1,92 @@
+@media only screen and (min-width: 768px) {
+.family_Widget_2016 {
+    .contactBlock{
+        padding: 20px 0;
+        .contactVideo{
+            float: right;
+            width: 49%;
+            margin: 0;
+            iframe{
+                height: 385px !important; 
+            }
+        }
+        .callMeForm{
+            float: left;
+            width: 49%;
+            margin: 0;
+        }
+    }
+    .bottomContact{
+        margin: 15px 0 0;
+        .blockForm{
+            width: 47%;
+            display: inline-block;
+            padding-bottom: 0;
+            margin-bottom: 0;
+            border-bottom: none;
+            &:first-child{
+                padding-right: 30px;
+                border-right: solid 1px #eae6e7;
+                margin-right: 25px;
+            }
+        }
+    }
+    .albumGallery{
+        .pics {
+            figure{
+                width: 19.5%;
+            }
+        }
+    }
+    .slider{
+        .owl-carousel{
+            .owl-stage-outer{
+                padding-bottom: 42px;
+            }
+        }
+    }
+    .journal{
+        .pics {
+            figure{
+                width: 20.3%;
+            }
+        }
+    }
+    .lisitngBLocks {
+        .itemBlock {
+            .familyDetail {
+                .name{
+                    font-size: 16px;
+                }
+                .place{
+                    font-size: 14px;
+                }
+                .contactFamily{
+                    font-size: 10px;
+                }
+            }
+            .proPage {
+                h5{
+                    font-size: 22px;
+                }
+                .close{
+                    right: 20px;
+                    top: 20px;
+                }
+            }
+            .downIcons {
+                a{
+                    font-size: 16px;
+                }
+            }
+            .link {
+                a{
+                    padding: 45px 0 0;
+                  
+                    line-height: 14px;
+                }
+            }
+        }
+    }
+}
+}
