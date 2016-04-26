@@ -321,14 +321,17 @@
 
 
    </div>
-<script type="text/javascript" src="http://localhost/Badge/javascripts/jquery.min.js"></script>
-    <script src="http://localhost/Badge/javascripts/jquery.isotope.min.js"></script>
-    <script src="http://localhost/Badge/javascripts/jquery.html5.placeholder.js"></script>
-    <script src="http://localhost/Badge/javascripts/common.js"></script>
+<script type="text/javascript" src="http://localhost/pflaravel/PARENTFINDER/Badge/javascripts/jquery.min.js"></script>
+    <script src="http://localhost/pflaravel/PARENTFINDER/Badge/javascripts/jquery.isotope.min.js"></script>
+    <script src="http://localhost/pflaravel/PARENTFINDER/Badge/javascripts/jquery.html5.placeholder.js"></script>
+    <script src="http://localhost/pflaravel/PARENTFINDER/Badge/javascripts/common.js"></script>
 
     <script type="text/javascript">
-    alert("baseurl"+baseurl);
-    $(function() {
+    //alert("baseurl"+baseurl);
+
+    $(document).ready(function(){
+
+        //alert("baseurl"+baseurl);
         $(".itemBlock .figure > img").click(function () {
             $(this).parent().parent(".itemBlock").addClass("active");
         });

@@ -195,6 +195,36 @@
             
 		}(jQuery));
 	</script>
-	
+	<script type="text/javascript">
+    
+jQuery(document).ready(function($) {   
+  $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/profile/rahul",
+            dataType: "jsonp",
+            success: function (data) {
+              alert("asd");
+                var letters=data.letters;
+             
+                var contentDiv="";
+               for(i=0; i<letters.length; i++){
+                 contentDiv += '<div class="item">';
+                     contentDiv +='<div class="chpterBlock">';
+                    contentDiv += '<h4>'+ letters[i].Title + '</h4>';
+                    contentDiv += '<p>'+ letters[i].Content +'</p>';
+                    contentDiv += '</div>';
+                    contentDiv += '</div>';
+             //   $('.chpterBlock').append('<h4>'+ letters[i].Title +'</h4><p>'+ letters[i].Content +'</p>');
+               //  $('.chpterBlock').append('<p>'+ letters[i].Content +'</p>'); 
+          
+                }
+             $('.item').append(contentDiv);
+
+            }
+
+        });
+ 
+});
+
+  </script>
 </body>
 </html>

@@ -40,6 +40,12 @@ class ProfileController extends Controller
 			$accountInfo=$parentObj->getAccountDetails();
 			$contactInfo=$parentObj->getContactDetails();
 			$journalDetails='';
+			if($contactInfo=$parentObj->getContactDetails()){
+						$contactDetails=Array(
+									"country"=>$contactInfo->getCountry(),
+									"state"=>$contactInfo->getState()							     	
+							     	);
+					}	
 			if($journals=$parentObj->getJournalDetails())
 			{
 				foreach($journals as $journal){
@@ -62,24 +68,41 @@ class ProfileController extends Controller
     		}
     		$AgencyDetails = $parentObj->getAgencyDetails();
     		$childpreferences=$parentObj->getChildPreferences();
-			$profileDetails=Array(
-								"status"=>"202",
-								"data" =>array(
-						     	"first_name"=>$parent1->getFirstName(),
-						     	"last_name"=>$parent1->getLastName(),
-						     	"dob"=>$parent1->getDob(),
-						     	"gender"=>$parent1->getGender(),
-						     	"ethnicity"=>$parent1->getEthnicity(),
-						     	"faith"=>$parent1->getFaith(),
-						     	"waiting"=>$parent1->getWaiting(),
-						     	"avatar"=>$parentObj->getAvatar(),
-						     	"journal"=>$journalDetails,
-						     	"letter"=>$letterDetails,
-						     	"childpreferences"=>$childpreferences,
-						     	"agency"=>$AgencyDetails
-						     	)
-						     	);	
+    		$parent1Details=Array(
+							     	"first_name"=>$parent1->getFirstName(),
+							     	"last_name"=>$parent1->getLastName(),
+							     	"dob"=>$parent1->getDob(),
+							     	"faith"=>$parent1->getFaith(),
+							     	"waiting"=>$parent1->getWaiting(),
+							     	"avatar"=>$parentObj->getAvatar(),
+							     	"username"=>$parentObj->getusername()
+							     	
+							     	);
+    		if(isset($parent2)){
+						$parent2Details=Array(
+							     	"first_name"=>$parent2->getFirstName(),
+							     	"last_name"=>$parent2->getLastName(),
+							     	"dob"=>$parent2->getDob(),
+							     	"faith"=>$parent2->getFaith()
+							     	);
+					}
+					if(isset($parent1) && isset($parent2)){
+						$profileDetail[]=Array(	"profile"=>array(
+						                                 "parent1"=>$parent1Details,
+						                                  "parent2"=>$parent2Details,
+						                                  "contactDetails"=>$contactDetails
+						                                 )
+										);
+					}else{
+						$profileDetail[]=Array("profile"=>array(
+								                "parent1"=>$parent1Details	,
+								                 "contactDetails"=>$contactDetails				                                  
+								                  )
+													);
     	}
+    	$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
+				//return $_GET['callback']."(".json_encode($profileDetails).")";
+    }
     	else if($api=='profiles'){			/*  To list all profiles */
 
 			$filter=new FilterService();

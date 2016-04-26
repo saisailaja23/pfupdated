@@ -1,4 +1,4 @@
-var baseurl="http://localhost/Badge/";
+var baseurl="http://localhost/pflaravel/PARENTFINDER/Badge/";
 (function() {
 
 // Localize jQuery variable
