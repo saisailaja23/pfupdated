@@ -549,7 +549,7 @@ class ProfileController extends Controller
 
     public function getLocationApi(){
 
-        $api=Input::segment(1);
+        echo $api=Input::segment(1);
         $countrysdetails = "";
         if($api=='country')
         {
@@ -885,6 +885,10 @@ class ProfileController extends Controller
     	$data['accounts_id']=verifyData($request->account_id);
     	$data['profile_id']=verifyData($request->profile_id);
     	$appObj=new UtilityService;	
+    	if($request->user_key && $request->url){
+				    $appObj=new UtilityService;			
+					$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+					if($app_key==1){
     	$countAccount=$appObj->getFamilystatus($data['accounts_id']);
     	  
         $data['firstNameSingle']=verifyData($request->PFfirstNameSingle); 
@@ -953,17 +957,252 @@ class ProfileController extends Controller
           else{
                    throw new ParentFinderException('null_argument_found');
 				  }
+
+		}
+         else{
+				throw new ParentFinderException('key_not_valid');
+			    }
+	}
+
     }
-public function postLetter(Request $request){
-    	echo $data['account_id']=verifyData($request->account_id);
-          echo   $data['label']=verifyData($request->label);
-             $data['description']=verifyData($request->description);
-             $data['slug']=verifyData($request->slug);
-             $data['image']=verifyData($request->image);
-              $letterObj=new LetterService(null);
-                
-                $insertstatus=$letterObj->saveletterDetails($data);	
-}
+    /* *Post Letter
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function postLetter(Request $request){
+    	$data['account_id']=verifyData($request->account_id);
+        $data['label']=verifyData($request->label);
+        $data['description']=verifyData($request->description);
+        $data['slug']=verifyData($request->slug);
+        $data['image']=verifyData($request->image);
+        $data['isdefault']=verifyData($request->isdefault);
+        if(!empty($data['account_id']&&$data['label'])){
+           $letterObj=new LetterService(null);
+           $insertstatus=$letterObj->saveletterDetails($data);	
+           if($insertstatus){
+                     $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"inserted"
+							     	);
+							return json_encode($result);
+            }
+             else
+                {
+                     throw new ParentFinderException('insertion_failed');
+                 }
+        } 
+        else{
+               throw new ParentFinderException('null_argument_found');
+               }
+    }
+
+
+		
+
+		 /*   *forgot Password		
+		* @param  Request $request
+     	* @return array
+     	*/
+		public function forgotPassword(Request $request){
+
+			$data['mail_id']=verifyData($request->email_id);
+			$appObj=new UtilityService;
+			if(!empty($data['mail_id'])){
+				if(emailVerification($data['mail_id']) == 1){
+					$emailcheck=$appObj->emailCheck($data['mail_id']);	
+					if($emailcheck){
+						$result=array(
+	    					 "status"=>"201",
+							  "Message"=>"Mail Send",
+							  "Mail Status" =>1
+							     	);
+					}else{
+						$result=array(
+	    					 "status"=>"201",
+							  "Message"=>"Mail Not Send",
+							  "Mail Status" =>0
+							     	);
+					}
+					return json_encode($result);
+				}
+				else{
+					throw new ParentFinderException('email_error');
+					}
+			}
+			else{
+				throw new ParentFinderException('null_argument_found');
+				}
+
+		}
+
+     /* *Delete Pdf
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function deletePdf(Request $request){
+ 	     $data=verifyData($request->template_userid);
+ 	      $account_id=verifyData($request->account_id);
+         $pdfObj=new PdfService(null);
+         if($deleteStatus=$pdfObj->deletePdf($data,$account_id)){
+                     $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"deleted"
+							     	);
+							return json_encode($result);
+            }
+             else
+                {
+
+                     throw new ParentFinderException('deletion_failed');
+                 }	
+
+    }
+
+
+
+public function getChildren(){
+
+    	$children_details = '';
+    	$param=Input::segment(2);
+    	$filter=new FilterService();
+    	if(!empty($param)){
+    	$childids= $filter->getChildById($param);	
+    	}
+    	else{
+	    $childids= $filter->getAllChildIds();
+	    }
+
+
+    	$children_details = '';
+    	$param=Input::segment(2);
+    	$filter=new FilterService();
+    	if(!empty($param)){
+    	$childids= $filter->getChildById($param);	
+    	}
+    	else{
+	    $childids= $filter->getAllChildIds();
+
+	    }
+
+	    if($childids){
+	    foreach($childids as $childid){
+		$childpobj=new ChildService($childid);
+		$Children= $childpobj->getChildDetails();
+		
+    				$children_details[]=array(
+						     	"id"=>$Children->getchildId(),
+						     	"firstname"=>$Children->getfirst_name(),
+						     	"lastname"=>$Children->getlast_name(),
+						     	"dob"=>$Children->getdob(),
+						     	"about"=>$Children->getabout(),
+						     	"gender"=>$Children->getgender(),
+						     	"sibiling_group"=>$Children->getis_sibling_group(),
+						     	"private"=>$Children->getis_private(),
+						     	"status"=>$Children->getstatus(),
+						     	"location"=>$Children->getlocation_id(),
+						     	"agency"=>$Children->getagency_id()
+						     	);
+
+				}
+				$childrenDetails=Array("status"=>"200","Children_details"=>$children_details);
+				return json_encode($childrenDetails);
+			}
+
+			else{
+
+				throw new ParentFinderException('child_not_found');
+
+
+
+			}
+
+    }
+
+
+
+      /* *Post ChildProfile for Child finder
+        * @param  Request $request
+     	* @return array
+
+    */
+    public function postChildProfile(Request $request){
+	    $data['firstname']=verifyData($request->firstname);
+	    $data['lastname']=verifyData($request->lastname);
+	    $data['dob']=verifyData($request->dob);
+	    $data['about']=verifyData($request->about);
+	    $data['gender']=verifyData($request->gender);
+	    $data['location']=verifyData($request->location);
+	    $data['agency']=verifyData($request->agency);
+	    $data['sibling_group']=verifyData($request->sibling_group);
+	    if(!empty($data['firstname']&&$data['lastname']&& $data['dob']&&$data['about']&&$data['gender']&&$data['location']&&$data['agency']&&$data['sibling_group'])){
+	       if(verifyStringData($data['firstname']) == 1 && verifyStringData($data['lastname']) == 1){
+            $childObj=new ChildService(null);
+            $insertstatus=$childObj->saveChildDetails($data);	
+                    if($insertstatus){
+          	        $result=array(
+	    			 		 "status"=>"201",
+							  "Message"=>"inserted"
+							     	);
+							return json_encode($result);
+                    }
+                     else
+                     {
+                          	throw new ParentFinderException('insertion_failed');
+                     }
+            }
+             else
+                {
+                 	throw new ParentFinderException('string_error');
+                 }
+        }
+        else{
+				throw new ParentFinderException('null_argument_found');
+				}
+    }
+
+    
+
+    public function editChildProfile(Request $request){
+    	$data['child_id']=verifyData($request->child_id);
+	    $data['firstname']=verifyData($request->firstname);
+	    $data['lastname']=verifyData($request->lastname);
+	    $data['dob']=verifyData($request->dob);
+	    $data['about']=verifyData($request->about);
+	    $data['gender']=verifyData($request->gender);
+	    $data['location']=verifyData($request->location);
+	    $data['agency']=verifyData($request->agency);
+	    $data['sibling_group']=verifyData($request->sibling_group);
+	    if(!empty($data['child_id']&&$data['firstname']&&$data['lastname']&& $data['dob']&&$data['about']&&$data['gender']&&$data['location']&&$data['agency']&&$data['sibling_group'])){
+         $childObj=new ChildService(null);
+            $updatestatus=$childObj->updateChildDetails($data);	
+             if($updatestatus){
+                    $result=array(
+	    					 "status"=>"201",
+							  "Message"=>"updated"
+							     	);
+							return json_encode($result);
+                }
+                 else
+                   {
+                   	 throw new ParentFinderException('updation_failed');
+                    }
+        }
+        else{
+			 throw new ParentFinderException('null_argument_found');
+				}
+                    
+    }
+public function postChildPhoto(Request $request){
+    	$data['child_id']=verifyData($request->child_id);
+    	$data['title']=verifyData($request->title);
+	    $data['url']=verifyData($request->url);
+	    $data['status']=verifyData($request->status);
+        $childObj=new ChildPhotoService(null);
+        $insertstatus=$childObj->saveChildPhoto($data);	
+
+    }
 
 
 }

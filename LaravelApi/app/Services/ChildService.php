@@ -2,6 +2,8 @@
 namespace App\Services;
 use App\Repository\ChildProfileRepository;
 use App\Repository\EthnicityRepository;
+use App\Exceptions\ParentFinderException;
+
 
 class ChildService {
 
@@ -22,12 +24,10 @@ class ChildService {
        $this->setChildId($childId);      
     }
     
-<<<<<<< HEAD
     
     
 
-=======
->>>>>>> upstream/API-integration
+
     public  function getchildId() {
        return $this->childId;
     }
@@ -74,11 +74,6 @@ class ChildService {
     public  function getagency_id() {
        return $this->agency_id;
     }
-<<<<<<< HEAD
-
-
-=======
->>>>>>> upstream/API-integration
 
 
     /* Save Child  Details */
@@ -101,12 +96,10 @@ class ChildService {
         } 
     } 
 
-<<<<<<< HEAD
-      public function getChildDetails(){
-=======
 
     public function getChildDetails(){
->>>>>>> upstream/API-integration
+
+
          try{
         $child=new ChildProfileRepository($this->childId);
         $childDetails=$child->getchildDetails();
@@ -133,7 +126,6 @@ class ChildService {
         }
 
     }
-<<<<<<< HEAD
 
     public function updateChildDetails($data){
         try{
@@ -153,8 +145,7 @@ class ChildService {
              //Add Exception here
         }
     }   
-=======
->>>>>>> upstream/API-integration
+
     
     
 }
