@@ -1,0 +1,77 @@
+@media only screen and (max-width: 350px) {
+.family_Widget_2016 {
+   .logo{
+       font-size: 16px;
+    }
+    .lisitngBLocks {
+        .itemBlock {
+            .link{
+                padding: 10px 0;
+            }
+        }
+    }
+    .profileContact{
+        padding: 20px 5px;
+    }
+    .aboutFamily {
+        .reader {
+            .readerlogo{
+                font-size: 20px;
+            }
+        }
+    }
+    .innerPageHead {
+        .familyName{
+            font-size: 20px;
+            line-height: 25px;
+        }
+    }
+    .chaptersBlk {
+        .chpterBlock {
+            h4{
+                font-size: 16px;
+            }
+        }
+    }
+    .journal{
+        h4{
+            line-height: 30px;
+        }
+        .pics {
+            figure{
+                width: 45.5%;
+            }
+        }
+    }
+}
+}
+
+@media only screen and (min-width: 481px) {
+.family_Widget_2016 {
+    .lisitngBLocks{
+        .itemBlock{
+            margin: 5px 5px 10px;
+        }
+        .message{
+            margin:  5px 5px 10px;
+        }
+    }
+    .gallery{
+        .pics {
+            figure{
+                width: 20%;
+            }
+        }
+    }
+    .ourAgency {
+        .agencyLeft{
+            float: left;
+            margin-right: 25px;
+        }
+        .agencyRight{
+            float: left;
+            margin-top: 10px;
+        }
+    }
+ }
+}
