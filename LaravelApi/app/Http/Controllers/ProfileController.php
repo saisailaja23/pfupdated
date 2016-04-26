@@ -518,7 +518,7 @@ class ProfileController extends Controller
 
     public function getLocationApi(){
 
-        $api=Input::segment(1);
+        echo $api=Input::segment(1);
         $countrysdetails = "";
         if($api=='country')
         {
@@ -854,6 +854,10 @@ class ProfileController extends Controller
     	$data['accounts_id']=verifyData($request->account_id);
     	$data['profile_id']=verifyData($request->profile_id);
     	$appObj=new UtilityService;	
+    	if($request->user_key && $request->url){
+				    $appObj=new UtilityService;			
+					$app_key=$appObj->checkAppKey($request->user_key,$request->url);
+					if($app_key==1){
     	$countAccount=$appObj->getFamilystatus($data['accounts_id']);
     	  
         $data['firstNameSingle']=verifyData($request->PFfirstNameSingle); 
