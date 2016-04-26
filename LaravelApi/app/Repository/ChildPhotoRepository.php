@@ -5,7 +5,7 @@ namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
-use App\Models\Albums;
+use App\Models\ChildPhoto;
 use App\Models\BxPhotosMain;
 use App\Models\SysAlbumsObjects;
 
@@ -37,7 +37,7 @@ class ChildPhotoRepository {
          
     
     public function savePhoto(){
-    
+    echo "j";
       $childObj=new ChildPhoto;
        $status=$childObj->insert(array('title'=>$this->title,
                                         'url'=>$this->url,

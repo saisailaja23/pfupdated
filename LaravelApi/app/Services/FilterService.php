@@ -255,45 +255,4 @@ class FilterService {
         }
     }
 
-    
-    public function getAllChildIds(){
-
-        try{ 
-            $childObj=new ChildProfileRepository(null);  
-            $childdetails=$childObj->getAllChildids();
-            if(count($childdetails) > 0){
-                foreach ($childdetails as $childId) {
-                 $childIds[]=$childId->child_id;
-            }
-             return  $childIds;
-            }else{
-               throw new ParentFinderException('child_not_found');
-            }
-        
-       
-            }catch(\Exception $e){
-               // throw new ParentFinderException('child_not_found');
-            } 
-        }
-
-        public function getChildById($param){
-
-        try{ 
-            $childObj=new ChildProfileRepository($param);  
-            $childdetails=$childObj->getChildId();
-            if(count($childdetails) > 0){
-                foreach ($childdetails as $childId) {
-                 $childIds[]=$childId->child_id;
-            }
-             return  $childIds;
-            }else{
-               throw new ParentFinderException('child_not_found');
-            }
-        
-       
-            }catch(\Exception $e){
-               // throw new ParentFinderException('child_not_found');
-            } 
-        }
-    
 }
