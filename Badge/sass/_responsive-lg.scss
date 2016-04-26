@@ -1,0 +1,476 @@
+@media only screen and (min-width: 1024px) {
+.family_Widget_2016 {
+    .container{
+        max-width: 970px;
+        padding: 0 15px;
+        margin: 0px auto;
+    }
+    .menu_mobile{
+        display: none;
+    }
+    .mobileSearch{
+        display: none;
+    }
+    .navbar{
+        padding: 75px 0 40px 0;
+        text-align: center;
+        background: none;
+    }
+    .logo{
+        font-size: 30px;
+        color: $dark-gray;
+        float: none;
+        padding-right: 30px;
+        background: url("../images/logo.png") no-repeat right 9px;
+    }
+    .menuBar{
+        background: none;
+        height: 43px;
+        margin-bottom: 20px;
+        overflow: hidden;
+        &:hover{
+            overflow: visible;
+        }
+    }
+    
+    .menu{
+        position: relative;
+        visibility: visible;
+        opacity: 1;
+        width: inherit;
+        height: auto;
+        display: block;
+        float: left;
+        background: #f6f0f2;
+        padding: 0;
+        border-left: solid 5px $white;
+        li{
+            display: block;
+            float: left;
+            border-bottom: none;
+            border-right: solid 1px $white;
+            a{
+                font-size: 12px;
+                text-transform: uppercase;
+                color: $base-color ;
+                padding: 14px 20px 16px;
+                @include transition(all 0.3s ease);
+            }
+            &:hover{
+                border-color: $white;
+                a{
+                    color: $base-color;
+                    background: #ffd7e6;
+                    
+                }
+            }
+            &:last-child{
+                border-right: solid 1px $white;
+            }
+            &.dropMenu{
+                > a{
+                    padding-right: 34px;
+                    background: url("../images/droparrow.png") no-repeat 90% center ;
+                    border-left: solid 1px transparent;
+                }
+                &:hover{
+                    > a{
+                        color:$base-color;
+                        background-color: #ffd7e6 ;
+                        border-left: solid 1px $pink;
+                    }
+                }
+            }
+            .dropDown{
+                position: absolute;
+                left: 0;
+                width: 250px;
+                top: 100%;
+                margin: 0;
+                display: block;
+                padding: 5px 20px;
+                background-color:rgba(white, 0.98);
+                border-left: solid 1px $pink;
+                @include box-shadow(0, 1px, 1px, rgba(0, 0, 0, 0.1));
+                li{
+                    display: block;
+                    border: none;
+                    float: none;
+                    border-bottom: solid 1px lighten($base-color,30%);
+                    background: transparent;
+                    &:last-child{
+                        border-bottom: none;
+                    }
+                    a{
+                        background: transparent;
+                        font-size: 13px;
+                        padding: 10px 0;
+                        &:hover{
+                            background: transparent;
+                            color: $pink;
+                        }
+                    }
+                }
+            }
+        }
+        &.active{
+            padding: 0;
+        }
+    }
+    .searchbox{
+        position: relative;
+        float: left;
+        width: 220px;
+        height: inherit;
+        opacity: 1;
+        visibility: visible;
+        padding-left: 40px;
+        background: url("../images/search.png") no-repeat 15px 14px #f6f0f2;
+        input{
+            height: 43px;
+            color: $base-color ;
+            font-size: 13px;
+            font-weight: 400;
+            text-transform: inherit;
+            @include input-placeholder {
+                color: $base-color ;
+                opacity: 1;
+             }
+        }
+    }
+    .innerPageSec{
+        padding: 50px 0;
+    }
+    .innerPageHead{
+        padding-bottom: 20px;
+        .familyName{
+            font-size: 30px;
+        }
+        .userDetails{
+            float: left;
+        }
+        .contact24{
+            float: left;
+            margin:0px 0 0 17%;
+            padding: 0;
+            font-size: 14px;
+            span{
+                margin-top: 5px;
+                font-size: 20px;
+            }
+        }
+        .aboutIcons{
+            float: right;
+            background: none;
+            height: auto;
+            padding:5px 0 0 0;
+            a{
+                margin: 0 5px;
+                &.call{
+                    background: url("../images/call-icon.png") no-repeat center top;
+                }
+                &.message{
+                    background: url("../images/mail-icon.png") no-repeat center 3px;
+                }
+                &.chat{
+                    background: url("../images/chat-icon.png") no-repeat center top;
+                }
+                &.chapters{
+                    background: url("../images/chap-icon.png") no-repeat center top;
+                }
+                &:hover{
+                    opacity: 0.5;
+                }
+            }
+        }
+    }
+    .prfileDetails{
+        margin: 0;
+        figure{
+            float: left;
+            top: 0;
+            border: none;
+            border-right: solid 2px $white;
+        }
+        figcaption{
+            float: left;
+            width: 70%;
+            padding: 20px 20px 0 30px;
+            p{
+                line-height: 20px;
+            }
+        }
+    }
+    .profileContact{
+        margin: 0;
+        text-align: left;
+        padding: 10px 15px;
+        .proName{
+            width: 295px;
+            float: left;
+            font-size: 16px;
+            span{
+                font-size: 14px;
+            }
+        }
+        .proUrl{
+            float: left;
+            margin-bottom: 10px;
+        }
+        .abtLinks{
+            float: right;
+            border: none;
+            padding: 0;
+            a{
+                margin: 0 10px;
+                padding:0 0 0 35px;
+                width: auto;
+                line-height: 35px;
+                background-position: left center !important;
+            }
+        }
+    }
+    .gallery{
+        padding: 0;
+        .pics{
+            width: 48%;
+            float: left;
+            padding-bottom: 20px;
+        }
+        .video{
+            width: 48%;
+            float: right;
+        }
+        .moreLink{
+            font-size: 12px;
+            text-transform: uppercase;
+            text-align: right;
+            height: 15px;
+            margin: 15px 0 10px;
+            line-height: 15px;
+            background: none;
+            font-weight: bold;
+            padding: 0 10px 0 0;
+            background: url("../images/more.png") no-repeat right center;
+            &:hover{
+                background: url("../images/more.png") no-repeat right center;
+            }
+        }
+    }
+    .adoptDetails{
+        margin: 0;
+        overflow: hidden;
+        .preference{
+            width: 300px;
+            float: left;
+            padding: 20px;
+        }
+        .familyDetails{
+            width: 640px;
+            float: right;
+            padding: 20px 25px;
+            border-left: solid 1px $white;
+            margin-bottom: -25em;
+            padding-bottom: 25em;
+            .list{
+                width: 49%;
+                display: inline-block;
+                border-bottom: none;
+                margin-bottom: 10px;
+                &:first-child{
+                    width: 46%;
+                    margin-right: 20px;
+                    border-right: solid 1px #c9e3af;
+                }
+            }
+            .waitTime{
+                text-align: center;
+                border-top: solid 1px #c9e3af;
+                padding: 15px 40px 0 0;
+                label, strong{
+                    width: 110px;
+                    text-align: left;
+                    margin:0 40px 0 0;
+                }
+            }
+        }
+    }
+    .aboutFamily{
+        margin: 45px 0 0 0;
+        .familyDesc{
+            width: 48%;
+            float: left;
+            padding-right: 20px;
+            border-right: solid 1px #ecebec;
+            margin-right: 20px;
+        }
+        .ourJournal{
+            float: right;
+            width: 49%;
+            padding: 0;
+            h4{
+                margin-bottom: 20px;
+            }
+            .infobox{
+                margin: 0 0 5px;
+                position: relative;
+                padding: 25px 25px;
+                p{
+                    color: $base-color;
+                }
+                h5{
+                    width: 75%;
+                    margin-bottom: 20px;
+                }
+                .date{
+                    position: absolute;
+                    right: 25px;
+                    top: 20px;
+                }
+            }
+        }
+        .reader{
+            margin: 0;
+            padding: 0;
+            background: none;
+            .readerlogo{
+                color: #85b916;
+                background: url("../images/epub-logo.png") no-repeat left center;
+            }
+        }
+        .ourAgency {
+            padding-top: 40px;
+            .agencyLeft{
+                h4{
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+    .gallery {
+        .pics {
+            figure{
+                border: 2px solid #fff;
+                @include box-shadow(0, 1px, 5px, rgba(0, 0, 0, 0.0));
+                @include transition(all 0.3s ease);
+                &:hover{ 
+                    @include scale(1.4);
+                    @include box-shadow(0, 1px, 5px, rgba(0, 0, 0, 0.5));
+                }
+            }
+        }
+        .video{
+            border-top: solid 1px $white;
+        }
+    }
+    .footerInner{
+        .copy{
+            float: left;
+        }
+        .privacy{
+            float: right;
+        }
+    }
+    .contactBlock {
+        .contactVideo{
+            width: 52%;
+        }
+        .callMeForm{
+             width: 46%;    
+        }
+    }
+    .bottomContact{
+        padding: 35px;
+        .blockForm{
+            width: 47%;
+            &:first-child{
+                margin-right: 35px;
+                padding-right: 40px;
+                border-width: 2px;
+            }
+        }
+    }
+    .slider{
+        margin:20px 0 0;
+    }
+    .albumGallery{
+        padding: 25px 25px;
+        margin:-40px 0 0 0;
+        .pics {
+            figure{
+                border: 1px solid #fff;
+                @include box-shadow(0, 1px, 5px, rgba(0, 0, 0, 0.0));
+                @include transition(all 0.3s ease);
+                img{
+                    display: block;
+                }
+                &:hover{ 
+                    @include scale(1.1);
+                    @include box-shadow(0, 1px, 5px, rgba(0, 0, 0, 0.5));
+                }
+            }
+        }
+    }
+    .journal{
+       position: relative;
+        .date{
+            position: absolute;
+            right: 0;
+            top: 15px;
+            margin: 0;
+            top: 35px;
+        }
+        h4{
+             width: 75%;
+            margin-bottom: 20px;
+        }
+        .pics{
+            figure.single{
+                height: 297px;
+                width: auto;
+                max-width: inherit;
+                img{
+                    min-height: 100%;
+                    width: auto;
+                    max-height: 100%;
+                }
+            }
+        }
+    }
+    .journalsListing{
+        padding-top: 20px;
+    }
+    .chaptersBlk{
+        padding: 40px 0 20px;
+        margin: 0 -10px;
+        .item{
+            &:last-child{
+                .chpterBlock{
+                    border: solid 2px #ecebec;
+                }
+            }
+        }
+        .chpterBlock{
+            border: solid 2px #ecebec;
+            padding: 35px;
+            margin: 10px;
+        }
+    }
+    .form {
+        .formGroup{
+            &.phone {
+                .formControl{
+                    width: 84%;
+                }
+            }
+        }
+    }
+    .lisitngBLocks {
+        .itemBlock {
+            .figure{
+                min-height: 227px;
+            }
+        }
+    }
+}
+}

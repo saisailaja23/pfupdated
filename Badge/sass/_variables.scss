@@ -1,0 +1,29 @@
+
+// Fonts
+$base-font        : 'Montserrat', sans-serif;
+
+// Color
+$pink             : #ee4a7d;
+$white            : #ffffff;
+$pinkLight        : #f195bf;
+$green            : #bbdc9b;
+$dark-gray        : #443e42;
+$base-color       : #96828c;
+
+// Mixin
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}
+// scale
+@mixin scale($scale) {
+	 @include transform(scale($scale));
+} 
+@mixin box-shadow($top, $left, $blur, $color, $inset:"") {
+    -webkit-box-shadow:$top $left $blur $color #{$inset};
+    -moz-box-shadow:$top $left $blur $color #{$inset};
+    box-shadow:$top $left $blur $color #{$inset};
+}
