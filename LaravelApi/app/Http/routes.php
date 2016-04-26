@@ -129,7 +129,6 @@ Route::post('/child/add', 'ProfileController@postChildProfile');
 Route::post('/child/edit', 'ProfileController@editChildProfile');
 Route::post('/childphoto/add', 'ProfileController@postChildPhoto');
 
-Route::get('/children','ProfileController@getChildren');
 
 
 
