@@ -339,13 +339,15 @@ class ProfileController extends Controller
   	 	if(!empty($letters)){
   	 	foreach($letters as $letter){
     		$letterDetails[]=array(
-    							"status"=>"200",
 						     	"Title"=>$letter->getTitle(),
 						     	"Content"=>$letter->getContent(),
 						     	"Image"=>$letter->getAssociatedImage()
 						     	);
-    			}  
-  	 	return json_encode($letterDetails);
+    			}
+    		$letterDetails=Array("status"=>"200","letters"=>$letterDetails);
+  			return $_GET['callback']."(".json_encode($letterDetails).")";
+
+		
   	 }
   	 else{
   	 	throw new ParentFinderException('letter_not_found');
@@ -661,21 +663,27 @@ class ProfileController extends Controller
 	public function postProfile(Request $request){
 		$data['profileType']=$request->profile_type;
 		if(!empty($data['profileType'])){
+			$profileType=$data['profileType'];
 			$data['username']=$request->PFusername;
 			$data['password']=$request->PFpassword;
 			$data['emailId']=$request->PFemail;
 			$data['agencyId']=$request->PFagencyId;
-			$data['state'] = $request->state;
-			$data['region'] = $request->region;
-			if($profileType==2){		
-			
+			if($profileType==2){	
 				$profileObj=new CoupleService(null);
-				$data['firstNameSingle']=$request->PFfirstNameSingle;
-				$data['lastNameSingle']=$request->PFlastNameSingle;
-				$data['firstNameCouple']=$request->PFfirstNameCouple;
-				$data['lastNameCouple']=$request->PFlastNameCouple;
-				$data['genderSingle'] = $request->PFgenderSingle;
-				$data['genderCouple'] = $request->PFgenderCouple;
+				$data['maritalStatus']=$request->maritalStatus;
+				if($data['maritalStatus']=='single'){
+					$data['firstName']=$request->PFfirstName;
+					$data['lastName']=$request->PFlastName;
+					$data['gender'] = $request->PFgender;
+				}else{
+					$data['firstName1']=$request->PFfirstName1;
+					$data['lastName1']=$request->PFlastName1;
+					$data['firstName2']=$request->PFfirstName2;
+					$data['lastName2']=$request->PFlastName2;
+					$data['gender1'] = $request->PFgender1;
+					$data['gender2'] = $request->PFgender2;
+				}
+				
 				$insertStatus=$profileObj->saveParentProfile($data);
 			}
 			else if($profileType==4){		
@@ -683,15 +691,16 @@ class ProfileController extends Controller
 				$data['firstName']=$request->PFfirstName;
 				$insertStatus=$profileObj->saveParentProfile($data);
 			}
-			else if($profileType==8){		
-				
+			else if($profileType==8){				
+				$data['state'] = $request->state;
+				$data['region'] = $request->region;
 				$insertStatus=$profileObj->saveParentProfile($data);
 			}else{
 				throw new ParentFinderException('profile_type_not_found');
 			}
 		}else{
 				throw new ParentFinderException('profile_type_not_found');
-			}
+		}
 		
 	}
 

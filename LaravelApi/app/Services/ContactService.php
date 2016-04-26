@@ -115,8 +115,8 @@ class ContactService {
         $contacts->setCountryId($data['Country']);
         $contacts->setStateId($data['State']);
         $contacts->setRegionId($data['Region']);
-            $saveContact=$contacts->saveContactDetails();
-            return $saveContact;
+        $saveContact=$contacts->saveContactDetails();
+        return $saveContact;
       } 
       catch(\Exception $e){
             //Throwing default Exceptions here
