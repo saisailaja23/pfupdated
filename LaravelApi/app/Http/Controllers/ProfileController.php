@@ -90,13 +90,21 @@ class ProfileController extends Controller
 						$profileDetail[]=Array(	"profile"=>array(
 						                                 "parent1"=>$parent1Details,
 						                                  "parent2"=>$parent2Details,
-						                                  "contactDetails"=>$contactDetails
+						                                  "contactDetails"=>$contactDetails,
+						                                  "journal"=>$journalDetails,
+													     	"letter"=>$letterDetails,
+													     	"childpreferences"=>$childpreferences,
+													     	"agency"=>$AgencyDetails
 						                                 )
 										);
 					}else{
 						$profileDetail[]=Array("profile"=>array(
 								                "parent1"=>$parent1Details	,
-								                 "contactDetails"=>$contactDetails				                                  
+								                 "contactDetails"=>$contactDetails,
+								                 "journal"=>$journalDetails,
+											     	"letter"=>$letterDetails,
+											     	"childpreferences"=>$childpreferences,
+											     	"agency"=>$AgencyDetails				                                  
 								                  )
 													);
     	}
