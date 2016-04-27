@@ -21,8 +21,7 @@
         <div class="innerPageHead">
             <div class="clearfix container">
                 <div class="userDetails">
-                    <a href="index.html" class="back">Back</a>
-                    <div class="familyName">Jason and Amy</div>
+                 
                     <a href="#" class="fav">Fav</a>
                 </div>
                 <div class="contact24">
@@ -41,20 +40,12 @@
            <div class="prfileDetails clearfix">
                 <figure><img src="images/pics/pro01.jpg"></figure>
                 <figcaption>
-                    <p>Jason and I met on an online dating site (yes, it does work!) in 2009. We were married in a 
-                    beautiful church in 2012. The vows we took that day in front of God is what keeps our marriage strong.</p>
-                    <p>We always knew adoption would be a part of our lives by seeing the love it has brought to our family, 
-                    and knowing this is the path that God has chosen for us. We are so excited to become parents and to hear 
-                    the pitter patter of little feet!</p>
-                    <p>We enjoy many activities together. We especially love game and movie night with our family and friends. 
-                    The most popular game chosen by one of the kids is Candy Land...</p>
+                  
+                 
                 </figcaption>
            </div>
            <div class="profileContact clearfix">
-               <div class="proName">
-                   JASON and AMY
-                   <span>Michigan</span>
-               </div>
+               
                <div class="proUrl">
                    <a href="#">www.jasonandamy.com</a>
                </div>
@@ -149,6 +140,8 @@
             
              var i;
                 var contentDiv="";
+                  var contentDiv2="";
+
                for(i=0; i<letters.length; i++){
                  contentDiv += '<div class="item">';
                    contentDiv +='<div class="chpterBlock">';
@@ -156,11 +149,37 @@
                   contentDiv += '<p>'+ letters[i].Content +'</p>';
                    contentDiv += '</div>';
                    contentDiv += '</div>';
-           
+            contentDiv2 += '<p>'+ letters[i].Content +'</p>';
                 }
 
            $('.grid').append(contentDiv);
+           $('figcaption').append(contentDiv2);
+
            letterIsotope();
+            }
+
+        });
+   $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/profile/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+             var profiles=data.profiles;
+             var i;
+                 var contentDiv="";
+                 var contentDiv1="";
+              for(i=0; i<profiles.length; i++){
+                var parent1=profiles[i].profile.parent1;
+              contentDiv += '<a href="index.html" class="back">Back</a><div class="familyName">'+ parent1.first_name+'</div>';
+               contentDiv1+= '<div class="proName">'+ parent1.first_name +'<span>'+parent1.c+'</span></div>';
+
+              }
+
+                
+
+           $('.userDetails').append(contentDiv);
+           $('.profileContact').append(contentDiv1);
+
+
             }
 
         });

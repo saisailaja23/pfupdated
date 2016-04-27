@@ -475,11 +475,11 @@ class CoupleService {
             $accountObj->setAgencyId($data['agencyId']);          
             $accountObj->setCreatedAt(getCurrentDateTime());
             $accountObj->setModifiedAt(getCurrentDateTime());
-            $accountObj->setStatus(1);    echo "a";
+            $accountObj->setStatus(1);
             $accountObj->setRoleId($data['profileType']); 
             if($data['profileType']==2){
                 if($data['maritalStatus']=='single)'){
-                    echo "ok";
+                    
                     $accountObj->setName($data['firstName']);
                     $accountId=$accountObj->saveAccountDetails();
                     $profileObj=new ProfileService();
