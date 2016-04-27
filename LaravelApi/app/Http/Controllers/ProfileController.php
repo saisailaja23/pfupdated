@@ -92,9 +92,9 @@ class ProfileController extends Controller
 						                                  "parent2"=>$parent2Details,
 						                                  "contactDetails"=>$contactDetails,
 						                                  "journal"=>$journalDetails,
-													     	"letter"=>$letterDetails,
-													     	"childpreferences"=>$childpreferences,
-													     	"agency"=>$AgencyDetails
+													     "letter"=>$letterDetails,
+													     "childpreferences"=>$childpreferences,
+													     "agency"=>$AgencyDetails
 						                                 )
 										);
 					}else{
@@ -560,7 +560,7 @@ class ProfileController extends Controller
            
           	$countrysdetails=array("status"=>"200",
           							"Country Details"=>$countrys);
-            return json_encode($countrysdetails);
+            return $_GET['callback']."(".json_encode($countrysdetails).")";
            }
            else
            {
@@ -576,7 +576,7 @@ class ProfileController extends Controller
        	   if($states=$stateObj->getStatesByCountryId($country_id))
            {
        	   $stateDetails=Array("status"=>"200","State Details"=>$states);
-           return json_encode($stateDetails);  
+           return $_GET['callback']."(".json_encode($stateDetails).")";
            }
           else
           {
@@ -593,7 +593,7 @@ class ProfileController extends Controller
         	if($region!="")
         	{
         	$regionDetail=Array("status"=>"200","Region Details"=>$region);
-        	return json_encode($regionDetail);
+        	return $_GET['callback']."(".json_encode($regionDetail).")";
            }
            else
            {

@@ -1,7 +1,5 @@
-
-var baseurl="http://localhost/laravel_pf/PARENTFINDER/Badge/";
-var baseurl="http://localhost/Badge/";
-
+var base_url="http://localhost/parentfinderApi/PARENTFINDER/Badge/";
+var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
 (function() {
 
     // Localize jQuery variable
@@ -63,48 +61,32 @@ var baseurl="http://localhost/Badge/";
 
     /******** Our main function ********/
     function main() { 
-          
-            /* Family listing page */
-
-           // $("#content").append('<base href="http://localhost/Badge/">')
-            $("#content").load(baseurl+"index.html");
+            /*Loading main html */
+            $("#content").load(base_url+"index.html");
+            loadMenu();
             loadFamilies();           
        
     }
+
+    function loadMenu(){
+        getKidsinFamilyList();
+        getLikeProfilesList();
+        getReligionList();
+        getRegionList();
+        getCountryStateList();
+        getSortByList();
+    }
+
 
     /*
     * Family listing call from API
     */
     function loadFamilies(){
       $.ajax({
-                url: "http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/profiles",
+                url: api_url+"profiles",
                 dataType: "jsonp",
                 success: function (data) {
                     if(data.status==200){
-
-
-            // Flip
-            $(".itemBlock .figure > img").click(function () {
-                $(this).parent().parent(".itemBlock").addClass("active");
-            });
-            $(".familyName .rotate").click(function () {
-                $(this).parent().parent().parent().parent(".itemBlock").removeClass("active");
-            });            
-       
-      
-        /* Family listing page */
-        $("#content").load(baseurl+"index.html");
-        $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/letters/dhanya",
-            dataType: "jsonp",
-            success: function (data) {alert(data.status);
-                if(data.status==200){
-                    // var profiles=data.profiles;
-                    // for(i=0; i<profiles.length; i++){
-                    // contentDiv += '<div>'+ profiles[i].parent1.first_name +'</div>'
-                  
-                    //}
-                }else{
 
                       var contentDiv='';
                       var profiles=data.profiles;
@@ -120,7 +102,11 @@ var baseurl="http://localhost/Badge/";
                             couple_name+=parent2.first_name;    
                             age+='/'+ getAge(parent2.dob);               
                           }
+                          age=checkValue(age);
                           var contact=profiles[i].profile.contactDetails;
+                          var faith=checkValue(parent1.faith);
+                          var waiting=checkValue(parent1.waiting);
+                          
                          
                        // contentDiv += '<div>'+ profiles[i].parent1.first_name +'</div>';
                         contentDiv+='<div class="item"> <div class="itemBlock">';
@@ -129,15 +115,15 @@ var baseurl="http://localhost/Badge/";
                                +'<div class="details">'
                                    +' <div class="familyName">'
                                       +'<p><b>AGE:</b> '+age+'</p>'
-                                        +'<p><b>WAITING:</b> '+parent1.waiting+'</p>'
-                                        +'<p><b>FAITH:</b> '+parent1.faith+'</p>'
+                                        +'<p><b>WAITING:</b> '+waiting+'</p>'
+                                        +'<p><b>FAITH:</b> '+faith+'</p>'
                                        +' <a class="rotate"></a>'
                                         +'<a class="fav"></a>'
                                     +'</div>'
                                     +'<div class="link">'
                                         +'<a href="about.html" class="about">More About Me</a>'
                                         +'<a href="photos.html" class="pics">Our Pictures</a>'
-                                       +' <a href="chapters.html" class="videos">Our Videos</a>'
+                                       +' <a href="videos.html" class="videos">Our Videos</a>'
                                         +'<a class="profile">Our Profile</a>'
                                     +'</div> '                              
                                 +' </div>';
@@ -156,14 +142,54 @@ var baseurl="http://localhost/Badge/";
                         }                        
                         $('.lisitngBLocks').append(contentDiv);
                     }else{
-
+                      $('.lisitngBLocks').append("");
                     }
                     
-
 
                 }
 
             });
+    }
+    function getKidsinFamilyList(){
+
+    }
+    function getReligionList(){
+      $.ajax({
+        url:api_url+"",
+        dataType:"jsonp",
+
+      });
+    }
+    function getLikeProfilesList(){
+
+    }
+    function getRegionList(){
+       $.ajax({
+        url:api_url+"region",
+        dataType:"jsonp",
+        success:function(data){
+          var regionMenu;
+          if(data.status==200){
+            regionMenu='<ul class="dropDown">'
+                        +'<li><a href="#">sChristian</a> </li>'
+                        +'<li><a href="#">Restorationism</a> </li>'
+                        +'<li><a href="#">Gnosticism</a> </li>'
+                        +'<li><a href="#">Persian Gnosticism</a> </li>'
+                        +'<li><a href="#">Kharijite</a> </li>'
+                    +'</ul>';
+           $('#Region').append(regionMenu);
+          }else{
+
+          }
+        }
+
+      });
+    }
+    function getCountryStateList(){
+      
+    }
+    function getSortByList(){
+      
     }
 
     /* Age calculation 
@@ -181,6 +207,19 @@ var baseurl="http://localhost/Badge/";
         }
         return age;
     }
+    /* Null Check 
+      *    @param  string value
+      *    @return string value
+    */
+    function checkValue(value){
+      if(value!==null){
+            value=value;
+      }else{
+        value='Not Specified';
+      }
+      return value;
+    }
+
 })(); // We call our anonymous function immediately
 
 

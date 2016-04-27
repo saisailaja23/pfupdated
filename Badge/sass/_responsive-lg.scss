@@ -80,6 +80,15 @@
                         border-left: solid 1px $pink;
                     }
                 }
+                .dropDownSub{
+                    margin-left: -20px;
+                    margin-right: -20px;
+                    dt{
+                        a{
+                            padding: 8px 20px;
+                        }
+                    }
+                }
             }
             .dropDown{
                 position: absolute;
@@ -120,12 +129,13 @@
     .searchbox{
         position: relative;
         float: left;
-        width: 220px;
+        width: 219px;
         height: inherit;
         opacity: 1;
         visibility: visible;
         padding-left: 40px;
-        background: url("../images/search.png") no-repeat 15px 14px #f6f0f2;
+        background: url('../images/search.png') no-repeat 15px 14px;
+        background-color: #f6f0f2;
         input{
             height: 43px;
             color: $base-color ;
