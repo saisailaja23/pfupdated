@@ -65,8 +65,9 @@ class ContactRepository {
     /* Get Waiting */
     public function getContactDetails() {
         try{
+
             $contactObj=new ContactDetails;
-            $contcatDetails =$contactObj->where('Account_id', '=',$this->accountId)->first();
+           $contcatDetails =$contactObj->where('Account_id', '=',$this->accountId)->first();
             return $contcatDetails;
         }catch(\Exception $e){
              //Add Exception here

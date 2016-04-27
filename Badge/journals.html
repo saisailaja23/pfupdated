@@ -65,33 +65,8 @@
                </div>
            </div>
            <div class="journalsListing">
-               <div class="journal">
-                   <h4>The Princess Ball</h4>
-                   <span class="date">February 29, 2016</span>
-                   <p>What a royal evening!  Daddy and Sloane had so much fun at thier first Daddy/Princess Ball.  Besides dancing the night away to all the greatest Disney songs, they also got to decorate thier own cupcakes!  Sloane's favorite part by far was bringing home her very own balloon!</p>
-                   <div class="pics">
-                       <figure><img src="images/pics/pic01.jpg"></figure>
-                       <figure><img src="images/pics/pic02.jpg"></figure>
-                       <figure><img src="images/pics/pic03.jpg"></figure>
-                       <figure><img src="images/pics/pic04.jpg"></figure>
-                   </div>
-                   <div class="shareBlock">
-                       <img src="images/pics/share.gif">
-                   </div>
-               </div>
-               <div class="journal">
-                   <h4>Christmas Family Get-A-Way</h4>
-                   <span class="date">February 29, 2016</span>
-                   <p>What a royal evening!  Daddy and Sloane had so much fun at thier first Daddy/Princess Ball.  Besides dancing the night away to all the greatest Disney songs, they also got to decorate thier own cupcakes!  Sloane's favorite part by far was bringing home her very own balloon!</p>
-                   <div class="pics">
-                       <figure><img src="images/pics/pic01.jpg"></figure>
-                       <figure><img src="images/pics/pic02.jpg"></figure>
-                       <figure class="single"><img src="images/pics/pic05.jpg"></figure>
-                   </div>
-                   <div class="shareBlock">
-                       <img src="images/pics/share.gif">
-                   </div>
-               </div>
+               
+               
            </div>
        </div>
     </section>
@@ -112,6 +87,37 @@
     <script src="javascripts/common.js"></script>
     <script>
 		(function ($) {
+      jQuery(document).ready(function($) {    
+
+  $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/journals/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                var journals=data.journals;
+            
+             var i;
+                var contentDiv="";
+               for(i=0; i<journals.length; i++){
+           
+              contentDiv += '<div class="journal"><h4>'+ journals[i].Caption +'</h4>  <span class="date">February 29, 2016</span><p>'+ journals[i].Text +'</p><div class="pics">';
+                    for(j=0;j<3;j++)
+                    {
+                  contentDiv +='<figure><img src="'+ journals[i].Uri +'"></figure>';                  // 
+              //$('.journal').append('<h4>'+ journals[i].Caption +'</h4>  <span class="date">February 29, 2016</span><p>'+ journals[i].Text +'</p><div class="pics"><figure><img src="'+ journals[i].Uri +'"></figure><div class="shareBlock"><img src="images/pics/share.gif"></div>');
+         
+               }
+               contentDiv += '</div>';
+                contentDiv += '<div class="shareBlock"><img src="images/pics/share.gif"></div></div>';
+
+                }
+
+           $('.journalsListing').append(contentDiv);
+
+            }
+
+        });
+ 
+});
             
 		}(jQuery));
 	</script>

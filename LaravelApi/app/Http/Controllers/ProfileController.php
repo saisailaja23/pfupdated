@@ -248,13 +248,13 @@ class ProfileController extends Controller
 	    	}  
    
     	}  	 	
-    	
-	    return json_encode($profileDetails);	    	
+          return $_GET['callback']."(".json_encode($profileDetails).")";
   	}
 
 
     /* Journals */
   	public function getJournalApi(){
+  		$journalDetails = '';
   		$api=Input::segment(1);
   		if($api=='journals') {  
 
@@ -297,7 +297,8 @@ class ProfileController extends Controller
 						     	);
     			}  
 
-    	 return json_encode($journalDetails);
+    	$journalDetails=Array("status"=>"200","journals"=>$journalDetails);
+  			return $_GET['callback']."(".json_encode($journalDetails).")";
     	}
     	else{
     		throw new ParentFinderException('journal_not_found');
@@ -549,7 +550,7 @@ class ProfileController extends Controller
 
     public function getLocationApi(){
 
-        echo $api=Input::segment(1);
+        $api=Input::segment(1);
         $countrysdetails = "";
         if($api=='country')
         {
@@ -1202,6 +1203,29 @@ public function postChildPhoto(Request $request){
         $childObj=new ChildPhotoService(null);
         $insertstatus=$childObj->saveChildPhoto($data);	
 
+    }
+
+
+
+    public function getReligionApi()
+    {
+      $religionObj=new UtilityService;
+        	$religion=$religionObj->getReligion();
+        	if(count($religion)!="")
+        	{
+        	$religionDetail=Array("status"=>"200","Religion Details"=>$religion);
+        	return json_encode($religionDetail);
+           }
+           else
+           {
+           	 throw new ParentFinderException('religion-not-found');
+           }
+    }
+
+ public function getKidsApi()
+    {
+    	$kidsObj=new UtilityService;
+        	$kids=$kidsObj->getKids();
     }
 
 
