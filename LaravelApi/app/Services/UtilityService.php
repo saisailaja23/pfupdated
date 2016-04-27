@@ -422,8 +422,8 @@ class UtilityService {
     } 
    public function getKids(){ 
        
-$kids=new ReligionRepository(null);
-       $religionDetails=$religion->getAllReligions();
+$kids=new KidsRepository(null);
+       $kidsDetails=$kids->getKidsDetails();
    } 
     
 }
