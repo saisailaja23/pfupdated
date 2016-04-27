@@ -73,7 +73,8 @@ public function getJournalSeo($slug){
    public function getJournalsByTitle($accountId,$title){
          try{
             $journal=new Journal;
-            $journalDetails =$journal->select('PostId')
+
+          $journalDetails =$journal->select('PostId')
                                     ->where('account_id', '=', $accountId)
                                     ->where('PostStatus','=','approval')
                                     ->where('PostCaption','like','%'.$title.'%')

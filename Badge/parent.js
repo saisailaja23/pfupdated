@@ -1,4 +1,4 @@
-var baseurl="http://localhost/pflaravel/PARENTFINDER/Badge/";
+var baseurl="http://localhost/laravel_pf/PARENTFINDER/Badge/";
 (function() {
 
 // Localize jQuery variable
@@ -74,7 +74,7 @@ function main() {
         /* Family listing page */
         $("#content").load(baseurl+"index.html");
         $.ajax({
-            url: "http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/letters/dhanyas",
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/letters/dhanya",
             dataType: "jsonp",
             success: function (data) {alert(data.status);
                 if(data.status==200){

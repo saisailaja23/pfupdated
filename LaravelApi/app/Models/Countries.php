@@ -8,6 +8,6 @@ class Countries extends Model
 {
     //
     
-   //protected $table = 'countries';
+   protected $table = 'countries';
    public $timestamps = false;
 }

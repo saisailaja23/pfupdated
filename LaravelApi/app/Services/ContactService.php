@@ -80,24 +80,27 @@ class ContactService {
     /* Get Contact Details */
     public function getContactDetails() {
         try{
+
         $contacts=new ContactRepository($this->accountId);
         if($contactDetails=$contacts->getContactDetails()){
             $this->countryId=$contactDetails->Country;          
             $this->stateId=$contactDetails->State;
             $this->mobileNumber=$contactDetails->mobile_num;
+            
             $countryObj=new CountryRepository($this->countryId);
             if($countries=$countryObj->getCountryDetails()){
                 $this->country=$countries->country;
             }
             $stateObj=new StateRepository($this->stateId);
             if($states=$stateObj->getStateDetails()){
+              $states;
                  $this->state=$states->State;
             } 
             return $this;
         } 
     }
     catch(\Exception $e){
-            throw new ParentFinderException('contact_not_found',$e->getMessage());
+           //throw new ParentFinderException('contact_not_found',$e->getMessage());
         } 
     }
 

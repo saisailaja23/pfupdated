@@ -189,7 +189,13 @@ use Exception;
                 $error['status']=204;
                  $error['title']='Region Not Found';
                  $error['detail']='Region you were looking for was not found for this state';
-                 break;          
+                 break; 
+            case 'religion-not-found' :
+                $error['status']=204;
+                 $error['title']='Religion Not Found';
+                 $error['detail']='Religions not found';
+                 break;   
+
             case 'membership_not_found' :
                 $error['status']=204;
                  $error['title']='NO Memberships Found';
