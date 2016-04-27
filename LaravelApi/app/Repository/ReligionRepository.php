@@ -42,6 +42,15 @@ class ReligionRepository {
     }
 
 
+     public function getAllReligions() {
+         try{
+         $religionObj=new Religions;
+         $religionDetails =$religionObj->get();
+            return $religionDetails;
+             }catch(\Exception $e){
+             //Add Exception here
+              }  
+        }
         
     
 }

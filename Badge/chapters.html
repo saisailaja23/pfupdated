@@ -66,10 +66,7 @@
            </div>
            <div class="chaptersBlk">
                <div class="grid">
-                <div class="item">   
-                
-
-                 </div>
+               
 
                </div>
            </div>
@@ -91,8 +88,11 @@
     <script src="javascripts/common.js"></script>
     <script>
     (function ($) {
-            // Isotope
-
+            
+    
+});
+    function letterIsotope()
+    {
       var $container = $('.grid'),
         colWidth = function () {
 
@@ -138,10 +138,8 @@
         };
       isotope();
       $(window).smartresize(isotope);
-      /*
-      letter load js
-      */
-    jQuery(document).ready(function($) {    
+    }
+ jQuery(document).ready(function($) {    
 
   $.ajax({
             url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/letters/dhanya",
@@ -158,22 +156,14 @@
                   contentDiv += '<p>'+ letters[i].Content +'</p>';
                    contentDiv += '</div>';
                    contentDiv += '</div>';
-            // $('.item').append('<div class="chpterBlock"><h4>'+ letters[i].Title +'</h4><p>'+ letters[i].Content +'</p></div>');
-               
-             //$('.grid').append(chpterBlock);
-              //$('.chpterBlock').append('<h4>'+ letters[i].Title +'</h4><p>'+ letters[i].Content +'</p>');
-               
-
+           
                 }
 
-           $('.item').append(contentDiv);
-
+           $('.grid').append(contentDiv);
+           letterIsotope();
             }
 
         });
- 
-});
-
     }(jQuery));
   </script>
   

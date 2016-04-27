@@ -17,7 +17,7 @@ use App\Exceptions\ParentFinderException;
 use App\Repository\VideoRepository;
 use App\Repository\EprofileRepository;
 use App\Repository\PdfRepository;
-//use App\Exceptions\ParentFinderException;
+
 /**
  * Description of ParentService
 **/
@@ -131,16 +131,18 @@ class CoupleService {
         $contactDetails='';
         try{
         $contactObj=new ContactService($this->accountId);
-        if($contactDetails=$contactObj->getContactDetails()){
+        if(count($contactDetails!=0)){
+            
+           $contactDetails=$contactObj->getContactDetails(); 
             return $contactDetails;
         }
         else{
-             throw new ParentFinderException('contact_not_found');
+            throw new ParentFinderException('contact_not_found');
         }
         
     }
     catch(\Exception $e){
-              throw new ParentFinderException('contact_not_found',$e->getMessage());
+            // throw new ParentFinderException('contact_not_found',$e->getMessage());
         } 
     } 
 

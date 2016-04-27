@@ -103,8 +103,10 @@ class UtilityService {
     /*Get Journal By Tittle*/
     public function getJournalsByTitle($account_id,$title){
         try{
+         
         $journalObj=new JournalRepository(null);
         if($journalIds=$journalObj->getJournalsByTitle($account_id,$title)){
+
         foreach($journalIds as $journalId){
             $journalObj=new JournalService($journalId->PostId);
             $journalDetails[]=$journalObj->getJournal();        
@@ -405,6 +407,23 @@ class UtilityService {
 
     } 
 
-
+  public function getReligion(){ 
+    try
+      {
+    
+       $religion=new ReligionRepository(null);
+       $religionDetails=$religion->getAllReligions();
+       return $religionDetails; 
+           }
+     catch (\Exception $e) {
+            //throwing default exceptions
+        }
+      
+    } 
+   public function getKids(){ 
+       
+$kids=new KidsRepository(null);
+       $kidsDetails=$kids->getKidsDetails();
+   } 
     
 }

@@ -1,4 +1,7 @@
+
+var baseurl="http://localhost/laravel_pf/PARENTFINDER/Badge/";
 var baseurl="http://localhost/Badge/";
+
 (function() {
 
     // Localize jQuery variable
@@ -79,6 +82,30 @@ var baseurl="http://localhost/Badge/";
                 success: function (data) {
                     if(data.status==200){
 
+
+            // Flip
+            $(".itemBlock .figure > img").click(function () {
+                $(this).parent().parent(".itemBlock").addClass("active");
+            });
+            $(".familyName .rotate").click(function () {
+                $(this).parent().parent().parent().parent(".itemBlock").removeClass("active");
+            });            
+       
+      
+        /* Family listing page */
+        $("#content").load(baseurl+"index.html");
+        $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/letters/dhanya",
+            dataType: "jsonp",
+            success: function (data) {alert(data.status);
+                if(data.status==200){
+                    // var profiles=data.profiles;
+                    // for(i=0; i<profiles.length; i++){
+                    // contentDiv += '<div>'+ profiles[i].parent1.first_name +'</div>'
+                  
+                    //}
+                }else{
+
                       var contentDiv='';
                       var profiles=data.profiles;
                       for(i=0; i<profiles.length; i++){
@@ -132,6 +159,7 @@ var baseurl="http://localhost/Badge/";
 
                     }
                     
+
 
                 }
 

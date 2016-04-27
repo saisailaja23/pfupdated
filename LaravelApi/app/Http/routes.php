@@ -128,6 +128,8 @@ Route::post('/profile/pdf/delete', 'ProfileController@deletePdf');
 Route::post('/child/add', 'ProfileController@postChildProfile');
 Route::post('/child/edit', 'ProfileController@editChildProfile');
 Route::post('/childphoto/add', 'ProfileController@postChildPhoto');
+Route::get('/religion','ProfileController@getReligionApi');
+Route::get('/kids','ProfileController@getKidsApi');
 
 
 

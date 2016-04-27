@@ -10,7 +10,7 @@ use App\Models\AgeGroupPref;
 use App\Models\AdoptionTypePref;
 use App\Models\AdoptionType;
 use App\Models\AgeGroup;
-
+use App\Exceptions\ParentFinderException;
 /**
  * Description of ParentService
 **/
@@ -50,7 +50,7 @@ class ChildPreferRepository {
         try{
             $ageObj=new AgeGroupPref;
             $agePreferDetails =$ageObj->where('account_id', '=',$this->getAccountId())->get();
-            return $agePreferDetails;
+             return  $agePreferDetails;
         }catch(\Exception $e){
                throw new ParentFinderException('age-prefer-not-found',$e->getMessage());
         }  
@@ -61,7 +61,7 @@ class ChildPreferRepository {
         try{
             $adoptionObj=new AdoptionTypePref;
             $adoptionPreferDetails =$adoptionObj->where('account_id', '=',$this->getAccountId())->get();
-            return $adoptionPreferDetails;
+             return  $adoptionPreferDetails;
         }catch(\Exception $e){
                throw new ParentFinderException('adoption-prefer-not-found',$e->getMessage());
         }  

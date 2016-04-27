@@ -24,6 +24,7 @@ class CountryRepository {
     /* Get Waiting */
     public function getCountryDetails() {
         try{
+
             $countryObj=new Countries;
             $countryDetails =$countryObj->where('country_id', '=',$this->countryId)->first();
             return $countryDetails;
