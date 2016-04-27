@@ -51,8 +51,53 @@
                         <li><a href="#">Kharijite</a> </li>
                     </ul>
                 </li>
-                <li class="dropMenu"><a href="#">Region </a></li>
-                <li class="dropMenu"><a href="#">State</a></li>
+                <li class="dropMenu" id="Region"><a href="#">Region </a>
+                    <!-- Dropdown -->
+                    
+                </li>
+                 <li class="dropMenu"><a href="#">State</a>
+                    <!-- Dropdown -->
+                    <ul class="dropDown">
+                        <li><a href="#">Christian</a>
+                             <dl class="dropDownSub">
+                              <dt><a href="#">Coffee</a></dt>
+                              <dt><a href="#">Black hot drink</a></dt>
+                              <dt><a href="#">Milk</a></dt>
+                              <dt><a href="#">White cold drink</a></dt>
+                              <dt><a href="#">Coffee</a></dt>
+                              <dt><a href="#">Black hot drink</a></dt>
+                              <dt><a href="#">Milk</a></dt>
+                              <dt><a href="#">White cold drink</a></dt>
+                            </dl> 
+                        </li>
+                        <li><a href="#">Restorationism</a>
+                            <dl class="dropDownSub">
+                              <dt><a href="#">Coffee</a></dt>
+                              <dt><a href="#">Black hot drink</a></dt>
+                              <dt><a href="#">Milk</a></dt>
+                              <dt><a href="#">White cold drink</a></dt>
+                              <dt><a href="#">Coffee</a></dt>
+                              <dt><a href="#">Black hot drink</a></dt>
+                              <dt><a href="#">Milk</a></dt>
+                              <dt><a href="#">White cold drink</a></dt>
+                            </dl>
+                        </li>
+                        <li><a href="#">Gnosticism</a>
+                            <dl class="dropDownSub">
+                              <dt><a href="#">Coffee</a></dt>
+                              <dt><a href="#">Black hot drink</a></dt>
+                              <dt><a href="#">Milk</a></dt>
+                              <dt><a href="#">White cold drink</a></dt>
+                              <dt><a href="#">Coffee</a></dt>
+                              <dt><a href="#">Black hot drink</a></dt>
+                              <dt><a href="#">Milk</a></dt>
+                              <dt><a href="#">White cold drink</a></dt>
+                            </dl>
+                        </li>
+                        <li><a href="#">Persian Gnosticism</a> </li>
+                        <li><a href="#">Kharijite</a> </li>
+                    </ul>
+                </li>
                 <li class="dropMenu"><a href="#">Sort by</a></li>
             </ul>
             <div class="searchbox">
@@ -104,7 +149,7 @@
 
     <script type="text/javascript">
     $(function() {
-         $('base').attr('href',baseurl);
+         $('base').attr('href',base_url);
         $(".itemBlock .figure > img").click(function () {
             $(this).parent().parent(".itemBlock").addClass("active");
         });
