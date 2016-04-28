@@ -59,18 +59,17 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
     function main() { 
             /*Loading main html */
             $("#content").load(base_url+"index.html");
-            loadMenu();
-            loadFamilies();           
+            loadFamilies();  
        
     }
 
     function loadMenu(){
+       
         getKidsinFamilyList();
        // getLikeProfilesList();
         getReligionList();
         getRegionList();
-       // getCountryStateList();
-        getSortByList();
+        getCountryStateList();
     }
 
 
@@ -78,9 +77,11 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
     * Family listing call from API
     */
     function loadFamilies(){
+      var i;
       $.ajax({
                 url: api_url+"profiles",
                 dataType: "jsonp",
+                async:false,
                 success: function (data) {
                     if(data.status==200){
 
@@ -102,12 +103,12 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                           var contact=profiles[i].profile.contactDetails;
                           var faith=checkValue(parent1.faith);
                           var waiting=checkValue(parent1.waiting);
-                          
+                          var avatar=checkPhoto(parent1.avatar);
                          
                        // contentDiv += '<div>'+ profiles[i].parent1.first_name +'</div>';
                         contentDiv+='<div class="item"> <div class="itemBlock">';
                         contentDiv+='<div class="figure">';
-                        contentDiv+='<img src="https://www.parentfinder.com/modules/boonex/avatar/data/favourite/1520.jpg">'
+                        contentDiv+='<img src="'+avatar+'">'
                                +'<div class="details">'
                                    +' <div class="familyName">'
                                       +'<p><b>AGE:</b> '+age+'</p>'
@@ -118,7 +119,7 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                                     +'</div>'
                                     +'<div class="link">'
                                         +'<a href="about.html" class="about">More About Me</a>'
-                                        +'<a href="javascript:void(0);" class="pics" onclick="getChapters();">Our Pictures</a>'
+                                        +'<a target="_blank" href="javascript:void(0);" class="pics" onclick="getChapters();">Our Pictures</a>'
                                        +' <a href="videos.html" class="videos">Our Videos</a>'
                                         +'<a class="profile">Our Profile</a>'
                                     +'</div> '                              
@@ -137,19 +138,22 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                       
                         }                        
                         $('.lisitngBLocks').append(contentDiv);
+
                     }else{
                       $('.lisitngBLocks').append("");
                     }
-                    
+                    loadMenu();
 
                 }
 
             });
     }
     function getRegionList(){
+      var i;
       $.ajax({
         url:api_url+"region",
         dataType:"jsonp",
+        async:false,
         success:function(data){
           var regionMenu;
           if(data.status==200){
@@ -166,9 +170,11 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
     }
   
     function getReligionList(){
+      var i;
       $.ajax({
         url:api_url+"religion",
         dataType:"jsonp",
+        async:false,
         success:function(data){
           var religionMenu;
           if(data.status==200){
@@ -176,10 +182,11 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
              religionMenu='<ul class="dropDown">';
              for(i=0; i<religion.length; i++){
                 religionMenu+='<li id="'+religion[i].ReligionId+'"><a href="#">'+religion[i].Religion+'</a> </li>';               
-              }
-              alert(religionMenu);
+              }             
               religionMenu+='</ul>';
               $('#religion').append(religionMenu);
+         }else{
+
          }
         }
       });
@@ -188,68 +195,71 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
 
     }
     function getKidsinFamilyList(){
+      var i;
        $.ajax({
         url:api_url+"kids",
         dataType:"jsonp",
+        async:false,
         success:function(data){
-          var regionMenu;
+          var kidsMenu='';
           if(data.status==200){
-            regionMenu='<ul class="dropDown">'
-                        +'<li><a href="#">sChristian</a> </li>'
-                        +'<li><a href="#">Restorationism</a> </li>'
-                        +'<li><a href="#">Gnosticism</a> </li>'
-                        +'<li><a href="#">Persian Gnosticism</a> </li>'
-                        +'<li><a href="#">Kharijite</a> </li>'
-                    +'</ul>';
-           $('#kids').append(regionMenu);
+            var kids=data.KidsDetails;
+            kidsMenu='<ul class="dropDown">';
+             for(i=0; i<kids.length; i++){
+                kidsMenu+='<li id="'+kids[i].kids_id+'"><a href="#">'+kids[i].description+'</a> </li>';               
+              } 
+            kidsMenu+='</ul>';
+           $('#kids').append(kidsMenu);
           }
         }
 
       });
     }
+    
     function getCountryStateList(){
+      var i;
+      var j;
+      var countryMenu;
       $.ajax({
-        url:api_url+"region",
+        url:api_url+"country",
         dataType:"jsonp",
+        async:false,
         success:function(data){
-          var regionMenu;
+          
           if(data.status==200){
-            regionMenu='<ul class="dropDown">'
-                        +'<li><a href="#">sChristian</a>'
-                           +'<dl class="dropDownSub">'
-                               +'<dt><a href="#">Coffee</a></dt>'
-                               +'<dt><a href="#">Black hot drink</a></dt>'
-                               +'<dt><a href="#">Milk</a></dt>'
-                               +'<dt><a href="#">White cold drink</a></dt>'
-                               +'<dt><a href="#">Coffee</a></dt>'
-                               +'<dt><a href="#">Black hot drink</a></dt>'
-                               +'<dt><a href="#">Milk</a></dt>'
-                               +'<dt><a href="#">White cold drink</a></dt>'
-                             +'</dl>' 
-                          +'</li>'
-                        +'<li><a href="#">Restorationism</a> </li>'
-                        +'<li><a href="#">Gnosticism</a> </li>'
-                        +'<li><a href="#">Persian Gnosticism</a> </li>'
-                        +'<li><a href="#">Kharijite</a> </li>'
-                    +'</ul>';
-           $('#country').append(regionMenu);
+            var country=data.countryDetails;
+            countryMenu='<ul class="dropDown">';
+            for(i=0; i<5; i++){
+                countryMenu+='<li id="'+country[i].country_id+'"><a href="#">'+country[i].country+'</a>';
+
+                $.ajax({
+                  url:api_url+"state/"+country[i].country_id,
+                  dataType:"jsonp", 
+                  async:false,
+                  success:function(data){
+                    if(data.status==200){
+                      var state=data.stateDetails;
+                      countryMenu+='<dl class="dropDownSub">';
+                      for(j=0;j<state.length;j++){
+                        countryMenu+='<dt id="'+state[j].state_id+'"><a href="#">'+state[j].State+'</a></dt>';
+                      }
+                      countryMenu+='</dl>';
+                      
+                    }
+                  }
+
+                }); 
+                countryMenu+='</li>'; 
+            } 
+            countryMenu+='</ul>';        
+            $('#country').append(countryMenu);
+
           }
         }
 
       });
     }
-  
-    function getSortByList(){
-     
-            regionMenu='<ul class="dropDown">'
-                        +'<li><a href="#">Newest First</a> </li>'
-                        +'<li><a href="#">Oldest First</a> </li>'
-                        +'<li><a href="#">First Name</a> </li>'
-                        +'<li><a href="#">Random</a> </li>'
-                    +'</ul>';
-           $('#sortBy').append(regionMenu);
-         
-    }
+
     
     /* Age calculation 
       *    @param  Request dateString
@@ -278,7 +288,21 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
       }
       return value;
     }
+    function checkPhoto(value){
+      if(value!=0){
+        value='https://www.parentfinder.com/modules/boonex/avatar/data/favourite/'+value+'.jpg';
+      }else{
+        value='https://www.parentfinder.com/templates/tmpl_par/images/NO-PHOTOS_icon.png';
+      }
+      return value;
+    }
+   
 
 })(); // We call our anonymous function immediately
+
+
+function getChapters(){
+    $("#content").load(base_url+"chapters.html");      
+}
 
 

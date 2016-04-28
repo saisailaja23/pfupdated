@@ -16,7 +16,7 @@
     <![endif]-->
 </head>
 
-<body class="family_Widget_2016">
+<div class="family_Widget_2016">
     <section class="innerPageSec">
         <div class="innerPageHead">
             <div class="clearfix container">
@@ -87,10 +87,7 @@
     <script src="javascripts/jquery.isotope.min.js"></script> 
     <script src="javascripts/common.js"></script>
     <script>
-    (function ($) {
-            
     
-});
     function letterIsotope()
     {
       var $container = $('.grid'),
@@ -142,7 +139,7 @@
  jQuery(document).ready(function($) {    
 
   $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/letters/dhanya",
+            url: api_url+"letters/dhanyas",
             dataType: "jsonp",
             success: function (data) {
                 var letters=data.letters;
@@ -168,5 +165,5 @@
   </script>
   
 
-</body>
+</div>
 </html>

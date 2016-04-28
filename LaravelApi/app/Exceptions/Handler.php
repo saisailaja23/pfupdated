@@ -89,7 +89,7 @@ class Handler extends ExceptionHandler
 
         }
 
-      return json_encode($errorList); 
+      return $_GET['callback']."(".json_encode($errorList).")";
        
     }
 }
