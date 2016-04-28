@@ -34,8 +34,7 @@ class VideoRepository {
       $albumid = '';
         try{
             $albumobj=new Albums;
-            $albumdetails =$albumobj->where('account_id', '=',$account_id)
-                                  ->where('Caption', '!=','Home Videos')
+             $albumdetails =$albumobj->where('account_id', '=',$account_id)
                                   ->where('Type', '=','bx_videos')
                                   ->where('AllowAlbumView', '!=','2')
                                   ->get(); 
@@ -43,7 +42,7 @@ class VideoRepository {
              $albumid[]= $albumdetail->ID;
                   }      
              //$albumid = substr($albumid, 0, -1);
-            return  $albumid;              
+            return  $albumdetails;              
         }catch(\Exception $e){
              //Add Exception here
         } 

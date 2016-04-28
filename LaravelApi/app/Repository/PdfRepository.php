@@ -34,7 +34,7 @@ class PdfRepository {
    public function getPdfDetail(){
          try{
             $pdfobj=new PdfTemplate;
-            $pdfdetails =$pdfobj->where('account_id', '=',$this->account_id)
+            $pdfdetails =$pdfobj->where('user_id', '=',$this->account_id)
                                   ->where('isDeleted', '=','N')
                                   ->where('isDefault', '=','Y')
                                   ->first();       
