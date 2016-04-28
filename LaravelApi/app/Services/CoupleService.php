@@ -442,6 +442,10 @@ class CoupleService {
             $agency['city']=$agencyeDetails->getcity();
             $agency['zip']=$agencyeDetails->getzip();
             $agency['website']=$agencyeDetails->getwebsite();
+            $agency['image']=$agencyeDetails->getimage();
+            $agency['email']=$agencyeDetails->getemail();
+            
+            
              return $agency;
             }
             else{

@@ -66,8 +66,8 @@
            </div>
            <div class="gallery clearfix">
                <div class="pics">
-                  <div class="clearfix">
-                       <figure><img src="images/pics/gal01.jpg"></figure>
+                  <div class="clearfix picsection">
+                       <!-- <figure><img src="images/pics/gal01.jpg"></figure>
                        <figure><img src="images/pics/gal02.jpg"></figure>
                        <figure><img src="images/pics/gal03.jpg"></figure>
                        <figure><img src="images/pics/gal04.jpg"></figure>
@@ -81,7 +81,7 @@
                        <figure><img src="images/pics/gal06.jpg"></figure>
                        <figure><img src="images/pics/gal01.jpg"></figure>
                        <figure><img src="images/pics/gal02.jpg"></figure>
-                       <figure><img src="images/pics/gal03.jpg"></figure>
+                       <figure><img src="images/pics/gal03.jpg"></figure> -->
                    </div>
                    <a href="#" class="moreLink">See more photos</a>
                </div>
@@ -128,12 +128,12 @@
            </div>
            <div class="aboutFamily clearfix">
                <div class="familyDesc">
-                   <h4 class="male">Jason</h4>
+                  <!--  <h4 class="male">Jason</h4>
                    <p>What makes Jason such an amazing guy? Well, he gives the best foot rubs and cooks a fantastic chicken tetrazzini! More than that, he supports me in every endeavor such as traveling near and far to run half-marathons with me. His love never ceases to amaze me. For example, while he was raised Christian, he had never been affiliated with a particular church. It was so important to him that his children be raised in a home where their parents practiced the same religion that he became Catholic during our engagement. But, just when I didn’t think I could love him more, he became a father and I saw a whole new side of him. That goofy uncle who let children climb all over him like a jungle gym became an engaged father helping our child explore the world while perched on his shoulders. The man that was strong and steadfast when dealing with adults is now reduced to mush by our daughter’s smile or laugh. His silly side is still there—like throwing impromptu dance parties in the living room or playing dress up! Life sure is a lot more fun with him around.</p>
                    <h4 class="female">Jason</h4>
-                   <p>They say that the way to a man’s heart is through his stomach, and that must be true because I don’t think I could live without Amy’s chocolate chip cookies. Nothing beats the sweet smell of her baking them on a lazy Sunday afternoon. Not that there are many lazy days around here. Whether we are bundled in our snow suits cross-country skiing or running a half-marathon, she always finds something fun for us to do as a family. Amy is the anchor of our family and keeps everything running, which is especially important during the long hours of harvest season. That includes making my favorite meal, goulash, and even bringing it out to me when I am working. I not only appreciate the way she takes care of us physically, but also emotionally. Last year for my birthday she threw me a lumberjack themed party and invited family and friends to celebrate—and wear flannel. It was the manliest birthday of all time! She has a way of celebrating what is special about others and making them feel loved. I know she is already excited about planning birthday parties for our children throughout the years.</p>
+                   <p>They say that the way to a man’s heart is through his stomach, and that must be true because I don’t think I could live without Amy’s chocolate chip cookies. Nothing beats the sweet smell of her baking them on a lazy Sunday afternoon. Not that there are many lazy days around here. Whether we are bundled in our snow suits cross-country skiing or running a half-marathon, she always finds something fun for us to do as a family. Amy is the anchor of our family and keeps everything running, which is especially important during the long hours of harvest season. That includes making my favorite meal, goulash, and even bringing it out to me when I am working. I not only appreciate the way she takes care of us physically, but also emotionally. Last year for my birthday she threw me a lumberjack themed party and invited family and friends to celebrate—and wear flannel. It was the manliest birthday of all time! She has a way of celebrating what is special about others and making them feel loved. I know she is already excited about planning birthday parties for our children throughout the years.</p> -->
                    <div class="reader">
-                       <a class="readerlogo">Have an e-reader?</a>
+                       <!-- <a class="readerlogo">Have an e-reader?</a> -->
                    </div>
                </div>
                <div class="ourJournal">
@@ -159,7 +159,7 @@
                        <p>What a royal evening!  Daddy and Sloane had so much fun at thier first Daddy/Princess Ball.  Besides dancing the night away to all the greatest Disney songs, they also got to decorate thier own ...</p>
                    </div> -->
                    <div class="ourAgency clearfix">
-                       <div class="agencyLeft">
+                       <!-- <div class="agencyLeft">
                            <h4>Our agency</h4>
                            <figure><img src="images/adoption-logo.png"></figure>
                        </div>
@@ -169,7 +169,7 @@
                            <p><strong>616-667-0677</strong></p>
                            <p><a href="#">lbussa@adoptionassociates.net</a></p>
                            <p><a href="#">www.adoptionassociates.net</a></p>
-                       </div>
+                       </div> -->
                    </div>
                </div>
            </div>
@@ -215,7 +215,6 @@
     
 }
 jQuery(document).ready(function($) { 
-
 
 
    $.ajax({
@@ -296,6 +295,10 @@ jQuery(document).ready(function($) {
                       profileContactDiv +='<a href="'+multipdf+'" class="flipBook">Flipbook</a>';
                       profileContactDiv +='<a href="'+flipbook+'" class="pdf">PDF</a>';
                       profileContactDiv +='</div>';
+
+
+                       
+                   
                 }
                   $('.userDetails').append(userDetailsDiv); 
                   $('.prfileDetails').append(profiledivDiv);
@@ -315,6 +318,9 @@ jQuery(document).ready(function($) {
                        if(profiles[i].profile.parent1){
                         var parent1=profiles[i].profile.parent1;
                         var childpreferences=profiles[i].profile.childpreferences;
+                        var agency=profiles[i].profile.agency;
+                        var letter=profiles[i].profile.letter;
+                        var journal=profiles[i].profile.journal;
                         var couple_name=parent1.first_name.toUpperCase();
                         var faith=parent1.faith;
                         var ethnicity=parent1.ethnicity;
@@ -336,10 +342,19 @@ jQuery(document).ready(function($) {
                       var ethnicity_parent=childpreferences.ethnicity;
                       var age_parent=childpreferences.ageGroup;
                       var adoption_parent=childpreferences.adoption;
+                      var agency_title=agency.title;
+                      var agency_image="https://www.parentfinder.com/modules/boonex/avatar/data/images/"+agency.image+".jpg";
+                      var agency_email=agency.email;
+                      var agency_website=agency.website;
+                      var agency_zip=agency.zip;
+                      var agency_city=agency.city;
                       var contentDiv="";
                       var preference="";
-                      contentDiv +='<div class="list">';
-                   contentDiv +='<h4>'+couple_name+'</h4>';
+                      var journalDiv = '';
+                      var letterDiv = '';
+                      var agencyDiv ='';
+                    contentDiv +='<div class="list">';
+                    contentDiv +='<h4>'+couple_name+'</h4>';
                     contentDiv +='<p><label>JASON</label><strong>'+capitalise(faith)+'</strong></p>';
                     contentDiv +='<p><label>ETHNICITY</label><strong>'+capitalise(ethnicity)+'</strong></p>';
                     contentDiv +='<p><label>EDUCATION</label><strong>'+education+' </strong></p>';
@@ -369,15 +384,106 @@ jQuery(document).ready(function($) {
                     preference +='<h5>ADOPTION TYPE</h5>';
                     preference +='<p>'+adoption_parent+'</p>';
                     preference +='</div>';
+                     for(j=0; j<letter.length; j++){
+                          if(letter[j].Title == 'letter_about_him'){
+                            var letter_him_name = couple_name;
+                            var letter_about_him = letter[j].Content;
+                            if(letter_about_him.length > 1060){
+                              letter_about_him = letter_about_him.substr(0,1060);
+                              letter_about_him = letter_about_him +'...';
+                            }
+                            letterDiv +='<h4 class="male">'+letter_him_name+'</h4>';
+                            letterDiv +='<p>'+letter_about_him+'</p>';
+                          }
+                            if(letter[j].Title == 'letter_about_her'){
+                            var letter_her_name = couple_name2;
+                            var letter_about_her = letter[j].Content;
+                            if(letter_about_her.length > 1060){
+                              letter_about_her = letter_about_her.substr(0,1060);
+                              letter_about_her = letter_about_her +'...';
+                            }
+                            letterDiv +='<h4 class="male">'+letter_her_name+'</h4>';
+                            letterDiv +='<p>'+letter_about_her+'</p>';
+                          }
+                          
+                        }
+                        if(journal.length){
+                          journalDiv +='<h4 class="book">'+couple_name+'</h4>';
+                          for(k=0; k<4; k++){
+                            var journalCaption = journal[k].Caption;
+                            var journaltest = journal[k].Text;
+                            var journalDate = journal[k].Date;
+                            if(journaltest.length > 190){
+                              journaltest = journaltest.substr(0,190);
+                              journaltest = journaltest +'...';
+                            }
+                           
+                            journalDiv +='<div class="infobox">';
+                            journalDiv +='<h5><a href="#">'+journalCaption+'</a></h5>';
+                            journalDiv +='<span class="date">'+journalDate+'</span>';
+                            journalDiv +='<p>'+journaltest+'</p>';
+                            journalDiv +='</div>';
+                          }
+                        }
+                            agencyDiv +='<div class="agencyLeft">';
+                            agencyDiv +='<h4>Our agency</h4>';
+                            agencyDiv +='<figure><img src="'+agency_image+'"></figure>';
+                            agencyDiv +='</div>';
+                            agencyDiv +='<div class="agencyRight">';
+                            agencyDiv +='<h5>'+agency_title+'</h5>';
+                            agencyDiv +='<p>Jenison, MI, 49428, </p>';
+                            agencyDiv +='<p><strong>616-667-0677</strong></p>';
+                            agencyDiv +='<p><a href="#">'+agency_email+'</a></p>';
+                            agencyDiv +='<p><a href="#">'+agency_website+'</a></p>';
+                            agencyDiv +='</div>';
+                           
+
+                      }
+                    
 
                 }
+
               $('.adoptDetails').prepend(preference); 
-             $('.familyDetails').prepend(contentDiv);
+              $('.familyDetails').prepend(contentDiv);
+              $('.ourJournal').prepend(journalDiv);
+              $('.familyDesc').prepend(letterDiv);
+              $('.ourAgency').prepend(agencyDiv);
+              
 
             }
-          }
 
         });
+
+         $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/photos/albums/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                  var photos=data.albumphotos;
+                  var photoDiv ='';
+                     for(a=0; a<15; a++){
+                        var photopath = "https://www.parentfinder.com/m/photos/get_image/thumb/"+photos[a].Hash+"."+photos[a].Ext;
+                        photoDiv +='<figure><img src="'+photopath+'"></figure>';
+                      
+                     }
+                     $('.picsection').append(photoDiv);
+                }
+              }
+
+        });
+
+      $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/epub/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                  var epub = data.epubdetails.content;
+                  var epubdiv = '<a class="readerlogo" href="'+epub+'" target="_blank" >Have an e-reader?</a>';
+                }
+                 $('.reader').append(epubdiv);
+              }
+
+        }); 
 
 });
 

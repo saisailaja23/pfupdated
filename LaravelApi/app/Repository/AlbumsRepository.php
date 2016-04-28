@@ -34,7 +34,6 @@ class AlbumsRepository {
         try{
             $albumobj=new Albums;
             $albumdetails =$albumobj->where('account_id', '=',$account_id)
-                                  ->where('Caption', '=','Home Pictures')
                                   ->where('Type', '=','bx_photos')
                                   ->where('AllowAlbumView', '!=','2')
                                   ->get(); 

@@ -55,7 +55,8 @@ class ProfileController extends Controller
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
-						     	"Photo"=>$journal->getJournalPhoto()
+						     	"Photo"=>$journal->getJournalPhoto(),
+						     	"Date"=>date("F d,Y",strtotime($journal->getJournalDate()))
 						     	);
     			}  
     		}			
@@ -345,8 +346,7 @@ class ProfileController extends Controller
 		}
 		if(!empty($albums)){
 		foreach($albums as $album){
-    				$albumDetails[]=array(
-    							"status"=>"200",
+    				$albumDetailss[]=array(
 						     	"Ext"=>$album->getAlbumExt(),
 						     	"Title"=>$album->getAlbumTitle(),
 						     	"Hash"=>$album->getAlbumHash(),
@@ -354,7 +354,9 @@ class ProfileController extends Controller
 						     	"Id"=>$album->getAlbumId()
 						     	);
     			}  
-		return json_encode($albumDetails);
+    			$albumDetails=Array("status"=>"200","albumphotos"=>$albumDetailss);
+		//return json_encode($albumDetails);
+    	   return $_GET['callback']."(".json_encode($albumDetails).")";
 	}
 	else{
 		throw new ParentFinderException('album_not_found');
@@ -1241,6 +1243,22 @@ public function getChildren(){
            {
            	 throw new ParentFinderException('kids_not_found');
            }
+
+    }
+
+    public function getEpubApi(){
+    	    $user_name=Input::segment(2);
+			$profile=new UtilityService();
+		    $account_id=$profile->getAccountIdByUserName($user_name);
+		    $pdfbookobj=new CoupleService($account_id);
+		    $Epub=$pdfbookobj->getEpub();
+		    if($Epub){
+		    	$epubdetails=Array("status"=>"200","epubdetails"=>$Epub);
+        		return $_GET['callback']."(".json_encode($epubdetails).")";	
+		    }
+		    else{
+		    	throw new ParentFinderException('epub_not_found');
+		    }
 
     }
 

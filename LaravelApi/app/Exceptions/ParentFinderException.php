@@ -276,7 +276,11 @@ use Exception;
                  $error['title']='Kids Not Found';
                  $error['detail']='Kids Not Found';
                  break;   
-                               
+              case 'epub_not_found' :
+                $error['status']=204;
+                 $error['title']='Epub Not Found';
+                 $error['detail']='Epub Not Found';
+                 break;                    
             default :
                 $error['status']=500;
                 $error['title']='Not Found';
