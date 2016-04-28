@@ -21,9 +21,7 @@
         <div class="innerPageHead">
             <div class="clearfix container">
                 <div class="userDetails">
-                    <a href="index.html" class="back">Back</a>
-                    <div class="familyName">Jason and Amy</div>
-                    <a href="#" class="fav">Fav</a>
+                   
                 </div>
                 <div class="contact24">
                     Contact Us 24x7
@@ -94,18 +92,18 @@
             dataType: "jsonp",
             success: function (data) {
                 var journals=data.journals;
-            
-             var i;
+                var i;
                 var contentDiv="";
-               for(i=0; i<journals.length; i++){
-           
-              contentDiv += '<div class="journal"><h4>'+ journals[i].Caption +'</h4>  <span class="date">February 29, 2016</span><p>'+ journals[i].Text +'</p><div class="pics">';
-                    for(j=0;j<3;j++)
-                    {
-                  contentDiv +='<figure><img src="'+ journals[i].Uri +'"></figure>';                  // 
-              //$('.journal').append('<h4>'+ journals[i].Caption +'</h4>  <span class="date">February 29, 2016</span><p>'+ journals[i].Text +'</p><div class="pics"><figure><img src="'+ journals[i].Uri +'"></figure><div class="shareBlock"><img src="images/pics/share.gif"></div>');
-         
-               }
+                for(i=0; i<journals.length; i++){
+                contentDiv += '<div class="journal"><h4>'+ journals[i].Caption +'</h4><span class="date">'+ journals[i].Date+'</span><p>'+ journals[i].Text +'</p><div class="pics">';
+                var str=journals[i].Photo; 
+                var photo= str.split(","); 
+                   
+                for(j=0;j<photo.length;j++)
+                 {
+                      
+                contentDiv +='<figure><img src="'+ photo[j] +'"></figure>';                  // 
+                   }
                contentDiv += '</div>';
                 contentDiv += '<div class="shareBlock"><img src="images/pics/share.gif"></div></div>';
 
@@ -118,6 +116,73 @@
         });
  
 });
+      $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/profile/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+
+                if(data.status==200){
+                  var profiles=data.profiles;
+                     for(i=0; i<profiles.length; i++){
+                        var parent1=profiles[i].profile.parent1;
+                        var contact=profiles[i].profile.contactDetails;
+                        var letter=profiles[i].profile.letter;
+                        var couple_name=parent1.first_name.toUpperCase();
+                        var profilename =couple_name;
+                        var image = "https://www.parentfinder.com/modules/boonex/avatar/data/favourite/"+parent1.avatar+".jpg";
+                        var country = contact.country;
+                        var website = contact.website;
+                        for(j=0; j<letter.length; j++){
+                          if(letter[j].Title == 'letter_about_them'){
+                            var letter_about_them = letter[j].Content;
+                            if(letter_about_them.length > 600){
+                              letter_about_them = letter_about_them.substr(0,600);
+                              letter_about_them = letter_about_them +'...';
+                            }
+                          }
+                        }
+                      if(profiles[i].profile.parent2){
+                        var parent2=profiles[i].profile.parent2;
+                         var couple_name2= parent2.first_name.toUpperCase();
+                         var profilename = couple_name+' AND '+couple_name2;
+                         
+                      }
+                      var userDetailsDiv="";
+                      var profiledivDiv="";
+                      var profileContactDiv=""; 
+                      var preference="";
+                      alert('userDi');
+                      userDetailsDiv +='<a href="index.html" class="back">Back</a>';
+                      userDetailsDiv +='<div class="familyName">'+profilename+'</div>';
+                      userDetailsDiv +='<a href="#" class="fav">Fav</a>';
+
+                      profiledivDiv +='<figure><img src="'+image+'"></figure>';
+                      profiledivDiv +='<figcaption>';
+                      profiledivDiv +=''+letter_about_them+'';
+                      profiledivDiv +='</figcaption>';
+
+                      profileContactDiv +='<div class="proName">';
+                      profileContactDiv +=''+profilename+'';
+                      profileContactDiv +='<span>'+country+'</span>';
+                      profileContactDiv +='</div>';
+                      profileContactDiv +='<div class="proUrl">';
+                      profileContactDiv +='<a href="'+website+'">'+website+'</a>';
+                      profileContactDiv +='</div>';
+                      profileContactDiv +='<div class="abtLinks">';
+                      profileContactDiv +='<a href="chapters.html" class="letter">Our Letters</a>';
+                      profileContactDiv +='<a href="'+multipdf+'" class="flipBook">Flipbook</a>';
+                      profileContactDiv +='<a href="'+flipbook+'" class="pdf">PDF</a>';
+                      profileContactDiv +='</div>';
+                }
+                alert('s');
+                 $('.userDetails').append(userDetailsDiv); 
+                  //$('.prfileDetails').append(profiledivDiv);
+                 // $('.profileContact').append(profileContactDiv); 
+
+            }
+          }
+
+        });
             
 		}(jQuery));
 	</script>
