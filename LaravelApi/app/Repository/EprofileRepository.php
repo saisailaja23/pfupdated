@@ -30,7 +30,7 @@ class EprofileRepository {
     public function getFlipbookId(){
          try{
             $eprofileobj=new Eprofile;
-            $flipbookdetails =$eprofileobj->where('account_id', '=',$this->account_id)
+            $flipbookdetails =$eprofileobj->where('owner_id', '=',$this->account_id)
                                   ->where('title', '=','E-book Profile')
                                   ->first();       
             return  $flipbookdetails;

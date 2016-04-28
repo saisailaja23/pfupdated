@@ -65,8 +65,8 @@ class PdfService {
         }
 
         else{
-             $this->template_file_path="ProfilebuilderComponent/pdf.php?id=".$account_id;
-            $this->template_file_path2=$pdf_output;
+             $this->template_file_path2="ProfilebuilderComponent/pdf.php?id=".$account_id;
+            $this->template_file_path=$pdf_output;
             $this->id=$this->id;
             
         }

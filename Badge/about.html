@@ -21,9 +21,9 @@
         <div class="innerPageHead">
             <div class="clearfix container">
                 <div class="userDetails">
-                    <a href="index.html" class="back">Back</a>
+                    <!-- <a href="index.html" class="back">Back</a>
                     <div class="familyName">Jason and Amy</div>
-                    <a href="#" class="fav">Fav</a>
+                    <a href="#" class="fav">Fav</a> -->
                 </div>
                 <div class="contact24">
                     Contact Us 24x7
@@ -39,7 +39,7 @@
         </div>
        <div class="container">
            <div class="prfileDetails clearfix">
-                <figure><img src="images/pics/pro01.jpg"></figure>
+                <!-- <figure><img src="images/pics/pro01.jpg"></figure>
                 <figcaption>
                     <p>Jason and I met on an online dating site (yes, it does work!) in 2009. We were married in a 
                     beautiful church in 2012. The vows we took that day in front of God is what keeps our marriage strong.</p>
@@ -48,10 +48,10 @@
                     the pitter patter of little feet!</p>
                     <p>We enjoy many activities together. We especially love game and movie night with our family and friends. 
                     The most popular game chosen by one of the kids is Candy Land...</p>
-                </figcaption>
+                </figcaption> -->
            </div>
            <div class="profileContact clearfix">
-               <div class="proName">
+               <!-- <div class="proName">
                    JASON and AMY
                    <span>Michigan</span>
                </div>
@@ -62,7 +62,7 @@
                    <a href="#" class="letter">Our Letters</a>
                    <a href="#" class="flipBook">Flipbook</a>
                    <a href="#" class="pdf">PDF</a>
-               </div>
+               </div> -->
            </div>
            <div class="gallery clearfix">
                <div class="pics">
@@ -93,7 +93,7 @@
                </div>
            </div>
            <div class="adoptDetails clearfix">
-            <div class="preference">
+           <!--  <div class="preference">
                 <h4>Our Adoption Preferences</h4>
                 <h5>ETHNICITY</h5>
                 <p>Caucasian, Hispanic or South/Central American, Multi-Racial, Native America, Asian</p>
@@ -101,10 +101,10 @@
                 <p>Newborn - Newborn </p>
                 <h5>ADOPTION TYPE</h5>
                 <p>Open, Semi-Open, Closed</p>
-            </div>
+            </div> -->
             <div class="familyDetails">
                 
-                <div class="list">
+                <!-- <div class="list">
                    <h4>JASON</h4>
                     <p><label>JASON</label><strong>Catholic</strong></p>
                     <p><label>ETHNICITY</label><strong>Caucasian</strong></p>
@@ -120,10 +120,10 @@
                     <p><label>EDUCATION</label><strong>College Degree </strong></p>
                     <p><label>AGE</label><strong>34</strong></p>
                     <p><label>GENDER</label><strong>Female</strong></p>
-                </div>
-                <div class="waitTime">
+                </div> -->
+                <!-- <div class="waitTime">
                     <label>WAITING</label><strong>1 Year</strong>
-                </div>
+                </div> -->
             </div>
            </div>
            <div class="aboutFamily clearfix">
@@ -196,33 +196,183 @@
 		}(jQuery));
 	</script>
 	<script type="text/javascript">
+     function capitalise(string) {
+    if(string)  
+    return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
+    }
+    function getAge(dateString) {
+        var today = new Date();
+        var birthDate = new Date(dateString);
+        var age = today.getFullYear() - birthDate.getFullYear();
+        var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
     
-jQuery(document).ready(function($) {   
-  $.ajax({
-            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/profile/rahul",
+}
+jQuery(document).ready(function($) { 
+
+   $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/pdfprofile/dhanya",
             dataType: "jsonp",
             success: function (data) {
-              alert("asd");
-                var letters=data.letters;
-             
-                var contentDiv="";
-               for(i=0; i<letters.length; i++){
-                 contentDiv += '<div class="item">';
-                     contentDiv +='<div class="chpterBlock">';
-                    contentDiv += '<h4>'+ letters[i].Title + '</h4>';
-                    contentDiv += '<p>'+ letters[i].Content +'</p>';
-                    contentDiv += '</div>';
-                    contentDiv += '</div>';
-             //   $('.chpterBlock').append('<h4>'+ letters[i].Title +'</h4><p>'+ letters[i].Content +'</p>');
-               //  $('.chpterBlock').append('<p>'+ letters[i].Content +'</p>'); 
-          
+                if(data.status==200){
+                  var multipdf=data.multi_profile;
                 }
-             $('.item').append(contentDiv);
+              }
+
+        }); 
+
+  $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/flipbook/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                  var flipbook=data.data.flip_book;
+                }
+          }
+
+        }); 
+
+  $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/profile/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                  var profiles=data.profiles;
+                     for(i=0; i<profiles.length; i++){
+                        var parent1=profiles[i].profile.parent1;
+                        var contact=profiles[i].profile.contactDetails;
+                        var letter=profiles[i].profile.letter;
+                        var couple_name=parent1.first_name.toUpperCase();
+                        var profilename =couple_name;
+                        var image = "https://www.parentfinder.com/modules/boonex/avatar/data/favourite/"+parent1.avatar+".jpg";
+                        var country = contact.country;
+                        var website = contact.website;
+                        for(j=0; j<letter.length; j++){
+                          if(letter[j].Title == 'letter_about_them'){
+                            var letter_about_them = letter[j].Content;
+                            if(letter_about_them.length > 600){
+                              letter_about_them = letter_about_them.substr(0,600);
+                              letter_about_them = letter_about_them +'...';
+                            }
+                          }
+                        }
+                      if(profiles[i].profile.parent2){
+                        var parent2=profiles[i].profile.parent2;
+                         var couple_name2= parent2.first_name.toUpperCase();
+                         var profilename = couple_name+' AND '+couple_name2;
+                         
+                      }
+                      var userDetailsDiv="";
+                      var profiledivDiv="";
+                      var profileContactDiv=""; 
+                      var preference="";
+                      userDetailsDiv +='<a href="index.html" class="back">Back</a>';
+                      userDetailsDiv +='<div class="familyName">'+profilename+'</div>';
+                      userDetailsDiv +='<a href="#" class="fav">Fav</a>';
+
+                      profiledivDiv +='<figure><img src="'+image+'"></figure>';
+                      profiledivDiv +='<figcaption>';
+                      profiledivDiv +=''+letter_about_them+'';
+                      profiledivDiv +='</figcaption>';
+
+                      profileContactDiv +='<div class="proName">';
+                      profileContactDiv +=''+profilename+'';
+                      profileContactDiv +='<span>'+country+'</span>';
+                      profileContactDiv +='</div>';
+                      profileContactDiv +='<div class="proUrl">';
+                      profileContactDiv +='<a href="#">'+website+'</a>';
+                      profileContactDiv +='</div>';
+                      profileContactDiv +='<div class="abtLinks">';
+                      profileContactDiv +='<a href="chapters.html" class="letter">Our Letters</a>';
+                      profileContactDiv +='<a href="/"'+multipdf+'" class="flipBook">Flipbook</a>';
+                      profileContactDiv +='<a href="#" class="pdf">PDF</a>';
+                      profileContactDiv +='</div>';
+                }
+                  $('.userDetails').append(userDetailsDiv); 
+                  $('.prfileDetails').append(profiledivDiv);
+                  $('.profileContact').append(profileContactDiv); 
 
             }
+          }
+
+        });  
+  $.ajax({
+            url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/profile/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                  var profiles=data.profiles;
+                     for(i=0; i<profiles.length; i++){
+                       if(profiles[i].profile.parent1){
+                        var parent1=profiles[i].profile.parent1;
+                        var childpreferences=profiles[i].profile.childpreferences;
+                        var couple_name=parent1.first_name.toUpperCase();
+                        var faith=parent1.faith;
+                        var ethnicity=parent1.ethnicity;
+                        var education=parent1.education;
+                        var age=getAge(parent1.dob);
+                        var gender=parent1.gender;
+                      }
+                      if(profiles[i].profile.parent2){
+                        var parent2=profiles[i].profile.parent2;
+                         var couple_name2=parent2.first_name.toUpperCase();
+                         var faith2=parent2.faith;
+                         var ethnicity2=parent2.ethnicity;
+                         var education2=parent2.education;
+                         var gender2=parent2.gender;
+                         var age2=getAge(parent2.dob);
+                         
+                      }
+                      var waiting=parent1.waiting;
+                      var ethnicity_parent=childpreferences.ethnicity;
+                      var age_parent=childpreferences.ageGroup;
+                      var adoption_parent=childpreferences.adoption;
+                      var contentDiv="";
+                      var preference="";
+                      contentDiv +='<div class="list">';
+                   contentDiv +='<h4>'+couple_name+'</h4>';
+                    contentDiv +='<p><label>JASON</label><strong>'+capitalise(faith)+'</strong></p>';
+                    contentDiv +='<p><label>ETHNICITY</label><strong>'+capitalise(ethnicity)+'</strong></p>';
+                    contentDiv +='<p><label>EDUCATION</label><strong>'+education+' </strong></p>';
+                    contentDiv +='<p><label>AGE</label><strong>'+age+'</strong></p>';
+                    contentDiv +='<p><label>GENDER</label><strong>'+capitalise(gender)+'</strong></p>';
+                    contentDiv +='</div>';
+                     if(profiles[i].profile.parent2){
+                    contentDiv +='<div class="list">';
+                   contentDiv +='<h4>'+couple_name2+'</h4>';
+                    contentDiv +='<p><label>JASON</label><strong>'+capitalise(faith2)+'</strong></p>';
+                    contentDiv +='<p><label>ETHNICITY</label><strong>'+capitalise(ethnicity2)+'</strong></p>';
+                    contentDiv +='<p><label>EDUCATION</label><strong>'+education2+' </strong></p>';
+                    contentDiv +='<p><label>AGE</label><strong>'+age2+'</strong></p>';
+                    contentDiv +='<p><label>GENDER</label><strong>'+capitalise(gender2)+'</strong></p>';
+                    contentDiv +='</div>';
+                  }
+                    contentDiv +='<div class="waitTime">';
+                    contentDiv +='<label>WAITING</label><strong>'+waiting+'</strong>';
+                    contentDiv +='</div>';
+
+                    preference  +='<div class="preference">';
+                    preference +='<h4>Our Adoption Preferences</h4>';
+                    preference +='<h5>ETHNICITY</h5>';
+                    preference +='<p>'+ethnicity_parent+'</p>';
+                    preference +='<h5>AGE</h5>';
+                    preference +='<p>'+age_parent+'</p>';
+                    preference +='<h5>ADOPTION TYPE</h5>';
+                    preference +='<p>'+adoption_parent+'</p>';
+                    preference +='</div>';
+
+                }
+              $('.adoptDetails').prepend(preference); 
+             $('.familyDetails').prepend(contentDiv);
+
+            }
+          }
 
         });
- 
+
 });
 
   </script>

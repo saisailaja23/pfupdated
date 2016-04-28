@@ -24,6 +24,7 @@ class ContactService {
     private $city;  
     private $mobileNumber;
     private $homeNumber;
+    private $website;
         
     public function __construct($accountId) {
        $this->setAccountId($accountId);      
@@ -54,6 +55,10 @@ class ContactService {
 
     public function getCountry() {
         return $this->country;
+    }  
+
+    public function getWebsite() {
+        return $this->website;
     }  
 
     public function getState() {
@@ -93,6 +98,7 @@ class ContactService {
             if($states=$stateObj->getStateDetails()){
                  $this->state=$states->State;
             } 
+            $this->website = $contactDetails->website;
             return $this;
         } 
     }

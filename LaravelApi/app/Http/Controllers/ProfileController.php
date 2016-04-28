@@ -43,7 +43,8 @@ class ProfileController extends Controller
 			if($contactInfo=$parentObj->getContactDetails()){
 						$contactDetails=Array(
 									"country"=>$contactInfo->getCountry(),
-									"state"=>$contactInfo->getState()							     	
+									"state"=>$contactInfo->getState(),
+									"website"=>$contactInfo->getWebsite()							     	
 							     	);
 					}	
 			if($journals=$parentObj->getJournalDetails())
@@ -75,6 +76,9 @@ class ProfileController extends Controller
 							     	"faith"=>$parent1->getFaith(),
 							     	"waiting"=>$parent1->getWaiting(),
 							     	"avatar"=>$parentObj->getAvatar(),
+							     	"ethnicity"=>$parent1->getEthnicity(),
+							     	"education"=>$parent1->getEducationId(),
+							     	"gender"=>$parent1->getGender(),
 							     	"username"=>$parentObj->getusername()
 							     	
 							     	);
@@ -83,6 +87,9 @@ class ProfileController extends Controller
 							     	"first_name"=>$parent2->getFirstName(),
 							     	"last_name"=>$parent2->getLastName(),
 							     	"dob"=>$parent2->getDob(),
+							     	"ethnicity"=>$parent1->getEthnicity(),
+							     	"education"=>$parent1->getEducationId(),
+							     	"gender"=>$parent1->getGender(),
 							     	"faith"=>$parent2->getFaith()
 							     	);
 					}
@@ -109,7 +116,7 @@ class ProfileController extends Controller
 													);
     	}
     	$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
-				//return $_GET['callback']."(".json_encode($profileDetails).")";
+				return $_GET['callback']."(".json_encode($profileDetails).")";
     }
     	else if($api=='profiles'){			/*  To list all profiles */
 
@@ -218,7 +225,7 @@ class ProfileController extends Controller
 			$flipbook= $flipbookobj->getFlipbook();
 			if(!empty($flipbook)){
 			foreach($flipbook as $flipbooks) {
-				$profileDetails[]=array("status"=>"200",
+				$profileDetails=array("status"=>"200",
 								"data"=>array(
 							     	"flip_book"=>$flipbooks->getcontent(),
 							     	"id"=>$flipbooks->getId()
@@ -239,7 +246,7 @@ class ProfileController extends Controller
     		$pdfbookobj=new CoupleService($account_id);
 		    $pdfoutput= $pdfbookobj->getPdf($type);
 			foreach($pdfoutput as $pdfoutputs) {
-				$profileDetails[]=array(
+				$profileDetails=array(
 									"status"=>"200",
 							     	"single_profile"=>$pdfoutputs->template_file_path2,
 							     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
@@ -249,7 +256,8 @@ class ProfileController extends Controller
    
     	}  	 	
     	
-	    return json_encode($profileDetails);	    	
+	    return $_GET['callback']."(".json_encode($profileDetails).")";
+
   	}
 
 
@@ -466,7 +474,15 @@ class ProfileController extends Controller
 		$account_id=$profile->getAccountIdByUserName($param2);
 		if($param1=='albums'){
 			$video=new CoupleService($account_id);
-			$videos= $video->getVideoDetails();
+		     $videos= $video->getVideoDetails();
+		    foreach($videos as $videout){
+    				$videoDetailss[]=array(
+						     	"Id"=>$videout->ID,
+						     	"Caption"=>$videout->Caption
+						     	);
+    			}  
+    			$videoDetails = Array("status"=>"200","videodetails"=>$videoDetailss);
+		return json_encode($videoDetails);
 		}
 		else if($param1=='album'){
 			if(isset($param3) && $param3=='homevideos'){
@@ -493,14 +509,14 @@ class ProfileController extends Controller
 
   	 	if(!empty($videos)){
 		foreach($videos as $videout){
-    				$videoDetails[]=array(
-    							"status"=>"200",
+    				$videoDetailss[]=array(
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
 						     	"Source"=>$videout->getVideoSource(),
 						     	"Uri"=>$videout->getVideoUri(),
 						     	"Id"=>$videout->getVideoId()
 						     	);
     			}  
+    			$videoDetails = Array("status"=>"200","videodetails"=>$videoDetailss);
 		return json_encode($videoDetails);
 	}
 	else{

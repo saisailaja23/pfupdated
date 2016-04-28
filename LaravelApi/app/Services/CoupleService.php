@@ -287,13 +287,13 @@ class CoupleService {
          try{
         $albumObj=new VideoRepository(null);
          $albumId=$albumObj->getVideoAlbumByID($this->accountId);
-        $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);   
+       /* $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);   
         foreach($albumDetail as $albumDetails){
             $videoserviceObj=new VideoService($albumDetails->ID);
              $albumout[] = $videoserviceObj->getAlbum();
-        }     
+        }    */ 
       
-        return $albumout;
+        return $albumId;
     }
         catch(\Exception $e){
              //throw new ParentFinderException('album_not_found',$e->getMessage());
@@ -332,7 +332,7 @@ class CoupleService {
             $albumId[]=$videoid;
             try{
                 $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);
-                if(empty($albumDetail)){               
+                if(!empty($albumDetail)){ 
                 foreach($albumDetail as $albumDetails){
                     $videoserviceObj=new VideoService($albumDetails->ID);
                     $albumout[] = $videoserviceObj->getAlbum();
