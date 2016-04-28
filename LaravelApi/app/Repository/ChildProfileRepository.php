@@ -2,6 +2,8 @@
 namespace App\Repository;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\ChildProfile;
+use App\Models\Countries;
+
 /**
  * Description of ParentService
 **/
@@ -124,6 +126,7 @@ class ChildProfileRepository {
          try{
        $childObj=new ChildProfile;
         $childids =$childObj
+          ->join('countries', 'countries.country_id', '=', '.child_profile.location_id')
                   ->where('child_id', '=', $this->childId)
                   ->first();
          return $childids;
