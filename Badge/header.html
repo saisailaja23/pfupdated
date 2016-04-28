@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>VIEW OUR FAMILIES</title>
+    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="stylesheets/screen.css">
+    
+    <!--[if IE]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="family_Widget_2016">
+    <section class="innerPageSec">
+        <div class="innerPageHead">
+            <div class="clearfix container">
+                <div class="userDetails">
+                    
+                   
+                </div>
+                <div class="contact24">
+                    Contact Us 24x7
+                    <span>800-111-223366</span>
+                </div>
+                <div class="aboutIcons">
+                    <a href="#" class="call">Call</a>
+                    <a href="#" class="message">message</a>
+                    <a href="#" class="chat">chat</a>
+                    <a href="#" class="chapters">chapters</a>
+                </div>
+            </div>
+        </div>
+       <div class="container">
+           <div class="prfileDetails clearfix">
+               
+           </div>
+           <div class="profileContact clearfix">
+               
+           </div>
+           <div class="chaptersBlk">
+               <div class="grid">
+               
+
+               </div>
+           </div>
+       </div>
+    </section>
+   
+    
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="javascripts/jquery.html5.placeholder.js"></script>
+    <script src="javascripts/jquery.isotope.min.js"></script> 
+    <script src="javascripts/common.js"></script>
+    <script>
+    (function ($) {
+            
+    
+});
+    
+        
+ jQuery(document).ready(function($) {    
+  var multipdf = '';
+   var flipbook = '';
+ 
+ $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/pdfprofile/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                   multipdf="https://www.parentfinder.com/"+data.multi_profile;
+                }
+              }
+
+        }); 
+
+  $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/flipbook/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+                if(data.status==200){
+                   flipbook="https://www.parentfinder.com/profileflipbook/"+data.data.flip_book;
+                }
+          }
+
+        }); 
+
+
+   $.ajax({
+            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/profile/dhanya",
+            dataType: "jsonp",
+            success: function (data) {
+
+                if(data.status==200){
+                    var i;
+                  var profiles=data.profiles;
+                
+                     for(i=0; i<profiles.length; i++){
+                      
+                        var parent1=profiles[i].profile.parent1;
+                        var contact=profiles[i].profile.contactDetails;
+                        var letter=profiles[i].profile.letter;
+                        var couple_name=parent1.first_name.toUpperCase();
+                    
+                        var profilename =couple_name;
+
+                        var image = "https://www.parentfinder.com/modules/boonex/avatar/data/favourite/"+parent1.avatar+".jpg";
+                        var country = contact.country;
+                        var website = contact.website;
+                        for(j=0; j<letter.length; j++){
+                          if(letter[j].Title == 'letter_about_them'){
+                            var letter_about_them = letter[j].Content;
+                            if(letter_about_them.length > 600){
+                              letter_about_them = letter_about_them.substr(0,600);
+                              letter_about_them = letter_about_them +'...';
+                            }
+                          }
+                        }
+                      if(profiles[i].profile.parent2){
+                        var parent2=profiles[i].profile.parent2;
+                         var couple_name2= parent2.first_name.toUpperCase();
+                         var profilename = couple_name+' AND '+couple_name2;
+               
+                      }
+                   
+                      var userDetailsDiv="";
+                      var profiledivDiv="";
+                      var profileContactDiv=""; 
+                      var preference="";
+                      userDetailsDiv +='<a href="index.html" class="back">Back</a>';
+                      userDetailsDiv +='<div class="familyName">'+profilename+'</div>';
+                      userDetailsDiv +='<a href="#" class="fav">Fav</a>';
+
+                      profiledivDiv +='<figure><img src="'+image+'"></figure>';
+                      profiledivDiv +='<figcaption>';
+                      profiledivDiv +=''+letter_about_them+'';
+                      profiledivDiv +='</figcaption>';
+
+                      profileContactDiv +='<div class="proName">';
+                      profileContactDiv +=''+profilename+'';
+                      profileContactDiv +='<span>'+country+'</span>';
+                      profileContactDiv +='</div>';
+                      profileContactDiv +='<div class="proUrl">';
+                      profileContactDiv +='<a href="'+website+'">'+website+'</a>';
+                      profileContactDiv +='</div>';
+                      profileContactDiv +='<div class="abtLinks">';
+                      profileContactDiv +='<a href="chapters.html" class="letter">Our Letters</a>';
+                       profileContactDiv +='<a href="'+flipbook+'"  class="flipBook">Flipbook</a>';
+                     profileContactDiv +='<a href="'+multipdf+'"class="pdf">PDF</a>';
+                    
+                      profileContactDiv +='</div>';
+                }
+           
+                  $('.userDetails').append(userDetailsDiv); 
+                  $('.prfileDetails').append(profiledivDiv);
+                 $('.profileContact').append(profileContactDiv); 
+
+            }
+          }
+
+        });
+    }(jQuery));
+  </script>
+  
+
+</body>
+</html>

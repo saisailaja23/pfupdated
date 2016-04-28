@@ -1110,7 +1110,7 @@ public function getChildren(){
 						     	"sibiling_group"=>$Children->getis_sibling_group(),
 						     	"private"=>$Children->getis_private(),
 						     	"status"=>$Children->getstatus(),
-						     	"location"=>$Children->getlocation_id(),
+						     	"location"=>$Children->getCountry(),
 						     	"agency"=>$Children->getagency_id()
 						     	);
 
