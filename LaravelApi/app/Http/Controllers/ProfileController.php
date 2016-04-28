@@ -1112,7 +1112,7 @@ public function getChildren(){
 
 				}
 				$childrenDetails=Array("status"=>"200","Children_details"=>$children_details);
-				return json_encode($childrenDetails);
+				return $_GET['callback']."(".json_encode($childrenDetails).")";
 			}
 
 			else{
@@ -1229,10 +1229,9 @@ public function getChildren(){
   public function getKidsApi() {
     	$kidsObj=new UtilityService;
         	$kids=$kidsObj->getKids();
-        	if(count($kids)!="")
-        	{
-        	$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
-        	return json_encode($kidsdetails);
+        	if(count($kids)!=""){
+        		$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
+        		return $_GET['callback']."(".json_encode($kidsdetails).")";
         }
           else
            {
