@@ -1227,10 +1227,19 @@ public function postChildPhoto(Request $request){
            }
     }
 
- public function getKidsApi()
+  public function getKidsApi()
     {
     	$kidsObj=new UtilityService;
         	$kids=$kidsObj->getKids();
+        	if(count($kids)!="")
+        	{
+        	$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
+        	return json_encode($kidsdetails);
+        }
+          else
+           {
+           	 throw new ParentFinderException('kids_not_found');
+           }
     }
 
 
