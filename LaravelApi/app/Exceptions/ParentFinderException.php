@@ -270,7 +270,13 @@ use Exception;
                 $error['status']=204;
                  $error['title']='Child Not Found';
                  $error['detail']='Child Not Found';
-                 break;                  
+                 break;   
+            case 'kids_not_found' :
+                $error['status']=204;
+                 $error['title']='Kids Not Found';
+                 $error['detail']='Kids Not Found';
+                 break;   
+                               
             default :
                 $error['status']=500;
                 $error['title']='Not Found';

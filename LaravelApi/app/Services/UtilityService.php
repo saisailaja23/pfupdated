@@ -24,6 +24,7 @@ use App\Repository\AppUserRepository;
 use App\Repository\ProfileTypeRepository;
 use App\Repository\AccountRepository;
 use App\Repository\EmailTemplatesRepository;
+use App\Repository\KidsRepository;
 /**
  * Description of AccountService
 **/
@@ -420,10 +421,15 @@ class UtilityService {
         }
       
     } 
-   public function getKids(){ 
-       
-$kids=new KidsRepository(null);
-       $kidsDetails=$kids->getKidsDetails();
-   } 
+  public function getKids(){ 
+      try{  
+      $kids=new KidsRepository(null);
+      $kidsDetails=$kids->getKidsDetails();
+       return $kidsDetails;
+     }
+     catch (\Exception $e) {
+            //throwing default exceptions
+        }
+  } 
     
 }
