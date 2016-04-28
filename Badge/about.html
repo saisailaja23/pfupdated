@@ -213,6 +213,19 @@
 }
 jQuery(document).ready(function($) { 
 
+$.ajax({
+        url: "http://ctpf01.parentfinder.com/api/videos/albums/dhanya",
+        dataType: "jsonp",
+        success: function (data) {
+          alert(data);
+            if(data.status==200){
+                
+            }else{
+                
+            }
+        }
+    });
+
    $.ajax({
             url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/pdfprofile/dhanya",
             dataType: "jsonp",
@@ -234,6 +247,7 @@ jQuery(document).ready(function($) {
           }
 
         }); 
+
 
   $.ajax({
             url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/profile/dhanya",
@@ -287,7 +301,7 @@ jQuery(document).ready(function($) {
                       profileContactDiv +='</div>';
                       profileContactDiv +='<div class="abtLinks">';
                       profileContactDiv +='<a href="chapters.html" class="letter">Our Letters</a>';
-                      profileContactDiv +='<a href="/"'+multipdf+'" class="flipBook">Flipbook</a>';
+                      profileContactDiv +='<a href="/" class="flipBook">Flipbook</a>';
                       profileContactDiv +='<a href="#" class="pdf">PDF</a>';
                       profileContactDiv +='</div>';
                 }
