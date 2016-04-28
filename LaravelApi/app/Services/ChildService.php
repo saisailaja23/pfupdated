@@ -70,6 +70,9 @@ class ChildService {
     public  function getlocation_id() {
        return $this->location_id;
     }
+    public  function getCountry() {
+       return $this->country;
+    }
 
     public  function getagency_id() {
        return $this->agency_id;
@@ -113,6 +116,8 @@ class ChildService {
                    $this->is_private=$childDetails->is_private;
                    $this->status=$childDetails->status;
                    $this->location_id=$childDetails->location_id;
+                     $this->country=$childDetails->country;
+                   
                    $this->agency_id=$childDetails->agency_id;
                   return $this; 
                   }
