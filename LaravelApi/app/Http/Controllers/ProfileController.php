@@ -16,6 +16,7 @@ use App\Services\UserMembershipService;
 use App\Services\ProfileService;
 use App\Services\ContactService;
 use App\Services\LetterService;
+use App\Services\ChildService;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -1091,23 +1092,10 @@ public function getChildren(){
 	    $childids= $filter->getAllChildIds();
 	    }
 
-
-    	$children_details = '';
-    	$param=Input::segment(2);
-    	$filter=new FilterService();
-    	if(!empty($param)){
-    	$childids= $filter->getChildById($param);	
-    	}
-    	else{
-	    $childids= $filter->getAllChildIds();
-
-	    }
-
 	    if($childids){
 	    foreach($childids as $childid){
 		$childpobj=new ChildService($childid);
 		$Children= $childpobj->getChildDetails();
-		
     				$children_details[]=array(
 						     	"id"=>$Children->getchildId(),
 						     	"firstname"=>$Children->getfirst_name(),
