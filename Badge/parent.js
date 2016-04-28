@@ -20,11 +20,7 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
         } else {
           script_tag.onload = scriptLoadHandler;
         }
-       var script_tag1 = document.createElement('script');
-        script_tag1.setAttribute("type","text/javascript");
-        script_tag1.setAttribute("src",
-            "http://localhost/Badge/javascripts/jquery.isotope.min.js");
-
+      
    
     
     
@@ -70,10 +66,10 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
 
     function loadMenu(){
         getKidsinFamilyList();
-        getLikeProfilesList();
+       // getLikeProfilesList();
         getReligionList();
         getRegionList();
-        getCountryStateList();
+       // getCountryStateList();
         getSortByList();
     }
 
@@ -122,7 +118,7 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                                     +'</div>'
                                     +'<div class="link">'
                                         +'<a href="about.html" class="about">More About Me</a>'
-                                        +'<a href="photos.html" class="pics">Our Pictures</a>'
+                                        +'<a href="javascript:void(0);" class="pics" onclick="getChapters();">Our Pictures</a>'
                                        +' <a href="videos.html" class="videos">Our Videos</a>'
                                         +'<a class="profile">Our Profile</a>'
                                     +'</div> '                              
@@ -150,22 +146,50 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
 
             });
     }
-    function getKidsinFamilyList(){
-
+    function getRegionList(){
+      $.ajax({
+        url:api_url+"region",
+        dataType:"jsonp",
+        success:function(data){
+          var regionMenu;
+          if(data.status==200){
+             var region=data.regionDetails;
+             regionMenu='<ul class="dropDown">';
+             for(i=0; i<region.length; i++){
+                regionMenu+='<li id="'+region[i].RegionId+'"><a href="#">'+region[i].Region+'</a> </li>';               
+              }
+              regionMenu+='</ul>';
+              $('#region').append(regionMenu);
+         }
+        }
+      });
     }
+  
     function getReligionList(){
       $.ajax({
-        url:api_url+"",
+        url:api_url+"religion",
         dataType:"jsonp",
-
+        success:function(data){
+          var religionMenu;
+          if(data.status==200){
+             var religion=data.religionDetails;
+             religionMenu='<ul class="dropDown">';
+             for(i=0; i<religion.length; i++){
+                religionMenu+='<li id="'+religion[i].ReligionId+'"><a href="#">'+religion[i].Religion+'</a> </li>';               
+              }
+              alert(religionMenu);
+              religionMenu+='</ul>';
+              $('#religion').append(religionMenu);
+         }
+        }
       });
     }
     function getLikeProfilesList(){
 
     }
-    function getRegionList(){
+    function getKidsinFamilyList(){
        $.ajax({
-        url:api_url+"region",
+        url:api_url+"kids",
         dataType:"jsonp",
         success:function(data){
           var regionMenu;
@@ -177,21 +201,56 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                         +'<li><a href="#">Persian Gnosticism</a> </li>'
                         +'<li><a href="#">Kharijite</a> </li>'
                     +'</ul>';
-           $('#Region').append(regionMenu);
-          }else{
-
+           $('#kids').append(regionMenu);
           }
         }
 
       });
     }
     function getCountryStateList(){
-      
-    }
-    function getSortByList(){
-      
-    }
+      $.ajax({
+        url:api_url+"region",
+        dataType:"jsonp",
+        success:function(data){
+          var regionMenu;
+          if(data.status==200){
+            regionMenu='<ul class="dropDown">'
+                        +'<li><a href="#">sChristian</a>'
+                           +'<dl class="dropDownSub">'
+                               +'<dt><a href="#">Coffee</a></dt>'
+                               +'<dt><a href="#">Black hot drink</a></dt>'
+                               +'<dt><a href="#">Milk</a></dt>'
+                               +'<dt><a href="#">White cold drink</a></dt>'
+                               +'<dt><a href="#">Coffee</a></dt>'
+                               +'<dt><a href="#">Black hot drink</a></dt>'
+                               +'<dt><a href="#">Milk</a></dt>'
+                               +'<dt><a href="#">White cold drink</a></dt>'
+                             +'</dl>' 
+                          +'</li>'
+                        +'<li><a href="#">Restorationism</a> </li>'
+                        +'<li><a href="#">Gnosticism</a> </li>'
+                        +'<li><a href="#">Persian Gnosticism</a> </li>'
+                        +'<li><a href="#">Kharijite</a> </li>'
+                    +'</ul>';
+           $('#country').append(regionMenu);
+          }
+        }
 
+      });
+    }
+  
+    function getSortByList(){
+     
+            regionMenu='<ul class="dropDown">'
+                        +'<li><a href="#">Newest First</a> </li>'
+                        +'<li><a href="#">Oldest First</a> </li>'
+                        +'<li><a href="#">First Name</a> </li>'
+                        +'<li><a href="#">Random</a> </li>'
+                    +'</ul>';
+           $('#sortBy').append(regionMenu);
+         
+    }
+    
     /* Age calculation 
       *    @param  Request dateString
       *    @return number age

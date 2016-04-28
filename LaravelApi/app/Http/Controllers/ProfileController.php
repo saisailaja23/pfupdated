@@ -577,7 +577,7 @@ class ProfileController extends Controller
           {
            
           	$countrysdetails=array("status"=>"200",
-          							"Country Details"=>$countrys);
+          							"countryDetails"=>$countrys);
             return $_GET['callback']."(".json_encode($countrysdetails).")";
            }
            else
@@ -593,7 +593,7 @@ class ProfileController extends Controller
        	   $stateObj=new UtilityService;
        	   if($states=$stateObj->getStatesByCountryId($country_id))
            {
-       	   $stateDetails=Array("status"=>"200","State Details"=>$states);
+       	   $stateDetails=Array("status"=>"200","stateDetails"=>$states);
            return $_GET['callback']."(".json_encode($stateDetails).")";
            }
           else
@@ -610,7 +610,7 @@ class ProfileController extends Controller
         	$region=$regionObj->getRegionDetails();
         	if($region!="")
         	{
-        	$regionDetail=Array("status"=>"200","Region Details"=>$region);
+        	$regionDetail=Array("status"=>"200","regionDetails"=>$region);
         	return $_GET['callback']."(".json_encode($regionDetail).")";
            }
            else
@@ -1113,7 +1113,7 @@ public function getChildren(){
 
 				}
 				$childrenDetails=Array("status"=>"200","Children_details"=>$children_details);
-				return json_encode($childrenDetails);
+				return $_GET['callback']."(".json_encode($childrenDetails).")";
 			}
 
 			else{
@@ -1200,7 +1200,7 @@ public function getChildren(){
 				}
                     
     }
-public function postChildPhoto(Request $request){
+	public function postChildPhoto(Request $request){
     	$data['child_id']=verifyData($request->child_id);
     	$data['title']=verifyData($request->title);
 	    $data['url']=verifyData($request->url);
@@ -1218,8 +1218,8 @@ public function postChildPhoto(Request $request){
         	$religion=$religionObj->getReligion();
         	if(count($religion)!="")
         	{
-        	$religionDetail=Array("status"=>"200","Religion Details"=>$religion);
-        	return json_encode($religionDetail);
+        	$religionDetail=Array("status"=>"200","religionDetails"=>$religion);
+        	return $_GET['callback']."(".json_encode($religionDetail).")";
            }
            else
            {
@@ -1227,19 +1227,18 @@ public function postChildPhoto(Request $request){
            }
     }
 
-  public function getKidsApi()
-    {
+  public function getKidsApi() {
     	$kidsObj=new UtilityService;
         	$kids=$kidsObj->getKids();
-        	if(count($kids)!="")
-        	{
-        	$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
-        	return json_encode($kidsdetails);
+        	if(count($kids)!=""){
+        		$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
+        		return $_GET['callback']."(".json_encode($kidsdetails).")";
         }
           else
            {
            	 throw new ParentFinderException('kids_not_found');
            }
+
     }
 
 
