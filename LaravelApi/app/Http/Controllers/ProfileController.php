@@ -484,7 +484,7 @@ class ProfileController extends Controller
 						     	);
     			}  
     			$videoDetails = Array("status"=>"200","videodetails"=>$videoDetailss);
-		return json_encode($videoDetails);
+				return json_encode($videoDetails);
 		}
 		else if($param1=='album'){
 			if(isset($param3) && $param3=='homevideos'){
@@ -519,7 +519,7 @@ class ProfileController extends Controller
 						     	);
     			}  
     			$videoDetails = Array("status"=>"200","videodetails"=>$videoDetailss);
-		return json_encode($videoDetails);
+				return $_GET['callback']."(".json_encode($videoDetails).")";
 	}
 	else{
 		throw new ParentFinderException('video_not_found');
