@@ -24,6 +24,7 @@ class StateRepository {
     /* Get Waiting */
     public function getStateDetails() {
         try{
+            
             $statetObj=new States;
             $stateDetails =$statetObj->where('state_id', '=',$this->stateId)->first();
             return $stateDetails;

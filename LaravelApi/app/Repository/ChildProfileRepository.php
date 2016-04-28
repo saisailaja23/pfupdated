@@ -115,5 +115,34 @@ class ChildProfileRepository {
         }
     }
     
+
+    public function getAllChildids(){
+         try{
+           
+       $childObj=new ChildProfile;
+       $childids =$childObj
+                  ->get();
+         return $childids;
+        }
+           catch(\Exception $e){
+             //Add Exception here
+           } 
+
+    }  
+
+    public function getchildDetails(){
+  
+         try{
+       $childObj=new ChildProfile;
+       $childids =$childObj
+                  ->where('child_id', '=', $this->childId)
+                  ->first();
+         return $childids;
+        }
+           catch(\Exception $e){
+             //Add Exception here
+           } 
+    }
+    
     
 }
