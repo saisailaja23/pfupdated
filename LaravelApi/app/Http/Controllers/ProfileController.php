@@ -16,6 +16,7 @@ use App\Services\UserMembershipService;
 use App\Services\ProfileService;
 use App\Services\ContactService;
 use App\Services\LetterService;
+use App\Services\ChildService;
 use Response;
 use Illuminate\Support\Facades\Input;
 use App\Exceptions\ParentFinderException;
@@ -43,7 +44,8 @@ class ProfileController extends Controller
 			if($contactInfo=$parentObj->getContactDetails()){
 						$contactDetails=Array(
 									"country"=>$contactInfo->getCountry(),
-									"state"=>$contactInfo->getState()							     	
+									"state"=>$contactInfo->getState(),
+									"website"=>$contactInfo->getWebsite()							     	
 							     	);
 					}	
 			if($journals=$parentObj->getJournalDetails())
@@ -75,6 +77,9 @@ class ProfileController extends Controller
 							     	"faith"=>$parent1->getFaith(),
 							     	"waiting"=>$parent1->getWaiting(),
 							     	"avatar"=>$parentObj->getAvatar(),
+							     	"ethnicity"=>$parent1->getEthnicity(),
+							     	"education"=>$parent1->getEducationId(),
+							     	"gender"=>$parent1->getGender(),
 							     	"username"=>$parentObj->getusername()
 							     	
 							     	);
@@ -83,6 +88,9 @@ class ProfileController extends Controller
 							     	"first_name"=>$parent2->getFirstName(),
 							     	"last_name"=>$parent2->getLastName(),
 							     	"dob"=>$parent2->getDob(),
+							     	"ethnicity"=>$parent1->getEthnicity(),
+							     	"education"=>$parent1->getEducationId(),
+							     	"gender"=>$parent1->getGender(),
 							     	"faith"=>$parent2->getFaith()
 							     	);
 					}
@@ -218,7 +226,7 @@ class ProfileController extends Controller
 			$flipbook= $flipbookobj->getFlipbook();
 			if(!empty($flipbook)){
 			foreach($flipbook as $flipbooks) {
-				$profileDetails[]=array("status"=>"200",
+				$profileDetails=array("status"=>"200",
 								"data"=>array(
 							     	"flip_book"=>$flipbooks->getcontent(),
 							     	"id"=>$flipbooks->getId()
@@ -239,7 +247,7 @@ class ProfileController extends Controller
     		$pdfbookobj=new CoupleService($account_id);
 		    $pdfoutput= $pdfbookobj->getPdf($type);
 			foreach($pdfoutput as $pdfoutputs) {
-				$profileDetails[]=array(
+				$profileDetails=array(
 									"status"=>"200",
 							     	"single_profile"=>$pdfoutputs->template_file_path2,
 							     	"multi_profile"=>$pdfoutputs->gettemplate_file_path(),
@@ -247,7 +255,9 @@ class ProfileController extends Controller
 							     );
 	    	}  
    
-    	}  $profileDetails=Array("status"=>"200","profiles"=>$profileDetails);	 	
+
+    	}  	 	
+
           return $_GET['callback']."(".json_encode($profileDetails).")";
       
   	}
@@ -469,7 +479,15 @@ class ProfileController extends Controller
 		$account_id=$profile->getAccountIdByUserName($param2);
 		if($param1=='albums'){
 			$video=new CoupleService($account_id);
-			$videos= $video->getVideoDetails();
+		     $videos= $video->getVideoDetails();
+		    foreach($videos as $videout){
+    				$videoDetailss[]=array(
+						     	"Id"=>$videout->ID,
+						     	"Caption"=>$videout->Caption
+						     	);
+    			}  
+    			$videoDetails = Array("status"=>"200","videodetails"=>$videoDetailss);
+		return $_GET['callback']."(".json_encode($videoDetails).")";
 		}
 		else if($param1=='album'){
 			if(isset($param3) && $param3=='homevideos'){
@@ -496,15 +514,16 @@ class ProfileController extends Controller
 
   	 	if(!empty($videos)){
 		foreach($videos as $videout){
-    				$videoDetails[]=array(
-    							"status"=>"200",
+    				$videoDetailss[]=array(
 						     	"YoutubeLink"=>$videout->getVideoYoutubeLink(),
 						     	"Source"=>$videout->getVideoSource(),
 						     	"Uri"=>$videout->getVideoUri(),
 						     	"Id"=>$videout->getVideoId()
 						     	);
     			}  
-		return json_encode($videoDetails);
+    			$videoDetails = Array("status"=>"200","videodetails"=>$videoDetailss);
+		//return json_encode($videoDetails);
+    			return $_GET['callback']."(".json_encode($videoDetails).")";
 	}
 	else{
 		throw new ParentFinderException('video_not_found');
@@ -561,7 +580,7 @@ class ProfileController extends Controller
           {
            
           	$countrysdetails=array("status"=>"200",
-          							"Country Details"=>$countrys);
+          							"countryDetails"=>$countrys);
             return $_GET['callback']."(".json_encode($countrysdetails).")";
            }
            else
@@ -577,7 +596,7 @@ class ProfileController extends Controller
        	   $stateObj=new UtilityService;
        	   if($states=$stateObj->getStatesByCountryId($country_id))
            {
-       	   $stateDetails=Array("status"=>"200","State Details"=>$states);
+       	   $stateDetails=Array("status"=>"200","stateDetails"=>$states);
            return $_GET['callback']."(".json_encode($stateDetails).")";
            }
           else
@@ -594,7 +613,7 @@ class ProfileController extends Controller
         	$region=$regionObj->getRegionDetails();
         	if($region!="")
         	{
-        	$regionDetail=Array("status"=>"200","Region Details"=>$region);
+        	$regionDetail=Array("status"=>"200","regionDetails"=>$region);
         	return $_GET['callback']."(".json_encode($regionDetail).")";
            }
            else
@@ -1077,23 +1096,10 @@ public function getChildren(){
 	    $childids= $filter->getAllChildIds();
 	    }
 
-
-    	$children_details = '';
-    	$param=Input::segment(2);
-    	$filter=new FilterService();
-    	if(!empty($param)){
-    	$childids= $filter->getChildById($param);	
-    	}
-    	else{
-	    $childids= $filter->getAllChildIds();
-
-	    }
-
 	    if($childids){
 	    foreach($childids as $childid){
 		$childpobj=new ChildService($childid);
 		$Children= $childpobj->getChildDetails();
-		
     				$children_details[]=array(
 						     	"id"=>$Children->getchildId(),
 						     	"firstname"=>$Children->getfirst_name(),
@@ -1110,7 +1116,7 @@ public function getChildren(){
 
 				}
 				$childrenDetails=Array("status"=>"200","Children_details"=>$children_details);
-				return json_encode($childrenDetails);
+				return $_GET['callback']."(".json_encode($childrenDetails).")";
 			}
 
 			else{
@@ -1197,7 +1203,7 @@ public function getChildren(){
 				}
                     
     }
-public function postChildPhoto(Request $request){
+	public function postChildPhoto(Request $request){
     	$data['child_id']=verifyData($request->child_id);
     	$data['title']=verifyData($request->title);
 	    $data['url']=verifyData($request->url);
@@ -1215,8 +1221,8 @@ public function postChildPhoto(Request $request){
         	$religion=$religionObj->getReligion();
         	if(count($religion)!="")
         	{
-        	$religionDetail=Array("status"=>"200","Religion Details"=>$religion);
-        	return json_encode($religionDetail);
+        	$religionDetail=Array("status"=>"200","religionDetails"=>$religion);
+        	return $_GET['callback']."(".json_encode($religionDetail).")";
            }
            else
            {
@@ -1224,19 +1230,18 @@ public function postChildPhoto(Request $request){
            }
     }
 
-  public function getKidsApi()
-    {
+  public function getKidsApi() {
     	$kidsObj=new UtilityService;
         	$kids=$kidsObj->getKids();
-        	if(count($kids)!="")
-        	{
-        	$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
-        	return json_encode($kidsdetails);
+        	if(count($kids)!=""){
+        		$kidsdetails=Array("status"=>"200","KidsDetails"=>$kids);
+        		return $_GET['callback']."(".json_encode($kidsdetails).")";
         }
           else
            {
            	 throw new ParentFinderException('kids_not_found');
            }
+
     }
 
 

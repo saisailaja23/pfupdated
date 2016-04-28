@@ -14,9 +14,9 @@ class ChildProfileRepository {
          $this->setChildId($childId);
     }
 	
-    public  function setChildId() {
-       return $this->childId;
-    }
+    public  function setChildId($childId) {
+ +       $this->childId = $childId;
+      }
     public  function setFirstname($firstname) {
          $this->firstname = $firstname;
     } 
@@ -103,17 +103,7 @@ class ChildProfileRepository {
 
     } 
     
-    public function getchildDetails(){
 
-         try{
-       $childObj=new ChildProfile;
-       $childids =$childObj
-                  ->where('child_id', '=', $this->childId)
-                  ->first();
-         return $childids;
-
-        }
-    }
     
 
     public function getAllChildids(){
@@ -131,10 +121,9 @@ class ChildProfileRepository {
     }  
 
     public function getchildDetails(){
-  
          try{
        $childObj=new ChildProfile;
-       $childids =$childObj
+        $childids =$childObj
                   ->where('child_id', '=', $this->childId)
                   ->first();
          return $childids;
