@@ -109,7 +109,7 @@ class ProfileController extends Controller
 													);
     	}
     	$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
-				//return $_GET['callback']."(".json_encode($profileDetails).")";
+				return $_GET['callback']."(".json_encode($profileDetails).")";
     }
     	else if($api=='profiles'){			/*  To list all profiles */
 
@@ -202,7 +202,7 @@ class ProfileController extends Controller
 					}
 
 	     		}
-				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
+				$profileDetails=Array("status"=>"200","profiles"=>$profileDetails);
 				return $_GET['callback']."(".json_encode($profileDetails).")";
      	}else{
      		throw new ParentFinderException('no-profiles-found');
@@ -247,8 +247,9 @@ class ProfileController extends Controller
 							     );
 	    	}  
    
-    	}  	 	
+    	}  $profileDetails=Array("status"=>"200","profiles"=>$profileDetails);	 	
           return $_GET['callback']."(".json_encode($profileDetails).")";
+      
   	}
 
 
@@ -293,9 +294,10 @@ class ProfileController extends Controller
 						     	"Caption"=>$journal->getJournalCaption(),
 						     	"Text"=>$journal->getJournalText(),
 						     	"Uri"=>$journal->getJournalUri(),
+						        "Date"=>date("F d,Y",strtotime($journal->getJournalDate())),
 						     	"Photo"=>$journal->getJournalPhoto()
 						     	);
-    			}  
+    			} // date("d-m-Y", strtotime($email->created_at));
 
     	$journalDetails=Array("status"=>"200","journals"=>$journalDetails);
   			return $_GET['callback']."(".json_encode($journalDetails).")";
