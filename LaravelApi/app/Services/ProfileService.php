@@ -39,6 +39,7 @@ class ProfileService {
     private $gender;
     private $accountId;
      private $creationDate;
+     private $education;
 
 	
 	
@@ -78,7 +79,10 @@ class ProfileService {
     } 
     public function getFaith() {
         return $this->faith;
-    }   
+    } 
+    public function getEducationId() {
+        return $this->education;
+    }     
     public function getWaiting() {
         return $this->waiting;
     }
@@ -145,6 +149,7 @@ class ProfileService {
         $this->waitingId=$profileDetails->waiting_id;
         $this->religionId=$profileDetails->religion_id;
         $this->gender=$profileDetails->gender;
+        $this->education=$profileDetails->education_id;
         $this->accountId=$profileDetails->accounts_id;
         $ethnicity=new EthnicityRepository($this->ethnicityId);
         if($ethnicityDetails=$ethnicity->getEthnicityDetails())
@@ -155,7 +160,6 @@ class ProfileService {
         $waiting=new WaitingRepository($this->waitingId);
         if($waitingDetails=$waiting->getWaitingDetails())
         $this->waiting=$waitingDetails->waiting;		
-           
         return $this;
         }
         catch(\Exception $e){

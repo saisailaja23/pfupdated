@@ -99,7 +99,6 @@ class ChildService {
 
     public function getChildDetails(){
 
-
          try{
         $child=new ChildProfileRepository($this->childId);
         $childDetails=$child->getchildDetails();

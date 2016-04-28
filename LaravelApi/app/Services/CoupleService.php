@@ -289,13 +289,13 @@ class CoupleService {
          try{
         $albumObj=new VideoRepository(null);
          $albumId=$albumObj->getVideoAlbumByID($this->accountId);
-        $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);   
+       /* $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);   
         foreach($albumDetail as $albumDetails){
             $videoserviceObj=new VideoService($albumDetails->ID);
              $albumout[] = $videoserviceObj->getAlbum();
-        }     
+        }    */ 
       
-        return $albumout;
+        return $albumId;
     }
         catch(\Exception $e){
              //throw new ParentFinderException('album_not_found',$e->getMessage());
@@ -334,7 +334,7 @@ class CoupleService {
             $albumId[]=$videoid;
             try{
                 $albumDetail=$albumObj->getVideoAlbums($albumId,$this->accountId);
-                if(empty($albumDetail)){               
+                if(!empty($albumDetail)){ 
                 foreach($albumDetail as $albumDetails){
                     $videoserviceObj=new VideoService($albumDetails->ID);
                     $albumout[] = $videoserviceObj->getAlbum();
@@ -475,11 +475,11 @@ class CoupleService {
             $accountObj->setAgencyId($data['agencyId']);          
             $accountObj->setCreatedAt(getCurrentDateTime());
             $accountObj->setModifiedAt(getCurrentDateTime());
-            $accountObj->setStatus(1);    echo "a";
+            $accountObj->setStatus(1);
             $accountObj->setRoleId($data['profileType']); 
             if($data['profileType']==2){
                 if($data['maritalStatus']=='single)'){
-                    echo "ok";
+                    
                     $accountObj->setName($data['firstName']);
                     $accountId=$accountObj->saveAccountDetails();
                     $profileObj=new ProfileService();

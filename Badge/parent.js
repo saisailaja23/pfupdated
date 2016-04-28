@@ -118,7 +118,7 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                                     +'</div>'
                                     +'<div class="link">'
                                         +'<a href="about.html" class="about">More About Me</a>'
-                                        +'<a href="letters.html" class="pics">Our Pictures</a>'
+                                        +'<a href="javascript:void(0);" class="pics" onclick="getChapters();">Our Pictures</a>'
                                        +' <a href="videos.html" class="videos">Our Videos</a>'
                                         +'<a class="profile">Our Profile</a>'
                                     +'</div> '                              
