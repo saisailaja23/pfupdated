@@ -137,7 +137,7 @@
                    </div>
                </div>
                <div class="ourJournal">
-                   <h4 class="book">Jason</h4>
+                   <!-- <h4 class="book">Jason</h4>
                    <div class="infobox">
                        <h5><a href="#">The Princess Ball</a></h5>
                        <span class="date">February 29, 2016</span>
@@ -157,7 +157,7 @@
                        <h5><a href="#">How to Feed a Dinosaur</a></h5>
                        <span class="date">February 19, 2016</span>
                        <p>What a royal evening!  Daddy and Sloane had so much fun at thier first Daddy/Princess Ball.  Besides dancing the night away to all the greatest Disney songs, they also got to decorate thier own ...</p>
-                   </div>
+                   </div> -->
                    <div class="ourAgency clearfix">
                        <div class="agencyLeft">
                            <h4>Our agency</h4>
@@ -195,7 +195,10 @@
             
 		}(jQuery));
 	</script>
+
 	<script type="text/javascript">
+  var multipdf ='';
+  var flipbook = '';
      function capitalise(string) {
     if(string)  
     return string.charAt(0).toUpperCase() + string.slice(1).toLowerCase();
@@ -213,12 +216,14 @@
 }
 jQuery(document).ready(function($) { 
 
+
+
    $.ajax({
             url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/pdfprofile/dhanya",
             dataType: "jsonp",
             success: function (data) {
                 if(data.status==200){
-                  var multipdf=data.multi_profile;
+                   multipdf="https://www.parentfinder.com/"+data.multi_profile;
                 }
               }
 
@@ -229,11 +234,12 @@ jQuery(document).ready(function($) {
             dataType: "jsonp",
             success: function (data) {
                 if(data.status==200){
-                  var flipbook=data.data.flip_book;
+                   flipbook="https://www.parentfinder.com/profileflipbook/"+data.data.flip_book;
                 }
           }
 
         }); 
+
 
   $.ajax({
             url: "http://localhost/pflaravel/PARENTFINDER/LaravelApi/profile/dhanya",
@@ -283,12 +289,12 @@ jQuery(document).ready(function($) {
                       profileContactDiv +='<span>'+country+'</span>';
                       profileContactDiv +='</div>';
                       profileContactDiv +='<div class="proUrl">';
-                      profileContactDiv +='<a href="#">'+website+'</a>';
+                      profileContactDiv +='<a href="'+website+'">'+website+'</a>';
                       profileContactDiv +='</div>';
                       profileContactDiv +='<div class="abtLinks">';
                       profileContactDiv +='<a href="chapters.html" class="letter">Our Letters</a>';
-                      profileContactDiv +='<a href="/"'+multipdf+'" class="flipBook">Flipbook</a>';
-                      profileContactDiv +='<a href="#" class="pdf">PDF</a>';
+                      profileContactDiv +='<a href="'+multipdf+'" class="flipBook">Flipbook</a>';
+                      profileContactDiv +='<a href="'+flipbook+'" class="pdf">PDF</a>';
                       profileContactDiv +='</div>';
                 }
                   $('.userDetails').append(userDetailsDiv); 
