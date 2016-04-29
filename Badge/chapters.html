@@ -1,23 +1,6 @@
 
-<!DOCTYPE html>
-<html lang="">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0,target-densitydpi=device-dpi, user-scalable=no" />
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>VIEW OUR FAMILIES</title>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="stylesheets/screen.css">
-    
-    <!--[if IE]>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-</head>
 
-<div class="family_Widget_2016">
+
     <section class="innerPageSec">
         <div class="innerPageHead">
             <div class="clearfix container">
@@ -61,59 +44,9 @@
         </div>
     </footer>
     
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <script src="javascripts/jquery.html5.placeholder.js"></script>
-    <script src="javascripts/jquery.isotope.min.js"></script> 
-    <script src="javascripts/common.js"></script>
     <script>
-    (function ($) {
-            
     
-});
-    function letterIsotope()
-    {
-      var $container = $('.grid'),
-        colWidth = function () {
-          var w = $container.width(), 
-            columnNum = 1,
-            columnWidth = 0;
-          if (w > 1200) {
-            columnNum  = 2;
-          } else if (w > 900) {
-            columnNum  = 2;
-          } else if (w > 600) {
-            columnNum  = 1;
-          } else if (w > 300) {
-            columnNum  = 1;
-          }
-          columnWidth = Math.floor(w/columnNum);
-          $container.find('.item').each(function() {
-            var $item = $(this),
-              multiplier_w = $item.attr('class').match(/item-w(\d)/),
-              // multiplier_h = $item.attr('class').match(/item-h(\d)/),
-              width = multiplier_w ? columnWidth*multiplier_w[1]-4 : columnWidth-4
-              //height = multiplier_h ? columnWidth*multiplier_h[1]*0.5-4 : columnWidth*0.5-4;
-            $item.css({
-              width: width
-              //height: height
-            });
-          });
-          return columnWidth;
-        },
-        isotope = function () {
-          $container.isotope({
-            resizable: false,
-            itemSelector: '.item',
-            masonry: {
-              columnWidth: colWidth(),
-              gutterWidth: 5
-            }
-          });
-        };
-      isotope();
-      $(window).smartresize(isotope);
-    }
+    
  jQuery(document).ready(function($) {    
   var multipdf = '';
    var flipbook = '';
@@ -188,7 +121,7 @@
                       var profiledivDiv="";
                       var profileContactDiv=""; 
                       var preference="";
-                      userDetailsDiv +='<a href="index.html" class="back">Back</a>';
+                      userDetailsDiv +='<a href="badge.html" class="back">Back</a>';
                       userDetailsDiv +='<div class="familyName">'+profilename+'</div>';
                       userDetailsDiv +='<a href="#" class="fav">Fav</a>';
                       profiledivDiv +='<figure><img src="'+image+'"></figure>';
@@ -220,5 +153,5 @@
   </script>
   
 
-</div>
+
 </html>

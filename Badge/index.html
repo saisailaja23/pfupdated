@@ -137,6 +137,12 @@
         };
         isotope();
         $(window).smartresize(isotope);
+
+        $("#religionList li").click(function() {
+            alert(this.id); // id of clicked li by directly accessing DOMElement property
+        
+        });
+
     });
  </script>
 </body>
