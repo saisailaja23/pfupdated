@@ -130,7 +130,7 @@ Route::post('/child/edit', 'ProfileController@editChildProfile');
 Route::post('/childphoto/add', 'ProfileController@postChildPhoto');
 Route::get('/religion','ProfileController@getReligionApi');
 Route::get('/kids','ProfileController@getKidsApi');
-
+Route::get('/epub/{any}','ProfileController@getEpubApi');
 Route::get('/children','ProfileController@getChildren');
 Route::group([
     'prefix' => '/children/{childid}',

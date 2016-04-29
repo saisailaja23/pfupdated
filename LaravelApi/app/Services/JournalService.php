@@ -37,11 +37,13 @@ class JournalService{
     }
     public  function getJournalUri() {
        return $this->journalUri;
+
     }  
      public  function getJournalDate() {
        return $this->journalDate;
     }  
     
+
    
 
     /*Get Journal*/
@@ -53,8 +55,10 @@ class JournalService{
         $this->journalPhoto=$journalDetails->PostPhoto;
         $this->journalUri=$journalDetails->PostUri;
         $this->journalText=$journalDetails->PostText;
+
         $this->journalDate=$journalDetails->PostDate;
         
+
 
         return $this;
     }

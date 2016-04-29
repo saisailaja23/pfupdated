@@ -43,6 +43,12 @@ class AgencyService{
      public  function getwebsite() {
        return $this->website;
     }
+    public  function getimage() {
+       return $this->image;
+    }
+    public  function getemail() {
+       return $this->email;
+    }
     
   
    
@@ -61,6 +67,8 @@ class AgencyService{
                    $this->city= $adoptionDetails->city;
                    $this->zip= $adoptionDetails->zip;
                    $this->website= $adoptionDetails->website;
+                   $this->image= $adoptionDetails->Avatar;
+                   $this->email= $adoptionDetails->emailid;
            // print_r($this);
         return $this;
        

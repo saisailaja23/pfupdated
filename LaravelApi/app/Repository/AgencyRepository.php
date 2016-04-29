@@ -42,10 +42,11 @@ class AgencyRepository {
    public function getAgencyDetails($agency_id){
        try{
             $Agencyobj=new Agency;
-            $ethnicityPreferDetails =$Agencyobj->where('author_id', '=',$agency_id)
-                                              ->join('ContactDetails', 'ContactDetails.Account_id', '=', 'bx_groups_main.author_id') 
-                                                ->first();
-            return $ethnicityPreferDetails;
+             $AgencyDetails =$Agencyobj->where('author_id', '=',$agency_id)
+                                      ->join('ContactDetails', 'ContactDetails.Account_id', '=', 'bx_groups_main.author_id') 
+                                      ->join('account', 'account.Account_id', '=', 'bx_groups_main.author_id')
+                                      ->first();
+            return $AgencyDetails;
         }catch(\Exception $e){
                //throw new ParentFinderException('agency-not-found',$e->getMessage());
         }  
