@@ -302,10 +302,9 @@ var username;
 })(); // We call our anonymous function immediately
 
 
-function getChapters(username){
-  
-  $("#content").load(base_url+"chapters.html");   
- // $(".profileContact").load(base_url+"chapters.html");      
+function getChapters(name){
+  username=name;
+  $("#content").load(base_url+"chapters.html");       
 }
 
 
