@@ -1,5 +1,6 @@
 var base_url="http://localhost/parentfinderApi/PARENTFINDER/Badge/";
 var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
+var username;
 (function() {
 
     // Localize jQuery variable
@@ -64,7 +65,6 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
     }
 
     function loadMenu(){
-       
         getKidsinFamilyList();
        // getLikeProfilesList();
         getReligionList();
@@ -104,6 +104,7 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                           var faith=checkValue(parent1.faith);
                           var waiting=checkValue(parent1.waiting);
                           var avatar=checkPhoto(parent1.avatar);
+                          username=parent1.username;
                          
                        // contentDiv += '<div>'+ profiles[i].parent1.first_name +'</div>';
                         contentDiv+='<div class="item"> <div class="itemBlock">';
@@ -119,7 +120,7 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
                                     +'</div>'
                                     +'<div class="link">'
                                         +'<a href="about.html" class="about">More About Me</a>'
-                                        +'<a target="_blank" href="javascript:void(0);" class="pics" onclick="getChapters();">Our Pictures</a>'
+                                        +'<a target="_blank" href="javascript:void(0);" class="pics" onclick=getChapters("'+username+'")>Our Pictures</a>'
                                        +' <a href="videos.html" class="videos">Our Videos</a>'
                                         +'<a class="profile">Our Profile</a>'
                                     +'</div> '                              
@@ -301,8 +302,10 @@ var api_url="http://localhost/parentfinderApi/PARENTFINDER/LaravelApi/";
 })(); // We call our anonymous function immediately
 
 
-function getChapters(){
-    $("#content").load(base_url+"chapters.html");      
+function getChapters(username){
+  
+  $("#content").load(base_url+"chapters.html");   
+ // $(".profileContact").load(base_url+"chapters.html");      
 }
 
 
