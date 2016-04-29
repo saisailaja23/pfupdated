@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="">
 <head>
@@ -16,7 +17,7 @@
     <![endif]-->
 </head>
 
-<body class="family_Widget_2016">
+<div class="family_Widget_2016">
     <section class="innerPageSec">
         <div class="innerPageHead">
             <div class="clearfix container">
@@ -74,13 +75,10 @@
     {
       var $container = $('.grid'),
         colWidth = function () {
-
           var w = $container.width(), 
-
             columnNum = 1,
             columnWidth = 0;
           if (w > 1200) {
-
             columnNum  = 2;
           } else if (w > 900) {
             columnNum  = 2;
@@ -101,11 +99,9 @@
               //height: height
             });
           });
-
           return columnWidth;
         },
         isotope = function () {
-
           $container.isotope({
             resizable: false,
             itemSelector: '.item',
@@ -122,13 +118,11 @@
   var multipdf = '';
    var flipbook = '';
   $.ajax({
-
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/letters/dhanya",
+            url: api_url+"letters/"+username,
             dataType: "jsonp",
             success: function (data) {
             var letters=data.letters;
             var i;
-
             var contentDiv="";
             for(i=0; i<letters.length; i++){
             contentDiv += '<div class="item"><div class="chpterBlock"><h4>'+ letters[i].Title + '</h4><p>'+ letters[i].Content +'</p></div></div>';
@@ -138,33 +132,27 @@
            }
            });
  $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/pdfprofile/dhanya",
+            url: api_url+"pdfprofile/"+username,
             dataType: "jsonp",
             success: function (data) {
                 if(data.status==200){
                    multipdf="https://www.parentfinder.com/"+data.multi_profile;
                 }
               }
-
         }); 
-
   $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/flipbook/dhanya",
+            url: api_url+"flipbook/"+username,
             dataType: "jsonp",
             success: function (data) {
                 if(data.status==200){
                    flipbook="https://www.parentfinder.com/profileflipbook/"+data.data.flip_book;
                 }
           }
-
         }); 
-
-
    $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/profile/dhanya",
+            url: api_url+"profile/"+username,
             dataType: "jsonp",
             success: function (data) {
-
                 if(data.status==200){
                     var i;
                   var profiles=data.profiles;
@@ -177,7 +165,6 @@
                         var couple_name=parent1.first_name.toUpperCase();
                     
                         var profilename =couple_name;
-
                         var image = "https://www.parentfinder.com/modules/boonex/avatar/data/favourite/"+parent1.avatar+".jpg";
                         var country = contact.country;
                         var website = contact.website;
@@ -204,12 +191,10 @@
                       userDetailsDiv +='<a href="index.html" class="back">Back</a>';
                       userDetailsDiv +='<div class="familyName">'+profilename+'</div>';
                       userDetailsDiv +='<a href="#" class="fav">Fav</a>';
-
                       profiledivDiv +='<figure><img src="'+image+'"></figure>';
                       profiledivDiv +='<figcaption>';
                       profiledivDiv +=''+letter_about_them+'';
                       profiledivDiv +='</figcaption>';
-
                       profileContactDiv +='<div class="proName">';
                       profileContactDiv +=''+profilename+'';
                       profileContactDiv +='<span>'+country+'</span>';
@@ -228,14 +213,12 @@
                   $('.userDetails').append(userDetailsDiv); 
                   $('.prfileDetails').append(profiledivDiv);
                  $('.profileContact').append(profileContactDiv); 
-
             }
           }
-
         });
     }(jQuery));
   </script>
   
 
-</body>
+</div>
 </html>

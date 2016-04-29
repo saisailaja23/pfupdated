@@ -43,12 +43,7 @@
            <div class="profileContact clearfix">
                
            </div>
-           <div class="chaptersBlk">
-               <div class="grid">
-               
-
-               </div>
-           </div>
+           
        </div>
     </section>
    
@@ -70,7 +65,7 @@
    var flipbook = '';
  
  $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/pdfprofile/dhanya",
+            url: api_url+"pdfprofile/dhanyas",
             dataType: "jsonp",
             success: function (data) {
                 if(data.status==200){
@@ -81,7 +76,7 @@
         }); 
 
   $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/flipbook/dhanya",
+            url: api_url+"flipbook/dhanyas",
             dataType: "jsonp",
             success: function (data) {
                 if(data.status==200){
@@ -93,7 +88,7 @@
 
 
    $.ajax({
-            url: "http://localhost/laravel_pf/PARENTFINDER/LaravelApi/profile/dhanya",
+            url: api_url+"profile/dhanyas",
             dataType: "jsonp",
             success: function (data) {
 
@@ -169,5 +164,4 @@
   </script>
   
 
-</body>
-</html>
+

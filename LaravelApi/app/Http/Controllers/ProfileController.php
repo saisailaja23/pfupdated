@@ -211,7 +211,7 @@ class ProfileController extends Controller
 					}
 
 	     		}
-				$profileDetails=Array("status"=>"200","profiles"=>$profileDetails);
+				$profileDetails=Array("status"=>"200","profiles"=>$profileDetail);
 				return $_GET['callback']."(".json_encode($profileDetails).")";
      	}else{
      		throw new ParentFinderException('no-profiles-found');
