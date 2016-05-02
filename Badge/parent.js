@@ -24,8 +24,7 @@ var username;
       
         var script_tag_main = document.createElement('script');
         script_tag_main.setAttribute("type","text/javascript");
-        script_tag_main.setAttribute("src",
-           base_url+ "utility.js");
+        script_tag_main.setAttribute("src",base_url+ "utility.js");
     
     
       (document.getElementsByTagName("head")[0] || document.documentElement).appendChild(script_tag);
@@ -64,6 +63,7 @@ var username;
     function main() { 
             /*Loading main html */
             $("#content").load(base_url+"index.html");
+            loadMenu();
             loadFamilies(null);         
     }
 
