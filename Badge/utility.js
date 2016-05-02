@@ -250,6 +250,7 @@ function getChapters(name){
   username=name;
   $(".family_Widget_2016").load(base_url+"chapters.html");       
 }
+
 function mainIsotope(){
    $(".itemBlock .figure > img").click(function () {
             $(this).parent().parent(".itemBlock").addClass("active");
